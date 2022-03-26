@@ -5,7 +5,7 @@ set -e
 
 # TODO: need to test on VM
 
-CODE_PATH = "$HOME/code"
+CODE_PATH = "$HOME/code/personal"
 DOTFILES_REPO_NAME = "dotfiles"
 DOTFILES_REPO_URL = "https://github.com/dlvhdr/$DOTFILES_REPO_NAME.git"
 DOTFILES_PATH = "$CODE_PATH/$DOTFILES_REPO_NAME"
