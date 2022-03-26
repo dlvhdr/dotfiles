@@ -1,9 +1,7 @@
 # dlvhdr's dotfiles
 
-- alacritty
-- zsh
-- starship
-- nvim
-- git + gh + tig
-- macos setup files
-- tmux
+- Terminal: alacritty + tmux
+- Shell: zsh + starship
+- Editor: nvim
+- Source control: git + gh + tig
+- Setup: macos setup files
