@@ -1,12 +1,35 @@
-.config/vscode
+node_modules
+yarn.lock
+
+# .config
+.config/vscode/
 .config/zsh/.zcompdump
 .config/.fnm/
-
-.zsh_history
-.config/zsh/.oh-my-zsh
-.config/zsh/.zsh_sessions
 .config/.electron/
-.config/.gem
+.config/.gem/
+.config/docker/
+.config/raycast/extensions/
+.config/gh/hosts.yml
+.config/hammerspoon/stackline/
+.config/configstore/
+.config/ranger/plugins/
+.config/tmux/plugins/
+.config/z/
+.config/yarn/link/
+
+# zsh
+.zsh_history
+.config/zsh/.oh-my-zsh/
+.config/zsh/.zsh_sessions/
+.zcompdump*
+
+# nvim
+.config/nvim/sessions/
+.config/nvim/undodir/
+packer_compiled.lua
+
+# misc
+error.log
 
 
 
