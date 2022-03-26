@@ -1,0 +1,25 @@
+prSections:
+  - title: My Pull Requests
+    filters: is:open author:@me
+  - title: Needs My Review
+    filters: is:open review-requested:@me
+  - title: Previously Commented
+    filters: commenter:@me
+  - title: "@wix"
+    filters: "is:open -author:@me -author:app/wix-loki-bot \
+      repo:wix-private/wix-code-devex \
+      repo:wix-private/wix-code-client \
+      repo:wix-incubator/corvid-types"
+issuesSections:
+  - title: My Issues
+    filters: is:open author:@me
+  - title: Assigned
+    filters: is:open assignee:@me
+  - title: Subscribed
+    filters: is:open -author:@me repo:microsoft/vscode repo:dlvhdr/gh-prs
+defaults:
+  preview:
+    open: true
+    width: 60
+  prsLimit: 20
+  issuesLimit: 20

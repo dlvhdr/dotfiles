@@ -1,0 +1,12 @@
+@fsouza/prettierd@0.18.0
+bars@1.2.2
+corepack@0.9.0
+diagnostic-languageserver@1.13.0
+esbuild@0.13.13
+eslint_d@11.0.0
+madge@5.0.1
+npm@8.0.0
+prettier@2.4.1
+ts-migrate@0.1.26
+vscode-json-languageserver@1.3.4
+

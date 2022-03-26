@@ -1,0 +1,48 @@
+add_newline = true
+
+[character]
+success_symbol = "[ ](fg:#7dcfff)"
+error_symbol = "[ ](gray)"
+vicmd_symbol = "[ ](purple)"
+
+[git_branch]
+format = "on [$symbol$branch](bold purple) "
+
+[git_status]
+format = '([$all_status]($style))'
+conflicted = "([⚠️ ${count}](bold red) )"
+ahead = "([⟫${count}])"
+behind = "([⟪${count}])"
+stashed = "([↪ ${count}](bold red)) "
+modified = "([柳${count}](bold yellow) )"
+staged = "([ ${count}](bold green) )"
+renamed = "([⇆ ${count}](vold blue) )"
+deleted = "([ ${count}](bold red) )"
+untracked ="([ ${count}](dimmed red) )"
+
+[package]
+disabled = true
+
+[directory]
+truncate_to_repo = false
+truncation_length = 5
+read_only = " "
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"~/code/wix/wix-code-devex" = "@wix/devex"
+"~/code/wix/wix-code-code-editor" = "@wix/code-code"
+"~/code/wix" = "@wix"
+
+[golang]
+symbol = " "
+
+[java]
+disabled = true
+
+[vagrant]
+disabled = true
+
+[lua]
+format = "via [ $version](bold blue) "
+

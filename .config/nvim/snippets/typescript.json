@@ -1,0 +1,141 @@
+{
+  "Console callout": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "console-callout",
+    "body": [
+      "console.log('=============================');",
+      "console.log($1);",
+      "console.log('=============================');"
+    ],
+    "description": "React functional component"
+  },
+  "Jest describe clause": {
+    "prefix": "describe",
+    "description": "jest template file",
+    "body": [
+      "describe(\"$1\", () => {",
+      "  it(\"should \", () => {});",
+      "});",
+      ""
+    ]
+  },
+  "Jest it clause": {
+    "prefix": "it",
+    "description": "jest template file",
+    "body": [
+      "describe(\"$1\", () => {",
+      "  it(\"should \", () => {});",
+      "});",
+      ""
+    ]
+  },
+  "const function": {
+    "prefix": "constf",
+    "description": "anonymous functions",
+    "body": ["const ${1:functionName} = () => {", "  ${2}", "};"]
+  },
+  "React Functional Component": {
+    "prefix": "rfc",
+    "description": "React functional component",
+    "body": [
+      "import React from 'react';",
+      "",
+      "const ${1:Component} = (): JSX.Element => {",
+      "  return (",
+      "    <div>",
+      "      Component",
+      "    </div>",
+      "  )",
+      "}",
+      "",
+      "export default ${1:Component};"
+    ]
+  },
+  "useState": {
+    "prefix": "useState",
+    "description": "useState hook",
+    "body": [
+      "const [${1:state}, set${2:setState}] = useState(${3:initialState});"
+    ]
+  },
+  "useMemo": {
+    "prefix": "useMemo",
+    "description": "useMemo hook",
+    "body": ["useMemo(() => {", "  ${1}", "}, [])"]
+  },
+  "useEffect": {
+    "prefix": "useEffect",
+    "description": "useEffect hook",
+    "body": ["useEffect(() => {", "    ${1}", "  }, [${2}]);"]
+  },
+  "React Testing Library": {
+    "prefix": "rtl",
+    "description": "React Testing Library test",
+    "body": [
+      "import React from 'react';",
+      "import {render, screen} from '@testing-library/react';",
+      "import ${1:Component} from './${1:Component}';",
+      "",
+      "describe('${1:Component}', () => {",
+      "  it('should ${2}', () => {",
+      "    render(<${1:Component} />);",
+      "    expect();",
+      "  });",
+      "});",
+      ""
+    ]
+  },
+  "className": {
+    "prefix": "className",
+    "description": "className property",
+    "body": ["className={styles.${1:root}}"]
+  },
+  "styles": {
+    "prefix": "styles",
+    "description": "Import scss file",
+    "body": ["import * as styles from \"./${1}.scss\";", ""]
+  },
+  "React context": {
+    "prefix": "context",
+    "description": "React Context boilerplate",
+    "body": [
+      "import React, {useState} from 'react';",
+      "",
+      "interface ${1:Name}ContextType {",
+      "}",
+      "",
+      "const ${1:Name}Context = React.createContext<${1:Name}ContextType>(",
+      "  undefined,",
+      ");",
+      "",
+      "interface ${1:Name}ProviderProps {",
+      "  children: React.ReactNode;",
+      "}",
+      "",
+      "const ${1:Name}Provider = ({",
+      "  children,",
+      "}: ${1:Name}ProviderProps): JSX.Element => {",
+      "",
+      "  return (",
+      "    <${1:Name}Context.Provider",
+      "      value={{",
+      "      }}",
+      "    >",
+      "      {children}",
+      "    </${1:Name}Context.Provider>",
+      "  );",
+      "};",
+      "",
+      "const use${1:Name}Context = (): ${1:Name}ContextType => {",
+      "  const context = React.useContext(${1:Name}Context);",
+      "  if (context === undefined) {",
+      "    throw new Error('use${1:Name}Context must be used within a ${1:Name}Context');",
+      "  }",
+      "  return context;",
+      "};",
+      "",
+      "export {${1:Name}Provider, use${1:Name}Context};",
+      ""
+    ]
+  }
+}

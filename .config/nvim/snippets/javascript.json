@@ -1,0 +1,6 @@
+{
+  "setImmediate": {
+    "prefix": "sim",
+    "body": "setImmediate(() => {\n\t${0}\n})"
+  }
+}

@@ -1,0 +1,193 @@
+[user]
+  name = Dolev Hadar
+  email = dolevh@wix.com
+
+[init]
+  defaultBranch = main
+
+[pull]
+  ff = only
+  rebase = true
+
+[push]
+  default = current
+
+[core]
+  excludesfile = ~/.config/git/ignore
+  ignorecase = false
+  pager = delta
+
+[help]
+  # Autocorrect mistyped commands.
+  autocorrect = 1
+
+[rerere]
+  # Remember my merges
+  enabled = true
+
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+  branch = 
+
+[fetch]
+  prune = true
+
+[diff]
+  tool = nvimdiff
+  colorMoved = default
+
+[difftool "vscode"]
+  cmd = "code --wait --diff $LOCAL $REMOTE"
+
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  tool = nvimdiff
+  conflictstyle = diff3
+
+[mergetool]
+  keepBackup = false
+
+[mergetool "nvimdiff"]
+  cmd = nvim -d $MERGED $LOCAL $BASE $REMOTE -c '$wincmd J' -c 'wincmd ='
+
+[mergetool "fugitive"]
+  cmd = nvim -f -c "Gvdiffsplit!" "$MERGED"
+  
+[advice]
+  statusHints = false
+
+[pull]
+  rebase = true
+
+[log]
+  decorate = auto
+  abbrevCommit = true
+
+[alias]
+  aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+  st = status
+  ca = !git add -A && git commit
+  c = commit -m
+  aa = add -A
+  amend-all = !git add -A && git commit --amend --no-verify
+  commit-all = !git add -A && git commit --no-verify
+  co = "!branch() { \n\
+    if [ $# -eq 0 ] \n\
+    then \n\
+      git checkout $(git branch | fzf) \n\
+    else \n\
+      git checkout $@ \n\
+    fi \n\
+  }; branch"
+  pr = !gh pr
+  prv = !gh pr view
+  prvw = !gh pr view -w
+  prs = !gh pr status
+  prls = !gh pr list --author=@me
+  l = !gt l
+  ls = !gt ls
+  stack = !gt stack
+  fix = !gt stack fix --rebase
+  nuke = clean -f -d
+  clean-branches = !git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+  update-master = !git checkout master && git pull --rebase && git merge origin/master --ff-only
+  branches = branch -a --sort=-authordate
+  stashes = stash list
+  remotes = remote -v
+  conflicts = !git --no-pager diff --name-only --diff-filter=U | xargs grep -c '^=======$'
+  unstage = reset -q HEAD --
+  uncommit = reset --mixed HEAD~
+  master = !git checkout $(git remote show origin | awk '/HEAD branch/ {print $NF}')
+  main = master
+  
+  # Delete local branches that no longer exist on the remote
+  gone = !git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+
+  # Rebase interactive for all commits on feature branch
+  rebase-branch = !git rebase -i --onto master `git rev-parse --abbrev-ref HEAD`~1 
+
+  # preferred git log view
+  lg = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) %C(white)%s%C(reset) %C(dim white)-%C(reset) %ar %C(dim white)<%an>%C(reset)%C(auto)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) %C(white)%s%C(reset) %C(dim white)-%C(reset) %ar %C(dim white)<%an>%C(reset)%C(auto)%d%C(reset)%n' --all --stat
+
+  # review
+  review-base = !git merge-base HEAD \"${review_base:-origin/master}\"
+  files = !git diff --name-only $(git review-base)
+  stat = !git diff --stat $(git review-base)
+  pr-summary = !git log --reverse --format=\"- **%s** (%h)%n%n%w(74,2,2)%b\" \"${review_base:-origin/master}\"..HEAD
+  depgraph = !git madge image --webpack-config config/webpack.config.babel.js --basedir . --style solarized-dark src
+  review = !$EDITOR $(git files) +\"bufdo Gitsigns diffthis master\"
+	reviewone = !$EDITOR -p +\"tabdo Gdiff ${review_base:-origin/master}\" +\"let g:gitgutter_diff_base = '${review_base:-origin/master}'\"
+	reviewf = !$EDITOR -p $(git files | fzf -m --reverse --height 40%) +\"tabdo Gdiff ${review_base:-origin/master}\" +\"let g:gitgutter_diff_base = '${review_base:-origin/master}'\"
+
+[color]
+  pager = true
+  ui = true
+  status = auto
+  diff = auto
+  branch = auto
+  showBranch = auto
+  interactive = auto
+  grep = auto
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red dim
+  header = dim white
+  branch = cyan
+  nobranch = red
+
+[color "branch"]
+  current = green bold
+  local = yellow dim
+  remote = blue
+
+[color "decorate"]
+  branch = blue
+  remoteBranch = magenta
+  tag = magenta
+  stash = cyan
+  HEAD = blue
+
+[color "interactive"]
+  prompt = red
+  header = red bold
+  error = red
+  help = black bold
+
+[delta]
+  syntax-theme = OneHalfDark
+  navigate = true
+  dark = true
+  side-by-side = true
+  file-modified-label = modified:
+  features = unobtrusive-line-numbers decorations
+  minus-style = syntax "#402529"
+  minus-emph-style = syntax "#662F33"
+  plus-style = syntax "#243826"
+  plus-emph-style = syntax "#3B5134"
+
+[delta "decorations"]
+    file-style = bold yellow ul
+    file-decoration-style = ul "#555555"
+    hunk-header-decoration-style = omit
+    commit-decoration-style = none
+
+[delta "unobtrusive-line-numbers"]
+    line-numbers = true
+    line-numbers-minus-style = "#3d4163"
+    line-numbers-zero-style = "#3d4163"
+    line-numbers-plus-style = "#3d4163"
+    line-numbers-left-style = "#3d4163"
+    line-numbers-right-style = "#3d4163"
+    line-numbers-left-format = "{nm:>4}│"
+    line-numbers-right-format = "{np:>4}│"
