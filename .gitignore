@@ -1,0 +1,13 @@
+.config/vscode
+.config/zsh/.zcompdump
+.config/.fnm/
+
+.zsh_history
+.config/zsh/.oh-my-zsh
+.config/zsh/.zsh_sessions
+.config/.electron/
+.config/.gem
+
+
+
+
