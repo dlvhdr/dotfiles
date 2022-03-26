@@ -11,6 +11,7 @@ aliases:
   co: pr checkout
   view: pr view --web
   open: pr view --web
+  view_repo: repo view --web
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
