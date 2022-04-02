@@ -1,6 +1,10 @@
 local conditions = require("dlvhdr.lualine.conditions")
 local colors = require("dlvhdr.lualine.colors")
 
+local function color(highlight_group, content)
+  return "%#" .. highlight_group .. "#" .. content .. "%*"
+end
+
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
   if gitsigns then
@@ -134,10 +138,44 @@ return {
     color = {},
   },
   filename = {
-    "filename",
-    path = 0,
-    file_status = true,
-    symbols = { modified = "  ", readonly = "  " },
+    function()
+      local is_active = winnr == vim.fn.winnr()
+      local bufnum = vim.fn.winbufnr(winnr)
+
+      local segments = {}
+
+      -- File name
+      local file_name = vim.fn.fnamemodify(vim.fn.bufname(bufnum), ":t")
+      -- local file_name = vim.fn.expand("#" .. bufnum .. ":t")
+      local extension = vim.fn.expand("#" .. bufnum .. ":e")
+      local icon, highlight = require("nvim-web-devicons").get_icon(file_name, extension)
+
+      if not icon and #file_name == 0 then
+        -- Is in a folder
+        icon = ""
+        highlight = "Accent"
+      end
+
+      -- File modified
+      if vim.fn.getbufvar(bufnum, "&modified") == 1 then
+        table.insert(segments, color("DiagnosticWarn", ""))
+      end
+
+      -- Read only
+      if vim.fn.getbufvar(bufnum, "&readonly") == 1 then
+        table.insert(segments, color("StatuslineBoolean", ""))
+      end
+
+      -- Icon
+      local icon_statusline = color((highlight or "Accent"), icon or "")
+      table.insert(segments, icon_statusline)
+
+      -- File path
+      local file_path = '%{expand("%:t")}'
+      table.insert(segments, file_path)
+
+      return table.concat(segments, " ")
+    end,
   },
   scrollbar = {
     function()
@@ -152,32 +190,4 @@ return {
     color = { fg = colors.yellow, bg = colors.bg },
     cond = nil,
   },
-  -- lsp_progress = {
-  --   "lsp_progress",
-  --   display_components = { "lsp_client_name", "spinner", { "title", "percentage" } },
-  --   colors = {
-  --     percentage = colors.violet,
-  --     title = colors.violet,
-  --     message = colors.violet,
-  --     spinner = colors.violet,
-  --     lsp_client_name = colors.blue,
-  --     use = true,
-  --   },
-  --   icon = "理",
-  --   fmt = function(data)
-  --     return string.sub(data, 1, vim.o.columns / 2)
-  --   end,
-  --   separators = {
-  --     component = " ",
-  --     progress = " | ",
-  --     message = { pre = "(", post = ")" },
-  --     percentage = { pre = "", post = "%% " },
-  --     title = { pre = "", post = "" },
-  --     lsp_client_name = { pre = "[", post = "]" },
-  --     spinner = { pre = "", post = "" },
-  --     message = { commenced = "In Progress", completed = "Completed" },
-  --   },
-  --   timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
-  --   spinner_symbols = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-  -- },
 }

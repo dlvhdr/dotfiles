@@ -8,7 +8,7 @@ vim.g.nvim_tree_icons = {
     untracked = "?",
     unmerged = "",
     deleted = "",
-    ignored = "",
+    ignored = "",
   },
   folder = {
     default = "",
@@ -22,7 +22,6 @@ vim.g.nvim_tree_icons = {
 require("nvim-tree").setup({
   disable_netrw = true,
   open_on_setup = false,
-  auto_close = false,
   open_on_tab = false,
   auto_reload_on_write = true,
   update_focused_file = {
@@ -33,7 +32,6 @@ require("nvim-tree").setup({
     "dashboard",
     "alpha",
   },
-
   tree_ignore = { ".git", ".cache" },
   hide_dotfiles = false,
   diagnostics = {
@@ -45,11 +43,13 @@ require("nvim-tree").setup({
       error = "",
     },
   },
-  open_file = {
-    resize_window = true,
-    quit_on_open = false,
-    window_picker = {
-      enable = true,
+  actions = {
+    open_file = {
+      resize_window = true,
+      quit_on_open = false,
+      window_picker = {
+        enable = false,
+      },
     },
   },
   view = {
@@ -69,4 +69,5 @@ require("nvim-tree").setup({
   git_hl = 1,
   disable_window_picker = 0,
   root_folder_modifier = ":t",
+  update_cwd = false,
 })

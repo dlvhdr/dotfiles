@@ -2,6 +2,7 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Basic
+keymap("n", "<Leader>Q", ":wqall<CR>", opts)
 keymap("x", "<leader>p", '"_dP', opts)
 keymap("n", "Y", "y$", opts)
 keymap("n", "n", "nzzzv", opts)
@@ -57,3 +58,6 @@ if vim.opt.diff:get() then
   keymap("n", "<leader>2", ":diffget BASE<CR>", opts)
   keymap("n", "<leader>3", ":diffget REMOTE<CR>", opts)
 end
+
+-- gitlinker
+-- <leader>gy copies url to the current line in this file on github

@@ -30,14 +30,24 @@
   log = delta
   reflog = delta
   show = delta
+  difftool = true
   branch = 
 
 [fetch]
   prune = true
 
+; [diff]
+;   tool = nvimdiff
+;   colorMoved = default
+
 [diff]
-  tool = nvimdiff
-  colorMoved = default
+  tool = difftastic
+
+[difftool]
+  prompt = false
+
+[difftool "difftastic"]
+  cmd = difft --color=always "$LOCAL" "$REMOTE"
 
 [difftool "vscode"]
   cmd = "code --wait --diff $LOCAL $REMOTE"
@@ -79,14 +89,7 @@
   aa = add -A
   amend-all = !git add -A && git commit --amend --no-verify
   commit-all = !git add -A && git commit --no-verify
-  co = "!branch() { \n\
-    if [ $# -eq 0 ] \n\
-    then \n\
-      git checkout $(git branch | fzf) \n\
-    else \n\
-      git checkout $@ \n\
-    fi \n\
-  }; branch"
+  co = checkout
   pr = !gh pr
   prv = !gh pr view
   prvw = !gh pr view -w

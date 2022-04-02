@@ -20,6 +20,17 @@ alias gra="git rebase --abort"
 alias grc="git rebase --continue"
 alias gpf="git push --force"
 
+function git_checkout() { 
+  if [ $# -eq 0 ] 
+  then 
+    git checkout $(git branch | fzf) 
+  else 
+    git checkout $@ 
+  fi
+}; 
+
+alias gco="git_checkout"
+
 # wix
 alias npmpublic="npm config set registry https://registry.npmjs.org/ && npm config get registry"
 alias npmprivate="npm config set registry https://npm.dev.wixpress.com && npm config get registry"
@@ -35,10 +46,7 @@ alias ev="vim $XDG_CONFIG_HOME/nvim/"
 alias wix="cd $CODE/wix/"
 alias cc="cd $CODE/wix/wix-code-code-editor"
 alias cx="cd $CODE/wix/wix-code-devex"
-alias ls="exa --group-directories-first --icons -a"
-alias code="code --user-data-dir ~/.config/vscode --extensions-dir ~/.config/vscode/extensions"
-alias tree="ls --tree"
-alias f="ranger"
+alias dotfiles="cd $CODE/personal/dotfiles"
 
 # brew
 alias update="brew update && brew upgrade && brew upgrade --cask --greedy && npm update -g"
@@ -51,3 +59,8 @@ alias fh='open -a Finder .'
 alias fix="stty sane"
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias nuke-desktop='rm -rf ~/Desktop/*'
+alias ls="exa --group-directories-first --icons -a"
+alias code="code --user-data-dir ~/.config/vscode --extensions-dir ~/.config/vscode/extensions"
+alias tree="ls --tree"
+alias f="ranger"
+

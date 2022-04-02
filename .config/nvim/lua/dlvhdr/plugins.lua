@@ -13,14 +13,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.cmd([[packadd packer.nvim]])
 end
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
--- vim.cmd([[
---   augroup packer_user_config
---     autocmd!
---     autocmd BufWritePost plugins.lua source <afile> | PackerSync
---   augroup end
--- ]])
-
 local packer = require("packer")
 
 -- Have packer use a popup window
@@ -32,6 +24,15 @@ packer.init({
     end,
   },
 })
+
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerInstall
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
 
 return packer.startup(function(use)
   use("wbthomason/packer.nvim")
@@ -197,6 +198,18 @@ return packer.startup(function(use)
   -- use("mattn/emmet-vim")
   use("christoomey/vim-tmux-navigator")
   use("AndrewRadev/splitjoin.vim")
+  use({
+    "ruifm/gitlinker.nvim",
+    config = function()
+      require("gitlinker").setup()
+    end,
+  })
+  -- use({
+  --   "akinsho/git-conflict.nvim",
+  --   config = function()
+  --     require("git-conflict").setup()
+  --   end,
+  -- })
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
