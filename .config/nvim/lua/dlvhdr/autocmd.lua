@@ -17,3 +17,10 @@ vim.cmd("language en_US.utf-8")
 
 vim.cmd("autocmd User LspProgressUpdate redrawstatus")
 vim.cmd("autocmd User LspRequest redrawstatus")
+
+-- Make these commonly mistyped commands still work
+vim.cmd("command! WQ wq")
+vim.cmd("command! Wq wq")
+vim.cmd("command! Wqa wqa")
+vim.cmd("command! W w")
+vim.cmd("command! Q q")

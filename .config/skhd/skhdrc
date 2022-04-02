@@ -34,6 +34,8 @@ alt - u : open -a /Applications/Spotify.app
 # open ticktick
 alt - t : open -a /Applications/TickTick.app
 
+
+
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
 # FOR SIMPLE EXAMPLE MAPPINGS LOOK FURTHER DOWN THIS FILE..        #

@@ -59,6 +59,13 @@ require("telescope").setup({
       "^node_modules/",
     },
   },
+  pickers = {
+    live_grep = {
+      additional_args = function(opts)
+        return { "--hidden" }
+      end,
+    },
+  },
   extensions = {
     fzf = {
       fuzzy = true,

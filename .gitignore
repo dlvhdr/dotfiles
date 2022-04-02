@@ -16,6 +16,7 @@ yarn.lock
 .config/tmux/plugins/
 .config/z/
 .config/yarn/link/
+.config/asciinema
 
 # zsh
 .zsh_history

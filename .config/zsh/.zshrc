@@ -5,7 +5,6 @@ eval "$(fnm env --use-on-cd)"
 
 plugins=(
   vi-mode
-  zsh-z
 	zsh-syntax-highlighting
   auto-notify
   you-should-use
@@ -25,6 +24,7 @@ source "$ZDOTDIR/aliases.zsh"
 source "$ZDOTDIR/less.zsh"
 source "$ZDOTDIR/ranger.zsh"
 source "$ZDOTDIR/vi.zsh"
+source "$ZDOTDIR/zoxide.zsh"
 
 eval "$(starship init zsh)"
 
