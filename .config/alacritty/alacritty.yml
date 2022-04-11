@@ -21,6 +21,9 @@ font:
   bold:
     family: FiraCode Nerd Font
     style: Regular
+  italic:
+    family: VictorMono Nerd Font
+    style: Light Oblique
   size: 17.0
   offset:
     x: 0
@@ -312,7 +315,8 @@ cursor:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-#key_bindings:
+key_bindings:
+  - { key: F11, action: ToggleFullscreen }
 #- { key: Paste,                                       action: Paste          }
 #- { key: Copy,                                        action: Copy           }
 #- { key: L,         mods: Control,                    action: ClearLogNotice }

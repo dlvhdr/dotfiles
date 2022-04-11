@@ -26,8 +26,9 @@ source "$ZDOTDIR/ranger.zsh"
 source "$ZDOTDIR/vi.zsh"
 source "$ZDOTDIR/zoxide.zsh"
 
+colorscript -r
+
 eval "$(starship init zsh)"
 
 # zmodload zsh/zprof
 # zprof
-

@@ -1,13 +1,24 @@
 local themes = require("telescope.themes")
 local utils = require("telescope.utils")
 local actions = require("telescope.actions")
+local layout_actions = require("telescope.actions.layout")
 local trouble = require("trouble.providers.telescope")
 
 require("telescope").setup({
   defaults = {
     mappings = {
-      i = { ["<c-t>"] = trouble.open_with_trouble },
-      n = { ["<c-t>"] = trouble.open_with_trouble },
+      i = {
+        ["<c-t>"] = trouble.open_with_trouble,
+        ["<c-h>"] = layout_actions.toggle_preview,
+        ["<C-e>"] = actions.results_scrolling_down,
+        ["<C-y>"] = actions.results_scrolling_up,
+      },
+      n = {
+        ["<c-t>"] = trouble.open_with_trouble,
+        ["<c-h>"] = layout_actions.toggle_preview,
+        ["<C-e>"] = actions.results_scrolling_down,
+        ["<C-y>"] = actions.results_scrolling_up,
+      },
     },
     winblend = 0,
     path_display = { truncate = 5 },
@@ -36,7 +47,7 @@ require("telescope").setup({
       vertical = {
         width = 0.9,
         height = 0.95,
-        preview_height = 0.35,
+        preview_height = 0.55,
       },
 
       flex = {
@@ -61,6 +72,11 @@ require("telescope").setup({
   },
   pickers = {
     live_grep = {
+      layout_config = {
+        horizontal = {
+          preview_width = 0.55,
+        },
+      },
       additional_args = function(opts)
         return { "--hidden" }
       end,
@@ -91,11 +107,16 @@ function M.project_files()
     "--is-inside-work-tree",
   })
 
-  local gopts = { use_git_root = true }
+  local gopts = themes.get_dropdown({
+    use_git_root = true,
+    preview = { hide_on_startup = true },
+    layout_config = {
+      width = 0.65,
+    },
+  })
   local fopts = {}
 
   gopts.prompt_title = "Git Files"
-  gopts.results_title = "Project Files Results"
 
   fopts.prompt_title = "Find Files"
   fopts.hidden = true

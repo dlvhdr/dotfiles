@@ -1,5 +1,6 @@
 vim.cmd("let $NVIM_TUI_ENABLE_TRUE_COLOR=1")
 vim.cmd("syntax enable")
+vim.g.tokyonight_italic_comments = true
 vim.cmd("colorscheme tokyonight")
 vim.cmd([[
   hi CursorLineNr guifg=#c0caf5 

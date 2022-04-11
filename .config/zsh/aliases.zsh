@@ -20,6 +20,11 @@ alias gra="git rebase --abort"
 alias grc="git rebase --continue"
 alias gpf="git push --force"
 
+function wix_code_search() {
+  open "https://cs.github.com/?scope=org%3Awix-private&scopeName=wix-private&q=""$@"
+}
+alias wcs="wix_code_search"
+
 function git_checkout() { 
   if [ $# -eq 0 ] 
   then 
@@ -53,7 +58,7 @@ alias update="brew update && brew upgrade && brew upgrade --cask --greedy && npm
 
 # others
 alias limelight="launchctl load -w ~/Library/LaunchAgents/limelight.plist"
-alias c="echo -n '\r¯\_(ツ)_/¯'; clear"
+alias c="clear; echo -n '\r'; colorscript --exec 21; clear;"
 alias sl=ls
 alias fh='open -a Finder .'
 alias fix="stty sane"

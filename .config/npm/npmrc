@@ -1,4 +1,4 @@
-registry=https://registry.npmjs.org/
+registry=https://npm.dev.wixpress.com
 prefix=/Users/dolevh/.local/share/npm
 cache=/Users/dolevh/.cache/npm
 tmp=/Users/dolevh/.config/npm
