@@ -1,6 +1,6 @@
 local M = {}
 
-lsp_signature = require("lsp_signature")
+local lsp_signature = require("lsp_signature")
 
 M.setup = function(bufnr)
   lsp_signature.on_attach({

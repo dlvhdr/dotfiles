@@ -40,6 +40,7 @@ return packer.startup(function(use)
   use({ "folke/tokyonight.nvim", branch = "main" })
   use("lewis6991/impatient.nvim")
 
+  use("nvim-lua/plenary.nvim")
   use({
     "L3MON4D3/LuaSnip",
     config = "require('dlvhdr.luasnip')",
@@ -67,16 +68,15 @@ return packer.startup(function(use)
   })
   use({
     "jose-elias-alvarez/null-ls.nvim",
-    -- config = "require('dlvhdr.null-ls')",
     requires = { "nvim-lua/plenary.nvim" },
   })
-  use({ "hrsh7th/cmp-emoji" })
+  use({ "folke/lua-dev.nvim" })
+  use({ "hrsh7th/cmp-emoji", disable = true })
 
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = "require('dlvhdr.treesitter')",
-    commit = "d7eab3a5a9ddcbd6d2719ca065601c8a0f4f11c8",
   })
 
   use("kosayoda/nvim-lightbulb", {
@@ -88,8 +88,6 @@ return packer.startup(function(use)
     "nvim-lualine/lualine.nvim",
     config = "require('dlvhdr.lualine')",
   })
-  -- use("arkav/lualine-lsp-progress")
-  -- use("doums/lsp_spinner.nvim")
   use("folke/trouble.nvim")
   -- use({
   --   "akinsho/toggleterm.nvim",
@@ -116,10 +114,6 @@ return packer.startup(function(use)
     "j-hui/fidget.nvim",
     config = "require('dlvhdr.fidget')",
   })
-  -- use({
-  --   "akinsho/bufferline.nvim",
-  --   config = "require('dlvhdr.bufferline')",
-  -- })
 
   -- Theme
   use({
@@ -132,6 +126,7 @@ return packer.startup(function(use)
   use({
     "lukas-reineke/indent-blankline.nvim",
     config = "require('dlvhdr.indent-blankline')",
+    disable = true,
   })
 
   -- tpope
@@ -139,7 +134,6 @@ return packer.startup(function(use)
   use("tpope/vim-rhubarb")
 
   -- Telescope - fzf
-  use("nvim-lua/plenary.nvim")
   use({
     "nvim-telescope/telescope.nvim",
     config = "require('dlvhdr.telescope')",
@@ -148,7 +142,10 @@ return packer.startup(function(use)
 
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
-  use({ "norcalli/nvim-colorizer.lua", config = [[require('colorizer').setup()]] })
+  use({
+    "norcalli/nvim-colorizer.lua",
+    config = "require('dlvhdr.colorizer')",
+  })
 
   use("moll/vim-bbye")
 
@@ -179,6 +176,7 @@ return packer.startup(function(use)
   use({
     "ahmedkhalf/project.nvim",
     config = "require('dlvhdr.project')",
+    disable = true,
   })
 
   use({
@@ -204,6 +202,21 @@ return packer.startup(function(use)
       require("gitlinker").setup()
     end,
   })
+
+  use({
+    "https://github.com/jxnblk/vim-mdx-js",
+    ft = { "mdx", "markdown.mdx" },
+  })
+
+  use("mg979/vim-visual-multi")
+
+  use({ "nvim-telescope/telescope-ui-select.nvim" })
+  use({
+    "ldelossa/gh.nvim",
+    requires = { "ldelossa/litee.nvim" },
+    config = "require('dlvhdr.gh-nvim')",
+  })
+
   -- use({
   --   "akinsho/git-conflict.nvim",
   --   config = function()

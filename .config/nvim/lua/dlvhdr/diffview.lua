@@ -50,7 +50,6 @@ require("diffview").setup({
       ["gf"] = cb("goto_file_edit"), -- Open the file in a new split in previous tabpage
       ["<C-w><C-f>"] = cb("goto_file_split"), -- Open the file in a new split
       ["<C-w>gf"] = cb("goto_file_tab"), -- Open the file in a new tabpage
-      ["<leader>e"] = cb("focus_files"), -- Bring focus to the files panel
       ["<leader>e"] = cb("toggle_files"), -- Toggle the files panel.
     },
     file_panel = {

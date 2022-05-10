@@ -1,4 +1,5 @@
 local opt = vim.opt
+vim.cmd("let loaded_matchparen = 1")
 
 opt.mouse = "a"
 opt.hidden = true
@@ -43,6 +44,7 @@ opt.diffopt:append("foldcolumn:0") -- Show diffs in vertical splits
 opt.diffopt:append("indent-heuristic")
 opt.fillchars = { diff = " " }
 opt.splitright = false
+opt.showmatch = false
 opt.formatoptions = opt.formatoptions
   - "a" -- Auto formatting is BAD.
   - "t" -- Don't auto format my code. I got linters for that.

@@ -11,5 +11,5 @@ require("nvim-treesitter.configs").setup({
     enable = true,
     disable = {},
   },
-  ensure_installed = "maintained",
+  ensure_installed = "all",
 })

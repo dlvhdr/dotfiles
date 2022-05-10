@@ -1,7 +1,7 @@
-vim.cmd("hi TabLine guifg=#bbc2cf guibg=#1f2335")
-vim.cmd("hi TabLineSel guifg=#bbc2cf guibg=#1f2335")
-vim.cmd("hi TabLineFill guibg=#1f2335 guifg=#c0caf5")
-vim.cmd("hi TabLineCwd guifg=#7aa2f7 guibg=#3b4261 gui=bold ")
+vim.api.nvim_set_hl(0, "TabLine", { fg = "#bbc2cf", bg = "#1f2335" })
+vim.api.nvim_set_hl(0, "TabLineSel", { fg = "#bbc2cf", bg = "#1f2335" })
+vim.api.nvim_set_hl(0, "TabLineFill", { fg = "#c0caf5", bg = "#1f2335" })
+vim.api.nvim_set_hl(0, "TabLineCwd", { fg = "#7aa2f7", bg = "#3b4261", bold = true })
 
 local function color(highlight_group, content)
   return "%#" .. highlight_group .. "#" .. content .. "%*"
@@ -52,50 +52,3 @@ function _G.tabline()
 end
 
 vim.cmd([[set tabline=%!v:lua.tabline()]])
-
--- vim.cmd([[
---     :set tabline=%!TabLine()
---
---     function TabLine()
---     let s = ''
---     " loop through each tab page
---     for i in range(tabpagenr('$'))
---         if i + 1 == tabpagenr()
---             let s .= '%#TabLineSel#'
---         else
---             let s .= '%#TabLine#'
---         endif
---         " set the tab page number
---         let s .= '%' . (i + 1) . 'T '
---         " set page number string
---         let s .= i + 1 . ''
---         " get buffer names and statuses
---         let n = ''  " temp str for buf names
---         let buflist = tabpagebuflist(i + 1)
---         " loop through each buffer in a tab
---         for b in buflist
---         endfor
---         let n .= bufname(buflist[tabpagewinnr(i + 1) - 1])
---         let n = substitute(n, ', $', '', '')
---         let n = substitute(n, '^\.\/', '', '')
---         let n = substitute(n, '^/Users/dolevh/code/wix', '@wix', '')
---         " add modified label
---         if i + 1 == tabpagenr()
---             let s .= ' %#TabLineSel#'
---         else
---             let s .= ' %#TabLine#'
---         endif
---         " add buffer names
---         if n == ''
---             let s .= '[New Buffer]'
---         else
---             let s .= n
---         endif
---         " switch to no underlining and add final space
---         let s .= ' '
---     endfor
---     let s .= '%#TabLineFill#%T'
---     return s
---     endfunction
--- ]])
---

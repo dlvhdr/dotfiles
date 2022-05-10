@@ -1,10 +1,9 @@
 # completion; use cache if updated within 24h
 autoload -Uz compinit
-if [[ -n "$ZDOTDIR"/.zcompdump(#qN.mh+24) ]]; then
-  compinit -i
-else
-  compinit -C -i
-fi
+for dump in "$ZDOTDIR"/.zcompdump(N.mh+24); do
+  compinit
+done
+compinit -C
 
 zmodload -i zsh/complist
 
@@ -25,4 +24,3 @@ zstyle ':completion:*:warnings' format '%F{red}  No matches found... %f'
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
-

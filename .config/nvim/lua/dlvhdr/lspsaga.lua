@@ -10,7 +10,7 @@ lspsaga.setup({
   diagnostic_header_icon = "   ",
   code_action_icon = " ",
   code_action_prompt = {
-    enable = true,
+    enable = false,
     sign = true,
     sign_priority = 40,
     virtual_text = false,

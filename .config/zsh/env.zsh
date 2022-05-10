@@ -2,19 +2,20 @@ export ZSH="$XDG_CONFIG_HOME/zsh/.oh-my-zsh"
 export ZSHZ_DATA="${XDG_CONFIG_HOME:-$HOME/.config}/z/.z"
 
 # Defaults
-export EDITOR=nvim
-export TERMINAL=alacritty
+export EDITOR="nvim"
+export TERMINAL="alacritty"
 
 # PATH
 export CODE="$HOME/code"
 export GOPATH="$CODE/go"
-export GOROOT=$(go env GOROOT)
+export GOROOT="/usr/local/opt/go/libexec"
 export PATH="$PATH:/usr/local/opt/ruby/bin"
 export PATH="$PATH:$GOROOT/bin"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$CODE/scripts"
-export PATH="$PATH:$(npm get prefix)/bin"
+export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
+export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
 # Other
 export GEM_HOME="$XDG_CONFIG_HOME/.gem"

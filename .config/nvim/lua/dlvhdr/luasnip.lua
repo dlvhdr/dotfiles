@@ -1,4 +1,10 @@
 local luasnip = require("luasnip")
+local fmt = require("luasnip.extras.fmt").fmt
+local rep = require("luasnip.extras").rep
+local types = require("luasnip.util.types")
+
+local snippet = luasnip.s
+local insert_node = luasnip.insert_node
 
 luasnip.config.set_config({
   -- This tells LuaSnip to remember to keep around the last snippet.
@@ -10,17 +16,23 @@ luasnip.config.set_config({
 
   -- Autosnippets:
   enable_autosnippets = true,
+  ext_opts = {
+    [types.insertNode] = {
+      active = {
+        hl_group = "DiagnosticVirtualTextHint",
+      },
+      passive = {
+        virt_text = { { " ", "DiagnosticVirtualTextHint" } },
+      },
+    },
+  },
+  region_check_events = "InsertEnter,CursorHold",
+  delete_check_events = "TextChanged,InsertLeave",
 })
 
-local snippet = luasnip.s
-local fmt = require("luasnip.extras.fmt").fmt
-local insert_node = luasnip.insert_node
-local rep = require("luasnip.extras").rep
-
--- luasnip.filetype_extend("typescript", { "javascript" })
 luasnip.filetype_extend("typescriptreact", { "typescript" })
 
-luasnip.snippets = {
+luasnip.add_snippets(nil, {
   lua = {
     snippet(
       { trig = "req", name = "require", dscr = "require statement" },
@@ -83,37 +95,35 @@ luasnip.snippets = {
           const {} = (): JSX.Element => {{
             return (
               <div>
-                Component
+                {}
               </div>
             )
           }}
           
-          export default {}
+          export default {};
         ]],
-        { insert_node(1, "Component"), rep(1) }
+        { insert_node(1, "Component"), rep(1), rep(1) }
       )
     ),
   },
-}
+})
 
--- require("luasnip.loaders.from_vscode").load({
---   paths = vim.fn.stdpath("config") .. "/snippets",
--- })
+vim.keymap.set("n", "<leader>s", "<cmd>source ~/.config/nvim/lua/dlvhdr/luasnip.lua<CR>", { silent = true })
 
--- vim.api.nvim_set_keymap(
---   "i",
---   "<C-m>",
---   [[:lua function()
---   if luasnip.expand_or_jumpable() then
---     luasnip.expand_or_jump()
---   end
--- end]],
---   { silent = true }
--- )
+vim.keymap.set({ "i", "s" }, "<c-j>", function()
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  end
+end, { silent = true })
 
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>s",
-  "<cmd>source ~/.config/nvim/lua/dlvhdr/luasnip.lua<CR>",
-  { noremap = true, silent = true }
-)
+vim.keymap.set({ "i", "s" }, "<c-k>", function()
+  if luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  end
+end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<c-l>", function()
+  if luasnip.choice_active() then
+    luasnip.change_choice(1)
+  end
+end, { silent = true })

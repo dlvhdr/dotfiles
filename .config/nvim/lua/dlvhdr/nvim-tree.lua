@@ -1,3 +1,4 @@
+vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_icons = {
   default = "",
   symlink = "",
@@ -20,10 +21,17 @@ vim.g.nvim_tree_icons = {
 }
 
 require("nvim-tree").setup({
-  disable_netrw = true,
-  open_on_setup = false,
+  git = {
+    enable = false,
+  },
+  disable_netrw = false,
+  open_on_setup = true,
   open_on_tab = false,
   auto_reload_on_write = true,
+  hijack_directories = {
+    enable = true,
+    auto_open = true,
+  },
   update_focused_file = {
     enable = true,
   },
@@ -32,8 +40,10 @@ require("nvim-tree").setup({
     "dashboard",
     "alpha",
   },
-  tree_ignore = { ".git", ".cache" },
-  hide_dotfiles = false,
+  filters = {
+    dotfiles = false,
+    custom = { ".git", "node_modules", ".cache", ".DS_Store", "__pycache__", ".idea", ".dist" },
+  },
   diagnostics = {
     enable = true,
     icons = {
@@ -58,16 +68,16 @@ require("nvim-tree").setup({
     mappings = {
       custom_only = false,
     },
+    auto_resize = true,
+    preserve_window_proportions = true,
   },
   show_icons = {
-    git = 1,
+    git = 0,
     folders = 1,
     files = 1,
     folder_arrows = 1,
     tree_width = 30,
   },
-  git_hl = 1,
-  disable_window_picker = 0,
   root_folder_modifier = ":t",
   update_cwd = false,
 })

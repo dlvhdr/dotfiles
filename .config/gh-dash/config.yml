@@ -3,15 +3,17 @@ prSections:
     filters: is:open author:@me
   - title: Needs My Review
     filters: is:open review-requested:@me
+  - title: "DevEnv"
+    filters: "is:open draft:false org:wix-private author:Galcarmi author:nemni8 author:seanoch author:haimre"
   - title: Previously Commented
     filters: commenter:@me
-  - title: Closed
-    filters: is:closed author:@me
   - title: "@wix"
     filters: "is:open -author:@me -author:app/wix-loki-bot \
       repo:wix-private/wix-code-devex \
       repo:wix-private/wix-code-client \
       repo:wix-incubator/corvid-types"
+  - title: Closed
+    filters: is:closed author:@me
 issuesSections:
   - title: My Issues
     filters: is:open author:@me

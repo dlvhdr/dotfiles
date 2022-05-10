@@ -1,5 +1,5 @@
-local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+local keymap = vim.keymap.set
+local opts = { silent = true }
 
 -- Basic
 keymap("n", "<Leader>Q", ":wqall<CR>", opts)
@@ -26,12 +26,11 @@ keymap("n", "<leader>gg", ":lua require('dlvhdr.telescope').grep_current_dir()<C
 keymap("n", "<leader>fb", ":lua require('dlvhdr.telescope').buffers()<CR>", opts)
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
 keymap("n", "<leader>fs", "<cmd>Telescope projects<cr>", opts)
+keymap("n", "<leader>fr", "<cmd>Telescope resume<cr>", opts)
+keymap("n", "<leader>fp", "<cmd>Telescope pickers<cr>", opts)
 keymap("n", "<leader>gb", ":lua require('telescope.builtin').git_branches()<CR>", opts)
 keymap("n", "<leader>fe", ":lua require('telescope.builtin').file_browser({cwd = '.'})<CR>", opts)
 keymap("n", "<C-p>", ":lua require('dlvhdr.telescope').project_files()<CR>", opts)
-
--- Terminal
-keymap("n", "<leader>t", "<cmd>ToggleTerm<CR>", opts)
 
 -- nvim-tree
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)

@@ -1,5 +1,13 @@
 env:
   TERM: xterm-256color
+
+shell:
+  program: zsh
+  args:
+    - -l
+    - -c
+    - "tmux"
+
 window:
   opacity: 0.95
   dimensions:
@@ -11,9 +19,14 @@ window:
   decorations: none
   startup_mode: Windowed
   dynamic_title: true
+
+key_bindings:
+  - { key: F11, action: ToggleFullscreen }
+
 scrolling:
   history: 10000
   multiplier: 3
+
 font:
   normal:
     family: FiraCode Nerd Font
@@ -36,6 +49,8 @@ font:
 draw_bold_text_with_bright_colors: false
 
 colors:
+  transparent_background_colors: true
+
   # Default colors
   primary:
     background: "0x24283b"
@@ -315,8 +330,8 @@ cursor:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-key_bindings:
-  - { key: F11, action: ToggleFullscreen }
+# key_bindings:
+#   - { key: F11, action: ToggleFullscreen }
 #- { key: Paste,                                       action: Paste          }
 #- { key: Copy,                                        action: Copy           }
 #- { key: L,         mods: Control,                    action: ClearLogNotice }

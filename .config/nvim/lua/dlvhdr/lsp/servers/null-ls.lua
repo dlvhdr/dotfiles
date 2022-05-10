@@ -5,11 +5,7 @@ local utils = require("dlvhdr.utils")
 local lspconfigUtils = require("lspconfig.util")
 
 local has_eslint_config = function()
-  return lspconfigUtils.root_pattern(".eslintrc", ".eslintrc.json", ".eslintrc.js")(vim.fn.getcwd()) ~= null
-end
-
-local function root_has_file(name)
-  return utils.dir_has_file(vim.loop.cwd(), name)
+  return lspconfigUtils.root_pattern(".eslintrc", ".eslintrc.json", ".eslintrc.js")(vim.fn.getcwd()) ~= nil
 end
 
 local function prettier_eslint_check()
@@ -29,7 +25,7 @@ local function prettier_eslint_check()
 
     local ancestorJsonPath = lspconfigUtils.find_package_json_ancestor()
     if ancestorJsonPath then
-      local localJson = utils.read_json(ancestorJson)
+      local localJson = utils.read_json(ancestorJsonPath)
       if localJson.eslintConfig ~= nil then
         has_eslint = true
       end
@@ -47,35 +43,7 @@ local function prettier_eslint_check()
 end
 
 local jsFormatter = function()
-  local local_utils = require("null-ls.utils").make_conditional_utils()
-  local formatter = nil
-  -- local use_prettier_override = {
-  --   "wix%-code%-code%-editor",
-  -- }
-  --
-  -- local path = vim.loop.fs_realpath(".")
-  --
-  -- for key, value in pairs(use_prettier_override) do
-  --   if path:find(value) ~= nil then
-  --     formatter = "prettier"
-  --     break
-  --   end
-  -- end
-  --
-  -- local use_eslint_override = {
-  --   "wix%-code%-devex",
-  -- }
-  --
-  -- for key, value in pairs(use_eslint_override) do
-  --   if path:find(value) ~= nil then
-  --     formatter = "eslint"
-  --     break
-  --   end
-  -- end
-  --
-  if formatter == nil then
-    formatter = prettier_eslint_check()
-  end
+  local formatter = prettier_eslint_check()
 
   if formatter == "eslint" then
     return null_ls.builtins.formatting.eslint_d.with({})
@@ -111,7 +79,7 @@ M.setup = function(opts)
           return lspconfigUtils.root_pattern("stylua.toml")
         end,
       }),
-      null_ls.builtins.formatting.prettier,
+      -- null_ls.builtins.formatting.prettier,
       jsFormatter,
       null_ls.builtins.diagnostics.eslint_d.with({
         condition = function()
@@ -119,14 +87,41 @@ M.setup = function(opts)
           return has
         end,
       }),
-      -- null_ls.builtins.diagnostics.golangci_lint.with({
-      --   args = { "run", "--fix=false", "--out-format=json", "$DIRNAME", "--path-prefix", "$ROOT" },
-      -- }),
-      -- null_ls.builtins.formatting.goimports,
-      -- null_ls.builtins.formatting.gofmt,
     },
     on_attach = opts.on_attach,
   })
 end
 
 return M
+
+-- null_ls.builtins.diagnostics.golangci_lint.with({
+--   args = { "run", "--fix=false", "--out-format=json", "$DIRNAME", "--path-prefix", "$ROOT" },
+-- }),
+-- null_ls.builtins.formatting.goimports,
+-- null_ls.builtins.formatting.gofmt,
+
+-- local local_utils = require("null-ls.utils").make_conditional_utils()
+-- local use_prettier_override = {
+--   "wix%-code%-code%-editor",
+-- }
+--
+-- local path = vim.loop.fs_realpath(".")
+--
+-- for key, value in pairs(use_prettier_override) do
+--   if path:find(value) ~= nil then
+--     formatter = "prettier"
+--     break
+--   end
+-- end
+--
+-- local use_eslint_override = {
+--   "wix%-code%-devex",
+-- }
+--
+-- for key, value in pairs(use_eslint_override) do
+--   if path:find(value) ~= nil then
+--     formatter = "eslint"
+--     break
+--   end
+-- end
+--

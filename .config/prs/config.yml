@@ -7,6 +7,8 @@ prSections:
     filters: commenter:@me
   - title: Closed
     filters: is:closed author:@me
+  - title: "DevEnv"
+    filters: "is:open author:Galcarmi author:nemni8 author:seanoch author:haimre"
   - title: "@wix"
     filters: "is:open -author:@me -author:app/wix-loki-bot \
       repo:wix-private/wix-code-devex \

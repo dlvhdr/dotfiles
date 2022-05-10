@@ -102,7 +102,7 @@
   nuke = clean -f -d
   clean-branches = !git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
   update-master = !git checkout master && git pull --rebase && git merge origin/master --ff-only
-  branches = branch -a --sort=-authordate
+  branches = branch --sort=-authordate
   stashes = stash list
   remotes = remote -v
   conflicts = !git --no-pager diff --name-only --diff-filter=U | xargs grep -c '^=======$'

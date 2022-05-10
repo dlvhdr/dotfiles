@@ -1,12 +1,13 @@
 local M = {}
 
+signs = {
+  { name = "DiagnosticSignError", text = "" },
+  { name = "DiagnosticSignWarn", text = "" },
+  { name = "DiagnosticSignInfo", text = "" },
+  { name = "DiagnosticSignHint", text = "" },
+}
+
 M.setup = function()
-  local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-  }
   for _, sign in ipairs(signs) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
@@ -32,8 +33,8 @@ local function lsp_highlight_document(client)
       [[
       augroup lsp_document_highlight
       autocmd! * <buffer>
-      autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      autocmd CursorHold <buffer> silent! lua vim.lsp.buf.document_highlight()
+      autocmd CursorMoved <buffer> silent! lua vim.lsp.buf.clear_references()
       augroup END
       ]],
       false
@@ -42,24 +43,17 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(bufnr)
-  local function buf_set_keymap(...)
-    vim.api.nvim_buf_set_keymap(bufnr, ...)
-  end
-  local function buf_set_option(...)
-    vim.api.nvim_buf_set_option(bufnr, ...)
-  end
-
-  local opts = { noremap = true, silent = true }
+  local opts = { silent = true, buffer = bufnr }
 
   -- builtins
-  buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  buf_set_keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-  buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-  buf_set_keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-  buf_set_keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-  buf_set_keymap("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+  vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  vim.keymap.set("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+  vim.keymap.set("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+  vim.keymap.set("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+  vim.keymap.set("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+  vim.keymap.set("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  vim.keymap.set("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   -- buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   -- buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   -- buf_set_keymap("n", "ge", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
@@ -67,25 +61,30 @@ local function lsp_keymaps(bufnr)
   -- buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 
   -- telescope
-  buf_set_keymap("n", "gr", '<cmd>lua require("dlvhdr.telescope").lsp_references()<CR>', opts)
-  buf_set_keymap("n", "gd", '<cmd>lua require("dlvhdr.telescope").lsp_definitions()<CR>', opts)
+  vim.keymap.set("n", "gr", '<cmd>lua require("dlvhdr.telescope").lsp_references()<CR>', opts)
+  vim.keymap.set("n", "gd", '<cmd>lua require("dlvhdr.telescope").lsp_definitions()<CR>', opts)
 
   -- lspsaga
-  buf_set_keymap("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
-  buf_set_keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
-  buf_set_keymap("x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
-  buf_set_keymap("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opts)
-  buf_set_keymap("n", "ge", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
-  buf_set_keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-  buf_set_keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-  buf_set_keymap("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
-  buf_set_keymap("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
+  vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
+  vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
+  vim.keymap.set("x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
+  vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opts)
+  vim.keymap.set("n", "ge", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+  vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
+  vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+  vim.keymap.set("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
+  vim.keymap.set("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
 end
 
 M.on_attach = function(client, bufnr)
-  -- print(vim.inspect(client))
   if client.name == "tsserver" then
     client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end
+
+  if client.name == "sumneko_lua" then
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
   end
 
   if client.resolved_capabilities.document_formatting then

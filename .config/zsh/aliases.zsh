@@ -43,22 +43,23 @@ alias pkg="\$(git rev-parse --is-inside-work-tree) && cd \$(ls -r -s accessed --
 
 # configs
 alias ez="vim $XDG_CONFIG_HOME/zsh/.zshrc"
-alias sz='source $XDG_CONFIG_HOME/zsh/.zshrc; echo "zsh config reloaded..."' 
+alias sz='exec zsh' 
 alias ea="vim $XDG_CONFIG_HOME/zsh/aliases.zsh"
 alias ev="vim $XDG_CONFIG_HOME/nvim/"
+alias dot="vim $CODE/personal/dotfiles"
+alias cdot="cd $CODE/personal/dotfiles"
 
 # directories
 alias wix="cd $CODE/wix/"
 alias cc="cd $CODE/wix/wix-code-code-editor"
 alias cx="cd $CODE/wix/wix-code-devex"
-alias dotfiles="cd $CODE/personal/dotfiles"
 
 # brew
 alias update="brew update && brew upgrade && brew upgrade --cask --greedy && npm update -g"
 
 # others
 alias limelight="launchctl load -w ~/Library/LaunchAgents/limelight.plist"
-alias c="clear; echo -n '\r'; colorscript --exec 21; clear;"
+alias c="clear"
 alias sl=ls
 alias fh='open -a Finder .'
 alias fix="stty sane"
@@ -66,6 +67,6 @@ alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias nuke-desktop='rm -rf ~/Desktop/*'
 alias ls="exa --group-directories-first --icons -a"
 alias code="code --user-data-dir ~/.config/vscode --extensions-dir ~/.config/vscode/extensions"
-alias tree="ls --tree"
+alias tree="ls --tree -I \"node_modules|.git|dist|out|target|.husky\""
 alias f="ranger"
 

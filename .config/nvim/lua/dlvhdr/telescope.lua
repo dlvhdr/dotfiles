@@ -12,12 +12,15 @@ require("telescope").setup({
         ["<c-h>"] = layout_actions.toggle_preview,
         ["<C-e>"] = actions.results_scrolling_down,
         ["<C-y>"] = actions.results_scrolling_up,
+        ["<CR>"] = actions.select_default,
+        ["<c-d>"] = require("telescope.actions").delete_buffer,
       },
       n = {
         ["<c-t>"] = trouble.open_with_trouble,
         ["<c-h>"] = layout_actions.toggle_preview,
         ["<C-e>"] = actions.results_scrolling_down,
         ["<C-y>"] = actions.results_scrolling_up,
+        ["<CR>"] = actions.select_default,
       },
     },
     winblend = 0,
@@ -89,11 +92,17 @@ require("telescope").setup({
       override_file_sorter = true,
       case_mode = "smart_case",
     },
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown({
+        -- even more opts
+      }),
+    },
   },
 })
 
 require("telescope").load_extension("fzf")
-require("telescope").load_extension("projects")
+require("telescope").load_extension("ui-select")
+-- require("telescope").load_extension("projects")
 -- require('session-lens').setup({path_display = {'shorten'}})
 -- require("telescope").load_extension("session-lens")
 
