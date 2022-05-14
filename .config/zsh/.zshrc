@@ -1,3 +1,5 @@
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 source "$ZDOTDIR/env.zsh"
 
 
@@ -5,7 +7,7 @@ source "$ZDOTDIR/env.zsh"
 zstyle ':omz:update' mode disabled
 
 plugins=(
-  auto-notify
+  notify
   vi-mode
 	zsh-syntax-highlighting
   you-should-use
@@ -60,3 +62,6 @@ fi
 # colorscript -r
 # zmodload zsh/zprof
 # zprof
+
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"

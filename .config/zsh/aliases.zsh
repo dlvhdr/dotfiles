@@ -46,6 +46,8 @@ alias npmpublic="npm config set registry https://registry.npmjs.org/ && npm conf
 alias npmprivate="npm config set registry https://npm.dev.wixpress.com && npm config get registry"
 alias pkg="\$(git rev-parse --is-inside-work-tree) && cd \$(ls -r -s accessed --no-icons \$(git rev-parse --show-toplevel)/packages | fzf | xargs -I{} echo \$(git rev-parse --show-toplevel)/packages/'{}')"
 alias repo='cd ~/code/$(find ~/code/wix ~/code/personal ~/code/playground -mindepth 1 -maxdepth 1 | sed "s#/Users/dolevh/code/##" | fzf)'
+alias r="repo"
+alias p="pkg"
 
 # configs
 alias ez="vim $XDG_CONFIG_HOME/zsh/.zshrc"
@@ -75,6 +77,7 @@ alias ls="exa --group-directories-first --icons -a"
 alias code="code --user-data-dir ~/.config/vscode --extensions-dir ~/.config/vscode/extensions"
 alias tree="ls --tree -I \"node_modules|.git|dist|out|target|.husky\""
 alias f="ranger"
+alias cat="bat"
 
 globalprotect () {
   killall GlobalProtect
@@ -83,3 +86,8 @@ globalprotect () {
 
 alias vpn="globalprotect"
 
+alias bathelp='bat -plhelp'
+help() (
+    set -o pipefail
+    "$@" --help 2>&1 | bathelp
+)
