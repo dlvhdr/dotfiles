@@ -23,6 +23,7 @@ alias gc="git commit -m"
 alias pr="gh vpr"
 alias ga="git ls-files -m -o --exclude-standard | fzf --height 50% --preview 'bat {-1} --color=always --style changes,numbers' --print0 -m | xargs -0 -t -o git add"
 alias gr="git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git  -q HEAD --"
+alias lg="lazygit"
 
 function wix_code_search() {
   open "https://cs.github.com/?scope=org%3Awix-private&scopeName=wix-private&q=""$@"
