@@ -43,7 +43,7 @@ timezsh() {
 
 # fnm
 if [ "$(command -v fnm)" ]; then
-  eval "$(fnm env --use-on-cd)"
+  eval "$(fnm env)"
 fi
 
 # Plugins loading times

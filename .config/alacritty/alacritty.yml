@@ -9,7 +9,7 @@ shell:
     - "tmux"
 
 window:
-  opacity: 0.95
+  opacity: 1.0
   dimensions:
     columns: 110
     lines: 33

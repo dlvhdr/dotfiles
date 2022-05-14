@@ -26,6 +26,9 @@ disabled = true
 [python]
 disabled = true
 
+[nodejs]
+disabled = true
+
 [directory]
 truncate_to_repo = false
 truncation_length = 5

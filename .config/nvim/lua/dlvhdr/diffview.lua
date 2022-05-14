@@ -36,7 +36,7 @@ require("diffview").setup({
     },
   },
   default_args = { -- Default args prepended to the arg-list for the listed commands
-    DiffviewOpen = { "master" },
+    DiffviewOpen = {},
     DiffviewFileHistory = {},
   },
   hooks = {}, -- See ':h diffview-config-hooks'

@@ -1,0 +1,29 @@
+gui:
+  scrollHeight: 2
+  scrollPastBottom: true
+  mouseEvents: true
+  skipUnstageLineWarning: false
+  skipStashWarning: true
+  sidePanelWidth: 0.3333
+  expandFocusedSidePanel: false
+  mainPanelSplitMode: flexible
+  theme:
+    lightTheme: false
+    activeBorderColor:
+      - green
+      - bold
+    inactiveBorderColor:
+      - white
+    optionsTextColor:
+      - blue
+    selectedLineBgColor:
+      - reverse
+    selectedRangeBgColor:
+      - blue
+  commitLength:
+    show: true
+  skipNoStagedFilesWarning: false
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never

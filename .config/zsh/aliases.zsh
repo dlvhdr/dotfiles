@@ -19,6 +19,10 @@ alias gaa="git add -A"
 alias gra="git rebase --abort"
 alias grc="git rebase --continue"
 alias gpf="git push --force"
+alias gc="git commit -m"
+alias pr="gh vpr"
+alias ga="git ls-files -m -o --exclude-standard | fzf --height 50% --preview 'bat {-1} --color=always --style changes,numbers' --print0 -m | xargs -0 -t -o git add"
+alias gr="git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git  -q HEAD --"
 
 function wix_code_search() {
   open "https://cs.github.com/?scope=org%3Awix-private&scopeName=wix-private&q=""$@"
@@ -28,7 +32,7 @@ alias wcs="wix_code_search"
 function git_checkout() { 
   if [ $# -eq 0 ] 
   then 
-    git checkout $(git branch | fzf) 
+    git branch | fzf --header "Checkout" | xargs git checkout
   else 
     git checkout $@ 
   fi
@@ -40,6 +44,7 @@ alias gco="git_checkout"
 alias npmpublic="npm config set registry https://registry.npmjs.org/ && npm config get registry"
 alias npmprivate="npm config set registry https://npm.dev.wixpress.com && npm config get registry"
 alias pkg="\$(git rev-parse --is-inside-work-tree) && cd \$(ls -r -s accessed --no-icons \$(git rev-parse --show-toplevel)/packages | fzf | xargs -I{} echo \$(git rev-parse --show-toplevel)/packages/'{}')"
+alias repo='cd ~/code/$(find ~/code/wix ~/code/personal ~/code/playground -mindepth 1 -maxdepth 1 | sed "s#/Users/dolevh/code/##" | fzf)'
 
 # configs
 alias ez="vim $XDG_CONFIG_HOME/zsh/.zshrc"
@@ -69,4 +74,11 @@ alias ls="exa --group-directories-first --icons -a"
 alias code="code --user-data-dir ~/.config/vscode --extensions-dir ~/.config/vscode/extensions"
 alias tree="ls --tree -I \"node_modules|.git|dist|out|target|.husky\""
 alias f="ranger"
+
+globalprotect () {
+  killall GlobalProtect
+  open /Applications/GlobalProtect.app
+}
+
+alias vpn="globalprotect"
 

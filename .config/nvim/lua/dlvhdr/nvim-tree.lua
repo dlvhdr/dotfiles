@@ -19,8 +19,20 @@ vim.g.nvim_tree_icons = {
     symlink = "",
   },
 }
+vim.g.nvim_tree_root_folder_modifier = ":t"
+vim.g.nvim_tree_show_icons = {
+  git = 0,
+  folders = 1,
+  files = 1,
+  folder_arrows = 1,
+}
 
 require("nvim-tree").setup({
+  renderer = {
+    indent_markers = {
+      enable = true,
+    },
+  },
   git = {
     enable = false,
   },
@@ -71,13 +83,5 @@ require("nvim-tree").setup({
     auto_resize = true,
     preserve_window_proportions = true,
   },
-  show_icons = {
-    git = 0,
-    folders = 1,
-    files = 1,
-    folder_arrows = 1,
-    tree_width = 30,
-  },
-  root_folder_modifier = ":t",
   update_cwd = false,
 })

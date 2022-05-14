@@ -27,3 +27,18 @@ defaults:
     width: 55
   prsLimit: 20
   issuesLimit: 20
+repoPaths:
+  wix-private/wix-code-devex: ~/code/wix/devex-code-review
+keybindings:
+  prs:
+    - key: c
+      command: >
+        tmux new-window -c {{.RepoPath}} '
+          gh pr checkout {{.PrNumber}} &&
+          nvim -c ":DiffviewOpen master...{{.HeadRefName}}"
+        '
+    - key: v
+      command: >
+        cd {{.RepoPath}} &&
+        code . &&
+        gh pr checkout {{.PrNumber}}
