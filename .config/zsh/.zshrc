@@ -2,7 +2,6 @@
 . "$HOME/.fig/shell/zshrc.pre.zsh"
 source "$ZDOTDIR/env.zsh"
 
-
 # oh-my-zsh
 zstyle ':omz:update' mode disabled
 
@@ -45,7 +44,7 @@ timezsh() {
 
 # fnm
 if [ "$(command -v fnm)" ]; then
-  eval "$(fnm env)"
+  eval "$(fnm env --use-on-cd)"
 fi
 
 # Plugins loading times

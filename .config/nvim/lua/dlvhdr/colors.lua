@@ -1,7 +1,11 @@
+local colors = require("tokyonight.colors").setup({})
 local M = {}
 
+
+vim.cmd("hi! NvimTreeSpecialFile guifg=" .. colors.warning)
 vim.cmd("hi! FidgetTitle guifg=#3d59a1 guibg=none")
 vim.cmd("hi! FidgetTask guifg=#3d59a1 guibg=none")
+vim.cmd("hi! WinSeparator guibg=#1f2335 guifg=#1f2335")
 
 -- Colors used in tokyonight
 -- local colors = {

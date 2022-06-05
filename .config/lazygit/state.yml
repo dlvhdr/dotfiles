@@ -1,7 +1,11 @@
 lastupdatecheck: 0
 recentrepos:
-- /Users/dolevh/code/personal/dotfiles
+- /Users/dolevh/code/playground/wix-code-lsp-poc
+- /Users/dolevh/code/personal/gh-dash
+- /Users/dolevh/code/personal/gh.nvim
 - /Users/dolevh/code/wix/wix-code-devex-mono
+- /Users/dolevh/code/personal/dotfiles
+- /Users/dolevh/code/personal/dlvhdr.me
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false

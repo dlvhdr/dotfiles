@@ -3,7 +3,8 @@ export ZSHZ_DATA="${XDG_CONFIG_HOME:-$HOME/.config}/z/.z"
 
 # Defaults
 export EDITOR="nvim"
-export TERMINAL="alacritty"
+export TERMINAL="kitty"
+export TERM="xterm-kitty"
 
 # PATH
 export CODE="$HOME/code"
@@ -18,6 +19,8 @@ export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
 export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
 # Other
+# export TERMINFO="$XDG_DATA_HOME/terminfo"
+# export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
 export GEM_HOME="$XDG_CONFIG_HOME/.gem"
 export ELECTRON_CONFIG_CACHE="$XDG_CONFIG_HOME/.electron"
 export GNUPGHOME="$HOME/.gnupg"
@@ -29,9 +32,8 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export NPM_CONFIG_DEVDIR="$XDG_CACHE_HOME/node-gyp"
-export TERMINFO="$XDG_DATA_HOME/terminfo"
-export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/share/terminfo"
 export CORE_D_DOTFILE="$XDG_RUNTIME_DIR/.eslint_d"
 export HISTFILE="$XDG_STATE_HOME/bash/history"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"

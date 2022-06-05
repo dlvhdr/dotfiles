@@ -1,6 +1,18 @@
 local opt = vim.opt
 vim.cmd("let loaded_matchparen = 1")
 
+
+opt.fillchars = {
+  horiz = '━',
+  horizup = '┻',
+  horizdown = '┳',
+  vert = ' ',
+  vertleft = ' ',
+  vertright = '┣',
+  verthoriz = '╋',
+  diff = " ",
+}
+opt.laststatus = 3
 opt.mouse = "a"
 opt.hidden = true
 opt.wildignore = opt.wildignore + { "**/coverage/*", "**/node_modules/*", "**/.git/*" }
@@ -42,7 +54,7 @@ opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,te
 opt.diffopt:append("vertical") -- Show diffs in vertical splits
 opt.diffopt:append("foldcolumn:0") -- Show diffs in vertical splits
 opt.diffopt:append("indent-heuristic")
-opt.fillchars = { diff = " " }
+-- opt.fillchars = { diff = " " }
 opt.splitright = false
 opt.showmatch = false
 opt.formatoptions = opt.formatoptions

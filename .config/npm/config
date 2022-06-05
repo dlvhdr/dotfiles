@@ -14,3 +14,4 @@ init-license=MIT
 
 registry=https://registry.npmjs.org/
 
+store-dir=${XDG_DATA_HOME}/pnpm-store

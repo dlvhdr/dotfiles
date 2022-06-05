@@ -1,40 +1,53 @@
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "",
-    renamed = "",
-    untracked = "?",
-    unmerged = "",
-    deleted = "",
-    ignored = "",
-  },
-  folder = {
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-  },
-}
-vim.g.nvim_tree_root_folder_modifier = ":t"
-vim.g.nvim_tree_show_icons = {
-  git = 0,
-  folders = 1,
-  files = 1,
-  folder_arrows = 1,
-}
-
 require("nvim-tree").setup({
   renderer = {
+    special_files = {
+      "package.json",
+      "README.md",
+      "src",
+      "packages",
+      "index.js",
+      "index.ts",
+      "index.tsx",
+      "Makefile",
+      "Cargo.toml",
+    },
+    root_folder_modifier = ":t",
+    highlight_git = false,
     indent_markers = {
       enable = true,
     },
+    icons = {
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "",
+          staged = "",
+          renamed = "",
+          untracked = "?",
+          unmerged = "",
+          deleted = "",
+          ignored = "◌",
+        },
+        folder = {
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+        },
+      },
+      show = {
+        git = false,
+        folder = true,
+        file = true,
+        folder_arrow = true,
+      },
+    },
   },
   git = {
-    enable = false,
+    enable = true,
+    ignore = false
   },
   disable_netrw = false,
   open_on_setup = true,
@@ -54,7 +67,18 @@ require("nvim-tree").setup({
   },
   filters = {
     dotfiles = false,
-    custom = { ".git", "node_modules", ".cache", ".DS_Store", "__pycache__", ".idea", ".dist" },
+    custom = {
+      "^\\.git",
+      "^\\.cache",
+      "^\\.DS_Store",
+      "__pycache__",
+      "^\\.idea",
+      "^\\.next",
+    },
+    exclude = {
+      "^node_modules",
+      "^dist",
+    }
   },
   diagnostics = {
     enable = true,

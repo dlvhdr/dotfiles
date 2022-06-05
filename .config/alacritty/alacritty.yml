@@ -1,18 +1,11 @@
 env:
-  TERM: xterm-256color
-
-shell:
-  program: zsh
-  args:
-    - -l
-    - -c
-    - "tmux"
+  TERM: alacritty
 
 window:
-  opacity: 1.0
+  # opacity: 1.0
   dimensions:
     columns: 110
-    lines: 33
+    lines: 52
   padding:
     x: 4
     y: 0
@@ -27,7 +20,13 @@ scrolling:
   history: 10000
   multiplier: 3
 
+mouse:
+  hide_when_typing: true
+
 font:
+  # normal:
+  #   family: SFMono Nerd Font
+  #   style: Regular
   normal:
     family: FiraCode Nerd Font
     style: Light
@@ -35,8 +34,8 @@ font:
     family: FiraCode Nerd Font
     style: Regular
   italic:
-    family: VictorMono Nerd Font
-    style: Light Oblique
+    family: SauceCodePro Nerd Font Mono
+    style: Italic
   size: 17.0
   offset:
     x: 0
@@ -48,9 +47,8 @@ font:
 
 draw_bold_text_with_bright_colors: false
 
+# TokyoNight Alacritty Colors
 colors:
-  transparent_background_colors: true
-
   # Default colors
   primary:
     background: "0x24283b"

@@ -8,19 +8,21 @@ prSections:
   - title: Previously Commented
     filters: commenter:@me
   - title: "@wix"
-    filters: "is:open -author:@me -author:app/wix-loki-bot \
+    filters: "-author:@me -author:app/wix-loki-bot \
       repo:wix-private/wix-code-devex \
       repo:wix-private/wix-code-client \
       repo:wix-incubator/corvid-types"
+  - title: gh-dash
+    filters: "is:open repo:dlvhdr/gh-dash"
   - title: Closed
     filters: is:closed author:@me
 issuesSections:
-  - title: My Issues
+  - title: Creator
     filters: is:open author:@me
+  - title: gh-dash
+    filters: is:open repo:dlvhdr/gh-dash
   - title: Assigned
     filters: is:open assignee:@me
-  - title: Subscribed
-    filters: is:open -author:@me repo:microsoft/vscode repo:dlvhdr/gh-prs
 defaults:
   preview:
     open: true

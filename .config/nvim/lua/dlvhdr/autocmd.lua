@@ -6,7 +6,7 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 })
 
 vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  command = "silent! lua require('nvim-lightbulb').update_lightbulb() end"
+  command = "silent! lua require('nvim-lightbulb').update_lightbulb() end",
 })
 
 vim.fn.sign_define("LightBulbSign", { text = "", texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
@@ -16,9 +16,13 @@ vim.cmd("language en_US.utf-8")
 vim.cmd("autocmd User LspProgressUpdate redrawstatus")
 vim.cmd("autocmd User LspRequest redrawstatus")
 
--- Make these commonly mistyped commands still work
-vim.cmd("command! WQ wq")
-vim.cmd("command! Wq wq")
-vim.cmd("command! Wqa wqa")
-vim.cmd("command! W w")
-vim.cmd("command! Q q")
+vim.cmd("command! W wqa")
+vim.cmd("command! Q wqa!")
+
+vim.cmd([[
+augroup ConfigureKitty
+    au!
+    au VimLeave * :silent !kitty @ set-spacing padding=20 margin=10
+    au VimEnter * :silent !kitty @ set-spacing padding=0 margin=0
+augroup END
+]])

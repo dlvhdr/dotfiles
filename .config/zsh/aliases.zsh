@@ -34,18 +34,49 @@ function git_checkout() {
   if [ $# -eq 0 ] 
   then 
     git branch | fzf --header "Checkout" | xargs git checkout
-  else 
-    git checkout $@ 
   fi
+  # else 
+  #   git checkout $@ 
+  # fi
 }; 
 
+function dirs_fzf() { 
+  selected=$(dirs -p | fzf)
+  if [ ! -z "$selected" ]; then
+    cd "$selected"
+  fi
+}; 
+alias d=dirs_fzf
+
 alias gco="git_checkout"
+
+function cd_pkg() {
+  head=$(git rev-parse --show-toplevel)
+  packages=$(ls -r -s accessed --no-icons ${head}/packages | grep -E ^wix)
+
+  selected=$(echo ${packages} | fzf)
+  
+  if [ ! -z "$selected" ]; then
+    cd "${head}/packages/${selected}"
+  fi
+}
+
+function cd_repo() {
+  repos=$(find ~/code/wix ~/code/personal ~/code/playground -type d  -mindepth 1 -maxdepth 1 | sed "s#/Users/dolevh/code/##" | grep -v "DS_Store")
+
+  selected=$(echo ${repos} | fzf)
+  
+  if [ ! -z "$selected" ]; then
+    cd ~/code/"${selected}"
+  fi
+}
 
 # wix
 alias npmpublic="npm config set registry https://registry.npmjs.org/ && npm config get registry"
 alias npmprivate="npm config set registry https://npm.dev.wixpress.com && npm config get registry"
-alias pkg="\$(git rev-parse --is-inside-work-tree) && cd \$(ls -r -s accessed --no-icons \$(git rev-parse --show-toplevel)/packages | fzf | xargs -I{} echo \$(git rev-parse --show-toplevel)/packages/'{}')"
-alias repo='cd ~/code/$(find ~/code/wix ~/code/personal ~/code/playground -mindepth 1 -maxdepth 1 | sed "s#/Users/dolevh/code/##" | fzf)'
+alias pkg="cd_pkg"
+# cd \$(ls -r -s accessed --no-icons \$(git rev-parse --show-toplevel)/packages | fzf | xargs -I{} echo \$(git rev-parse --show-toplevel)/packages/'{}' || .)"
+alias repo='cd_repo'
 alias r="repo"
 alias p="pkg"
 
@@ -56,17 +87,17 @@ alias ea="vim $XDG_CONFIG_HOME/zsh/aliases.zsh"
 alias ev="vim $XDG_CONFIG_HOME/nvim/"
 alias dot="vim $CODE/personal/dotfiles"
 alias cdot="cd $CODE/personal/dotfiles"
+alias -- -="cd -"
 
 # directories
 alias wix="cd $CODE/wix/"
-alias cc="cd $CODE/wix/wix-code-code-editor"
-alias cx="cd $CODE/wix/wix-code-devex"
+alias cx="cd $CODE/wix/wix-code-devex-mono"
 
 # brew
 alias update="brew update && brew upgrade && brew upgrade --cask --greedy && npm update -g"
 
 # others
-alias limelight="launchctl load -w ~/Library/LaunchAgents/limelight.plist"
+# alias limelight="launchctl load -w ~/Library/LaunchAgents/limelight.plist"
 alias c="clear"
 alias sl=ls
 alias fh='open -a Finder .'
@@ -78,13 +109,6 @@ alias code="code --user-data-dir ~/.config/vscode --extensions-dir ~/.config/vsc
 alias tree="ls --tree -I \"node_modules|.git|dist|out|target|.husky\""
 alias f="ranger"
 alias cat="bat"
-
-globalprotect () {
-  killall GlobalProtect
-  open /Applications/GlobalProtect.app
-}
-
-alias vpn="globalprotect"
 
 alias bathelp='bat -plhelp'
 help() (

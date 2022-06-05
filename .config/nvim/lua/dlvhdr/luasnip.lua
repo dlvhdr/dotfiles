@@ -5,6 +5,10 @@ local types = require("luasnip.util.types")
 
 local snippet = luasnip.s
 local insert_node = luasnip.insert_node
+local function_node = luasnip.function_node
+local choice_node = luasnip.choice_node
+local snippet_node = luasnip.snippet_node
+local text_node = luasnip.text_node
 
 luasnip.config.set_config({
   -- This tells LuaSnip to remember to keep around the last snippet.
@@ -40,6 +44,24 @@ luasnip.add_snippets(nil, {
     ),
   },
   typescript = {
+    snippet(
+      {
+        trig = "im",
+        name = "import",
+        dscr = "import a component/function from a package",
+      },
+      fmt([[import {name} from '{path}']], {
+        path = insert_node(1),
+        name = choice_node(2, {
+          snippet_node(nil, { text_node("{ "), insert_node(1), text_node(" }") }),
+          insert_node(nil),
+        }),
+      })
+    ),
+    snippet(
+      { trig = "cl", name = "console.log", dscr = "Log a variable" },
+      fmt('console.log("{}", {});', { insert_node(1), rep(1) })
+    ),
     snippet(
       { trig = "console-callout", name = "Console callout", dscr = "Print something that will stand-out" },
       fmt(
@@ -105,18 +127,67 @@ luasnip.add_snippets(nil, {
         { insert_node(1, "Component"), rep(1), rep(1) }
       )
     ),
+    snippet(
+      {
+        trig = "us",
+        name = "useState",
+        desc = "useState with type annotation",
+      },
+      fmt([[const [{state}, {setState}] = useState({initial_value})]], {
+        state = insert_node(1),
+        setState = function_node(function(args)
+          if args[1][1]:len() > 0 then
+            return "set" .. args[1][1]:sub(1, 1):upper() .. args[1][1]:sub(2)
+          else
+            return ""
+          end
+        end, 1),
+        initial_value = insert_node(0),
+      })
+    ),
+    snippet(
+      {
+        trig = "ue",
+        name = "useEffect",
+        desc = "useEffect",
+      },
+      fmt(
+        [[
+          useEffect(() => {{
+            {body}
+          }}, [{deps}])
+        ]],
+        {
+          body = insert_node(0),
+          deps = insert_node(1),
+        }
+      )
+    ),
+    snippet(
+      {
+        trig = "cn",
+        name = "className",
+        desc = "Insert className attribute",
+      },
+      fmt([[className={{{}}}]], {
+        insert_node(0),
+      })
+    ),
   },
 })
 
-vim.keymap.set("n", "<leader>s", "<cmd>source ~/.config/nvim/lua/dlvhdr/luasnip.lua<CR>", { silent = true })
+vim.keymap.set("n", "<leader>s", function()
+  vim.cmd([[luafile $XDG_CONFIG_HOME/nvim/lua/dlvhdr/luasnip.lua]])
+  vim.notify("Reloaded snippets!", "info")
+end, { silent = true })
 
-vim.keymap.set({ "i", "s" }, "<c-j>", function()
+vim.keymap.set({ "i", "s" }, "<c-k>", function()
   if luasnip.expand_or_jumpable() then
     luasnip.expand_or_jump()
   end
 end, { silent = true })
 
-vim.keymap.set({ "i", "s" }, "<c-k>", function()
+vim.keymap.set({ "i", "s" }, "<c-j>", function()
   if luasnip.jumpable(-1) then
     luasnip.jump(-1)
   end

@@ -62,7 +62,7 @@ local jsFormatter = function()
         "json",
         "yaml",
         "yml",
-        "markdown",
+        -- "markdown",
         "graphql",
       },
     })
@@ -76,6 +76,9 @@ M.setup = function(opts)
     sources = {
       null_ls.builtins.formatting.stylua.with({
         condition = function()
+          if vim.fn.getcwd():find("gh.nvim") == nil then
+            return false
+          end
           return lspconfigUtils.root_pattern("stylua.toml")
         end,
       }),

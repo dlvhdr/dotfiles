@@ -7,8 +7,8 @@ alt - f : open -a /System/Library/CoreServices/Finder.app
 # open vscode
 alt - v : open -a /Applications/Visual\ Studio\ Code.app
 
-# open alacritty
-alt - i : open -a /Applications/Alacritty.app
+# open kitty
+alt - i : open -a /Applications/kitty.app
 
 # open whatsapp
 alt - w : open -a /Applications/Whatsapp.app

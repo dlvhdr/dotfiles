@@ -212,7 +212,8 @@ return packer.startup(function(use)
 
   use({ "nvim-telescope/telescope-ui-select.nvim" })
   use({
-    "ldelossa/gh.nvim",
+    "/Users/dolevh/code/personal/gh.nvim",
+    -- "ldelossa/gh.nvim",
     requires = { "ldelossa/litee.nvim" },
     config = "require('dlvhdr.gh-nvim')",
   })
