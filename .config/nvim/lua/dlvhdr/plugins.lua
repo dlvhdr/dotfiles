@@ -208,7 +208,10 @@ return packer.startup(function(use)
     ft = { "mdx", "markdown.mdx" },
   })
 
-  use("mg979/vim-visual-multi")
+  use({
+    "mg979/vim-visual-multi",
+    config = "require('dlvhdr.vim-visual-multi')",
+  })
 
   use({ "nvim-telescope/telescope-ui-select.nvim" })
   use({

@@ -1,3 +1,10 @@
+#      _ _       _         _                _     
+#   __| | |_   _| |__   __| |_ __   _______| |__  
+#  / _` | \ \ / / '_ \ / _` | '__| |_  / __| '_ \ 
+# | (_| | |\ V /| | | | (_| | |     / /\__ \ | | |
+#  \__,_|_| \_/ |_| |_|\__,_|_|    /___|___/_| |_|
+#                                                 
+
 # Fig pre block. Keep at the top of this file.
 . "$HOME/.fig/shell/zshrc.pre.zsh"
 source "$ZDOTDIR/env.zsh"
@@ -37,28 +44,17 @@ source "$ZDOTDIR/zoxide.zsh"
 
 eval "$(starship init zsh)"
 
-timezsh() {
-  shell=${1-$SHELL}
-  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
-}
-
 # fnm
 if [ "$(command -v fnm)" ]; then
   eval "$(fnm env --use-on-cd)"
 fi
 
-# Plugins loading times
+# Uncomment to perf test
 # ---------------------
-# 6: vi-mode
-# 19: zsh-syntax-highlighting
-# 9: auto-notify
-# 22: you-should-use
-# 9: yarn-autocompletions
-# 5: fzf-yarn
-
-# Misc 
-# ---------------------
-# colorscript -r
+# timezsh() {
+#   shell=${1-$SHELL}
+#   for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+# }
 # zmodload zsh/zprof
 # zprof
 

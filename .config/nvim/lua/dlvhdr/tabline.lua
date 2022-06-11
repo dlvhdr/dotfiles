@@ -16,7 +16,7 @@ function _G.tabline()
     local winnr = vim.fn.tabpagewinnr(tabnr)
     local buflist = vim.fn.tabpagebuflist(tabnr)
     local bufnr = buflist[winnr]
-    local cwd = " " .. vim.fn.getcwd(winnr, tabnr) .. ""
+    local cwd = vim.fn.getcwd(winnr, tabnr) .. ""
     cwd = cwd:gsub("/Users/dolevh/code/wix", "@wix")
     cwd = cwd:gsub("/Users/dolevh/code/personal/dotfiles", "@dotfiles")
     cwd = cwd:gsub("/Users/dolevh", "~")
@@ -25,6 +25,14 @@ function _G.tabline()
     local tabpagenr = vim.fn.tabpagenr()
 
     local is_selected = tabnr == tabpagenr
+
+    -- local buffer_extension = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":e")
+    -- local icon = require("nvim-web-devicons").get_icon(bufname, buffer_extension, { default = true })
+    -- print(icon_color)
+    -- local icon_highlight = color(icon_color, icon)
+
+    local cwd_highlight = color("TabLineCwd", cwd)
+    local buf_highlight = is_selected and color("TabLineSel", bufname) or color("TabLine", bufname)
 
     local segments = {}
     -- File modified
@@ -37,23 +45,14 @@ function _G.tabline()
       table.insert(segments, color("StatuslineBoolean", ""))
     end
 
-    -- local buffer_extension = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":e")
-    -- local icon = require("nvim-web-devicons").get_icon(bufname, buffer_extension, { default = true })
-    -- print(icon_color)
-    -- local icon_highlight = color(icon_color, icon)
-
-    local cwd_highlight = color("TabLineCwd", cwd)
-    local buf_highlight = is_selected and color("TabLineSel", bufname) or color("TabLine", bufname)
-
     table.insert(
       tabs,
       "%#TabLine#"
         .. cwd_highlight
         .. " "
-        .. table.concat(segments, " ")
-        -- .. icon
-        .. " "
         .. buf_highlight
+        .. " "
+        .. table.concat(segments, " ")
         .. "%#TabLine#"
     )
   end

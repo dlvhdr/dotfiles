@@ -5,7 +5,7 @@ prSections:
     filters: is:open review-requested:@me
   - title: "DevEnv"
     filters: "is:open draft:false org:wix-private author:Galcarmi author:nemni8 author:seanoch author:haimre"
-  - title: Previously Commented
+  - title: Commented
     filters: commenter:@me
   - title: "@wix"
     filters: "-author:@me -author:app/wix-loki-bot \
@@ -19,6 +19,8 @@ prSections:
 issuesSections:
   - title: Creator
     filters: is:open author:@me
+  - title: Commented
+    filters: is:open commenter:@me
   - title: gh-dash
     filters: is:open repo:dlvhdr/gh-dash
   - title: Assigned
