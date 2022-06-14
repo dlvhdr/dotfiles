@@ -1,4 +1,5 @@
 add_newline = true
+command_timeout = 150
 
 [character]
 success_symbol = "[ ](fg:#7dcfff)"
@@ -9,6 +10,7 @@ vicmd_symbol = "[ ](purple)"
 format = "on [$symbol$branch](bold purple) "
 
 [git_status]
+disabled = true
 format = '([$all_status]($style))'
 conflicted = "([⚠️ ${count}](bold red) )"
 ahead = "([⟫${count}])"

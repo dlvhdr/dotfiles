@@ -1,6 +1,9 @@
 lastupdatecheck: 0
 recentrepos:
 - /Users/dolevh/code/personal/dotfiles
+- /Users/dolevh/code/personal/dlvhdr.me
+- /Users/dolevh/code/wix/wix-code-types-builder
+- /Users/dolevh/code/wix/wix-code-types-service
 - /Users/dolevh/code/personal/gh-dash
 - /Users/dolevh/code/wix/wix-code-devex-mono
 - /Users/dolevh/code/wix/wix-code-types-subdir
@@ -8,7 +11,6 @@ recentrepos:
 - /Users/dolevh/code/playground/typescript-lsp-poc
 - /Users/dolevh/code/playground/public-code-lsp-poc
 - /Users/dolevh/code/personal/gh.nvim
-- /Users/dolevh/code/personal/dlvhdr.me
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false
