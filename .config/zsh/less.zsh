@@ -7,4 +7,4 @@ export DELTA_PAGER='less -n'
 # export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 # export LESS_TERMCAP_us=$'\E[1;38;5;73m'     # begin underline
 # export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat --style=numbers,grid -l man --paging=always --pager 'less -RF''"

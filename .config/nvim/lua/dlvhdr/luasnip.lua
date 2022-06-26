@@ -20,16 +20,6 @@ luasnip.config.set_config({
 
   -- Autosnippets:
   enable_autosnippets = true,
-  ext_opts = {
-    [types.insertNode] = {
-      active = {
-        hl_group = "DiagnosticVirtualTextHint",
-      },
-      passive = {
-        virt_text = { { " ", "DiagnosticVirtualTextHint" } },
-      },
-    },
-  },
   region_check_events = "InsertEnter,CursorHold",
   delete_check_events = "TextChanged,InsertLeave",
 })

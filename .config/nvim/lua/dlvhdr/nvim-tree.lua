@@ -47,7 +47,7 @@ require("nvim-tree").setup({
   },
   git = {
     enable = true,
-    ignore = false
+    ignore = false,
   },
   disable_netrw = false,
   open_on_setup = true,
@@ -78,7 +78,7 @@ require("nvim-tree").setup({
     exclude = {
       "^node_modules",
       "^dist",
-    }
+    },
   },
   diagnostics = {
     enable = true,
@@ -104,7 +104,6 @@ require("nvim-tree").setup({
     mappings = {
       custom_only = false,
     },
-    auto_resize = true,
     preserve_window_proportions = true,
   },
   update_cwd = false,

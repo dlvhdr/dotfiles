@@ -1,4 +1,6 @@
+notARepository: "skip" # one of: 'prompt' | 'create' | 'skip'
 gui:
+  showIcons: true
   scrollHeight: 2
   scrollPastBottom: true
   mouseEvents: true
@@ -10,16 +12,17 @@ gui:
   theme:
     lightTheme: false
     activeBorderColor:
-      - green
+      - "#89ddff"
       - bold
     inactiveBorderColor:
-      - white
+      - "#565f89"
     optionsTextColor:
-      - blue
+      - "#3d59a1"
     selectedLineBgColor:
-      - reverse
+      - "#292e42"
+      - bold
     selectedRangeBgColor:
-      - blue
+      - "#89ddff"
   commitLength:
     show: true
   skipNoStagedFilesWarning: false
@@ -27,3 +30,6 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
+keybinding:
+  universal:
+    quit-alt1: "<esc>"

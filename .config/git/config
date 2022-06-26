@@ -174,10 +174,11 @@
   side-by-side = false
   file-modified-label = modified:
   features = unobtrusive-line-numbers decorations
-  minus-style = syntax "#402529"
-  minus-emph-style = syntax "#662F33"
-  plus-style = syntax "#243826"
-  plus-emph-style = syntax "#3B5134"
+  minus-style = bold "#d73c3c" "#621414"
+  minus-emph-style = normal "#931e1e"
+  plus-style = bold "#43abbb" "#1a4248"
+  plus-emph-style = bold "#1a4248" "#55b4c2"
+  # wow
 
 [delta "decorations"]
     file-style = bold yellow ul

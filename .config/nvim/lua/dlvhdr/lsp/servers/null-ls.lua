@@ -78,7 +78,7 @@ M.setup = function(opts)
       null_ls.builtins.diagnostics.shellcheck,
       null_ls.builtins.formatting.stylua.with({
         condition = function()
-          if vim.fn.getcwd():find("gh.nvim") == nil then
+          if vim.fn.getcwd():find("gh.nvim") ~= nil then
             return false
           end
           return lspconfigUtils.root_pattern("stylua.toml")
@@ -98,35 +98,3 @@ M.setup = function(opts)
 end
 
 return M
-
--- null_ls.builtins.diagnostics.golangci_lint.with({
---   args = { "run", "--fix=false", "--out-format=json", "$DIRNAME", "--path-prefix", "$ROOT" },
--- }),
--- null_ls.builtins.formatting.goimports,
--- null_ls.builtins.formatting.gofmt,
-
--- local local_utils = require("null-ls.utils").make_conditional_utils()
--- local use_prettier_override = {
---   "wix%-code%-code%-editor",
--- }
---
--- local path = vim.loop.fs_realpath(".")
---
--- for key, value in pairs(use_prettier_override) do
---   if path:find(value) ~= nil then
---     formatter = "prettier"
---     break
---   end
--- end
---
--- local use_eslint_override = {
---   "wix%-code%-devex",
--- }
---
--- for key, value in pairs(use_eslint_override) do
---   if path:find(value) ~= nil then
---     formatter = "eslint"
---     break
---   end
--- end
---

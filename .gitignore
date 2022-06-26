@@ -17,6 +17,8 @@ yarn.lock
 .config/z/
 .config/yarn/link/
 .config/asciinema
+.config/gcloud
+.config/wix
 
 # zsh
 .zsh_history
@@ -31,6 +33,7 @@ packer_compiled.lua
 
 # misc
 error.log
+
 
 
 

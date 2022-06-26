@@ -1,4 +1,5 @@
 # scary
+alias cat="bat"
 alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -riv"
@@ -64,6 +65,7 @@ alias code="code --user-data-dir ~/.config/vscode --extensions-dir ~/.config/vsc
 alias tree="ls --tree -I \"node_modules|.git|dist|out|target|.husky\""
 alias f="ranger"
 alias cat="bat"
+alias lcat="bat --paging=always"
 
 alias bathelp='bat -plhelp'
 help() (
@@ -113,3 +115,4 @@ alias pkg="cd_pkg"
 alias repo='cd_repo'
 alias r="repo"
 alias p="pkg"
+alias lnvim='tmux list-panes -a -F "${session_name} #{command} #{pane_pid} #{pane_title} #{window_name} #{pane_id} #{session_path}" | grep nvim'

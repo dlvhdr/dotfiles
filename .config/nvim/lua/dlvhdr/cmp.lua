@@ -26,9 +26,17 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
+  -- window = {
+  --   documentation = cmp.config.window.bordered(),
+  -- },
+  window = {
+    documentation = {
+      winhighlight = "NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder",
+    },
+  },
   mapping = cmp.mapping.preset.insert({
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-    ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
     ["<C-y>"] = cmp.mapping(
       cmp.mapping.confirm({
@@ -69,7 +77,20 @@ cmp.setup({
     }),
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = {
+      hl_group = "LspCodeLens",
+    },
+  },
+  sorting = {
+    comparators = {
+      cmp.config.compare.sort_text,
+      cmp.config.compare.offset,
+      -- cmp.config.compare.exact,
+      cmp.config.compare.score,
+      -- cmp.config.compare.kind,
+      -- cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
   },
 })
 

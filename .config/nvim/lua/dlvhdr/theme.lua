@@ -1,12 +1,11 @@
+local colors = require("tokyonight.colors").setup({})
+local util = require("tokyonight.util")
+
 vim.o.background = "dark"
 vim.g.tokyonight_style = "storm"
 vim.g.tokyonight_sidebars = {
-  "qf",
-  "vista_kind",
   "terminal",
   "packer",
-  "spectre_panel",
-  "NeogitStatus",
   "help",
   "NvimTree",
 }
@@ -20,8 +19,6 @@ vim.g.tokyonight_transparent = false
 vim.g.tokyonight_hide_inactive_statusline = true
 vim.g.tokyonight_dark_sidebar = true
 vim.g.tokyonight_dark_float = true
-vim.g.tokyonight_sidebars = {"NvimTree"}
--- vim.g.tokyonight_colors = { border = "orange" }
+vim.g.tokyonight_colors = { bg_popup = util.darken(colors.bg_popup, 1.8) }
 
-require("tokyonight").colorscheme()
 vim.cmd("colorscheme tokyonight")

@@ -1,15 +1,14 @@
 local opt = vim.opt
 vim.cmd("let loaded_matchparen = 1")
 
-
 opt.fillchars = {
-  horiz = '━',
-  horizup = '┻',
-  horizdown = '┳',
-  vert = ' ',
-  vertleft = ' ',
-  vertright = '┣',
-  verthoriz = '╋',
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vert = " ",
+  vertleft = " ",
+  vertright = "┣",
+  verthoriz = "╋",
   diff = " ",
 }
 opt.laststatus = 3
@@ -49,12 +48,11 @@ opt.signcolumn = "yes"
 opt.timeoutlen = 1000
 opt.pumheight = 10
 opt.pumwidth = 20
-opt.pumblend = 3
+-- opt.pumblend = 3
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 opt.diffopt:append("vertical") -- Show diffs in vertical splits
 opt.diffopt:append("foldcolumn:0") -- Show diffs in vertical splits
 opt.diffopt:append("indent-heuristic")
--- opt.fillchars = { diff = " " }
 opt.splitright = false
 opt.showmatch = false
 opt.formatoptions = opt.formatoptions
