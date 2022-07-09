@@ -73,6 +73,7 @@ return packer.startup(function(use)
   use({ "folke/lua-dev.nvim" })
   use({ "hrsh7th/cmp-emoji", disable = true })
 
+  use({ "windwp/nvim-ts-autotag" })
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
@@ -142,9 +143,16 @@ return packer.startup(function(use)
 
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 
+  -- use({
+  --   "norcalli/nvim-colorizer.lua",
+  --   config = "require('dlvhdr.colorizer')",
+  -- })
   use({
-    "norcalli/nvim-colorizer.lua",
-    config = "require('dlvhdr.colorizer')",
+    "rrethy/vim-hexokinase",
+    run = "make hexokinase",
+    config = function()
+      vim.g.Hexokinase_optInPatterns = "full_hex,rgb,rgba,hsl,hsla"
+    end,
   })
 
   use("moll/vim-bbye")

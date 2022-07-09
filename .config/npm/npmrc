@@ -1,4 +1,4 @@
-registry=https://npm.dev.wixpress.com/
+registry=https://registry.npmjs.org/
 @wix:registry=https://npm.dev.wixpress.com
 prefix=/Users/dolevh/.local/share/npm
 cache=/Users/dolevh/.cache/npm
@@ -6,3 +6,4 @@ tmp=/Users/dolevh/.config/npm
 init-module=/Users/dolevh/.config/npm/config/npm-init.js
 public-hoist-pattern[]=@types/*
 public-hoist-pattern[]=@wix/*
+//registry.npmjs.org/:_authToken=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

@@ -49,8 +49,6 @@ cmp.setup({
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<C-n>"] = next_completion,
     ["<C-p>"] = prev_completion,
-    ["<C-j>"] = next_completion,
-    ["<C-k>"] = prev_completion,
   }),
   sources = {
     { name = "luasnip" },

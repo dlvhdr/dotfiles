@@ -8,6 +8,7 @@ vim.g.tokyonight_sidebars = {
   "packer",
   "help",
   "NvimTree",
+  "Trouble",
 }
 vim.g.tokyonight_cterm_colors = false
 vim.g.tokyonight_terminal_colors = true

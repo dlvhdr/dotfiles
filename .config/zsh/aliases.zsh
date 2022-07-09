@@ -50,6 +50,7 @@ alias -- -="cd -"
 # directories
 alias gcode="$HOME/code"
 alias gwix="cd $HOME/code/wix"
+alias gd="cd $HOME/Downloads"
 
 # brew
 alias update="brew update && brew upgrade && brew upgrade --cask --greedy && npm update -g"
@@ -95,6 +96,12 @@ function cd_repo() {
   fi
 }
 
+jqjq() {
+  # -F tell less exit if output content can be displayed on one screen
+  jq -C "$@" | less -FR
+}
+alias jq="jqjq"
+
 alias g="git"
 alias sl="gt l"
 alias gst="git status"
@@ -116,3 +123,4 @@ alias repo='cd_repo'
 alias r="repo"
 alias p="pkg"
 alias lnvim='tmux list-panes -a -F "${session_name} #{command} #{pane_pid} #{pane_title} #{window_name} #{pane_id} #{session_path}" | grep nvim'
+alias dinner="go run . -o=🍕,🍔,🥓,🌯,🥒,🍗 --title=\"What's for dinner?\""
