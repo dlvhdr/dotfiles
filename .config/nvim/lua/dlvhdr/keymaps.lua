@@ -59,5 +59,23 @@ if vim.opt.diff:get() then
   keymap("n", "<leader>3", ":diffget REMOTE<CR>", opts)
 end
 
+keymap("n", "<Leader>h", ":set hlsearch!<CR>", { noremap = true, silent = true })
+
+keymap("n", "<F10>", function()
+  if vim.o.conceallevel > 0 then
+    vim.o.conceallevel = 0
+  else
+    vim.o.conceallevel = 2
+  end
+end, opts)
+
+keymap("n", "<F11>", function()
+  if vim.o.concealcursor == "n" then
+    vim.o.concealcursor = ""
+  else
+    vim.o.concealcursor = "n"
+  end
+end, opts)
+
 -- gitlinker
 -- <leader>gy copies url to the current line in this file on github

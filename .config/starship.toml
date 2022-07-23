@@ -41,6 +41,9 @@ truncation_symbol = "…/"
 "~/code/wix/wix-code-devex" = "@wix/devex"
 "~/code/wix/wix-code-code-editor" = "@wix/code-code"
 "~/code/wix" = "@wix"
+"~/code/playground" = "@playground"
+"~/code/personal" = "@personal"
+"~/code/scripts" = "@scripts"
 
 [golang]
 symbol = " "

@@ -14,5 +14,6 @@
 # @raycast.author Dolev Hadar
 # @raycast.authorURL https://github.com/dlvhdr
 
-/Users/dolevh/.local/share/npm/bin/wix vpn toggle
+
+/Users/dolevh/code/wix/wix-cli/wix-cli-go vpn toggle
 

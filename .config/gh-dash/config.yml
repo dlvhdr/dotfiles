@@ -3,7 +3,7 @@ prSections:
     filters: is:open author:@me
   - title: Needs My Review
     filters: is:open review-requested:@me
-  - title: "DevEnv"
+  - title: DevEnv
     filters: "is:open draft:false org:wix-private author:Galcarmi author:nemni8 author:seanoch author:haimre"
   - title: Commented
     filters: commenter:@me
@@ -16,6 +16,18 @@ prSections:
     filters: "is:open repo:dlvhdr/gh-dash"
   - title: Closed
     filters: is:closed author:@me
+  - title: Subscribed
+    filters: "\
+      repo:nvim-telescope/telescope.nvim \
+      repo:ldelossa/gh.nvim \
+      repo:neovim/neovim \
+      repo:withgraphite/graphite-cli \
+      repo:cli/cli"
+  - title: LSP
+    filters: "-author:app/dependabot -author:app/github-action \
+      repo:TypeFox/monaco-languageclient \
+      repo:typescript-language-server/typescript-language-server \
+      repo:CodinGame/monaco-vscode-api"
 issuesSections:
   - title: Creator
     filters: is:open author:@me
@@ -27,7 +39,8 @@ issuesSections:
     filters: is:open assignee:@me
 defaults:
   preview:
-    open: true
+    # open: true
+    open: false
     width: 55
   prsLimit: 20
   issuesLimit: 20
@@ -46,3 +59,18 @@ keybindings:
         cd {{.RepoPath}} &&
         code . &&
         gh pr checkout {{.PrNumber}}
+theme:
+  colors:
+    text:
+      primary: "#E2E1ED"
+      secondary: "#666CA6"
+      inverted: "#242347"
+      faint: "#3E4057"
+      warning: "#F23D5C"
+      success: "#3DF294"
+    background:
+      selected: "#39386b"
+    border:
+      primary: "#383B5B"
+      secondary: "#39386B"
+      faint: "#2B2B40"

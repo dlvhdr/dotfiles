@@ -15,6 +15,12 @@ require("nvim-tree").setup({
     highlight_git = false,
     indent_markers = {
       enable = true,
+      icons = {
+        corner = "└",
+        edge = "│",
+        item = "│",
+        none = " ",
+      },
     },
     icons = {
       glyphs = {
@@ -41,7 +47,7 @@ require("nvim-tree").setup({
         git = false,
         folder = true,
         file = true,
-        folder_arrow = true,
+        folder_arrow = false,
       },
     },
   },

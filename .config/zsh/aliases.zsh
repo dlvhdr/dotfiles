@@ -53,7 +53,7 @@ alias gwix="cd $HOME/code/wix"
 alias gd="cd $HOME/Downloads"
 
 # brew
-alias update="brew update && brew upgrade && brew upgrade --cask --greedy && npm update -g"
+alias update="brew update && brew upgrade && brew upgrade --cask --greedy && npm update -g && yarn global upgrade && gh extensions upgrade --all && gup update && rustup update"
 
 # others
 alias c="clear"

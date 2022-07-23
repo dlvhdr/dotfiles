@@ -12,4 +12,3 @@ ranger-cd() {
 }
 
 zle -N ranger-cd
-bindkey '^o' ranger-cd

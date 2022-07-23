@@ -2,15 +2,17 @@ local opt = vim.opt
 vim.cmd("let loaded_matchparen = 1")
 
 opt.fillchars = {
-  horiz = "━",
-  horizup = "┻",
+  horiz = "─",
+  horizup = "⏊",
   horizdown = "┳",
-  vert = " ",
-  vertleft = " ",
+  vert = " ", -- "│",
+  vertleft = " ", -- "┤",
   vertright = "┣",
   verthoriz = "╋",
   diff = " ",
 }
+opt.conceallevel = 2
+opt.showmode = false
 opt.laststatus = 3
 opt.mouse = "a"
 opt.hidden = true

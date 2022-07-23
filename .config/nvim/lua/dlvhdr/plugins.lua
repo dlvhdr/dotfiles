@@ -79,6 +79,7 @@ return packer.startup(function(use)
     run = ":TSUpdate",
     config = "require('dlvhdr.treesitter')",
   })
+  use({ "nvim-treesitter/playground" })
 
   use("kosayoda/nvim-lightbulb", {
     config = "require('dlvhdr.lightbulb')",
@@ -137,11 +138,13 @@ return packer.startup(function(use)
   -- Telescope - fzf
   use({
     "nvim-telescope/telescope.nvim",
+    tag = "0.1.0",
     config = "require('dlvhdr.telescope')",
     requires = { "nvim-lua/plenary.nvim" },
   })
 
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+  use({ "axkirillov/easypick.nvim", requires = "nvim-telescope/telescope.nvim" })
 
   -- use({
   --   "norcalli/nvim-colorizer.lua",
@@ -228,6 +231,13 @@ return packer.startup(function(use)
     requires = { "ldelossa/litee.nvim" },
     config = "require('dlvhdr.gh-nvim')",
   })
+
+  -- use({
+  --   "lukvbaal/stabilize.nvim",
+  --   config = function()
+  --     require("stabilize").setup()
+  --   end,
+  -- })
 
   -- use({
   --   "akinsho/git-conflict.nvim",

@@ -6,4 +6,3 @@ tmp=/Users/dolevh/.config/npm
 init-module=/Users/dolevh/.config/npm/config/npm-init.js
 public-hoist-pattern[]=@types/*
 public-hoist-pattern[]=@wix/*
-//registry.npmjs.org/:_authToken=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

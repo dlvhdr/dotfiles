@@ -1,3 +1,4 @@
+local hl = vim.api.nvim_set_hl
 local colors = require("tokyonight.colors").setup({})
 local util = require("tokyonight.util")
 local M = {}
@@ -5,12 +6,15 @@ local M = {}
 vim.cmd("hi! NvimTreeSpecialFile guifg=" .. colors.warning)
 vim.cmd("hi! FidgetTitle guifg=#3d59a1 guibg=none")
 vim.cmd("hi! FidgetTask guifg=#3d59a1 guibg=none")
-vim.cmd("hi! WinSeparator guibg=#1f2335 guifg=#1f2335")
-vim.cmd("hi! WinSeparator guibg=#1f2335 guifg=#1f2335")
+vim.cmd("hi! WinSeparator guibg=NONE guifg=" .. colors.border_highlight)
+-- vim.cmd("hi! WinSeparator guibg=#1f2335 guifg=#1f2335")
 
 local darker_bg = util.darken(colors.bg_popup, 2.5)
 vim.cmd("hi! CmpDocumentation guibg=" .. darker_bg)
 vim.cmd("hi! CmpDocumentationBorder guibg=" .. darker_bg)
+vim.cmd("hi! TelescopeMatching guifg=" .. colors.warning .. " gui=bold")
+-- hl(0, "StatusLineNC", { fg = colors.border, underline = true })
+-- hl(0, "StatusLine", { fg = colors.border, underline = true })
 
 -- Colors used in tokyonight
 -- local colors = {

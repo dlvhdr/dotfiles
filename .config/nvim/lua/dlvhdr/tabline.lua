@@ -36,8 +36,10 @@ function _G.tabline()
 
     local segments = {}
     -- File modified
-    if vim.fn.getbufvar(bufnr, "&modified") == 1 then
-      table.insert(segments, color("BufferVisibleMod", ""))
+    if bufname ~= "" then
+      if vim.fn.getbufvar(bufnr, "&modified") == 1 then
+        table.insert(segments, color("BufferVisibleMod", "●"))
+      end
     end
 
     -- Read only
@@ -47,13 +49,7 @@ function _G.tabline()
 
     table.insert(
       tabs,
-      "%#TabLine#"
-        .. cwd_highlight
-        .. " "
-        .. buf_highlight
-        .. " "
-        .. table.concat(segments, " ")
-        .. "%#TabLine#"
+      "%#TabLine#" .. cwd_highlight .. " " .. table.concat(segments, " ") .. " " .. buf_highlight .. " " .. "%#TabLine#"
     )
   end
 

@@ -157,7 +157,8 @@ return {
       end
 
       -- File modified
-      if vim.fn.getbufvar(bufnum, "&modified") == 1 then
+      local bufname = vim.fn.bufname(bufnum)
+      if bufname ~= "" and vim.fn.getbufvar(bufnum, "&modified") == 1 then
         table.insert(segments, color("DiagnosticWarn", ""))
       end
 

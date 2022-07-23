@@ -26,3 +26,11 @@ augroup ConfigureKitty
     au VimEnter * :silent !kitty @ set-spacing padding=0 margin=0
 augroup END
 ]])
+
+vim.cmd([[
+augroup vimrc-incsearch-highlight
+  autocmd!
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
+]])
