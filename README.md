@@ -2,7 +2,7 @@
 
 💥 kitty | 🖥  tmux | ✍️ NeoVim
 
-![image](https://user-images.githubusercontent.com/6196971/183261895-0c5f8d99-0cc8-4b01-81da-ad773f8850b6.png)
+<img height="500px" src="https://user-images.githubusercontent.com/6196971/183261975-5ba03d9d-17d3-45a3-97ed-1c84394481ea.png" />
 
 ## Installation
 
