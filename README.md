@@ -10,6 +10,8 @@ First, install [homebrew](https://brew.sh/).
 Then run:
 
 ```sh
+git clone https://github.com/dlvhdr/dotfiles.git ~/.dotfiles
+cd ~/dotfiles
 ./setup/setup.sh
 ```
 
