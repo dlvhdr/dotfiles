@@ -1,4 +1,4 @@
-# dlvhdr's dotfiles
+# 🏠 dlvhdr's dotfiles
 
 💥 kitty | 🖥  tmux | ✍️ NeoVim
 
