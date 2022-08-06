@@ -9,35 +9,47 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   })
-  print("Installing packer close and reopen Neovim...")
+  print("Installing packer. When done, close and reopen Neovim...")
   vim.cmd([[packadd packer.nvim]])
 end
 
-local packer = require("packer")
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+  return
+end
+local packer_util = require("packer.util")
 
 -- Have packer use a popup window
 packer.init({
   log = { level = "warn" },
   display = {
     open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
+      return packer_util.float({ border = "rounded" })
     end,
   },
+  snapshot_path = packer_util.join_paths(vim.fn.stdpath("config"), "packer_snapshots"),
 })
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerInstall
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+vim.api.nvim_create_autocmd("BufWritePost", {
+  command = "source <afile> | PackerSync",
+  group = vim.api.nvim_create_augroup("Packer", { clear = true }),
+  pattern = "plugins.lua",
+})
 
 return packer.startup(function(use)
   use("wbthomason/packer.nvim")
 
-  use({ "folke/tokyonight.nvim", branch = "main" })
+  use({
+    "folke/tokyonight.nvim",
+    branch = "main",
+    config = function()
+      require("dlvhdr.theme")
+      require("dlvhdr.colors")
+      require("dlvhdr.tabline")
+    end,
+  })
+
   use("lewis6991/impatient.nvim")
 
   use("nvim-lua/plenary.nvim")
@@ -45,41 +57,52 @@ return packer.startup(function(use)
     "L3MON4D3/LuaSnip",
     config = "require('dlvhdr.luasnip')",
   })
-  use("hrsh7th/nvim-cmp", {
-    config = "require('dlvhdr.cmp')",
-  })
-  use("saadparwaiz1/cmp_luasnip")
-  use("hrsh7th/cmp-buffer")
-  use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-path")
-  use("hrsh7th/cmp-cmdline")
-  use("onsails/lspkind-nvim")
-  use("nathom/filetype.nvim")
-  use({
-    "neovim/nvim-lspconfig",
-    config = "require('dlvhdr.lsp')",
-  })
-  use({
-    "tami5/lspsaga.nvim",
-    config = "require('dlvhdr.lspsaga')",
-  })
-  use({
-    "ray-x/lsp_signature.nvim",
-  })
-  use({
-    "jose-elias-alvarez/null-ls.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
-  })
-  use({ "folke/lua-dev.nvim" })
-  use({ "hrsh7th/cmp-emoji", disable = true })
+  use({ "hrsh7th/nvim-cmp" })
+  use({ "saadparwaiz1/cmp_luasnip" })
+  use({ "hrsh7th/cmp-buffer" })
+  use({ "hrsh7th/cmp-nvim-lsp" })
+  use({ "hrsh7th/cmp-path" })
+  use({ "hrsh7th/cmp-cmdline" })
+  use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
+  use({ "onsails/lspkind-nvim" })
+  use({ "nathom/filetype.nvim" })
 
-  use({ "windwp/nvim-ts-autotag" })
+  use({ "neovim/nvim-lspconfig" })
+  use({
+    "glepnir/lspsaga.nvim",
+    branch = "main",
+    config = function()
+      require("dlvhdr.cmp")
+      require("dlvhdr.lsp")
+      require("dlvhdr.lspsaga")
+    end,
+  })
+  use({ "jose-elias-alvarez/null-ls.nvim" })
+  use({ "folke/lua-dev.nvim" })
+
+  -- use({
+  --   "ray-x/lsp_signature.nvim",
+  -- })
+
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     config = "require('dlvhdr.treesitter')",
   })
-  use({ "nvim-treesitter/playground" })
+
+  use({
+    "nvim-treesitter/playground",
+    requires = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+  })
+
+  use({
+    "windwp/nvim-ts-autotag",
+    requires = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+  })
 
   use("kosayoda/nvim-lightbulb", {
     config = "require('dlvhdr.lightbulb')",
@@ -90,7 +113,6 @@ return packer.startup(function(use)
     "nvim-lualine/lualine.nvim",
     config = "require('dlvhdr.lualine')",
   })
-  use("folke/trouble.nvim")
   -- use({
   --   "akinsho/toggleterm.nvim",
   --   config = "require('dlvhdr.terminal')",
@@ -140,29 +162,35 @@ return packer.startup(function(use)
     "nvim-telescope/telescope.nvim",
     tag = "0.1.0",
     config = "require('dlvhdr.telescope')",
-    requires = { "nvim-lua/plenary.nvim" },
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+      { "folke/trouble.nvim" },
+    },
   })
 
-  use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   use({ "axkirillov/easypick.nvim", requires = "nvim-telescope/telescope.nvim" })
 
   -- use({
   --   "norcalli/nvim-colorizer.lua",
   --   config = "require('dlvhdr.colorizer')",
   -- })
-  use({
-    "rrethy/vim-hexokinase",
-    run = "make hexokinase",
-    config = function()
-      vim.g.Hexokinase_optInPatterns = "full_hex,rgb,rgba,hsl,hsla"
-    end,
-  })
+  -- use({
+  --   "rrethy/vim-hexokinase",
+  --   run = "make hexokinase",
+  --   config = function()
+  --     vim.g.Hexokinase_optInPatterns = "full_hex,rgb,rgba,hsl,hsla"
+  --   end,
+  -- })
 
   use("moll/vim-bbye")
 
   -- File Explorer
   use({
     "kyazdani42/nvim-tree.lua",
+    requires = {
+      "kyazdani42/nvim-web-devicons", -- optional, for file icons
+    },
     config = function()
       require("dlvhdr.nvim-tree")
     end,
@@ -226,8 +254,7 @@ return packer.startup(function(use)
 
   use({ "nvim-telescope/telescope-ui-select.nvim" })
   use({
-    "/Users/dolevh/code/personal/gh.nvim",
-    -- "ldelossa/gh.nvim",
+    "ldelossa/gh.nvim",
     requires = { "ldelossa/litee.nvim" },
     config = "require('dlvhdr.gh-nvim')",
   })

@@ -2,6 +2,8 @@ local keymap = vim.keymap.set
 local opts = { silent = true }
 
 -- Basic
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
 keymap("n", "<Leader>Q", ":qall<CR>", opts)
 keymap("n", "<Leader>W", ":wall<CR>", opts)
 keymap("x", "<leader>p", '"_dP', opts)

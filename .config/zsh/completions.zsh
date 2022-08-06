@@ -9,7 +9,7 @@ zmodload -i zsh/complist
 
 autoload bashcompinit && bashcompinit
 
-source /usr/local/etc/bash_completion.d/wt_completion
+# source /usr/local/etc/bash_completion.d/wt_completion
 
 zstyle ':completion:*' menu select # select completions with arrow keys
 zstyle ':completion:*' group-name '' # group results by category

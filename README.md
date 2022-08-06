@@ -33,6 +33,15 @@ Features:
 
 <img src="https://user-images.githubusercontent.com/6196971/160253924-b3a22b30-bed0-4d1f-805f-62edd21a466a.png" width="700px"/>
 
+# Installation
+
+First, install [homebrew](https://brew.sh/).
+Then run:
+
+```sh
+./setup/setup.sh
+```
+
 ---
 
 Author: Dolev Hadar

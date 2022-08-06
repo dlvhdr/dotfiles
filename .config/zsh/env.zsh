@@ -1,10 +1,13 @@
+#!/bin/bash
 export ZSH="$XDG_CONFIG_HOME/zsh/.oh-my-zsh"
 export ZSHZ_DATA="${XDG_CONFIG_HOME:-$HOME/.config}/z/.z"
 
 # Defaults
 export EDITOR="nvim"
 export TERMINAL="kitty"
-export TERM="xterm-kitty"
+if command -v kitty &> /dev/null; then
+  export TERM="xterm-kitty"
+fi
 
 # PATH
 export CODE="$HOME/code"

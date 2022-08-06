@@ -75,7 +75,7 @@ M.setup = function(opts)
     root_dir = lspconfigUtils.root_pattern(".git"),
     sources = {
       null_ls.builtins.code_actions.shellcheck,
-      null_ls.builtins.diagnostics.shellcheck,
+      null_ls.builtins.diagnostics.shellcheck.with({filetypes = { "sh", "zsh" }}),
       null_ls.builtins.formatting.stylua.with({
         condition = function()
           if vim.fn.getcwd():find("gh.nvim") ~= nil then

@@ -1,6 +1,6 @@
 local M = {}
 
-signs = {
+local signs = {
   { name = "DiagnosticSignError", text = "" },
   { name = "DiagnosticSignWarn", text = "" },
   { name = "DiagnosticSignInfo", text = "" },
@@ -62,7 +62,9 @@ local function lsp_keymaps(bufnr)
 
   -- telescope
   vim.keymap.set("n", "gr", '<cmd>lua require("dlvhdr.telescope").lsp_references()<CR>', opts)
+  vim.keymap.set("n", "gR", "<cmd>Lspsaga lsp_finder<CR>", opts)
   vim.keymap.set("n", "gd", '<cmd>lua require("dlvhdr.telescope").lsp_definitions()<CR>', opts)
+  vim.keymap.set("n", "gD", "<cmd>Lspsaga preview_definition<CR>", opts)
 
   -- lspsaga
   vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
@@ -70,6 +72,7 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
   vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opts)
   vim.keymap.set("n", "ge", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
+  vim.keymap.set("n", "gs", "<Cmd>Lspsaga signature_help<CR>", { silent = true })
   vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
   vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
   vim.keymap.set("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
@@ -94,7 +97,7 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 
-  require("dlvhdr.lsp.lsp_signature").setup(bufnr)
+  -- require("dlvhdr.lsp.lsp_signature").setup(bufnr)
 
   local config = {
     -- disable virtual text

@@ -2,16 +2,15 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Wix Toggle VPN
+# @raycast.title Downloads
 # @raycast.mode compact
 
 # Optional parameters:
-# @raycast.icon 🤖
-# @raycast.packageName Developer Utils
+# @raycast.icon 📁
 
 # Documentation:
+# @raycast.description Open the Downloads Folder
 # @raycast.author Dolev Hadar
 # @raycast.authorURL https://github.com/dlvhdr
 
-cd "/Users/dolevh/code/wix/wix-cli/dist/wix-cli-go_darwin_amd64_v1" || exit
-./wix vpn toggle
+open ~/Downloads

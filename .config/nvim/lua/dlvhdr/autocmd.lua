@@ -34,3 +34,10 @@ augroup vimrc-incsearch-highlight
   autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 ]])
+
+vim.cmd([[
+augroup zsh-filetype
+  autocmd BufNewFile,BufRead *.zsh set syntax=bash
+  autocmd BufNewFile,BufRead *.zsh set filetype=sh
+augroup END
+]])

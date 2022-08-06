@@ -1,3 +1,9 @@
+#!/bin/bash
+
+if ! command -v fzf &> /dev/null; then
+  exit
+fi
+
 export FZF_DEFAULT_COMMAND='fd --type f -H --exclude ".git" --exclude "node_modules"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 

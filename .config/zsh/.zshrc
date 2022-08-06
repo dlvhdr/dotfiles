@@ -6,8 +6,13 @@
 #                                                 
 
 # Fig pre block. Keep at the top of this file.
-. "$HOME/.fig/shell/zshrc.pre.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 source "$ZDOTDIR/env.zsh"
+
+unalias run-help
+autoload run-help
+HELPDIR=$(command brew --prefix)/share/zsh/help
+alias help=run-help
 
 # oh-my-zsh
 zstyle ':omz:update' mode disabled
@@ -29,18 +34,18 @@ ZSH_DISABLE_COMPFIX=true
 DISABLE_AUTO_TITLE=true
 
 # source
-source "$ZSH/oh-my-zsh.sh"
-source "$ZDOTDIR/keybindings.zsh"
-source "$ZDOTDIR/opt.zsh"
-source "$ZDOTDIR/colors.zsh"
-source "$ZDOTDIR/completions.zsh"
-source "$ZDOTDIR/plugins.zsh"
-source "$ZDOTDIR/fzf.zsh"
-source "$ZDOTDIR/aliases.zsh"
-source "$ZDOTDIR/less.zsh"
-source "$ZDOTDIR/ranger.zsh"
-source "$ZDOTDIR/vi.zsh"
-source "$ZDOTDIR/zoxide.zsh"
+. "$ZSH/oh-my-zsh.sh"
+. "$ZDOTDIR/keybindings.zsh"
+. "$ZDOTDIR/opt.zsh"
+. "$ZDOTDIR/colors.zsh"
+. "$ZDOTDIR/completions.zsh"
+. "$ZDOTDIR/plugins.zsh"
+. "$ZDOTDIR/fzf.zsh"
+. "$ZDOTDIR/aliases.zsh"
+. "$ZDOTDIR/less.zsh"
+. "$ZDOTDIR/ranger.zsh"
+. "$ZDOTDIR/vi.zsh"
+. "$ZDOTDIR/zoxide.zsh"
 
 eval "$(starship init zsh)"
 
@@ -59,4 +64,4 @@ fi
 # zprof
 
 # Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

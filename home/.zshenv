@@ -7,4 +7,4 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # ZSH
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-. "/Users/dolevh/.local/share/cargo/env"
+[ -f  "$HOME/.local/share/cargo/env" ] && . "$HOME/.local/share/cargo/env"

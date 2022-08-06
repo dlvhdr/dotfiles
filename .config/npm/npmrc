@@ -6,3 +6,7 @@ tmp=/Users/dolevh/.config/npm
 init-module=/Users/dolevh/.config/npm/config/npm-init.js
 public-hoist-pattern[]=@types/*
 public-hoist-pattern[]=@wix/*
+fetch-retries=0
+fetch-retry-mintimeout=1000
+fetch-retry-maxtimeout=1500
+fetch-timeout=1500

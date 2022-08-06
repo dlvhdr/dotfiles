@@ -98,6 +98,7 @@ return {
         end
       end
 
+      -- TODO: need to fix
       -- add formatter
       local formatters = require("lvim.lsp.null-ls.formatters")
       local supported_formatters = formatters.list_supported_names(buf_ft)

@@ -18,11 +18,8 @@ alias wcs="wix_code_search"
 function git_checkout() { 
   if [ $# -eq 0 ] 
   then 
-    git branch | fzf --header "Checkout" | xargs git checkout
+    git branch | gum filter --indicator="→" --placeholder="Checkout branch..." | xargs git checkout
   fi
-  # else 
-  #   git checkout $@ 
-  # fi
 }; 
 
 function dirs_fzf() { 
@@ -53,7 +50,15 @@ alias gwix="cd $HOME/code/wix"
 alias gd="cd $HOME/Downloads"
 
 # brew
-alias update="brew update && brew upgrade && brew upgrade --cask --greedy && npm update -g && yarn global upgrade && gh extensions upgrade --all && gup update && rustup update"
+function update_choose() {
+  cmds=("brew update && brew upgrade" "brew upgrade --cask --greedy" "npm update -g --fetch-timeout 3000" "yarn global upgrade" "gh extensions upgrade --all" "gup update" "rustup update")
+  chose=$(gum choose --no-limit $cmds)
+  for cmd in $chose
+  do
+    eval "$cmd"
+  done
+}
+alias update='update_choose'
 
 # others
 alias c="clear"
@@ -61,6 +66,16 @@ alias fh='open -a Finder .'
 alias fix="stty sane"
 alias nuke-desktop='rm -rf ~/Desktop/*'
 alias sl=ls
+
+if command -v exa &> /dev/null; then
+	alias l='exa -lh --icons'
+	alias ll='exa -l --icons'
+	alias lt='exa -l --icons --tree --level=2'
+else
+	alias l='ls -lAh'
+	alias ll='ls -l'
+fi
+
 alias ls="exa --group-directories-first --icons -a"
 alias code="code --user-data-dir ~/.config/vscode --extensions-dir ~/.config/vscode/extensions"
 alias tree="ls --tree -I \"node_modules|.git|dist|out|target|.husky\""
@@ -68,31 +83,32 @@ alias f="ranger"
 alias cat="bat"
 alias lcat="bat --paging=always"
 
-alias bathelp='bat -plhelp'
-help() (
-    set -o pipefail
-    "$@" --help 2>&1 | bathelp
-)
+# alias bathelp='bat -plhelp'
+# help() (
+#     set -o pipefail
+#     "$@" --help 2>&1 | bathelp
+# )
 
 
 function cd_pkg() {
   head=$(git rev-parse --show-toplevel)
-  packages=$(ls -r -s accessed --no-icons ${head}/packages | grep -E ^wix)
+  packages=$(ls -D -r -s accessed --no-icons "${head}"/packages)
+  # | grep -E ^wix
 
-  selected=$(echo ${packages} | fzf)
+  selected=$(echo ${packages} | gum filter --indicator="→")
   
-  if [ ! -z "$selected" ]; then
-    cd "${head}/packages/${selected}"
+  if [ -n "$selected" ]; then
+    cd "${head}/packages/${selected}" || exit
   fi
 }
 
 function cd_repo() {
-  repos=$(find ~/code/wix ~/code/personal ~/code/playground -type d  -mindepth 1 -maxdepth 1 | sed "s#/Users/dolevh/code/##" | grep -v "DS_Store")
+  repos=$(find ~/code/wix ~/code/personal ~/code/playground -type d  -mindepth 1 -maxdepth 1 | sed "s#$HOME/code/##" | grep -v "DS_Store")
 
-  selected=$(echo ${repos} | fzf)
+  selected=$(echo "${repos}" | "$HOME"/code/playground/gum/gum filter --height 10 --indicator="→")
   
-  if [ ! -z "$selected" ]; then
-    cd ~/code/"${selected}"
+  if [ -n "$selected" ]; then
+    cd "$HOME/code/${selected}" || exit
   fi
 }
 
@@ -110,7 +126,7 @@ alias gaa="git add -A"
 alias gra="git rebase --abort"
 alias grc="git rebase --continue"
 alias gpf="git push --force"
-alias gc="git commit -m"
+alias gc='git commit -m "update"'
 alias pr="gh vpr"
 alias vr="gh vr"
 alias ga="git ls-files -m -o --exclude-standard | fzf --height 50% --preview 'bat {-1} --color=always --style changes,numbers' --print0 -m | xargs -0 -t -o git add"
