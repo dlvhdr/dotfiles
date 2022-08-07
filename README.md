@@ -15,6 +15,8 @@ cd ~/dotfiles
 ./setup/setup.sh
 ```
 
+For any issues in the installation, please open an issue.
+
 ## Detailed Setup
 
 - Terminal: alacritty + tmux
