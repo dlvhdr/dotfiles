@@ -18,7 +18,7 @@ function _G.tabline()
     local bufnr = buflist[winnr]
     local cwd = vim.fn.getcwd(winnr, tabnr) .. ""
     cwd = cwd:gsub("/Users/dolevh/code/wix", "@wix")
-    cwd = cwd:gsub("/Users/dolevh/code/personal/dotfiles", "@dotfiles")
+    cwd = cwd:gsub("/Users/dolevh/dotfiles", "@dotfiles")
     cwd = cwd:gsub("/Users/dolevh", "~")
     local bufname = vim.fn.fnamemodify(vim.fn.bufname(bufnr), ":.")
     bufname = bufname:gsub("/", "  ")

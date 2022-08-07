@@ -11,7 +11,7 @@ alias v="nvim"
 alias vi="nvim"
 
 function wix_code_search() {
-  open "https://cs.github.com/?scope=org%3Awix-private&scopeName=wix-private&q=""$@"
+  open "https://cs.github.com/?scope=org%3Awix-private&scopeName=wix-private&q=""$*"
 }
 alias wcs="wix_code_search"
 
@@ -24,8 +24,8 @@ function git_checkout() {
 
 function dirs_fzf() { 
   selected=$(dirs -p | fzf)
-  if [ ! -z "$selected" ]; then
-    cd "$selected"
+  if [ -n "$selected" ]; then
+    cd "$selected" || exit
   fi
 }; 
 alias d=dirs_fzf
@@ -40,13 +40,13 @@ alias ez="vim $XDG_CONFIG_HOME/zsh/.zshrc"
 alias sz='exec zsh' 
 alias ea="vim $XDG_CONFIG_HOME/zsh/aliases.zsh"
 alias ev="vim $XDG_CONFIG_HOME/nvim/"
-alias dot="vim $CODE/personal/dotfiles"
-alias cdot="cd $CODE/personal/dotfiles"
+alias dot="vim $HOME/dotfiles"
+alias cdot="cd $HOME/dotfiles"
 alias -- -="cd -"
 
 # directories
-alias gcode="$HOME/code"
-alias gwix="cd $HOME/code/wix"
+alias gcode="$CODE"
+alias gwix="cd $CODE/wix"
 alias gd="cd $HOME/Downloads"
 
 # brew
@@ -138,5 +138,5 @@ alias pkg="cd_pkg"
 alias repo='cd_repo'
 alias r="repo"
 alias p="pkg"
-alias lnvim='tmux list-panes -a -F "${session_name} #{command} #{pane_pid} #{pane_title} #{window_name} #{pane_id} #{session_path}" | grep nvim'
+alias lnvim='tmux list-panes -a -F "#{session_name} #{command} #{pane_pid} #{pane_title} #{window_name} #{pane_id} #{session_path}" | grep nvim'
 alias dinner="go run . -o=🍕,🍔,🥓,🌯,🥒,🍗 --title=\"What's for dinner?\""

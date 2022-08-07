@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+tmux new-window -d '#{pane_current_path}' -E "lazygit" -ucd ~/.config/lazygit
+
+# bind-key G display-popup -E -w90% -h90% -d '#{pane_current_path}' lazygit -ucd ~/.config/lazygit
