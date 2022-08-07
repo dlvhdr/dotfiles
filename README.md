@@ -19,11 +19,11 @@ For any issues in the installation, please open an issue.
 
 ## Detailed Setup
 
-- Terminal: alacritty + tmux
+- Terminal: kitty + tmux
 - Shell: zsh + starship
 - Editor: nvim
 - Source control: git + gh + tig
-- ls: exa
+- `ls`: exa
 - Theme: tokyonight
 - Setup: macos setup files
 
