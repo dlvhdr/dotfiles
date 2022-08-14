@@ -43,7 +43,6 @@ opt.lazyredraw = true
 opt.undolevels = 10000
 opt.swapfile = false
 opt.undofile = true
-opt.undodir = vim.fn.expand("~/.config/nvim/undodir")
 opt.autoindent = true
 opt.cindent = true
 opt.signcolumn = "yes"
@@ -51,7 +50,7 @@ opt.timeoutlen = 1000
 opt.pumheight = 10
 opt.pumwidth = 20
 -- opt.pumblend = 3
-opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+opt.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,winpos,terminal"
 opt.diffopt:append("vertical") -- Show diffs in vertical splits
 opt.diffopt:append("foldcolumn:0") -- Show diffs in vertical splits
 opt.diffopt:append("indent-heuristic")

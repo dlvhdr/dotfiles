@@ -1,10 +1,7 @@
 vim.g.mapleader = " "
 vim.g.do_filetype_lua = 1
 
-local impatient_ok, impatient = pcall(require, "impatient")
-if impatient_ok and impatient ~= nil then
-  impatient.enable_profile()
-end
+pcall(require, "impatient")
 
 require("dlvhdr.plugins")
 require("dlvhdr.options")

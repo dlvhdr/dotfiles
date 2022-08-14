@@ -4,8 +4,13 @@ local opts = { silent = true }
 -- Basic
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
-keymap("n", "<Leader>Q", ":qall<CR>", opts)
+
+-- save and quit
+keymap("n", "<leader>w", ":write<CR>", opts)
+keymap("n", "<leader>Q", ":quitall!<CR>", opts)
 keymap("n", "<Leader>W", ":wall<CR>", opts)
+
+keymap("n", "x", '"_x', opts)
 keymap("x", "<leader>p", '"_dP', opts)
 keymap("n", "Y", "y$", opts)
 keymap("n", "n", "nzzzv", opts)
@@ -17,6 +22,9 @@ keymap("n", "<leader>j", ":m .+1<CR>==", opts)
 keymap("n", "<leader>k", ":m .-2<CR>==", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- disable Ex mode, I always enter in it by mistake
+keymap("n", "Q", "<Nop>", opts)
 
 -- Alternate file
 keymap("n", "<leader><leader>", "<C-^>", opts)
@@ -46,22 +54,14 @@ keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opts)
 keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opts)
 keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", opts)
 
--- bbye
-keymap("n", "<leader>qb", "<cmd>Bdelete<cr>", opts)
-keymap("n", "<leader>qa", ":bufdo :Bdelete<cr>", opts)
-
--- persistence
-keymap("n", "<leader>qs", [[<cmd>lua require("persistence").load()<cr>]], opts)
-keymap("n", "<leader>ql", [[<cmd>lua require("persistence").load({ last = true })<cr>]], opts)
-keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], opts)
-
 if vim.opt.diff:get() then
   keymap("n", "<leader>1", ":diffget LOCAL<CR>", opts)
   keymap("n", "<leader>2", ":diffget BASE<CR>", opts)
   keymap("n", "<leader>3", ":diffget REMOTE<CR>", opts)
 end
 
-keymap("n", "<Leader>h", ":set hlsearch!<CR>", { noremap = true, silent = true })
+keymap("n", "<Leader>h", ":set hlsearch!<CR>", opts)
+keymap("n", "<Leader>a", 'ysiW"', opts)
 
 keymap("n", "<F10>", function()
   if vim.o.conceallevel > 0 then

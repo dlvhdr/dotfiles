@@ -1,0 +1,73 @@
+#!/bin/bash
+# Translates program names to icons, so we an use them in our tmux config.
+# Based on https://github.com/caarlos0/icons
+# case $argv[1] in
+#   "ack" | "fd" | "find" | "fzf" | "grep" | "rg")
+# 		echo 
+#   ;;
+# "atop" | "htop" | "top")
+# 		echo 
+#     ;;
+# 	"bash" | "fish" | "zsh"
+# 		echo 
+# 	"bat" | "cat"
+# 		echo 
+# 	"clx"
+# 		echo 
+# 	"cp" | "duplicate"
+# 		echo 
+# 	"mv"
+# 		echo 
+# 	"curl" | "http" | "pint" | "lynx" | "wget" | "w3m"
+# 		echo 
+# 	"docker" "docker-compose"
+# 		echo 
+# 	exa lf ls nnn ranger
+# 		echo פּ
+# 	elixir mix
+# 		echo 
+# 	gh
+# 		echo 
+# 	git lazygit tig
+# 		echo 
+# 	glow
+# 		echo 
+# 	go
+# 		echo 
+# 	java mvn
+# 		echo 
+# 	less more
+# 		echo 
+# 	lua
+# 		echo 
+# 	man
+# 		echo 
+# 	nano pico
+# 		echo פֿ
+# 	node npm yarn
+# 		echo 
+# 	nvim vim vi
+# 		echo 
+# 	python pip
+# 		echo 
+# 	rm
+# 		echo 﫧
+# 	rsync
+# 		echo 
+# 	ruby irb
+# 		echo 
+# 	scp ssh
+# 		echo 
+# 	sleep
+# 		echo 
+# 	spin
+# 		echo 
+# 	sudo
+# 		echo 
+# 	tail
+# 		echo 
+# 	tmux
+# 		echo ﬿
+# 	youtube-dl
+# 		echo 
+# esac

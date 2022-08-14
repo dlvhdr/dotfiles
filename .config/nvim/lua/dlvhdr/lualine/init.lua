@@ -9,27 +9,27 @@ require("lualine").setup({
     icons_enabled = true,
   },
   tabline = {},
-  extensions = { "nvim-tree", "toggleterm" },
+  extensions = {},
   sections = {
     lualine_a = {
       components.mode,
     },
     lualine_b = {
-      -- components.session,
       components.branch,
     },
     lualine_c = {
       components.filename,
     },
     lualine_x = {
-      components.diff,
       components.diagnostics,
-      -- components.treesitter,
+      components.diff,
+      components.treesitter,
       components.lsp,
       -- components.filetype,
     },
     lualine_y = {},
     lualine_z = {
+      components.location,
       components.scrollbar,
     },
   },

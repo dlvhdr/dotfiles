@@ -1,3 +1,5 @@
+local lsp_status = require("lsp-status")
+
 local M = {}
 
 local signs = {
@@ -48,11 +50,11 @@ local function lsp_keymaps(bufnr)
   -- builtins
   vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  vim.keymap.set("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-  vim.keymap.set("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-  vim.keymap.set("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+  -- vim.keymap.set("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+  -- vim.keymap.set("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+  -- vim.keymap.set("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
   vim.keymap.set("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  vim.keymap.set("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  -- vim.keymap.set("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
   vim.keymap.set("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   -- buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   -- buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -90,12 +92,9 @@ M.on_attach = function(client, bufnr)
     client.resolved_capabilities.document_range_formatting = false
   end
 
-  if client.resolved_capabilities.document_formatting then
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 10000)")
-  end
-
-  lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  -- if client.resolved_capabilities.document_formatting then
+  --   vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 10000)")
+  -- end
 
   -- require("dlvhdr.lsp.lsp_signature").setup(bufnr)
 
@@ -119,6 +118,11 @@ M.on_attach = function(client, bufnr)
     },
   }
   vim.diagnostic.config(config)
+
+  lsp_status.on_attach(client, bufnr)
+  lsp_keymaps(bufnr)
+  lsp_highlight_document(client)
+  vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -128,6 +132,14 @@ capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
 capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
 capabilities.textDocument.completion.completionItem.deprecatedSupport = true
 capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+
+lsp_status.config({
+  status_symbol = " ",
+  current_function = true,
+  diagnostics = false,
+  kind_labels = require("lspkind").presets["default"],
+})
+capabilities = vim.tbl_extend("keep", capabilities or {}, lsp_status.capabilities) or {}
 
 M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 

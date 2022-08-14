@@ -46,6 +46,7 @@ truncation_symbol = "…/"
 "~/code/scripts" = "@scripts"
 
 [golang]
+disabled = true
 symbol = " "
 
 [java]
@@ -55,5 +56,6 @@ disabled = true
 disabled = true
 
 [lua]
+disabled = true
 format = "via [ $version](bold blue) "
 

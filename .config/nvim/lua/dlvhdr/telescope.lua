@@ -13,9 +13,12 @@ require("telescope").setup({
         ["<C-e>"] = actions.results_scrolling_down,
         ["<C-y>"] = actions.results_scrolling_up,
         ["<CR>"] = actions.select_default,
-        ["<c-d>"] = require("telescope.actions").delete_buffer,
+        ["<c-d>"] = actions.delete_buffer,
+        ["<c-q>"] = actions.delete_buffer,
       },
       n = {
+        ["q"] = actions.delete_buffer,
+        ["x"] = actions.delete_buffer,
         ["<c-t>"] = trouble.open_with_trouble,
         ["<c-h>"] = layout_actions.toggle_preview,
         ["<C-e>"] = actions.results_scrolling_down,

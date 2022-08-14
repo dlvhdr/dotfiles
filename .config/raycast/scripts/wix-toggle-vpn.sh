@@ -13,5 +13,5 @@
 # @raycast.author Dolev Hadar
 # @raycast.authorURL https://github.com/dlvhdr
 
-cd "/Users/dolevh/code/wix/wix-cli/dist/wix-cli-go_darwin_amd64_v1" || exit
+cd "/Users/dolevh/code/wix/wix-cli-go/dist/wix-cli-go_darwin_amd64_v1" || exit
 ./wix vpn toggle

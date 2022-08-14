@@ -1,5 +1,6 @@
 local conditions = require("dlvhdr.lualine.conditions")
-local colors = require("dlvhdr.lualine.colors")
+local colors = require("tokyonight.colors").setup({})
+local utils = require("tokyonight.util")
 
 local function color(highlight_group, content)
   return "%#" .. highlight_group .. "#" .. content .. "%*"
@@ -25,22 +26,6 @@ return {
     color = {},
     cond = nil,
   },
-  session = {
-    function()
-      local persistence = require("persistence")
-
-      local session_name = persistence.get_current()
-      session_name = vim.fn.getcwd():gsub("%%", "/")
-
-      if session_name == "" then
-        session_name = "-"
-      end
-
-      session_name = session_name:gsub(vim.fn.expand("~/code/wix"), "@wix")
-      session_name = session_name:gsub(vim.fn.expand("~/"), "")
-      return string.format(" %s", session_name)
-    end,
-  },
   branch = {
     "b:gitsigns_head",
     icon = " ",
@@ -50,13 +35,8 @@ return {
   diff = {
     "diff",
     source = diff_source,
-    symbols = { added = "  ", modified = "柳", removed = " " },
-    diff_color = {
-      added = { fg = colors.green },
-      modified = { fg = colors.yellow },
-      removed = { fg = colors.red },
-    },
-    color = {},
+    symbols = { added = "+", modified = "~", removed = "-" },
+    colored = false,
     cond = nil,
   },
   diagnostics = {
@@ -74,47 +54,17 @@ return {
       end
       return ""
     end,
-    color = { fg = colors.green },
+    color = { fg = colors.fg_dark },
     cond = conditions.hide_in_width,
   },
-  lsp = {
-    function(msg)
-      msg = msg or "LS Inactive"
-      local buf_clients = vim.lsp.buf_get_clients()
-      if next(buf_clients) == nil then
-        -- TODO: clean up this if statement
-        if type(msg) == "boolean" or #msg == 0 then
-          return "LS Inactive"
-        end
-        return msg
-      end
-      local buf_ft = vim.bo.filetype
-      local buf_client_names = {}
-
-      -- add client
-      for _, client in pairs(buf_clients) do
-        if client.name ~= "null-ls" then
-          table.insert(buf_client_names, client.name)
-        end
-      end
-
-      -- TODO: need to fix
-      -- add formatter
-      local formatters = require("lvim.lsp.null-ls.formatters")
-      local supported_formatters = formatters.list_supported_names(buf_ft)
-      vim.list_extend(buf_client_names, supported_formatters)
-
-      -- add linter
-      local linters = require("lvim.lsp.null-ls.linters")
-      local supported_linters = linters.list_supported_names(buf_ft)
-      vim.list_extend(buf_client_names, supported_linters)
-
-      return table.concat(buf_client_names, ", ")
-    end,
-    icon = " ",
-    color = { gui = "bold" },
+  lsp = function()
+    return require("lsp-status").status()
+  end,
+  location = {
+    "location",
+    cond = conditions.hide_in_width,
+    color = { bg = colors.bg_statusline, fg = colors.fg_dark },
   },
-  location = { "location", cond = conditions.hide_in_width, color = {} },
   progress = { "progress", cond = conditions.hide_in_width, color = {} },
   spaces = {
     function()
@@ -147,7 +97,6 @@ return {
 
       -- File name
       local file_name = vim.fn.fnamemodify(vim.fn.bufname(bufnum), ":t")
-      -- local file_name = vim.fn.expand("#" .. bufnum .. ":t")
       local extension = vim.fn.expand("#" .. bufnum .. ":e")
       local icon, highlight = require("nvim-web-devicons").get_icon(file_name, extension)
 
@@ -189,7 +138,7 @@ return {
       return chars[index]
     end,
     padding = { left = 0, right = 0 },
-    color = { fg = colors.yellow, bg = colors.bg },
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
     cond = nil,
   },
 }

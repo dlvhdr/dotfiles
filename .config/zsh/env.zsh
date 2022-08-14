@@ -10,14 +10,16 @@ if command -v kitty &> /dev/null; then
 fi
 
 # PATH
+export DOTFILES="$HOME/dotfiles"
 export CODE="$HOME/code"
 export GOPATH="$CODE/go"
 export GOROOT="/usr/local/opt/go/libexec"
+export GOBIN="$GOROOT/bin"
 export PATH="$PATH:/usr/local/opt/ruby/bin"
-export PATH="$PATH:$GOROOT/bin"
+export PATH="$PATH:$GOBIN"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$CODE/scripts"
+export PATH="$PATH:$DOTFILES/scripts"
 export PATH="$PATH:$XDG_DATA_HOME/npm/bin"
 export PATH="$PATH:$HOME/Library/Python/2.7/bin"
 
@@ -40,3 +42,4 @@ export HISTFILE="$XDG_STATE_HOME/bash/history"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker

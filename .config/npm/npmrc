@@ -10,3 +10,4 @@ fetch-retries=0
 fetch-retry-mintimeout=1000
 fetch-retry-maxtimeout=1500
 fetch-timeout=1500
+store-dir=${XDG_DATA_HOME}/pnpm-store

@@ -19,6 +19,9 @@ yarn.lock
 .config/asciinema
 .config/gcloud
 .config/wix
+enki-theme
+kitty-themes
+.config/gup/assets/
 
 # zsh
 .zsh_history

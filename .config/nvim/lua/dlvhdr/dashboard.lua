@@ -1,34 +1,33 @@
-vim.g.dashboard_default_executive = "telescope"
-vim.g.dashboard_session_directory = "~/.config/nvim/sessions"
-vim.g.dashboard_preview_command = "cat"
-vim.g.dashboard_preview_pipeline = "lolcat --truecolor"
-vim.g.dashboard_preview_file = "~/.config/nvim/neovim.cat"
-vim.g.dashboard_preview_file_height = 11
-vim.g.dashboard_preview_file_width = 80
-vim.g.dashboard_custom_footer = { "@dlvhdr" }
+local status_ok, dashboard = pcall(require, "dashboard")
+if not status_ok then
+  return
+end
 
-vim.g.dashboard_custom_section = {
-  a = {
-    description = { "  Last Session        " },
-    command = ":lua require('persistence').load()",
+local home = os.getenv("HOME")
+local config = os.getenv("XDG_CONFIG_HOME")
+
+dashboard.preview_command = "cat | lolcat -F 0.3"
+dashboard.preview_file_path = config .. "/nvim/static/neovim.cat"
+dashboard.preview_file_height = 12
+dashboard.preview_file_width = 80
+dashboard.custom_center = {
+  {
+    icon = "  ",
+    desc = "Last Session",
+    action = function()
+      require("persistence").load()
+    end,
   },
-  b = {
-    description = { "  Find File          " },
-    command = "Telescope find_files",
-  },
-  c = {
-    description = { "  Recently Used Files" },
-    command = "Telescope oldfiles",
-  },
-  d = {
-    description = { "  Sync Plugins       " },
-    command = "PackerSync",
-  },
-  e = {
-    description = { "  New file            " },
-    command = "DashboardNewFile",
+  {
+    icon = "  ",
+    desc = "Open Personal dotfiles",
+    action = function()
+      require("telescope.builtin").find_files({ cwd = home .. "/dotfiles", hidden = true })
+    end,
   },
 }
+dashboard.session_directory = config .. "/nvim/sessions"
+dashboard.custom_footer = { "@dlvhdr" }
 
 vim.api.nvim_command([[augroup Dashboard]])
 vim.api.nvim_command([[autocmd!]])
@@ -38,5 +37,3 @@ vim.api.nvim_command(
 vim.api.nvim_command([[autocmd FileType dashboard set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2]])
 vim.api.nvim_command([[autocmd FileType dashboard nnoremap <silent> <buffer> q :q<CR>]])
 vim.api.nvim_command([[augroup END]])
-
-vim.g.indent_blankline_filetype_exclude = "['dashboard']"

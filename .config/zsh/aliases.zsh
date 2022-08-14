@@ -140,3 +140,7 @@ alias r="repo"
 alias p="pkg"
 alias lnvim='tmux list-panes -a -F "#{session_name} #{command} #{pane_pid} #{pane_title} #{window_name} #{pane_id} #{session_path}" | grep nvim'
 alias dinner="go run . -o=🍕,🍔,🥓,🌯,🥒,🍗 --title=\"What's for dinner?\""
+
+alias ta="tmux a"
+alias tat="tmux attach -t"
+alias tn="tmux new -s \$(pwd | sed 's/.*\///g')"

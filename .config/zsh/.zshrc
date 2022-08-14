@@ -18,7 +18,6 @@ alias help=run-help
 zstyle ':omz:update' mode disabled
 
 plugins=(
-  notify
   vi-mode
 	zsh-syntax-highlighting
   you-should-use
