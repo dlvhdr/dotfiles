@@ -126,7 +126,7 @@ alias gaa="git add -A"
 alias gra="git rebase --abort"
 alias grc="git rebase --continue"
 alias gpf="git push --force"
-alias gcm='git commit -m "$(gum input)" -m "$(gum write)"'
+alias gcm='git commit -m "$(gum input)"'
 alias pr="gh vpr"
 alias vr="gh vr"
 alias ga="git ls-files -m -o --exclude-standard | fzf --height 50% --preview 'bat {-1} --color=always --style changes,numbers' --print0 -m | xargs -0 -t -o git add"
