@@ -3,54 +3,57 @@
 # if not currently in tmux
 if [ -z "$TMUX" ]; then
   # save fzf to variables
-  ZOXIDE_RESULT=$(zoxide query -l | fzf --reverse)
+  ZOXIDE_RESULT=$(zoxide query -l | fzf)
 
   # if empty exit
   if [ -z "$ZOXIDE_RESULT" ]; then
     exit 0
   fi
 
-  FOLDER=$(basename $ZOXIDE_RESULT)
+  FOLDER=$(basename "$ZOXIDE_RESULT")
 
   # lookup tmux session name
-  SESSION=$(tmux list-sessions | grep $FOLDER | awk '{print $1}')
+  SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $1}')
   SESSION=${SESSION//:/}
-  echo $SESSION
+  echo "$SESSION"
   
   if [ -z "$SESSION" ]; then
     # jump to directory
-    cd $ZOXIDE_RESULT
+    cd "$ZOXIDE_RESULT" || exit
     # create session
-    tmux new-session -s $FOLDER
+    tmux new-session -s "$FOLDER"
   else
     # attach to session
-    tmux attach -t $SESSION
+    tmux attach -t "$SESSION"
   fi
 else
   # tmux is active
   # save fzf to variables
-  ZOXIDE_RESULT=$(zoxide query -l | sed 's#/Users/dolevh/##' | fzf --reverse)
+  ZOXIDE_RESULT=$(zoxide query -l -s | sed "s#^$HOME#~#" | fzf --no-sort --min-height=40 --height=40%)
 
   # if no result exit
   if [ -z "$ZOXIDE_RESULT" ]; then
     exit 0
   fi
 
-  FOLDER=$(basename $ZOXIDE_RESULT)
+  ZOXIDE_RESULT=$(echo "$ZOXIDE_RESULT" | sed "s#~#$HOME#" | xargs | cut -d" " -f2)
+  echo "$ZOXIDE_RESULT"
+  FOLDER=$(basename "$ZOXIDE_RESULT")
   # lookup tmux session name
-  SESSION=$(tmux list-sessions | grep $FOLDER | awk '{print $1}')
-  SESSION=${SESSION//:/}
+  SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $1}')
+  SESSION="${SESSION//:/}"
 
   if [ -z "$SESSION" ]; then
     # jump to directory
-    cd $ZOXIDE_RESULT
+    cd "$ZOXIDE_RESULT" || exit
     # create session
-    tmux new-session -d -s $FOLDER
+    # echo "tmux new-session -d -s $FOLDER -c $ZOXIDE_RESULT"
+    tmux new-session -d -s "$FOLDER" -c "$ZOXIDE_RESULT"
     # attach to session
-    tmux switch-client -t $FOLDER
+    tmux switch-client -t "$FOLDER"
   else
     # attach to session
     # switch to tmux session
-    tmux switch-client -t $SESSION
+    tmux switch-client -t "$SESSION"
   fi
 fi

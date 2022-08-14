@@ -3,7 +3,7 @@ local M = {}
 local null_ls = require("null-ls")
 local utils = require("dlvhdr.utils")
 local lspconfigUtils = require("lspconfig.util")
-local prettier = require("prettier")
+-- local prettier = require("prettier")
 
 local has_eslint_config = function()
   return lspconfigUtils.root_pattern(".eslintrc", ".eslintrc.json", ".eslintrc.js")(vim.fn.getcwd()) ~= nil
@@ -44,35 +44,37 @@ local function prettier_eslint_check()
 end
 
 local jsFormatter = function()
-  local formatter = prettier_eslint_check()
+  -- local formatter = prettier_eslint_check()
+  local formatter = "prettier"
 
   if formatter == "eslint" then
     return null_ls.builtins.formatting.eslint_d.with({})
   else
-    return nil
-    -- return null_ls.builtins.formatting.prettierd.with({
-    --   filetypes = {
-    --     "javascript",
-    --     "javascriptreact",
-    --     "typescript",
-    --     "typescriptreact",
-    --     "vue",
-    --     "css",
-    --     "scss",
-    --     "less",
-    --     "html",
-    --     "json",
-    --     "yaml",
-    --     "yml",
-    --     -- "markdown",
-    --     "graphql",
-    --   },
-    -- })
+    -- return nil
+    return null_ls.builtins.formatting.prettierd.with({
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+        "css",
+        "scss",
+        "less",
+        "html",
+        "json",
+        "yaml",
+        "yml",
+        -- "markdown",
+        "graphql",
+      },
+    })
   end
 end
 
 M.setup = function(opts)
   null_ls.setup({
+    on_attach = opts.on_attach,
     root_dir = lspconfigUtils.root_pattern(".git"),
     sources = {
       null_ls.builtins.code_actions.shellcheck,
@@ -82,7 +84,8 @@ M.setup = function(opts)
           return lspconfigUtils.root_pattern("stylua.toml")
         end,
       }),
-      -- jsFormatter,
+
+      jsFormatter,
       -- null_ls.builtins.formatting.eslint_d,
       null_ls.builtins.diagnostics.eslint_d.with({
         condition = function()
@@ -91,42 +94,41 @@ M.setup = function(opts)
         end,
       }),
     },
-    on_attach = opts.on_attach,
   })
 
-  prettier.setup({
-    bin = "prettierd",
-    arrow_parens = "always",
-    bracket_spacing = false,
-    bracket_same_line = true,
-    embedded_language_formatting = "auto",
-    end_of_line = "lf",
-    html_whitespace_sensitivity = "css",
-    jsx_single_quote = false,
-    print_width = 80,
-    prose_wrap = "preserve",
-    quote_props = "as-needed",
-    semi = true,
-    single_attribute_per_line = false,
-    single_quote = false,
-    tab_width = 2,
-    trailing_comma = "es5",
-    use_tabs = false,
-    filetypes = {
-      "css",
-      "graphql",
-      "html",
-      "javascript",
-      "javascriptreact",
-      "json",
-      "less",
-      "markdown",
-      "scss",
-      "typescript",
-      "typescriptreact",
-      "yaml",
-    },
-  })
+  -- prettier.setup({
+  --   bin = "prettierd",
+  --   -- arrow_parens = "always",
+  --   -- bracket_spacing = false,
+  --   -- bracket_same_line = true,
+  --   -- embedded_language_formatting = "auto",
+  --   -- end_of_line = "lf",
+  --   -- html_whitespace_sensitivity = "css",
+  --   -- jsx_single_quote = false,
+  --   -- print_width = 80,
+  --   -- prose_wrap = "preserve",
+  --   -- quote_props = "as-needed",
+  --   -- semi = true,
+  --   -- single_attribute_per_line = false,
+  --   -- single_quote = false,
+  --   -- tab_width = 2,
+  --   -- trailing_comma = "es5",
+  --   -- use_tabs = false,
+  --   filetypes = {
+  --     "css",
+  --     "graphql",
+  --     "html",
+  --     "javascript",
+  --     "javascriptreact",
+  --     "json",
+  --     "less",
+  --     "markdown",
+  --     "scss",
+  --     "typescript",
+  --     "typescriptreact",
+  --     "yaml",
+  --   },
+  -- })
 end
 
 return M

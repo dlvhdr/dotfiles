@@ -82,6 +82,10 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
+  if client.server_capabilities.documentFormattingProvider then
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 10000)")
+  end
+
   if client.name == "tsserver" then
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
@@ -91,10 +95,6 @@ M.on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
   end
-
-  -- if client.resolved_capabilities.document_formatting then
-  --   vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 10000)")
-  -- end
 
   -- require("dlvhdr.lsp.lsp_signature").setup(bufnr)
 
@@ -122,7 +122,6 @@ M.on_attach = function(client, bufnr)
   lsp_status.on_attach(client, bufnr)
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
-  vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
