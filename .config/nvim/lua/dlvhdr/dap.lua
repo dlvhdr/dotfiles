@@ -1,6 +1,7 @@
-local dap = require("dap")
-
---dap.defaults.fallback.terminal_win_cmd = "50vsplit new"
+local status_ok, dap = pcall(require, "dap")
+if not status_ok then
+  return
+end
 
 dap.adapters.go = {
   type = "executable",

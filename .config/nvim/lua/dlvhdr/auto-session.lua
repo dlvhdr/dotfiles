@@ -1,4 +1,9 @@
-require("auto-session").setup({
+local status_ok, auto_session = pcall(require, "auto_session")
+if not status_ok then
+  return
+end
+
+auto_session.setup({
   log_level = "error",
   auto_session_enable_last_session = false,
   auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/",

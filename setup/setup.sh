@@ -1,7 +1,12 @@
 #!/bin/bash
 
 echo "Installing gum to make this script glamorous..."
-brew install gum > /dev/null 2>&1
+if ! command -v brew &> /dev/null; then
+  brew install gum > /dev/null 2>&1
+else
+  sudo apt update && sudo apt install gum
+fi
+
 
 function info() {
   gum style "$*"

@@ -29,7 +29,7 @@ if [ -z "$TMUX" ]; then
 else
   # tmux is active
   # save fzf to variables
-  ZOXIDE_RESULT=$(zoxide query -l -s | sed "s#^$HOME#~#" | fzf --no-sort --min-height=40 --height=40%)
+  ZOXIDE_RESULT=$(zoxide query -l -s | sed "s#$HOME#~#" | fzf --reverse --no-sort --min-height=40 --height=40%)
 
   # if no result exit
   if [ -z "$ZOXIDE_RESULT" ]; then
@@ -37,7 +37,7 @@ else
   fi
 
   ZOXIDE_RESULT=$(echo "$ZOXIDE_RESULT" | sed "s#~#$HOME#" | xargs | cut -d" " -f2)
-  echo "$ZOXIDE_RESULT"
+  zoxide add "$ZOXIDE_RESULT"
   FOLDER=$(basename "$ZOXIDE_RESULT")
   # lookup tmux session name
   SESSION=$(tmux list-sessions | grep "$FOLDER" | awk '{print $1}')

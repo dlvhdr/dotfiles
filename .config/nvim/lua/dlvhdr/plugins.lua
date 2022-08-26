@@ -188,7 +188,7 @@ return packer.startup(function(use)
     "rrethy/vim-hexokinase",
     run = "make hexokinase",
     config = function()
-      vim.g.Hexokinase_optInPatterns = "full_hex,rgb,rgba,hsl,hsla"
+      require("dlvhdr.hexokinase")
     end,
   })
 

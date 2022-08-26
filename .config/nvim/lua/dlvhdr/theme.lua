@@ -1,5 +1,13 @@
-local colors = require("tokyonight.colors").setup({})
-local util = require("tokyonight.util")
+local status_ok, colors = pcall(require, "tokyonight.colors")
+if not status_ok then
+  return
+end
+colors = colors.setup({})
+
+local util_ok, util = pcall(require, "tokyonight.util")
+if not util_ok then
+  return
+end
 
 vim.o.background = "dark"
 vim.g.tokyonight_style = "storm"

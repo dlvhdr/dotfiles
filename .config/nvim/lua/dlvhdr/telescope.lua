@@ -1,10 +1,19 @@
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  return
+end
+
+local trouble_ok, trouble = pcall(require, "trouble.providers.telescope")
+if not trouble_ok then
+  return
+end
+
 local themes = require("telescope.themes")
 local utils = require("telescope.utils")
 local actions = require("telescope.actions")
 local layout_actions = require("telescope.actions.layout")
-local trouble = require("trouble.providers.telescope")
 
-require("telescope").setup({
+telescope.setup({
   defaults = {
     mappings = {
       i = {
@@ -83,7 +92,7 @@ require("telescope").setup({
           preview_width = 0.55,
         },
       },
-      additional_args = function(opts)
+      additional_args = function()
         return { "--hidden" }
       end,
     },
@@ -113,7 +122,7 @@ require("telescope").load_extension("ui-select")
 local M = {}
 
 function M.project_files()
-  local _, ret, stderr = utils.get_os_command_output({
+  local _, ret, _ = utils.get_os_command_output({
     "git",
     "rev-parse",
     "--is-inside-work-tree",
@@ -125,6 +134,7 @@ function M.project_files()
     layout_config = {
       width = 0.65,
     },
+    show_untracked = true,
   })
   local fopts = {}
 
@@ -182,10 +192,5 @@ function M.grep_current_dir()
   }
   require("telescope.builtin").live_grep(opts)
 end
-
--- TODO: add frequent files search
--- function M.oldfiles()
---   require("telescope").extensions.frecency.frecency()
--- end
 
 return M

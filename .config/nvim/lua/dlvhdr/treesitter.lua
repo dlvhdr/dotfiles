@@ -1,13 +1,25 @@
-local parsers = require("nvim-treesitter.parsers")
-require("nvim-treesitter.query_predicates")
+local parsers_ok, parsers = pcall(require, "nvim-treesitter.parsers")
+if not parsers_ok then
+  return
+end
 
-require("nvim-treesitter.configs").setup({
+local query_ok, _ = pcall(require, "nvim-treesitter.query_predicates")
+if not query_ok then
+  return
+end
+
+local configs_ok, configs = pcall(require, "nvim-treesitter.configs")
+if not configs_ok then
+  return
+end
+
+configs.setup({
   context_commentstring = { enable = true },
   highlight = {
     enable = true,
-    -- disable = function(lang, bufnr) -- Disable in large files
-    --   return vim.api.nvim_buf_line_count(bufnr) > 3000
-    -- end,
+    disable = function(_, bufnr)
+      return vim.api.nvim_buf_line_count(bufnr or 0) > 5000
+    end,
     additional_vim_regex_highlighting = false,
   },
   query_linter = {

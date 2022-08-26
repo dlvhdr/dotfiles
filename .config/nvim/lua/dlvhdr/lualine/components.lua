@@ -1,6 +1,5 @@
 local conditions = require("dlvhdr.lualine.conditions")
 local colors = require("tokyonight.colors").setup({})
-local utils = require("tokyonight.util")
 
 local function color(highlight_group, content)
   return "%#" .. highlight_group .. "#" .. content .. "%*"
@@ -98,12 +97,12 @@ return {
       -- File name
       local file_name = vim.fn.fnamemodify(vim.fn.bufname(bufnum), ":t")
       local extension = vim.fn.expand("#" .. bufnum .. ":e")
-      local icon, highlight = require("nvim-web-devicons").get_icon(file_name, extension)
+      local icon, devicon_color = require("nvim-web-devicons").get_icon_color(file_name, extension)
 
       if not icon and #file_name == 0 then
         -- Is in a folder
         icon = ""
-        highlight = "Accent"
+        devicon_color = colors.fg_dark
       end
 
       -- File modified
@@ -118,7 +117,9 @@ return {
       end
 
       -- Icon
-      local icon_statusline = color((highlight or "Accent"), icon or "")
+
+      vim.api.nvim_set_hl(0, "LuaLineFileIcon", { fg = devicon_color or colors.fg, bg = colors.bg_statusline })
+      local icon_statusline = color("LuaLineFileIcon", icon or "")
       table.insert(segments, icon_statusline)
 
       -- File path

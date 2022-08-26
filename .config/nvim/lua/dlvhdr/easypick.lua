@@ -1,4 +1,7 @@
-local easypick = require("easypick")
+local status_ok, easypick = pcall(require, "easypick")
+if not status_ok then
+  return
+end
 
 easypick.setup({
   pickers = {

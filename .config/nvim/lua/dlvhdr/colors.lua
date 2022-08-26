@@ -1,20 +1,24 @@
-local hl = vim.api.nvim_set_hl
-local colors = require("tokyonight.colors").setup({})
-local util = require("tokyonight.util")
-local M = {}
+local status_ok, colors = pcall(require, "tokyonight.colors")
+if not status_ok then
+  return
+end
+
+colors = colors.setup({})
+
+local util_ok, util = pcall(require, "tokyonight.util")
+if not util_ok then
+  return
+end
 
 vim.cmd("hi! NvimTreeSpecialFile guifg=" .. colors.warning)
 vim.cmd("hi! FidgetTitle guifg=#3d59a1 guibg=none")
 vim.cmd("hi! FidgetTask guifg=#3d59a1 guibg=none")
 vim.cmd("hi! WinSeparator guibg=NONE guifg=" .. colors.border_highlight)
--- vim.cmd("hi! WinSeparator guibg=#1f2335 guifg=#1f2335")
 
 local darker_bg = util.darken(colors.bg_popup, 2.5)
 vim.cmd("hi! CmpDocumentation guibg=" .. darker_bg)
 vim.cmd("hi! CmpDocumentationBorder guibg=" .. darker_bg)
 vim.cmd("hi! TelescopeMatching guifg=" .. colors.warning .. " gui=bold")
--- hl(0, "StatusLineNC", { fg = colors.border, underline = true })
--- hl(0, "StatusLine", { fg = colors.border, underline = true })
 
 -- Colors used in tokyonight
 -- local colors = {
@@ -51,5 +55,3 @@ vim.cmd("hi! TelescopeMatching guifg=" .. colors.warning .. " gui=bold")
 --   git = { change = "#6183bb", add = "#449dab", delete = "#914c54", conflict = "#bb7a61" },
 --   gitSigns = { add = "#164846", change = "#394b70", delete = "#823c41" },
 -- }
-
-return M

@@ -4,6 +4,7 @@ alias rm="rm -i"
 alias mv="mv -i"
 alias cp="cp -riv"
 alias mkdir='mkdir -vp'
+alias l='$(!!) | less'
 
 # neovim
 alias vim="nvim"
@@ -68,11 +69,9 @@ alias nuke-desktop='rm -rf ~/Desktop/*'
 alias sl=ls
 
 if command -v exa &> /dev/null; then
-	alias l='exa -lh --icons'
 	alias ll='exa -l --icons'
 	alias lt='exa -l --icons --tree --level=2'
 else
-	alias l='ls -lAh'
 	alias ll='ls -l'
 fi
 
@@ -127,6 +126,7 @@ alias gra="git rebase --abort"
 alias grc="git rebase --continue"
 alias gpf="git push --force"
 alias gcm='git commit -m "$(gum input)"'
+alias gclean='git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D'
 alias pr="gh vpr"
 alias vr="gh vr"
 alias ga="git ls-files -m -o --exclude-standard | fzf --height 50% --preview 'bat {-1} --color=always --style changes,numbers' --print0 -m | xargs -0 -t -o git add"

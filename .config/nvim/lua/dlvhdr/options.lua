@@ -11,7 +11,7 @@ opt.fillchars = {
   verthoriz = "╋",
   diff = " ",
 }
-opt.conceallevel = 2
+opt.conceallevel = 1
 opt.showmode = false
 opt.laststatus = 3
 opt.mouse = "a"

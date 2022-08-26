@@ -1,6 +1,17 @@
-local cmp = require("cmp")
-local lspkind = require("lspkind")
-local luasnip = require("luasnip")
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
+  return
+end
+
+local lspkind_status_ok, lspkind = pcall(require, "lspkind")
+if not lspkind_status_ok then
+  return
+end
+
+local luasnip_status_ok, luasnip = pcall(require, "luasnip")
+if not luasnip_status_ok then
+  return
+end
 
 vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }
 

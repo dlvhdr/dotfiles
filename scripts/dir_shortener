@@ -1,0 +1,28 @@
+#!/bin/bash
+# shellcheck disable=2001
+
+DIR="$1"
+RES=""
+
+DIR=$(echo "$DIR" | sed 's#^file://IL-C02FG4W9MD6R##')
+
+while read -r LINE;
+do
+  SEARCH=$(echo "$LINE" | cut -d' ' -f1)
+  REPLACE=$(echo "$LINE" | cut -d' ' -f2)
+  if [[ $DIR =~ ^"$SEARCH".* ]]; then
+    RES="$(echo "$DIR" | sed "s#$SEARCH#$REPLACE#")"
+    break
+  fi
+done < ~/.config/dir_shortener/dirs.conf
+
+LEN=10
+if [ -z "$RES" ]; then
+  basename "${DIR: -$LEN}"
+else
+  if [ ${#RES} -gt $LEN ]; then
+    echo "…${RES: -$LEN}"
+  else
+    echo "$RES"
+  fi
+fi

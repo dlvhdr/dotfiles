@@ -1,13 +1,13 @@
 ;; From MDeiml/tree-sitter-markdown
-[
-  (code_span)
-  (link_title)
-] @text.literal
+;; [
+;;   (code_span)
+;;   (link_title)
+;; ] @text.literal
 
-[
-  (emphasis_delimiter)
-  (code_span_delimiter)
-] @punctuation.delimiter
+;; [
+;;   (emphasis_delimiter)
+;;   (code_span_delimiter)
+;; ] @punctuation.delimiter
 
 (emphasis) @text.emphasis
 
@@ -41,6 +41,14 @@
   (emphasis_delimiter)
 ] @conceal
 (#set! conceal ""))
+
+
+;; (fenced_code_block
+;;   (fenced_code_block_delimiter) @conceal (#set! conceal "0")
+;; ) @code_block
+
+;; (code_fence_content) @none
+ 
 
 ; Conceal inline links
 (inline_link

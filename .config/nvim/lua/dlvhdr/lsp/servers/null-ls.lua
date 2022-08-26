@@ -19,7 +19,7 @@ local function prettier_eslint_check()
     local rootJsonPath = lspconfigUtils.root_pattern("package.json")(cwd)
     if rootJsonPath then
       local rootJson = utils.read_json(lspconfigUtils.path.join(rootJsonPath, "package.json"))
-      if rootJson.eslintConfig ~= nil then
+      if rootJson ~= nil and rootJson.eslintConfig ~= nil then
         has_eslint = true
       end
     end
@@ -27,7 +27,7 @@ local function prettier_eslint_check()
     local ancestorJsonPath = lspconfigUtils.find_package_json_ancestor()
     if ancestorJsonPath then
       local localJson = utils.read_json(ancestorJsonPath)
-      if localJson.eslintConfig ~= nil then
+      if localJson ~= nil and localJson.eslintConfig ~= nil then
         has_eslint = true
       end
     end
@@ -44,8 +44,7 @@ local function prettier_eslint_check()
 end
 
 local jsFormatter = function()
-  -- local formatter = prettier_eslint_check()
-  local formatter = "prettier"
+  local formatter = prettier_eslint_check()
 
   if formatter == "eslint" then
     return null_ls.builtins.formatting.eslint_d.with({})
@@ -84,7 +83,6 @@ M.setup = function(opts)
           return lspconfigUtils.root_pattern("stylua.toml")
         end,
       }),
-
       jsFormatter,
       -- null_ls.builtins.formatting.eslint_d,
       null_ls.builtins.diagnostics.eslint_d.with({
