@@ -2,6 +2,7 @@
 
 echo "Installing gum to make this script glamorous..."
 if ! command -v brew &> /dev/null; then
+  echo 'deb [trusted=yes] https://repo.charm.sh/apt/ /' | sudo tee /etc/apt/sources.list.d/charm.list
   sudo apt update && sudo apt install gum
 else
   brew install gum > /dev/null 2>&1

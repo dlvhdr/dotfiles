@@ -1,15 +1,18 @@
 local opt = vim.opt
 vim.cmd("let loaded_matchparen = 1")
 
+opt.helpheight = 30
+opt.splitbelow = true
 opt.fillchars = {
   horiz = "─",
   horizup = "⏊",
   horizdown = "┳",
-  vert = " ", -- "│",
+  vert = "🭵", -- "│",
   vertleft = " ", -- "┤",
   vertright = "┣",
   verthoriz = "╋",
   diff = " ",
+  eob = " ",
 }
 opt.conceallevel = 1
 opt.showmode = false

@@ -1,11 +1,38 @@
 local components = require("dlvhdr.lualine.components")
 
+local colors_ok, colors = pcall(require, "tokyonight.colors")
+if not colors_ok then
+  return
+end
+colors = colors.setup({})
+
+local util_ok, util = pcall(require, "tokyonight.util")
+if not util_ok then
+  return
+end
+
+local tree_view_ok, tree_view = pcall(require, "nvim-tree.view")
+if not tree_view_ok then
+  return
+end
+
+local nvim_tree_shift = {
+  function()
+    local name = "פּ Nvim Tree"
+    local empty_space = string.rep(" ", ((vim.api.nvim_win_get_width(tree_view.get_winnr()) - #name) / 2))
+    return empty_space .. name .. empty_space
+  end,
+  cond = tree_view.is_visible,
+  color = { fg = colors.comment, bg = colors.bg_dark, gui = "italic" },
+}
+
 require("lualine").setup({
   options = {
     theme = "tokyonight",
+    globalstatus = vim.opt.laststatus:get() == 3,
     component_separators = "",
     section_separators = "",
-    disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
+    disabled_filetypes = { "dashboard", "Outline" },
     icons_enabled = true,
   },
   tabline = {},
@@ -31,6 +58,7 @@ require("lualine").setup({
     lualine_z = {
       components.location,
       components.scrollbar,
+      nvim_tree_shift,
     },
   },
 })

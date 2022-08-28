@@ -2,16 +2,17 @@ local colors_status_ok, colors = pcall(require, "tokyonight.colors")
 if not colors_status_ok then
   return
 end
+colors = colors.setup({})
 
 local devicons_status_ok, devicons = pcall(require, "nvim-web-devicons")
 if not devicons_status_ok then
   return
 end
 
-vim.api.nvim_set_hl(0, "TabLine", { fg = "#bbc2cf", bg = colors.black })
-vim.api.nvim_set_hl(0, "TabLineSel", { fg = "#bbc2cf", bg = colors.black })
-vim.api.nvim_set_hl(0, "TabLineFill", { fg = "#c0caf5", bg = colors.black })
-vim.api.nvim_set_hl(0, "TabLineCwd", { fg = colors.teal, bg = colors.black })
+vim.api.nvim_set_hl(0, "TabLine", { fg = colors.fg_dark, bg = colors.bg_dark })
+vim.api.nvim_set_hl(0, "TabLineSel", { fg = colors.fg_dark, bg = colors.bg_dark })
+vim.api.nvim_set_hl(0, "TabLineFill", { fg = colors.fg_dark, bg = colors.bg_dark })
+vim.api.nvim_set_hl(0, "TabLineCwd", { fg = colors.fg_dark, bg = colors.bg_dark })
 
 local function color(highlight_group, content)
   return "%#" .. highlight_group .. "#" .. content .. "%*"
@@ -54,15 +55,15 @@ function _G.tabline()
       table.insert(segments, color("StatuslineBoolean", ""))
     end
 
-    table.insert(
-      tabs,
-      "%#TabLine#" --[[.. cwd_highlight .. " "--]]
-        .. table.concat(segments, " ")
-        .. " "
-        .. bufname
-        .. " "
-        .. "%#TabLine#"
-    )
+    local main = "%#TabLine#" --[[.. cwd_highlight .. " "--]]
+      .. table.concat(segments, " ")
+      .. " "
+      .. bufname
+      .. " "
+      .. "%#TabLine#"
+
+    table.insert(tabs, main)
+    -- table.insert(tabs, string.rep(".", vim.go.columns - vim.fn.winwidth(0)))
   end
 
   return table.concat(tabs, "")
