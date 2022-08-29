@@ -27,6 +27,12 @@ do
         echo " nvim"
         exit 0
         ;;
+    esac
+done
+
+for cmd in $commands
+do
+    case "$cmd" in
       node)
         echo " node"
         exit 0

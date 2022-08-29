@@ -6,11 +6,6 @@ if not colors_ok then
 end
 colors = colors.setup({})
 
-local util_ok, util = pcall(require, "tokyonight.util")
-if not util_ok then
-  return
-end
-
 local tree_view_ok, tree_view = pcall(require, "nvim-tree.view")
 if not tree_view_ok then
   return
