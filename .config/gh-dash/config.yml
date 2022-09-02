@@ -54,8 +54,6 @@ keybindings:
           gh pr checkout {{.PrNumber}} &&
           nvim -c ":DiffviewOpen master...{{.HeadRefName}}"
         '
-    - key: d
-      command: cd {{.RepoPath}} && gh pr diff {{.PrNumber}} --color=always | delta --paging=always
     - key: v
       command: cd {{.RepoPath}} && code . # && gh pr checkout {{.PrNumber}}
 theme:

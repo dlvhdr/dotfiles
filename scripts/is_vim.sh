@@ -1,6 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # Usage: is_vim.sh <tty>
 #   tty: Specify tty to check for vim process.
+set -x
 tty=$1
 
 # Construct process tree.
@@ -16,6 +17,13 @@ while (( ${#pids[@]} > idx )); do
   pid=${pids[idx++]}; pids+=( ${children[pid]-} )
 done
 
+function join_by {
+  local d=${1-} f=${2-}
+  if shift 2; then
+    printf %s "$f" "${@/#/$d}"
+  fi
+}
+
 # Check whether any child pids are vim
-ps -o state= -o comm= -p "${pids[@]}" | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'
+ps -o state= -o comm= -p "$(join_by , "${pids[@]}")" | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'
 exit $?

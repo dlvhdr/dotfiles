@@ -8,7 +8,6 @@ SETUVAR --export DOTFILES:/Users/dolevh/dotfiles
 SETUVAR --export EDITOR:nvim
 SETUVAR --export ELECTRON_CONFIG_CACHE:/Users/dolevh/\x2econfig/\x2eelectron
 SETUVAR --export FNM_DIR:/Users/dolevh/\x2elocal/share/fnm
-SETUVAR --export FZF_DEFAULT_OPTS:\x0a\x20\x20\x20\x20\x2d\x2dbind\x20ctrl\x2dj\x3adown\x2cctrl\x2dk\x3aup\x0a\x20\x20\x20\x20\x2d\x2dexact\x0a\x20\x20\x20\x20\x2d\x2dreverse\x0a\x20\x20\x20\x20\x2d\x2dcycle\x0a\x20\x20\x20\x20\x2d\x2dheight\x3d20\x25\x0a\x20\x20\x20\x20\x2d\x2dinfo\x3dinline\x0a\x20\x20\x20\x20\x2d\x2dprompt\x3d\x22\uf422\x22\x5c\x20\x0a\x20\x20\x20\x20\x2d\x2dpointer\x3d\u2192\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3ddark\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3dfg\x3a\x2d1\x2cbg\x3a\x2d1\x2chl\x3a\x239ece6a\x2cfg\x2b\x3a\x23a9b1d6\x2cbg\x2b\x3a\x231D202F\x2chl\x2b\x3a\x239ece6a\x0a\x20\x20\x20\x20\x2d\x2dcolor\x3dinfo\x3a\x239ece6a\x2cprompt\x3a\x237aa2f7\x2cpointer\x3a\x239ece6a\x2cmarker\x3a\x23e5c07b\x2cspinner\x3a\x2361afef\x2cheader\x3a\x237aa2f7
 SETUVAR --export GEM_HOME:/Users/dolevh/\x2econfig/\x2egem
 SETUVAR --export GNUPGHOME:/Users/dolevh/\x2elocal/share/gnupg
 SETUVAR --export --path GOPATH:/Users/dolevh/code/go
@@ -21,7 +20,6 @@ SETUVAR --export NPM_CONFIG_DEVDIR:/Users/dolevh/\x2ecache/node\x2dgyp
 SETUVAR --export NPM_CONFIG_USERCONFIG:/Users/dolevh/\x2econfig/npm/npmrc
 SETUVAR --export RUSTUP_HOME:/Users/dolevh/\x2elocal/share/rustup
 SETUVAR --export STARSHIP_CONFIG:/Users/dolevh/dotfiles/\x2econfig/starship\x2etoml
-SETUVAR --export TERM:xterm\x2dkitty
 SETUVAR --export TERMINAL:kitty
 SETUVAR --export XDG_CACHE_HOME:/Users/dolevh/\x2ecache
 SETUVAR --export XDG_CONFIG_HOME:/Users/dolevh/\x2econfig
@@ -99,6 +97,7 @@ SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fish
 SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_changed_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_diff_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e\x7e/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e\x7e/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejorgebucaran/autopair\x2efish\x1epatrickf1/fzf\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR --export export:SSH_AUTH_SOCK\x1e/usr/local/var/run/yubikey\x2dagent\x2esock
 SETUVAR fish_color_autosuggestion:565f89
 SETUVAR fish_color_cancel:\x1d
 SETUVAR fish_color_command:7dcfff

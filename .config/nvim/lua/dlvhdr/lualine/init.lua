@@ -38,13 +38,12 @@ require("lualine").setup({
     },
     lualine_b = {
       components.branch,
+      components.diff,
     },
     lualine_c = {
-      components.filename,
+      components.diagnostics,
     },
     lualine_x = {
-      components.diagnostics,
-      components.diff,
       components.treesitter,
       components.lsp,
       -- components.filetype,
