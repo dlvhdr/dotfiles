@@ -114,7 +114,7 @@ abbr -a gst "git status"
 abbr -a gca "git commit --amend"
 abbr -a gaa "git add -A"
 abbr -a gra "git rebase --abort"
-# abbr -a grc "git rebase --continue"
+abbr -a grc "git rebase --continue"
 abbr -a gpf "git push --force"
 abbr -a gcm 'git commit -m "$(gum input)"'
 abbr -a gclean 'git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D'
