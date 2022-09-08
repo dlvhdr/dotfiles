@@ -43,7 +43,7 @@ packer_compiled.lua
 
 # misc
 error.log
-
+.config/gup
 
 
 
