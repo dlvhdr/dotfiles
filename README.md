@@ -10,7 +10,7 @@ First, install [homebrew](https://brew.sh/).
 Then run:
 
 ```bash
-git clone https://github.com/dlvhdr/dotfiles.git ~/dotfiles
+git clone --recursive https://github.com/dlvhdr/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./setup/setup.sh
 ```

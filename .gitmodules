@@ -1,0 +1,6 @@
+[submodule ".config/bat/themes/enki-theme"]
+	path = .config/bat/themes/enki-theme
+	url = https://github.com/enkia/enki-theme.git
+[submodule ".config/kitty/kitty-themes"]
+	path = .config/kitty/kitty-themes
+	url = https://github.com/dexpota/kitty-themes.git
