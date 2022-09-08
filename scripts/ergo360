@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# result="$(gum spin --title "Checking stock of Ergo360" --show-output -- \
+#     curl -s https://kinesis-ergo.com/shop/adv360pro/ | \
+#     pup ".stock text{}" \
+#   )" 2>&1
+#
+# echo "The Ergo360 is:"
+# gum style --bold "$result"
+
+
+curl -s https://kinesis-ergo.com/shop/adv360pro/ | \
+  pup ".stock text{}"

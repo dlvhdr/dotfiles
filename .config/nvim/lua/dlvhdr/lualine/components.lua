@@ -57,7 +57,7 @@ return {
     color = { fg = colors.fg_dark },
     cond = conditions.hide_in_width,
   },
-  lsp = function()
+  lsp = function(msg)
     msg = msg or "LS Inactive"
     local buf_clients = vim.lsp.buf_get_clients()
     if next(buf_clients) == nil then
@@ -76,15 +76,15 @@ return {
       end
     end
 
-    -- -- add formatter
-    -- local formatters = require("lvim.lsp.null-ls.formatters")
-    -- local supported_formatters = formatters.list_registered(buf_ft)
-    -- vim.list_extend(buf_client_names, supported_formatters)
-    --
-    -- -- add linter
-    -- local linters = require("lvim.lsp.null-ls.linters")
-    -- local supported_linters = linters.list_registered(buf_ft)
-    -- vim.list_extend(buf_client_names, supported_linters)
+    -- add formatter
+    local formatters = require("dlvhdr.lsp.servers.null-ls.formatters")
+    local supported_formatters = formatters.list_registered(buf_ft)
+    vim.list_extend(buf_client_names, supported_formatters)
+
+    -- add linter
+    local linters = require("dlvhdr.lsp.servers.null-ls.linters")
+    local supported_linters = linters.list_registered(buf_ft)
+    vim.list_extend(buf_client_names, supported_linters)
 
     local unique_client_names = vim.fn.uniq(buf_client_names)
     return " [" .. table.concat(unique_client_names, ", ") .. "]"

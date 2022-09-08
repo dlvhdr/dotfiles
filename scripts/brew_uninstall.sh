@@ -3,7 +3,7 @@
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 OPTIONS=$(\
-  ./gum spin --title "Fetching list of packages..." --show-output -- \
+  gum spin --title "Fetching list of packages..." --show-output -- \
   brew bundle dump --describe --file - | \
   grep -E "^(brew|cask|#)" | \
   sed -E 's/^(brew|cask) \"(.*)\"(,.*)?/\2/' | \

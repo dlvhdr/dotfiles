@@ -30,7 +30,6 @@ luasnip.config.set_config({
     [types.insertNode] = {
       active = {
         hl_group = "None",
-        virt_text = { { "←^j ● ^k→", "DiagnosticVirtualTextHint" } },
       },
       passive = {
         hl_group = "None",

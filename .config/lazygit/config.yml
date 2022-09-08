@@ -33,3 +33,10 @@ git:
 keybinding:
   universal:
     quit-alt1: "<esc>"
+customCommands:
+  - key: "C"
+    command: "commit"
+    description: "commit with gum"
+    context: "files"
+    loadingText: "opening gum commit tool"
+    subprocess: true

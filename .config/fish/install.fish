@@ -96,8 +96,9 @@ abbr -a c "clear"
 abbr -a fh 'open -a Finder .'
 abbr -a fix "stty sane"
 abbr -a nuke-desktop 'rm -rf ~/Desktop/*'
-abbr -a jq "jqjq"
+abbr -a jq "jqless"
 abbr -a dinner "roulette -o=🍕,🍔,🥓,🌯,🥒,🍗 --title=\"What's for dinner?\""
+abbr -a scripts "bat package.json | jqless '.scripts'"
 
 # wix
 abbr -a npmpublic "npm config set registry https://registry.npmjs.org/ && npm config get registry"

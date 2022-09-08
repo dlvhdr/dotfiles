@@ -3,7 +3,7 @@ function cd_pkg
   set packages (ls -D -r -s accessed --no-icons "$head"/packages)
   # | grep -E ^wix
 
-  set selected (gum filter --indicator="→" -- $packages)
+  set selected (echo $packages  | string split -n " " | gum filter --indicator="→" --height=20)
   
   if test -n "$selected"
     cd "$head/packages/$selected" || exit

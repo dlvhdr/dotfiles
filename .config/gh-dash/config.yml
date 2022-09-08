@@ -37,23 +37,27 @@ issuesSections:
     filters: is:open repo:dlvhdr/gh-dash
   - title: Assigned
     filters: is:open assignee:@me
+
+pager:
+  diff: delta
 defaults:
   preview:
-    # open: true
-    open: false
+    open: true
     width: 55
   prsLimit: 20
   issuesLimit: 20
 repoPaths:
   wix-private/wix-code-devex: ~/code/wix/wix-code-devex-mono
+  CodinGame/monaco-vscode-api: ~/code/playground/monaco-vscode-api
+
 keybindings:
   prs:
-    - key: c
-      command: >
-        tmux new-window -c {{.RepoPath}} '
-          gh pr checkout {{.PrNumber}} &&
-          nvim -c ":DiffviewOpen master...{{.HeadRefName}}"
-        '
+    # - key: c
+    #   command: >
+    #     tmux new-window -c {{.RepoPath}} '
+    #       gh pr checkout {{.PrNumber}} &&
+    #       nvim -c ":DiffviewOpen master...{{.HeadRefName}}"
+    #     '
     - key: v
       command: cd {{.RepoPath}} && code . # && gh pr checkout {{.PrNumber}}
 theme:

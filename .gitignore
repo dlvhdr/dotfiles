@@ -36,6 +36,7 @@ packer_compiled.lua
 
 # fish
 .config/fish/fishd.tmp.*
+.config/fish/fish_variables
 
 # 1password
 .config/op

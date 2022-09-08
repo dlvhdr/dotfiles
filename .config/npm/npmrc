@@ -12,3 +12,4 @@ fetch-retry-maxtimeout=1500
 fetch-timeout=1500
 store-dir=/Users/dolevh/.local/share/pnpm-store
 node_gyp=/Users/dolevh/.local/share/npm/bin/node-gyp
+timeout=6000000
