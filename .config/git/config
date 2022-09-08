@@ -38,14 +38,10 @@
   prune = true
 
 [diff]
-  tool = difftastic
   colorMoved = default
 
 [difftool]
   prompt = false
-
-[difftool "difftastic"]
-  cmd = difft --color=always "$LOCAL" "$REMOTE"
 
 [difftool "vscode"]
   cmd = "code --wait --diff $LOCAL $REMOTE"
@@ -175,11 +171,6 @@
   side-by-side = false
   file-modified-label = modified:
   features = unobtrusive-line-numbers decorations
-  ; minus-style = bold "#d73c3c" "#621414"
-  ; minus-emph-style = normal "#931e1e"
-  ; plus-style = bold "#43abbb" "#1a4248"
-  ; plus-emph-style = bold "#1a4248" "#55b4c2"
-  ; wow
 
 [delta "decorations"]
     file-style = bold yellow ul
