@@ -41,6 +41,7 @@
   colorMoved = default
 
 [difftool]
+  tool = nvimdiff
   prompt = false
 
 [difftool "vscode"]

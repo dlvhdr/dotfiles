@@ -19,6 +19,7 @@ local darker_bg = util.darken(colors.bg_popup, 2.5)
 vim.cmd("hi! CmpDocumentation guibg=" .. darker_bg)
 vim.cmd("hi! CmpDocumentationBorder guibg=" .. darker_bg)
 vim.cmd("hi! TelescopeMatching guifg=" .. colors.warning .. " gui=bold")
+vim.cmd("hi! TreesitterContext guibg=" .. colors.bg_highlight)
 
 -- Colors used in tokyonight
 -- local colors = {
