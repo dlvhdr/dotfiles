@@ -20,6 +20,7 @@ vim.cmd("hi! CmpDocumentation guibg=" .. darker_bg)
 vim.cmd("hi! CmpDocumentationBorder guibg=" .. darker_bg)
 vim.cmd("hi! TelescopeMatching guifg=" .. colors.warning .. " gui=bold")
 vim.cmd("hi! TreesitterContext guibg=" .. colors.bg_highlight)
+vim.cmd("hi! NvimTreeFolderIcon guifg=" .. colors.blue)
 
 -- Colors used in tokyonight
 -- local colors = {
