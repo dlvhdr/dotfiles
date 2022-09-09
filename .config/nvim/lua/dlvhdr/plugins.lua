@@ -90,6 +90,12 @@ return packer.startup(function(use)
       require("dlvhdr.treesitter")
     end,
   })
+  use({
+    "nvim-treesitter/nvim-treesitter-context",
+    config = function()
+      require("treesitter-context").setup({})
+    end,
+  })
 
   use({
     "nvim-treesitter/playground",
@@ -184,11 +190,18 @@ return packer.startup(function(use)
     },
   })
 
+  -- use({
+  --   "rrethy/vim-hexokinase",
+  --   run = "make hexokinase",
+  --   config = function()
+  --     require("dlvhdr.hexokinase")
+  --   end,
+  -- })
+
   use({
-    "rrethy/vim-hexokinase",
-    run = "make hexokinase",
+    "norcalli/nvim-colorizer.lua",
     config = function()
-      require("dlvhdr.hexokinase")
+      require("dlvhdr.colorizer")
     end,
   })
 

@@ -6,10 +6,16 @@ end
 local home = os.getenv("HOME")
 local config = os.getenv("XDG_CONFIG_HOME")
 
-dashboard.preview_command = "cat | lolcat -F 0.3"
-dashboard.preview_file_path = config .. "/nvim/static/neovim.cat"
-dashboard.preview_file_height = 12
-dashboard.preview_file_width = 80
+dashboard.custom_header = {
+  [[]],
+  [[███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗]],
+  [[████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║]],
+  [[██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║]],
+  [[██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║]],
+  [[██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║]],
+  [[╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝]],
+}
+
 dashboard.custom_center = {
   {
     icon = "  ",
