@@ -4,6 +4,5 @@ if not status_ok then
 end
 
 vim.keymap.set("n", "<leader>q", function()
-  print("wow")
   bufdelete.bufdelete(0, false)
 end, { silent = true })

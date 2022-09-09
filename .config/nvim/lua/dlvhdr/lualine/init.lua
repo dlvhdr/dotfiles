@@ -29,6 +29,7 @@ require("lualine").setup({
     section_separators = "",
     disabled_filetypes = { "dashboard", "Outline" },
     icons_enabled = true,
+    ignore_focus = { "NvimTree" },
   },
   tabline = {},
   extensions = {},

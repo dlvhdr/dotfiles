@@ -90,12 +90,12 @@ return packer.startup(function(use)
       require("dlvhdr.treesitter")
     end,
   })
-  use({
-    "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      require("treesitter-context").setup({})
-    end,
-  })
+  -- use({
+  --   "nvim-treesitter/nvim-treesitter-context",
+  --   config = function()
+  --     require("treesitter-context").setup({})
+  --   end,
+  -- })
 
   use({
     "nvim-treesitter/playground",
