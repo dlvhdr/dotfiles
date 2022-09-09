@@ -81,6 +81,7 @@
 
 [alias]
   aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+  s = !git checkout $(git remote show origin | awk '/HEAD branch/ {print $NF}') && git pull && git clean-branches
   st = status
   ca = !git add -A && git commit
   c = commit -m
