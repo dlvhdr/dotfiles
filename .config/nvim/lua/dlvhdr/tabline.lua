@@ -13,7 +13,7 @@ vim.api.nvim_set_hl(0, "TabLine", { fg = colors.fg_dark, bg = colors.bg_dark })
 vim.api.nvim_set_hl(0, "TabLineSel", { fg = colors.fg_dark, bg = colors.bg_dark })
 vim.api.nvim_set_hl(0, "TabLineFill", { fg = colors.fg_dark, bg = colors.bg_dark })
 vim.api.nvim_set_hl(0, "TabLineCwd", { fg = colors.fg_dark, bg = colors.bg_dark })
-vim.api.nvim_set_hl(0, "BufNameSeparator", { fg = "#9d7cd8", bg = colors.black })
+vim.api.nvim_set_hl(0, "BufNameSeparator", { fg = "#9d7cd8", bg = colors.bg_dark })
 vim.api.nvim_set_hl(0, "TabPage", { fg = colors.comment, bg = colors.black })
 vim.api.nvim_set_hl(0, "TabPageCurrent", { fg = colors.fg, bg = colors.black, bold = true })
 
@@ -51,7 +51,7 @@ function _G.tabline()
 
   local bufname_tail = vim.fn.fnamemodify(buf_path, ":t")
   local devicon, devicon_color = devicons.get_icon_color_by_filetype(vim.bo.filetype, { default = true })
-  vim.api.nvim_set_hl(0, "TabLineFileIcon", { fg = devicon_color, bg = colors.black })
+  vim.api.nvim_set_hl(0, "TabLineFileIcon", { fg = devicon_color, bg = colors.bg_dark })
   bufname = bufname:gsub(bufname_tail .. "$", "%%#TabLineFileIcon#" .. devicon .. "%%* " .. bufname_tail)
 
   local segments = {}

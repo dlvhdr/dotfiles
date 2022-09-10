@@ -32,7 +32,8 @@ keymap("n", "<leader><tab>", "<C-^>", opts)
 
 -- Telescope
 keymap("n", "<leader>*", "<cmd>Telescope grep_string<cr>", opts)
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
+-- keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
 keymap("n", "<leader>gg", ":lua require('dlvhdr.telescope').grep_current_dir()<CR>", opts)
 keymap("n", "<leader>fb", ":lua require('dlvhdr.telescope').buffers()<CR>", opts)
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)

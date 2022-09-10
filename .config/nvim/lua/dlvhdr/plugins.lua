@@ -30,12 +30,12 @@ packer.init({
   snapshot_path = packer_util.join_paths(vim.fn.stdpath("config"), "packer_snapshots"),
 })
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
--- vim.api.nvim_create_autocmd("BufWritePost", {
---   command = "source <afile> | PackerSync",
---   group = vim.api.nvim_create_augroup("Packer", { clear = true }),
---   pattern = "plugins.lua",
--- })
+-- Automatically regenerate compiled loader file on save
+vim.api.nvim_create_autocmd("BufWritePost", {
+  command = "source <afile> | PackerCompile",
+  group = vim.api.nvim_create_augroup("Packer", { clear = true }),
+  pattern = "plugins.lua",
+})
 
 return packer.startup(function(use)
   use("wbthomason/packer.nvim")
@@ -53,22 +53,29 @@ return packer.startup(function(use)
   use("lewis6991/impatient.nvim")
 
   use("nvim-lua/plenary.nvim")
+
   use({
     "L3MON4D3/LuaSnip",
     config = function()
       require("dlvhdr.luasnip")
     end,
   })
-  use({ "hrsh7th/nvim-cmp" })
-  use({ "saadparwaiz1/cmp_luasnip" })
-  use({ "hrsh7th/cmp-buffer" })
-  use({ "hrsh7th/cmp-nvim-lsp" })
-  use({ "hrsh7th/cmp-path" })
-  use({ "hrsh7th/cmp-cmdline" })
-  use({ "hrsh7th/cmp-nvim-lsp-signature-help" })
-  use({ "onsails/lspkind-nvim" })
-  use({ "nathom/filetype.nvim" })
+
   use({ "neovim/nvim-lspconfig" })
+  use({
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "onsails/lspkind-nvim",
+      "nathom/filetype.nvim",
+    },
+  })
 
   use({
     "glepnir/lspsaga.nvim",
@@ -80,7 +87,6 @@ return packer.startup(function(use)
     end,
   })
   use({ "jose-elias-alvarez/null-ls.nvim" })
-
   use({ "folke/lua-dev.nvim" })
 
   use({
@@ -90,25 +96,30 @@ return packer.startup(function(use)
       require("dlvhdr.treesitter")
     end,
   })
-  -- use({
-  --   "nvim-treesitter/nvim-treesitter-context",
-  --   config = function()
-  --     require("treesitter-context").setup({})
-  --   end,
-  -- })
+  use({
+    "nvim-treesitter/nvim-treesitter-context",
+    after = "nvim-treesitter",
+    config = function()
+      require("treesitter-context").setup({})
+    end,
+  })
 
   use({
     "nvim-treesitter/playground",
-    requires = {
-      "nvim-treesitter/nvim-treesitter",
-    },
+    after = "nvim-treesitter",
+  })
+
+  use({
+    "aarondiel/spread.nvim",
+    after = "nvim-treesitter",
+    config = function()
+      require("dlvhdr.spread")
+    end,
   })
 
   use({
     "windwp/nvim-ts-autotag",
-    requires = {
-      "nvim-treesitter/nvim-treesitter",
-    },
+    after = "nvim-treesitter",
   })
 
   use("kosayoda/nvim-lightbulb", {
@@ -182,21 +193,14 @@ return packer.startup(function(use)
       require("dlvhdr.telescope")
     end,
     requires = {
-      { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-      { "folke/trouble.nvim" },
-      { "axkirillov/easypick.nvim" },
-      { "nvim-telescope/telescope-ui-select.nvim" },
+      "nvim-lua/plenary.nvim",
+      "folke/trouble.nvim",
+      "axkirillov/easypick.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
+      "nvim-telescope/telescope-live-grep-args.nvim",
     },
   })
-
-  -- use({
-  --   "rrethy/vim-hexokinase",
-  --   run = "make hexokinase",
-  --   config = function()
-  --     require("dlvhdr.hexokinase")
-  --   end,
-  -- })
 
   use({
     "norcalli/nvim-colorizer.lua",
@@ -251,7 +255,7 @@ return packer.startup(function(use)
     end,
   })
   use("christoomey/vim-tmux-navigator")
-  use("AndrewRadev/splitjoin.vim")
+  -- use("AndrewRadev/splitjoin.vim")
   use({
     "ruifm/gitlinker.nvim",
     config = function()

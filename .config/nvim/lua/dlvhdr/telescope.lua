@@ -1,3 +1,5 @@
+local M = {}
+
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
   return
@@ -11,10 +13,23 @@ end
 local themes = require("telescope.themes")
 local utils = require("telescope.utils")
 local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
 local layout_actions = require("telescope.actions.layout")
+local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup({
   defaults = {
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden",
+      "--fixed-strings",
+    },
     mappings = {
       i = {
         ["<c-t>"] = trouble.open_with_trouble,
@@ -27,7 +42,6 @@ telescope.setup({
       },
       n = {
         ["q"] = actions.delete_buffer,
-        ["x"] = actions.delete_buffer,
         ["<c-t>"] = trouble.open_with_trouble,
         ["<c-h>"] = layout_actions.toggle_preview,
         ["<C-e>"] = actions.results_scrolling_down,
@@ -92,9 +106,6 @@ telescope.setup({
           preview_width = 0.55,
         },
       },
-      additional_args = function()
-        return { "--hidden" }
-      end,
     },
   },
   extensions = {
@@ -105,21 +116,29 @@ telescope.setup({
       case_mode = "smart_case",
     },
     ["ui-select"] = {
-      require("telescope.themes").get_dropdown({
-        -- even more opts
-      }),
+      require("telescope.themes").get_dropdown({}),
+    },
+    live_grep_args = {
+      auto_quoting = true, -- enable/disable auto-quoting
+      -- override default mappings
+      -- default_mappings = {},
+      mappings = { -- extend mappings
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-r>"] = function(prompt_bufnr)
+            local picker = action_state.get_current_picker(prompt_bufnr)
+            local prompt = picker:_get_prompt()
+            picker:set_prompt("--no-fixed-strings " .. prompt)
+          end,
+        },
+      },
     },
   },
 })
 
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("ui-select")
--- require("telescope").load_extension("projects")
--- require('session-lens').setup({path_display = {'shorten'}})
--- require("telescope").load_extension("session-lens")
-
--- Local Customizations
-local M = {}
+telescope.load_extension("fzf")
+telescope.load_extension("ui-select")
+telescope.load_extension("live_grep_args")
 
 function M.project_files()
   local _, ret, _ = utils.get_os_command_output({
