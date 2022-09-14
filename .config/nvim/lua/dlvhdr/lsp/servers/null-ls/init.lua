@@ -16,7 +16,32 @@ M.setup = function(opts)
           return lspconfigUtils.root_pattern("stylua.toml")
         end,
       }),
-      utils.getJSFormatter,
+      null_ls.builtins.formatting.eslint_d.with({
+        condition = function(null_ls_utils)
+          return null_ls_utils.root_has_file("node_modules/eslint-plugin-prettier/package.json")
+        end,
+      }),
+      null_ls.builtins.formatting.prettierd.with({
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "vue",
+          "css",
+          "scss",
+          "less",
+          "html",
+          "json",
+          "yaml",
+          "yml",
+          -- "markdown",
+          "graphql",
+        },
+        condition = function(null_ls_utils)
+          return not null_ls_utils.root_has_file("node_modules/eslint-plugin-prettier/package.json")
+        end,
+      }),
       null_ls.builtins.diagnostics.eslint_d.with({
         condition = function()
           local has = utils.has_eslint_config()
