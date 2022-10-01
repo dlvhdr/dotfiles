@@ -2,13 +2,15 @@ lastupdatecheck: 0
 recentrepos:
 - /Users/dolevh/dotfiles
 - /Users/dolevh/code/personal/gh-dash
-- /Users/dolevh/code/wix/wix-cli
+- /Users/dolevh/code/wix/wix-code-client
 - /Users/dolevh/code/wix/wix-code-devex-mono
+- /Users/dolevh/code/personal/dlvhdr.me
+- /Users/dolevh/code/wix/wix-code-types-service
+- /Users/dolevh/code/presentations
+- /Users/dolevh/code/wix/wix-cli
 - /Users/dolevh/code/playground/gum
 - /Users/dolevh/code/playground/monaco-vscode-api
-- /Users/dolevh/code/personal/dlvhdr.me
 - /Users/dolevh/code/wix/wix-code-types-builder
-- /Users/dolevh/code/wix/wix-code-types-service
 - /Users/dolevh/code/playground/wix-code-lsp-poc
 - /Users/dolevh/code/playground/typescript-lsp-poc
 - /Users/dolevh/code/personal/gh.nvim

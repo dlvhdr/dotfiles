@@ -40,6 +40,10 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 return packer.startup(function(use)
   use("wbthomason/packer.nvim")
 
+  use("lewis6991/impatient.nvim")
+
+  use({ "nvim-lua/plenary.nvim", module = "plenary" })
+
   use({
     "folke/tokyonight.nvim",
     branch = "main",
@@ -49,10 +53,6 @@ return packer.startup(function(use)
       require("dlvhdr.tabline")
     end,
   })
-
-  use("lewis6991/impatient.nvim")
-
-  use("nvim-lua/plenary.nvim")
 
   use({
     "L3MON4D3/LuaSnip",
@@ -76,7 +76,9 @@ return packer.startup(function(use)
       "nathom/filetype.nvim",
     },
   })
+  use({ "b0o/schemastore.nvim" })
 
+  use({ "folke/lua-dev.nvim" })
   use({
     "glepnir/lspsaga.nvim",
     branch = "main",
@@ -87,7 +89,6 @@ return packer.startup(function(use)
     end,
   })
   use({ "jose-elias-alvarez/null-ls.nvim" })
-  use({ "folke/lua-dev.nvim" })
 
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -107,6 +108,7 @@ return packer.startup(function(use)
   use({
     "nvim-treesitter/playground",
     after = "nvim-treesitter",
+    cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
   })
 
   use({
@@ -131,6 +133,8 @@ return packer.startup(function(use)
     requires = {
       "nvim-lua/lsp-status.nvim",
     },
+    event = "VimEnter",
+    after = "nvim-treesitter",
     config = function()
       require("dlvhdr.lualine")
     end,
@@ -145,16 +149,12 @@ return packer.startup(function(use)
 
   use({
     "lewis6991/gitsigns.nvim",
+    event = "BufRead",
     config = function()
       require("dlvhdr.gitsigns")
     end,
   })
-  use({
-    "mfussenegger/nvim-dap",
-    config = function()
-      require("dlvhdr.dap")
-    end,
-  })
+
   use({
     "windwp/nvim-autopairs",
     config = function()
@@ -179,12 +179,11 @@ return packer.startup(function(use)
 
   use({
     "lukas-reineke/indent-blankline.nvim",
+    event = "BufReadPre",
     config = function()
       require("dlvhdr.indent-blankline")
     end,
   })
-
-  use("tpope/vim-eunuch")
 
   use({
     "nvim-telescope/telescope.nvim",
@@ -196,7 +195,6 @@ return packer.startup(function(use)
       { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
       "nvim-lua/plenary.nvim",
       "folke/trouble.nvim",
-      "axkirillov/easypick.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
       "nvim-telescope/telescope-live-grep-args.nvim",
     },
@@ -241,21 +239,27 @@ return packer.startup(function(use)
   })
 
   use({
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    event = "BufReadPost",
+  })
+
+  use({
     "numToStr/Comment.nvim",
+    event = "BufRead",
+    keys = { "gc", "gcc", "gbc" },
     config = function()
       require("dlvhdr.comment")
     end,
-    requires = { "JoosepAlviste/nvim-ts-context-commentstring" },
   })
 
   use({
     "kylechui/nvim-surround",
+    event = "InsertEnter",
     config = function()
       require("nvim-surround").setup({})
     end,
   })
   use("christoomey/vim-tmux-navigator")
-  -- use("AndrewRadev/splitjoin.vim")
   use({
     "ruifm/gitlinker.nvim",
     config = function()
@@ -264,7 +268,7 @@ return packer.startup(function(use)
   })
 
   use({
-    "https://github.com/jxnblk/vim-mdx-js",
+    "jxnblk/vim-mdx-js",
     ft = { "mdx", "markdown.mdx" },
   })
 
@@ -276,22 +280,15 @@ return packer.startup(function(use)
   })
 
   use({
-    "ldelossa/gh.nvim",
-    config = function()
-      require("dlvhdr.gh-nvim")
-    end,
-    requires = { "ldelossa/litee.nvim" },
-  })
-
-  use({
     "williamboman/mason.nvim",
+    module = { "mason" },
+    cmd = { "Mason", "MasonInstall", "Mason*" },
     requires = { "williamboman/mason-lspconfig.nvim" },
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup()
     end,
   })
-  use("MunifTanjim/prettier.nvim")
 
   use({
     "Pocco81/auto-save.nvim",
@@ -299,6 +296,36 @@ return packer.startup(function(use)
       require("dlvhdr.auto-save")
     end,
   })
+
+  use({
+    "RRethy/vim-illuminate",
+    config = function()
+      require("dlvhdr.illuminate")
+    end,
+  })
+
+  -- use({
+  --   "ldelossa/gh.nvim",
+  --   config = function()
+  --     require("dlvhdr.gh-nvim")
+  --   end,
+  --   requires = { "ldelossa/litee.nvim" },
+  -- })
+  --
+  -- use("MunifTanjim/prettier.nvim")
+  --
+  -- use("tpope/vim-eunuch")
+  --
+  -- use("AndrewRadev/splitjoin.vim")
+  --
+  -- use({
+  --   "mfussenegger/nvim-dap",
+  --   config = function()
+  --     require("dlvhdr.dap")
+  --   end,
+  -- })
+  --
+  -- use({"axkirillov/easypick.nvim"})
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then

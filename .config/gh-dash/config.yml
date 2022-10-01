@@ -16,6 +16,8 @@ prSections:
     filters: "is:open repo:dlvhdr/gh-dash"
   - title: Closed
     filters: is:closed author:@me
+  - title: WCTB
+    filters: "is:pr repo:wix-private/wix-code-types-builder"
   - title: Subscribed
     filters: "\
       repo:nvim-telescope/telescope.nvim \
@@ -41,6 +43,13 @@ issuesSections:
 pager:
   diff: delta
 defaults:
+  layout:
+    prs:
+      repoName:
+        grow: true,
+        width: 10
+        hidden: false
+
   preview:
     open: false
     width: 55

@@ -1,3 +1,12 @@
+local ts_locals_ok, ts_locals = pcall(require, "nvim-treesitter.locals")
+if not ts_locals_ok then
+  return
+end
+local ts_utils_ok, ts_utils = pcall(require, "nvim-treesitter.ts_utils")
+if not ts_utils_ok then
+  return
+end
+
 local luasnip = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
 
@@ -8,9 +17,6 @@ local choice_node = luasnip.choice_node
 local snippet_node = luasnip.snippet_node
 local text_node = luasnip.text_node
 local dynamic_node = luasnip.dynamic_node
-
-local ts_locals = require("nvim-treesitter.locals")
-local ts_utils = require("nvim-treesitter.ts_utils")
 
 local get_node_text = vim.treesitter.get_node_text
 local transform = function(text, info)

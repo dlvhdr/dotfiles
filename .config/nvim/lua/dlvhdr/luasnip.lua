@@ -34,9 +34,6 @@ luasnip.config.set_config({
       passive = {
         hl_group = "None",
       },
-      snippet_passive = {
-        virt_text = { { "●", "mkdCodeEnd" } },
-      },
     },
   },
   -- treesitter-hl has 100, use something higher (default is 200).

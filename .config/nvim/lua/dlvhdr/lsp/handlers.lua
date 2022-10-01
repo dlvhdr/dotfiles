@@ -1,4 +1,7 @@
-local lsp_status = require("lsp-status")
+local lsp_status_ok, lsp_status = pcall(require, "lsp-status")
+if not lsp_status_ok then
+  return
+end
 
 local M = {}
 
@@ -30,7 +33,7 @@ M.setup = function()
 end
 
 local function lsp_highlight_document(client)
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
       augroup lsp_document_highlight
@@ -87,13 +90,13 @@ M.on_attach = function(client, bufnr)
   end
 
   if client.name == "tsserver" then
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end
 
   if client.name == "sumneko_lua" then
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end
 
   -- require("dlvhdr.lsp.lsp_signature").setup(bufnr)
@@ -136,7 +139,6 @@ lsp_status.config({
   status_symbol = " ",
   current_function = true,
   diagnostics = false,
-  kind_labels = require("lspkind").presets["default"],
 })
 capabilities = vim.tbl_extend("keep", capabilities or {}, lsp_status.capabilities) or {}
 
