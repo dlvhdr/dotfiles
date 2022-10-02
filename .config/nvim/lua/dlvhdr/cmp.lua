@@ -63,10 +63,13 @@ cmp.setup({
   }),
   sources = {
     { name = "nvim_lsp_signature_help" },
-    { name = "luasnip" },
     { name = "nvim_lsp" },
-    { name = "buffer", keyword_length = 5 },
-    { name = "emoji" },
+    {
+      name = "luasnip",
+      keyword_length = 2,
+      priority = 50,
+    },
+    { name = "buffer", keyword_length = 3 },
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
@@ -95,10 +98,7 @@ cmp.setup({
     comparators = {
       cmp.config.compare.sort_text,
       cmp.config.compare.offset,
-      -- cmp.config.compare.exact,
       cmp.config.compare.score,
-      -- cmp.config.compare.kind,
-      -- cmp.config.compare.length,
       cmp.config.compare.order,
     },
   },
@@ -108,6 +108,7 @@ cmp.setup.cmdline("/", {
   mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = "buffer" },
+    { name = "path" },
   },
 })
 
