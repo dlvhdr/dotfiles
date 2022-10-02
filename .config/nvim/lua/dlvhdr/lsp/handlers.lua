@@ -88,6 +88,16 @@ M.on_attach = function(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 10000)")
   end
+  if client.server_capabilities.documentFormattingProvider and client.name ~= "sumneko_lua" then
+    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+      callback = function()
+        if vim.lsp.buf.server_ready() then
+          vim.lsp.buf.format(nil, 3000)
+        end
+      end,
+      group = vim.api.nvim_create_augroup("LSPFormat", { clear = true }),
+    })
+  end
 
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false

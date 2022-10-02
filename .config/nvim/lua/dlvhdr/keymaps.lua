@@ -6,6 +6,7 @@ keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
 
 -- save and quit
+keymap("n", "<leader>q", ":silent Bdelete<CR>", opts)
 keymap("n", "<leader>w", ":silent write<CR>", opts)
 keymap("n", "<leader>Q", ":quitall!<CR>", opts)
 keymap("n", "<Leader>W", ":wall<CR>", opts)
