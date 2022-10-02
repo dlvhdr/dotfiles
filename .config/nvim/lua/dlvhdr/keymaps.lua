@@ -10,6 +10,9 @@ keymap("n", "<leader>w", ":silent write<CR>", opts)
 keymap("n", "<leader>Q", ":quitall!<CR>", opts)
 keymap("n", "<Leader>W", ":wall<CR>", opts)
 
+-- open new buffer
+keymap("n", "<leader>n", ":enew<CR>", opts)
+
 keymap("n", "x", '"_x', opts)
 keymap("x", "<leader>p", '"_dP', opts)
 keymap("n", "Y", "y$", opts)
