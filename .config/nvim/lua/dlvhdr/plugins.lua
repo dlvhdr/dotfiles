@@ -304,6 +304,18 @@ return packer.startup(function(use)
     end,
   })
 
+  use({
+    "utilyre/barbecue.nvim",
+    config = function()
+      require("dlvhdr.barbecue")
+    end,
+    requires = {
+      "neovim/nvim-lspconfig",
+      "smiteshp/nvim-navic",
+      "kyazdani42/nvim-web-devicons", -- optional
+    },
+  })
+
   -- use({
   --   "ldelossa/gh.nvim",
   --   config = function()

@@ -90,4 +90,4 @@ function _G.tabline()
   return table.concat(tabline, "")
 end
 
-vim.cmd([[set tabline=%!v:lua.tabline()]])
+-- vim.cmd([[set tabline=%!v:lua.tabline()]])

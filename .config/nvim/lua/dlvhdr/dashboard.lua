@@ -40,6 +40,6 @@ vim.api.nvim_command([[autocmd!]])
 vim.api.nvim_command(
   [[autocmd FileType dashboard setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell nolist nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs=]]
 )
-vim.api.nvim_command([[autocmd FileType dashboard set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2]])
+vim.api.nvim_command([[autocmd FileType dashboard set showtabline=0 | autocmd BufLeave <buffer> set showtabline=1]])
 vim.api.nvim_command([[autocmd FileType dashboard nnoremap <silent> <buffer> q :q<CR>]])
 vim.api.nvim_command([[augroup END]])
