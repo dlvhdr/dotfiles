@@ -34,6 +34,9 @@ keymap("n", "Q", "<Nop>", opts)
 keymap("n", "<leader><leader>", "<C-^>", opts)
 keymap("n", "<leader><tab>", "<C-^>", opts)
 
+-- LSP
+keymap("n", "<leader>lr", "<cmd>LspRestart<CR>", opts)
+
 -- Telescope
 keymap("n", "<leader>*", "<cmd>Telescope grep_string<cr>", opts)
 -- keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
