@@ -1,7 +1,12 @@
 [user]
   name = Dolev Hadar
-  email = dolevh@wix.com
-  signingkey = A1F40941A30C70DC
+
+[includeIf "gitdir:~/dotfiles/"]
+  path = config-personal
+[includeIf "gitdir:~/code/personal/"]
+  path = config-personal
+[includeIf "gitdir:~/code/wix/"]
+  path = config-wix
 
 [init]
   defaultBranch = main

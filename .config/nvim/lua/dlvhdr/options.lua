@@ -70,6 +70,7 @@ opt.signcolumn = "yes"
 opt.timeoutlen = 1000
 opt.pumheight = 10
 opt.pumwidth = 20
+opt.cmdheight = 0
 -- opt.pumblend = 3
 opt.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,winpos,terminal"
 -- opt.diffopt:append("vertical") -- Show diffs in vertical splits

@@ -12,7 +12,7 @@ init-author-url=https://dlvhdr.me
 init-version=0.1.0
 init-license=MIT
 
-registry=https://npm.dev.wixpress.com
+@wix:registry=https://npm.dev.wixpress.com
 
 store-dir=${XDG_DATA_HOME}/pnpm-store
 
