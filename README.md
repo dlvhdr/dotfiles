@@ -20,7 +20,8 @@ Features:
 - Plugin manager: packer
 - Statue line: lualine
 - Completions: nvim-cmp
-- LSP
+- LSP 
+- Linting and formatting: null-ls
 - Syntax highlighting: treesitter
 - Fuzzy finder: Telescope
 - File tree: nvim-tree
