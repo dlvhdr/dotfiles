@@ -8,6 +8,9 @@
 [includeIf "gitdir:~/code/wix/"]
   path = config-wix
 
+[commit]
+	gpgsign = true
+
 [init]
   defaultBranch = main
 
