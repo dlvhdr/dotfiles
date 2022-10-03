@@ -21,7 +21,7 @@ Features:
 - Statue line: lualine
 - Completions: nvim-cmp
 - LSP 
-- Linting and formatting: null-ls
+- Linting and formatting null-ls
 - Syntax highlighting: treesitter
 - Fuzzy finder: Telescope
 - File tree: nvim-tree
