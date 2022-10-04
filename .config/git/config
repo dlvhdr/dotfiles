@@ -11,6 +11,15 @@
 [commit]
 	gpgsign = true
 
+[tag]
+	gpgsign = true
+
+[gpg]
+	program = gpg
+
+[format]
+	signOff = true
+
 [init]
   defaultBranch = main
 
@@ -30,9 +39,6 @@
 [help]
   # Autocorrect mistyped commands.
   autocorrect = 1
-
-[gpg]
-	program = gpg
 
 [rerere]
   # Remember my merges
@@ -90,6 +96,7 @@
 [log]
   decorate = auto
   abbrevCommit = true
+  showSignature = false
 
 [alias]
   aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
@@ -142,9 +149,6 @@
   review = !$EDITOR $(git files) +\"bufdo Gitsigns diffthis master\"
 	reviewone = !$EDITOR -p +\"tabdo Gdiff ${review_base:-origin/master}\" +\"let g:gitgutter_diff_base = '${review_base:-origin/master}'\"
 	reviewf = !$EDITOR -p $(git files | fzf -m --reverse --height 40%) +\"tabdo Gdiff ${review_base:-origin/master}\" +\"let g:gitgutter_diff_base = '${review_base:-origin/master}'\"
-
-[format]
-	signOff = true
 
 [color]
   pager = true
@@ -205,3 +209,5 @@
     line-numbers-right-style = "#3d4163"
     line-numbers-left-format = "{nm:>4}│"
     line-numbers-right-format = "{np:>4}│"
+[credential]
+	helper = osxkeychain
