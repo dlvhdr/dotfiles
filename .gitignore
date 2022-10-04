@@ -47,3 +47,5 @@ error.log
 
 lvim
 
+# spotify
+.config/spotify-tui/
