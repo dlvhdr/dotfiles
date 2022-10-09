@@ -13,6 +13,7 @@ set -Ux XDG_RUNTIME_DIR "/tmp"
 set -Ux XDG_STATE_HOME "$HOME/.local/state"
 set -Ux GOPATH "$CODE/go"
 
+set -Ux GNUPGHOME "$HOME/.gnupg"
 set -Ux GEM_HOME "$XDG_CONFIG_HOME/.gem"
 set -Ux ELECTRON_CONFIG_CACHE "$XDG_CONFIG_HOME/.electron"
 set -Ux DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
