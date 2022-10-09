@@ -32,7 +32,7 @@ prSections:
       repo:CodinGame/monaco-vscode-api"
 issuesSections:
   - title: Creator
-    filters: is:open author:@me
+    filters: author:@me
   - title: Commented
     filters: is:open commenter:@me
   - title: gh-dash
@@ -51,7 +51,7 @@ defaults:
         hidden: false
 
   preview:
-    open: false
+    open: true
     width: 55
   prsLimit: 20
   issuesLimit: 20
@@ -75,7 +75,7 @@ theme:
       primary: "#E2E1ED"
       secondary: "#666CA6"
       inverted: "#242347"
-      faint: "#3E4057"
+      faint: "#a1a4bf"
       warning: "#F23D5C"
       success: "#3DF294"
     background:
