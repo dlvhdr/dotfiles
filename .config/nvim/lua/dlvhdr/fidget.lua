@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-fidget.setup({})
+-- fidget.setup({})
 
 -- fidget.setup({
 --   text = {

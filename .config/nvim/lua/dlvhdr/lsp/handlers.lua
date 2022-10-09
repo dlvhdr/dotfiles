@@ -86,7 +86,7 @@ end
 
 M.on_attach = function(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 10000)")
+    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({timeout_ms = 3000, async = false})")
   end
   if client.server_capabilities.documentFormattingProvider and client.name ~= "sumneko_lua" then
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {

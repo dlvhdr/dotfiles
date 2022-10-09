@@ -129,6 +129,34 @@ return packer.startup(function(use)
   })
 
   use({
+    "vigoux/notifier.nvim",
+    config = function()
+      require("notifier").setup({
+        -- You configuration here
+      })
+    end,
+  })
+
+  use({
+    "rcarriga/nvim-notify",
+    config = function()
+      require("dlvhdr.notify")
+    end,
+  })
+
+  use({
+    "folke/noice.nvim",
+    event = "VimEnter",
+    config = function()
+      require("dlvhdr.noice")
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+  })
+
+  use({
     "nvim-lualine/lualine.nvim",
     requires = {
       "nvim-lua/lsp-status.nvim",
@@ -159,13 +187,6 @@ return packer.startup(function(use)
     "windwp/nvim-autopairs",
     config = function()
       require("dlvhdr.autopairs")
-    end,
-  })
-
-  use({
-    "j-hui/fidget.nvim",
-    config = function()
-      require("dlvhdr.fidget")
     end,
   })
 
