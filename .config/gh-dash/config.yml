@@ -75,7 +75,7 @@ theme:
       primary: "#E2E1ED"
       secondary: "#666CA6"
       inverted: "#242347"
-      faint: "#a1a4bf"
+      faint: "#797d9c"
       warning: "#F23D5C"
       success: "#3DF294"
     background:
