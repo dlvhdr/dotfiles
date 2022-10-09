@@ -97,13 +97,6 @@ return packer.startup(function(use)
       require("dlvhdr.treesitter")
     end,
   })
-  use({
-    "nvim-treesitter/nvim-treesitter-context",
-    after = "nvim-treesitter",
-    config = function()
-      require("treesitter-context").setup({})
-    end,
-  })
 
   use({
     "nvim-treesitter/playground",
@@ -348,8 +341,6 @@ return packer.startup(function(use)
   -- use("MunifTanjim/prettier.nvim")
   --
   -- use("tpope/vim-eunuch")
-  --
-  -- use("AndrewRadev/splitjoin.vim")
   --
   -- use({
   --   "mfussenegger/nvim-dap",

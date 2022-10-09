@@ -23,7 +23,7 @@ configs.setup({
     additional_vim_regex_highlighting = false,
   },
   query_linter = {
-    enable = true,
+    enable = false,
     use_virtual_text = true,
     lint_events = { "BufWrite", "CursorHold" },
     is_supported = function(lang)
@@ -31,7 +31,7 @@ configs.setup({
     end,
   },
   playground = {
-    enable = true,
+    enable = false,
     disable = {},
     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
     persist_queries = false, -- Whether the query persists across vim sessions
