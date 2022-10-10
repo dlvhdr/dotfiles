@@ -1,8 +1,8 @@
 # open chrome
-alt - c : open -a /Applications/Google\ Chrome.app
+alt - f : open -a /Applications/Google\ Chrome.app
 
-# open finder
-alt - f : open -a /System/Library/CoreServices/Finder.app
+# open firefox
+alt - c : open -a /Applications/Firefox.app
 
 # open vscode
 alt - v : open -a /Applications/Visual\ Studio\ Code.app
