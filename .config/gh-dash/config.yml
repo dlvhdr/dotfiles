@@ -35,6 +35,8 @@ issuesSections:
     filters: author:@me
   - title: Commented
     filters: is:open commenter:@me
+  - title: dlvhdr
+    filters: org:dlvhdr
   - title: gh-dash
     filters: is:open repo:dlvhdr/gh-dash
   - title: Assigned
