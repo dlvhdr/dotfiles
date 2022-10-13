@@ -42,7 +42,6 @@ return packer.startup(function(use)
 
   use("lewis6991/impatient.nvim")
 
-  use({ "nvim-lua/plenary.nvim", module = "plenary" })
 
   use({
     "folke/tokyonight.nvim",
@@ -330,6 +329,12 @@ return packer.startup(function(use)
     },
   })
 
+  use({
+    "pwntester/octo.nvim",
+    config = function()
+      require("dlvhdr.octo")
+    end,
+  })
   -- use({
   --   "ldelossa/gh.nvim",
   --   config = function()

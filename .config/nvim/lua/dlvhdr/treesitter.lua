@@ -45,3 +45,6 @@ configs.setup({
   },
   ensure_installed = "all",
 })
+
+local parser_config = parsers.get_parser_configs()
+parser_config.markdown.filetype_to_parsername = "octo"
