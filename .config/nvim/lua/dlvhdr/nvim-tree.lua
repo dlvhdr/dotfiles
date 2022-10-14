@@ -8,8 +8,6 @@ tree.setup({
     special_files = {
       "package.json",
       "README.md",
-      "src",
-      "packages",
       "index.js",
       "index.ts",
       "index.tsx",
@@ -85,9 +83,11 @@ tree.setup({
       "__pycache__",
       "^\\.idea",
       "^\\.next",
+      "node_modules",
+      ".yarn",
+      ".husky",
     },
     exclude = {
-      "^node_modules",
       "^dist",
     },
   },
@@ -116,6 +116,10 @@ tree.setup({
       custom_only = false,
     },
     preserve_window_proportions = true,
+    adaptive_size = true,
+  },
+  filesystem_watchers = {
+    enable = true,
   },
   update_cwd = false,
 })

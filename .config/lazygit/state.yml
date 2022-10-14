@@ -1,12 +1,15 @@
 lastupdatecheck: 0
 recentrepos:
 - /Users/dolevh/dotfiles
+- /Users/dolevh/code/wix/wix-code-devex-mono
+- /Users/dolevh/code/personal/github.com/dlvhdr/typescript-lsp-poc
+- /Users/dolevh/code/personal/github.com/ldelossa/litee.nvim
+- /Users/dolevh/code/personal/github.com/ldelossa/gh.nvim
 - /Users/dolevh/code/personal/gh-dash
 - /Users/dolevh/code/personal/dlvhdr.me
 - /Users/dolevh/code/personal/dlvhdr
 - /Users/dolevh/code/wix/cloud-runtime
 - /Users/dolevh/code/wix/wix-code-client
-- /Users/dolevh/code/wix/wix-code-devex-mono
 - /Users/dolevh/code/wix/wix-code-types-service
 - /Users/dolevh/code/wix/wix-cli
 - /Users/dolevh/code/wix/wix-code-types-builder

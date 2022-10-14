@@ -42,6 +42,7 @@ return packer.startup(function(use)
 
   use("lewis6991/impatient.nvim")
 
+  use({ "nvim-lua/plenary.nvim" })
 
   use({
     "folke/tokyonight.nvim",
@@ -50,6 +51,22 @@ return packer.startup(function(use)
       require("dlvhdr.theme")
       require("dlvhdr.colors")
       require("dlvhdr.tabline")
+    end,
+  })
+  use({
+    "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("nvim-web-devicons").setup({
+        default = true,
+        override = {
+          default_icon = {
+            icon = "",
+            color = "#c0caf5",
+            cterm_color = "65",
+            name = "Default",
+          },
+        },
+      })
     end,
   })
 
@@ -120,14 +137,12 @@ return packer.startup(function(use)
     config = "require('dlvhdr.lightbulb')",
   })
 
-  use({
-    "vigoux/notifier.nvim",
-    config = function()
-      require("notifier").setup({
-        -- You configuration here
-      })
-    end,
-  })
+  -- use({
+  --   "vigoux/notifier.nvim",
+  --   config = function()
+  --     require("notifier").setup({})
+  --   end,
+  -- })
 
   use({
     "rcarriga/nvim-notify",
@@ -182,14 +197,6 @@ return packer.startup(function(use)
     end,
   })
 
-  -- Theme
-  use({
-    "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("nvim-web-devicons").setup({ default = true })
-    end,
-  })
-
   use({
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
@@ -197,6 +204,8 @@ return packer.startup(function(use)
       require("dlvhdr.indent-blankline")
     end,
   })
+
+  use({ "natecraddock/telescope-zf-native.nvim" })
 
   use({
     "nvim-telescope/telescope.nvim",
@@ -259,7 +268,6 @@ return packer.startup(function(use)
   use({
     "numToStr/Comment.nvim",
     event = "BufRead",
-    keys = { "gc", "gcc", "gbc" },
     config = function()
       require("dlvhdr.comment")
     end,
@@ -335,12 +343,14 @@ return packer.startup(function(use)
       require("dlvhdr.octo")
     end,
   })
+
   -- use({
-  --   "ldelossa/gh.nvim",
+  --   "~/code/personal/github.com/ldelossa/gh.nvim",
+  --   -- cmd = { "GHOpenPR" },
   --   config = function()
   --     require("dlvhdr.gh-nvim")
   --   end,
-  --   requires = { "ldelossa/litee.nvim" },
+  --   requires = { { "~/code/personal/github.com/ldelossa/litee.nvim" } },
   -- })
   --
   -- use("MunifTanjim/prettier.nvim")

@@ -31,6 +31,19 @@ local prev_completion = function(fallback)
   end
 end
 
+local function border(hl_name)
+  return {
+    { "╭", hl_name },
+    { "─", hl_name },
+    { "╮", hl_name },
+    { "│", hl_name },
+    { "╯", hl_name },
+    { "─", hl_name },
+    { "╰", hl_name },
+    { "│", hl_name },
+  }
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -41,8 +54,12 @@ cmp.setup({
   --   documentation = cmp.config.window.bordered(),
   -- },
   window = {
+    completion = {
+      border = border("CmpBorder"),
+      winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+    },
     documentation = {
-      winhighlight = "NormalFloat:CmpDocumentation,FloatBorder:CmpDocumentationBorder",
+      border = border("CmpDocBorder"),
     },
   },
   mapping = cmp.mapping.preset.insert({
@@ -72,22 +89,11 @@ cmp.setup({
     { name = "buffer", keyword_length = 3 },
   },
   formatting = {
-    fields = { "kind", "abbr", "menu" },
-    format = lspkind.cmp_format({
-      with_text = false,
-      maxwidth = 50,
-      before = function(entry, vim_item)
-        vim_item.menu = ({
-          nvim_lsp = "[ LSP]",
-          nvim_lua = "[ Lua]",
-          treesitter = "[ Treesitter]",
-          path = "[ﱮ Path]",
-          buffer = "[﬘ Buffer]",
-          luasnip = "[ Snippet]",
-        })[entry.source.name]
-        return vim_item
-      end,
-    }),
+    format = function(_, vim_item)
+      local icons = lspkind.symbol_map
+      vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+      return vim_item
+    end,
   },
   experimental = {
     ghost_text = {

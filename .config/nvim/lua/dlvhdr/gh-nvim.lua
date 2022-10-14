@@ -1,15 +1,23 @@
-local lib_status_ok, litee_lib = pcall(require, "litee.lib")
-if not lib_status_ok then
-  return
-end
+-- local lib_status_ok, litee_lib = pcall(require, "litee.lib")
+-- if not lib_status_ok then
+--   return
+-- end
 
-local gh_status_ok, litee_gh = pcall(require, "gh")
-if not gh_status_ok then
-  return
-end
+-- local gh_status_ok, litee_gh = pcall(require, "litee.gh")
+-- if not gh_status_ok then
+--   return
+-- end
 
-litee_lib.setup()
-litee_gh.setup({
-  icon_set = "nerd",
-  prefer_https_remote = true,
+require("litee.lib").setup({
+  tree = {
+    icon_set = "nerd",
+  },
+  panel = {
+    orientation = "right",
+    panel_size = 35,
+  },
 })
+
+require("litee.gh").setup({ icon_set = "nerd" })
+
+require("lunamark")

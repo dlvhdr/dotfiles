@@ -22,3 +22,23 @@ vim.cmd("hi! TelescopeMatching guifg=" .. colors.warning .. " gui=bold")
 vim.cmd("hi! TreesitterContext guibg=" .. colors.bg_highlight)
 vim.cmd("hi! NvimTreeFolderIcon guifg=" .. colors.blue)
 vim.cmd("hi! BarbecueMod guibg=NONE guifg=" .. colors.yellow)
+
+vim.cmd("hi! GHThreadSep guibg=" .. colors.bg_float)
+vim.cmd("hi! markdownH1 guibg=" .. colors.bg_float)
+
+vim.cmd("hi! CmpBorder guibg=none guifg=" .. colors.fg_gutter)
+vim.cmd("hi! CmpDocBorder guibg=none guifg=" .. colors.fg_gutter)
+
+vim.cmd("hi! TelescopeBorder guibg=none guifg=" .. colors.fg_gutter)
+vim.cmd("hi! TelescopePromptTitle guibg=none guifg=" .. colors.blue)
+vim.cmd("hi! TelescopeResultsTitle guibg=none guifg=" .. colors.teal)
+vim.cmd("hi! TelescopePreviewTitle guibg=none guifg=" .. colors.fg)
+vim.cmd("hi! TelescopePromptPrefix guibg=none guifg=" .. colors.blue)
+vim.cmd("hi! TelescopeResultsDiffAdd guibg=none guifg=" .. colors.green)
+vim.cmd("hi! TelescopeResultsDiffChange guibg=none guifg=" .. colors.yellow)
+vim.cmd("hi! TelescopeResultsDiffDelete guibg=none guifg=" .. colors.red)
+vim.cmd("hi! TelescopeMatching guifg=" .. colors.green .. " gui=bold")
+
+vim.cmd("hi! NvimTreeSpecialFile guifg=" .. colors.yellow .. " gui=bold")
+
+vim.cmd("hi! DevIconFish guifg=" .. colors.green)

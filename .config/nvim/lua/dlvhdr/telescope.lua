@@ -29,7 +29,11 @@ telescope.setup({
       "--smart-case",
       "--hidden",
       "--fixed-strings",
+      "--trim",
     },
+    prompt_prefix = "   ",
+    selection_caret = "  ",
+    entry_prefix = "  ",
     mappings = {
       i = {
         ["<c-t>"] = trouble.open_with_trouble,
@@ -50,7 +54,10 @@ telescope.setup({
       },
     },
     winblend = 0,
-    path_display = { truncate = 5 },
+    set_env = { ["COLORTERM"] = "truecolor" },
+    border = {},
+    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    path_display = { "truncate" },
     get_status_text = function()
       return ""
     end,
@@ -101,6 +108,7 @@ telescope.setup({
   },
   pickers = {
     live_grep = {
+      disable_coordinates = true,
       layout_config = {
         horizontal = {
           preview_width = 0.55,
@@ -109,19 +117,33 @@ telescope.setup({
     },
   },
   extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = "smart_case",
+    extensions = {
+      ["zf-native"] = {
+        file = {
+          enable = true,
+          highlight_results = true,
+          -- enable zf filename match priority
+          match_filename = true,
+        },
+        generic = {
+          enable = true,
+          highlight_results = true,
+          match_filename = false,
+        },
+      },
     },
+    -- fzf = {
+    --   fuzzy = true,
+    --   override_generic_sorter = true,
+    --   override_file_sorter = true,
+    --   case_mode = "smart_case",
+    -- },
     ["ui-select"] = {
       require("telescope.themes").get_dropdown({}),
     },
     live_grep_args = {
+      disable_coordinates = true,
       auto_quoting = true, -- enable/disable auto-quoting
-      -- override default mappings
-      -- default_mappings = {},
       mappings = { -- extend mappings
         i = {
           ["<C-k>"] = lga_actions.quote_prompt(),
@@ -136,7 +158,8 @@ telescope.setup({
   },
 })
 
-telescope.load_extension("fzf")
+-- telescope.load_extension("fzf")
+require("telescope").load_extension("zf-native")
 telescope.load_extension("ui-select")
 telescope.load_extension("live_grep_args")
 

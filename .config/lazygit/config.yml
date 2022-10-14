@@ -26,6 +26,8 @@ gui:
   commitLength:
     show: true
   skipNoStagedFilesWarning: false
+os:
+  openCommand: session_nvim {{filename}}
 git:
   overrideGpg: true
   paging:
@@ -35,6 +37,12 @@ keybinding:
   universal:
     quit-alt1: "<esc>"
 customCommands:
+  - key: "R"
+    command: "gh repo view --web"
+    description: "view repo on github"
+    context: "global"
+    loadingText: "opening github..."
+    subprocess: false
   - key: "C"
     command: "commit"
     description: "commit with gum"
