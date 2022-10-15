@@ -21,6 +21,7 @@ opt.fillchars = {
   eob = " ",
   foldclose = "",
   foldopen = "",
+  fold = " ",
   msgsep = "─",
 }
 opt.conceallevel = 1

@@ -42,3 +42,6 @@ vim.cmd("hi! TelescopeMatching guifg=" .. colors.green .. " gui=bold")
 vim.cmd("hi! NvimTreeSpecialFile guifg=" .. colors.yellow .. " gui=bold")
 
 vim.cmd("hi! DevIconFish guifg=" .. colors.green)
+
+vim.cmd("hi! Folded gui=italic guibg=" .. colors.bg_popup)
+vim.cmd("hi! FoldColumn guifg=" .. colors.blue)

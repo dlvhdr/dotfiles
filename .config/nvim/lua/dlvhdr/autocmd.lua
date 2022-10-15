@@ -41,3 +41,10 @@ vim.api.nvim_create_autocmd({ "BufRead,BufNewFile" }, {
     vim.o.conceallevel = 2
   end,
 })
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = { "DiffviewViewEnter", "DiffviewViewLeave" },
+  callback = function()
+    require("barbecue").toggle()
+  end,
+})
