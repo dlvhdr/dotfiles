@@ -1,0 +1,6 @@
+set scrolloff 8
+set icons on
+
+map gd cd ~/Downloads
+map D delete
+map x cut
