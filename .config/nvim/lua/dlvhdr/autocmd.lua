@@ -7,9 +7,6 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 
 vim.cmd("language en_US.utf-8")
 
--- vim.cmd("autocmd User LspProgressUpdate redrawstatus")
--- vim.cmd("autocmd User LspRequest redrawstatus")
-
 vim.cmd("command! W wqa")
 vim.cmd("command! Q wqa!")
 

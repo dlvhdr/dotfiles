@@ -29,7 +29,6 @@ opt.showmode = false
 opt.laststatus = 3
 opt.mouse = "a"
 opt.hidden = true
-opt.shortmess = "filnxtToOFIAS"
 opt.wildignore = opt.wildignore + { "**/coverage/*", "**/node_modules/*", "**/.git/*" }
 opt.termguicolors = true
 opt.completeopt = { "menu", "menuone", "noselect" }

@@ -94,7 +94,7 @@ return packer.startup(function(use)
   })
   use({ "b0o/schemastore.nvim" })
 
-  use({ "folke/lua-dev.nvim" })
+  use({ "folke/neodev.nvim" })
   use({
     "glepnir/lspsaga.nvim",
     branch = "main",
@@ -136,13 +136,6 @@ return packer.startup(function(use)
   use("kosayoda/nvim-lightbulb", {
     config = "require('dlvhdr.lightbulb')",
   })
-
-  -- use({
-  --   "vigoux/notifier.nvim",
-  --   config = function()
-  --     require("notifier").setup({})
-  --   end,
-  -- })
 
   use({
     "rcarriga/nvim-notify",
@@ -341,6 +334,13 @@ return packer.startup(function(use)
     "pwntester/octo.nvim",
     config = function()
       require("dlvhdr.octo")
+    end,
+  })
+
+  use({
+    "axelvc/template-string.nvim",
+    config = function()
+      require("template-string").setup({})
     end,
   })
 
