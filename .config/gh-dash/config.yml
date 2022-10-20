@@ -1,19 +1,27 @@
 prSections:
-  - title: My Pull Requests
+  - title: Mine
     filters: is:open author:@me
-  - title: Needs My Review
+  - title: Review
     filters: is:open review-requested:@me
   - title: DevEnv
-    filters: "is:open draft:false org:wix-private author:Galcarmi author:nemni8 author:seanoch author:haimre"
-  - title: Commented
-    filters: commenter:@me
-  - title: "@wix"
-    filters: "-author:@me -author:app/wix-loki-bot \
+    filters: "is:open draft:false org:wix-private \
+      author:Galcarmi \
+      author:nemni8 \
+      author:seanoch \
+      author:haimre"
+  - title: "@wix/frontend"
+    filters: "state:open state:merged \
+      -author:@me -author:app/wix-loki-bot \
       repo:wix-private/wix-code-devex \
       repo:wix-private/wix-code-client \
       repo:wix-incubator/corvid-types"
+  - title: "@wix/backend"
+    filters: "-author:@me -author:app/wix-loki-bot \
+      repo:wix-private/cloud-runtime"
   - title: gh-dash
     filters: "is:open repo:dlvhdr/gh-dash"
+  - title: Commented
+    filters: commenter:@me
   - title: Closed
     filters: is:closed author:@me
   - title: WCTB

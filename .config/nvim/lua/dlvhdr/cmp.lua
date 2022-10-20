@@ -110,22 +110,22 @@ cmp.setup({
   },
 })
 
--- cmp.setup.cmdline("/", {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = {
---     { name = "buffer" },
---     { name = "path" },
---   },
--- })
---
--- cmp.setup.cmdline(":", {
---   mapping = cmp.mapping.preset.cmdline(),
---   sources = cmp.config.sources({
---     { name = "path" },
---   }, {
---     { name = "cmdline" },
---   }),
--- })
+cmp.setup.cmdline("/", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = "buffer" },
+    { name = "path" },
+  },
+})
+
+cmp.setup.cmdline(":", {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = "path" },
+  }, {
+    { name = "cmdline" },
+  }),
+})
 
 -- ["<Tab>"] = cmp.mapping(function(fallback)
 --   if luasnip.expand_or_jumpable() then

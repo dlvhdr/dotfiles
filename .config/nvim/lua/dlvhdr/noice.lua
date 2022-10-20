@@ -2,14 +2,20 @@ require("noice").setup({
   cmdline = {
     view = "cmdline_popup",
     opts = { buf_options = { filetype = "vim" } },
-    icons = {
-      ["/"] = {
-        icon = " ",
-        hl_group = "DiagnosticInfo",
-      },
-      ["?"] = { icon = " ", hl_group = "DiagnosticInfo" },
-      [":"] = { icon = " ", hl_group = "DiagnosticInfo", firstc = false },
+    format = {
+      cmdline = { pattern = "^:", icon = "" },
+      search = { pattern = "^[?/]", icon = " ", conceal = false },
+      filter = { pattern = "^:%s*!", icon = "$", opts = { buf_options = { filetype = "sh" } } },
+      lua = { pattern = "^:%s*lua%s+", icon = "", opts = { buf_options = { filetype = "lua" } } },
     },
+  },
+  messages = {
+    enabled = true,
+    view = "mini",
+    view_error = "mini",
+    view_warn = "mini",
+    view_history = "split",
+    view_search = "virtualtext",
   },
   routes = {
     {
@@ -20,23 +26,10 @@ require("noice").setup({
       opts = { skip = true },
     },
     {
-      view = "virtualtext",
-      filter = {
-        event = "msg_show",
-        kind = "search_count",
-      },
-    },
-    {
-      view = "mini",
-      filter = {
-        event = "msg_show",
-      },
-    },
-    {
       view = "split",
       filter = {
         event = "msg_show",
-        min_height = 6,
+        min_height = 4,
       },
     },
     {
@@ -62,26 +55,8 @@ require("noice").setup({
         col = "50%",
       },
       size = {
-        width = 60,
+        width = "auto",
         height = "auto",
-      },
-    },
-    popupmenu = {
-      relative = "editor",
-      position = {
-        row = 8,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = 10,
-      },
-      border = {
-        style = "rounded",
-        padding = { 0, 1 },
-      },
-      win_options = {
-        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
       },
     },
   },
