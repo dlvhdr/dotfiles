@@ -4,7 +4,8 @@ require("noice").setup({
     opts = { buf_options = { filetype = "vim" } },
     format = {
       cmdline = { pattern = "^:", icon = "" },
-      search = { pattern = "^[?/]", icon = " ", conceal = false },
+      search_down = { kind = "search", pattern = "^/", icon = " ", ft = "regex" },
+      search_up = { kind = "search", pattern = "^%?", icon = " ", ft = "regex" },
       filter = { pattern = "^:%s*!", icon = "$", opts = { buf_options = { filetype = "sh" } } },
       lua = { pattern = "^:%s*lua%s+", icon = "", opts = { buf_options = { filetype = "lua" } } },
     },
