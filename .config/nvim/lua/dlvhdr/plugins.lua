@@ -216,7 +216,7 @@ return packer.startup(function(use)
   })
 
   use({
-    "norcalli/nvim-colorizer.lua",
+    "NvChad/nvim-colorizer.lua",
     config = function()
       require("dlvhdr.colorizer")
     end,

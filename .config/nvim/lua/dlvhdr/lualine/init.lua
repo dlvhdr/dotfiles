@@ -46,6 +46,7 @@ require("lualine").setup({
       components.branch,
       components.diff,
     },
+    lualine_c = { "searchcount" },
     lualine_x = {
       components.treesitter,
       components.lsp,
