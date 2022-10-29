@@ -27,6 +27,9 @@
   ff = only
   rebase = true
 
+[rebase]
+  updateRefs = true
+
 [push]
   default = current
   autoSetupRemote = true
