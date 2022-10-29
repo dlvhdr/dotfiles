@@ -31,11 +31,11 @@ packer.init({
 })
 
 -- Automatically regenerate compiled loader file on save
-vim.api.nvim_create_autocmd("BufWritePost", {
-  command = "source <afile> | PackerCompile",
-  group = vim.api.nvim_create_augroup("Packer", { clear = true }),
-  pattern = "plugins.lua",
-})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--   command = "source <afile> | PackerCompile",
+--   group = vim.api.nvim_create_augroup("Packer", { clear = true }),
+--   pattern = "plugins.lua",
+-- })
 
 return packer.startup(function(use)
   use("wbthomason/packer.nvim")
@@ -138,13 +138,6 @@ return packer.startup(function(use)
   })
 
   use({
-    "rcarriga/nvim-notify",
-    config = function()
-      require("dlvhdr.notify")
-    end,
-  })
-
-  use({
     "folke/noice.nvim",
     event = "VimEnter",
     config = function()
@@ -152,7 +145,6 @@ return packer.startup(function(use)
     end,
     requires = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
     },
   })
 
@@ -299,8 +291,7 @@ return packer.startup(function(use)
     cmd = { "Mason", "MasonInstall", "Mason*" },
     requires = { "williamboman/mason-lspconfig.nvim" },
     config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup()
+      require("dlvhdr.mason")
     end,
   })
 

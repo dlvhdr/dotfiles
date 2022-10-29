@@ -50,9 +50,6 @@ cmp.setup({
       luasnip.lsp_expand(args.body)
     end,
   },
-  -- window = {
-  --   documentation = cmp.config.window.bordered(),
-  -- },
   window = {
     completion = {
       border = border("CmpBorder"),

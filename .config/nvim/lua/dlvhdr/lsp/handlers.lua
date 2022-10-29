@@ -32,38 +32,14 @@ M.setup = function()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, pop_opts)
 end
 
-local function lsp_highlight_document(client)
-  if client.server_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-      augroup lsp_document_highlight
-      autocmd! * <buffer>
-      autocmd CursorHold <buffer> silent! lua vim.lsp.buf.document_highlight()
-      autocmd CursorMoved <buffer> silent! lua vim.lsp.buf.clear_references()
-      augroup END
-      ]],
-      false
-    )
-  end
-end
-
 local function lsp_keymaps(bufnr)
   local opts = { silent = true, buffer = bufnr }
 
   -- builtins
   vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  -- vim.keymap.set("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-  -- vim.keymap.set("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-  -- vim.keymap.set("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
   vim.keymap.set("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  -- vim.keymap.set("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
   vim.keymap.set("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  -- buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  -- buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  -- buf_set_keymap("n", "ge", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
-  -- buf_set_keymap("n", "[d", '<cmd>lua vim.lsp.diagnostic.goto_prev({border = "rounder"})<CR>', opts)
-  -- buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 
   -- telescope
   vim.keymap.set("n", "gr", '<cmd>lua require("dlvhdr.telescope").lsp_references()<CR>', opts)
@@ -80,22 +56,18 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "gs", "<Cmd>Lspsaga signature_help<CR>", { silent = true })
   vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
   vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
-  -- vim.keymap.set("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
-  -- vim.keymap.set("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
 end
 
 M.on_attach = function(client, bufnr)
-  if client.server_capabilities.documentFormattingProvider then
-    vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format({timeout_ms = 3000, async = false})")
-  end
   if client.server_capabilities.documentFormattingProvider and client.name ~= "sumneko_lua" then
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+      buffer = bufnr,
       callback = function()
         if vim.lsp.buf.server_ready() then
-          vim.lsp.buf.format(nil, 3000)
+          vim.lsp.buf.format({ bufnr = bufnr }, 3000)
         end
       end,
-      group = vim.api.nvim_create_augroup("LSPFormat", { clear = true }),
+      group = vim.api.nvim_create_augroup("LSPFormat_" .. bufnr, { clear = true }),
     })
   end
 
@@ -134,24 +106,15 @@ M.on_attach = function(client, bufnr)
 
   lsp_status.on_attach(client, bufnr)
   lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
 end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
 
 lsp_status.config({
   status_symbol = " ",
   current_function = true,
   diagnostics = false,
 })
-capabilities = vim.tbl_extend("keep", capabilities or {}, lsp_status.capabilities) or {}
 
-M.capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 return M

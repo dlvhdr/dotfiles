@@ -9,7 +9,6 @@ end
 
 M.prettier_eslint_check = function()
   local has_prettier_plugin = lspconfigUtils.root_pattern("node_modules/eslint-plugin-prettier/package.json")(".git")
-  print("has prettier plugin?", has_prettier_plugin)
   if has_prettier_plugin ~= nil then
     return "eslint"
   end
@@ -18,8 +17,6 @@ M.prettier_eslint_check = function()
 end
 
 M.getJSFormatter = function()
-  local utils = require("null-ls.utils")
-  print("has utils?", utils)
   local formatter = M.prettier_eslint_check()
 
   if formatter == "eslint" then

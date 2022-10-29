@@ -1,4 +1,3 @@
-local opt = vim.opt
 vim.cmd("let loaded_matchparen = 1")
 
 local function list(value, str, sep)
@@ -8,8 +7,8 @@ local function list(value, str, sep)
   return str ~= "" and table.concat({ value, str }, sep) or value
 end
 
-opt.helpheight = 30
-opt.fillchars = {
+vim.opt.helpheight = 30
+vim.opt.fillchars = {
   horiz = "─",
   horizup = "⏊",
   horizdown = "┳",
@@ -24,59 +23,59 @@ opt.fillchars = {
   fold = " ",
   msgsep = "─",
 }
-opt.conceallevel = 1
-opt.showmode = false
-opt.laststatus = 3
-opt.mouse = "a"
-opt.hidden = true
-opt.wildignore = opt.wildignore + { "**/coverage/*", "**/node_modules/*", "**/.git/*" }
-opt.termguicolors = true
-opt.completeopt = { "menu", "menuone", "noselect" }
-opt.number = true
-opt.relativenumber = false
-opt.scrolloff = 8
-opt.virtualedit = list({ "block" })
-opt.sidescrolloff = 8
-opt.clipboard = "unnamedplus"
-opt.shell = "zsh"
-opt.enc = "utf-8"
-opt.background = "dark"
-opt.showtabline = 1
-opt.tabstop = 2
-opt.softtabstop = -1
-opt.shiftwidth = 2
-opt.expandtab = true
-opt.hlsearch = false
-opt.incsearch = true
-opt.ignorecase = true
-opt.smartcase = true
-opt.belloff = "all"
-opt.cursorline = true
-opt.updatetime = 1000
-opt.foldcolumn = "0"
-opt.foldlevel = 0
-opt.foldlevelstart = 99 --open all folds by default
-opt.foldmethod = "expr"
-opt.foldexpr = vim.treesitter.foldexpr
-opt.foldnestmax = 1 -- maximum fold depth
-opt.showmatch = true
+vim.opt.conceallevel = 1
+vim.opt.showmode = false
+vim.opt.laststatus = 3
+vim.opt.mouse = "a"
+vim.opt.hidden = true
+vim.opt.wildignore = vim.opt.wildignore + { "**/coverage/*", "**/node_modules/*", "**/.git/*" }
+vim.opt.termguicolors = true
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.number = true
+vim.opt.relativenumber = false
+vim.opt.scrolloff = 8
+vim.opt.virtualedit = list({ "block" })
+vim.opt.sidescrolloff = 8
+vim.opt.clipboard = "unnamedplus"
+vim.opt.shell = "zsh"
+vim.opt.enc = "utf-8"
+vim.opt.background = "dark"
+vim.opt.showtabline = 1
+vim.opt.tabstop = 2
+vim.opt.softtabstop = -1
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.belloff = "all"
+vim.opt.cursorline = true
+vim.opt.updatetime = 1000
+vim.opt.foldcolumn = "0"
+vim.opt.foldlevel = 0
+vim.opt.foldlevelstart = 99 --open all folds by default
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = vim.treesitter.foldexpr
+vim.opt.foldnestmax = 1 -- maximum fold depth
+vim.opt.showmatch = true
 -- ot.lazyredraw = true
-opt.undolevels = 10000
-opt.swapfile = false
-opt.undofile = true
-opt.autoindent = true
-opt.cindent = true
-opt.signcolumn = "yes"
-opt.timeoutlen = 1000
-opt.pumheight = 10
-opt.pumwidth = 20
-opt.cmdheight = 0
--- opt.pumblend = 3
-opt.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,winpos,terminal"
--- opt.diffopt:append("vertical") -- Show diffs in vertical splits
--- opt.diffopt:append("foldcolumn:0") -- Show diffs in vertical splits
--- opt.diffopt:append("indent-heuristic")
-opt.diffopt = list({
+vim.opt.undolevels = 10000
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.autoindent = true
+vim.opt.cindent = true
+vim.opt.signcolumn = "yes"
+vim.opt.timeoutlen = 1000
+vim.opt.pumheight = 10
+vim.opt.pumwidth = 20
+vim.opt.cmdheight = 0
+-- vim.opt.pumblend = 3
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,winpos,terminal"
+-- vim.opt.diffopt:append("vertical") -- Show diffs in vertical splits
+-- vim.opt.diffopt:append("foldcolumn:0") -- Show diffs in vertical splits
+-- vim.opt.diffopt:append("indent-heuristic")
+vim.opt.diffopt = list({
   "algorithm:histogram",
   "internal",
   "indent-heuristic",
@@ -85,10 +84,11 @@ opt.diffopt = list({
   "iwhite",
   "vertical",
 })
-opt.splitright = false
-opt.splitbelow = true
-opt.showmatch = false
-opt.formatoptions = opt.formatoptions
+vim.opt.splitright = false
+vim.opt.splitbelow = true
+vim.opt.showmatch = false
+-- vim.opt.shortmess = "at"
+vim.opt.formatoptions = vim.opt.formatoptions
   - "a" -- Auto formatting is BAD.
   - "t" -- Don't auto format my code. I got linters for that.
   + "c" -- In general, I like it when comments respect textwidth
@@ -100,6 +100,6 @@ opt.formatoptions = opt.formatoptions
   - "2" -- I'm not in gradeschool anymore
 if vim.fn.executable("rg") then
   -- if ripgrep installed, use that as a grepper
-  opt.grepprg = "rg --vimgrep --no-heading"
-  opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+  vim.opt.grepprg = "rg --vimgrep --no-heading"
+  vim.opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
 end

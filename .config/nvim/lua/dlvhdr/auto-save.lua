@@ -4,6 +4,11 @@ if not status_ok then
 end
 
 auto_save.setup({
+  execution_message = {
+    message = function()
+      return ""
+    end,
+  },
   trigger_events = { "FocusLost" },
   write_all_buffers = true,
 })

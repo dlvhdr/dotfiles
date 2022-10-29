@@ -32,9 +32,8 @@ dashboard.custom_center = {
   {
     icon = "  ",
     desc = "Last Session",
-    action = function()
-      require("persistence").load()
-    end,
+    action = "silent lua require('persistence').load()",
+    silent = true,
   },
   {
     icon = "  ",
