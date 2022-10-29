@@ -68,6 +68,7 @@ defaults:
 repoPaths:
   wix-private/wix-code-devex: ~/code/wix/wix-code-devex-mono
   CodinGame/monaco-vscode-api: ~/code/playground/monaco-vscode-api
+  dlvhdr/gh-dash: ~/code/personal/gh-dash
 
 keybindings:
   prs:

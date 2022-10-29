@@ -1,0 +1,108 @@
+prSections:
+  - title: My PRs
+    layout:
+      lines:
+        hidden: true
+    filters: -org:wix-private author:@me
+  - title: Needs Review
+    filters: is:open -org:wix-private review-requested:@me
+  - title: gh-dash
+    filters: repo:dlvhdr/gh-dash
+  - title: Charm
+    filters: org:charmbracelet
+  - title: gh
+    filters: repo:cli/cli
+  - title: Neovim
+    filters: repo:neovim/neovim
+  - title: Neovim Plugins
+    filters: repo:wbthomason/packer.nvim \
+      repo:lewis6991/impatient.nvim \
+      repo:nvim-lua/plenary.nvim \
+      repo:folke/tokyonight.nvim \
+      repo:kyazdani42/nvim-web-devicons \
+      repo:L3MON4D3/LuaSnip \
+      repo:neovim/nvim-lspconfig \
+      repo:hrsh7th/nvim-cmp \
+      repo:b0o/schemastore.nvim \
+      repo:folke/neodev.nvim \
+      repo:glepnir/lspsaga.nvim \
+      repo:jose-elias-alvarez/null-ls.nvim \
+      repo:nvim-treesitter/nvim-treesitter \
+      repo:nvim-treesitter/playground \
+      repo:aarondiel/spread.nvim \
+      repo:windwp/nvim-ts-autotag\
+      repo:numToStr/Comment.nvim \
+      repo:Pocco81/auto-save.nvim \
+      repo:utilyre/barbecue.nvim \
+      repo:hrsh7th/cmp-nvim-lsp \
+      repo:hrsh7th/cmp-nvim-lsp-signature-help \
+      repo:glepnir/dashboard-nvim \
+      repo:sindrets/diffview.nvim \
+      repo:lewis6991/gitsigns.nvim \
+      repo:nvim-lualine/lualine.nvim \
+      repo:williamboman/mason.nvim \
+      repo:folke/noice.nvim \
+      repo:windwp/nvim-autopairs \
+      repo:NvChad/nvim-colorizer.lua \
+      repo:kosayoda/nvim-lightbulb \
+      repo:neovim/nvim-lspconfig \
+      repo:smiteshp/nvim-navic \
+      repo:kyazdani42/nvim-tree.lua \
+      repo:pwntester/octo.nvim \
+      repo:nvim-telescope/telescope-live-grep-args.nvim \
+      repo:nvim-telescope/telescope.nvim \
+      repo:folke/tokyonight.nvim \
+      repo:folke/trouble.nvim \
+      repo:mg979/vim-visual-multi
+
+issuesSections:
+  - title: My Issues
+    filters: is:open author:@me
+    layout:
+      creator:
+        hidden: true
+  - title: Assigned
+    filters: is:open assignee:@me
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+
+defaults:
+  preview:
+    open: true
+    width: 40
+  prsLimit: 20
+  issuesLimit: 20
+  view: prs
+  layout:
+    prs:
+      updatedAt:
+        width: 5
+      repo:
+        width: 15
+    issues:
+      updatedAt:
+        width: 5
+      repo:
+        width: 20
+      assignees:
+        hidden: true
+keybindings:
+  prs: []
+repoPaths: {}
+pager:
+  diff: delta
+theme:
+  colors:
+    text:
+      primary: "#E2E1ED"
+      secondary: "#666CA6"
+      inverted: "#242347"
+      faint: "#b0b3bf"
+      warning: "#F23D5C"
+      success: "#3DF294"
+    background:
+      selected: "#39386b"
+    border:
+      primary: "#383B5B"
+      secondary: "#39386B"
+      faint: "#2B2B40"
