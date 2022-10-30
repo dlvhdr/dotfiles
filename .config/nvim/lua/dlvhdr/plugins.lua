@@ -31,11 +31,11 @@ packer.init({
 })
 
 -- Automatically regenerate compiled loader file on save
--- vim.api.nvim_create_autocmd("BufWritePost", {
---   command = "source <afile> | PackerCompile",
---   group = vim.api.nvim_create_augroup("Packer", { clear = true }),
---   pattern = "plugins.lua",
--- })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  command = "source <afile> | PackerCompile",
+  group = vim.api.nvim_create_augroup("Packer", { clear = true }),
+  pattern = "plugins.lua",
+})
 
 return packer.startup(function(use)
   use("wbthomason/packer.nvim")
@@ -315,8 +315,8 @@ return packer.startup(function(use)
       require("dlvhdr.barbecue")
     end,
     requires = {
+      "SmiteshP/nvim-navic",
       "neovim/nvim-lspconfig",
-      "smiteshp/nvim-navic",
       "kyazdani42/nvim-web-devicons", -- optional
     },
   })
@@ -335,6 +335,36 @@ return packer.startup(function(use)
     end,
   })
 
+  use({
+    "/Users/dolevh/code/personal/github.com/PatschD/zippy.nvim",
+    config = function()
+      require("zippy").setup({
+        ["typescriptreact"] = {
+          format_fn = function(t)
+            local filename = t.filename
+            local line_nr = t.line_nr
+            local breadcrumbs = t.breadcrumbs
+            local current_text = t.current_text
+
+            local t = '"%c[🐛 DEBUG]%c[📂 %s #%s]%c %s", "color: #9ece6a", "color: #a9b1d6", '
+              .. '"'
+              .. filename
+              .. '", '
+              .. '"'
+              .. line_nr
+              .. '", "color: white", '
+              .. '"'
+              .. current_text
+              .. '", '
+              .. current_text
+            print(t)
+
+            return t
+          end,
+        },
+      })
+    end,
+  })
   -- use({
   --   "~/code/personal/github.com/ldelossa/gh.nvim",
   --   -- cmd = { "GHOpenPR" },
