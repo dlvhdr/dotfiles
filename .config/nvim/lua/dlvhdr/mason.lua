@@ -3,4 +3,6 @@ require("mason").setup({
     border = "rounded",
   },
 })
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+  automatic_installation = true,
+})
