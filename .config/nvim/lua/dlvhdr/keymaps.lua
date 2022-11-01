@@ -22,8 +22,6 @@ keymap("n", "N", "Nzzzv", opts)
 keymap("n", "J", "mzJ`z", opts)
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
-keymap("n", "<leader>j", ":m .+1<CR>==", opts)
-keymap("n", "<leader>k", ":m .-2<CR>==", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
