@@ -2,6 +2,9 @@ require("noice").setup({
   format = {
     default = { "{title} ", "{message}" },
   },
+  messages = {
+    view_search = false,
+  },
   lsp = {
     progress = {
       enabled = true,

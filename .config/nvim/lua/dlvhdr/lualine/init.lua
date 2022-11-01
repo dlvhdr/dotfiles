@@ -11,11 +11,6 @@ if not tree_view_ok then
   return
 end
 
--- local noice_ok, noice = pcall(require, "noice")
--- if not noice_ok then
---   return
--- end
-
 local nvim_tree_shift = {
   function()
     local name = "פּ Nvim Tree"
@@ -46,7 +41,13 @@ require("lualine").setup({
       components.branch,
       components.diff,
     },
-    lualine_c = { "searchcount" },
+    lualine_c = {
+      {
+        require("noice").api.status.search.get,
+        cond = require("noice").api.status.search.has,
+        color = { fg = "#f0a275" },
+      },
+    },
     lualine_x = {
       components.treesitter,
       components.lsp,
