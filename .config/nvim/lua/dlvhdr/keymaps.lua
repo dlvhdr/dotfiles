@@ -75,6 +75,9 @@ keymap("n", "<Leader>a", 'ysiW"', opts)
 -- zippy
 keymap("n", "<leader>lg", "<cmd>lua require('zippy').insert_print()<CR>")
 
+keymap("n", "<leader>jf", "<cmd>%!jq<cr>", opts)
+keymap("n", "<leader>jm", "<cmd>%!jq -c<cr>", opts)
+
 keymap("n", "<F10>", function()
   if vim.o.conceallevel > 0 then
     vim.o.conceallevel = 0
