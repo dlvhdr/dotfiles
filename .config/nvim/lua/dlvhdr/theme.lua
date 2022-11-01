@@ -28,6 +28,7 @@ tokyonight.setup({
     "help",
     "NvimTree",
     "Trouble",
+    "LspInfo",
   },
   dim_inactive = false,
   lualine_bold = false,
