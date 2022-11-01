@@ -71,6 +71,17 @@ M.on_attach = function(client, bufnr)
     })
   end
 
+  if client.server_capabilities.codeLensProvider then
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "InsertLeave" }, {
+      pattern = "<buffer>",
+      callback = function()
+        vim.lsp.codelens.refresh()
+      end,
+      group = vim.api.nvim_create_augroup("LSPCodeLens", { clear = true }),
+    })
+    vim.keymap.set("n", "<leader>cl", "<cmd>lua vim.lsp.codelens.run()<CR>", { silent = true, buffer = bufnr })
+  end
+
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
