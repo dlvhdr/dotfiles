@@ -33,7 +33,24 @@ keymap("n", "<leader><leader>", "<C-^>", opts)
 keymap("n", "<leader><tab>", "<C-^>", opts)
 
 -- LSP
-keymap("n", "<leader>lr", "<cmd>LspRestart<CR>", opts)
+keymap("n", "<leader>lr", function()
+  local configs = require("lspconfig.configs")
+  for _, client in
+    ipairs(vim.lsp.get_active_clients({
+      bufnr = vim.api.nvim_get_current_buf(),
+    }))
+  do
+    if client.name ~= "null-ls" then
+      client.stop()
+      vim.defer_fn(function()
+        print(client.name, configs[client.name])
+        configs[client.name].launch()
+        vim.notify("restarting client: " .. client.name)
+      end, 500)
+    end
+  end
+end, opts)
+
 keymap("n", "<leader>le", "<cmd>!eslint_d restart<CR>", opts)
 
 -- Telescope
@@ -49,6 +66,8 @@ keymap("n", "<leader>fs", ":lua require('telescope.builtin').git_status()<CR>", 
 keymap("n", "<leader>gb", ":lua require('telescope.builtin').git_branches()<CR>", opts)
 keymap("n", "<leader>fe", ":lua require('telescope.builtin').file_browser({cwd = '.'})<CR>", opts)
 keymap("n", "<C-p>", ":lua require('dlvhdr.telescope').project_files()<CR>", opts)
+keymap("n", "<leader>ffg", "<cmd>Telescope dir live_grep<CR>", opts)
+keymap("n", "<leader>ffp", "<cmd>Telescope dir find_files<CR>", opts)
 
 -- nvim-tree
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
