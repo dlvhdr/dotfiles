@@ -72,6 +72,9 @@ end
 keymap("n", "<Leader>h", ":set hlsearch!<CR>", opts)
 keymap("n", "<Leader>a", 'ysiW"', opts)
 
+-- zippy
+keymap("n", "<leader>lg", "<cmd>lua require('zippy').insert_print()<CR>")
+
 keymap("n", "<F10>", function()
   if vim.o.conceallevel > 0 then
     vim.o.conceallevel = 0
