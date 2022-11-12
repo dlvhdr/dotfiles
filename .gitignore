@@ -49,3 +49,6 @@ lvim
 
 # spotify
 .config/spotify-tui/
+
+# lazygit
+**/lazygit/state.yml
