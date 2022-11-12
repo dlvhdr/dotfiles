@@ -12,4 +12,3 @@ public-hoist-pattern[]=@types/*
 public-hoist-pattern[]=@wix/*
 store-dir=/Users/dolevh/.local/share/pnpm-store
 timeout=6000000
-registry=https://registry.npmjs.org/
