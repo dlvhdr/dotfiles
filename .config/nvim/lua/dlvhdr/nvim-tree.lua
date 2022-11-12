@@ -101,6 +101,9 @@ tree.setup({
     },
   },
   actions = {
+    remove_file = {
+      close_window = false,
+    },
     open_file = {
       resize_window = true,
       quit_on_open = false,

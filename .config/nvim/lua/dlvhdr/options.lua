@@ -21,6 +21,7 @@ vim.opt.fillchars = {
   foldclose = "",
   foldopen = "",
   fold = " ",
+  foldsep = " ",
   msgsep = "─",
 }
 vim.opt.conceallevel = 1
@@ -52,12 +53,15 @@ vim.opt.smartcase = true
 vim.opt.belloff = "all"
 vim.opt.cursorline = true
 vim.opt.updatetime = 1000
-vim.opt.foldcolumn = "0"
-vim.opt.foldlevel = 0
-vim.opt.foldlevelstart = 99 --open all folds by default
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = vim.treesitter.foldexpr
-vim.opt.foldnestmax = 1 -- maximum fold depth
+
+vim.o.foldcolumn = "0"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = vim.treesitter.foldexpr
+-- vim.opt.foldnestmax = 1 -- maximum fold depth
+
 vim.opt.showmatch = true
 -- ot.lazyredraw = true
 vim.opt.undolevels = 10000

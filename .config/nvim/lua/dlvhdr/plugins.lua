@@ -48,7 +48,7 @@ return packer.startup(function(use)
     "folke/tokyonight.nvim",
     branch = "main",
     config = function()
-      require("dlvhdr.theme")
+      require("dlvhdr.theme").setup()
       require("dlvhdr.colors")
       require("dlvhdr.tabline")
     end,
@@ -193,6 +193,18 @@ return packer.startup(function(use)
   use({ "natecraddock/telescope-zf-native.nvim" })
 
   use({
+    "princejoogie/dir-telescope.nvim",
+    requires = { "nvim-telescope/telescope.nvim" },
+    branch = "dev",
+    config = function()
+      require("dir-telescope").setup({
+        debug = true,
+        respect_gitignore = true,
+      })
+    end,
+  })
+
+  use({
     "nvim-telescope/telescope.nvim",
     tag = "0.1.0",
     config = function()
@@ -332,6 +344,14 @@ return packer.startup(function(use)
     "axelvc/template-string.nvim",
     config = function()
       require("template-string").setup({})
+    end,
+  })
+
+  use({
+    "kevinhwang91/nvim-ufo",
+    requires = "kevinhwang91/promise-async",
+    config = function()
+      require("dlvhdr.ufo")
     end,
   })
 

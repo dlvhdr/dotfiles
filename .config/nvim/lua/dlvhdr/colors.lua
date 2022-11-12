@@ -1,14 +1,6 @@
-local status_ok, colors = pcall(require, "tokyonight.colors")
-if not status_ok then
-  return
-end
-
-colors = colors.setup({})
-
-local util_ok, util = pcall(require, "tokyonight.util")
-if not util_ok then
-  return
-end
+local theme = require("dlvhdr.theme")
+local colors = theme.colors
+local util = theme.util
 
 vim.cmd("hi! NvimTreeSpecialFile guifg=" .. colors.warning)
 vim.cmd("hi! WinSeparator guibg=NONE guifg=" .. util.darken(colors.border_highlight, 0.3))

@@ -17,6 +17,7 @@ local action_state = require("telescope.actions.state")
 local layout_actions = require("telescope.actions.layout")
 local lga_actions = require("telescope-live-grep-args.actions")
 
+--color=never --no-heading --with-filename --line-number --column --smart-case --hidden --fixed-strings --trim
 telescope.setup({
   defaults = {
     vimgrep_arguments = {
@@ -158,8 +159,7 @@ telescope.setup({
   },
 })
 
--- telescope.load_extension("fzf")
-require("telescope").load_extension("zf-native")
+telescope.load_extension("zf-native")
 telescope.load_extension("ui-select")
 telescope.load_extension("live_grep_args")
 
