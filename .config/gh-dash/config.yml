@@ -1,6 +1,9 @@
 prSections:
   - title: Mine
     filters: is:open author:@me
+    layout:
+      author:
+        hidden: true
   - title: Review
     filters: is:open review-requested:@me
   - title: DevEnv
