@@ -356,6 +356,13 @@ return packer.startup(function(use)
   })
 
   use({
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    config = function()
+      require("dlvhdr.mason-tool-installer")
+    end,
+  })
+
+  use({
     "/Users/dolevh/code/personal/github.com/PatschD/zippy.nvim",
     config = function()
       require("zippy").setup({
