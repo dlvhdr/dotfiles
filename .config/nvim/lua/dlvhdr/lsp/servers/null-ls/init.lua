@@ -19,6 +19,7 @@ M.setup = function(opts)
       null_ls.builtins.formatting.eslint_d.with({
         condition = function(null_ls_utils)
           return null_ls_utils.root_has_file("node_modules/eslint-plugin-prettier/package.json")
+            or null_ls_utils.root_has_file("node_modules/eslint-config-prettier/package.json")
         end,
       }),
       null_ls.builtins.formatting.prettierd.with({

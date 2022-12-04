@@ -20,4 +20,5 @@ if [ -z "$1" ]; then
 	exit 1;
 fi
 
-open "https://cs.github.com/?q=""$1"
+open "https://github.com/search?type=code&q=""$1"
+echo "Searching for: $1"

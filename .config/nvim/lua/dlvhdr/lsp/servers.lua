@@ -5,6 +5,10 @@ local opts = {
   capabilities = handlers.capabilities,
 }
 
+lspconfig.denols.setup({
+  on_attach = opts.on_attach,
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+})
 lspconfig.html.setup(opts)
 require("dlvhdr.lsp.servers.tsserver").setup(opts)
 require("dlvhdr.lsp.servers.jsonls").setup(opts)

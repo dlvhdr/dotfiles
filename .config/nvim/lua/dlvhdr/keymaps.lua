@@ -41,11 +41,11 @@ keymap("n", "<leader>lr", function()
     }))
   do
     if client.name ~= "null-ls" then
+      os.execute("eslint_d restart")
+      os.execute("prettierd restart")
       client.stop()
       vim.defer_fn(function()
-        print(client.name, configs[client.name])
         configs[client.name].launch()
-        vim.notify("restarting client: " .. client.name)
       end, 500)
     end
   end
@@ -87,7 +87,7 @@ if vim.opt.diff:get() then
 end
 
 keymap("n", "<Leader>h", ":set hlsearch!<CR>", opts)
-keymap("n", "<Leader>a", 'ysiW"', opts)
+keymap("n", "<leader>a", 'ysiW"', opts)
 
 -- zippy
 keymap("n", "<leader>lg", "<cmd>lua require('zippy').insert_print()<CR>")

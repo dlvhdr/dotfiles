@@ -7,14 +7,13 @@ prSections:
   - title: Review
     filters: is:open review-requested:@me
   - title: DevEnv
-    filters: "is:open draft:false org:wix-private \
+    filters: "draft:false org:wix-private \
       author:Galcarmi \
       author:nemni8 \
       author:seanoch \
       author:haimre"
   - title: "@wix/frontend"
-    filters: "state:open state:merged \
-      -author:@me -author:app/wix-loki-bot \
+    filters: "-author:@me -author:app/wix-loki-bot \
       repo:wix-private/wix-code-devex \
       repo:wix-private/wix-code-client \
       repo:wix-incubator/corvid-types"
@@ -29,6 +28,15 @@ prSections:
     filters: is:closed author:@me
   - title: WCTB
     filters: "is:pr repo:wix-private/wix-code-types-builder"
+    layout:
+      repo:
+        hidden: true
+      author:
+        hidden: true
+      reviewStatus:
+        hidden: true
+      lines:
+        hidden: true
   - title: Subscribed
     filters: "\
       repo:nvim-telescope/telescope.nvim \

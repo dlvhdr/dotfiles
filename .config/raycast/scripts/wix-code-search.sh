@@ -20,4 +20,5 @@ if [ -z "$1" ]; then
 	exit 1;
 fi
 
-open "https://cs.github.com/?scope=org%3Awix-private&scopeName=wix-private&q=""$1"
+open "https://github.com/search?type=code&q=org%3Awix-private%20$1"
+echo "Searched for $1 in wix-private"

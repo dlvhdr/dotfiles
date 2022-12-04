@@ -1,0 +1,184 @@
+- name: skhd  (global hotkeys)
+  keybinds:
+    - name: firefox
+      key: ⌥ + c
+    - name: vscode
+      key: ⌥ + v
+    - name: kitty
+      key: ⌥ + i
+    - name: whatsapp
+      key: ⌥ + w
+    - name: discord
+      key: ⌥ + d
+    - name: slack
+      key: ⌥ + s
+    - name: notion
+      key: ⌥ + n
+    - name: firefox
+      key: ⌥ + z
+    - name: mail
+      key: ⌥ + m
+    - name: cron
+      key: ⌥ + p
+    - name: spotify
+      key: ⌥ + u
+    - name: ticktick
+      key: ⌥ + t
+- name: tmux 🪟
+  prefix: '`'
+  keybinds:
+  - name: create window
+    key: "c"
+  - name: rename window
+    key: ","
+  - name: last window
+    key: ";"
+  - name: go to window
+    key: "{1,2,3,4,5,6,7,8,9}"
+  - name: swap window
+    key: "{<, >}"
+  - name: resize pane
+    key: Shift + {h, j, k, l}
+  - name: last session
+    key: "'"
+  - name: session switcher
+    key: "s"
+  - name: create session at dir
+    key: "'"
+  - name: session killer
+    key: "k"
+  - name: man finder
+    key: "m"
+  - name: file manager
+    key: "f"
+  - name: default session
+    key: "h"
+  - name: copy mode
+    key: "["
+  - name: detach tmux
+    key: "d"
+  - name: show current dir
+    key: "p"
+  - name: url view
+    key: "u"
+  - name: view last command in pager
+    key: "l"
+  - name: restore sessions
+    key: "Ctrl + r"
+  - name: save sessions
+    key: "Ctrl + s"
+  - name: install plugins
+    key: "Shift + i"
+  - name: reload tmux config
+    key: "r"
+- name: tmux 🪟 (prefix-less keybinds)
+  keybinds:
+    - name: search
+      key: Ctrl + f
+    - name: close pane
+      key: Ctrl + w
+    - name: clear screen
+      key: Ctrl + l
+    - name: move between panes
+      key: Ctrl + {h, j, k, l}
+- name: shell 
+  keybinds:
+  - name: history search
+    key: Ctrl + r
+  - name: vim mode
+    key: esc
+- name: amethyst 
+  keybinds:
+    - name: fullscreen
+      key: ⌥ + Shift + d
+    - name: switch layout
+      key: ⌥ + Shift + Space
+    - name: move focus
+      key: ⌥ + Shift + {h, j, k, l}
+    - name: switch focus to other monitor
+      key: ⌥ + Shift + p
+    - name: throw window to other monitor
+      key: ⌥ + Shift + Ctrl + p
+    - name: resize window
+      key: ⌥ + Shift + {j, k}
+- name: raycast 🚀 (spotlight replacement)
+  keybinds:
+    - name: launch
+      key: ⌘ + Space
+- name: cron 📅 (calendar)
+  keybinds:
+    - name: join Zoom meeting
+      key: Ctrl + ⌘ + j
+    - name: show agenda
+      key: Ctrl + ⌘ + k
+- name: neovim 
+  keybinds:
+    - name: close buffer
+      key: Space + q
+    - name: write buffer
+      key: Space + w
+    - name: write all buffers
+      key: Space + Shift + w
+    - name: quit
+      key: Space + Shift + q
+    - name: replace selection with clipboard
+      key: Space + p
+    - name: move selected line up/down
+      key: Shift + {j, k}
+    - name: alternate file
+      key: Space + Space
+    - name: restart lsp
+      key: Space + lr
+    - name: restart eslint
+      key: Space + le
+    - name: grep selected string
+      key: Space + *
+    - name: live grep
+      key: Space + fg
+    - name: grep current dir
+      key: Space + gg
+    - name: search for help
+      key: Space + fh
+    - name: resume telescope
+      key: Space + fr
+    - name: telescope pickers
+      key: Space + fp
+    - name: NvimTree
+      key: Space + e
+    - name: Trouble
+      key: Space + xx
+    - name: console.log
+      key: Space + lg
+    - name: format json
+      key: Space + jf
+    - name: splitjoin split
+      key: gS
+    - name: splitjoin join
+      key: gJ
+- name: neovim  (Octo)
+  Prefix: Octo
+  keybinds:
+    - name: open PR
+      key: "{<PR url>, pr list, pr edit <PR number>}"
+    - name: review PR
+      key: review start
+    - name: add comment
+      key: Space + ca
+    - name: add suggestion
+      key: Space + sa
+    - name: review comments
+      key: review comments
+    - name: review submit
+      key: review submit
+- name: neovim  (LSP)
+  keybinds:
+    - name: hover
+      key: gh
+    - name: rename symbol
+      key: Space + rn
+    - name: code action
+      key: Space + ca
+    - name: next diagnostic
+      key: "[d"
+    - name: previous diagnostic
+      key: "]d"

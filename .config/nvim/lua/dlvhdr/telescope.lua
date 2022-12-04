@@ -105,6 +105,7 @@ telescope.setup({
       "^plugged/",
       "^sessions/",
       "^node_modules/",
+      "^.yarn/",
     },
   },
   pickers = {

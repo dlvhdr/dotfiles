@@ -52,3 +52,4 @@ lvim
 
 # lazygit
 **/lazygit/state.yml
+.config/nvim/.luarc.json

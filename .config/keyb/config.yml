@@ -1,0 +1,9 @@
+settings:
+  search_mode: true
+  prompt: "search > "
+  prefix_sep: "»"
+  placeholder: ""
+color:
+  prompt: "#828bb8"
+  cursor_bg: "#2f334d"
+  counter_fg: "#565f89"

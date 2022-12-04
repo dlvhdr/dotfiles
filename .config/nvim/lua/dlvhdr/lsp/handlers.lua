@@ -39,7 +39,7 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
   vim.keymap.set("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  vim.keymap.set("n", "<leader>ff", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  vim.keymap.set("n", "<leader>ff", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
   -- telescope
   vim.keymap.set("n", "gr", '<cmd>lua require("dlvhdr.telescope").lsp_references()<CR>', opts)
