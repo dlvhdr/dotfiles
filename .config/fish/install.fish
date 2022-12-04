@@ -125,7 +125,7 @@ abbr -a lg "lazygit"
 abbr -a gco "git_checkout"
 
 # tmux
-abbr -a ta "tmux a"
+abbr -a ta "tmux attach || tmux new -A -s default"
 abbr -a tat "tmux attach -t"
 abbr -a tn "tmux new -s \$(pwd | sed 's/.*\///g')"
 
