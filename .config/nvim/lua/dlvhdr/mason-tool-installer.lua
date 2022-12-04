@@ -20,6 +20,6 @@ msi.setup({
     "stylua",
   },
   auto_update = false,
-  run_on_start = false,
-  start_delay = 3000, -- 3 second delay
+  run_on_start = true,
+  start_delay = 5000,
 })
