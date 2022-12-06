@@ -36,8 +36,8 @@ M.setup = function(opts)
           "json",
           "yaml",
           "yml",
-          -- "markdown",
           "graphql",
+          -- "markdown",
         },
         condition = function(null_ls_utils)
           return not null_ls_utils.root_has_file("node_modules/eslint-plugin-prettier/package.json")

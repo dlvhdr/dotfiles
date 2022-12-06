@@ -46,10 +46,10 @@ luasnip.filetype_extend("typescriptreact", { "typescript" })
 
 luasnip.add_snippets(nil, snippets)
 
-vim.keymap.set("n", "<leader>s", function()
-  vim.cmd([[luafile $XDG_CONFIG_HOME/nvim/lua/dlvhdr/luasnip.lua]])
-  vim.notify("Reloaded snippets!", "info")
-end, { silent = true })
+-- vim.keymap.set("n", "<leader>s", function()
+--   vim.cmd([[luafile $XDG_CONFIG_HOME/nvim/lua/dlvhdr/luasnip.lua]])
+--   vim.notify("Reloaded snippets!", "info")
+-- end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<c-k>", function()
   if luasnip.expand_or_jumpable() then

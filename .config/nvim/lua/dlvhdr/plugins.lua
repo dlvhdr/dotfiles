@@ -121,10 +121,10 @@ return packer.startup(function(use)
   })
 
   use({
-    "aarondiel/spread.nvim",
-    after = "nvim-treesitter",
+    "Wansmer/treesj",
+    requires = { "nvim-treesitter" },
     config = function()
-      require("dlvhdr.spread")
+      require("dlvhdr.treesj")
     end,
   })
 
