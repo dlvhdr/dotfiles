@@ -4,7 +4,7 @@
 
 ![image](https://user-images.githubusercontent.com/6196971/201695528-978abdac-f408-4fee-a4e0-93dfb3e3e115.png)
 
-## Detailed Setup
+## Setup
 
 - Terminal: kitty + tmux
 - Shell: fish + starship
@@ -14,19 +14,17 @@
 - Theme: tokyonight
 - Setup: macos setup files
 
-### NeoVim
+## Neovim
 
-Features:
-- Plugin manager: packer
-- Statue line: lualine
-- Completions: nvim-cmp
-- LSP 
-- Linting and formatting: null-ls
-- Syntax highlighting: treesitter
-- Fuzzy finder: Telescope
-- File tree: nvim-tree
-- Snippets: LuaSnip
-- other goodies...
+- **Plugin manager:** packer
+- **Statue line:** lualine
+- **Completions:** nvim-cmp
+- **LSP**: mason, null-ls
+- **Syntax highlighting:** treesitter
+- **Fuzzy finder:** telescope
+- **File tree:** nvim-tree
+- **Snippets:** LuaSnip
+- Other goodies...
 
 ---
 
