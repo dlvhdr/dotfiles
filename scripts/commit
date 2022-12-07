@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script is used to write a conventional commit message.
 # It prompts the user to choose the type of commit as specified in the
@@ -10,15 +10,26 @@
 #
 # alias gcm='git commit -m "$(gum input)" -m "$(gum write)"'
 
-TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert")
-SCOPE=$(gum input --placeholder "scope")
+TYPE=$(gum choose "feat:     A new feature " "fix:      A bug fix" "docs:     Documentation only changes" "style:    Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)" "refactor: A code change that neither fixes a bug or adds a feature" "test:     Adding missing tests" "chore:    Changes to the build process or auxiliary tools and libraries such as documentation generation" "revert:   revert a commit")
+test -z "$TYPE" && exit
+TYPE="${TYPE%:*}"
+gum join "$(gum style --foreground="4" "type: ")" "$TYPE"
+SCOPE=$(gum input --prompt.foreground="4" --prompt "scope: " --placeholder "()")
+test $? -ne 0 && exit
 
 # Since the scope is optional, wrap it in parentheses if it has a value.
 test -n "$SCOPE" && SCOPE="($SCOPE)"
+gum join "$(gum style --foreground="4" "scope: ")" "$SCOPE"
 
 # Pre-populate the input with the type(scope): so that the user may change it
-SUMMARY=$(gum input --value "$TYPE$SCOPE: " --placeholder "Summary of this change")
-DESCRIPTION=$(gum write --placeholder "Details of this change")
+SUMMARY=$(gum input --prompt.foreground="4" --prompt="summary: " --placeholder "Summary of this change")
+test -z "$SUMMARY" && exit
 
 # Commit these changes if user confirms
-gum confirm "Commit changes?" && git commit -s -m "$SUMMARY" -m "$DESCRIPTION"
+MSG="$TYPE$SCOPE: $SUMMARY"
+gum confirm "$MSG"
+
+test $? -eq 0 && git commit -s -m "$MSG" && echo && gum join "$(gum style --foreground="4" "✅ ")" "$MSG" && exit
+
+echo
+gum join "$(gum style --foreground="1" "❌ [CANCELED] ")" "$MSG"
