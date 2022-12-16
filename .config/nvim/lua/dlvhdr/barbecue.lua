@@ -11,9 +11,11 @@ end
 colors = colors.setup({})
 
 vim.cmd("hi! NavicSeparator guibg=none guifg=" .. colors.dark3)
+vim.cmd("hi! BarbecueModified guibg=" .. colors.bg .. " guifg=" .. colors.yellow)
 
 barbecue.setup({
   attach_navic = false,
+  show_modified = true,
   symbols = {
     prefix = " ",
     separator = "",
