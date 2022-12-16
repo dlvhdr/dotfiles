@@ -42,6 +42,10 @@ vim.api.nvim_create_autocmd({ "BufRead,BufNewFile" }, {
 vim.api.nvim_create_autocmd("User", {
   pattern = { "DiffviewViewEnter", "DiffviewViewLeave" },
   callback = function()
-    require("barbecue").toggle()
+    local ok, barbecue = pcall(require, "barbecue.ui")
+    if not ok then
+      return
+    end
+    barbecue.toggle()
   end,
 })

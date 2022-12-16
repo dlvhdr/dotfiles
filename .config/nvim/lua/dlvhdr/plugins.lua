@@ -363,6 +363,13 @@ return packer.startup(function(use)
   })
 
   use({
+    "nanozuki/tabby.nvim",
+    config = function()
+      require("dlvhdr.tabby")
+    end,
+  })
+
+  use({
     "/Users/dolevh/code/personal/github.com/PatschD/zippy.nvim",
     config = function()
       require("zippy").setup({
