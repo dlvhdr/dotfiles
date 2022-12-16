@@ -63,7 +63,7 @@ vim.o.foldenable = true
 -- vim.opt.foldnestmax = 1 -- maximum fold depth
 
 vim.opt.showmatch = true
--- ot.lazyredraw = true
+-- vim.opt.lazyredraw = true
 vim.opt.undolevels = 10000
 vim.opt.swapfile = false
 vim.opt.undofile = true

@@ -1,5 +1,6 @@
 [user]
   name = Dolev Hadar
+  email = dolevh@wix.com
 
 [includeIf "gitdir:~/dotfiles/"]
   path = config-personal
@@ -8,8 +9,8 @@
 [includeIf "gitdir:~/code/wix/"]
   path = config-wix
 
-[commit]
-	gpgsign = true
+; [commit]
+; 	gpgsign = true
 
 [tag]
 	gpgsign = true
@@ -20,8 +21,8 @@
 [format]
 	signOff = true
 
-[init]
-  defaultBranch = main
+; [init]
+;   defaultBranch = main
 
 [pull]
   ff = only

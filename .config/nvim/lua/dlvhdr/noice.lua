@@ -7,7 +7,7 @@ require("noice").setup({
   },
   lsp = {
     progress = {
-      enabled = true,
+      enabled = false,
       format = {
         " ",
         { "{data.progress.client} ", hl_group = "NoiceLspProgressClient" },

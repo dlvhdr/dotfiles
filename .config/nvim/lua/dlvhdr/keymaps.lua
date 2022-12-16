@@ -12,7 +12,8 @@ keymap("n", "<leader>Q", ":quitall!<CR>", opts)
 keymap("n", "<Leader>W", ":wall<CR>", opts)
 
 -- open new buffer
-keymap("n", "<leader>n", ":enew<CR>", opts)
+-- keymap("n", "<leader>n", ":enew<CR>", opts)
+keymap("n", "<leader>n", "<cmd>echo wow<cr>", opts)
 
 keymap("n", "x", '"_x', opts)
 keymap("x", "<leader>p", '"_dP', opts)
