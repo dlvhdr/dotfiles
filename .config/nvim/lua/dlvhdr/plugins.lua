@@ -89,7 +89,7 @@ return packer.startup(function(use)
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "onsails/lspkind-nvim",
-      "nathom/filetype.nvim",
+      -- "nathom/filetype.nvim",
     },
   })
   use({ "b0o/schemastore.nvim" })
@@ -133,9 +133,9 @@ return packer.startup(function(use)
     after = "nvim-treesitter",
   })
 
-  use("kosayoda/nvim-lightbulb", {
-    config = "require('dlvhdr.lightbulb')",
-  })
+  -- use("kosayoda/nvim-lightbulb", {
+  --   config = "require('dlvhdr.lightbulb')",
+  -- })
 
   use({
     "folke/noice.nvim",
@@ -367,6 +367,7 @@ return packer.startup(function(use)
     config = function()
       require("dlvhdr.tabby")
     end,
+    after = "tokyonight.nvim",
   })
 
   use({
