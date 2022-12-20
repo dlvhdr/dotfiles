@@ -33,24 +33,24 @@ keymap("n", "Q", "<Nop>", opts)
 keymap("n", "<leader><leader>", "<C-^>", opts)
 keymap("n", "<leader><tab>", "<C-^>", opts)
 
--- LSP
-keymap("n", "<leader>lr", function()
-  local configs = require("lspconfig.configs")
-  for _, client in
-    ipairs(vim.lsp.get_active_clients({
-      bufnr = vim.api.nvim_get_current_buf(),
-    }))
-  do
-    if client.name ~= "null-ls" then
-      os.execute("eslint_d restart")
-      os.execute("prettierd restart")
-      client.stop()
-      vim.defer_fn(function()
-        configs[client.name].launch()
-      end, 500)
-    end
-  end
-end, opts)
+-- -- LSP
+-- keymap("n", "<leader>lr", function()
+--   local configs = require("lspconfig.configs")
+--   for _, client in
+--     ipairs(vim.lsp.get_active_clients({
+--       bufnr = vim.api.nvim_get_current_buf(),
+--     }))
+--   do
+--     if client.name ~= "null-ls" then
+--       os.execute("eslint_d restart")
+--       os.execute("prettierd restart")
+--       client.stop()
+--       vim.defer_fn(function()
+--         configs[client.name].launch()
+--       end, 500)
+--     end
+--   end
+-- end, opts)
 
 keymap("n", "<leader>le", "<cmd>!eslint_d restart<CR>", opts)
 
