@@ -87,6 +87,7 @@ abbr -a gd "cd $HOME/Downloads"
 alias r "cd_repo"
 alias p "cd_pkg"
 abbr -a ssh "kitty +kitten ssh"
+abbr -a "k" "kubectl"
 
 
 # others

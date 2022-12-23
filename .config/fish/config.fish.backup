@@ -25,6 +25,3 @@ set -gx FZF_DEFAULT_OPTS '
 
 set -gx GUM_FILTER_INDICATOR "→"
 set -gx GUM_FILTER_PROMPT " "
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/dolevh/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/dolevh/Downloads/google-cloud-sdk/path.fish.inc'; end

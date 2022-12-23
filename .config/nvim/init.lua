@@ -5,9 +5,10 @@ vim.g.indentLine_concealcursor = "nc"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-pcall(require, "impatient")
+-- pcall(require, "impatient")
+-- require("dlvhdr.plugins")
 
-require("dlvhdr.plugins")
+require("dlvhdr.lazy")
 require("dlvhdr.options")
 require("dlvhdr.keymaps")
 require("dlvhdr.autocmd")
