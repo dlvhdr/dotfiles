@@ -42,9 +42,9 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "<leader>ff", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
   -- telescope
-  vim.keymap.set("n", "gr", '<cmd>lua require("dlvhdr.telescope").lsp_references()<CR>', opts)
+  vim.keymap.set("n", "gr", '<cmd>lua require("dlvhdr.plugins.telescope").lsp_references()<CR>', opts)
   vim.keymap.set("n", "gR", "<cmd>Lspsaga lsp_finder<CR>", opts)
-  vim.keymap.set("n", "gd", '<cmd>lua require("dlvhdr.telescope").lsp_definitions()<CR>', opts)
+  vim.keymap.set("n", "gd", '<cmd>lua require("dlvhdr.plugins.telescope").lsp_definitions()<CR>', opts)
   vim.keymap.set("n", "gD", "<cmd>Lspsaga preview_definition<CR>", opts)
 
   -- lspsaga
@@ -91,8 +91,6 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end
-
-  -- require("dlvhdr.lsp.lsp_signature").setup(bufnr)
 
   local config = {
     -- disable virtual text

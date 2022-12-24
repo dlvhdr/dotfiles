@@ -4,7 +4,7 @@ local M = {
   lazy = false,
 }
 
-M.colors = function() 
+M.colors = function()
   local colors_ok, colors = pcall(require, "tokyonight.colors")
   if not colors_ok then
     return
@@ -12,7 +12,7 @@ M.colors = function()
   return colors.setup({})
 end
 
-M.util = function() 
+M.util = function()
   local util_ok, util = pcall(require, "tokyonight.util")
   if not util_ok then
     return
@@ -47,6 +47,7 @@ M.config = function()
       "NvimTree",
       "Trouble",
       "LspInfo",
+      "Lazy",
     },
     dim_inactive = false,
     lualine_bold = false,

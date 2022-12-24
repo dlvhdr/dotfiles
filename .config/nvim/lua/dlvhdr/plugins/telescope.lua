@@ -119,6 +119,13 @@ M.config = function()
       },
     },
     pickers = {
+      git_files = {
+        mappings = {
+          i = {
+            ["<esc>"] = require("telescope.actions").close,
+          },
+        },
+      },
       live_grep = {
         disable_coordinates = true,
         layout_config = {
@@ -185,8 +192,19 @@ function M.project_files()
       width = 0.65,
     },
     show_untracked = true,
+    mappings = {
+      i = {
+        ["<esc>"] = require("telescope.actions").close,
+      },
+    },
   })
-  local fopts = {}
+  local fopts = {
+    mappings = {
+      i = {
+        ["<esc>"] = require("telescope.actions").close,
+      },
+    },
+  }
 
   gopts.prompt_title = "Git Files"
 

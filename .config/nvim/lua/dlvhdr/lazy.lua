@@ -13,6 +13,9 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("dlvhdr.plugins", {
   install = { colorscheme = { "tokyonight" } },
+  ui = {
+    border = "rounded",
+  },
   performance = {
     rtp = {
       disabled_plugins = {
