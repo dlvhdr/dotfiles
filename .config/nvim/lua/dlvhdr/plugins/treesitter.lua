@@ -64,7 +64,7 @@ M.config = function()
     },
     textobjects = {
       select = {
-        enable = false,
+        enable = true,
         lookahead = true,
         keymaps = {
           ["af"] = "@function.outer",
@@ -74,7 +74,7 @@ M.config = function()
         },
       },
       move = {
-        enable = false,
+        enable = true,
         set_jumps = true,
         goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
         goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
