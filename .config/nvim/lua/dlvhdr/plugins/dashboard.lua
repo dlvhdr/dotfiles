@@ -11,6 +11,8 @@ M.config = function()
   local home = os.getenv("HOME")
   local config = os.getenv("XDG_CONFIG_HOME")
 
+  local bin = vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
+
   dashboard.custom_header = {
     "   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆          ",
     "    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ",
@@ -23,6 +25,8 @@ M.config = function()
     " ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ",
     "      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
     "       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
+    "",
+    bin,
   }
 
   local colors_status_ok, colors = pcall(require, "tokyonight.colors")
@@ -50,8 +54,8 @@ M.config = function()
   }
   dashboard.session_directory = config .. "/nvim/sessions"
 
-  -- local plugins_count = vim.fn.len(vim.fn.globpath("~/.local/share/nvim/site/pack/packer/start", "*", 0, 1))
-  -- dashboard.custom_footer = { " Loaded " .. plugins_count .. " plugins", "@dlvhdr" }
+  local plugins_count = require("lazy").stats().count
+  dashboard.custom_footer = { " Loaded " .. plugins_count .. " plugins", "@dlvhdr" }
 
   vim.api.nvim_command([[augroup Dashboard]])
   vim.api.nvim_command([[autocmd!]])

@@ -47,7 +47,6 @@ M.config = function()
       "NvimTree",
       "Trouble",
       "LspInfo",
-      "Lazy",
     },
     dim_inactive = false,
     lualine_bold = false,
@@ -57,6 +56,11 @@ M.config = function()
 
   local colors = M.colors()
   local util = M.util()
+
+  if not colors or not util then
+    return
+  end
+
   vim.cmd("hi! NvimTreeSpecialFile guifg=" .. colors.warning)
   vim.cmd("hi! WinSeparator guibg=NONE guifg=" .. util.darken(colors.border_highlight, 0.3))
 
