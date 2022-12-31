@@ -13,9 +13,6 @@ return {
       return
     end
 
-    vim.cmd("hi! NavicSeparator guibg=none guifg=" .. colors.dark3)
-    vim.cmd("hi! BarbecueModified guibg=" .. colors.bg .. " guifg=" .. colors.yellow)
-
     require("barbecue").setup({
       attach_navic = false,
       show_modified = true,
@@ -26,5 +23,7 @@ return {
         default_context = "…",
       },
     })
+
+    vim.api.nvim_set_hl(0, "NavicSeparator", { fg = colors.dark3 })
   end,
 }

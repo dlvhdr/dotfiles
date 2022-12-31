@@ -1,5 +1,8 @@
 local mini = {
   "echasnovski/mini.nvim",
+  dependencies = {
+    "folke/tokyonight.nvim",
+  },
   event = "VeryLazy",
 }
 
@@ -15,8 +18,20 @@ function mini.comment()
   })
 end
 
+function mini.jump()
+  require("mini.jump").setup({})
+
+  local theme = require("dlvhdr.plugins.theme")
+  local colors = theme.colors()
+  if not colors then
+    return
+  end
+  vim.api.nvim_set_hl(0, "MiniJump", { bg = colors.bg_search, underdotted = true })
+end
+
 function mini.config()
   mini.comment()
+  mini.jump()
 end
 
 return specs

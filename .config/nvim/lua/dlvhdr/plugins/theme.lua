@@ -55,6 +55,7 @@ M.config = function()
         fg = c.green,
         bold = true,
       }
+      hl.BufferVisibleMod = { fg = c.yellow, bg = c.bg }
     end,
   })
 
@@ -67,39 +68,38 @@ M.config = function()
     return
   end
 
-  vim.cmd("hi! NvimTreeSpecialFile guifg=" .. colors.warning)
-  vim.cmd("hi! WinSeparator guibg=NONE guifg=" .. util.darken(colors.border_highlight, 0.3))
+  vim.api.nvim_set_hl(0, "NvimTreeSpecialFile", { fg = colors.warning })
+  vim.api.nvim_set_hl(0, "WinSeparator", { fg = util.darken(colors.border_highlight, 0.3), bg = "NONE" })
 
   local darker_bg = util.darken(colors.bg_popup, 2.5)
-  vim.cmd("hi! CmpDocumentation guibg=" .. darker_bg)
-  vim.cmd("hi! CmpDocumentationBorder guibg=" .. darker_bg)
-  vim.cmd("hi! TelescopeMatching guifg=" .. colors.warning .. " gui=bold")
-  vim.cmd("hi! TreesitterContext guibg=" .. colors.bg_highlight)
-  vim.cmd("hi! NvimTreeFolderIcon guifg=" .. colors.blue)
-  vim.cmd("hi! BarbecueMod guibg=NONE guifg=" .. colors.yellow)
+  vim.api.nvim_set_hl(0, "CmpDocumentation", { bg = darker_bg })
+  vim.api.nvim_set_hl(0, "CmpDocumentationBorder", { bg = darker_bg })
+  vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.warning, bold = true })
+  vim.api.nvim_set_hl(0, "TreesitterContext", { bg = colors.bg_highlight })
+  vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", { fg = colors.blue })
 
-  vim.cmd("hi! GHThreadSep guibg=" .. colors.bg_float)
-  vim.cmd("hi! markdownH1 guibg=" .. colors.bg_float)
+  vim.api.nvim_set_hl(0, "GHThreadSep", { bg = colors.bg_float })
+  vim.api.nvim_set_hl(0, "markdownH1", { bg = colors.bg_float })
 
-  vim.cmd("hi! CmpBorder guibg=none guifg=" .. colors.fg_gutter)
-  vim.cmd("hi! CmpDocBorder guibg=none guifg=" .. colors.fg_gutter)
+  vim.api.nvim_set_hl(0, "CmpBorder", { fg = colors.fg_gutter, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = colors.fg_gutter, bg = "NONE" })
 
-  vim.cmd("hi! TelescopeBorder guibg=none guifg=" .. colors.fg_gutter)
-  vim.cmd("hi! TelescopePromptTitle guibg=none guifg=" .. colors.blue)
-  vim.cmd("hi! TelescopeResultsTitle guibg=none guifg=" .. colors.teal)
-  vim.cmd("hi! TelescopePreviewTitle guibg=none guifg=" .. colors.fg)
-  vim.cmd("hi! TelescopePromptPrefix guibg=none guifg=" .. colors.blue)
-  vim.cmd("hi! TelescopeResultsDiffAdd guibg=none guifg=" .. colors.green)
-  vim.cmd("hi! TelescopeResultsDiffChange guibg=none guifg=" .. colors.yellow)
-  vim.cmd("hi! TelescopeResultsDiffDelete guibg=none guifg=" .. colors.red)
-  vim.cmd("hi! TelescopeMatching guifg=" .. colors.green .. " gui=bold")
+  vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = colors.fg_gutter, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = colors.blue, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = colors.teal, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = colors.fg, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { fg = colors.blue, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "TelescopeResultsDiffAdd", { fg = colors.green, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "TelescopeResultsDiffChange", { fg = colors.yellow, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "TelescopeResultsDiffDelete", { fg = colors.red, bg = "NONE" })
+  vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.green, bold = true, bg = "NONE" })
 
-  vim.cmd("hi! NvimTreeSpecialFile guifg=" .. colors.yellow .. " gui=bold")
+  vim.api.nvim_set_hl(0, "NvimTreeSpecialFile", { fg = colors.yellow, bold = true })
 
-  vim.cmd("hi! DevIconFish guifg=" .. colors.green)
+  vim.api.nvim_set_hl(0, "DevIconFish", { fg = colors.green })
 
-  vim.cmd("hi! Folded gui=italic guibg=" .. colors.bg_popup)
-  vim.cmd("hi! FoldColumn guifg=" .. colors.blue)
+  vim.api.nvim_set_hl(0, "Folded", { bg = colors.bg_popup, italic = true })
+  vim.api.nvim_set_hl(0, "FoldColumn", { fg = colors.blue })
 end
 
 return M

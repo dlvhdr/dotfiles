@@ -101,6 +101,7 @@ M.config = function()
         name = "luasnip",
         keyword_length = 2,
         priority = 50,
+        max_item_count = 2,
       },
       { name = "buffer", keyword_length = 3 },
     },
