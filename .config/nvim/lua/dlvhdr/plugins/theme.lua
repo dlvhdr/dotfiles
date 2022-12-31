@@ -50,6 +50,12 @@ M.config = function()
     },
     dim_inactive = false,
     lualine_bold = false,
+    on_highlights = function(hl, c)
+      hl.WhichKeyGroup = {
+        fg = c.green,
+        bold = true,
+      }
+    end,
   })
 
   tokyonight.load()

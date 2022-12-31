@@ -49,3 +49,9 @@ vim.api.nvim_create_autocmd("User", {
     barbecue.toggle()
   end,
 })
+
+vim.api.nvim_create_autocmd({ "TabClosed" }, {
+  callback = function()
+    vim.opt.showtabline = 1
+  end,
+})

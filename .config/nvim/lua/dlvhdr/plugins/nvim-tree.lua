@@ -120,13 +120,13 @@ M.config = function()
       },
     },
     view = {
-      width = 35,
+      width = 40,
       side = "right",
       mappings = {
         custom_only = false,
       },
       preserve_window_proportions = true,
-      adaptive_size = true,
+      centralize_selection = true,
     },
     filesystem_watchers = {
       enable = true,

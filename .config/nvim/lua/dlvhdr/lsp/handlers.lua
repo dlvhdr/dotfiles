@@ -33,29 +33,54 @@ M.setup = function()
 end
 
 local function lsp_keymaps(bufnr)
-  local opts = { silent = true, buffer = bufnr }
-
   -- builtins
-  vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  vim.keymap.set("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  vim.keymap.set("n", "<leader>ff", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
-
+  vim.keymap.set(
+    "n",
+    "gD",
+    "<cmd>lua vim.lsp.buf.declaration()<CR>",
+    { silent = true, buffer = bufnr, desc = "Declarations" }
+  )
+  -- vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { silent = true, buffer = bufnr, desc = "" })
+  -- vim.keymap.set(
+  --   "n",
+  --   "<leader>gD",
+  --   "<cmd>lua vim.lsp.buf.type_definition()<CR>",
+  --   { silent = true, buffer = bufnr, desc = "Type Definition" }
+  -- )
   -- telescope
-  vim.keymap.set("n", "gr", '<cmd>lua require("dlvhdr.plugins.telescope").lsp_references()<CR>', opts)
-  vim.keymap.set("n", "gR", "<cmd>Lspsaga lsp_finder<CR>", opts)
-  vim.keymap.set("n", "gd", '<cmd>lua require("dlvhdr.plugins.telescope").lsp_definitions()<CR>', opts)
-  vim.keymap.set("n", "gD", "<cmd>Lspsaga preview_definition<CR>", opts)
+  vim.keymap.set(
+    "n",
+    "gr",
+    '<cmd>lua require("dlvhdr.plugins.telescope").lsp_references()<CR>',
+    { silent = true, buffer = bufnr, desc = "References" }
+  )
+  vim.keymap.set(
+    "n",
+    "gd",
+    '<cmd>lua require("dlvhdr.plugins.telescope").lsp_definitions()<CR>',
+    { silent = true, buffer = bufnr, desc = "Definitions" }
+  )
 
   -- lspsaga
-  vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
-  vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
-  vim.keymap.set("x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
-  vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opts)
-  vim.keymap.set("n", "ge", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
-  vim.keymap.set("n", "gs", "<Cmd>Lspsaga signature_help<CR>", { silent = true })
-  vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-  vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+  vim.keymap.set(
+    "n",
+    "<leader>gn",
+    "<cmd>Lspsaga rename<cr>",
+    { silent = true, buffer = bufnr, desc = "Rename Symbol" }
+  )
+  vim.keymap.set(
+    "n",
+    "<leader>ga",
+    "<cmd>Lspsaga code_action<cr>",
+    { silent = true, buffer = bufnr, desc = "Code Action" }
+  )
+  vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<cr>", { silent = true, buffer = bufnr, desc = "Show Hover Info" })
+  vim.keymap.set(
+    "n",
+    "ge",
+    "<cmd>Lspsaga show_line_diagnostics<cr>",
+    { silent = true, buffer = bufnr, desc = "Show Line Diagnostics" }
+  )
 end
 
 M.on_attach = function(client, bufnr)
@@ -79,7 +104,7 @@ M.on_attach = function(client, bufnr)
       end,
       group = vim.api.nvim_create_augroup("LSPCodeLens", { clear = true }),
     })
-    vim.keymap.set("n", "<leader>cl", "<cmd>lua vim.lsp.codelens.run()<CR>", { silent = true, buffer = bufnr })
+    vim.keymap.set("n", "<leader>gl", "<cmd>lua vim.lsp.codelens.run()<CR>", { silent = true, buffer = bufnr })
   end
 
   if client.name == "tsserver" then
@@ -92,12 +117,8 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentRangeFormattingProvider = false
   end
 
-  -- require("dlvhdr.lsp.lsp_signature").setup(bufnr)
-
   local config = {
-    -- disable virtual text
     virtual_text = false,
-    -- show signs
     signs = {
       active = signs,
     },

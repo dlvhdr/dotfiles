@@ -29,7 +29,7 @@ M.config = function()
   end
 
   configs.setup({
-    context_commentstring = { enable = true },
+    context_commentstring = { enable = true, enable_autocmd = false },
     highlight = {
       enable = true,
       disable = function(_, bufnr)
@@ -89,6 +89,9 @@ M.config = function()
       },
     },
     ensure_installed = "all",
+    ignore_install = {
+      "comment",
+    },
   })
 
   local parser_config = parsers.get_parser_configs()
