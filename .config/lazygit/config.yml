@@ -43,6 +43,12 @@ customCommands:
     context: "global"
     loadingText: "opening github..."
     subprocess: false
+  - key: "O"
+    command: "gh pr view --web"
+    description: "view PR on github"
+    context: "global"
+    loadingText: "opening github..."
+    subprocess: false
   - key: "C"
     command: "commit"
     description: "commit with gum"
