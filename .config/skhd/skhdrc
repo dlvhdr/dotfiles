@@ -1,8 +1,8 @@
 # open chrome
 alt - f : open -a /Applications/Google\ Chrome.app
 
-# open firefox
-alt - c : open -a /Applications/Firefox.app
+# open arc
+alt - c : open -a /Applications/Arc.app
 
 # open vscode
 alt - v : open -a /Applications/Visual\ Studio\ Code.app
@@ -13,7 +13,7 @@ alt - i : open -a /Applications/kitty.app
 # open whatsapp
 alt - w : open -a /Applications/Whatsapp.app
 
-# open firefox
+# open discord
 alt - d : open -a /Applications/Discord.app
 
 # open slack
