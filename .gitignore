@@ -44,6 +44,7 @@ packer_compiled.lua
 # misc
 error.log
 .config/gup
+debug.log
 
 lvim
 
@@ -53,3 +54,6 @@ lvim
 # lazygit
 **/lazygit/state.yml
 .config/nvim/.luarc.json
+
+# wix
+bazelwrapper
