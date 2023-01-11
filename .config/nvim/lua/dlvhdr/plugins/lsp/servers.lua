@@ -1,4 +1,4 @@
-local handlers = require("dlvhdr.lsp.handlers")
+local handlers = require("dlvhdr.plugins.lsp.handlers")
 local lspconfig = require("lspconfig")
 local opts = {
   on_attach = handlers.on_attach,
@@ -10,9 +10,9 @@ lspconfig.denols.setup({
   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
 })
 lspconfig.html.setup(opts)
-require("dlvhdr.lsp.servers.tsserver").setup(opts)
-require("dlvhdr.lsp.servers.jsonls").setup(opts)
-require("dlvhdr.lsp.servers.null-ls").setup(opts)
-require("dlvhdr.lsp.servers.gopls").setup(opts)
-require("dlvhdr.lsp.servers.sumneko-lua").setup(opts)
-require("dlvhdr.lsp.servers.emmet-ls").setup(opts)
+require("dlvhdr.plugins.lsp.servers.tsserver").setup(opts)
+require("dlvhdr.plugins.lsp.servers.jsonls").setup(opts)
+require("dlvhdr.plugins.lsp.servers.null-ls").setup(opts)
+require("dlvhdr.plugins.lsp.servers.gopls").setup(opts)
+require("dlvhdr.plugins.lsp.servers.sumneko-lua").setup(opts)
+require("dlvhdr.plugins.lsp.servers.emmet-ls").setup(opts)

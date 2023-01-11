@@ -3,18 +3,19 @@ local M = {
   dependencies = {
     "folke/noice.nvim",
     "nvim-lua/lsp-status.nvim",
+    "SmiteshP/nvim-navic",
   },
   event = "VimEnter",
 }
 
 M.config = function()
-  local components = require("dlvhdr.lualine.components")
+  local components = require("dlvhdr.plugins.lualine.components")
 
-  local colors_ok, colors = pcall(require, "tokyonight.colors")
-  if not colors_ok then
+  local theme = require("dlvhdr.plugins.theme")
+  local colors = theme.colors()
+  if not colors then
     return
   end
-  colors = colors.setup({})
 
   local tree_view_ok, tree_view = pcall(require, "nvim-tree.view")
   if not tree_view_ok then
@@ -57,6 +58,7 @@ M.config = function()
           cond = require("noice").api.status.search.has,
           color = { fg = "#f0a275" },
         },
+        components.breadcrumbs,
       },
       lualine_x = {
         components.treesitter,

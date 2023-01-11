@@ -3,6 +3,8 @@ local M = {
   version = "0.1.0",
   cmd = { "Telescope" },
   dependencies = {
+    "kkharji/sqlite.lua",
+    { "prochri/telescope-all-recent.nvim", config = {} },
     "nvim-lua/plenary.nvim",
     "folke/trouble.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
@@ -119,13 +121,6 @@ M.config = function()
       },
     },
     pickers = {
-      git_files = {
-        mappings = {
-          i = {
-            ["<esc>"] = require("telescope.actions").close,
-          },
-        },
-      },
       live_grep = {
         disable_coordinates = true,
         layout_config = {

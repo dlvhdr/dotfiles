@@ -92,6 +92,11 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentRangeFormattingProvider = false
   end
 
+  local navic = require("nvim-navic")
+  if client.supports_method("textDocument/documentSymbol") and not navic.is_available() then
+    navic.attach(client, bufnr)
+  end
+
   local config = {
     -- disable virtual text
     virtual_text = false,

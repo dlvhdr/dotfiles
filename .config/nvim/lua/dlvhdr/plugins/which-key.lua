@@ -45,6 +45,9 @@ M.config = function()
     x = {
       name = "Trouble",
     },
+    o = {
+      name = "Octo",
+    },
   }, opts)
 end
 

@@ -1,8 +1,9 @@
 local keymap = vim.keymap.set
 
 -- Basic
-keymap("n", "j", "gj", { silent = true })
-keymap("n", "k", "gk", { silent = true })
+keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- save and quit
 keymap("n", "<leader>w", ":silent write<CR>", { silent = true, desc = "Write File" })
@@ -25,25 +26,6 @@ keymap("n", "Q", "<Nop>", { silent = true })
 
 -- Alternate file
 keymap("n", "<leader><leader>", "<C-^>", { silent = true, desc = "Last Buffer" })
-
--- -- LSP
--- keymap("n", "<leader>lr", function()
---   local configs = require("lspconfig.configs")
---   for _, client in
---     ipairs(vim.lsp.get_active_clients({
---       bufnr = vim.api.nvim_get_current_buf(),
---     }))
---   do
---     if client.name ~= "null-ls" then
---       os.execute("eslint_d restart")
---       os.execute("prettierd restart")
---       client.stop()
---       vim.defer_fn(function()
---         configs[client.name].launch()
---       end, 500)
---     end
---   end
--- end, { silent = true, desc = "" })
 
 keymap("n", "<leader>an", "<cmd>enew<cr>", { silent = true, desc = "New File" })
 keymap("n", "<leader>ae", "<cmd>!eslint_d restart<CR>", { silent = true, desc = "Restart eslint_d" })
@@ -106,9 +88,6 @@ if vim.opt.diff:get() then
   keymap("n", "<leader>3", ":diffget REMOTE<CR>", { silent = true, desc = "Take Remote" })
 end
 
-keymap("n", "<Leader>ah", ":set hlsearch!<CR>", { silent = true, desc = "Toggle highlighted search" })
--- keymap("n", "<leader>m", 'ysiW"', { silent = true, desc = "Surround With Quotes" })
-
 -- zippy
 keymap("n", "<leader>ag", "<cmd>lua require('zippy').insert_print()<CR>", { desc = "Add console.log" })
 
@@ -135,6 +114,3 @@ keymap("n", "<F11>", function()
     vim.o.concealcursor = "n"
   end
 end, { silent = true, desc = "" })
-
--- gitlinker
--- <leader>gy copies url to the current line in this file on github

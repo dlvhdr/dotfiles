@@ -2,7 +2,7 @@ local M = {}
 
 local null_ls = require("null-ls")
 local lspconfigUtils = require("lspconfig.util")
-local utils = require("dlvhdr.lsp.servers.null-ls.utils")
+local utils = require("dlvhdr.plugins.lsp.servers.null-ls.utils")
 
 M.setup = function(opts)
   null_ls.setup({

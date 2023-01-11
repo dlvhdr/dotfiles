@@ -16,6 +16,9 @@ require("lazy").setup("dlvhdr.plugins", {
   ui = {
     border = "rounded",
   },
+  dev = {
+    path = "~/code/personal/playground",
+  },
   performance = {
     rtp = {
       disabled_plugins = {

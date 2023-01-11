@@ -15,6 +15,7 @@ return {
 
     require("barbecue").setup({
       attach_navic = false,
+      show_navic = false,
       show_modified = true,
       symbols = {
         prefix = " ",
@@ -23,7 +24,5 @@ return {
         default_context = "…",
       },
     })
-
-    vim.api.nvim_set_hl(0, "NavicSeparator", { fg = colors.dark3 })
   end,
 }

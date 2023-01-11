@@ -1,7 +1,7 @@
 local M = {}
 
 local null_ls = require("null-ls")
-local services = require("dlvhdr.lsp.servers.null-ls.services")
+local services = require("dlvhdr.plugins.lsp.servers.null-ls.services")
 
 local method = null_ls.methods.FORMATTING
 

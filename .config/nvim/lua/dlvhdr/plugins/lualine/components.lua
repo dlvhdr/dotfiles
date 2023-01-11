@@ -1,4 +1,4 @@
-local conditions = require("dlvhdr.lualine.conditions")
+local conditions = require("dlvhdr.plugins.lualine.conditions")
 local colors = require("tokyonight.colors").setup({})
 
 local function color(highlight_group, content)
@@ -77,12 +77,12 @@ return {
     end
 
     -- add formatter
-    local formatters = require("dlvhdr.lsp.servers.null-ls.formatters")
+    local formatters = require("dlvhdr.plugins.lsp.servers.null-ls.formatters")
     local supported_formatters = formatters.list_registered(buf_ft)
     vim.list_extend(buf_client_names, supported_formatters)
 
     -- add linter
-    local linters = require("dlvhdr.lsp.servers.null-ls.linters")
+    local linters = require("dlvhdr.plugins.lsp.servers.null-ls.linters")
     local supported_linters = linters.list_registered(buf_ft)
     vim.list_extend(buf_client_names, supported_linters)
 
@@ -172,5 +172,19 @@ return {
     padding = { left = 0, right = 0 },
     color = { fg = colors.fg_dark, bg = colors.bg_statusline },
     cond = nil,
+  },
+  breadcrumbs = {
+    function()
+      local navic = require("nvim-navic")
+      local ret = navic.get_location()
+      return ret:len() > 2000 and "navic error" or ret
+    end,
+    cond = function()
+      if package.loaded["nvim-navic"] then
+        local navic = require("nvim-navic")
+        return navic.is_available()
+      end
+    end,
+    color = { fg = "#ff9e64" },
   },
 }
