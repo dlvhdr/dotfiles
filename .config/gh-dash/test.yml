@@ -1,0 +1,53 @@
+prSections:
+  - title: My PRs
+    layout:
+      lines:
+        hidden: true
+    filters: -org:wix-private author:@me
+issuesSections:
+  - title: My Issues
+    filters: is:open author:@me
+    layout:
+      creator:
+        hidden: true
+
+defaults:
+  preview:
+    open: true
+    width: 40
+  prsLimit: 20
+  issuesLimit: 20
+  view: prs
+  layout:
+    prs:
+      updatedAt:
+        width: 5
+      repo:
+        width: 15
+    issues:
+      updatedAt:
+        width: 5
+      repo:
+        width: 20
+      assignees:
+        hidden: true
+keybindings:
+  prs: []
+repoPaths: {}
+pager:
+  diff: delta
+theme:
+  colors:
+    text:
+      primary: "#E2E1ED"
+      secondary: "#666CA6"
+      inverted: "#242347"
+      faint: "#b0b3bf"
+      warning: "#F23D5C"
+      success: "#3DF294"
+    background:
+      selected: "#39386b"
+    border:
+      primary: "#383B5B"
+      secondary: "#39386B"
+      faint: "#2B2B40"
