@@ -4,5 +4,7 @@ return {
   config = function()
     require("gitlinker").setup()
   end,
-  event = "VimEnter",
+  keys = {
+    { "<leader>gy", desc = "Copy Line URL" },
+  },
 }
