@@ -2,11 +2,10 @@ local mini = {
   "echasnovski/mini.nvim",
   dependencies = {
     "folke/tokyonight.nvim",
+    "JoosepAlviste/nvim-ts-context-commentstring",
   },
   event = "VeryLazy",
 }
-
-local specs = { mini, "JoosepAlviste/nvim-ts-context-commentstring" }
 
 function mini.comment()
   require("mini.comment").setup({
@@ -34,4 +33,4 @@ function mini.config()
   mini.jump()
 end
 
-return specs
+return mini

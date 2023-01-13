@@ -65,6 +65,7 @@
   "tokyonight.nvim": { "branch": "main", "commit": "42cccfe663f36b91792a350164f0695b44a031d9" },
   "treesj": { "branch": "main", "commit": "8853418ad35abc35475131fa289bc8f3d704a1fa" },
   "trouble.nvim": { "branch": "main", "commit": "897542f90050c3230856bc6e45de58b94c700bbf" },
+  "vim-fugitive": { "branch": "master", "commit": "9c5f675db54139c18ed4a1a18989ea2da37d6cae" },
   "vim-illuminate": { "branch": "master", "commit": "a6d0b28ea7d6b9d139374be1f94a16bd120fcda3" },
   "vim-tmux-navigator": { "branch": "master", "commit": "41ea9d23b814014c8d8daf8b44fa0cd827a0e5f4" },
   "which-key.nvim": { "branch": "main", "commit": "8682d3003595017cd8ffb4c860a07576647cc6f8" }
