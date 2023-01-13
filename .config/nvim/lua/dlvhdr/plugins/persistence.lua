@@ -7,7 +7,9 @@ return {
       return
     end
 
-    persistence.setup({})
+    persistence.setup({
+      options = { "buffers", "curdir", "winsize" },
+    })
 
     local group = vim.api.nvim_create_augroup("SessionPreventSavingNvimTree", { clear = true })
     vim.api.nvim_create_autocmd("VimLeavePre", {
