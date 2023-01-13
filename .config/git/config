@@ -28,6 +28,9 @@
   ff = only
   rebase = true
 
+[blame]
+  date = relative
+
 [rebase]
   updateRefs = true
 
