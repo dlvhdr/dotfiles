@@ -28,7 +28,7 @@ M.config = function()
       name = "Telescope",
     },
     g = {
-      name = "LSP",
+      name = "Git",
     },
     d = {
       name = "DAP",
