@@ -114,3 +114,17 @@ keymap("n", "<F11>", function()
     vim.o.concealcursor = "n"
   end
 end, { silent = true, desc = "" })
+
+vim.g.tmux_resizer_no_mappings = 1
+vim.keymap.set("n", "<C-M-k>", function()
+  vim.cmd("resize +2")
+end)
+vim.keymap.set("n", "<C-M-j>", function()
+  vim.cmd("resize -2")
+end)
+vim.keymap.set("n", "<C-M-h>", function()
+  vim.cmd("vertical resize -2")
+end)
+vim.keymap.set("n", "<C-M-l>", function()
+  vim.cmd("vertical resize +2")
+end)
