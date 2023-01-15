@@ -115,16 +115,10 @@ keymap("n", "<F11>", function()
   end
 end, { silent = true, desc = "" })
 
+vim.g.tmux_resizer_resize_count = 2
+vim.g.tmux_resizer_vertical_resize_count = 2
 vim.g.tmux_resizer_no_mappings = 1
-vim.keymap.set("n", "<C-M-k>", function()
-  vim.cmd("resize +2")
-end)
-vim.keymap.set("n", "<C-M-j>", function()
-  vim.cmd("resize -2")
-end)
-vim.keymap.set("n", "<C-M-h>", function()
-  vim.cmd("vertical resize -2")
-end)
-vim.keymap.set("n", "<C-M-l>", function()
-  vim.cmd("vertical resize +2")
-end)
+vim.keymap.set("n", "<C-M-k>", "<cmd>:TmuxResizeUp<CR>", { silent = true })
+vim.keymap.set("n", "<C-M-j>", "<cmd>:TmuxResizeDown<CR>", { silent = true })
+vim.keymap.set("n", "<C-M-h>", "<cmd>:TmuxResizeLeft<CR>", { silent = true })
+vim.keymap.set("n", "<C-M-l>", "<cmd>:TmuxResizeRight<CR>", { silent = true })
