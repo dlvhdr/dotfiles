@@ -19,7 +19,7 @@
 	program = gpg
 
 [format]
-	signOff = true
+	signOff = false
 
 ; [init]
 ;   defaultBranch = main
