@@ -147,12 +147,13 @@ return {
     text_node(")"),
     insert_node(0),
   }),
-  snippet("iferr", {
-    text_node({ "if err != nil {", "\treturn " }),
-    go_ret_vals({ 1, nil }),
-    text_node({ "", "}" }),
-    insert_node(0),
-  }),
+  -- TODO: fix
+  -- snippet("iferr", {
+  --   text_node({ "if err != nil {", "\treturn " }),
+  --   go_ret_vals({ 1, nil }),
+  --   text_node({ "", "}" }),
+  --   insert_node(0),
+  -- }),
   snippet("errval", {
     insert_node(1, { "val" }),
     text_node(", "),
