@@ -17,6 +17,7 @@ M.config = function()
     },
     delay = 120,
     filetypes_denylist = {
+      "help",
       "dashboard",
       "NvimTree",
       "packer",

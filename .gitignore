@@ -55,5 +55,8 @@ lvim
 **/lazygit/state.yml
 .config/nvim/.luarc.json
 
+# lnav
+.config/lnav/
+
 # wix
 bazelwrapper

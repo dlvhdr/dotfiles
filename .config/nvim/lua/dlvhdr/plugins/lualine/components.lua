@@ -173,18 +173,4 @@ return {
     color = { fg = colors.fg_dark, bg = colors.bg_statusline },
     cond = nil,
   },
-  breadcrumbs = {
-    function()
-      local navic = require("nvim-navic")
-      local ret = navic.get_location()
-      return ret:len() > 2000 and "navic error" or ret
-    end,
-    cond = function()
-      if package.loaded["nvim-navic"] then
-        local navic = require("nvim-navic")
-        return navic.is_available()
-      end
-    end,
-    color = { fg = "#ff9e64" },
-  },
 }

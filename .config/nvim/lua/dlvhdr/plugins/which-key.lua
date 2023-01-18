@@ -48,6 +48,9 @@ M.config = function()
     o = {
       name = "Octo",
     },
+    t = {
+      name = "Toggle",
+    },
   }, opts)
 end
 

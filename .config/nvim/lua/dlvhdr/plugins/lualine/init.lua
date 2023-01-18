@@ -3,7 +3,6 @@ local M = {
   dependencies = {
     "folke/noice.nvim",
     "nvim-lua/lsp-status.nvim",
-    "SmiteshP/nvim-navic",
   },
   event = "VimEnter",
 }
@@ -58,7 +57,7 @@ M.config = function()
           cond = require("noice").api.status.search.has,
           color = { fg = "#f0a275" },
         },
-        components.breadcrumbs,
+        -- components.breadcrumbs,
       },
       lualine_x = {
         components.treesitter,

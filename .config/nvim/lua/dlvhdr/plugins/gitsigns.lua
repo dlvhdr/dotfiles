@@ -61,11 +61,13 @@ M.config = function()
         gs.blame_line({ full = true })
       end, { desc = "Blame Line" })
       map("n", "<leader>htb", gs.toggle_current_line_blame, { desc = "Toggle Current Line Blame" })
+      map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "Toggle Current Line Blame" })
       map("n", "<leader>hd", gs.diffthis, { desc = "Diff" })
       map("n", "<leader>hD", function()
         gs.diffthis("~")
       end, { desc = "Diff ~" })
       map("n", "<leader>htd", gs.toggle_deleted, { desc = "Toggle Deleted" })
+      map("n", "<leader>td", gs.toggle_current_line_blame, { desc = "Toggle Current Line Blame" })
 
       -- Text object
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
