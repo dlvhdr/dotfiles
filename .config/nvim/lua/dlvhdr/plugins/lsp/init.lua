@@ -7,7 +7,6 @@ return {
     "b0o/schemastore.nvim",
     "folke/neodev.nvim",
     "jose-elias-alvarez/null-ls.nvim",
-    "SmiteshP/nvim-navic",
   },
   config = function()
     require("dlvhdr.plugins.lsp.handlers").setup()

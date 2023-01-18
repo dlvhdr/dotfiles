@@ -38,8 +38,6 @@ local function lsp_keymaps(bufnr)
   -- builtins
   vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  vim.keymap.set("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-  vim.keymap.set("n", "<leader>ff", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 
   -- telescope
   vim.keymap.set("n", "gr", '<cmd>lua require("dlvhdr.plugins.telescope").lsp_references()<CR>', opts)
@@ -48,12 +46,11 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "gD", "<cmd>Lspsaga preview_definition<CR>", opts)
 
   -- lspsaga
-  vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<cr>", opts)
-  vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", opts)
-  vim.keymap.set("x", "<leader>ca", ":<c-u>Lspsaga range_code_action<cr>", opts)
+  vim.keymap.set("n", "<leader>gr", "<cmd>Lspsaga rename<cr>", opts)
+  vim.keymap.set("n", "<leader>ga", "<cmd>Lspsaga code_action<cr>", opts)
+  vim.keymap.set("x", "<leader>ga", ":<c-u>Lspsaga range_code_action<cr>", opts)
   vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opts)
   vim.keymap.set("n", "ge", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
-  vim.keymap.set("n", "gs", "<Cmd>Lspsaga signature_help<CR>", { silent = true })
   vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
   vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
 end
@@ -90,11 +87,6 @@ M.on_attach = function(client, bufnr)
   if client.name == "sumneko_lua" then
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
-  end
-
-  local navic = require("nvim-navic")
-  if client.supports_method("textDocument/documentSymbol") and not navic.is_available() then
-    navic.attach(client, bufnr)
   end
 
   local config = {
