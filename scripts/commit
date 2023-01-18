@@ -29,7 +29,7 @@ test -z "$SUMMARY" && exit
 MSG="$TYPE$SCOPE: $SUMMARY"
 gum confirm "$MSG"
 
-test $? -eq 0 && git commit --no-verify -s -m "$MSG" && echo && gum join "$(gum style --foreground="4" "✅ ")" "$MSG" && exit
+test $? -eq 0 && git commit --no-verify -m "$MSG" && echo && gum join "$(gum style --foreground="4" "✅ ")" "$MSG" && exit
 
 echo
 gum join "$(gum style --foreground="1" "❌ [CANCELED] ")" "$MSG"
