@@ -6,20 +6,19 @@
 
 ## Setup
 
-- Terminal: kitty + tmux
-- Shell: fish + starship
-- Editor: nvim
-- Source control: git + gh + tig
-- `ls`: exa
-- Theme: tokyonight
-- Setup: macos setup files
+- **Terminal:** kitty + tmux
+- **Shell:** fish + starship
+- **Editor:** nvim
+- **Source control:** git + gh + tig + lazygit
+- **Theme:** tokyonight
+- **Setup:** macos setup files
 
 ## Neovim
 
-- **Plugin manager:** packer
+- **Plugin manager:** lazy
 - **Statue line:** lualine
 - **Completions:** nvim-cmp
-- **LSP**: mason, null-ls
+- **LSP:** mason, null-ls
 - **Syntax highlighting:** treesitter
 - **Fuzzy finder:** telescope
 - **File tree:** nvim-tree
