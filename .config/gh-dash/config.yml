@@ -19,7 +19,8 @@ prSections:
       repo:wix-incubator/corvid-types"
   - title: "@wix/backend"
     filters: "-author:@me -author:app/wix-loki-bot \
-      repo:wix-private/cloud-runtime"
+      repo:wix-private/cloud-runtime \
+      repo:wix-private/wix-code"
   - title: gh-dash
     filters: "is:open repo:dlvhdr/gh-dash"
   - title: Commented
