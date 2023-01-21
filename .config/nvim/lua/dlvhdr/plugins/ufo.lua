@@ -4,10 +4,7 @@ local M = {
 }
 
 M.config = function()
-  local ok, ufo = pcall(require, "ufo")
-  if not ok then
-    return
-  end
+  local ufo = require("ufo")
 
   local handler = function(virtText, lnum, endLnum, width, truncate)
     local newVirtText = {}
@@ -33,7 +30,7 @@ M.config = function()
       end
       curWidth = curWidth + chunkWidth
     end
-    table.insert(newVirtText, { suffix, "MoreMsg" })
+    table.insert(newVirtText, { suffix, "UfoFoldedFg" })
     return newVirtText
   end
 

@@ -51,6 +51,7 @@ keymap(
   { silent = true, desc = "Open Buffers" }
 )
 keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { silent = true, desc = "Help Tags" })
+keymap("n", "<leader>fH", "<cmd>Telescope highlights<CR>", { silent = true, desc = "Highlights" })
 keymap("n", "<leader>fr", "<cmd>Telescope resume<cr>", { silent = true, desc = "Resume" })
 keymap("n", "<leader>fp", "<cmd>Telescope pickers<cr>", { silent = true, desc = "Pickers" })
 keymap("n", "<leader>fs", ":lua require('telescope.builtin').git_status()<CR>", { silent = true, desc = "Git Status" })

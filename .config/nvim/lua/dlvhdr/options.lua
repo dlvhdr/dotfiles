@@ -54,10 +54,11 @@ vim.opt.belloff = "all"
 vim.opt.cursorline = true
 vim.opt.updatetime = 1000
 
-vim.o.foldcolumn = "0"
+vim.o.foldcolumn = "auto"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = vim.treesitter.foldexpr
 -- vim.opt.foldnestmax = 1 -- maximum fold depth

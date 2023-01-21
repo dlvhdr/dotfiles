@@ -51,11 +51,15 @@ M.config = function()
     dim_inactive = false,
     lualine_bold = false,
     on_highlights = function(hl, c)
+      local util = require("tokyonight.util")
       hl.WhichKeyGroup = {
         fg = c.green,
         bold = true,
       }
       hl.BufferVisibleMod = { fg = c.yellow, bg = c.bg }
+      hl.Folded = {
+        bg = util.lighten(c.bg_highlight, 0.98),
+      }
     end,
   })
 
