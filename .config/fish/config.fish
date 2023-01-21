@@ -7,7 +7,7 @@
 set fish_greeting
 
 source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
-fzf_configure_bindings --directory=\ct
+fzf_configure_bindings --directory=\ct --git_log=
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
 set -gx fzf_history_opts "--nth=4.." --preview=""
 set -gx FZF_DEFAULT_OPTS '
