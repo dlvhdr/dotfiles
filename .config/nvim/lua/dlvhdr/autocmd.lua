@@ -85,3 +85,16 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = true
   end,
 })
+
+local FormatOptions = vim.api.nvim_create_augroup("FormatOptions", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = FormatOptions,
+  pattern = "*",
+  desc = "Set buffer local formatoptions.",
+  callback = function()
+    vim.opt_local.formatoptions:remove({
+      "r", -- Automatically insert the current comment leader after hitting <Enter> in Insert mode.
+      "o", -- Automatically insert the current comment leader after hitting 'o' or 'O' in Normal mode.
+    })
+  end,
+})

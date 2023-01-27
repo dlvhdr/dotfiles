@@ -3,9 +3,9 @@ return {
   name = "lsp",
   event = "BufReadPre",
   dependencies = {
+    "folke/neodev.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "b0o/schemastore.nvim",
-    "folke/neodev.nvim",
     "jose-elias-alvarez/null-ls.nvim",
   },
   config = function()

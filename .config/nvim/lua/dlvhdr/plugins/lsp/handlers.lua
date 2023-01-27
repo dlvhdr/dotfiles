@@ -56,15 +56,25 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-  if client.server_capabilities.documentFormattingProvider and client.name ~= "sumneko_lua" then
+  if client.name == "tsserver" then
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end
+
+  if client.name == "sumneko_lua" then
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end
+
+  if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+      group = vim.api.nvim_create_augroup("LSPFormat_" .. bufnr, {}),
       buffer = bufnr,
       callback = function()
         if vim.lsp.buf.server_ready() then
-          vim.lsp.buf.format({ bufnr = bufnr }, 3000)
+          vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 3000 })
         end
       end,
-      group = vim.api.nvim_create_augroup("LSPFormat_" .. bufnr, { clear = true }),
     })
   end
 
@@ -77,16 +87,6 @@ M.on_attach = function(client, bufnr)
       group = vim.api.nvim_create_augroup("LSPCodeLens", { clear = true }),
     })
     vim.keymap.set("n", "<leader>cl", "<cmd>lua vim.lsp.codelens.run()<CR>", { silent = true, buffer = bufnr })
-  end
-
-  if client.name == "tsserver" then
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-  end
-
-  if client.name == "sumneko_lua" then
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
   end
 
   local config = {
@@ -110,7 +110,7 @@ M.on_attach = function(client, bufnr)
   }
   vim.diagnostic.config(config)
 
-  lsp_status.on_attach(client, bufnr)
+  lsp_status.on_attach(client)
   lsp_keymaps(bufnr)
 end
 
