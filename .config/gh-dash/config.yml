@@ -8,10 +8,8 @@ prSections:
     filters: is:open review-requested:@me
   - title: DevEnv
     filters: "draft:false org:wix-private \
-      author:Galcarmi \
       author:nemni8 \
-      author:seanoch \
-      author:haimre"
+      author:seanoch"
   - title: "@wix/frontend"
     filters: "-author:@me -author:app/wix-loki-bot \
       repo:wix-private/wix-code-devex \
@@ -71,6 +69,8 @@ defaults:
         grow: true,
         width: 10
         hidden: false
+      # assignees:
+      #   hidden: false
 
   preview:
     open: true
