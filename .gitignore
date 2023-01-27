@@ -60,3 +60,4 @@ lvim
 
 # wix
 bazelwrapper
+.config/k9s/config.yml

@@ -1,6 +1,17 @@
 local M = {
   "kyazdani42/nvim-tree.lua",
   cmd = "NvimTree",
+  keys = {
+    {
+      "<leader>e",
+      function()
+        local api = require("nvim-tree.api")
+        api.tree.toggle()
+      end,
+      desc = "NvimTree (root dir)",
+      remap = true,
+    },
+  },
   lazy = true,
 }
 
