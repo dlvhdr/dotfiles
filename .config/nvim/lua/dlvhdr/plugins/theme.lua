@@ -52,6 +52,7 @@ M.config = function()
     lualine_bold = false,
     on_highlights = function(hl, c)
       local util = require("tokyonight.util")
+      local darker_bg = util.darken(c.bg_popup, 2.5)
       hl.WhichKeyGroup = {
         fg = c.green,
         bold = true,
@@ -60,50 +61,37 @@ M.config = function()
       hl.Folded = {
         bg = util.lighten(c.bg_highlight, 0.98),
       }
+      hl.WinSeparator = {
+        fg = util.darken(c.border_highlight, 0.3),
+      }
+      hl.NvimTreeSpecialFile = {
+        fg = c.yellow,
+        bold = true,
+      }
+      hl.CmpDocumentation = { bg = darker_bg }
+      hl.CmpDocumentationBorder = { bg = darker_bg }
+      hl.TelescopeMatching = { fg = c.warning, bold = true }
+      hl.TreesitterContext = { bg = c.bg_highlight }
+      hl.NvimTreeFolderIcon = { fg = c.blue }
+      hl.CmpBorder = { fg = c.fg_gutter, bg = "NONE" }
+      hl.CmpDocBorder = { fg = c.fg_gutter, bg = "NONE" }
+      hl.TelescopeBorder = { fg = c.fg_gutter, bg = "NONE" }
+      hl.TelescopePromptTitle = { fg = c.blue, bg = "NONE" }
+      hl.TelescopeResultsTitle = { fg = c.teal, bg = "NONE" }
+      hl.TelescopePreviewTitle = { fg = c.fg, bg = "NONE" }
+      hl.TelescopePromptPrefix = { fg = c.blue, bg = "NONE" }
+      hl.TelescopeResultsDiffAdd = { fg = c.green, bg = "NONE" }
+      hl.TelescopeResultsDiffChange = { fg = c.yellow, bg = "NONE" }
+      hl.TelescopeResultsDiffDelete = { fg = c.red, bg = "NONE" }
+      hl.TelescopeMatching = { fg = c.green, bold = true, bg = "NONE" }
+      hl.FoldColumn = { fg = c.blue }
+      hl.DevIconFish = { fg = c.green }
+      hl.GHThreadSep = { bg = c.bg_float }
+      hl.markdownH1 = { bg = c.bg_float }
     end,
   })
 
   tokyonight.load()
-
-  local colors = M.colors()
-  local util = M.util()
-
-  if not colors or not util then
-    return
-  end
-
-  vim.api.nvim_set_hl(0, "NvimTreeSpecialFile", { fg = colors.warning })
-  vim.api.nvim_set_hl(0, "WinSeparator", { fg = util.darken(colors.border_highlight, 0.3), bg = "NONE" })
-
-  local darker_bg = util.darken(colors.bg_popup, 2.5)
-  vim.api.nvim_set_hl(0, "CmpDocumentation", { bg = darker_bg })
-  vim.api.nvim_set_hl(0, "CmpDocumentationBorder", { bg = darker_bg })
-  vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.warning, bold = true })
-  vim.api.nvim_set_hl(0, "TreesitterContext", { bg = colors.bg_highlight })
-  vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", { fg = colors.blue })
-
-  vim.api.nvim_set_hl(0, "GHThreadSep", { bg = colors.bg_float })
-  vim.api.nvim_set_hl(0, "markdownH1", { bg = colors.bg_float })
-
-  vim.api.nvim_set_hl(0, "CmpBorder", { fg = colors.fg_gutter, bg = "NONE" })
-  vim.api.nvim_set_hl(0, "CmpDocBorder", { fg = colors.fg_gutter, bg = "NONE" })
-
-  vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = colors.fg_gutter, bg = "NONE" })
-  vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = colors.blue, bg = "NONE" })
-  vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = colors.teal, bg = "NONE" })
-  vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = colors.fg, bg = "NONE" })
-  vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { fg = colors.blue, bg = "NONE" })
-  vim.api.nvim_set_hl(0, "TelescopeResultsDiffAdd", { fg = colors.green, bg = "NONE" })
-  vim.api.nvim_set_hl(0, "TelescopeResultsDiffChange", { fg = colors.yellow, bg = "NONE" })
-  vim.api.nvim_set_hl(0, "TelescopeResultsDiffDelete", { fg = colors.red, bg = "NONE" })
-  vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.green, bold = true, bg = "NONE" })
-
-  vim.api.nvim_set_hl(0, "NvimTreeSpecialFile", { fg = colors.yellow, bold = true })
-
-  vim.api.nvim_set_hl(0, "DevIconFish", { fg = colors.green })
-
-  vim.api.nvim_set_hl(0, "Folded", { bg = colors.bg_popup, italic = true })
-  vim.api.nvim_set_hl(0, "FoldColumn", { fg = colors.blue })
 end
 
 return M

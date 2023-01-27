@@ -16,20 +16,6 @@ M.setup = function()
   for _, sign in ipairs(signs) do
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
-
-  local border = {
-    { "╭", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "╮", "FloatBorder" },
-    { "│", "FloatBorder" },
-    { "╯", "FloatBorder" },
-    { "─", "FloatBorder" },
-    { "╰", "FloatBorder" },
-    { "│", "FloatBorder" },
-  }
-  local pop_opts = { border = border, max_width = 80 }
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, pop_opts)
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, pop_opts)
 end
 
 local function lsp_keymaps(bufnr)
@@ -41,18 +27,31 @@ local function lsp_keymaps(bufnr)
 
   -- telescope
   vim.keymap.set("n", "gr", '<cmd>lua require("dlvhdr.plugins.telescope").lsp_references()<CR>', opts)
-  vim.keymap.set("n", "gR", "<cmd>Lspsaga lsp_finder<CR>", opts)
   vim.keymap.set("n", "gd", '<cmd>lua require("dlvhdr.plugins.telescope").lsp_definitions()<CR>', opts)
-  vim.keymap.set("n", "gD", "<cmd>Lspsaga preview_definition<CR>", opts)
 
-  -- lspsaga
-  vim.keymap.set("n", "<leader>gr", "<cmd>Lspsaga rename<cr>", opts)
-  vim.keymap.set("n", "<leader>ga", "<cmd>Lspsaga code_action<cr>", opts)
-  vim.keymap.set("x", "<leader>ga", ":<c-u>Lspsaga range_code_action<cr>", opts)
-  vim.keymap.set("n", "gh", "<cmd>Lspsaga hover_doc<cr>", opts)
-  vim.keymap.set("n", "ge", "<cmd>Lspsaga show_line_diagnostics<cr>", opts)
-  vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
-  vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
+  vim.keymap.set("n", "<leader>gr", M.rename, { expr = true })
+  vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, opts)
+  vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
+  vim.keymap.set("n", "ge", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "gH", vim.lsp.buf.signature_help, opts)
+  vim.keymap.set("n", "[d", M.diagnostic_goto(true), opts)
+  vim.keymap.set("n", "]d", M.diagnostic_goto(false), opts)
+end
+
+function M.rename()
+  if pcall(require, "inc_rename") then
+    return ":IncRename " .. vim.fn.expand("<cword>")
+  else
+    vim.lsp.buf.rename()
+  end
+end
+
+function M.diagnostic_goto(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
 end
 
 M.on_attach = function(client, bufnr)

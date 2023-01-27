@@ -11,6 +11,10 @@ M.config = function()
   end
 
   noice.setup({
+    presets = {
+      lsp_doc_border = true,
+      inc_rename = true, -- enables an input dialog for inc-rename.nvim
+    },
     format = {
       default = { "{title} ", "{message}" },
     },
@@ -18,8 +22,11 @@ M.config = function()
       view_search = false,
     },
     lsp = {
-      hover = { enabled = false },
-      signature = { enabled = false },
+      override = {
+        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        ["vim.lsp.util.stylize_markdown"] = true,
+        ["cmp.entry.get_documentation"] = true,
+      },
       progress = {
         enabled = false,
         format = {

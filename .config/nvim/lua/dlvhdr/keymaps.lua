@@ -97,9 +97,6 @@ keymap("n", "<leader>aJ", "<cmd>%!jq -c<cr>", { silent = true, desc = "Compact F
 
 keymap("n", "<leader>af", "<cmd>lua vim.lsp.buf.format()<CR>", { silent = true, desc = "Format" })
 
-keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_next<cr>", { silent = true, desc = "Next Diagnostic" })
-keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", { silent = true, desc = "Previous Diagnostic" })
-
 keymap("n", "<F10>", function()
   if vim.o.conceallevel > 0 then
     vim.o.conceallevel = 0

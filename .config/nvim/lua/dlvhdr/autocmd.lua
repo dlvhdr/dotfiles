@@ -31,16 +31,16 @@ vim.api.nvim_create_autocmd({ "BufRead,BufNewFile" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd("User", {
-  pattern = { "DiffviewViewEnter", "DiffviewViewLeave" },
-  callback = function()
-    local ok, barbecue = pcall(require, "barbecue.ui")
-    if not ok then
-      return
-    end
-    barbecue.toggle()
-  end,
-})
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = { "DiffviewViewEnter", "DiffviewViewLeave" },
+--   callback = function()
+--     local ok, barbecue = pcall(require, "barbecue.ui")
+--     if not ok then
+--       return
+--     end
+--     barbecue.toggle()
+--   end,
+-- })
 
 vim.api.nvim_create_autocmd({ "TabClosed" }, {
   callback = function()
