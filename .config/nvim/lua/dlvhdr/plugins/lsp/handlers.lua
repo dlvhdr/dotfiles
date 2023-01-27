@@ -22,12 +22,16 @@ local function lsp_keymaps(bufnr)
   local opts = { silent = true, buffer = bufnr }
 
   -- builtins
-  vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 
   -- telescope
-  vim.keymap.set("n", "gr", '<cmd>lua require("dlvhdr.plugins.telescope").lsp_references()<CR>', opts)
-  vim.keymap.set("n", "gd", '<cmd>lua require("dlvhdr.plugins.telescope").lsp_definitions()<CR>', opts)
+  vim.keymap.set("n", "gr", function()
+    require("dlvhdr.plugins.telescope").lsp_references()
+  end, opts)
+  vim.keymap.set("n", "gd", function()
+    require("dlvhdr.plugins.telescope").lsp_definitions()
+  end, opts)
 
   vim.keymap.set("n", "<leader>gr", M.rename, { expr = true })
   vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, opts)

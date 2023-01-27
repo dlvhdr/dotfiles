@@ -233,6 +233,7 @@ function M.lsp_references()
     },
     sorting_strategy = "ascending",
     ignore_filename = false,
+    fname_width = 40,
   })
 end
 
