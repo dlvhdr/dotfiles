@@ -2,10 +2,10 @@
 #assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-#disable = ["system", "emacs"]
+disable = ["neovim", "helm", "containers", "git_repos", "pip3"]
 
 # Ignore failures for these steps
-#ignore_failures = ["powershell"]
+ignore_failures = ["brew_formula"]
 
 # Run specific steps - same options as the command line flag
 #only = ["system", "emacs"]

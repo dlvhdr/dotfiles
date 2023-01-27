@@ -52,7 +52,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.belloff = "all"
 vim.opt.cursorline = true
-vim.opt.updatetime = 1000
+vim.opt.updatetime = 50
 
 vim.o.foldcolumn = "auto"
 vim.o.foldlevel = 99
