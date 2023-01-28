@@ -6,6 +6,16 @@ local M = {
   },
 }
 
+-- TODO: try to use arttime
+-- local function default_header()
+--   local out = vim.fn.system({ "artprint", "--random", "all" })
+--   local lines = {}
+--   for s in out:gmatch("[^\r\n]+") do
+--     table.insert(lines, s)
+--   end
+--   return lines
+-- end
+
 M.config = function()
   local dashboard = require("dashboard")
   dashboard.setup({
