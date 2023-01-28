@@ -75,18 +75,21 @@ M.config = function()
       },
     },
     mapping = cmp.mapping.preset.insert({
-      ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-d>"] = cmp.mapping.scroll_docs(4),
+      -- ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+      -- ["<C-d>"] = cmp.mapping.scroll_docs(4),
       ["<C-Space>"] = cmp.mapping.complete(),
-      ["<C-y>"] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
+      ["<C-y>"] = cmp.mapping({
+        i = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+        c = function(fallback)
+          if cmp.visible() then
+            cmp.confirm({ select = true })
+          else
+            fallback()
+          end
+        end,
       }),
+      ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
       ["<C-e>"] = cmp.mapping.close(),
-      -- ["<CR>"] = cmp.mapping.confirm({
-      --   behavior = cmp.ConfirmBehavior.Replace,
-      --   select = true,
-      -- }),
       ["<C-n>"] = next_completion,
       ["<C-p>"] = prev_completion,
     }),
