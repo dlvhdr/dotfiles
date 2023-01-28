@@ -94,7 +94,9 @@ gum choose --no-limit < "$DOTFILES_PATH"/setup/packages.txt | \
 
 title "Installing neovim plugins..."
 if command -v nvim &> /dev/null; then
-  gum spin nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' > /dev/null 
+  gum spin nvim --headless "+Lazy! sync" +qa > /dev/null 
+	# Update LSP servers
+  gum spin nvim --headless -c 'autocmd User MasonUpdateAllComplete quitall' -c 'MasonUpdateAll' > /dev/null
 fi
 
 title "Installing tmux plugin manager (TPM)..."
@@ -103,6 +105,9 @@ if command -v tmux &> /dev/null; then
     gum spin git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm > /dev/null
   fi
 fi
+
+title "Making C-w (delete word backward) work globally in macOS"
+cp DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 
 ask "Changing shell, please enter your password:"
 command -v zsh | sudo tee -a /etc/shells
