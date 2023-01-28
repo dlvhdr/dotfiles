@@ -4,6 +4,7 @@ local M = {
     "MunifTanjim/nui.nvim",
   },
 }
+
 M.config = function()
   local ok, noice = pcall(require, "noice")
   if not ok then
@@ -59,70 +60,6 @@ M.config = function()
         },
         opts = { skip = true },
       },
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "lua_error",
-      --     find = "more line",
-      --   },
-      --   opts = { skip = true },
-      -- },
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "lua_error",
-      --     find = "fewer line",
-      --   },
-      --   opts = { skip = true },
-      -- },
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "lua_error",
-      --     find = "line less",
-      --   },
-      --   opts = { skip = true },
-      -- },
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "lua_error",
-      --     find = "change;",
-      --   },
-      --   opts = { skip = true },
-      -- },
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "",
-      --     find = "more line",
-      --   },
-      --   opts = { skip = true },
-      -- },
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "",
-      --     find = "fewer line",
-      --   },
-      --   opts = { skip = true },
-      -- },
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "",
-      --     find = "line less",
-      --   },
-      --   opts = { skip = true },
-      -- },
-      -- {
-      --   filter = {
-      --     event = "msg_show",
-      --     kind = "",
-      --     find = "change;",
-      --   },
-      --   opts = { skip = true },
-      -- },
     },
     views = {
       cmdline_popup = {
@@ -138,5 +75,32 @@ M.config = function()
     },
   })
 end
+
+M.keys = {
+  {
+    "<C-d>",
+    function()
+      if not require("noice.lsp").scroll(4) then
+        return "<C-d>"
+      end
+    end,
+    mode = { "i", "n" },
+    silent = true,
+    expr = true,
+    desc = "Scroll forward",
+  },
+  {
+    "<C-u>",
+    function()
+      if not require("noice.lsp").scroll(-4) then
+        return "<C-u>"
+      end
+    end,
+    mode = { "i", "n" },
+    silent = true,
+    expr = true,
+    desc = "Scroll backward",
+  },
+}
 
 return M
