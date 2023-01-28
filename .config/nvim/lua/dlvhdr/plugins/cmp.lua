@@ -8,7 +8,6 @@ local M = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
     "onsails/lspkind-nvim",
   },
 }
@@ -76,16 +75,13 @@ M.config = function()
       },
     },
     mapping = cmp.mapping.preset.insert({
-      ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-      ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-      ["<C-y>"] = cmp.mapping(
-        cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        }),
-        { "i", "c" }
-      ),
+      ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+      ["<C-d>"] = cmp.mapping.scroll_docs(4),
+      ["<C-Space>"] = cmp.mapping.complete(),
+      ["<C-y>"] = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+      }),
       ["<C-e>"] = cmp.mapping.close(),
       -- ["<CR>"] = cmp.mapping.confirm({
       --   behavior = cmp.ConfirmBehavior.Replace,
@@ -95,7 +91,6 @@ M.config = function()
       ["<C-p>"] = prev_completion,
     }),
     sources = {
-      { name = "nvim_lsp_signature_help" },
       { name = "nvim_lsp" },
       {
         name = "luasnip",
