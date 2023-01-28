@@ -19,27 +19,30 @@ M.setup = function()
 end
 
 local function lsp_keymaps(bufnr)
-  local opts = { silent = true, buffer = bufnr }
-
   -- builtins
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go To Declaration" })
+  vim.keymap.set(
+    "n",
+    "gi",
+    vim.lsp.buf.implementation,
+    { silent = true, buffer = bufnr, desc = "Go To Implementation" }
+  )
 
   -- telescope
   vim.keymap.set("n", "gr", function()
     require("dlvhdr.plugins.telescope").lsp_references()
-  end, opts)
+  end, { silent = true, buffer = bufnr, desc = "Show References" })
   vim.keymap.set("n", "gd", function()
     require("dlvhdr.plugins.telescope").lsp_definitions()
-  end, opts)
+  end, { silent = true, buffer = bufnr, desc = "View Definitions" })
 
-  vim.keymap.set("n", "<leader>gr", M.rename, { expr = true })
-  vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "ge", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "gH", vim.lsp.buf.signature_help, opts)
-  vim.keymap.set("n", "[d", M.diagnostic_goto(true), opts)
-  vim.keymap.set("n", "]d", M.diagnostic_goto(false), opts)
+  vim.keymap.set("n", "<leader>gr", M.rename, { expr = true, desc = "Rename Symbol" })
+  vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Code Action" })
+  vim.keymap.set("n", "gh", vim.lsp.buf.hover, { silent = true, buffer = bufnr, desc = "Hover Symbol" })
+  vim.keymap.set("n", "ge", vim.diagnostic.open_float, { silent = true, buffer = bufnr, desc = "Show Diagnostic" })
+  vim.keymap.set("n", "gH", vim.lsp.buf.signature_help, { silent = true, buffer = bufnr, desc = "Signature Help" })
+  vim.keymap.set("n", "[d", M.diagnostic_goto(true), { silent = true, buffer = bufnr, desc = "Next Diagnostic" })
+  vim.keymap.set("n", "]d", M.diagnostic_goto(false), { silent = true, buffer = bufnr, desc = "Previous Diagnostic" })
 end
 
 function M.rename()
