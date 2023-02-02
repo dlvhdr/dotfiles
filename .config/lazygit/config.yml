@@ -1,4 +1,5 @@
 notARepository: "skip" # one of: 'prompt' | 'create' | 'skip'
+promptToReturnFromSubprocess: false
 gui:
   showIcons: true
   scrollHeight: 2
