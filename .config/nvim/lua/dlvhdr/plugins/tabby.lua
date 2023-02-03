@@ -1,5 +1,6 @@
 local M = {
   "nanozuki/tabby.nvim",
+  event = "BufReadPost",
   dependencies = {
     "folke/tokyonight.nvim",
   },
@@ -51,6 +52,7 @@ M.config = function()
   }
 
   tabby.setup({ tabline = tab_only })
+  vim.o.showtabline = 1
 end
 
 return M

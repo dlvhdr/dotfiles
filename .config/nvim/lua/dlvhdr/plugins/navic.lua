@@ -1,6 +1,7 @@
 return {
   "SmiteshP/nvim-navic",
   enabled = true,
+  event = "BufReadPre",
   dependencies = { "folke/tokyonight.nvim", "kyazdani42/nvim-web-devicons", "MunifTanjim/nui.nvim" },
   config = function()
     vim.g.navic_silence = true

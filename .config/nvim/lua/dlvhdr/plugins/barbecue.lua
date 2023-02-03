@@ -1,5 +1,6 @@
 return {
   "utilyre/barbecue.nvim",
+  event = "BufReadPre",
   dependencies = {
     "folke/tokyonight.nvim",
     "SmiteshP/nvim-navic",

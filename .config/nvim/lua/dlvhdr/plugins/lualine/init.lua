@@ -4,7 +4,7 @@ local M = {
     "folke/noice.nvim",
     "nvim-lua/lsp-status.nvim",
   },
-  event = "VimEnter",
+  event = "VeryLazy",
 }
 
 M.config = function()

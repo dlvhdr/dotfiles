@@ -78,6 +78,7 @@ M.on_attach = function(client, bufnr)
       buffer = bufnr,
       callback = function()
         if vim.lsp.buf.server_ready() then
+          vim.notify("formatting buffer #" .. bufnr .. "...")
           vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 3000 })
         end
       end,
