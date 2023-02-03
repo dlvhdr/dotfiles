@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "$1 $2 $3 $4" > /tmp/wow.json
+
+/usr/local/bin/kubectl logs $1 -n $2 --context $3 -c $4 | gojq -rR '. as $raw | try (fromjson .message) catch ("\u001b[31m" + $raw + "\u001b[0m")' | less -FR 
