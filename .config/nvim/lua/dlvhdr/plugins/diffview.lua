@@ -21,6 +21,11 @@ M.config = function()
       folder_closed = "",
       folder_open = "",
     },
+    view = {
+      merge_tool = {
+        layout = "diff2_horizontal",
+      },
+    },
     signs = {
       fold_closed = "",
       fold_open = "",
