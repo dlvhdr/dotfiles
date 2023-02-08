@@ -26,7 +26,7 @@ alt - n : open -a /Applications/Notion.app
 alt - z : open -a /Applications/zoom.us.app
 
 # open mail
-alt - m : open -a /System/Applications/Mail.app
+alt - m : open -a /Applications/Mimestream.app
 
 # open calendar
 alt - p : open -a /Applications/Cron.app
