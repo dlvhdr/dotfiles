@@ -2,6 +2,9 @@ local M = {
   "sindrets/diffview.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewFileHistory" },
+  keys = {
+    { "<leader>gdm", "<cmd>DiffviewOpen master<cr>", desc = "Git Diff Master" },
+  },
 }
 
 M.config = function()
@@ -22,8 +25,11 @@ M.config = function()
       folder_open = "",
     },
     view = {
-      merge_tool = {
+      diff_view = {
         layout = "diff2_horizontal",
+      },
+      merge_tool = {
+        layout = "diff1_plain",
       },
     },
     signs = {
