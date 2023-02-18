@@ -7,6 +7,7 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "b0o/schemastore.nvim",
     "jose-elias-alvarez/null-ls.nvim",
+    "williamboman/mason.nvim",
   },
   config = function()
     require("dlvhdr.plugins.lsp.handlers").setup()
