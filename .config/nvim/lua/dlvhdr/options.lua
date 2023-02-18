@@ -31,7 +31,6 @@ vim.opt.mouse = "a"
 vim.opt.hidden = true
 vim.opt.wildignore = vim.opt.wildignore + { "**/coverage/*", "**/node_modules/*", "**/.git/*" }
 vim.opt.termguicolors = true
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.scrolloff = 8
