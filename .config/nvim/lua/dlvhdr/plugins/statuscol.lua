@@ -5,7 +5,8 @@ return {
     require("statuscol").setup({
       setopt = true,
       separator = " ",
-      order = "SNs",
+      order = "SNsFs",
+      foldfunc = "builtin",
     })
   end,
 }
