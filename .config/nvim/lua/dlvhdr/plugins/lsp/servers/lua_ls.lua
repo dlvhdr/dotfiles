@@ -4,7 +4,7 @@ M.setup = function(opts)
   require("neodev").setup({})
 
   local lspconfig = require("lspconfig")
-  lspconfig.sumneko_lua.setup({
+  lspconfig.lua_ls.setup({
     on_attach = opts.on_attach,
     capabilities = opts.capabilities,
     settings = {

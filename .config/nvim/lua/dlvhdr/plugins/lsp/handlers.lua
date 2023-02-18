@@ -29,7 +29,7 @@ local function lsp_keymaps(bufnr)
   )
 
   -- telescope
-  vim.keymap.set("n", "gr", function()
+  vim.keymap.set("n", "gR", function()
     require("dlvhdr.plugins.telescope").lsp_references()
   end, { silent = true, buffer = bufnr, desc = "Show References" })
   vim.keymap.set("n", "gd", function()

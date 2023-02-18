@@ -8,16 +8,11 @@ return {
     "kyazdani42/nvim-web-devicons",
   },
   config = function()
-    local theme = require("dlvhdr.plugins.theme")
-    local colors = theme.colors()
-    if not colors then
-      return
-    end
-
     require("barbecue").setup({
       attach_navic = false,
       show_navic = false,
       show_modified = true,
+      theme = "tokyonight",
       symbols = {
         prefix = " ",
         separator = "",
