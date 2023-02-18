@@ -15,6 +15,25 @@ local M = {
   lazy = true,
 }
 
+local function open_nvim_tree(data)
+  -- buffer is a directory
+  local directory = vim.fn.isdirectory(data.file) == 1
+
+  if not directory then
+    return
+  end
+
+  -- change to the directory
+  vim.cmd.cd(data.file)
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+end
+
+M.init = function()
+  vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+end
+
 M.config = function()
   local status_ok, tree = pcall(require, "nvim-tree")
   if not status_ok then
@@ -77,8 +96,6 @@ M.config = function()
       ignore = false,
     },
     disable_netrw = false,
-    open_on_setup = true,
-    open_on_tab = false,
     auto_reload_on_write = true,
     hijack_directories = {
       enable = true,
@@ -86,11 +103,6 @@ M.config = function()
     },
     update_focused_file = {
       enable = true,
-    },
-    ignore_ft_on_setup = {
-      "startify",
-      "dashboard",
-      "alpha",
     },
     filters = {
       dotfiles = false,
