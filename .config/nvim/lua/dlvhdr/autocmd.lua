@@ -42,9 +42,10 @@ vim.api.nvim_create_autocmd({ "BufRead,BufNewFile" }, {
 --   end,
 -- })
 
-vim.api.nvim_create_autocmd({ "TabClosed" }, {
+vim.api.nvim_create_autocmd({ "TabEnter" }, {
   callback = function()
-    vim.opt.showtabline = 1
+    vim.o.showtabline = 1
+    print("i set showtabline to 1")
   end,
 })
 
