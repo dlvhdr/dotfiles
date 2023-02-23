@@ -45,7 +45,6 @@ vim.api.nvim_create_autocmd({ "BufRead,BufNewFile" }, {
 vim.api.nvim_create_autocmd({ "TabEnter" }, {
   callback = function()
     vim.o.showtabline = 1
-    print("i set showtabline to 1")
   end,
 })
 
