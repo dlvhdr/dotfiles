@@ -18,4 +18,9 @@ function fish_user_key_bindings
     # the following variable can be used to configure cursor shape in
     # visual mode, but due to fish_cursor_default, is redundant here
     set fish_cursor_visual block
+
+    # prevent fish from appending &| less; to the command when accidentally pressing ctrl+p quickly 
+    bind --preset --erase \ep
+    bind --preset -M visual --erase \ep
+    bind --preset -M insert --erase \ep
 end
