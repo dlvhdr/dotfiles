@@ -17,11 +17,14 @@ return {
       theme = {
         enable = false,
       },
+      folds = {
+        folded = false,
+      },
     })
 
     local colors = require("tokyonight.colors").setup()
-    vim.api.nvim_set_hl(0, "GlanceWinBarTitle", { fg = colors.blue, bg = colors.bg_dark })
-    vim.api.nvim_set_hl(0, "GlanceListNormal", { bg = colors.bg_dark })
+    vim.api.nvim_set_hl(0, "GlanceWinBarTitle", { fg = colors.blue, bg = colors.bg_float, bold = true })
+    vim.api.nvim_set_hl(0, "GlanceListNormal", { bg = colors.bg_float })
     vim.api.nvim_set_hl(0, "GlancePreviewNormal", { bg = colors.bg_dark })
     vim.api.nvim_set_hl(0, "GlanceBorderTop", { fg = colors.border_highlight, bg = colors.bg_dark })
     vim.api.nvim_set_hl(0, "GlanceWinBarFilename", { fg = colors.fg_dark, bg = colors.bg_dark, bold = true })
