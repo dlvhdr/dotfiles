@@ -1,5 +1,6 @@
+# TokyoNight Color Palette
 set -l foreground c0caf5
-set -l selection 364a82
+set -l selection 33467c
 set -l comment 565f89
 set -l red f7768e
 set -l orange ff9e64
@@ -31,3 +32,4 @@ set -g fish_pager_color_prefix $cyan
 set -g fish_pager_color_completion $foreground
 set -g fish_pager_color_description $comment
 set -g fish_pager_color_selected_background --background=$selection
+
