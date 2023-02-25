@@ -60,6 +60,7 @@ M.config = function()
   end
 
   cmp.setup({
+    preselect = cmp.PreselectMode.None,
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
@@ -88,7 +89,7 @@ M.config = function()
           end
         end,
       }),
-      ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
+      ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
       ["<C-e>"] = cmp.mapping.close(),
       ["<C-n>"] = next_completion,
       ["<C-p>"] = prev_completion,
