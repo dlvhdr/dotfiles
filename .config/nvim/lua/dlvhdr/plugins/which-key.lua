@@ -29,6 +29,9 @@ M.config = function()
     },
     g = {
       name = "Git",
+      d = {
+        name = "Diff",
+      },
     },
     d = {
       name = "DAP",

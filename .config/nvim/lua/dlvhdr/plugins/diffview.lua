@@ -3,7 +3,8 @@ local M = {
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewFileHistory" },
   keys = {
-    { "<leader>gdm", "<cmd>DiffviewOpen master<cr>", desc = "Git Diff Master" },
+    { "<leader>gdm", "<cmd>DiffviewOpen master<cr>", desc = "Diff Master" },
+    { "<leader>gdM", "<cmd>DiffviewOpen main<cr>", desc = "Diff Main" },
   },
 }
 
@@ -26,10 +27,12 @@ M.config = function()
     },
     view = {
       diff_view = {
+        winbar_info = true,
         layout = "diff2_horizontal",
       },
       merge_tool = {
-        layout = "diff1_plain",
+        winbar_info = true,
+        layout = "diff2_horizontal",
       },
     },
     signs = {

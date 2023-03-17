@@ -114,7 +114,15 @@ end, { silent = true, desc = "" })
 vim.g.tmux_resizer_resize_count = 2
 vim.g.tmux_resizer_vertical_resize_count = 2
 vim.g.tmux_resizer_no_mappings = 1
-vim.keymap.set("n", "<C-M-k>", "<cmd>:TmuxResizeUp<CR>", { silent = true })
-vim.keymap.set("n", "<C-M-j>", "<cmd>:TmuxResizeDown<CR>", { silent = true })
-vim.keymap.set("n", "<C-M-h>", "<cmd>:TmuxResizeLeft<CR>", { silent = true })
-vim.keymap.set("n", "<C-M-l>", "<cmd>:TmuxResizeRight<CR>", { silent = true })
+keymap("n", "<C-M-k>", "<cmd>:TmuxResizeUp<CR>", { silent = true })
+keymap("n", "<C-M-j>", "<cmd>:TmuxResizeDown<CR>", { silent = true })
+keymap("n", "<C-M-h>", "<cmd>:TmuxResizeLeft<CR>", { silent = true })
+keymap("n", "<C-M-l>", "<cmd>:TmuxResizeRight<CR>", { silent = true })
+
+vim.api.nvim_create_user_command("DiffCommitLine", function()
+  require("telescope").extensions.advanced_git_search.diff_commit_line()
+end, { range = true })
+keymap("v", "<leader>gdl", ":DiffCommitLine<CR>", { noremap = true, desc = "Commits - Selected Lines" })
+keymap("n", "<leader>gdf", function()
+  require("telescope").extensions.advanced_git_search.search_log_content_file()
+end, { noremap = true, desc = "Commits - File Contents" })

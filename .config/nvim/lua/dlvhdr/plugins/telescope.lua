@@ -11,6 +11,7 @@ local M = {
     "nvim-telescope/telescope-live-grep-args.nvim",
     "natecraddock/telescope-zf-native.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "aaronhallaert/advanced-git-search.nvim",
   },
 }
 
@@ -131,19 +132,17 @@ M.config = function()
       },
     },
     extensions = {
-      extensions = {
-        ["zf-native"] = {
-          file = {
-            enable = true,
-            highlight_results = true,
-            -- enable zf filename match priority
-            match_filename = true,
-          },
-          generic = {
-            enable = true,
-            highlight_results = true,
-            match_filename = false,
-          },
+      ["zf-native"] = {
+        file = {
+          enable = true,
+          highlight_results = true,
+          -- enable zf filename match priority
+          match_filename = true,
+        },
+        generic = {
+          enable = true,
+          highlight_results = true,
+          match_filename = false,
         },
       },
       ["ui-select"] = {
@@ -169,6 +168,7 @@ M.config = function()
   telescope.load_extension("zf-native")
   telescope.load_extension("ui-select")
   telescope.load_extension("live_grep_args")
+  telescope.load_extension("advanced_git_search")
 end
 
 function M.project_files()

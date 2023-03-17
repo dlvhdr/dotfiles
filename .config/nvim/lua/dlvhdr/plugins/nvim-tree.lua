@@ -51,6 +51,7 @@ M.config = function()
         "Makefile",
         "Cargo.toml",
       },
+      group_empty = true,
       root_folder_modifier = ":t",
       highlight_git = false,
       indent_markers = {
