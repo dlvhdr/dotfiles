@@ -16,8 +16,6 @@ keymap("n", "Y", "y$", { silent = true })
 keymap("n", "n", "nzzzv", { silent = true })
 keymap("n", "N", "Nzzzv", { silent = true })
 keymap("n", "J", "mzJ`z", { silent = true, desc = "Join Line Below" })
-keymap("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move Line Down" })
-keymap("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move Line Up" })
 keymap("v", "<", "<gv", { silent = true, desc = "Indent Less" })
 keymap("v", ">", ">gv", { silent = true, desc = "Indent More" })
 

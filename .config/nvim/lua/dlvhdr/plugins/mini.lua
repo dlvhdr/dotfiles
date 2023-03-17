@@ -28,9 +28,26 @@ function mini.jump()
   vim.api.nvim_set_hl(0, "MiniJump", { bg = colors.bg_search, underdotted = true })
 end
 
+function mini.move()
+  require("mini.move").setup({
+    mappings = {
+      left = "H",
+      right = "L",
+      down = "J",
+      up = "K",
+
+      line_left = "",
+      line_right = "",
+      line_down = "",
+      line_up = "",
+    },
+  })
+end
+
 function mini.config()
   mini.comment()
   mini.jump()
+  mini.move()
 end
 
 return mini
