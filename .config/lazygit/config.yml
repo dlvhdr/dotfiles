@@ -30,6 +30,9 @@ gui:
 os:
   openCommand: session_nvim {{filename}}
 git:
+  log:
+    showGraph: always
+  branchLogCmd: "git log --graph --abbrev-commit --decorate --format=format:'%C(bold white)%s%C(reset) %C(dim white)- %ar %C(white)%d%C(reset)' master..{{branchName}} --"
   overrideGpg: true
   paging:
     colorArg: always
