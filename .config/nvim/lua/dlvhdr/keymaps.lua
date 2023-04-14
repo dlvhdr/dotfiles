@@ -1,3 +1,4 @@
+local util = require("dlvhdr.utils")
 local keymap = vim.keymap.set
 
 -- Basic
@@ -126,3 +127,7 @@ keymap("v", "<leader>gdl", ":DiffCommitLine<CR>", { noremap = true, desc = "Comm
 keymap("n", "<leader>gdf", function()
   require("telescope").extensions.advanced_git_search.search_log_content_file()
 end, { noremap = true, desc = "Commits - File Contents" })
+
+keymap("n", "<leader>tl", function()
+  util.toggle("relativenumber")
+end, { silent = true, desc = "Toggle relative line numbers" })
