@@ -64,7 +64,6 @@ local handlers = {
 
     return result
   end,
-
   ["type_identifier"] = function(node, info)
     local text = get_node_text(node, 0)
     return { transform(text, info) }
@@ -125,7 +124,7 @@ local same = function(index)
   end, { index })
 end
 
-vim.treesitter.set_query(
+vim.treesitter.query.set(
   "go",
   "LuaSnip_Result",
   [[

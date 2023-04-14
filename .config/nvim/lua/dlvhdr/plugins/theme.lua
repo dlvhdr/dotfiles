@@ -1,6 +1,5 @@
 local M = {
   "folke/tokyonight.nvim",
-
   lazy = false,
 }
 
@@ -53,6 +52,7 @@ M.config = function()
     on_highlights = function(hl, c)
       local util = require("tokyonight.util")
       local darker_bg = util.darken(c.bg_popup, 2.5)
+      hl.CursorLineNr.fg = c.fg
       hl.WhichKeyGroup = {
         fg = c.green,
         bold = true,
