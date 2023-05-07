@@ -4,7 +4,7 @@ return {
   config = function()
     require("gitlinker").setup()
   end,
-  keys = {
-    { "<leader>gy", desc = "Copy Line URL" },
-  },
+  -- keys = {
+  --   { "<leader>gy", desc = "Copy Line URL" },
+  -- },
 }

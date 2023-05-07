@@ -88,9 +88,6 @@ if vim.opt.diff:get() then
   keymap("n", "<leader>3", ":diffget REMOTE<CR>", { silent = true, desc = "Take Remote" })
 end
 
--- zippy
-keymap("n", "<leader>ag", "<cmd>lua require('zippy').insert_print()<CR>", { desc = "Add console.log" })
-
 keymap("n", "<leader>aj", "<cmd>%!jq<cr>", { silent = true, desc = "Format JSON" })
 keymap("n", "<leader>aJ", "<cmd>%!jq -c<cr>", { silent = true, desc = "Compact Format JSON" })
 
@@ -131,3 +128,36 @@ end, { noremap = true, desc = "Commits - File Contents" })
 keymap("n", "<leader>tl", function()
   util.toggle("relativenumber")
 end, { silent = true, desc = "Toggle relative line numbers" })
+
+keymap("n", "<leader>gym", function()
+  local branch = vim.fn.system("git remote show origin | awk '/HEAD branch/ {print $NF}'")
+
+  local url = vim.fn.system(
+    "gh browse -n " .. vim.fn.expand("%") .. ":" .. vim.api.nvim_win_get_cursor(0)[1] .. " --branch " .. branch
+  )
+  vim.api.nvim_command("let @+ = '" .. url .. "'")
+  vim.notify(url)
+end, { desc = "Copy line URL (main)" })
+
+keymap("n", "<leader>gyb", function()
+  local branch = vim.fn.system("git branch --show-current")
+
+  local url = vim.fn.system(
+    "gh browse -n " .. vim.fn.expand("%") .. ":" .. vim.api.nvim_win_get_cursor(0)[1] .. " --branch " .. branch
+  )
+  vim.api.nvim_command("let @+ = '" .. url .. "'")
+  vim.notify(url)
+end, { desc = "Copy line URL (branch)" })
+
+keymap("n", "<leader>gyc", function()
+  vim.notify("TODO")
+end, { desc = "Copy line URL (commit)" })
+
+-- keymap("n", "<leader>gy", function()
+--   local branch = vim.fn.trim(vim.fn.system("git current-branch"))
+--   vim.fn.system("gh browse " .. vim.fn.expand("%") .. " --branch " .. branch)
+-- end, {})
+--
+-- vim.api.nvim_create_user_command("GhOpenPR", function()
+--   vim.fn.system("gh pr view --web")
+-- end, {})

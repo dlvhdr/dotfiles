@@ -1,6 +1,6 @@
 --icons
 --dirs-first
 --hidden
---ignore-git
+--no-git
 --level 3
 --suppress-size

@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://dlvhdr.github.io/gh-dash/configuration/gh-dash/schema.json
 prSections:
   - title: Mine
     filters: is:open author:@me

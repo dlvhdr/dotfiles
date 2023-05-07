@@ -55,7 +55,8 @@ M.config = function()
           ["<C-e>"] = actions.results_scrolling_down,
           ["<C-y>"] = actions.results_scrolling_up,
           ["<CR>"] = actions.select_default,
-          ["<c-d>"] = actions.delete_buffer,
+          ["<c-u>"] = actions.preview_scrolling_up,
+          ["<c-d>"] = actions.preview_scrolling_down,
           ["<c-q>"] = actions.delete_buffer,
         },
         n = {
@@ -64,6 +65,8 @@ M.config = function()
           ["<c-h>"] = layout_actions.toggle_preview,
           ["<C-e>"] = actions.results_scrolling_down,
           ["<C-y>"] = actions.results_scrolling_up,
+          ["<c-u>"] = actions.preview_scrolling_up,
+          ["<c-d>"] = actions.preview_scrolling_down,
           ["<CR>"] = actions.select_default,
         },
       },
@@ -93,13 +96,11 @@ M.config = function()
             return math.floor(cols * 0.4)
           end,
         },
-
         vertical = {
           width = 0.9,
           height = 0.95,
           preview_height = 0.55,
         },
-
         flex = {
           horizontal = {
             preview_width = 0.9,
@@ -151,7 +152,8 @@ M.config = function()
       live_grep_args = {
         disable_coordinates = true,
         auto_quoting = true, -- enable/disable auto-quoting
-        mappings = { -- extend mappings
+        mappings = {
+          -- extend mappings
           i = {
             ["<C-k>"] = lga_actions.quote_prompt(),
             ["<C-r>"] = function(prompt_bufnr)

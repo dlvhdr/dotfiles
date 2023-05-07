@@ -6,6 +6,7 @@ return {
     require("statuscol").setup({
       setopt = true,
       separator = "",
+      foldfunc = "builtin",
       segments = {
         { text = { "%s" }, click = "v:lua.ScSa" },
         {

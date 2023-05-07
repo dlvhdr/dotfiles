@@ -1,9 +1,17 @@
+dashboards:
+  - title: Immediate Action
+    sections: 
+    - title: My PRs
+      filters: is:pr author:@me
+    - title: Review
+      filters: is:pr review-requested:@me
+issuesSections:
 prSections:
-  - title: My PRs
+  - title: Yay
     layout:
       lines:
         hidden: true
-    filters: -org:wix-private author:@me
+    filters: org:wix-private author:@me
 issuesSections:
   - title: My Issues
     filters: is:open author:@me
@@ -17,7 +25,7 @@ defaults:
     width: 40
   prsLimit: 20
   issuesLimit: 20
-  view: prs
+  view: dashboards
   layout:
     prs:
       updatedAt:

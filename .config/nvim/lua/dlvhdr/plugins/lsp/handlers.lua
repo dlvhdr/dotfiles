@@ -21,12 +21,12 @@ end
 local function lsp_keymaps(bufnr)
   -- builtins
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go To Declaration" })
-  vim.keymap.set(
-    "n",
-    "gi",
-    vim.lsp.buf.implementation,
-    { silent = true, buffer = bufnr, desc = "Go To Implementation" }
-  )
+  -- vim.keymap.set(
+  --   "n",
+  --   "gi",
+  --   vim.lsp.buf.implementation,
+  --   { silent = true, buffer = bufnr, desc = "Go To Implementation" }
+  -- )
 
   -- telescope
   vim.keymap.set("n", "gR", function()
