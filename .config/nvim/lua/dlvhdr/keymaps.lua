@@ -122,7 +122,7 @@ vim.api.nvim_create_user_command("DiffCommitLine", function()
 end, { range = true })
 keymap("v", "<leader>gdl", ":DiffCommitLine<CR>", { noremap = true, desc = "Commits - Selected Lines" })
 keymap("n", "<leader>gdf", function()
-  require("telescope").extensions.advanced_git_search.search_log_content_file()
+  require("telescope").extensions.advanced_git_search.diff_commit_file()
 end, { noremap = true, desc = "Commits - File Contents" })
 
 keymap("n", "<leader>tl", function()

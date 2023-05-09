@@ -58,6 +58,7 @@ M.config = function()
           ["<c-u>"] = actions.preview_scrolling_up,
           ["<c-d>"] = actions.preview_scrolling_down,
           ["<c-q>"] = actions.delete_buffer,
+          ["<c-space>"] = layout_actions.toggle_mirror,
         },
         n = {
           ["q"] = actions.delete_buffer,
@@ -67,6 +68,7 @@ M.config = function()
           ["<C-y>"] = actions.results_scrolling_up,
           ["<c-u>"] = actions.preview_scrolling_up,
           ["<c-d>"] = actions.preview_scrolling_down,
+          ["<c-space>"] = layout_actions.toggle_mirror,
           ["<CR>"] = actions.select_default,
         },
       },
@@ -163,6 +165,10 @@ M.config = function()
             end,
           },
         },
+      },
+      advanced_git_search = {
+        diff_plugin = "diffview",
+        -- git_flags = { "-c", "delta.side-by-side=false" },
       },
     },
   })
