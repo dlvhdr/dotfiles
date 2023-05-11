@@ -85,12 +85,11 @@ repoPaths:
 
 keybindings:
   prs:
-    # - key: c
-    #   command: >
-    #     tmux new-window -c {{.RepoPath}} '
-    #       gh pr checkout {{.PrNumber}} &&
-    #       nvim -c ":DiffviewOpen master...{{.HeadRefName}}"
-    #     '
+    - key: C
+      command: >
+        tmux new-window -c {{.RepoPath}} '
+        nvim -c ":Octo pr edit {{.PrNumber}}"
+        '
     - key: v
       command: cd {{.RepoPath}} && code . # && gh pr checkout {{.PrNumber}}
 theme:
