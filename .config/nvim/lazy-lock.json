@@ -1,6 +1,7 @@
 {
   "LuaSnip": { "branch": "master", "commit": "a46ab6f8bce6bbddd8ce3e287e1a517c1f5e348e" },
   "advanced-git-search.nvim": { "branch": "main", "commit": "391aa45dfdd530fd300f9bf9551c4400302913f6" },
+  "alpha-nvim": { "branch": "main", "commit": "1838ae926e8d49fe5330d1498ee8289ae2c340bc" },
   "auto-save.nvim": { "branch": "main", "commit": "979b6c82f60cfa80f4cf437d77446d0ded0addf0" },
   "barbecue.nvim": { "branch": "main", "commit": "cd7e7da622d68136e13721865b4d919efd6325ed" },
   "better-vim-tmux-resizer": { "branch": "master", "commit": "a791fe5b4433ac43a4dad921e94b7b5f88751048" },

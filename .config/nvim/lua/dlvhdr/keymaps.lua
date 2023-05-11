@@ -9,7 +9,8 @@ keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hl
 -- save and quit
 keymap("n", "<leader>w", ":silent write<CR>", { silent = true, desc = "Write File" })
 keymap("n", "<leader>Q", ":quitall!<CR>", { silent = true, desc = "Quit Neovim" })
-keymap("n", "<Leader>W", ":wall<CR>", { silent = true, desc = "Write All" })
+keymap("n", "<leader>W", ":wall<CR>", { silent = true, desc = "Write All" })
+keymap("n", "<leader>tc", ":tabclose<CR>", { silent = true, desc = "Tab Close" })
 
 keymap("n", "x", '"_x', { silent = true })
 keymap("x", "<leader>p", '"_dP', { silent = true })

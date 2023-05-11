@@ -167,8 +167,10 @@ M.config = function()
         },
       },
       advanced_git_search = {
+        git_flags = { "-c", "delta.side-by-side=false" },
+        git_diff_flags = {},
+        show_builtin_git_pickers = true,
         diff_plugin = "diffview",
-        -- git_flags = { "-c", "delta.side-by-side=false" },
       },
     },
   })
