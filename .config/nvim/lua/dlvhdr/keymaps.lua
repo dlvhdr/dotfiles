@@ -150,14 +150,14 @@ keymap("n", "<leader>gyb", function()
   vim.notify(url)
 end, { desc = "Copy line URL (branch)" })
 
-keymap("n", "<leader>gyc", function()
-  vim.notify("TODO")
-end, { desc = "Copy line URL (commit)" })
+-- `require"gitlinker".get_buf_range_url(mode, user_opts)` where `mode` is
+-- the either `"n"` (normal) or `"v"` (visual) and `user_opts` is a table
+-- of opts similar to the one passed in `setup()` (it can be `nil`, or not
+-- passed), only `mode` is mandatory.
 
--- keymap("n", "<leader>gy", function()
---   local branch = vim.fn.trim(vim.fn.system("git current-branch"))
---   vim.fn.system("gh browse " .. vim.fn.expand("%") .. " --branch " .. branch)
--- end, {})
+keymap("n", "<leader>gyc", function()
+  require("gitlinker").get_buf_range_url("n")
+end, { desc = "Copy line URL (commit)" })
 --
 -- vim.api.nvim_create_user_command("GhOpenPR", function()
 --   vim.fn.system("gh pr view --web")

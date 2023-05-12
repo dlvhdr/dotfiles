@@ -4,7 +4,7 @@ local mini = {
     "folke/tokyonight.nvim",
     "JoosepAlviste/nvim-ts-context-commentstring",
   },
-  event = "VeryLazy",
+  event = "BufReadPre",
 }
 
 function mini.comment()
@@ -35,7 +35,6 @@ function mini.move()
       right = "L",
       down = "J",
       up = "K",
-
       line_left = "",
       line_right = "",
       line_down = "",

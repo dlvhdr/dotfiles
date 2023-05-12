@@ -21,7 +21,7 @@ return {
       "",
     }
     dashboard.section.buttons.val = {
-      dashboard.button("s", " Last Session", "<cmd>silent lua require('persistence').load()<CR>"),
+      dashboard.button("s", "  Last Session", "<cmd>silent lua require('persistence').load()<CR>"),
       dashboard.button("e", "  New file", "<cmd>ene <BAR> startinsert<CR>"),
       dashboard.button("q", "  Quit NVIM", "<cmd>qa<CR>"),
     }
