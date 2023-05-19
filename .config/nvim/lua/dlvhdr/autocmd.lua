@@ -42,11 +42,11 @@ vim.api.nvim_create_autocmd({ "BufRead,BufNewFile" }, {
 --   end,
 -- })
 
-vim.api.nvim_create_autocmd({ "TabEnter" }, {
-  callback = function()
-    vim.o.showtabline = 1
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "TabEnter" }, {
+--   callback = function()
+--     vim.o.showtabline = 1
+--   end,
+-- })
 
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {

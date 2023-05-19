@@ -1,6 +1,7 @@
 local M = {
   "nanozuki/tabby.nvim",
   event = "BufReadPost",
+  enabled = false,
   dependencies = {
     "folke/tokyonight.nvim",
   },

@@ -33,7 +33,7 @@ M.config = function()
 
   require("lualine").setup({
     options = {
-      theme = "tokyonight",
+      -- theme = "tokyonight",
       globalstatus = vim.opt.laststatus:get() == 3,
       component_separators = "",
       section_separators = "",
@@ -45,10 +45,28 @@ M.config = function()
     extensions = {},
     sections = {
       lualine_a = {
-        components.mode,
+        {
+          "tabs",
+          mode = 1,
+          cond = function()
+            return #vim.api.nvim_list_tabpages() > 1
+          end,
+          tabs_color = {
+            active = { fg = colors.fg_dark, bg = colors.bg_statusline },
+            inactive = { fg = colors.fg_dark, bg = colors.bg_statusline },
+          },
+          fmt = function(_, context)
+            local curr = vim.fn.tabpagenr()
+            if curr == context.tabnr then
+              return ""
+            end
+
+            return ""
+          end,
+        },
+        components.branch,
       },
       lualine_b = {
-        components.branch,
         components.diff,
       },
       lualine_c = {

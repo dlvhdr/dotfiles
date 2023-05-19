@@ -27,23 +27,23 @@ return {
   },
   branch = {
     "b:gitsigns_head",
-    icon = " ",
-    color = { gui = "bold" },
+    icon = "",
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
     cond = conditions.hide_in_width,
   },
   diff = {
     "diff",
     source = diff_source,
     symbols = { added = "+", modified = "~", removed = "-" },
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
     colored = false,
-    color = { fg = colors.fg },
     cond = nil,
   },
   diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     symbols = { error = " ", warn = " ", info = " ", hint = " " },
-    color = {},
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
     cond = nil,
   },
   treesitter = {
@@ -54,48 +54,55 @@ return {
       end
       return ""
     end,
-    color = { fg = colors.fg_dark },
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
     cond = conditions.hide_in_width,
   },
-  lsp = function(msg)
-    msg = msg or "LS Inactive"
-    local buf_clients = vim.lsp.buf_get_clients()
-    if next(buf_clients) == nil then
-      if type(msg) == "boolean" or #msg == 0 then
-        return "LS Inactive"
+  lsp = {
+    function(msg)
+      msg = msg or "LS Inactive"
+      local buf_clients = vim.lsp.buf_get_clients()
+      if next(buf_clients) == nil then
+        if type(msg) == "boolean" or #msg == 0 then
+          return "LS Inactive"
+        end
+        return msg
       end
-      return msg
-    end
-    local buf_ft = vim.bo.filetype
-    local buf_client_names = {}
+      local buf_ft = vim.bo.filetype
+      local buf_client_names = {}
 
-    -- add client
-    for _, client in pairs(buf_clients) do
-      if client.name ~= "null-ls" then
-        table.insert(buf_client_names, client.name)
+      -- add client
+      for _, client in pairs(buf_clients) do
+        if client.name ~= "null-ls" then
+          table.insert(buf_client_names, client.name)
+        end
       end
-    end
 
-    -- add formatter
-    local formatters = require("dlvhdr.plugins.lsp.servers.null-ls.formatters")
-    local supported_formatters = formatters.list_registered(buf_ft)
-    vim.list_extend(buf_client_names, supported_formatters)
+      -- add formatter
+      local formatters = require("dlvhdr.plugins.lsp.servers.null-ls.formatters")
+      local supported_formatters = formatters.list_registered(buf_ft)
+      vim.list_extend(buf_client_names, supported_formatters)
 
-    -- add linter
-    local linters = require("dlvhdr.plugins.lsp.servers.null-ls.linters")
-    local supported_linters = linters.list_registered(buf_ft)
-    vim.list_extend(buf_client_names, supported_linters)
+      -- add linter
+      local linters = require("dlvhdr.plugins.lsp.servers.null-ls.linters")
+      local supported_linters = linters.list_registered(buf_ft)
+      vim.list_extend(buf_client_names, supported_linters)
 
-    local unique_client_names = vim.fn.sort(buf_client_names)
-    unique_client_names = vim.fn.uniq(unique_client_names)
-    return " [" .. table.concat(unique_client_names, ", ") .. "]"
-  end,
+      local unique_client_names = vim.fn.sort(buf_client_names)
+      unique_client_names = vim.fn.uniq(unique_client_names)
+      return " " .. table.concat(unique_client_names, " ")
+    end,
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+  },
   location = {
     "location",
     cond = conditions.hide_in_width,
-    color = { bg = colors.bg_statusline, fg = colors.fg_dark },
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
   },
-  progress = { "progress", cond = conditions.hide_in_width, color = {} },
+  progress = {
+    "progress",
+    cond = conditions.hide_in_width,
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+  },
   spaces = {
     function()
       local label = "Spaces: "
@@ -105,18 +112,18 @@ return {
       return label .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
     end,
     cond = conditions.hide_in_width,
-    color = {},
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
   },
   encoding = {
     "o:encoding",
     fmt = string.upper,
-    color = {},
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
     cond = conditions.hide_in_width,
   },
   filetype = {
     "filetype",
     cond = conditions.hide_in_width,
-    color = {},
+    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
   },
   filename = {
     function()
@@ -149,7 +156,7 @@ return {
 
       -- Icon
 
-      vim.api.nvim_set_hl(0, "LuaLineFileIcon", { fg = devicon_color or colors.fg, bg = colors.bg_statusline })
+      vim.api.nvim_set_hl(0, "LuaLineFileIcon", { fg = devicon_color or colors.fg_dark, bg = colors.bg_statusline })
       local icon_statusline = color("LuaLineFileIcon", icon or "")
       table.insert(segments, icon_statusline)
 
@@ -164,7 +171,7 @@ return {
     function()
       local current_line = vim.fn.line(".")
       local total_lines = vim.fn.line("$")
-      local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+      local chars = { "_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" }
       local line_ratio = current_line / total_lines
       local index = math.ceil(line_ratio * #chars)
       return chars[index]
