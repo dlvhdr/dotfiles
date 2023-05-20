@@ -10,6 +10,9 @@ M.setup = function(opts)
     root_dir = lspconfigUtils.root_pattern(".git"),
     timeout_ms = 7000,
     sources = {
+      null_ls.builtins.formatting.gofmt,
+      null_ls.builtins.formatting.goimports_reviser,
+      null_ls.builtins.formatting.golines.with({ extra_args = { "-m", "80" } }),
       null_ls.builtins.code_actions.shellcheck,
       null_ls.builtins.diagnostics.shellcheck.with({ filetypes = { "sh" } }),
       null_ls.builtins.formatting.stylua.with({

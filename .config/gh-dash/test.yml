@@ -3,9 +3,10 @@ dashboards:
     sections: 
     - title: My PRs
       filters: is:pr author:@me
+      limit: 10
     - title: Review
-      filters: is:pr review-requested:@me
-issuesSections:
+      filters: is:pr review-requested:@me is:open
+      limit: 10
 prSections:
   - title: Yay
     layout:

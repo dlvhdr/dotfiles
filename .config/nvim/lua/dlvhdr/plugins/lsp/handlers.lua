@@ -21,12 +21,6 @@ end
 local function lsp_keymaps(bufnr)
   -- builtins
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go To Declaration" })
-  -- vim.keymap.set(
-  --   "n",
-  --   "gi",
-  --   vim.lsp.buf.implementation,
-  --   { silent = true, buffer = bufnr, desc = "Go To Implementation" }
-  -- )
 
   -- telescope
   vim.keymap.set("n", "gR", function()
@@ -61,6 +55,8 @@ function M.diagnostic_goto(next, severity)
   end
 end
 
+local format_augroup = vim.api.nvim_create_augroup("LSPFormatting", {})
+
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false
@@ -73,8 +69,12 @@ M.on_attach = function(client, bufnr)
   end
 
   if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_clear_autocmds({
+      group = format_augroup,
+      buffer = bufnr,
+    })
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-      group = vim.api.nvim_create_augroup("LSPFormat_" .. bufnr, {}),
+      group = format_augroup,
       buffer = bufnr,
       callback = function()
         if vim.lsp.buf.server_ready() then
