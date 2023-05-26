@@ -28,14 +28,14 @@ return {
   branch = {
     "b:gitsigns_head",
     icon = "",
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
     cond = conditions.hide_in_width,
   },
   diff = {
     "diff",
     source = diff_source,
     symbols = { added = "+", modified = "~", removed = "-" },
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
     colored = false,
     cond = nil,
   },
@@ -43,7 +43,7 @@ return {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     symbols = { error = " ", warn = " ", info = " ", hint = " " },
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
     cond = nil,
   },
   treesitter = {
@@ -54,7 +54,7 @@ return {
       end
       return ""
     end,
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
     cond = conditions.hide_in_width,
   },
   lsp = {
@@ -91,17 +91,17 @@ return {
       unique_client_names = vim.fn.uniq(unique_client_names)
       return " " .. table.concat(unique_client_names, " ")
     end,
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
   },
   location = {
     "location",
     cond = conditions.hide_in_width,
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
   },
   progress = {
     "progress",
     cond = conditions.hide_in_width,
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
   },
   spaces = {
     function()
@@ -112,18 +112,18 @@ return {
       return label .. vim.api.nvim_buf_get_option(0, "shiftwidth") .. " "
     end,
     cond = conditions.hide_in_width,
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
   },
   encoding = {
     "o:encoding",
     fmt = string.upper,
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
     cond = conditions.hide_in_width,
   },
   filetype = {
     "filetype",
     cond = conditions.hide_in_width,
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
   },
   filename = {
     function()
@@ -156,7 +156,7 @@ return {
 
       -- Icon
 
-      vim.api.nvim_set_hl(0, "LuaLineFileIcon", { fg = devicon_color or colors.fg_dark, bg = colors.bg_statusline })
+      vim.api.nvim_set_hl(0, "LuaLineFileIcon", { fg = devicon_color or colors.fg_dark, bg = "transparent" })
       local icon_statusline = color("LuaLineFileIcon", icon or "")
       table.insert(segments, icon_statusline)
 
@@ -177,7 +177,7 @@ return {
       return chars[index]
     end,
     padding = { left = 0, right = 0 },
-    color = { fg = colors.fg_dark, bg = colors.bg_statusline },
+    color = { fg = colors.fg_dark, bg = "transparent" },
     cond = nil,
   },
 }

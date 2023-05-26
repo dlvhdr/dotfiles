@@ -28,12 +28,12 @@ M.config = function()
       return empty_space .. name .. empty_space
     end,
     cond = tree_view.is_visible,
-    color = { fg = colors.comment, bg = colors.bg_dark, gui = "italic" },
+    color = { fg = colors.comment, bg = "transparent", gui = "italic" },
   }
 
   require("lualine").setup({
     options = {
-      -- theme = "tokyonight",
+      theme = "auto",
       globalstatus = vim.opt.laststatus:get() == 3,
       component_separators = "",
       section_separators = "",
@@ -52,8 +52,8 @@ M.config = function()
             return #vim.api.nvim_list_tabpages() > 1
           end,
           tabs_color = {
-            active = { fg = colors.fg_dark, bg = colors.bg_statusline },
-            inactive = { fg = colors.fg_dark, bg = colors.bg_statusline },
+            active = { fg = colors.fg_dark, bg = "transparent" },
+            inactive = { fg = colors.fg_dark, bg = "transparent" },
           },
           fmt = function(_, context)
             local curr = vim.fn.tabpagenr()
@@ -73,7 +73,7 @@ M.config = function()
         {
           require("noice").api.status.search.get,
           cond = require("noice").api.status.search.has,
-          color = { fg = "#f0a275" },
+          color = { fg = "#f0a275", bg = "NONE" },
         },
         -- components.breadcrumbs,
       },

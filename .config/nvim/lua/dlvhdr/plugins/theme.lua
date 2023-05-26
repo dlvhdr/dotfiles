@@ -36,8 +36,8 @@ M.config = function()
       functions = {},
       variables = {},
       -- Background styles. Can be "dark", "transparent" or "normal"
-      sidebars = "dark",
-      floats = "normal",
+      sidebars = "transparent",
+      floats = "transparent",
     },
     sidebars = {
       "terminal",
@@ -88,6 +88,8 @@ M.config = function()
       hl.DevIconFish = { fg = c.green }
       hl.GHThreadSep = { bg = c.bg_float }
       hl.markdownH1 = { bg = c.bg_float }
+      hl.StatusLine = { bg = "NONE" }
+      hl.StatusLineNC = { bg = "NONE" }
     end,
   })
 
