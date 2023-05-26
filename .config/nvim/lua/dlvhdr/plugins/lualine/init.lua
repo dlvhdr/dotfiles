@@ -3,6 +3,7 @@ local M = {
   dependencies = {
     "folke/noice.nvim",
     "nvim-lua/lsp-status.nvim",
+    "xiyaowong/transparent.nvim",
   },
   event = "VeryLazy",
 }
@@ -28,12 +29,12 @@ M.config = function()
       return empty_space .. name .. empty_space
     end,
     cond = tree_view.is_visible,
-    color = { fg = colors.comment, bg = "transparent", gui = "italic" },
+    color = { fg = colors.comment, bg = "NONE", gui = "italic" },
   }
 
   require("lualine").setup({
     options = {
-      theme = "auto",
+      theme = require("dlvhdr.plugins.transparent").theme(),
       globalstatus = vim.opt.laststatus:get() == 3,
       component_separators = "",
       section_separators = "",
@@ -52,8 +53,8 @@ M.config = function()
             return #vim.api.nvim_list_tabpages() > 1
           end,
           tabs_color = {
-            active = { fg = colors.fg_dark, bg = "transparent" },
-            inactive = { fg = colors.fg_dark, bg = "transparent" },
+            active = { fg = colors.fg_dark, bg = "NONE" },
+            inactive = { fg = colors.fg_dark, bg = "NONE" },
           },
           fmt = function(_, context)
             local curr = vim.fn.tabpagenr()

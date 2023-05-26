@@ -9,6 +9,8 @@ local M = {
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-cmdline",
     "onsails/lspkind-nvim",
+    "zbirenbaum/copilot.lua",
+    "zbirenbaum/copilot-cmp",
   },
 }
 
@@ -22,6 +24,12 @@ M.config = function()
   if not lspkind_status_ok then
     return
   end
+
+  lspkind.init({
+    symbol_map = {
+      Copilot = "",
+    },
+  })
 
   local luasnip_status_ok, luasnip = pcall(require, "luasnip")
   if not luasnip_status_ok then
@@ -59,6 +67,12 @@ M.config = function()
     }
   end
 
+  require("copilot").setup({
+    suggestion = { enabled = false },
+    panel = { enabled = false },
+  })
+  require("copilot_cmp").setup()
+
   cmp.setup({
     preselect = cmp.PreselectMode.None,
     snippet = {
@@ -95,18 +109,21 @@ M.config = function()
       ["<C-p>"] = prev_completion,
     }),
     sources = {
-      { name = "nvim_lsp" },
+      { name = "copilot", max_item_count = 1, group_index = 2 },
+      { name = "nvim_lsp", group_index = 2 },
       {
         name = "luasnip",
         keyword_length = 2,
         priority = 50,
         max_item_count = 2,
+        group_index = 2,
       },
-      { name = "buffer", keyword_length = 3 },
+      { name = "buffer", group_index = 2, keyword_length = 3 },
     },
     formatting = {
       format = function(_, vim_item)
         local icons = lspkind.symbol_map
+
         vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
         return vim_item
       end,
@@ -117,10 +134,20 @@ M.config = function()
       },
     },
     sorting = {
+      priority_weight = 2,
       comparators = {
-        cmp.config.compare.sort_text,
+        cmp.config.compare.exact,
+        require("copilot_cmp.comparators").prioritize,
+
+        -- Below is the default comparitor list and order for nvim-cmp
         cmp.config.compare.offset,
+        -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
         cmp.config.compare.score,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.locality,
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
         cmp.config.compare.order,
       },
     },

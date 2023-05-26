@@ -88,8 +88,6 @@ M.config = function()
       hl.DevIconFish = { fg = c.green }
       hl.GHThreadSep = { bg = c.bg_float }
       hl.markdownH1 = { bg = c.bg_float }
-      hl.StatusLine = { bg = "NONE" }
-      hl.StatusLineNC = { bg = "NONE" }
     end,
   })
 
