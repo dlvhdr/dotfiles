@@ -21,4 +21,9 @@
     end: Some(( code: Char('G'), modifiers: ( bits: 1,),)),
     shift_up: Some(( code: Char('K'), modifiers: ( bits: 1,),)),
     shift_down: Some(( code: Char('J'), modifiers: ( bits: 1,),)),
+
+    move_left: Some(( code: Char('h'), modifiers: ( bits: 0,),)),
+    move_right: Some(( code: Char('l'), modifiers: ( bits: 0,),)),
+    move_up: Some(( code: Char('k'), modifiers: ( bits: 0,),)),
+    move_down: Some(( code: Char('j'), modifiers: ( bits: 0,),)),
 )
