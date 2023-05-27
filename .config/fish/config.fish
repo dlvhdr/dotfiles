@@ -11,7 +11,6 @@ fzf_configure_bindings --directory=\ct --git_log=
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
 set -gx fzf_history_opts "--nth=4.." --preview=""
 set -gx FZF_DEFAULT_OPTS '
-    --bind ctrl-j:down,ctrl-k:up
     --exact
     --reverse
     --cycle
@@ -20,7 +19,7 @@ set -gx FZF_DEFAULT_OPTS '
     --prompt=""\ 
     --pointer=→
     --color=dark
-    --color=fg:-1,bg:-1,hl:#9ece6a,fg+:#a9b1d6,bg+:#1D202F,hl+:#9ece6a
+    --color=fg:-1,bg:-1,hl:#9ece6a,fg+:#a9b1d6,bg+:#24283b,hl+:#9ece6a
     --color=info:#9ece6a,prompt:#7aa2f7,pointer:#9ece6a,marker:#e5c07b,spinner:#61afef,header:#7aa2f7'
 
 set -gx GUM_FILTER_INDICATOR "→"
