@@ -37,6 +37,18 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "gH", vim.lsp.buf.signature_help, { silent = true, buffer = bufnr, desc = "Signature Help" })
   vim.keymap.set("n", "[d", M.diagnostic_goto(true), { silent = true, buffer = bufnr, desc = "Next Diagnostic" })
   vim.keymap.set("n", "]d", M.diagnostic_goto(false), { silent = true, buffer = bufnr, desc = "Previous Diagnostic" })
+  vim.keymap.set(
+    "n",
+    "[e",
+    M.diagnostic_goto(true, vim.diagnostic.severity.ERROR),
+    { silent = true, buffer = bufnr, desc = "Next Error" }
+  )
+  vim.keymap.set(
+    "n",
+    "]e",
+    M.diagnostic_goto(false, vim.diagnostic.severity.ERROR),
+    { silent = true, buffer = bufnr, desc = "Previous Error" }
+  )
 end
 
 function M.rename()
@@ -93,7 +105,12 @@ M.on_attach = function(client, bufnr)
       end,
       group = vim.api.nvim_create_augroup("LSPCodeLens", { clear = true }),
     })
-    vim.keymap.set("n", "<leader>gl", "<cmd>lua vim.lsp.codelens.run()<CR>", { silent = true, buffer = bufnr })
+    vim.keymap.set(
+      "n",
+      "<leader>gl",
+      "<cmd>lua vim.lsp.codelens.run()<CR>",
+      { silent = true, buffer = bufnr, desc = "Codelens" }
+    )
   end
 
   local config = {
