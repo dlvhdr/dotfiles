@@ -98,7 +98,7 @@ abbr -a fix "stty sane"
 abbr -a nuke-desktop 'rm -rf ~/Desktop/*'
 abbr -a jq "jqless"
 abbr -a dinner "roulette -o=🍕,🍔,🥓,🌯,🥒,🍗 --title=\"What's for dinner?\""
-abbr -a scripts "bat package.json | jqless '.scripts'"
+abbr -a scripts "bat package.json | jq -r '.scripts | to_entries[] | \"\(.key) => \(.value)\"' | sort | fzf | cut -d' ' -f1 | xargs nr"
 
 # wix
 abbr -a npmpublic "npm config set registry https://registry.npmjs.org/ && npm config get registry"
