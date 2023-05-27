@@ -62,6 +62,15 @@ M.config = function()
     autotag = {
       enable = true,
     },
+    textsubjects = {
+      enable = true,
+      prev_selection = ",",
+      keymaps = {
+        ["."] = "textsubjects-smart",
+        [";"] = "textsubjects-container-outer",
+        ["i;"] = "textsubjects-container-inner",
+      },
+    },
     textobjects = {
       select = {
         enable = true,

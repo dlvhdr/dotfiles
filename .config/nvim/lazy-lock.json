@@ -77,6 +77,7 @@
   "telescope.nvim": { "branch": "master", "commit": "b79cd6c88b3d96b0f49cb7d240807cd59b610cd8" },
   "template-string.nvim": { "branch": "main", "commit": "e347d83c80bd1ec77e13a37962013199d216a8cd" },
   "tokyonight.nvim": { "branch": "main", "commit": "d0baf68fa42d41994018b54f67fb42de942e0228" },
+  "tree-climber.nvim": { "branch": "main", "commit": "9b0c8c8358f575f924008945c74fd4f40d814cd7" },
   "treesj": { "branch": "main", "commit": "b1e2976c2d7ba922371cc7f3ab08b75136c27231" },
   "trouble.nvim": { "branch": "main", "commit": "5da13b5007eb2b952834186cd640a22c765b64cf" },
   "vim-fugitive": { "branch": "master", "commit": "5f0d280b517cacb16f59316659966c7ca5e2bea2" },
