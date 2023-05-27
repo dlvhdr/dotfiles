@@ -54,6 +54,12 @@ M.config = function()
     t = {
       name = "Toggle",
     },
+    s = {
+      name = "Replace",
+    },
+    ["<tab>"] = {
+      name = "tab",
+    },
   }, opts)
 end
 

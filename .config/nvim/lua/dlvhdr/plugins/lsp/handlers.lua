@@ -93,7 +93,7 @@ M.on_attach = function(client, bufnr)
       end,
       group = vim.api.nvim_create_augroup("LSPCodeLens", { clear = true }),
     })
-    vim.keymap.set("n", "<leader>cl", "<cmd>lua vim.lsp.codelens.run()<CR>", { silent = true, buffer = bufnr })
+    vim.keymap.set("n", "<leader>gl", "<cmd>lua vim.lsp.codelens.run()<CR>", { silent = true, buffer = bufnr })
   end
 
   local config = {
