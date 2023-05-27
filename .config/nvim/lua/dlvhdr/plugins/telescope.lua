@@ -33,6 +33,11 @@ M.config = function()
 
   telescope.setup({
     defaults = {
+      set_env = {
+        LESS = "",
+        DELTA_PAGER = "less",
+        COLORTERM = "truecolor",
+      },
       vimgrep_arguments = {
         "rg",
         "--color=never",
@@ -52,8 +57,8 @@ M.config = function()
         i = {
           ["<c-t>"] = trouble.open_with_trouble,
           ["<c-h>"] = layout_actions.toggle_preview,
-          ["<C-e>"] = actions.results_scrolling_down,
-          ["<C-y>"] = actions.results_scrolling_up,
+          ["<C-b>"] = actions.results_scrolling_down,
+          ["<C-f>"] = actions.results_scrolling_up,
           ["<CR>"] = actions.select_default,
           ["<c-u>"] = actions.preview_scrolling_up,
           ["<c-d>"] = actions.preview_scrolling_down,
@@ -64,8 +69,8 @@ M.config = function()
           ["q"] = actions.delete_buffer,
           ["<c-t>"] = trouble.open_with_trouble,
           ["<c-h>"] = layout_actions.toggle_preview,
-          ["<C-e>"] = actions.results_scrolling_down,
-          ["<C-y>"] = actions.results_scrolling_up,
+          ["<C-b>"] = actions.results_scrolling_down,
+          ["<C-f>"] = actions.results_scrolling_up,
           ["<c-u>"] = actions.preview_scrolling_up,
           ["<c-d>"] = actions.preview_scrolling_down,
           ["<c-space>"] = layout_actions.toggle_mirror,
@@ -73,7 +78,6 @@ M.config = function()
         },
       },
       winblend = 0,
-      set_env = { ["COLORTERM"] = "truecolor" },
       border = {},
       borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
       path_display = { "truncate" },
@@ -125,11 +129,18 @@ M.config = function()
       },
     },
     pickers = {
-      live_grep = {
+      live_grep_args = {
         disable_coordinates = true,
         layout_config = {
           horizontal = {
-            preview_width = 0.55,
+            preview_width = 0.8,
+          },
+        },
+      },
+      advanced_git_search = {
+        layout_config = {
+          horizontal = {
+            preview_width = 0.8,
           },
         },
       },
@@ -165,12 +176,22 @@ M.config = function()
             end,
           },
         },
+        layout_config = {
+          horizontal = {
+            preview_width = 0.55,
+          },
+        },
       },
       advanced_git_search = {
-        git_flags = { "-c", "delta.side-by-side=false" },
+        git_flags = { "-c", "delta.side-by-side=false", "-c", "core.pager=delta", "-c", "delta.pager='less -RS'" },
         git_diff_flags = {},
         show_builtin_git_pickers = true,
         diff_plugin = "diffview",
+        layout_config = {
+          horizontal = {
+            preview_width = 0.6,
+          },
+        },
       },
     },
   })

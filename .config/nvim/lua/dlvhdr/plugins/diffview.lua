@@ -4,6 +4,7 @@ local M = {
   cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewFileHistory" },
   keys = {
     { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Diff Open" },
+    { "<leader>gdf", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
     { "<leader>gdm", "<cmd>DiffviewOpen master<cr>", desc = "Diff Master" },
     { "<leader>gdM", "<cmd>DiffviewOpen main<cr>", desc = "Diff Main" },
   },

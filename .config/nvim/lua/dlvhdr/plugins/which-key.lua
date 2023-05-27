@@ -28,9 +28,12 @@ M.config = function()
       name = "Telescope",
     },
     g = {
-      name = "Git",
+      name = "LSP + Git",
       d = {
         name = "Diff",
+      },
+      y = {
+        name = "Copy URLs",
       },
     },
     d = {
