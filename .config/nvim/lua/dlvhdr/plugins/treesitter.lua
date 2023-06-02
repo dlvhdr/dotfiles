@@ -85,16 +85,10 @@ M.config = function()
       move = {
         enable = true,
         set_jumps = true,
-        goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
-        goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
-        goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
-        goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
-      },
-      lsp_interop = {
-        enable = false,
-        peek_definition_code = {
-          ["gD"] = "@function.outer",
-        },
+        goto_next_start = { ["]f"] = "@function.outer" },
+        goto_next_end = { ["]F"] = "@function.outer" },
+        goto_previous_start = { ["[f"] = "@function.outer" },
+        goto_previous_end = { ["[F"] = "@function.outer" },
       },
     },
     ensure_installed = "all",

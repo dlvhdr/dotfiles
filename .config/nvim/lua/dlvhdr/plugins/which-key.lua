@@ -60,9 +60,6 @@ M.config = function()
     s = {
       name = "Replace",
     },
-    ["<tab>"] = {
-      name = "tab",
-    },
   }, opts)
 end
 

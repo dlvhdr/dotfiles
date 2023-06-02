@@ -10,7 +10,7 @@ keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hl
 keymap("n", "<leader>w", ":silent write<CR>", { silent = true, desc = "Write File" })
 keymap("n", "<leader>Q", ":quitall!<CR>", { silent = true, desc = "Quit Neovim" })
 keymap("n", "<leader>W", ":wall<CR>", { silent = true, desc = "Write All" })
-keymap("n", "<tab>q", ":tabclose<CR>", { silent = true, desc = "Tab Close" })
+keymap("n", "<leader>tq", ":tabclose<CR>", { silent = true, desc = "Tab Close" })
 
 keymap("n", "x", '"_x', { silent = true })
 keymap("x", "<leader>p", '"_dP', { silent = true })
@@ -55,6 +55,16 @@ keymap("n", "<leader>fH", "<cmd>Telescope highlights<CR>", { silent = true, desc
 keymap("n", "<leader>fr", "<cmd>Telescope resume<cr>", { silent = true, desc = "Resume" })
 keymap("n", "<leader>fp", "<cmd>Telescope pickers<cr>", { silent = true, desc = "Pickers" })
 keymap("n", "<leader>fs", ":lua require('telescope.builtin').git_status()<CR>", { silent = true, desc = "Git Status" })
+keymap("n", "<leader>ff", function()
+  local themes = require("telescope.themes")
+  local theme = themes.get_dropdown()
+  require("telescope.builtin").lsp_document_symbols({
+    layout_config = theme.layout_config,
+    previewer = false,
+    results_title = false,
+    symbols = { "function" },
+  })
+end, { silent = true, desc = "Functions In File" })
 keymap(
   "n",
   "<leader>fB",
@@ -158,7 +168,7 @@ end, { desc = "Copy line URL (branch)" })
 keymap("n", "<leader>gyc", function()
   require("gitlinker").get_buf_range_url("n")
 end, { desc = "Copy line URL (commit)" })
---
+
 -- vim.api.nvim_create_user_command("GhOpenPR", function()
 --   vim.fn.system("gh pr view --web")
 -- end, {})
