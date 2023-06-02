@@ -14,6 +14,11 @@ local M = {
   },
 }
 
+local function has_words_before()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 M.config = function()
   local cmp_status_ok, cmp = pcall(require, "cmp")
   if not cmp_status_ok then
@@ -42,7 +47,7 @@ M.config = function()
     if cmp.visible() then
       cmp.select_next_item()
     else
-      fallback()
+      cmp.complete()
     end
   end
 
@@ -50,7 +55,7 @@ M.config = function()
     if cmp.visible() then
       cmp.select_prev_item()
     else
-      fallback()
+      cmp.complete()
     end
   end
 
@@ -90,9 +95,6 @@ M.config = function()
       },
     },
     mapping = cmp.mapping.preset.insert({
-      -- ["<C-u>"] = cmp.mapping.scroll_docs(-4),
-      -- ["<C-d>"] = cmp.mapping.scroll_docs(4),
-      ["<C-Space>"] = cmp.mapping.complete(),
       ["<C-y>"] = cmp.mapping({
         i = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
         c = function(fallback)
@@ -104,12 +106,11 @@ M.config = function()
         end,
       }),
       ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
-      ["<C-e>"] = cmp.mapping.close(),
       ["<C-n>"] = next_completion,
       ["<C-p>"] = prev_completion,
+      ["<C-c>"] = cmp.mapping.abort(),
     }),
     sources = {
-      { name = "copilot", max_item_count = 1, group_index = 2 },
       { name = "nvim_lsp", group_index = 2 },
       {
         name = "luasnip",
@@ -133,24 +134,6 @@ M.config = function()
         hl_group = "LspCodeLens",
       },
     },
-    sorting = {
-      priority_weight = 2,
-      comparators = {
-        cmp.config.compare.exact,
-        require("copilot_cmp.comparators").prioritize,
-
-        -- Below is the default comparitor list and order for nvim-cmp
-        cmp.config.compare.offset,
-        -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-        cmp.config.compare.score,
-        cmp.config.compare.recently_used,
-        cmp.config.compare.locality,
-        cmp.config.compare.kind,
-        cmp.config.compare.sort_text,
-        cmp.config.compare.length,
-        cmp.config.compare.order,
-      },
-    },
   })
 
   cmp.setup.cmdline("/", {
@@ -169,6 +152,14 @@ M.config = function()
       { name = "cmdline" },
     }),
   })
+
+  cmp.event:on("menu_opened", function()
+    vim.b.copilot_suggestion_hidden = true
+  end)
+
+  cmp.event:on("menu_closed", function()
+    vim.b.copilot_suggestion_hidden = false
+  end)
 end
 
 return M
