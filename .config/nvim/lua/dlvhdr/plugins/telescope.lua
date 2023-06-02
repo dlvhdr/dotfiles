@@ -63,7 +63,7 @@ M.config = function()
           ["<c-u>"] = actions.preview_scrolling_up,
           ["<c-d>"] = actions.preview_scrolling_down,
           ["<c-q>"] = actions.delete_buffer,
-          ["<c-space>"] = layout_actions.toggle_mirror,
+          ["<c-space>"] = layout_actions.cycle_layout_next,
         },
         n = {
           ["q"] = actions.delete_buffer,
@@ -73,10 +73,11 @@ M.config = function()
           ["<C-f>"] = actions.results_scrolling_up,
           ["<c-u>"] = actions.preview_scrolling_up,
           ["<c-d>"] = actions.preview_scrolling_down,
-          ["<c-space>"] = layout_actions.toggle_mirror,
+          ["<c-space>"] = layout_actions.cycle_layout_next,
           ["<CR>"] = actions.select_default,
         },
       },
+      cycle_layout_list = { "flex", "horizontal" },
       winblend = 0,
       border = {},
       borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
@@ -109,7 +110,7 @@ M.config = function()
         },
         flex = {
           horizontal = {
-            preview_width = 0.9,
+            preview_width = 0.7,
           },
         },
       },
