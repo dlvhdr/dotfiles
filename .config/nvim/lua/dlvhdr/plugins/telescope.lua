@@ -270,13 +270,21 @@ function M.lsp_references()
 end
 
 function M.buffers()
+  local layout_config = require("telescope.themes").get_dropdown({
+    layout_config = {
+      width = 0.5,
+    },
+  }).layout_config
+
   require("telescope.builtin").buffers({
     prompt_title = "Open Buffers",
+    preview = { hide_on_startup = true },
     sort_mru = true,
     layout_strategy = "horizontal",
     sorting_strategy = "ascending",
     ignore_filename = false,
     bufnr_width = 0,
+    layout_config = layout_config,
   })
 end
 
