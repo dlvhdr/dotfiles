@@ -20,14 +20,14 @@ function plugin.config()
       },
     },
     suggestion = {
+      enabled = true,
       auto_trigger = false,
       keymap = {
         accept = "<C-e>",
         accept_word = "<C-Right>",
         accept_line = "<C-Down>",
-        prev = "<C-i>",
-        next = "<C-u>",
-        dismiss = "<C-]>",
+        next = "<C-space>",
+        dismiss = "<C-c>",
       },
     },
   })

@@ -14,11 +14,6 @@ local M = {
   },
 }
 
-local function has_words_before()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
 M.config = function()
   local cmp_status_ok, cmp = pcall(require, "cmp")
   if not cmp_status_ok then
@@ -71,12 +66,6 @@ M.config = function()
       { "│", hl_name },
     }
   end
-
-  require("copilot").setup({
-    suggestion = { enabled = false },
-    panel = { enabled = false },
-  })
-  require("copilot_cmp").setup()
 
   cmp.setup({
     preselect = cmp.PreselectMode.None,
@@ -152,14 +141,6 @@ M.config = function()
       { name = "cmdline" },
     }),
   })
-
-  cmp.event:on("menu_opened", function()
-    vim.b.copilot_suggestion_hidden = true
-  end)
-
-  cmp.event:on("menu_closed", function()
-    vim.b.copilot_suggestion_hidden = false
-  end)
 end
 
 return M
