@@ -52,7 +52,11 @@ M.config = function()
     on_highlights = function(hl, c)
       local util = require("tokyonight.util")
       local darker_bg = util.darken(c.bg_popup, 2.5)
-      hl.CursorLineNr.fg = c.fg
+      hl.LineNr.fg = c.comment
+      hl.CursorLineNr = {
+        fg = c.fg,
+        bold = true,
+      }
       hl.WhichKeyGroup = {
         fg = c.green,
         bold = true,

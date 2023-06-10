@@ -60,6 +60,9 @@ M.config = function()
     s = {
       name = "Replace",
     },
+    gz = {
+      name = "Surround",
+    },
   }, opts)
 end
 

@@ -1,12 +1,20 @@
 dashboards:
   - title: Immediate Action
-    sections: 
-    - title: My PRs
-      filters: is:pr author:@me
-      limit: 10
-    - title: Review
-      filters: is:pr review-requested:@me is:open
-      limit: 10
+    sections:
+      - title: My PRs
+        filters: is:pr author:@me
+        limit: 2
+      - title: Review
+        filters: is:pr review-requested:@me is:open
+        limit: 10
+  - title: Others
+    sections:
+      - title: My PRs
+        filters: is:pr author:@me
+        limit: 2
+      - title: Review
+        filters: is:pr review-requested:@me is:open
+        limit: 10
 prSections:
   - title: Yay
     layout:

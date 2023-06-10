@@ -1,4 +1,10 @@
 {
+  "Disable ESLint": {
+    "scope": "javascript,typescript,javascriptreact,typescriptreact",
+    "prefix": "eslint",
+    "body": ["// eslint-disable-next-line"],
+    "description": "Disable ESLint from analyzing the next line"
+  },
   "Console callout": {
     "scope": "javascript,typescript,javascriptreact,typescriptreact",
     "prefix": "console-callout",

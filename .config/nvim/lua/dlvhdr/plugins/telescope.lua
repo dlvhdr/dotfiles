@@ -272,7 +272,7 @@ end
 function M.buffers()
   local layout_config = require("telescope.themes").get_dropdown({
     layout_config = {
-      width = 0.5,
+      width = 0.65,
     },
   }).layout_config
 

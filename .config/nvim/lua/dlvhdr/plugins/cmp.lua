@@ -108,7 +108,7 @@ M.config = function()
         max_item_count = 2,
         group_index = 2,
       },
-      { name = "buffer", group_index = 2, keyword_length = 3 },
+      { name = "buffer", group_index = 3, keyword_length = 3 },
     },
     formatting = {
       format = function(_, vim_item)
