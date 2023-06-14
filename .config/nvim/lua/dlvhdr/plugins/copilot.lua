@@ -21,7 +21,7 @@ function plugin.config()
     },
     suggestion = {
       enabled = true,
-      auto_trigger = false,
+      auto_trigger = true,
       keymap = {
         accept = "<C-e>",
         accept_word = "<C-Right>",

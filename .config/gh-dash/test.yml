@@ -21,6 +21,11 @@ prSections:
       lines:
         hidden: true
     filters: org:wix-private author:@me
+  - title: Yay2
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me
 issuesSections:
   - title: My Issues
     filters: is:open author:@me
