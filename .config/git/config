@@ -128,6 +128,7 @@
   nuke = clean -f -d
   clean-branches = !git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
   update-master = !git checkout master && git pull --rebase && git merge origin/master --ff-only
+  sync = !git co master && git pull && git co - && git rebase -i master
   branches = branch --sort=-authordate
   stashes = stash list
   remotes = remote -v
