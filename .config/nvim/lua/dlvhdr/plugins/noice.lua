@@ -81,7 +81,7 @@ M.keys = {
     "<C-d>",
     function()
       if not require("noice.lsp").scroll(4) then
-        return "<C-d>"
+        return "10jzz"
       end
     end,
     mode = { "i", "n" },
@@ -93,7 +93,7 @@ M.keys = {
     "<C-u>",
     function()
       if not require("noice.lsp").scroll(-4) then
-        return "<C-u>"
+        return "10kzz"
       end
     end,
     mode = { "i", "n" },
