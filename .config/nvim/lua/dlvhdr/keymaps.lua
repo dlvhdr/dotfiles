@@ -20,7 +20,7 @@ keymap("n", "N", "Nzzzv", { silent = true })
 keymap("n", "J", "mzJ`z", { silent = true, desc = "Join Line Below" })
 keymap("v", "<", "<gv", { silent = true, desc = "Indent Less" })
 keymap("v", ">", ">gv", { silent = true, desc = "Indent More" })
-keymap("n", "<C-e>", "3<C-e>", { silent = true, desc = "Scroll screen down" })
+keymap("n", "<C-e>", "<Nop>", { silent = true, desc = "Scroll screen down" })
 keymap("n", "<C-y>", "3<C-y>", { silent = true, desc = "Scroll screen up" })
 
 -- disable Ex mode, I always enter in it by mistake

@@ -39,7 +39,7 @@ defaults:
     width: 40
   prsLimit: 20
   issuesLimit: 20
-  view: dashboards
+  view: prs
   layout:
     prs:
       updatedAt:
