@@ -80,18 +80,27 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentRangeFormattingProvider = false
   end
 
+  local auto_format_enabled = true
+
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_clear_autocmds({
       group = format_augroup,
       buffer = bufnr,
     })
+
+    vim.keymap.set("n", "<leader>tf", function()
+      auto_format_enabled = not auto_format_enabled
+      vim.notify("Auto formatting is " .. (auto_format_enabled and "enabled" or "disabled"))
+    end)
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       group = format_augroup,
       buffer = bufnr,
       callback = function()
         if vim.lsp.buf.server_ready() then
-          vim.notify("formatting buffer #" .. bufnr .. "...")
-          vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 3000 })
+          if auto_format_enabled then
+            vim.notify("formatting buffer #" .. bufnr .. "...")
+            vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 3000 })
+          end
         end
       end,
     })
