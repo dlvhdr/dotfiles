@@ -131,3 +131,9 @@ abbr -a tat "tmux attach -t"
 abbr -a tn "tmux new -s \$(pwd | sed 's/.*\///g')"
 
 abbr -a lnvim 'tmux list-panes -a -F "#{session_name} #{command} #{pane_pid} #{pane_title} #{window_name} #{pane_id} #{session_path}" | grep nvim'
+
+abbr -a nvim-lazy "NVIM_APPNAME=LazyVim nvim"
+abbr -a nvim-chad "NVIM_APPNAME=NvChad nvim"
+abbr -a nvim-astro "NVIM_APPNAME=AstroNvim nvim"
+abbr -a nvim-lunar "NVIM_APPNAME=LunarVim nvim"
+
