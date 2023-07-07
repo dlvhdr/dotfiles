@@ -59,6 +59,9 @@ repoPaths: {}
 pager:
   diff: delta
 theme:
+  ui:
+    table:
+      showSeparator: false
   colors:
     text:
       primary: "#E2E1ED"

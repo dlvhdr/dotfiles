@@ -43,6 +43,16 @@ M.setup = function(opts)
           -- "markdown",
         },
         condition = function(null_ls_utils)
+          -- local path = lspconfigUtils.path.join(vim.fn.getcwd(), "package.json")
+          -- vim.pretty_print(path)
+          -- local package_json_blob = table.concat(vim.fn.readfile(path))
+          -- local package_json = vim.json.decode(package_json_blob)
+          -- vim.pretty_print(package_json)
+          local path = vim.fn.getcwd()
+          local found = string.find(path, "wix%-code%-vscode")
+          if found ~= nil then
+            return false
+          end
           return not null_ls_utils.root_has_file("node_modules/eslint-plugin-prettier/package.json")
         end,
       }),

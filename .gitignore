@@ -62,3 +62,4 @@ lvim
 bazelwrapper
 .config/k9s/config.yml
 .config/github-copilot/hosts.json
+.config/LazyVim
