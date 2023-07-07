@@ -92,6 +92,7 @@ M.config = function()
       hl.DevIconFish = { fg = c.green }
       hl.GHThreadSep = { bg = c.bg_float }
       hl.markdownH1 = { bg = c.bg_float }
+      hl.DiagnosticUnnecessary = { fg = util.lighten(c.comment, 0.7), undercurl = true }
     end,
   })
 
