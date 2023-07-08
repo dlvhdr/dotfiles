@@ -98,6 +98,10 @@ M.config = function()
       ["<C-n>"] = next_completion,
       ["<C-p>"] = prev_completion,
       ["<C-c>"] = cmp.mapping.abort(),
+      ["<C-e>"] = function()
+        cmp.close()
+        require("copilot.suggestion").accept()
+      end,
     }),
     sources = {
       { name = "nvim_lsp", group_index = 2 },
