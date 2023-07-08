@@ -21,8 +21,8 @@ M.setup = function(opts)
         end,
       }),
       null_ls.builtins.formatting.eslint_d.with({
-        condition = function(null_ls_utils)
-          return null_ls_utils.root_has_file("node_modules/eslint-plugin-prettier/package.json")
+        condition = function()
+          return utils.has_eslint_prettier_plugin()
         end,
       }),
       null_ls.builtins.formatting.prettierd.with({
@@ -42,18 +42,8 @@ M.setup = function(opts)
           "graphql",
           -- "markdown",
         },
-        condition = function(null_ls_utils)
-          -- local path = lspconfigUtils.path.join(vim.fn.getcwd(), "package.json")
-          -- vim.pretty_print(path)
-          -- local package_json_blob = table.concat(vim.fn.readfile(path))
-          -- local package_json = vim.json.decode(package_json_blob)
-          -- vim.pretty_print(package_json)
-          local path = vim.fn.getcwd()
-          local found = string.find(path, "wix%-code%-vscode")
-          if found ~= nil then
-            return false
-          end
-          return not null_ls_utils.root_has_file("node_modules/eslint-plugin-prettier/package.json")
+        condition = function()
+          return not utils.has_eslint_prettier_plugin()
         end,
       }),
       null_ls.builtins.diagnostics.eslint_d.with({

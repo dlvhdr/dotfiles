@@ -3,8 +3,24 @@ local M = {}
 local null_ls = require("null-ls")
 local lspconfigUtils = require("lspconfig.util")
 
+M.has_eslint_prettier_plugin = function()
+  local buf_path = vim.fn.expand("%:p")
+  local nearest_package_json = lspconfigUtils.find_package_json_ancestor(buf_path)
+
+  local package_json_blob =
+    table.concat(vim.fn.readfile(lspconfigUtils.path.join(nearest_package_json, "package.json")))
+  local package_json = vim.json.decode(package_json_blob)
+  if package_json == nil then
+    return false
+  end
+
+  local dev_deps = package_json["devDependencies"]
+  return dev_deps["eslint-plugin-prettier"] ~= nil or dev_deps["@wix/eslint-plugin-cloud-runtime"] ~= nil
+end
+
 M.has_eslint_config = function()
-  return lspconfigUtils.root_pattern(".eslintrc", ".eslintrc.json", ".eslintrc.js")(vim.fn.getcwd()) ~= nil
+  local nearest_package_json = lspconfigUtils.find_package_json_ancestor(vim.fn.expand("%:p"))
+  return lspconfigUtils.root_pattern(".eslintrc", ".eslintrc.json", ".eslintrc.js")(nearest_package_json) ~= nil
 end
 
 M.prettier_eslint_check = function()
