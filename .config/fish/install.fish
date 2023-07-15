@@ -9,7 +9,8 @@ set -Ux CODE "$HOME/code"
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
 set -Ux XDG_DATA_HOME "$HOME/.local/share"
 set -Ux XDG_CACHE_HOME "$HOME/.cache"
-set -Ux XDG_RUNTIME_DIR "/tmp"
+# commented out due to podman
+# set -Ux XDG_RUNTIME_DIR "/tmp"
 set -Ux XDG_STATE_HOME "$HOME/.local/state"
 set -Ux GOPATH "$CODE/go"
 
@@ -36,18 +37,17 @@ set -Ux GUM_FILTER_INDICATOR "→"
 set -Ux GUM_FILTER_PROMPT " "
 
 # fzf
-set -Ux FZF_DEFAULT_OPTS '
-    --bind ctrl-j:down,ctrl-k:up
-    --exact
-    --reverse
-    --cycle
-    --height=20%
-    --info=inline
-    --prompt=""\ 
-    --pointer=→
-    --color=dark
-    --color=fg:-1,bg:-1,hl:#9ece6a,fg+:#a9b1d6,bg+:#1D202F,hl+:#9ece6a
-    --color=info:#9ece6a,prompt:#7aa2f7,pointer:#9ece6a,marker:#e5c07b,spinner:#61afef,header:#7aa2f7'
+set -Ux FZF_DEFAULT_OPTS "\
+--reverse \
+--border rounded \
+--no-info \
+--pointer='' \
+--marker=' ' \
+--ansi \
+--color='16,bg+:-1,gutter:-1,prompt:5,pointer:5,marker:6,border:4,label:4,header:italic'"
+
+set -Ux FZF_CTRL_R_OPTS "--border-label=' history ' \
+--prompt='  '"
 
 # scary
 abbr -a rm "rm -i"
@@ -137,3 +137,11 @@ abbr -a nvim-chad "NVIM_APPNAME=NvChad nvim"
 abbr -a nvim-astro "NVIM_APPNAME=AstroNvim nvim"
 abbr -a nvim-lunar "NVIM_APPNAME=LunarVim nvim"
 
+abbr -a bi "brew install"
+abbr -a bic "brew install --cask"
+abbr -a bin "brew info"
+abbr -a binc "brew info --cask"
+abbr -a bl "brew leaves"
+abbr -a blr "brew leaves --installed-on-request"
+abbr -a blp "brew leaves --installed-as-dependency"
+abbr -a bs "brew search"

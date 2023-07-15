@@ -4,23 +4,22 @@
 # | |_| | |__\ V / |  _  | |_| |  _ < 
 # |____/|_____\_/  |_| |_|____/|_| \_\
 #                                     
-set fish_greeting
+set -U fish_greeting # disable fish greeting
 
 source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
+
 fzf_configure_bindings --directory=\ct --git_log=
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
-set -gx fzf_history_opts "--nth=4.." --preview=""
-set -gx FZF_DEFAULT_OPTS '
-    --exact
-    --reverse
-    --cycle
-    --height=20%
-    --info=inline
-    --prompt=""\ 
-    --pointer=→
-    --color=dark
-    --color=fg:-1,bg:-1,hl:#9ece6a,fg+:#a9b1d6,bg+:#24283b,hl+:#9ece6a
-    --color=info:#9ece6a,prompt:#7aa2f7,pointer:#9ece6a,marker:#e5c07b,spinner:#61afef,header:#7aa2f7'
+set -gx fzf_history_opts "--nth=4.." --preview="" --border-label=" history " --prompt="  "
+set -gx FZF_DEFAULT_OPTS "\
+--reverse \
+--border rounded \
+--no-info \
+--pointer='' \
+--marker=' ' \
+--ansi \
+--height=20%
+--color='16,bg+:-1,gutter:-1,prompt:5,pointer:5,marker:6,border:4,label:4,header:italic'"
 
 set -gx GUM_FILTER_INDICATOR "→"
 set -gx GUM_FILTER_PROMPT " "

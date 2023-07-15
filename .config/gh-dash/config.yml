@@ -103,7 +103,7 @@ theme:
       warning: "#F23D5C"
       success: "#3DF294"
     background:
-      selected: "#39386b"
+      selected: "#151622"
     border:
       primary: "#383B5B"
       secondary: "#39386B"
