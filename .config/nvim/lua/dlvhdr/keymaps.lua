@@ -30,6 +30,7 @@ keymap("n", "Q", "<Nop>", { silent = true })
 keymap("n", "<leader><leader>", "<C-^>", { silent = true, desc = "Last Buffer" })
 
 keymap("n", "<leader>an", "<cmd>enew<cr>", { silent = true, desc = "New File" })
+keymap("n", "<leader>al", "<cmd>LspRestart all<CR>", { silent = true, desc = "Restart LSP" })
 keymap("n", "<leader>ae", "<cmd>!eslint_d restart<CR>", { silent = true, desc = "Restart eslint_d" })
 
 -- Telescope
@@ -171,6 +172,4 @@ keymap("n", "<leader>gyc", function()
   require("gitlinker").get_buf_range_url("n")
 end, { desc = "Copy line URL (commit)" })
 
--- vim.api.nvim_create_user_command("GhOpenPR", function()
---   vim.fn.system("gh pr view --web")
--- end, {})
+keymap("n", "<leader>bsd", ":%bd|e#|bd#<cr>|'<cr>", { desc = "Delete Other Buffers" })

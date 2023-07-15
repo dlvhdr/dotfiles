@@ -63,6 +63,15 @@ M.config = function()
     gz = {
       name = "Surround",
     },
+    b = {
+      name = "Buffers",
+      s = {
+        name = "Surrounding",
+        d = {
+          name = "Close",
+        },
+      },
+    },
   }, opts)
 end
 
