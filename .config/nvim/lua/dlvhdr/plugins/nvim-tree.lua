@@ -146,6 +146,7 @@ M.config = function()
     view = {
       width = 40,
       side = "right",
+      relativenumber = true,
       mappings = {
         custom_only = false,
       },
