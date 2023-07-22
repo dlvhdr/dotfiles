@@ -172,3 +172,26 @@ fi      00      # FILE
 *.opus  00;36
 *.spx   00;36
 *.xspf  00;36
+
+
+# Various programming files
+*.py    38;5;087
+*.rs    38;5;075
+*.cc    38;5;104
+*.h     38;5;104
+*.ts    38;5;226
+*.js    38;5;226
+*.html  38;5;170
+*.proto  38;5;170
+*BUILD   38;5;217
+*LICENSE   38;5;217
+*METADATA   38;5;217
+*.blueprint   38;5;063
+*bluze.textproto   38;5;063
+*.gcl   38;5;211
+*.json   38;5;211
+*.textproto   38;5;211
+*.yaml  38;5;211
+*.pi    38;5;211
+*.css   38;5;202
+*.scss  38;5;202

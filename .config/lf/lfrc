@@ -1,6 +1,19 @@
 set scrolloff 8
-set icons on
+set hidden
+set icons
+set number
+set relativenumber
+set shell fish
+set promptfmt "\033[34;1m%d\033[0m\033[1m%f\033[0m"
+set previewer ~/.config/lf/lf-previewer.sh
 
 map gd cd ~/Downloads
 map D delete
 map x cut
+map <enter> open
+
+map a push $mk<space> # mk function defined in fish shell config
+
+cmd yank-dirname $dirname -- "$f" | head -c-1 | pbcopy
+cmd yank-path $printf '%s' "$fx" | pbcopy
+cmd yank-basename $basename -a -- $fx | head -c-1 | pbcopy
