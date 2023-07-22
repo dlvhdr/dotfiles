@@ -24,5 +24,100 @@ set -gx FZF_DEFAULT_OPTS "\
 set -gx GUM_FILTER_INDICATOR "→"
 set -gx GUM_FILTER_PROMPT " "
 
+# scary
+abbr --add rm "rm -i"
+abbr --add mv "mv -i"
+abbr --add cp "cp -riv"
+abbr --add mkdir 'mkdir -vp'
+
+# neovim
+abbr --add vim "nvim"
+abbr --add v "nvim"
+abbr --add vi "nvim"
+
+# configs
+abbr --add ez "nvim $XDG_CONFIG_HOME/fish/config.fish"
+abbr --add sz "source $XDG_CONFIG_HOME/fish/config.fish"
+abbr --add ea "nvim $XDG_CONFIG_HOME/fish/config.fish"
+abbr --add ev "nvim $XDG_CONFIG_HOME/nvim/"
+abbr --add dot "nvim $HOME/dotfiles"
+abbr --add cdot "cd $HOME/dotfiles"
+abbr --add -- - 'cd -'
+abbr --add -- -2 'prevd 2'
+abbr --add -- -3 'prevd 3'
+abbr --add -- -4 'prevd 4'
+
+abbr --add ".." "cd ../"
+abbr --add "..." "cd ../../"
+abbr --add "...." "cd ../../../"
+abbr --add "....." "cd ../../../../"
+abbr --add "......" "cd ../../../../../"
+abbr --add "......." "cd ../../../../../../"
+abbr --add lcat "bat --paging always"
+abbr --add cat "bat"
+abbr --add tree "et"
+abbr --add f "ranger"
+abbr --add gcode "$CODE"
+abbr --add gd "cd $HOME/Downloads"
+alias r "cd_repo"
+alias p "cd_pkg"
+abbr --add ssh "kitty +kitten ssh"
+abbr --add "k" "kubectl"
+
+# others
+abbr --add less 'less -r'
+abbr --add c "clear"
+abbr --add fh 'open -a Finder .'
+abbr --add fix "stty sane"
+abbr --add nuke-desktop 'rm -rf ~/Desktop/*'
+abbr --add jq "jqless"
+abbr --add dinner "roulette -o=🍕,🍔,🥓,🌯,🥒,🍗 --title=\"What's for dinner?\""
+abbr --add scripts "bat package.json | jq -r '.scripts | to_entries[] | \"\(.key) => \(.value)\"' | sort | fzf | cut -d' ' -f1 | xargs nr"
+
+# wix
+abbr --add npmpublic "npm config set registry https://registry.npmjs.org/ && npm config get registry"
+abbr --add npmprivate "npm config set registry https://npm.dev.wixpress.com && npm config get registry"
+abbr --add mkpr 'git push && gh pr create -d -f && pr'
+abbr --add gwix "cd $CODE/wix"
+
+# git
+abbr --add g "git"
+abbr --add sl "gt l"
+abbr --add gst "git status"
+abbr --add gca "git commit --amend"
+abbr --add gaa "git add -A"
+abbr --add gra "git rebase --abort"
+abbr --add grc "git rebase --continue"
+abbr --add gpf "git push --force"
+abbr --add gcm 'git commit -m "$(gum input)"'
+abbr --add gclean 'git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D'
+abbr --add pr "gh vpr"
+abbr --add vr "gh vr"
+abbr --add ga "git ls-files -m -o --exclude-standard | fzf --height 50% --preview 'bat {-1} --color always --style changes,numbers' --print0 -m | xargs -0 -t -o git add"
+abbr --add gr "git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git  -q HEAD --"
+abbr --add lg "lazygit"
+abbr --add gco "git_checkout"
+
+# tmux
+abbr --add ta "tmux attach || tmux new -A -s default"
+abbr --add tat "tmux attach -t"
+abbr --add tn "tmux new -s \$(pwd | sed 's/.*\///g')"
+
+abbr --add lnvim 'tmux list-panes -a -F "#{session_name} #{command} #{pane_pid} #{pane_title} #{window_name} #{pane_id} #{session_path}" | grep nvim'
+
+abbr --add nvim-lazy "NVIM_APPNAME=LazyVim nvim"
+abbr --add nvim-chad "NVIM_APPNAME=NvChad nvim"
+abbr --add nvim-astro "NVIM_APPNAME=AstroNvim nvim"
+abbr --add nvim-lunar "NVIM_APPNAME=LunarVim nvim"
+
+abbr --add bi "brew install"
+abbr --add bic "brew install --cask"
+abbr --add bin "brew info"
+abbr --add binc "brew info --cask"
+abbr --add bl "brew leaves"
+abbr --add blr "brew leaves --installed-on-request"
+abbr --add blp "brew leaves --installed-as-dependency"
+abbr --add bs "brew search"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/dolevh/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/dolevh/Downloads/google-cloud-sdk/path.fish.inc'; end
