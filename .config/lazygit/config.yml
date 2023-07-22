@@ -1,61 +1,74 @@
 notARepository: "skip" # one of: 'prompt' | 'create' | 'skip'
 promptToReturnFromSubprocess: false
 gui:
-  showIcons: true
-  scrollHeight: 2
-  scrollPastBottom: true
-  mouseEvents: true
-  skipUnstageLineWarning: false
-  skipStashWarning: true
-  sidePanelWidth: 0.3333
-  expandFocusedSidePanel: false
-  mainPanelSplitMode: flexible
-  theme:
-    lightTheme: false
-    activeBorderColor:
-      - "#89ddff"
-      - bold
-    inactiveBorderColor:
-      - "#565f89"
-    optionsTextColor:
-      - "#3d59a1"
-    selectedLineBgColor:
-      - "#292e42"
-      - bold
-    selectedRangeBgColor:
-      - "#89ddff"
-  commitLength:
-    show: true
-  skipNoStagedFilesWarning: false
+    showIcons: true
+    showFileTree: true
+    scrollHeight: 2
+    scrollPastBottom: true
+    mouseEvents: true
+    skipDiscardChangeWarning: false
+    skipStashWarning: true
+    sidePanelWidth: 0.3333
+    expandFocusedSidePanel: false
+    mainPanelSplitMode: flexible
+    theme:
+        lightTheme: false
+        activeBorderColor:
+            - "#89ddff"
+            - bold
+        inactiveBorderColor:
+            - "#565f89"
+        optionsTextColor:
+            - "#3d59a1"
+        selectedLineBgColor:
+            - "#292e42"
+            - bold
+        selectedRangeBgColor:
+            - "#89ddff"
+    commitLength:
+        show: true
+    skipNoStagedFilesWarning: false
 os:
-  openCommand: session_nvim {{filename}}
+    openCommand: session_nvim {{filename}}
 git:
-  log:
-    showGraph: always
-  branchLogCmd: "git log --graph --abbrev-commit --decorate --format=format:'%C(bold white)%s%C(reset) %C(dim white)- %ar %C(white)%d%C(reset)' master..{{branchName}} --"
-  overrideGpg: true
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
+    log:
+        showGraph: always
+    branchLogCmd: "git log --graph --abbrev-commit --decorate --format=format:'%C(bold white)%s%C(reset) %C(dim white)- %ar %C(white)%d%C(reset)' master..{{branchName}} --"
+    overrideGpg: true
+    paging:
+        colorArg: always
+        pager: delta --dark --paging=never
 keybinding:
-  universal:
-    quit-alt1: "<esc>"
+    universal:
+        quit-alt1: "<esc>"
 customCommands:
-  - key: "R"
-    command: "gh repo view --web"
-    description: "view repo on github"
-    context: "global"
-    loadingText: "opening github..."
-    subprocess: false
-  - key: "O"
-    command: "gh pr view --web"
-    description: "view PR on github"
-    context: "global"
-    loadingText: "opening github..."
-    subprocess: false
-  - key: "C"
-    command: "commit"
-    description: "commit with gum"
-    context: "files"
-    loadingText: "opening gum commit tool"
-    subprocess: true
+    - key: "R"
+      command: "gh repo view --web"
+      description: "view repo on github"
+      context: "global"
+      loadingText: "opening github..."
+      subprocess: false
+    - key: "O"
+      command: "gh pr view --web"
+      description: "view PR on github"
+      context: "global"
+      loadingText: "opening github..."
+      subprocess: false
+    - key: "O"
+      command: "gh pr view --web"
+      description: "view PR on github"
+      context: "localBranches"
+      loadingText: "opening github..."
+      subprocess: false
+    - key: "o"
+      command: "gh pr create -f --draft"
+      description: "create PR on GitHub"
+      context: "localBranches"
+      loadingText: "creating PR..."
+      subprocess: false
+    - key: "C"
+      command: "commit"
+      description: "commit with gum"
+      context: "files"
+      loadingText: "opening gum commit tool"
+      subprocess: true
