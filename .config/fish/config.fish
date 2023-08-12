@@ -119,5 +119,7 @@ abbr --add blr "brew leaves --installed-on-request"
 abbr --add blp "brew leaves --installed-as-dependency"
 abbr --add bs "brew search"
 
+abbr --add s "scripts"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/dolevh/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/dolevh/Downloads/google-cloud-sdk/path.fish.inc'; end
