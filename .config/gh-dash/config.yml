@@ -10,7 +10,8 @@ prSections:
   - title: DevEnv
     filters: "draft:false org:wix-private \
       author:nemni8 \
-      author:seanoch"
+      author:seanoch \
+      author:yuvallevy135"
   - title: "@wix/frontend"
     filters: "-author:@me -author:app/wix-loki-bot \
       repo:wix-private/wix-code-devex \
