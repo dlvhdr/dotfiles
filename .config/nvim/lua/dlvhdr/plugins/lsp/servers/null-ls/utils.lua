@@ -17,6 +17,9 @@ M.has_eslint_prettier_plugin = function()
     return false
   end
 
+  if package_json == nil or package_json["devDependencies"] == nil then
+    return false
+  end
   local dev_deps = package_json["devDependencies"]
   return dev_deps["eslint-plugin-prettier"] ~= nil or dev_deps["@wix/eslint-plugin-cloud-runtime"] ~= nil
 end
