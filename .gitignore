@@ -65,3 +65,4 @@ bazelwrapper
 .config/LazyVim
 .config/containers/podman/machine/qemu
 .config/containers
+.config/helm/repositories.yaml
