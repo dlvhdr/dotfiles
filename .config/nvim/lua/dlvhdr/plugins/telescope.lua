@@ -64,6 +64,7 @@ M.config = function()
           ["<c-d>"] = actions.preview_scrolling_down,
           ["<c-q>"] = actions.delete_buffer,
           ["<c-space>"] = layout_actions.cycle_layout_next,
+          ["<c-e>"] = actions.to_fuzzy_refine,
         },
         n = {
           ["q"] = actions.delete_buffer,
@@ -74,6 +75,7 @@ M.config = function()
           ["<c-u>"] = actions.preview_scrolling_up,
           ["<c-d>"] = actions.preview_scrolling_down,
           ["<c-space>"] = layout_actions.cycle_layout_next,
+          ["<c-e>"] = actions.to_fuzzy_refine,
           ["<CR>"] = actions.select_default,
         },
       },
