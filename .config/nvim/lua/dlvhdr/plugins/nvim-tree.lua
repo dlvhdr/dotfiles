@@ -147,9 +147,6 @@ M.config = function()
       width = 40,
       side = "right",
       relativenumber = true,
-      mappings = {
-        custom_only = false,
-      },
       preserve_window_proportions = true,
       centralize_selection = true,
     },

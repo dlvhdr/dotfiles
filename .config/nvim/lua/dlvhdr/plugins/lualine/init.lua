@@ -25,7 +25,8 @@ M.config = function()
   local nvim_tree_shift = {
     function()
       local name = "פּ Nvim Tree"
-      local empty_space = string.rep(" ", ((vim.api.nvim_win_get_width(tree_view.get_winnr()) - #name) / 2))
+      local winnr = tree_view.get_winnr()
+      local empty_space = string.rep(" ", ((vim.api.nvim_win_get_width(winnr or 0) - #name) / 2))
       return empty_space .. name .. empty_space
     end,
     cond = tree_view.is_visible,
