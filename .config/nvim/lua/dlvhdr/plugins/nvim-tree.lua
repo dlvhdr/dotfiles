@@ -115,8 +115,8 @@ M.config = function()
         "^\\.idea",
         "^\\.next",
         "node_modules",
-        ".yarn",
-        ".husky",
+        "^\\.yarn",
+        "^\\.husky",
       },
       exclude = {
         "^dist",
