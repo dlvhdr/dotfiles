@@ -1,67 +1,92 @@
-tap "eddieantonio/eddieantonio"
-tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
-tap "homebrew/services"
-tap "jesseduffield/lazygit"
-tap "jez/formulae"
-tap "koekeishiya/formulae"
-tap "screenplaydev/tap"
-tap "yulrizka/tap"
-brew "bat"
-brew "bpytop"
-brew "python@3.9"
-brew "diff-so-fancy"
-brew "exa"
-brew "fd"
-brew "gnutls"
-brew "ffmpeg"
-brew "figlet"
-brew "fnm"
-brew "fzf"
-brew "gh"
-brew "git"
-brew "git-delta"
-brew "glow"
-brew "gnupg"
-brew "go"
-brew "golangci-lint"
-brew "graphviz"
-brew "hub"
-brew "inetutils"
-brew "jid"
-brew "jq"
-brew "kubernetes-cli"
-brew "ruby"
-brew "lua"
-brew "ncdu"
-brew "neofetch"
-brew "neovim"
-brew "newsboat"
-brew "node"
-brew "pandoc"
-brew "ripgrep"
-brew "stylua"
-brew "tealdeer"
-brew "tig"
-brew "tmux"
-brew "upx"
-brew "urlview"
-brew "watchman"
-brew "yarn"
-brew "zsh"
-brew "heroku/brew/heroku"
-brew "jesseduffield/lazygit/lazygit"
-brew "jez/formulae/git-heatmap"
-brew "jez/formulae/git-madge"
-brew "koekeishiya/formulae/skhd"
-brew "koekeishiya/formulae/yabai"
-brew "screenplaydev/tap/graphite"
-cask "alacritty"
-cask "amethyst"
-cask "fig"
-cask "raycast"
-cask "spaceman"
-cask "spotmenu"
-cask "visual-studio-code"
+bat
+bpytop
+caarlos0/tap/svu
+charmbracelet/tap/mods
+charmbracelet/tap/vhs
+clipboard
+diff-so-fancy
+difftastic
+docker
+duf
+dust
+entr
+erdtree
+exa
+fd
+ffmpeg@4
+figlet
+fish
+fnm
+fx
+fzf
+gh
+gifski
+git
+git-delta
+git-extras
+git-filter-repo
+git-lfs
+glow
+gnupg
+gobject-introspection
+gojq
+golangci-lint
+goreleaser
+gum
+helm
+html-xml-utils
+httpie
+hugo
+humanlogio/tap/humanlog
+hyperfine
+hyperkit
+incu6us/tap/goimports-reviser
+isacikgoz/taps/tldr
+jesseduffield/lazygit/lazygit
+jid
+jq
+k9s
+koekeishiya/formulae/skhd
+krew
+less
+lf
+lolcat
+lua-language-server
+luajit-openresty
+luarocks
+macos-term-size
+mas
+miller
+minikube
+muesli/tap/markscribe
+ncdu
+neofetch
+neovim
+noahgorstein/tap/jqp
+node@16
+pandoc
+pinentry-mac
+reattach-to-user-namespace
+redis
+ripgrep
+ruby
+screenplaydev/tap/graphite
+shellcheck
+sleepwatcher
+slides
+starship
+stylua
+terminal-notifier
+thezoraiz/ascii-image-converter/ascii-image-converter
+tig
+tmux
+ttyd
+walk
+watch
+watchman
+woff2
+yarn
+ykman
+yubikey-agent
+zoxide
+zsh
