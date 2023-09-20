@@ -80,6 +80,7 @@ keymap(
   ":lua require('dlvhdr.plugins.telescope').project_files()<CR>",
   { silent = true, desc = "Project Files" }
 )
+keymap("n", "<leader>fi", "<cmd>Telescope import<cr>", { silent = true, desc = "Imports" })
 
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
 
