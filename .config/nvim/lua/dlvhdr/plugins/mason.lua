@@ -35,6 +35,7 @@ function M.config()
   })
   M.check()
   require("mason-lspconfig").setup({
+    ensure_installed = M.tools,
     automatic_installation = true,
   })
 end
