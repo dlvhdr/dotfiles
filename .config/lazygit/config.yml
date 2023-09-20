@@ -38,9 +38,6 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
-keybinding:
-  universal:
-    quit-alt1: "<esc>"
 customCommands:
   - key: "R"
     command: "gh repo view --web"
