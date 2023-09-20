@@ -1,4 +1,4 @@
-registry=https://npm.dev.wixpress.com
+registry=https://npm.dev.wixpress.com/
 @wix:registry=https://npm.dev.wixpress.com
 cache=/Users/dolevh/.cache/npm
 fetch-retries=0
