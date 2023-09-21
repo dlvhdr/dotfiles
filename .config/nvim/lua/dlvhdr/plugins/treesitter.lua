@@ -29,6 +29,9 @@ M.config = function()
   end
 
   configs.setup({
+    sync_install = false,
+    auto_install = true,
+    modules = {},
     context_commentstring = { enable = true, enable_autocmd = false },
     highlight = {
       enable = true,
