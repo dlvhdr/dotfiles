@@ -13,6 +13,7 @@ local M = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "aaronhallaert/advanced-git-search.nvim",
     "piersolenski/telescope-import.nvim",
+    "nvim-telescope/telescope-node-modules.nvim",
   },
 }
 
@@ -209,6 +210,7 @@ M.config = function()
   telescope.load_extension("live_grep_args")
   telescope.load_extension("advanced_git_search")
   telescope.load_extension("import")
+  telescope.load_extension("node_modules")
 end
 
 function M.project_files()
