@@ -5,6 +5,7 @@ local keymap = vim.keymap.set
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+keymap({ "n" }, "<CR>", "viw", { desc = "Select word under cursor" })
 
 -- save and quit
 keymap("n", "<leader>w", ":silent write<CR>", { silent = true, desc = "Write File" })
@@ -81,6 +82,7 @@ keymap(
   { silent = true, desc = "Project Files" }
 )
 keymap("n", "<leader>fi", "<cmd>Telescope import<cr>", { silent = true, desc = "Imports" })
+keymap("n", "<leader>fc", "<cmd>Telescope commands<cr>", { silent = true, desc = "Commands" })
 
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
 
