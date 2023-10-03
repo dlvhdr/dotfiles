@@ -42,7 +42,7 @@ return {
   diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
-    symbols = { error = " ", warn = " ", info = " ", hint = " " },
+    symbols = { error = " ", warn = " ", info = " ", hint = "󰌶 " },
     color = { fg = colors.fg_dark, bg = "NONE" },
     cond = nil,
   },

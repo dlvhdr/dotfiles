@@ -1,46 +1,47 @@
 local M = {
   "lukas-reineke/indent-blankline.nvim",
   event = "BufReadPre",
+  main = "ibl",
 }
 
 M.config = function()
-  local status_ok, indent_blankline = pcall(require, "indent_blankline")
+  local status_ok, indent_blankline = pcall(require, "ibl")
   if not status_ok then
     return
   end
 
   indent_blankline.setup({
     enabled = true,
-    buftype_exclude = { "terminal", "nofile" },
-    filetype_exclude = {
-      "help",
-      "startify",
-      "dashboard",
-      "packer",
-      "neogitstatus",
-      "NvimTree",
-      "Trouble",
-      "alpha",
-      "packer",
-      "man",
-      "sagasignature",
-      "sagahover",
-      "lspsagafinder",
-      "LspSagaCodeAction",
-      "TelescopePrompt",
-      "NvimTree",
-      "Trouble",
-      "DiffviewFiles",
-      "DiffviewFileHistory",
-      "Outline",
-      "lspinfo",
-      "fugitive",
-      "norg",
+    exclude = {
+      filetypes = {
+        "terminal",
+        "nofile",
+        "help",
+        "startify",
+        "dashboard",
+        "packer",
+        "neogitstatus",
+        "NvimTree",
+        "Trouble",
+        "alpha",
+        "packer",
+        "man",
+        "sagasignature",
+        "sagahover",
+        "lspsagafinder",
+        "LspSagaCodeAction",
+        "TelescopePrompt",
+        "NvimTree",
+        "Trouble",
+        "DiffviewFiles",
+        "DiffviewFileHistory",
+        "Outline",
+        "lspinfo",
+        "fugitive",
+        "norg",
+      },
     },
-    char = "▏",
-    show_trailing_blankline_indent = false,
-    use_treesitter = true,
-    show_current_context = true,
+    indent = { char = "▏" },
   })
 end
 

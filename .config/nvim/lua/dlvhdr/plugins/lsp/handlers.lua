@@ -6,7 +6,7 @@ end
 local M = {}
 
 local signs = {
-  { name = "DiagnosticSignError", text = "" },
+  { name = "DiagnosticSignError", text = "󰅙" },
   { name = "DiagnosticSignWarn", text = "" },
   { name = "DiagnosticSignInfo", text = "" },
   { name = "DiagnosticSignHint", text = "" },

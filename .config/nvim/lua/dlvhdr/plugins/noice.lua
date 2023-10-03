@@ -62,6 +62,10 @@ M.config = function()
       },
     },
     views = {
+      mini = {
+        zindex = 100,
+        win_options = { winblend = 0 },
+      },
       cmdline_popup = {
         position = {
           row = 5,

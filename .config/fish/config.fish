@@ -8,6 +8,9 @@ set -U fish_greeting # disable fish greeting
 
 source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
 
+fish_add_path /opt/homebrew/bin
+fish_add_path $HOME/.local/share/npm/bin
+
 fzf_configure_bindings --directory=\ct --git_log=
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
 set -gx fzf_history_opts "--nth=4.." --preview="" --border-label=" history " --prompt="  "
@@ -124,4 +127,4 @@ abbr --add kdp "kubectl describe pod"
 abbr --add d "docker"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/dolevh/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/dolevh/Downloads/google-cloud-sdk/path.fish.inc'; end
+if [ -f '/Users/dlvhdr/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/dlvhdr/Downloads/google-cloud-sdk/path.fish.inc'; end

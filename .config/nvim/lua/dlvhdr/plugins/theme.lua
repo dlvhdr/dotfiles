@@ -28,14 +28,13 @@ M.config = function()
 
   tokyonight.setup({
     style = "storm",
-    transparent = false,
+    transparent = true,
     terminal_colors = true,
     styles = {
       comments = { italic = true },
       keywords = { italic = true },
       functions = {},
       variables = {},
-      -- Background styles. Can be "dark", "transparent" or "normal"
       sidebars = "transparent",
       floats = "transparent",
     },
@@ -72,6 +71,7 @@ M.config = function()
         fg = c.yellow,
         bold = true,
       }
+      hl.EndOfBuffer = { bg = "NONE" }
       hl.CmpDocumentation = { bg = darker_bg }
       hl.CmpDocumentationBorder = { bg = darker_bg }
       hl.TelescopeMatching = { fg = c.warning, bold = true }

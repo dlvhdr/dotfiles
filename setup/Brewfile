@@ -9,8 +9,6 @@ clintmod/formulas/macprefs
 clipboard
 cmake
 cmocka
-colima
-colordiff
 coreutils
 cpanminus
 deno
@@ -50,8 +48,6 @@ gts
 guile
 gum
 helm
-heroku/brew/heroku
-heroku/brew/heroku-node
 html-xml-utils
 httpie
 hugo
@@ -92,9 +88,6 @@ neofetch
 neovim
 nghttp2
 noahgorstein/tap/jqp
-node@16
-openjdk@11
-openjdk@17
 pandoc
 pinentry-mac
 pup
