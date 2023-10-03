@@ -7,28 +7,12 @@ prSections:
         hidden: true
   - title: Review
     filters: is:open review-requested:@me
-  - title: DevEnv
-    filters: "draft:false org:wix-private \
-      author:nemni8 \
-      author:seanoch \
-      author:yuvallevy135"
-  - title: "@wix/frontend"
-    filters: "-author:@me -author:app/wix-loki-bot \
-      repo:wix-private/wix-code-devex \
-      repo:wix-private/wix-code-client \
-      repo:wix-incubator/corvid-types"
-  - title: "@wix/backend"
-    filters: "-author:@me -author:app/wix-loki-bot \
-      repo:wix-private/cloud-runtime \
-      repo:wix-private/wix-code"
   - title: gh-dash
     filters: "is:open repo:dlvhdr/gh-dash"
   - title: Commented
     filters: commenter:@me
   - title: Closed
     filters: is:closed author:@me
-  - title: WCTB
-    filters: "is:pr repo:wix-private/wix-code-types-builder"
     layout:
       repo:
         hidden: true
@@ -80,8 +64,6 @@ defaults:
   prsLimit: 20
   issuesLimit: 20
 repoPaths:
-  wix-private/wix-code-devex: ~/code/wix/wix-code-devex-mono
-  wix-private/*: ~/code/wix/*
   CodinGame/monaco-vscode-api: ~/code/playground/monaco-vscode-api
   dlvhdr/gh-dash: ~/code/personal/gh-dash
 
