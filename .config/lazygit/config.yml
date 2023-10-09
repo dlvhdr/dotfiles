@@ -1,6 +1,7 @@
 notARepository: "skip" # one of: 'prompt' | 'create' | 'skip'
 promptToReturnFromSubprocess: false
 gui:
+  nerdFontsVersion: 3
   showIcons: true
   showFileTree: true
   scrollHeight: 2
