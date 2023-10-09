@@ -12,6 +12,8 @@ return {
       return
     end
 
+    vim.treesitter.language.register("markdown", "octo")
+
     octo.setup({
       mappings = {
         issue = {
@@ -126,5 +128,7 @@ return {
         },
       },
     })
+
+    vim.cmd("hi! link OctoEditable CursorLine")
   end,
 }
