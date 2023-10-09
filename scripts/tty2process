@@ -34,7 +34,7 @@ for cmd in $commands
 do
     case "$cmd" in
       node)
-        echo " node"
+        echo "󰎙 node"
         exit 0
         ;;
     esac
