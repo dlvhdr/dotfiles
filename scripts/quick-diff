@@ -1,0 +1,3 @@
+#!/bin/bash
+
+nvim --cmd enew --cmd vsplit --cmd enew --cmd "windo diffthis" -o 2
