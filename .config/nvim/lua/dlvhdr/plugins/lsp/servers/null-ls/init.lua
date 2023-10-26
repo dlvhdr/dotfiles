@@ -40,10 +40,12 @@ M.setup = function(opts)
           "less",
           "html",
           "json",
-          "yaml",
-          "yml",
           "graphql",
           -- "markdown",
+        },
+        disabled_filetypes = {
+          "yaml",
+          "yml",
         },
         condition = function()
           return not utils.has_eslint_prettier_plugin()
