@@ -7,6 +7,10 @@ prSections:
         hidden: true
   - title: Review
     filters: is:open review-requested:@me
+  - title: Komodor
+    filters: repo:komodorio/mono
+  - title: Troubleshoot
+    filters: org:komodorio author:galHalup author:rannyeli author:michaeldeift
   - title: gh-dash
     filters: "is:open repo:dlvhdr/gh-dash"
   - title: Commented
