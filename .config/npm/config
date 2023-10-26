@@ -13,7 +13,6 @@ init-version=0.1.0
 init-license=MIT
 
 registry=https://registry.npmjs.org
-@wix:registry=https://npm.dev.wixpress.com
 
 store-dir=${XDG_DATA_HOME}/pnpm-store
 
