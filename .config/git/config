@@ -1,13 +1,13 @@
 [user]
   name = Dolev Hadar
-  email = dolevh@wix.com
+  email = dolev@komodor.io
 
 [includeIf "gitdir:~/dotfiles/"]
   path = config-personal
 [includeIf "gitdir:~/code/personal/"]
   path = config-personal
-[includeIf "gitdir:~/code/wix/"]
-  path = config-wix
+[includeIf "gitdir:~/code/komodor/"]
+  path = config-komodor
 
 ; [commit]
 ; 	gpgsign = true
@@ -226,3 +226,5 @@
 	useHttpPath = true
 [credential "https://github.com"]
 	username = dlvhdr
+[commit]
+	gpgsign = true
