@@ -42,6 +42,10 @@ M.config = function()
       },
     },
     indent = { char = "▏" },
+    scope = {
+      show_start = false,
+      show_end = false,
+    },
   })
 end
 
