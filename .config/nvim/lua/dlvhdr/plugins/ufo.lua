@@ -1,8 +1,8 @@
 local M = {
   "kevinhwang91/nvim-ufo",
-  event = "BufReadPost",
+  event = "BufRead",
   dependencies = { "kevinhwang91/promise-async" },
-  enabled = false,
+  enabled = true,
 }
 
 M.config = function()
@@ -38,6 +38,7 @@ M.config = function()
 
   ufo.setup({
     fold_virt_text_handler = handler,
+    close_fold_kinds = { "imports" },
   })
 end
 
