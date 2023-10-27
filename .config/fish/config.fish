@@ -10,6 +10,9 @@ source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
 
 fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.local/share/npm/bin
+if status is-interactive
+  pyenv init --path | source
+end
 
 # fzf_configure_bindings --directory=\ct --git_log=
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
@@ -77,11 +80,7 @@ abbr --add jq "jqless"
 abbr --add dinner "roulette -o=🍕,🍔,🥓,🌯,🥒,🍗 --title=\"What's for dinner?\""
 abbr --add scripts "bat package.json | jq -r '.scripts | to_entries[] | \"\(.key) => \(.value)\"' | sort | fzf | cut -d' ' -f1 | xargs nr"
 
-# wix
-abbr --add npmpublic "npm config set registry https://registry.npmjs.org/ && npm config get registry"
-abbr --add npmprivate "npm config set registry https://npm.dev.wixpress.com && npm config get registry"
 abbr --add mkpr 'git push && gh pr create -d -f && pr'
-abbr --add gwix "cd $CODE/wix"
 
 # git
 abbr --add g "git"
@@ -105,6 +104,7 @@ abbr --add gco "git_checkout"
 abbr --add ta "tmux attach || tmux new -A -s default"
 abbr --add tat "tmux attach -t"
 abbr --add tn "tmux new -s \$(pwd | sed 's/.*\///g')"
+abbr --add tco "tmux kill-session -a"
 
 abbr --add lnvim 'tmux list-panes -a -F "#{session_name} #{command} #{pane_pid} #{pane_title} #{window_name} #{pane_id} #{session_path}" | grep nvim'
 
