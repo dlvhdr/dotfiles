@@ -1,5 +1,6 @@
 add_newline = true
 command_timeout = 150
+format = "$directory$git_branch$kubernetes$line_break$character"
 
 [character]
 success_symbol = "[ ](fg:#7dcfff)"
@@ -19,7 +20,7 @@ conflicted = "([⚠️ ${count}](bold red) )"
 ahead = "([⟫${count}])"
 behind = "([⟪${count}])"
 stashed = "([↪ ${count}](bold red)) "
-modified = "([柳${count}](bold yellow) )"
+modified = "([${count}](bold yellow) )"
 staged = "([ ${count}](bold green) )"
 renamed = "([⇆ ${count}](vold blue) )"
 deleted = "([ ${count}](bold red) )"
@@ -28,10 +29,11 @@ untracked ="([ ${count}](dimmed red) )"
 [directory]
 truncate_to_repo = false
 truncation_length = 5
-read_only = " "
+read_only = " 󰌾"
 truncation_symbol = "…/"
 
 [directory.substitutions]
+"~/code/komodor" = "@komodor"
 "~/code/playground" = "@playground"
 "~/code/personal" = "@personal"
 "~/code/scripts" = "@scripts"
@@ -124,7 +126,8 @@ disabled=true
 disabled=true
 
 [kubernetes]
-disabled=true
+disabled=false
+format = 'in [󱃾 $context](blue) '
 
 [localip]
 disabled=true
