@@ -26,12 +26,16 @@ alt - m : open -a /System/Applications/Mail.app
 alt - p : open -a /Applications/Cron.app
 
 # open spotify
-alt - u : open -a /Applications/Spotify.app
+alt - u : open -a /Users/dlvhdr/Applications/Music.app
 
 # open ticktick
 alt - t : open -a /Applications/TickTick.app
 
+# clickup
+alt - j : open -a /Users/dlvhdr/Applications/ClickUp.app
 
+# discord
+alt - d : open -a /Applications/Discord.app
 
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
