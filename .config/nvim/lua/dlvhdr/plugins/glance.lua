@@ -28,12 +28,17 @@ return {
             return
           end
 
-          local filtered_result = utils.filter(results, utils.filterReactDTS)
-
-          if #filtered_result == 1 then
-            jump(filtered_result[1])
+          local filtered_results
+          if method ~= "definitions" then
+            filtered_results = results
           else
-            open(filtered_result)
+            filtered_results = utils.filter(results, utils.filterReactDTS)
+          end
+
+          if #filtered_results == 1 then
+            jump(filtered_results[1])
+          else
+            open(filtered_results)
           end
         end,
       },
