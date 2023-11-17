@@ -70,6 +70,7 @@ defaults:
 repoPaths:
   CodinGame/monaco-vscode-api: ~/code/playground/monaco-vscode-api
   dlvhdr/gh-dash: ~/code/personal/gh-dash
+  komodorio/*: ~/code/komodor/*
 
 keybindings:
   prs:
