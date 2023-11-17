@@ -1,0 +1,10 @@
+procs:
+  komo-agent-watcher:
+    cwd: /Users/dlvhdr/code/komodor/komodor-agent/
+    cmd: ["go", "run", "cmd/watcher/watcher.go"]
+  mono-dev-server:
+    cwd: /Users/dlvhdr/code/komodor/mono/services/web
+    cmd: ["yarn", "start:bundler"]
+  design-system-storybook:
+    cwd: /Users/dlvhdr/code/komodor/design-system
+    cmd: ["yarn", "storybook", "--no-open"]
