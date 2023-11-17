@@ -1,11 +1,11 @@
 # open chrome
-alt - f : open -a /Applications/Google\ Chrome.app
+alt - f : open -a /Users/dlvhdr/Applications/Figma.app
 
 # open arc
 alt - c : open -a /Applications/Arc.app
 
-# open kitty
-alt - i : open -a /Applications/kitty.app
+# open wezterm
+alt - i : open -a /Applications/WezTerm.app
 
 # open whatsapp
 alt - w : open -a /Applications/Whatsapp.app
@@ -33,6 +33,9 @@ alt - t : open -a /Applications/TickTick.app
 
 # clickup
 alt - j : open -a /Users/dlvhdr/Applications/ClickUp.app
+
+# komodor
+alt - k : open -a /Users/dlvhdr/Applications/Komodor.app
 
 # discord
 alt - d : open -a /Applications/Discord.app
