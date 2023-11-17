@@ -60,6 +60,14 @@ M.config = function()
         },
         opts = { skip = true },
       },
+      {
+        filter = {
+          event = "msg_show",
+          kind = "",
+          find = "Unable to find native fzy native lua dep file. Probably need to update submodules!",
+        },
+        opts = { skip = true },
+      },
     },
     views = {
       mini = {
