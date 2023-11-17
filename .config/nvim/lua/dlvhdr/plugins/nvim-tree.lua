@@ -155,6 +155,12 @@ M.config = function()
     },
     update_cwd = false,
   })
+
+  local colors = require("tokyonight.colors").setup()
+  vim.api.nvim_set_hl(0, "NvimTreeFolderName", { fg = colors.blue })
+  vim.api.nvim_set_hl(0, "NvimTreeEmptyFolderName", { fg = colors.blue })
+  vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { fg = colors.blue })
+  vim.api.nvim_set_hl(0, "NvimTreeSymlinkFolderName", { fg = colors.blue })
 end
 
 return M

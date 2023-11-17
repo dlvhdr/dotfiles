@@ -1,6 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  version = "0.1.0",
+  branch = "0.1.x",
   cmd = { "Telescope" },
   dependencies = {
     "kkharji/sqlite.lua",
@@ -10,7 +10,6 @@ local M = {
     "nvim-telescope/telescope-ui-select.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",
     "natecraddock/telescope-zf-native.nvim",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "aaronhallaert/advanced-git-search.nvim",
     "piersolenski/telescope-import.nvim",
     "nvim-telescope/telescope-node-modules.nvim",

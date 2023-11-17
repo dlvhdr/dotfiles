@@ -2,7 +2,7 @@ return {
   "dnlhc/glance.nvim",
   lazy = true,
   keys = {
-    { "gD", "<CMD>Glance definitions<CR>", desc = "Show Definitions" },
+    { "gd", "<CMD>Glance definitions<CR>", desc = "Show Definitions" },
     { "gr", "<CMD>Glance references<CR>", desc = "Show References" },
     { "gY", "<CMD>Glance type_definitions<CR>", desc = "Show Type Definitions" },
     { "gM", "<CMD>Glance implementations<CR>", desc = "Show Implementation" },
@@ -19,6 +19,15 @@ return {
       },
       folds = {
         folded = false,
+      },
+      hooks = {
+        before_open = function(results, open, jump, method)
+          if #results == 1 then
+            jump(results[1])
+          else
+            open(results)
+          end
+        end,
       },
     })
 

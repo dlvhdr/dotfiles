@@ -61,9 +61,6 @@ M.config = function()
         bold = true,
       }
       hl.BufferVisibleMod = { fg = c.yellow, bg = c.bg }
-      hl.Folded = {
-        bg = util.lighten(c.bg_highlight, 0.98),
-      }
       hl.WinSeparator = {
         fg = util.darken(c.border_highlight, 0.3),
       }
@@ -93,6 +90,7 @@ M.config = function()
       hl.GHThreadSep = { bg = c.bg_float }
       hl.markdownH1 = { bg = c.bg_float }
       hl.DiagnosticUnnecessary = { fg = util.lighten(c.comment, 0.7), undercurl = true }
+      hl.Directory = { fg = c.comment }
     end,
   })
 
