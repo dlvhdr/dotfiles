@@ -18,7 +18,7 @@ M.config = function()
       changedelete = { hl = "GitSignsChange", text = "▌", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
       untracked = { hl = "GitSignsAdd", text = "▌", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
     },
-    signcolumn = false,
+    signcolumn = true,
     numhl = false,
     linehl = false,
     word_diff = false,

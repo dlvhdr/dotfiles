@@ -54,21 +54,17 @@ function M.get_mark(buf, lnum)
   end
 end
 
-local ignore = false
-
 ---@param sign? Sign
 ---@param len? number
 function M.icon(sign, len)
   sign = sign or {}
   len = len or 2
-  if sign.text == "z" and ignore ~= true then
-    ignore = true
-    vim.print("sign", sign)
-  end
   local text = vim.fn.strcharpart(sign.text or "", 0, len) ---@type string
   text = text .. string.rep(" ", len - vim.fn.strchars(text))
   return sign.texthl and ("%#" .. sign.texthl .. "#" .. text .. "%*") or text
 end
+
+local print = true
 
 function M.statuscolumn()
   local win = vim.g.statusline_winid
@@ -116,6 +112,12 @@ function M.statuscolumn()
   end
 
   return table.concat(components, "")
+end
+
+M.test = function()
+  local win = vim.g.statusline_winid
+  local buf = vim.api.nvim_win_get_buf(win)
+  vim.print("test", buf)
 end
 
 return M
