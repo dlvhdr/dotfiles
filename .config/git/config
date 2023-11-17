@@ -128,7 +128,7 @@
   nuke = clean -f -d
   clean-branches = !git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
   update-master = !git checkout master && git pull --rebase && git merge origin/master --ff-only
-  sync = !git co master && git pull && git co - && git rebase -i master
+  sync = !gt sync
   branches = branch --sort=-authordate
   stashes = stash list
   remotes = remote -v
@@ -196,7 +196,7 @@
   help = black bold
 
 [delta]
-  syntax-theme = Enki-Tokyo-Night
+  syntax-theme = tokyonight_night
   navigate = true
   dark = true
   side-by-side = false
@@ -222,9 +222,9 @@
 	helper = osxkeychain
 	helper = 
 	helper = /usr/local/share/gcm-core/git-credential-manager
-[credential "https://dev.azure.com"]
-	useHttpPath = true
 [credential "https://github.com"]
 	username = dlvhdr
 [commit]
 	gpgsign = true
+[credential "https://dev.azure.com"]
+	useHttpPath = true
