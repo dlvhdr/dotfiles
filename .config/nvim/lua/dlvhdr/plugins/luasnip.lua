@@ -3,9 +3,6 @@ local M = {
   lazy = true,
   dependencies = {
     "rafamadriz/friendly-snippets",
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
   },
 }
 
@@ -16,7 +13,6 @@ M.config = function()
   end
 
   local types = require("luasnip.util.types")
-  local snippets = require("dlvhdr.snippets")
 
   -- luasnip.cleanup()
 
@@ -56,7 +52,8 @@ M.config = function()
 
   luasnip.filetype_extend("typescriptreact", { "typescript" })
 
-  luasnip.add_snippets(nil, snippets)
+  require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/dlvhdr/snippets" })
+  require("luasnip.loaders.from_vscode").lazy_load()
 
   -- vim.keymap.set("n", "<leader>s", function()
   --   vim.cmd([[luafile $XDG_CONFIG_HOME/nvim/lua/dlvhdr/luasnip.lua]])
