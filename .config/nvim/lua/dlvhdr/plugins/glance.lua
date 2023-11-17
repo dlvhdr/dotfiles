@@ -8,6 +8,7 @@ return {
     { "gM", "<CMD>Glance implementations<CR>", desc = "Show Implementation" },
   },
   config = function()
+    local utils = require("dlvhdr.utils")
     require("glance").setup({
       border = {
         enable = true,
@@ -24,8 +25,15 @@ return {
         before_open = function(results, open, jump, method)
           if #results == 1 then
             jump(results[1])
+            return
+          end
+
+          local filtered_result = utils.filter(results, utils.filterReactDTS)
+
+          if #filtered_result == 1 then
+            jump(filtered_result[1])
           else
-            open(results)
+            open(filtered_result)
           end
         end,
       },
