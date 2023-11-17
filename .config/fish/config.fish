@@ -8,10 +8,36 @@ set -U fish_greeting # disable fish greeting
 
 source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
 
-fish_add_path /opt/homebrew/bin
+eval (/opt/homebrew/bin/brew shellenv)
+
+# fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.local/share/npm/bin
 if status is-interactive
   pyenv init --path | source
+end
+
+if status is-interactive
+  atuin init fish --disable-up-arrow | source
+  set -gx ATUIN_NOBIND "true"
+
+  bind \cr _atuin_search
+  bind -M insert \cr _atuin_search
+end
+
+fnm env --use-on-cd --version-file-strategy recursive | source
+
+if command -q starship
+  starship init fish | source
+end
+
+# properly setup gpg tty
+set -e SSH_AUTH_SOCK
+set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+
+set -x GPG_TTY (tty)
+
+if not test (pgrep gpg-agent)
+  gpg-agent --daemon --no-grab >/dev/null 2>&1
 end
 
 # fzf_configure_bindings --directory=\ct --git_log=
@@ -84,7 +110,7 @@ abbr --add mkpr 'git push && gh pr create -d -f && pr'
 
 # git
 abbr --add g "git"
-abbr --add sl "gt l"
+abbr --add sl "gt ls"
 abbr --add gst "git status"
 abbr --add gca "git commit --amend"
 abbr --add gaa "git add -A"
@@ -98,7 +124,9 @@ abbr --add vr "gh vr"
 abbr --add ga "git ls-files -m -o --exclude-standard | fzf --height 50% --preview 'bat {-1} --color always --style changes,numbers' --print0 -m | xargs -0 -t -o git add"
 abbr --add gr "git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git  -q HEAD --"
 abbr --add lg "lazygit"
-abbr --add gco "git_checkout"
+# abbr --add gco "git_checkout"
+abbr --add gco "gt co"
+abbr --add gsl "gt ls"
 
 # tmux
 abbr --add ta "tmux attach || tmux new -A -s default"
