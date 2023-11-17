@@ -67,3 +67,6 @@ bazelwrapper
 .config/containers
 .config/helm/repositories.yaml
 .config/raycast/config.json
+.config/bpytop
+.config/npm/npmrc
+wallpapers
