@@ -78,7 +78,22 @@ keymap(
 keymap(
   "n",
   "<C-p>",
-  ":lua require('dlvhdr.plugins.telescope').project_files()<CR>",
+  -- ":lua require('dlvhdr.plugins.telescope').project_files()<CR>",
+  function()
+    require("telescope").extensions.smart_open.smart_open({
+      cwd_only = true,
+      preview = { hide_on_startup = true },
+      layout_config = {
+        width = 0.65,
+        height = 0.35,
+      },
+      mappings = {
+        i = {
+          ["<esc>"] = require("telescope.actions").close,
+        },
+      },
+    })
+  end,
   { silent = true, desc = "Project Files" }
 )
 keymap("n", "<leader>fi", "<cmd>Telescope import<cr>", { silent = true, desc = "Imports" })

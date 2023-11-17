@@ -17,14 +17,14 @@ augroup zsh-filetype
 augroup END
 ]])
 
-vim.api.nvim_create_autocmd({ "BufRead,BufNewFile" }, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.json",
   callback = function()
     vim.o.conceallevel = 0
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufRead,BufNewFile" }, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*.md",
   callback = function()
     vim.o.conceallevel = 2
