@@ -26,9 +26,9 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "gR", function()
     require("dlvhdr.plugins.telescope").lsp_references()
   end, { silent = true, buffer = bufnr, desc = "Show References" })
-  vim.keymap.set("n", "gd", function()
-    require("dlvhdr.plugins.telescope").lsp_definitions()
-  end, { silent = true, buffer = bufnr, desc = "View Definitions" })
+  -- vim.keymap.set("n", "gd", function()
+  --   require("dlvhdr.plugins.telescope").lsp_definitions()
+  -- end, { silent = true, buffer = bufnr, desc = "View Definitions" })
 
   vim.keymap.set("n", "<leader>gr", M.rename, { expr = true, desc = "Rename Symbol" })
   vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Code Action" })
@@ -91,7 +91,7 @@ M.on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>tf", function()
       auto_format_enabled = not auto_format_enabled
       vim.notify("Auto formatting is " .. (auto_format_enabled and "enabled" or "disabled"))
-    end)
+    end, { desc = "Toggle Auto Formatting" })
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       group = format_augroup,
       buffer = bufnr,

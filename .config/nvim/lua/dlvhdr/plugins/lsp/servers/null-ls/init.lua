@@ -25,7 +25,8 @@ M.setup = function(opts)
       }),
       null_ls.builtins.formatting.eslint_d.with({
         condition = function()
-          return utils.has_eslint_prettier_plugin()
+          -- return utils.has_eslint_prettier_plugin()
+          return true
         end,
       }),
       null_ls.builtins.formatting.prettierd.with({
@@ -48,7 +49,7 @@ M.setup = function(opts)
           "yml",
         },
         condition = function()
-          return not utils.has_eslint_prettier_plugin()
+          return true
         end,
       }),
       null_ls.builtins.diagnostics.eslint_d.with({
