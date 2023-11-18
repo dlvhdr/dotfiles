@@ -154,7 +154,3 @@ abbr --add s "scripts"
 abbr --add kdp "kubectl describe pod"
 abbr --add d "docker"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/dlvhdr/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/dlvhdr/Downloads/google-cloud-sdk/path.fish.inc'; end
-
-
