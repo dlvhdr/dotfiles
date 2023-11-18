@@ -1,11 +1,34 @@
 return {
   "drybalka/tree-climber.nvim",
   dependecies = { "nvim-treesitter/nvim-treesitter" },
-  event = "BufReadPost",
-  init = function()
-    local keyopts = { noremap = true, silent = true }
-    vim.keymap.set({ "n", "v", "o" }, "H", require("tree-climber").goto_parent, keyopts)
-    vim.keymap.set({ "n", "v", "o" }, "L", require("tree-climber").goto_child, keyopts)
-    vim.keymap.set({ "v", "o" }, "in", require("tree-climber").select_node, keyopts)
-  end,
+  keys = {
+    {
+      "K",
+      function(opts)
+        require("tree-climber").goto_parent(opts)
+      end,
+      mode = { "n", "v", "o" },
+    },
+    {
+      "L",
+      function(opts)
+        require("tree-climber").goto_next(opts)
+      end,
+      mode = { "n", "v", "o" },
+    },
+    {
+      "H",
+      function(opts)
+        require("tree-climber").goto_prev(opts)
+      end,
+      mode = { "n", "v", "o" },
+    },
+    {
+      "J",
+      function(opts)
+        require("tree-climber").goto_child(opts)
+      end,
+      mode = { "n", "v", "o" },
+    },
+  },
 }

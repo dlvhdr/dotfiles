@@ -14,11 +14,11 @@ keymap("n", "<leader>W", ":wall<CR>", { silent = true, desc = "Write All" })
 keymap("n", "<leader>tq", ":tabclose<CR>", { silent = true, desc = "Tab Close" })
 
 keymap("n", "x", '"_x', { silent = true })
-keymap("x", "<leader>p", '"_dP', { silent = true })
+-- keymap("x", "<leader>p", '"_dP', { silent = true })
 keymap("n", "Y", "y$", { silent = true })
 keymap("n", "n", "nzzzv", { silent = true })
 keymap("n", "N", "Nzzzv", { silent = true })
-keymap("n", "J", "mzJ`z", { silent = true, desc = "Join Line Below" })
+keymap("n", "gj", "mzJ`z", { silent = true, desc = "Join Line Below" })
 keymap("v", "<", "<gv", { silent = true, desc = "Indent Less" })
 keymap("v", ">", ">gv", { silent = true, desc = "Indent More" })
 keymap("n", "<C-e>", "<Nop>", { silent = true, desc = "Scroll screen down" })
@@ -97,7 +97,7 @@ keymap(
   { silent = true, desc = "Project Files" }
 )
 keymap("n", "<leader>fi", "<cmd>Telescope import<cr>", { silent = true, desc = "Imports" })
-keymap("n", "<leader>fc", "<cmd>Legendary<cr>", { silent = true, desc = "Commands" })
+keymap("n", "<leader>fc", "<cmd>Telescope commands<cr>", { silent = true, desc = "Commands" })
 
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
 

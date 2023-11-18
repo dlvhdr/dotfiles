@@ -71,6 +71,7 @@
   "schemastore.nvim": { "branch": "main", "commit": "4f089118cd0dccab325b85dc30e6805e20d0f885" },
   "smart-open.nvim": { "branch": "0.2.x", "commit": "026091fe7f9b283aa1f5f4bb8c56aa5bcad43dbd" },
   "sqlite.lua": { "branch": "master", "commit": "b7e28c8463254c46a8e61c52d27d6a2040492fc3" },
+  "substitute.nvim": { "branch": "main", "commit": "17ffaeb5a1dc2dbef39cf0865d8a4b6000836714" },
   "telescope-all-recent.nvim": { "branch": "main", "commit": "766d79bedf8dd59c2d0a944a7cf3c98795ab5f07" },
   "telescope-import.nvim": { "branch": "main", "commit": "c1f35e226695ba273a0db58935b17188c99925c4" },
   "telescope-live-grep-args.nvim": { "branch": "master", "commit": "851c0997d55601f2afd7290db0f90dc364e29f58" },

@@ -1,7 +1,7 @@
 return {
   "Wansmer/treesj",
   dependencies = { "nvim-treesitter" },
-  lazy = true,
+  keys = { "<space>m", "<space>j", "<space>s" },
   config = function()
     local ok, tsj = pcall(require, "treesj")
     if not ok then
