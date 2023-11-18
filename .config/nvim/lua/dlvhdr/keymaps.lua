@@ -161,11 +161,8 @@ keymap("n", "<leader>tl", function()
 end, { silent = true, desc = "Toggle relative line numbers" })
 
 keymap("n", "<leader>gym", function()
-  local branch = vim.fn.system("git remote show origin | awk '/HEAD branch/ {print $NF}'")
-
-  local url = vim.fn.system(
-    "gh browse -n " .. vim.fn.expand("%") .. ":" .. vim.api.nvim_win_get_cursor(0)[1] .. " --branch " .. branch
-  )
+  -- run shell script
+  local url = vim.fn.system("gh browse -n " .. vim.fn.expand("%") .. ":" .. vim.api.nvim_win_get_cursor(0)[1])
   vim.api.nvim_command("let @+ = '" .. url .. "'")
   vim.notify(url)
 end, { desc = "Copy line URL (main)" })
@@ -179,11 +176,6 @@ keymap("n", "<leader>gyb", function()
   vim.api.nvim_command("let @+ = '" .. url .. "'")
   vim.notify(url)
 end, { desc = "Copy line URL (branch)" })
-
--- `require"gitlinker".get_buf_range_url(mode, user_opts)` where `mode` is
--- the either `"n"` (normal) or `"v"` (visual) and `user_opts` is a table
--- of opts similar to the one passed in `setup()` (it can be `nil`, or not
--- passed), only `mode` is mandatory.
 
 keymap("n", "<leader>gyc", function()
   require("gitlinker").get_buf_range_url("n")
