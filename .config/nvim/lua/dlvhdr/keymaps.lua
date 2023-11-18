@@ -14,7 +14,6 @@ keymap("n", "<leader>W", ":wall<CR>", { silent = true, desc = "Write All" })
 keymap("n", "<leader>tq", ":tabclose<CR>", { silent = true, desc = "Tab Close" })
 
 keymap("n", "x", '"_x', { silent = true })
--- keymap("x", "<leader>p", '"_dP', { silent = true })
 keymap("n", "Y", "y$", { silent = true })
 keymap("n", "n", "nzzzv", { silent = true })
 keymap("n", "N", "Nzzzv", { silent = true })
