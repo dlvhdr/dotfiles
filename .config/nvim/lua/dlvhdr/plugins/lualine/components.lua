@@ -60,7 +60,7 @@ return {
   lsp = {
     function(msg)
       msg = msg or "LS Inactive"
-      local buf_clients = vim.lsp.buf_get_clients()
+      local buf_clients = vim.lsp.get_active_clients()
       if next(buf_clients) == nil then
         if type(msg) == "boolean" or #msg == 0 then
           return "LS Inactive"
@@ -72,7 +72,11 @@ return {
 
       -- add client
       for _, client in pairs(buf_clients) do
-        if client.name ~= "null-ls" then
+        if client.name == "copilot" then
+          table.insert(buf_client_names, "")
+        elseif client.name == "tsserver" then
+          table.insert(buf_client_names, "")
+        elseif client.name ~= "null-ls" then
           table.insert(buf_client_names, client.name)
         end
       end
@@ -89,7 +93,7 @@ return {
 
       local unique_client_names = vim.fn.sort(buf_client_names)
       unique_client_names = vim.fn.uniq(unique_client_names)
-      return " " .. table.concat(unique_client_names, " ")
+      return table.concat(unique_client_names, "  ")
     end,
     color = { fg = colors.fg_dark, bg = "NONE" },
   },
