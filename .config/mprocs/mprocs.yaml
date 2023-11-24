@@ -3,11 +3,15 @@ procs:
     cwd: /Users/dlvhdr/code/komodor/komodor-agent/
     cmd: ["go", "run", "cmd/watcher/watcher.go"]
     autostart: false
-  mono-dev-server:
+  web-dev-server:
     cwd: /Users/dlvhdr/code/komodor/mono/services/web
     cmd: ["yarn", "start:bundler"]
     autostart: false
   design-system-storybook:
     cwd: /Users/dlvhdr/code/komodor/design-system
     cmd: ["yarn", "storybook", "--no-open"]
+    autostart: false
+  resources-api:
+    cwd: /Users/dlvhdr/code/komodor/mono/services/resources-api
+    cmd: ["go", "run", "cmd/main.go"]
     autostart: false
