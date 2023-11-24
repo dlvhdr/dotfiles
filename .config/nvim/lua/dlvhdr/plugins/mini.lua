@@ -9,9 +9,10 @@ local mini = {
 
 function mini.comment()
   require("mini.comment").setup({
-    hooks = {
-      pre = function()
-        require("ts_context_commentstring.internal").update_commentstring({})
+    event = "VeryLazy",
+    options = {
+      custom_commentstring = function()
+        return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
       end,
     },
   })

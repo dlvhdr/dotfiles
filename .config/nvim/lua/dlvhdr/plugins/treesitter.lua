@@ -8,6 +8,7 @@ local M = {
     "nvim-treesitter/nvim-treesitter-refactor",
     "mfussenegger/nvim-treehopper",
     { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+    "JoosepAlviste/nvim-ts-context-commentstring",
     "windwp/nvim-ts-autotag",
   },
 }
@@ -32,7 +33,6 @@ M.config = function()
     sync_install = false,
     auto_install = true,
     modules = {},
-    context_commentstring = { enable = true, enable_autocmd = false },
     highlight = {
       enable = true,
       disable = function(_, bufnr)
@@ -95,13 +95,15 @@ M.config = function()
       },
     },
     ensure_installed = "all",
-    ignore_install = {
-      "comment",
-    },
   })
 
   local parser_config = parsers.get_parser_configs()
   parser_config.markdown.filetype_to_parsername = "octo"
+
+  vim.g.skip_ts_context_commentstring_module = true
+  require("ts_context_commentstring").setup({
+    enable_autocmd = false,
+  })
 end
 
 return M
