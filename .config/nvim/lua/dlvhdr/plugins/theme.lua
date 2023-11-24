@@ -91,6 +91,9 @@ M.config = function()
       hl.markdownH1 = { bg = c.bg_float }
       hl.DiagnosticUnnecessary = { fg = util.lighten(c.comment, 0.7), undercurl = true }
       hl.Directory = { fg = c.comment }
+      hl.GitSignsAddNr = { fg = c.green }
+      hl.GitSignsAddLn = { fg = c.green }
+      hl.GitSignsAdd = { fg = c.green }
     end,
   })
 
