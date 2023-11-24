@@ -24,7 +24,7 @@ function plugin.config()
       keymap = {
         accept = "<C-e>",
         accept_word = "<C-Right>",
-        -- accept_line = "<C-Down>",
+        accept_line = false,
         next = "<C-space>",
         dismiss = "<C-c>",
       },
