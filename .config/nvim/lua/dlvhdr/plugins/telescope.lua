@@ -4,7 +4,7 @@ local M = {
   cmd = { "Telescope" },
   dependencies = {
     "kkharji/sqlite.lua",
-    { "prochri/telescope-all-recent.nvim", opts = {} },
+    -- { "prochri/telescope-all-recent.nvim", opts = {} },
     "nvim-lua/plenary.nvim",
     "folke/trouble.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
