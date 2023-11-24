@@ -7,7 +7,17 @@ function M.list_registered_providers_names(filetype)
   for _, source in ipairs(available_sources) do
     for method in pairs(source.methods) do
       registered[method] = registered[method] or {}
-      table.insert(registered[method], source.name)
+      local source_name = source.name
+      if source.name == "eslint_d" then
+        source_name = "󰱺"
+      end
+      if source.name == "copilot" then
+        source_name = ""
+      end
+      if source.name == "prettierd" then
+        source_name = "󰄭"
+      end
+      table.insert(registered[method], source_name)
     end
   end
   return registered

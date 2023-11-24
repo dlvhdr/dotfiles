@@ -23,15 +23,15 @@ local function lsp_keymaps(bufnr)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go To Declaration" })
 
   -- telescope
-  vim.keymap.set("n", "gR", function()
-    require("dlvhdr.plugins.telescope").lsp_references()
-  end, { silent = true, buffer = bufnr, desc = "Show References" })
+  -- vim.keymap.set("n", "gr", function()
+  --   require("dlvhdr.plugins.telescope").lsp_references()
+  -- end, { silent = true, buffer = bufnr, desc = "Show References" })
   -- vim.keymap.set("n", "gd", function()
   --   require("dlvhdr.plugins.telescope").lsp_definitions()
   -- end, { silent = true, buffer = bufnr, desc = "View Definitions" })
 
-  vim.keymap.set("n", "<leader>gr", M.rename, { expr = true, desc = "Rename Symbol" })
-  vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Code Action" })
+  vim.keymap.set("n", "gR", M.rename, { expr = true, desc = "Rename Symbol" })
+  vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Code Action" })
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, { silent = true, buffer = bufnr, desc = "Hover Symbol" })
   vim.keymap.set("n", "ge", vim.diagnostic.open_float, { silent = true, buffer = bufnr, desc = "Show Diagnostic" })
   vim.keymap.set("n", "gH", vim.lsp.buf.signature_help, { silent = true, buffer = bufnr, desc = "Signature Help" })
@@ -88,7 +88,7 @@ M.on_attach = function(client, bufnr)
       buffer = bufnr,
     })
 
-    vim.keymap.set("n", "<leader>tf", function()
+    vim.keymap.set("n", "<leader>cF", function()
       auto_format_enabled = not auto_format_enabled
       vim.notify("Auto formatting is " .. (auto_format_enabled and "enabled" or "disabled"))
     end, { desc = "Toggle Auto Formatting" })
@@ -116,7 +116,7 @@ M.on_attach = function(client, bufnr)
     })
     vim.keymap.set(
       "n",
-      "<leader>gl",
+      "gl",
       "<cmd>lua vim.lsp.codelens.run()<CR>",
       { silent = true, buffer = bufnr, desc = "Codelens" }
     )
