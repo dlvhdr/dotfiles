@@ -12,6 +12,8 @@ eval (/opt/homebrew/bin/brew shellenv)
 
 # fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.local/share/npm/bin
+fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
+
 if status is-interactive
   pyenv init --path | source
 end
@@ -153,4 +155,5 @@ abbr --add bs "brew search"
 abbr --add s "scripts"
 abbr --add kdp "kubectl describe pod"
 abbr --add d "docker"
+abbr --add dc "docker-compose"
 
