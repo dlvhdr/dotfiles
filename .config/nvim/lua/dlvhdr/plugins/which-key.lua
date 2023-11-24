@@ -9,10 +9,23 @@ M.config = function()
     icons = {
       breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
       separator = "→", -- symbol used between a key and it's label
-      group = "󰉺 ", -- symbol prepended to a group
+      group = "", -- symbol prepended to a group
     },
     show_help = false,
     show_keys = false,
+    plugins = {
+      marks = false,
+      registers = false,
+      presets = {
+        operators = false,
+        motions = false,
+        text_objects = false,
+        windows = false,
+        nav = false,
+        z = false,
+        g = false,
+      },
+    },
   })
   local opts = {
     mode = "n",
@@ -28,7 +41,7 @@ M.config = function()
       name = "Telescope",
     },
     g = {
-      name = "LSP + Git",
+      name = "Git",
       d = {
         name = "Diff",
       },
@@ -45,8 +58,8 @@ M.config = function()
         name = "Toggle",
       },
     },
-    a = {
-      name = "Document",
+    c = {
+      name = "Code",
     },
     x = {
       name = "Trouble",
@@ -55,7 +68,7 @@ M.config = function()
       name = "Octo",
     },
     t = {
-      name = "Toggle",
+      name = "Test",
     },
     s = {
       name = "Replace",
@@ -65,12 +78,6 @@ M.config = function()
     },
     b = {
       name = "Buffers",
-      s = {
-        name = "Surrounding",
-        d = {
-          name = "Close",
-        },
-      },
     },
   }, opts)
 end

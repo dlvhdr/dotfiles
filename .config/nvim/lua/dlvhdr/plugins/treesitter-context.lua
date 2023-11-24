@@ -9,7 +9,7 @@ return {
     vim.keymap.set("n", "[c", function()
       require("treesitter-context").go_to_context()
     end, { silent = true, desc = "Go to TS context" })
-    vim.keymap.set("n", "<leader>tc", function()
+    vim.keymap.set("n", "<leader>cc", function()
       require("treesitter-context").toggle()
     end, { silent = true, desc = "Toggle TS Context" })
   end,

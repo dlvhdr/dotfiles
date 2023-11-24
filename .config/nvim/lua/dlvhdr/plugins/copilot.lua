@@ -15,7 +15,6 @@ function plugin.config()
         accept = "<CR>",
         jump_prev = "[[",
         jump_next = "]]",
-        refresh = "gr",
         open = "<M-CR>",
       },
     },
@@ -25,7 +24,7 @@ function plugin.config()
       keymap = {
         accept = "<C-e>",
         accept_word = "<C-Right>",
-        accept_line = "<C-Down>",
+        -- accept_line = "<C-Down>",
         next = "<C-space>",
         dismiss = "<C-c>",
       },

@@ -8,10 +8,8 @@ keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hl
 keymap({ "n" }, "<CR>", "viw", { desc = "Select word under cursor" })
 
 -- save and quit
-keymap("n", "<leader>w", ":silent write<CR>", { silent = true, desc = "Write File" })
-keymap("n", "<leader>Q", ":quitall!<CR>", { silent = true, desc = "Quit Neovim" })
-keymap("n", "<leader>W", ":wall<CR>", { silent = true, desc = "Write All" })
-keymap("n", "<leader>tq", ":tabclose<CR>", { silent = true, desc = "Tab Close" })
+keymap("n", "<Tab>q", ":tabclose<CR>", { silent = true, desc = "Close Tab" })
+keymap("n", "<Tab>n", ":tabnext<CR>", { silent = true, desc = "Next Tab" })
 
 keymap("n", "x", '"_x', { silent = true })
 keymap("n", "Y", "y$", { silent = true })
@@ -29,9 +27,7 @@ keymap("n", "Q", "<Nop>", { silent = true })
 -- Alternate file
 keymap("n", "<leader><leader>", "<C-^>", { silent = true, desc = "Last Buffer" })
 
-keymap("n", "<leader>an", "<cmd>enew<cr>", { silent = true, desc = "New File" })
-keymap("n", "<leader>al", "<cmd>LspRestart all<CR>", { silent = true, desc = "Restart LSP" })
-keymap("n", "<leader>ae", "<cmd>!eslint_d restart<CR>", { silent = true, desc = "Restart eslint_d" })
+keymap("n", "<leader>bn", "<cmd>enew<cr>", { silent = true, desc = "New File" })
 
 -- Telescope
 keymap("n", "<leader>*", "<cmd>Telescope grep_string<cr>", { silent = true, desc = "Grep Word Under Cursor" })
@@ -91,6 +87,10 @@ keymap(
           ["<esc>"] = require("telescope.actions").close,
         },
       },
+      open_buffer_indicators = {
+        previous = "󱪓",
+        others = "󰘓",
+      },
     })
   end,
   { silent = true, desc = "Project Files" }
@@ -119,10 +119,10 @@ if vim.opt.diff:get() then
   keymap("n", "<leader>3", ":diffget REMOTE<CR>", { silent = true, desc = "Take Remote" })
 end
 
-keymap("n", "<leader>aj", "<cmd>%!jq<cr>", { silent = true, desc = "Format JSON" })
-keymap("n", "<leader>aJ", "<cmd>%!jq -c<cr>", { silent = true, desc = "Compact Format JSON" })
+keymap("n", "<leader>cj", "<cmd>%!jq<cr>", { silent = true, desc = "Format JSON" })
+keymap("n", "<leader>cJ", "<cmd>%!jq -c<cr>", { silent = true, desc = "Compact Format JSON" })
 
-keymap("n", "<leader>af", "<cmd>lua vim.lsp.buf.format()<CR>", { silent = true, desc = "Format" })
+keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", { silent = true, desc = "Format" })
 
 keymap("n", "<F10>", function()
   if vim.o.conceallevel > 0 then
@@ -156,29 +156,8 @@ keymap("n", "<leader>gdl", function()
   require("telescope").extensions.advanced_git_search.search_log_content()
 end, { noremap = true, desc = "Search Log Contents" })
 
-keymap("n", "<leader>tl", function()
+keymap("n", "<leader>cl", function()
   util.toggle("relativenumber")
-end, { silent = true, desc = "Toggle relative line numbers" })
+end, { silent = true, desc = "Toggle Relative Line Numbers" })
 
-keymap("n", "<leader>gym", function()
-  -- run shell script
-  local url = vim.fn.system("gh browse -n " .. vim.fn.expand("%") .. ":" .. vim.api.nvim_win_get_cursor(0)[1])
-  vim.api.nvim_command("let @+ = '" .. url .. "'")
-  vim.notify(url)
-end, { desc = "Copy line URL (main)" })
-
-keymap("n", "<leader>gyb", function()
-  local branch = vim.fn.system("git branch --show-current")
-
-  local url = vim.fn.system(
-    "gh browse -n " .. vim.fn.expand("%") .. ":" .. vim.api.nvim_win_get_cursor(0)[1] .. " --branch " .. branch
-  )
-  vim.api.nvim_command("let @+ = '" .. url .. "'")
-  vim.notify(url)
-end, { desc = "Copy line URL (branch)" })
-
-keymap("n", "<leader>gyc", function()
-  require("gitlinker").get_buf_range_url("n")
-end, { desc = "Copy line URL (commit)" })
-
-keymap("n", "<leader>bsd", ":%bd|e#|bd#<cr>|'<cr>", { desc = "Delete Other Buffers" })
+keymap("n", "<leader>bd", ":%bd|e#|bd#<cr>|'<cr>", { desc = "Delete Other Buffers" })
