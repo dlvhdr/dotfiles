@@ -81,6 +81,8 @@ keybindings:
         '
     - key: v
       command: cd {{.RepoPath}} && code . # && gh pr checkout {{.PrNumber}}
+    - key: b
+      command: cd {{.RepoPath}} && gh pr view {{.PrNumber}} --json statusCheckRollup | command jq -rcj '.statusCheckRollup.[] | select(.context == "buildkite/mono") | .targetUrl' | xargs open
 theme:
   colors:
     text:
@@ -91,7 +93,7 @@ theme:
       warning: "#F23D5C"
       success: "#3DF294"
     background:
-      selected: "#151622"
+      selected: "#292e42"
     border:
       primary: "#383B5B"
       secondary: "#39386B"
