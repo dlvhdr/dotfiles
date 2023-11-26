@@ -37,6 +37,9 @@ M.config = function()
   }
   wk.register({
     ["*"] = "which_key_ignore",
+    ["<Tab>"] = {
+      name = "Tabs",
+    },
     f = {
       name = "Telescope",
     },

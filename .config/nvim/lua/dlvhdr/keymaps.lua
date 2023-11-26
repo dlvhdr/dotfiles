@@ -8,8 +8,9 @@ keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hl
 keymap({ "n" }, "<CR>", "viw", { desc = "Select word under cursor" })
 
 -- save and quit
-keymap("n", "<Tab>q", ":tabclose<CR>", { silent = true, desc = "Close Tab" })
-keymap("n", "<Tab>n", ":tabnext<CR>", { silent = true, desc = "Next Tab" })
+keymap("n", "<leader><Tab>d", ":tabclose<CR>", { silent = true, desc = "Close Tab" })
+keymap("n", "<leader><Tab>n", ":tabnext<CR>", { silent = true, desc = "Next Tab" })
+keymap("n", "<leader><Tab>p", ":tabprevious<CR>", { silent = true, desc = "Previous Tab" })
 
 keymap("n", "x", '"_x', { silent = true })
 keymap("n", "Y", "y$", { silent = true })
