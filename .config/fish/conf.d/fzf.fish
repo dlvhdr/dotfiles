@@ -11,7 +11,7 @@ set --global _fzf_search_vars_command '_fzf_search_variables (set --show | psub)
 
 
 # Install the default bindings, which are mnemonic and minimally conflict with fish's preset bindings
-# fzf_configure_bindings
+fzf_configure_bindings
 
 # Doesn't erase autoloaded _fzf_* functions because they are not easily accessible once key bindings are erased
 function _fzf_uninstall --on-event fzf_uninstall

@@ -18,13 +18,13 @@ if status is-interactive
   pyenv init --path | source
 end
 
-if status is-interactive
-  atuin init fish --disable-up-arrow | source
-  set -gx ATUIN_NOBIND "true"
-
-  bind \cr _atuin_search
-  bind -M insert \cr _atuin_search
-end
+# if status is-interactive
+#   atuin init fish --disable-up-arrow | source
+#   set -gx ATUIN_NOBIND "true"
+#
+#   bind \cr _atuin_search
+#   bind -M insert \cr _atuin_search
+# end
 
 fnm env --use-on-cd --version-file-strategy recursive | source
 
@@ -44,6 +44,7 @@ end
 
 # fzf_configure_bindings --directory=\ct --git_log=
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
+set fzf_history_time_format "%d-%m %H:%M"
 set -gx fzf_history_opts "--nth=4.." --preview="" --border-label=" history " --prompt="  "
 set -gx FZF_DEFAULT_OPTS "\
 --reverse \
