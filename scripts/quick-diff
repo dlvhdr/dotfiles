@@ -1,3 +1,3 @@
 #!/bin/bash
 
-nvim --cmd enew --cmd vsplit --cmd enew --cmd "windo diffthis" -o 2
+nvim --cmd "set number" --cmd "set relativenumber" --cmd enew --cmd vsplit --cmd enew --cmd "windo diffthis" -o 2
