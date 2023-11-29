@@ -65,6 +65,7 @@ local config = {
 		k.cmd_to_tmux_prefix("w", "x"), -- kill window
 		k.cmd_to_tmux_prefix("t", "c"), -- new window
 		k.cmd_to_tmux_prefix("u", "["), -- new window
+		k.cmd_to_tmux_prefix(",", ","), -- open nvim on ~/dotfiles
 
 		-- search up
 		{
@@ -95,8 +96,6 @@ local config = {
 				act.SendKey({ mods = "CTRL", key = "l" }),
 			}),
 		},
-		k.cmd_to_tmux_prefix("e", "|"),
-		k.cmd_to_tmux_prefix(";", ";"),
 
 		-- t-smart-session-picker
 		{
