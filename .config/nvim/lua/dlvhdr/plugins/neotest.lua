@@ -9,13 +9,13 @@ return {
   opts = {
     adapters = {
       ["neotest-go"] = {},
-      -- ["neotest-jest"] = {
-      --   jestCommand = "yarn test",
-      --   jestConfigFile = "",
-      --   cwd = function(path)
-      --     return vim.fn.getcwd()
-      --   end,
-      -- },
+      ["neotest-jest"] = {
+        jestCommand = "yarn test",
+        jestConfigFile = "",
+        cwd = function(path)
+          return vim.fn.getcwd()
+        end,
+      },
     },
     status = { virtual_text = true },
     output = { open_on_run = true },
@@ -128,7 +128,23 @@ return {
     {
       "<leader>to",
       function()
-        require("neotest").output.open({ enter = true, auto_close = true })
+        require("neotest").output.open({
+          enter = true,
+          open_win = function(settings)
+            local height = math.min(settings.height, vim.o.lines - 2)
+            local width = math.min(settings.width, vim.o.columns - 2)
+            return vim.api.nvim_open_win(0, true, {
+              relative = "editor",
+              row = 7,
+              col = (vim.o.columns - width) / 2,
+              width = width,
+              height = height,
+              style = "minimal",
+              border = "rounded",
+              noautocmd = true,
+            })
+          end,
+        })
       end,
       desc = "Show Output",
     },

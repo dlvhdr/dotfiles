@@ -6,9 +6,9 @@ M.setup = function(opts)
   require("lspconfig").gopls.setup({
     cmd = { "gopls", "serve" },
     on_attach = opts.on_attach,
+    capabilities = opts.capabilities,
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-    capabilities = opts.capabilities,
     settings = {
       gopls = {
         completeUnimported = true,
