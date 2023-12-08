@@ -71,7 +71,7 @@
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
   "promise-async": { "branch": "main", "commit": "94f6f03c6c1e2aab551aacdf0c1e597a7269abb6" },
   "schemastore.nvim": { "branch": "main", "commit": "02cbeccdcaa8bc11e849b61a08a11b9b8a5dde7d" },
-  "smart-open.nvim": { "branch": "0.2.x", "commit": "026091fe7f9b283aa1f5f4bb8c56aa5bcad43dbd" },
+  "smart-open.nvim": { "branch": "main", "commit": "cf8cbaab3b802f4690eda3b1cc6dfc606d313695" },
   "sqlite.lua": { "branch": "master", "commit": "b7e28c8463254c46a8e61c52d27d6a2040492fc3" },
   "substitute.nvim": { "branch": "main", "commit": "17ffaeb5a1dc2dbef39cf0865d8a4b6000836714" },
   "telescope-import.nvim": { "branch": "main", "commit": "0270f1438c0ac91663146a73a213bfdc536a8cb5" },
