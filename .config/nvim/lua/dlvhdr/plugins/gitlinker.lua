@@ -4,21 +4,32 @@ return {
   config = function()
     require("gitlinker").setup({
       router = {
-        main_branch = {
+        default_branch = {
           ["^github%.com"] = "https://github.com/"
             .. "{_A.USER}/"
-            .. "{_A.REPO}/blob/main/" -- always 'main' branch
-            .. "{_A.FILE}"
-            .. "?&lines={_A.LSTART}"
-            .. "{_A.LEND > _A.LSTART and ('&lines-count=' .. _A.LEND - _A.LSTART + 1) or ''}",
+            .. "{_A.REPO}/blob/"
+            .. "{_A.DEFAULT_BRANCH}/" -- always 'master'/'main' branch
+            .. "{_A.FILE}?plain=1" -- '?plain=1'
+            .. "#L{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
         },
-        master_branch = {
+        current_branch = {
           ["^github%.com"] = "https://github.com/"
             .. "{_A.USER}/"
-            .. "{_A.REPO}/blob/master/" -- always 'master' branch
-            .. "{_A.FILE}"
-            .. "?&lines={_A.LSTART}"
-            .. "{_A.LEND > _A.LSTART and ('&lines-count=' .. _A.LEND - _A.LSTART + 1) or ''}",
+            .. "{_A.REPO}/blob/"
+            .. "{_A.CURRENT_BRANCH}/" -- always current branch
+            .. "{_A.FILE}?plain=1" -- '?plain=1'
+            .. "#L{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
+        },
+        blame_default_branch = {
+          ["^github%.com"] = "https://github.com/"
+            .. "{_A.USER}/"
+            .. "{_A.REPO}/blame/"
+            .. "{_A.DEFAULT_BRANCH}/"
+            .. "{_A.FILE}?plain=1" -- '?plain=1'
+            .. "#L{_A.LSTART}"
+            .. "{(_A.LEND > _A.LSTART and ('-L' .. _A.LEND) or '')}",
         },
       },
     })
@@ -26,14 +37,14 @@ return {
   keys = {
     {
       "<leader>gym",
-      "<cmd>GitLink main_branch<cr>",
-      desc = "Copy line URL (main)",
+      "<cmd>GitLink default_branch<cr>",
+      desc = "Copy line URL (main branch)",
       mode = { "n", "v" },
     },
     {
-      "<leader>gyM",
-      "<cmd>GitLink master_branch<cr>",
-      desc = "Copy line URL (master)",
+      "<leader>gyb",
+      "<cmd>GitLink current_branch<cr>",
+      desc = "Copy line URL (current branch)",
       mode = { "n", "v" },
     },
     {
@@ -43,22 +54,9 @@ return {
       mode = { "n", "v" },
     },
     {
-      "<leader>gyb",
-      function()
-        local branch = vim.fn.system("git branch --show-current")
-
-        local url = vim.fn.system(
-          "gh browse -n " .. vim.fn.expand("%") .. ":" .. vim.api.nvim_win_get_cursor(0)[1] .. " --branch " .. branch
-        )
-        vim.api.nvim_command("let @+ = '" .. url .. "'")
-        vim.notify(url)
-      end,
-      desc = "Copy line URL (branch)",
-    },
-    {
       "<leader>gB",
-      "<cmd>GitLink! blame<cr>",
-      desc = "GitHub Blame",
+      "<cmd>GitLink! blame_default_branch<cr>",
+      desc = "GitHub Blame (main branch)",
       mode = { "v", "n" },
     },
   },
