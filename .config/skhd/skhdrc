@@ -1,5 +1,5 @@
 # open chrome
-alt - f : open -a /Users/dlvhdr/Applications/Figma.app
+alt - f : open -a /Applications/Figma.app
 
 # open arc
 alt - c : open -a /Applications/Arc.app
