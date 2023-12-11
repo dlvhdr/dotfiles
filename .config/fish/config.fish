@@ -157,4 +157,5 @@ abbr --add s "scripts"
 abbr --add kdp "kubectl describe pod"
 abbr --add d "docker"
 abbr --add dc "docker-compose"
+abbr --add wip "gt modify -cu -m 'wip'"
 
