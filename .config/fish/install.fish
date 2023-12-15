@@ -17,7 +17,6 @@ set -Ux GOPATH "$CODE/go"
 set -Ux GNUPGHOME "$HOME/.gnupg"
 set -Ux GEM_HOME "$XDG_CONFIG_HOME/.gem"
 set -Ux ELECTRON_CONFIG_CACHE "$XDG_CONFIG_HOME/.electron"
-set -Ux DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
 set -Ux LESSHISTFILE "-"
 set -Ux CARGO_HOME "$XDG_DATA_HOME/cargo"
 set -Ux FNM_DIR "$XDG_DATA_HOME/fnm"
@@ -27,9 +26,8 @@ set -Ux NPM_CONFIG_DEVDIR "$XDG_CACHE_HOME/node-gyp"
 set -Ux CORE_D_DOTFILE "$XDG_RUNTIME_DIR/.eslint_d"
 set -Ux HISTFILE "$XDG_STATE_HOME/bash/history"
 set -Ux NODE_REPL_HISTORY "$XDG_DATA_HOME/node_repl_history"
-set -Ux DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
 set -Ux RUSTUP_HOME "$XDG_DATA_HOME/rustup"
-set -Ux DOCKER_CONFIG "$XDG_CONFIG_HOME/docker"
+set -Ux DOCKER_CONFIG "$HOME/.docker"
 set -Ux STARSHIP_CONFIG $DOTFILES/.config/starship.toml
 
 # gum

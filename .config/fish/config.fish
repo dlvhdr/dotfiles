@@ -36,6 +36,8 @@ end
 set -e SSH_AUTH_SOCK
 set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 
+set -gx DOCKER_CONFIG "$HOME/.docker"
+
 set -x GPG_TTY (tty)
 
 if not test (pgrep gpg-agent)
@@ -156,6 +158,6 @@ abbr --add bs "brew search"
 abbr --add s "scripts"
 abbr --add kdp "kubectl describe pod"
 abbr --add d "docker"
-abbr --add dc "docker-compose"
+abbr --add dc "docker compose"
 abbr --add wip "gt modify -cu -m 'wip'"
 
