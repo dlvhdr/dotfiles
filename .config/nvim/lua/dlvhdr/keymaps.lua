@@ -98,6 +98,7 @@ keymap(
 )
 keymap("n", "<leader>fi", "<cmd>Telescope import<cr>", { silent = true, desc = "Imports" })
 keymap("n", "<leader>fc", "<cmd>Telescope commands<cr>", { silent = true, desc = "Commands" })
+keymap("n", "<leader>fm", "<cmd>messages<cr>", { silent = true, desc = "Messages" })
 
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
 

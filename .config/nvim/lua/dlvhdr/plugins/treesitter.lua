@@ -10,6 +10,7 @@ local M = {
     { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
     "JoosepAlviste/nvim-ts-context-commentstring",
     "windwp/nvim-ts-autotag",
+    "andymass/vim-matchup",
   },
 }
 
@@ -29,6 +30,7 @@ M.config = function()
     return
   end
 
+  ---@diagnostic disable: missing-fields
   configs.setup({
     sync_install = false,
     auto_install = true,
@@ -93,6 +95,10 @@ M.config = function()
         goto_previous_start = { ["[f"] = "@function.outer" },
         goto_previous_end = { ["[F"] = "@function.outer" },
       },
+    },
+    matchup = {
+      enable = true,
+      enable_quotes = true,
     },
     ensure_installed = "all",
   })

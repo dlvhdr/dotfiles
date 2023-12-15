@@ -42,8 +42,8 @@ vim.opt.enc = "utf-8"
 vim.opt.background = "dark"
 vim.opt.showtabline = 0
 vim.opt.tabstop = 2
-vim.opt.softtabstop = -1
 vim.opt.shiftwidth = 2
+vim.opt.shiftround = true
 vim.opt.expandtab = true
 -- vim.opt.hlsearch = true
 vim.opt.incsearch = true
@@ -67,14 +67,11 @@ vim.opt.showmatch = true
 vim.opt.undolevels = 10000
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.autoindent = true
-vim.opt.cindent = true
 vim.opt.signcolumn = "yes"
-vim.opt.timeoutlen = 1000
+vim.opt.timeoutlen = 300
 vim.opt.pumheight = 10
 vim.opt.pumwidth = 20
 vim.opt.cmdheight = 0
--- vim.opt.pumblend = 3
 vim.opt.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,winpos,terminal"
 -- vim.opt.diffopt:append("vertical") -- Show diffs in vertical splits
 -- vim.opt.diffopt:append("foldcolumn:0") -- Show diffs in vertical splits
@@ -113,3 +110,6 @@ vim.g.editorconfig = false
 if vim.fn.has("nvim-0.9.0") == 1 then
   vim.opt.statuscolumn = [[%!v:lua.require'dlvhdr.utils.ui'.statuscolumn()]]
 end
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
