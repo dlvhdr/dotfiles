@@ -11,6 +11,10 @@ procs:
     cwd: /Users/dlvhdr/code/komodor/mono/services/web
     cmd: ["yarn", "start:bundler:msw"]
     autostart: false
+  "[prod] RDS":
+    cwd: /Users/dlvhdr/code/komodor/mono
+    cmd: ["komo proxy rds --env production"]
+    autostart: false
   design-system-storybook:
     cwd: /Users/dlvhdr/code/komodor/design-system
     cmd: ["yarn", "storybook", "--no-open"]
