@@ -1,0 +1,8 @@
+name: gt
+description: graphite
+commands:
+  - name: co
+    description: checkout
+    completion:
+      positional:
+        - ["$_tools.git.LocalBranches()"]

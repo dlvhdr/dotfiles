@@ -14,29 +14,23 @@ eval (/opt/homebrew/bin/brew shellenv)
 fish_add_path $HOME/.local/share/npm/bin
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
 
+set -gx DOCKER_CONFIG "$HOME/.docker"
+
 if status is-interactive
   pyenv init --path | source
-end
 
-# if status is-interactive
-#   atuin init fish --disable-up-arrow | source
-#   set -gx ATUIN_NOBIND "true"
-#
-#   bind \cr _atuin_search
-#   bind -M insert \cr _atuin_search
-# end
+  carapace _carapace | source
+
+  if command -q starship
+    starship init fish | source
+  end
+end
 
 fnm env --use-on-cd --version-file-strategy recursive | source
-
-if command -q starship
-  starship init fish | source
-end
 
 # properly setup gpg tty
 set -e SSH_AUTH_SOCK
 set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-
-set -gx DOCKER_CONFIG "$HOME/.docker"
 
 set -x GPG_TTY (tty)
 
@@ -44,7 +38,6 @@ if not test (pgrep gpg-agent)
   gpg-agent --daemon --no-grab >/dev/null 2>&1
 end
 
-# fzf_configure_bindings --directory=\ct --git_log=
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
 set fzf_history_time_format "%d-%m %H:%M"
 set -gx fzf_history_opts "--nth=4.." --preview="" --border-label=" history " --prompt="  "
