@@ -9,11 +9,15 @@ return {
   },
   config = function()
     local utils = require("dlvhdr.utils")
+    ---@diagnostic disable: missing-fields
     require("glance").setup({
       border = {
         enable = true,
         top_char = "─",
         bottom_char = "─",
+      },
+      list = {
+        width = 0.4,
       },
       theme = {
         enable = false,
