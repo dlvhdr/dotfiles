@@ -1,6 +1,11 @@
 return {
   "goolord/alpha-nvim",
-  event = "VimEnter",
+  event = function()
+    if vim.fn.argc() == 0 then
+      return "VimEnter"
+    end
+  end,
+  cmd = "Alpha",
   requires = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local alpha = require("alpha")
@@ -23,5 +28,10 @@ return {
     }
     dashboard.config.opts.noautocmd = true
     alpha.setup(dashboard.config)
+
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "AlphaReady",
+      command = "set showtabline=0 | set laststatus=0",
+    })
   end,
 }

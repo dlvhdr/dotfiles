@@ -1,8 +1,13 @@
 return {
   "nvim-pack/nvim-spectre",
-  -- stylua: ignore
+  cmd = "Spectre",
   keys = {
-    { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
-  }
-,
+    {
+      "<leader>sr",
+      function()
+        require("spectre").open()
+      end,
+      desc = "Replace in files (Spectre)",
+    },
+  },
 }

@@ -1,7 +1,7 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
-  cmd = { "Telescope" },
+  cmd = "Telescope",
   dependencies = {
     "kkharji/sqlite.lua",
     -- { "prochri/telescope-all-recent.nvim", opts = {} },

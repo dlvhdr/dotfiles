@@ -1,6 +1,6 @@
 local M = {
   "L3MON4D3/LuaSnip",
-  lazy = true,
+  event = "InsertEnter",
   dependencies = {
     "rafamadriz/friendly-snippets",
   },
@@ -25,9 +25,7 @@ M.config = function()
     updateevents = "TextChanged,TextChangedI",
 
     -- Autosnippets:
-    enable_autosnippets = true,
-    region_check_events = "InsertEnter,CursorHold",
-    delete_check_events = "TextChanged,InsertLeave",
+    delete_check_events = "TextChanged",
 
     ext_opts = {
       [types.choiceNode] = {
@@ -44,10 +42,6 @@ M.config = function()
         },
       },
     },
-    -- treesitter-hl has 100, use something higher (default is 200).
-    ext_base_prio = 300,
-    -- minimal increase in priority.
-    ext_prio_increase = 1,
   })
 
   luasnip.filetype_extend("typescriptreact", { "typescript" })

@@ -6,6 +6,7 @@ return {
     "folke/trouble.nvim",
     "nvim-lua/plenary.nvim",
   },
+  cmd = "Neotest",
   opts = {
     adapters = {
       ["neotest-go"] = {},

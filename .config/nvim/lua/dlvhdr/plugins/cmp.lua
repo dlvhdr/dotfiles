@@ -104,7 +104,7 @@ M.config = function()
       end,
     }),
     sources = {
-      { name = "nvim_lsp", group_index = 2 },
+      { name = "nvim_lsp", group_index = 2, max_item_count = 80 },
       {
         name = "luasnip",
         keyword_length = 2,

@@ -5,7 +5,7 @@ local M = {
     "nvim-lua/lsp-status.nvim",
     "xiyaowong/transparent.nvim",
   },
-  event = "VeryLazy",
+  event = { "BufReadPre", "BufNewFile" },
 }
 
 M.config = function()
@@ -39,7 +39,7 @@ M.config = function()
       globalstatus = vim.opt.laststatus:get() == 3,
       component_separators = "",
       section_separators = "",
-      disabled_filetypes = { "dashboard", "Outline" },
+      disabled_filetypes = { "dashboard", "Outline", "alpha" },
       icons_enabled = true,
       ignore_focus = { "NvimTree" },
     },
