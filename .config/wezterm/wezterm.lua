@@ -40,6 +40,9 @@ local config = {
 
 	-- keys
 	keys = {
+
+		{ key = "+", mods = "CMD", action = wezterm.action.IncreaseFontSize },
+
 		k.cmd_key("q", k.multiple_actions(":qa!")), -- force quit vim
 
 		k.cmd_to_tmux_prefix("1", "1"), -- first window
