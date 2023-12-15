@@ -5,4 +5,5 @@ if not tmux has-session -t dotfiles 2>/dev/null;
 end
 
 tmux switch-client -t dotfiles;
+tmux neww
 tmux send-keys -t dotfiles 'cd $HOME/dotfiles && ./.t' Enter;
