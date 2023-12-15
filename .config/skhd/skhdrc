@@ -37,8 +37,8 @@ alt - j : open -a /Users/dlvhdr/Applications/ClickUp.app
 # komodor
 alt - k : open -a /Users/dlvhdr/Applications/Komodor.app
 
-# discord
-alt - d : open -a /Applications/Discord.app
+# datagrip
+alt - d : open -a /Applications/DataGrip.app
 
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
