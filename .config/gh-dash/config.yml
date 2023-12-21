@@ -10,7 +10,7 @@ prSections:
   - title: Komodor
     filters: repo:komodorio/mono
   - title: Troubleshoot
-    filters: org:komodorio author:galHalup author:rannyeli author:michaeldeift author:shay-cohen
+    filters: org:komodorio label:"Sprints - Troubleshooting" -author:@me
   - title: gh-dash
     filters: "is:open repo:dlvhdr/gh-dash"
   - title: Commented
