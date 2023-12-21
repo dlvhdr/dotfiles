@@ -11,6 +11,10 @@ procs:
     cwd: /Users/dlvhdr/code/komodor/mono/services/web
     cmd: ["yarn", "start:bundler:msw"]
     autostart: false
+  "[msw][force] web-dev-server":
+    cwd: /Users/dlvhdr/code/komodor/mono/services/web
+    cmd: ["yarn", "start:bundler:msw", "--force"]
+    autostart: false
   "[prod] RDS":
     cwd: /Users/dlvhdr/code/komodor/mono
     cmd: ["komo proxy rds --env production"]
