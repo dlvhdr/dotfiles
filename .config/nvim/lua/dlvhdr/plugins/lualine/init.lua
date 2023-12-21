@@ -5,7 +5,7 @@ local M = {
     "nvim-lua/lsp-status.nvim",
     "xiyaowong/transparent.nvim",
   },
-  event = { "BufReadPre", "BufNewFile" },
+  event = "VeryLazy",
 }
 
 M.config = function()
