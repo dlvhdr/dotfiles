@@ -116,6 +116,7 @@ abbr --add gra "git rebase --abort"
 abbr --add grc "git rebase --continue"
 abbr --add gpf "git push --force"
 abbr --add gcm 'git commit -m "$(gum input)"'
+abbr --add gm 'gt modify -cu -m "$(gum input)"'
 abbr --add gclean 'git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D'
 abbr --add pr "gh vpr"
 abbr --add vr "gh vr"
@@ -153,4 +154,5 @@ abbr --add kdp "kubectl describe pod"
 abbr --add d "docker"
 abbr --add dc "docker compose"
 abbr --add wip "gt modify -cu -m 'wip'"
+abbr --add hl "humanlog --truncate=false"
 
