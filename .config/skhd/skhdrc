@@ -40,6 +40,9 @@ alt - k : open -a /Users/dlvhdr/Applications/Komodor.app
 # datagrip
 alt - d : open -a /Applications/DataGrip.app
 
+# obsidian
+alt - o : open -a /Applications/Obsidian.app
+
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
 # FOR SIMPLE EXAMPLE MAPPINGS LOOK FURTHER DOWN THIS FILE..        #
