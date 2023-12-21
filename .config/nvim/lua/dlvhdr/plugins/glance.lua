@@ -5,7 +5,7 @@ return {
     { "gd", "<CMD>Glance definitions<CR>", desc = "Show Definitions" },
     { "gr", "<CMD>Glance references<CR>", desc = "Show References" },
     { "gY", "<CMD>Glance type_definitions<CR>", desc = "Show Type Definitions" },
-    { "gM", "<CMD>Glance implementations<CR>", desc = "Show Implementation" },
+    { "gi", "<CMD>Glance implementations<CR>", desc = "Show Implementation" },
   },
   config = function()
     local utils = require("dlvhdr.utils")
