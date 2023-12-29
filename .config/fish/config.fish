@@ -155,4 +155,5 @@ abbr --add d "docker"
 abbr --add dc "docker compose"
 abbr --add wip "gt modify -cu -m 'wip'"
 abbr --add hl "humanlog --truncate=false"
+abbr --add ld "lazydocker"
 

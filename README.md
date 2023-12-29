@@ -19,7 +19,7 @@
 - **Plugin manager:** lazy
 - **Statue line:** lualine
 - **Completions:** nvim-cmp
-- **LSP:** mason, null-ls
+- **LSP:** mason, none-ls
 - **Syntax highlighting:** treesitter
 - **Fuzzy finder:** telescope
 - **File tree:** nvim-tree

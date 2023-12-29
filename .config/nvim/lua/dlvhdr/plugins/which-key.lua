@@ -54,7 +54,7 @@ M.config = function()
       },
     },
     d = {
-      name = "DAP",
+      name = "Debug",
     },
     h = {
       name = "Gitsigns",

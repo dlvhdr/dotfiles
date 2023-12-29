@@ -5,19 +5,19 @@ procs:
     autostart: false
   web-dev-server:
     cwd: /Users/dlvhdr/code/komodor/mono/services/web
-    cmd: ["yarn", "start:bundler"]
+    cmd: ["yarn", "start:bundler", "--no-open"]
     autostart: false
   "[msw] web-dev-server":
     cwd: /Users/dlvhdr/code/komodor/mono/services/web
-    cmd: ["yarn", "start:bundler:msw"]
+    cmd: ["yarn", "start:bundler:msw", "--no-open"]
     autostart: false
   "[msw][force] web-dev-server":
     cwd: /Users/dlvhdr/code/komodor/mono/services/web
-    cmd: ["yarn", "start:bundler:msw", "--force"]
+    cmd: ["yarn", "start:bundler:msw", "--force", "--no-open"]
     autostart: false
   "[prod] RDS":
     cwd: /Users/dlvhdr/code/komodor/mono
-    cmd: ["komo proxy rds --env production"]
+    cmd: ["komo", "proxy", "rds", "--env", "production"]
     autostart: false
   design-system-storybook:
     cwd: /Users/dlvhdr/code/komodor/design-system

@@ -127,7 +127,7 @@ disabled=true
 
 [kubernetes]
 disabled=false
-format = 'in [󱃾 $context](blue) '
+format = 'in [󱃾 $context \($namespace\)](blue) '
 
 [localip]
 disabled=true
