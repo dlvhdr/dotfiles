@@ -1,11 +1,8 @@
 return {
   "dlvhdr/gh-blame.nvim",
   dir = "/Users/dlvhdr/code/personal/gh-blame.nvim",
-  enabled = false,
-  dependencies = { "nvim-lua/plenary.nvim" },
-  config = function()
-    local ghb = require("gh-blame")
-    ghb.setup({})
-    ghb.hello()
-  end,
+  dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+  keys = {
+    { "<leader>gg", "<cmd>GhBlameCurrentLine<cr>", desc = "GitHub Blame Current Line" },
+  },
 }
