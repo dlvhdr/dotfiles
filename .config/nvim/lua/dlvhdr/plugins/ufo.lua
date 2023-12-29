@@ -38,7 +38,7 @@ M.config = function()
 
   ufo.setup({
     fold_virt_text_handler = handler,
-    close_fold_kinds = { "imports" },
+    -- close_fold_kinds = { "imports" },
   })
 end
 
