@@ -2,9 +2,9 @@ local M = {}
 
 local null_ls = require("null-ls")
 local lspconfigUtils = require("lspconfig.util")
-local utils = require("dlvhdr.plugins.lsp.servers.null-ls.utils")
-local formatters = require("dlvhdr.plugins.lsp.servers.null-ls.formatters")
-local linters = require("dlvhdr.plugins.lsp.servers.null-ls.linters")
+local utils = require("dlvhdr.plugins.lsp.servers.none-ls.utils")
+local formatters = require("dlvhdr.plugins.lsp.servers.none-ls.formatters")
+local linters = require("dlvhdr.plugins.lsp.servers.none-ls.linters")
 
 M.setup = function(opts)
   null_ls.setup({

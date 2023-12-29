@@ -6,7 +6,7 @@ return {
     "folke/neodev.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "b0o/schemastore.nvim",
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     "williamboman/mason.nvim",
   },
   config = function()
