@@ -46,11 +46,6 @@ M.config = function()
     },
     routes = {
       {
-        filter = { event = "msg_show", min_height = 3 },
-        view = "split",
-        opts = {},
-      },
-      {
         filter = {
           event = "msg_show",
           kind = "wmsg",

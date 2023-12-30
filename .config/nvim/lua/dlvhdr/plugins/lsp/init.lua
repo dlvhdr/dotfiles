@@ -14,7 +14,7 @@ return {
     require("dlvhdr.plugins.lsp.servers")
     require("lspconfig.ui.windows").default_options.border = "rounded"
 
-    vim.keymap.set("n", "gt", "<cmd>LspRestart all<CR>", { silent = true, desc = "Restart LSP" })
-    vim.keymap.set("n", "gE", "<cmd>!eslint_d restart<CR>", { silent = true, desc = "Restart eslint_d" })
+    vim.keymap.set("n", "<leader>cl", "<cmd>LspRestart all<CR>", { silent = true, desc = "Restart LSP" })
+    vim.keymap.set("n", "<leader>cE", "<cmd>!eslint_d restart<CR>", { silent = true, desc = "Restart eslint_d" })
   end,
 }

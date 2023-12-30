@@ -161,6 +161,7 @@ M.config = function()
   vim.api.nvim_set_hl(0, "NvimTreeEmptyFolderName", { fg = colors.blue })
   vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderName", { fg = colors.blue })
   vim.api.nvim_set_hl(0, "NvimTreeSymlinkFolderName", { fg = colors.blue })
+  require("nvim-tree.view").View.winopts.laststatus = 3
 end
 
 return M

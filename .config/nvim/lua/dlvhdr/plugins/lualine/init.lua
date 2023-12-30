@@ -2,7 +2,6 @@ local M = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "folke/noice.nvim",
-    "nvim-lua/lsp-status.nvim",
     "xiyaowong/transparent.nvim",
   },
   event = "VeryLazy",
@@ -30,13 +29,13 @@ M.config = function()
       return empty_space .. name .. empty_space
     end,
     cond = tree_view.is_visible,
-    color = { fg = colors.comment, bg = "NONE", gui = "italic" },
+    color = { fg = colors.fg_dark, bg = "NONE", gui = "italic" },
   }
 
   require("lualine").setup({
     options = {
       theme = require("dlvhdr.plugins.transparent").theme(),
-      globalstatus = vim.opt.laststatus:get() == 3,
+      globalstatus = true,
       component_separators = "",
       section_separators = "",
       disabled_filetypes = { "dashboard", "Outline", "alpha" },

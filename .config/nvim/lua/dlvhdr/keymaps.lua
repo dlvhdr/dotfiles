@@ -158,7 +158,7 @@ keymap("n", "<leader>gdl", function()
   require("telescope").extensions.advanced_git_search.search_log_content()
 end, { noremap = true, desc = "Search Log Contents" })
 
-keymap("n", "<leader>cl", function()
+keymap("n", "<leader>cL", function()
   util.toggle("relativenumber")
 end, { silent = true, desc = "Toggle Relative Line Numbers" })
 

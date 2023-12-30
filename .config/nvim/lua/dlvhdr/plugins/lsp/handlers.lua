@@ -1,8 +1,3 @@
-local lsp_status_ok, lsp_status = pcall(require, "lsp-status")
-if not lsp_status_ok then
-  return
-end
-
 local M = {}
 
 local signs = {
@@ -21,15 +16,6 @@ end
 local function lsp_keymaps(bufnr)
   -- builtins
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go To Declaration" })
-
-  -- telescope
-  -- vim.keymap.set("n", "gr", function()
-  --   require("dlvhdr.plugins.telescope").lsp_references()
-  -- end, { silent = true, buffer = bufnr, desc = "Show References" })
-  -- vim.keymap.set("n", "gd", function()
-  --   require("dlvhdr.plugins.telescope").lsp_definitions()
-  -- end, { silent = true, buffer = bufnr, desc = "View Definitions" })
-
   vim.keymap.set("n", "gR", M.rename, { expr = true, desc = "Rename Symbol" })
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Code Action" })
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, { silent = true, buffer = bufnr, desc = "Hover Symbol" })
@@ -68,6 +54,7 @@ function M.diagnostic_goto(next, severity)
 end
 
 local format_augroup = vim.api.nvim_create_augroup("LSPFormatting", {})
+local auto_format_enabled = true
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
@@ -79,8 +66,6 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end
-
-  local auto_format_enabled = true
 
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_clear_autocmds({
@@ -100,27 +85,36 @@ M.on_attach = function(client, bufnr)
           if auto_format_enabled then
             vim.notify("formatting buffer #" .. bufnr .. "...")
             vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 3000 })
+
+            -- remove unused imports
+            vim.lsp.buf.code_action({
+              apply = true,
+              context = {
+                only = { "source.removeUnused.ts" },
+                diagnostics = {},
+              },
+            })
           end
         end
       end,
     })
   end
 
-  if client.server_capabilities.codeLensProvider then
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "InsertLeave" }, {
-      pattern = "<buffer>",
-      callback = function()
-        vim.lsp.codelens.refresh()
-      end,
-      group = vim.api.nvim_create_augroup("LSPCodeLens", { clear = true }),
-    })
-    vim.keymap.set(
-      "n",
-      "gl",
-      "<cmd>lua vim.lsp.codelens.run()<CR>",
-      { silent = true, buffer = bufnr, desc = "Codelens" }
-    )
-  end
+  -- if client.server_capabilities.codeLensProvider then
+  --   vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "InsertLeave" }, {
+  --     pattern = "<buffer>",
+  --     callback = function()
+  --       -- vim.lsp.codelens.refresh()
+  --     end,
+  --     group = vim.api.nvim_create_augroup("LSPCodeLens", { clear = true }),
+  --   })
+  --   vim.keymap.set(
+  --     "n",
+  --     "gl",
+  --     "<cmd>lua vim.lsp.codelens.run()<CR>",
+  --     { silent = true, buffer = bufnr, desc = "Codelens" }
+  --   )
+  -- end
 
   local config = {
     -- disable virtual text
@@ -143,15 +137,8 @@ M.on_attach = function(client, bufnr)
   }
   vim.diagnostic.config(config)
 
-  lsp_status.on_attach(client)
   lsp_keymaps(bufnr)
 end
-
-lsp_status.config({
-  status_symbol = " ",
-  current_function = true,
-  diagnostics = false,
-})
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
