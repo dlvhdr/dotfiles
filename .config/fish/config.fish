@@ -6,10 +6,6 @@
 #                                     
 set -U fish_greeting # disable fish greeting
 
-source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
-
-eval (/opt/homebrew/bin/brew shellenv)
-
 # fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.local/share/npm/bin
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
@@ -17,13 +13,19 @@ fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
 set -gx DOCKER_CONFIG "$HOME/.docker"
 
 if status is-interactive
-  pyenv init --path | source
+  # pyenv init --path | source
+
+  source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
+
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 
   carapace _carapace | source
 
-  if command -q starship
-    starship init fish | source
-  end
+  starship init fish | source
+
+  # if not test (pgrep gpg-agent)
+  # end
+  gpg-agent --daemon --no-grab >/dev/null 2>&1
 end
 
 fnm env --use-on-cd --version-file-strategy recursive | source
@@ -33,10 +35,6 @@ set -e SSH_AUTH_SOCK
 set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 
 set -x GPG_TTY (tty)
-
-if not test (pgrep gpg-agent)
-  gpg-agent --daemon --no-grab >/dev/null 2>&1
-end
 
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
 set fzf_history_time_format "%d-%m %H:%M"
@@ -155,5 +153,5 @@ abbr --add d "docker"
 abbr --add dc "docker compose"
 abbr --add wip "gt modify -cu -m 'wip'"
 abbr --add hl "humanlog --truncate=false"
-abbr --add ld "lazydocker"
+abbr --add ld "lazydocker -f ~"
 
