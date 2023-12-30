@@ -1,10 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 notARepository: "skip" # one of: 'prompt' | 'create' | 'skip'
 promptToReturnFromSubprocess: false
 gui:
-  nerdFontsVersion: 3
+  nerdFontsVersion: "3"
   showIcons: true
   showFileTree: true
-  scrollHeight: 2
+  scrollHeight: 10
   scrollPastBottom: true
   mouseEvents: true
   skipDiscardChangeWarning: false
@@ -13,7 +14,6 @@ gui:
   expandFocusedSidePanel: false
   mainPanelSplitMode: flexible
   theme:
-    lightTheme: false
     activeBorderColor:
       - "#89ddff"
       - bold
