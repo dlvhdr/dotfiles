@@ -57,6 +57,9 @@ local format_augroup = vim.api.nvim_create_augroup("LSPFormatting", {})
 local auto_format_enabled = true
 
 M.on_attach = function(client, bufnr)
+  local lsp_status = require("lsp-status")
+  lsp_status.on_attach(client)
+
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
@@ -83,17 +86,16 @@ M.on_attach = function(client, bufnr)
       callback = function()
         if vim.lsp.buf.server_ready() then
           if auto_format_enabled then
-            vim.notify("formatting buffer #" .. bufnr .. "...")
             vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 3000 })
 
             -- remove unused imports
-            vim.lsp.buf.code_action({
-              apply = true,
-              context = {
-                only = { "source.removeUnused.ts" },
-                diagnostics = {},
-              },
-            })
+            -- vim.lsp.buf.code_action({
+            --   apply = true,
+            --   context = {
+            --     only = { "source.removeUnused.ts" },
+            --     diagnostics = {},
+            --   },
+            -- })
           end
         end
       end,

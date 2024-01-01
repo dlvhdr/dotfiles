@@ -7,19 +7,35 @@ M.setup = function(opts)
     on_attach = opts.on_attach,
     capabilities = opts.capabilities,
     root_dir = lspconfig.util.root_pattern("package.json"),
+    settings = {
+      typescript = {
+        format = {
+          indentSize = vim.o.shiftwidth,
+          convertTabsToSpaces = vim.o.expandtab,
+          tabSize = vim.o.tabstop,
+        },
+      },
+      javascript = {
+        format = {
+          indentSize = vim.o.shiftwidth,
+          convertTabsToSpaces = vim.o.expandtab,
+          tabSize = vim.o.tabstop,
+        },
+      },
+      completions = {
+        completeFunctionCalls = true,
+      },
+    },
   })
 
-  vim.keymap.set("n", "<leader>cr", function()
+  vim.keymap.set("n", "<leader>co", function()
     vim.lsp.buf.code_action({
       apply = true,
       context = {
         only = { "source.removeUnused.ts" },
-        diagnostics = {},
       },
     })
-  end, { desc = "Remove Unused Imports" })
 
-  vim.keymap.set("n", "<leader>ca", function()
     vim.lsp.buf.code_action({
       apply = true,
       context = {
@@ -27,7 +43,7 @@ M.setup = function(opts)
         diagnostics = {},
       },
     })
-  end, { desc = "Add Missing Imports" })
+  end, { desc = "Organize Imports" })
 end
 
 return M

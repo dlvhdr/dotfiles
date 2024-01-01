@@ -8,10 +8,11 @@ return {
     "b0o/schemastore.nvim",
     "nvimtools/none-ls.nvim",
     "williamboman/mason.nvim",
+    "nvim-lua/lsp-status.nvim",
   },
   config = function()
     require("dlvhdr.plugins.lsp.handlers").setup()
-    require("dlvhdr.plugins.lsp.servers")
+    require("dlvhdr.plugins.lsp.servers").setup()
     require("lspconfig.ui.windows").default_options.border = "rounded"
 
     vim.keymap.set("n", "<leader>cl", "<cmd>LspRestart all<CR>", { silent = true, desc = "Restart LSP" })
