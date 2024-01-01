@@ -162,4 +162,12 @@ keymap("n", "<leader>cL", function()
   util.toggle("relativenumber")
 end, { silent = true, desc = "Toggle Relative Line Numbers" })
 
-keymap("n", "<leader>bd", ":%bd|e#|bd#<cr>|'<cr>", { desc = "Delete Other Buffers" })
+keymap("n", "<leader>bo", function()
+  local current_buffer = vim.api.nvim_get_current_buf()
+
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if bufnr ~= current_buffer then
+      vim.api.nvim_buf_delete(bufnr, {})
+    end
+  end
+end, { desc = "Close Other Buffers" })
