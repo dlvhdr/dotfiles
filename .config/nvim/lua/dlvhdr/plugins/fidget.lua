@@ -1,6 +1,7 @@
 return {
   "j-hui/fidget.nvim",
   event = "LspAttach",
+  enabled = false,
   config = function(opts)
     vim.cmd("hi! FidgetTitle ctermbg=NONE guibg=NONE")
     vim.cmd("hi! FidgetTask ctermbg=NONE guibg=NONE")
