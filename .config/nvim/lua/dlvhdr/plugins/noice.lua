@@ -1,5 +1,6 @@
 local M = {
   "folke/noice.nvim",
+  event = "VeryLazy",
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
@@ -48,6 +49,17 @@ M.config = function()
       {
         filter = {
           event = "msg_show",
+          any = {
+            { find = "%d+L, %d+B" },
+            { find = "; after #%d+" },
+            { find = "; before #%d+" },
+          },
+        },
+        opts = { skip = true },
+      },
+      {
+        filter = {
+          event = "msg_show",
           kind = "wmsg",
         },
         opts = { skip = true },
@@ -57,14 +69,6 @@ M.config = function()
           event = "msg_show",
           kind = "",
           find = "written",
-        },
-        opts = { skip = true },
-      },
-      {
-        filter = {
-          event = "msg_show",
-          kind = "",
-          find = "Unable to find native fzy native lua dep file. Probably need to update submodules!",
         },
         opts = { skip = true },
       },
