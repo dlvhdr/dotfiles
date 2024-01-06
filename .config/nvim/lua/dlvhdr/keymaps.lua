@@ -30,49 +30,6 @@ keymap("n", "<leader><leader>", "<C-^>", { silent = true, desc = "Last Buffer" }
 
 keymap("n", "<leader>bn", "<cmd>enew<cr>", { silent = true, desc = "New File" })
 
--- Telescope
-keymap("n", "<leader>*", "<cmd>Telescope grep_string<cr>", { silent = true, desc = "Grep Word Under Cursor" })
-keymap(
-  "n",
-  "<leader>fg",
-  ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-  { silent = true, desc = "Live Grep" }
-)
-keymap(
-  "n",
-  "<leader>fG",
-  ":lua require('dlvhdr.plugins.telescope').grep_current_dir()<CR>",
-  { silent = true, desc = "Live Grep Current Dir" }
-)
-keymap(
-  "n",
-  "<leader>fb",
-  ":lua require('dlvhdr.plugins.telescope').buffers()<CR>",
-  { silent = true, desc = "Open Buffers" }
-)
-keymap("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { silent = true, desc = "Help Tags" })
-keymap("n", "<leader>fH", "<cmd>Telescope highlights<CR>", { silent = true, desc = "Highlights" })
-keymap("n", "<leader>fr", "<cmd>Telescope resume<cr>", { silent = true, desc = "Resume" })
-keymap("n", "<leader>fp", "<cmd>Telescope pickers<cr>", { silent = true, desc = "Pickers" })
-keymap("n", "<leader>fs", ":lua require('telescope.builtin').git_status()<CR>", { silent = true, desc = "Git Status" })
-keymap("n", "<leader>ff", function()
-  local themes = require("telescope.themes")
-  local theme = themes.get_dropdown()
-  require("telescope.builtin").lsp_document_symbols({
-    layout_config = theme.layout_config,
-    previewer = false,
-    results_title = false,
-    symbols = { "function" },
-  })
-end, { silent = true, desc = "Functions In File" })
-keymap(
-  "n",
-  "<leader>fB",
-  ":lua require('telescope.builtin').git_branches()<CR>",
-  { silent = true, desc = "Git Branches" }
-)
-keymap("n", "<leader>fi", "<cmd>Telescope import<cr>", { silent = true, desc = "Imports" })
-keymap("n", "<leader>fc", "<cmd>Telescope commands<cr>", { silent = true, desc = "Commands" })
 keymap("n", "<leader>fm", "<cmd>messages<cr>", { silent = true, desc = "Messages" })
 
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
@@ -124,14 +81,6 @@ keymap("n", "<C-M-k>", "<cmd>:TmuxResizeUp<CR>", { silent = true })
 keymap("n", "<C-M-j>", "<cmd>:TmuxResizeDown<CR>", { silent = true })
 keymap("n", "<C-M-h>", "<cmd>:TmuxResizeLeft<CR>", { silent = true })
 keymap("n", "<C-M-l>", "<cmd>:TmuxResizeRight<CR>", { silent = true })
-
-vim.api.nvim_create_user_command("DiffCommitLine", function()
-  require("telescope").extensions.advanced_git_search.diff_commit_line()
-end, { range = true })
-keymap("v", "<leader>gdl", ":DiffCommitLine<CR>", { noremap = true, desc = "Commits That Affected The Selected Lines" })
-keymap("n", "<leader>gdl", function()
-  require("telescope").extensions.advanced_git_search.search_log_content()
-end, { noremap = true, desc = "Search Log Contents" })
 
 keymap("n", "<leader>cL", function()
   util.toggle("relativenumber")

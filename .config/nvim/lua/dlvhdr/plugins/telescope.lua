@@ -8,11 +8,67 @@ local M = {
     "nvim-lua/plenary.nvim",
     "folke/trouble.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
-    "nvim-telescope/telescope-live-grep-args.nvim",
-    "natecraddock/telescope-zf-native.nvim",
+    -- "natecraddock/telescope-zf-native.nvim",
+    "nvim-telescope/telescope-fzy-native.nvim",
     "aaronhallaert/advanced-git-search.nvim",
     "piersolenski/telescope-import.nvim",
     "nvim-telescope/telescope-node-modules.nvim",
+    "fdschmidt93/telescope-egrepify.nvim",
+  },
+  keys = {
+    { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help Tags" },
+    { "<leader>fH", "<cmd>Telescope highlights<CR>", desc = "Highlights" },
+    { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume" },
+    { "<leader>fp", "<cmd>Telescope pickers<cr>", desc = "Pickers" },
+    { "<leader>fs", ":lua require('telescope.builtin').git_status()<CR>", desc = "Git Status" },
+
+    {
+      "<leader>ff",
+      function()
+        local themes = require("telescope.themes")
+        local theme = themes.get_dropdown()
+        require("telescope.builtin").lsp_document_symbols({
+          layout_config = theme.layout_config,
+          previewer = false,
+          results_title = false,
+          symbols = { "function" },
+        })
+      end,
+      desc = "Functions In File",
+    },
+    {
+      "<leader>fb",
+      ":lua require('dlvhdr.plugins.telescope').buffers()<CR>",
+      desc = "Open Buffers",
+    },
+    {
+      "<leader>fg",
+      function()
+        require("telescope").extensions.egrepify.egrepify({})
+      end,
+      desc = "Live Grep",
+    },
+    { "<leader>*", "<cmd>Telescope grep_string<cr>", desc = "Grep Word Under Cursor" },
+    {
+      "<leader>fB",
+      ":lua require('telescope.builtin').git_branches()<CR>",
+      desc = "Git Branches",
+    },
+    { "<leader>fi", "<cmd>Telescope import<cr>", desc = "Imports" },
+    { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
+    {
+      "<leader>fG",
+      ":lua require('dlvhdr.plugins.telescope').grep_current_dir()<CR>",
+      desc = "Live Grep Current Dir",
+    },
+    {
+      mode = "v",
+      "<leader>gdl",
+      function()
+        require("telescope").extensions.advanced_git_search.diff_commit_line()
+      end,
+      desc = "Commits That Affected The Selected Lines",
+    },
   },
 }
 
@@ -28,9 +84,7 @@ M.config = function()
   end
 
   local actions = require("telescope.actions")
-  local action_state = require("telescope.actions.state")
   local layout_actions = require("telescope.actions.layout")
-  local lga_actions = require("telescope-live-grep-args.actions")
 
   telescope.setup({
     defaults = {
@@ -58,11 +112,11 @@ M.config = function()
         i = {
           ["<c-t>"] = trouble.open_with_trouble,
           ["<c-h>"] = layout_actions.toggle_preview,
-          ["<C-b>"] = actions.results_scrolling_down,
-          ["<C-f>"] = actions.results_scrolling_up,
+          ["<C-d>"] = actions.results_scrolling_down,
+          ["<C-u>"] = actions.results_scrolling_up,
           ["<CR>"] = actions.select_default,
-          ["<c-u>"] = actions.preview_scrolling_up,
-          ["<c-d>"] = actions.preview_scrolling_down,
+          ["<c-b>"] = actions.preview_scrolling_up,
+          ["<c-g>"] = actions.preview_scrolling_down,
           ["<c-q>"] = actions.delete_buffer,
           ["<c-space>"] = layout_actions.cycle_layout_next,
           ["<c-e>"] = actions.to_fuzzy_refine,
@@ -71,10 +125,10 @@ M.config = function()
           ["q"] = actions.delete_buffer,
           ["<c-t>"] = trouble.open_with_trouble,
           ["<c-h>"] = layout_actions.toggle_preview,
-          ["<C-b>"] = actions.results_scrolling_down,
-          ["<C-f>"] = actions.results_scrolling_up,
-          ["<c-u>"] = actions.preview_scrolling_up,
-          ["<c-d>"] = actions.preview_scrolling_down,
+          ["<C-d>"] = actions.results_scrolling_down,
+          ["<C-u>"] = actions.results_scrolling_up,
+          ["<c-b>"] = actions.preview_scrolling_up,
+          ["<c-g>"] = actions.preview_scrolling_down,
           ["<c-space>"] = layout_actions.cycle_layout_next,
           ["<c-e>"] = actions.to_fuzzy_refine,
           ["<CR>"] = actions.select_default,
@@ -98,6 +152,7 @@ M.config = function()
       color_devicons = true,
       layout_strategy = "horizontal",
       layout_config = {
+        scroll_speed = 10,
         width = 0.95,
         height = 0.85,
         prompt_position = "top",
@@ -133,14 +188,6 @@ M.config = function()
       },
     },
     pickers = {
-      live_grep_args = {
-        disable_coordinates = true,
-        layout_config = {
-          horizontal = {
-            preview_width = 0.8,
-          },
-        },
-      },
       advanced_git_search = {
         layout_config = {
           horizontal = {
@@ -150,41 +197,21 @@ M.config = function()
       },
     },
     extensions = {
-      ["zf-native"] = {
-        file = {
-          enable = true,
-          highlight_results = true,
-          -- enable zf filename match priority
-          match_filename = true,
-        },
-        generic = {
-          enable = true,
-          highlight_results = true,
-          match_filename = false,
-        },
-      },
+      -- ["zf-native"] = {
+      --   file = {
+      --     enable = true,
+      --     highlight_results = true,
+      --     -- enable zf filename match priority
+      --     match_filename = true,
+      --   },
+      --   generic = {
+      --     enable = true,
+      --     highlight_results = true,
+      --     match_filename = false,
+      --   },
+      -- },
       ["ui-select"] = {
         require("telescope.themes").get_dropdown({}),
-      },
-      live_grep_args = {
-        disable_coordinates = true,
-        auto_quoting = true, -- enable/disable auto-quoting
-        mappings = {
-          -- extend mappings
-          i = {
-            ["<C-k>"] = lga_actions.quote_prompt(),
-            ["<C-r>"] = function(prompt_bufnr)
-              local picker = action_state.get_current_picker(prompt_bufnr)
-              local prompt = picker:_get_prompt()
-              picker:set_prompt("--no-fixed-strings " .. prompt)
-            end,
-          },
-        },
-        layout_config = {
-          horizontal = {
-            preview_width = 0.55,
-          },
-        },
       },
       advanced_git_search = {
         git_flags = { "-c", "delta.side-by-side=false", "-c", "core.pager=delta", "-c", "delta.pager='less -RS'" },
@@ -201,15 +228,24 @@ M.config = function()
         -- Add imports to the top of the file keeping the cursor in place
         insert_at_top = true,
       },
+      egrepify = {
+        lnum_hl = "LineNr",
+        prefixes = {
+          ["!"] = {
+            flag = "invert-match",
+          },
+        },
+      },
     },
   })
 
-  telescope.load_extension("zf-native")
+  -- telescope.load_extension("zf-native")
   telescope.load_extension("ui-select")
-  telescope.load_extension("live_grep_args")
   telescope.load_extension("advanced_git_search")
   telescope.load_extension("import")
   telescope.load_extension("node_modules")
+  telescope.load_extension("fzy_native")
+  telescope.load_extension("egrepify")
 end
 
 function M.project_files()
