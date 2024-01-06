@@ -9,7 +9,7 @@ function M.list_registered_providers_names(filetype)
       registered[method] = registered[method] or {}
       local source_name = source.name
       if source.name == "eslint_d" then
-        source_name = "󰱺"
+        source_name = "󰱺 ESLint"
       end
       if source.name == "copilot" then
         source_name = ""

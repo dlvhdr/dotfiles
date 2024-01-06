@@ -75,31 +75,6 @@ M.on_attach = function(client, bufnr)
       group = format_augroup,
       buffer = bufnr,
     })
-
-    vim.keymap.set("n", "<leader>cF", function()
-      auto_format_enabled = not auto_format_enabled
-      vim.notify("Auto formatting is " .. (auto_format_enabled and "enabled" or "disabled"))
-    end, { desc = "Toggle Auto Formatting" })
-    vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-      group = format_augroup,
-      buffer = bufnr,
-      callback = function()
-        if vim.lsp.buf.server_ready() then
-          if auto_format_enabled then
-            vim.lsp.buf.format({ bufnr = bufnr, timeout_ms = 3000 })
-
-            -- remove unused imports
-            -- vim.lsp.buf.code_action({
-            --   apply = true,
-            --   context = {
-            --     only = { "source.removeUnused.ts" },
-            --     diagnostics = {},
-            --   },
-            -- })
-          end
-        end
-      end,
-    })
   end
 
   -- if client.server_capabilities.codeLensProvider then

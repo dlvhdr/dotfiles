@@ -113,3 +113,5 @@ end
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
+
+vim.o.formatexpr = "v:lua.require'dlvhdr.utils'.formatexpr()"

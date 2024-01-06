@@ -46,4 +46,15 @@ function M.filterReactDTS(value)
     and string.match(value.targetUri, "styled-components/index.d.ts") == nil
 end
 
+function M.hasPlugin(plugin)
+  return require("lazy.core.config").spec.plugins[plugin] ~= nil
+end
+
+function M.formatexpr()
+  if M.hasPlugin("conform") then
+    return require("conform").formatexpr()
+  end
+
+  return vim.lsp.formatexpr({ timeout_ms = 3000 })
+end
 return M

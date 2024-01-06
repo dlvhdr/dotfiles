@@ -60,7 +60,8 @@ return {
   lsp = {
     function(msg)
       msg = msg or "LS Inactive"
-      local buf_clients = vim.lsp.get_active_clients({ bufnr = vim.api.nvim_get_current_buf() })
+      local bufnr = vim.api.nvim_get_current_buf()
+      local buf_clients = vim.lsp.get_active_clients({ bufnr = bufnr })
       if next(buf_clients) == nil then
         if type(msg) == "boolean" or #msg == 0 then
           return "LS Inactive"
@@ -74,14 +75,16 @@ return {
       for _, client in pairs(buf_clients) do
         if client.name == "copilot" then
           table.insert(buf_client_names, "")
+        elseif client.name == "typescript-tools" then
+          table.insert(buf_client_names, "󰛦 Typescript")
         elseif client.name ~= "null-ls" then
           table.insert(buf_client_names, client.name)
         end
       end
 
       -- add formatter
-      local formatters = require("dlvhdr.plugins.lsp.servers.none-ls.formatters")
-      local supported_formatters = formatters.list_registered(buf_ft)
+      local formatters = require("dlvhdr.plugins.formatting.formatters")
+      local supported_formatters = formatters.list_registered(bufnr)
       vim.list_extend(buf_client_names, supported_formatters)
 
       -- add linter

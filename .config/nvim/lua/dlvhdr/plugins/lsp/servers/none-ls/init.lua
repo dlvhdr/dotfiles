@@ -12,46 +12,9 @@ M.setup = function(opts)
     root_dir = lspconfigUtils.root_pattern(".git"),
     timeout_ms = 7000,
     sources = {
-      null_ls.builtins.formatting.gofmt,
-      null_ls.builtins.formatting.goimports_reviser,
-      -- null_ls.builtins.formatting.golines.with({ extra_args = { "-m", "80" } }),
       null_ls.builtins.diagnostics.golangci_lint,
       null_ls.builtins.code_actions.shellcheck,
       null_ls.builtins.diagnostics.shellcheck.with({ filetypes = { "sh" } }),
-      null_ls.builtins.formatting.stylua.with({
-        condition = function()
-          return lspconfigUtils.root_pattern("stylua.toml")
-        end,
-      }),
-      null_ls.builtins.formatting.eslint_d.with({
-        condition = function()
-          -- return utils.has_eslint_prettier_plugin()
-          return true
-        end,
-      }),
-      null_ls.builtins.formatting.prettierd.with({
-        filetypes = {
-          "javascript",
-          "javascriptreact",
-          "typescript",
-          "typescriptreact",
-          "vue",
-          "css",
-          "scss",
-          "less",
-          "html",
-          "json",
-          "graphql",
-          -- "markdown",
-        },
-        disabled_filetypes = {
-          "yaml",
-          "yml",
-        },
-        condition = function()
-          return true
-        end,
-      }),
       null_ls.builtins.diagnostics.eslint_d.with({
         condition = function()
           local has = utils.has_eslint_config()
