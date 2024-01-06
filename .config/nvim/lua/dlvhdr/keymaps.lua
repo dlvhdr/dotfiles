@@ -71,31 +71,6 @@ keymap(
   ":lua require('telescope.builtin').git_branches()<CR>",
   { silent = true, desc = "Git Branches" }
 )
-keymap(
-  "n",
-  "<C-p>",
-  -- ":lua require('dlvhdr.plugins.telescope').project_files()<CR>",
-  function()
-    require("telescope").extensions.smart_open.smart_open({
-      cwd_only = true,
-      preview = { hide_on_startup = true },
-      layout_config = {
-        width = 0.65,
-        height = 0.35,
-      },
-      mappings = {
-        i = {
-          ["<esc>"] = require("telescope.actions").close,
-        },
-      },
-      open_buffer_indicators = {
-        previous = "󱪓",
-        others = "󰘓",
-      },
-    })
-  end,
-  { silent = true, desc = "Project Files" }
-)
 keymap("n", "<leader>fi", "<cmd>Telescope import<cr>", { silent = true, desc = "Imports" })
 keymap("n", "<leader>fc", "<cmd>Telescope commands<cr>", { silent = true, desc = "Commands" })
 keymap("n", "<leader>fm", "<cmd>messages<cr>", { silent = true, desc = "Messages" })

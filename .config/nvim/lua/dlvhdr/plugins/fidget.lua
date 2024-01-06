@@ -2,7 +2,7 @@ return {
   "j-hui/fidget.nvim",
   event = "LspAttach",
   enabled = false,
-  config = function(opts)
+  config = function()
     vim.cmd("hi! FidgetTitle ctermbg=NONE guibg=NONE")
     vim.cmd("hi! FidgetTask ctermbg=NONE guibg=NONE")
     require("fidget").setup({

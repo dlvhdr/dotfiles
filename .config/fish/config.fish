@@ -133,7 +133,7 @@ abbr --add tco "tmux kill-session -a"
 
 abbr --add lnvim 'tmux list-panes -a -F "#{session_name} #{command} #{pane_pid} #{pane_title} #{window_name} #{pane_id} #{session_path}" | grep nvim'
 
-abbr --add nvim-lazy "NVIM_APPNAME=LazyVim nvim"
+abbr --add nvim-lazy "NVIM_APPNAME=lazyvim nvim"
 abbr --add nvim-chad "NVIM_APPNAME=NvChad nvim"
 abbr --add nvim-astro "NVIM_APPNAME=AstroNvim nvim"
 abbr --add nvim-lunar "NVIM_APPNAME=LunarVim nvim"

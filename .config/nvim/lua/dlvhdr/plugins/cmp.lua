@@ -19,6 +19,7 @@ M.config = function()
   if not cmp_status_ok then
     return
   end
+  local defaults = require("cmp.config.default")()
 
   local lspkind_status_ok, lspkind = pcall(require, "lspkind")
   if not lspkind_status_ok then
@@ -35,8 +36,6 @@ M.config = function()
   if not luasnip_status_ok then
     return
   end
-
-  vim.g.completion_matching_strategy_list = { "exact", "substring", "fuzzy" }
 
   local next_completion = function(fallback)
     if cmp.visible() then
@@ -65,6 +64,17 @@ M.config = function()
       { "╰", hl_name },
       { "│", hl_name },
     }
+  end
+
+  local sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "path" },
+  }, {
+    { name = "buffer" },
+  })
+  for _, source in ipairs(sources) do
+    source.group_index = source.group_index or 1
   end
 
   cmp.setup({
@@ -103,28 +113,20 @@ M.config = function()
         require("copilot.suggestion").accept()
       end,
     }),
-    sources = {
-      { name = "nvim_lsp", group_index = 2, max_item_count = 80 },
-      {
-        name = "luasnip",
-        keyword_length = 2,
-        priority = 50,
-        max_item_count = 2,
-        group_index = 2,
-      },
-      { name = "buffer", group_index = 3, keyword_length = 3 },
-    },
+    sources = sources,
     formatting = {
-      format = function(_, vim_item)
-        local icons = lspkind.symbol_map
-
-        vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
-        return vim_item
+      format = function(_, item)
+        local icons = require("dlvhdr.plugins.lsp.icons").icons.kinds
+        if icons[item.kind] then
+          item.kind = icons[item.kind] .. item.kind
+        end
+        return item
       end,
     },
     experimental = {
       ghost_text = false,
     },
+    sorting = defaults.sorting,
   })
 
   cmp.setup.cmdline("/", {

@@ -13,7 +13,7 @@ M.setup = function()
   end
 end
 
-local function lsp_keymaps(bufnr)
+M.lsp_keymaps = function(bufnr)
   -- builtins
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go To Declaration" })
   vim.keymap.set("n", "gR", M.rename, { expr = true, desc = "Rename Symbol" })
@@ -139,7 +139,7 @@ M.on_attach = function(client, bufnr)
   }
   vim.diagnostic.config(config)
 
-  lsp_keymaps(bufnr)
+  M.lsp_keymaps(bufnr)
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
