@@ -98,7 +98,7 @@ M.config = function()
     },
     matchup = {
       enable = true,
-      enable_quotes = true,
+      disable_virtual_text = true,
     },
     ensure_installed = "all",
   })
@@ -110,6 +110,8 @@ M.config = function()
   require("ts_context_commentstring").setup({
     enable_autocmd = false,
   })
+
+  vim.g.matchup_matchparen_offscreen = { method = "popup" }
 end
 
 return M

@@ -1,5 +1,3 @@
-vim.cmd("let loaded_matchparen = 1")
-
 local function list(value, str, sep)
   sep = sep or ","
   str = str or ""
@@ -45,7 +43,6 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
 vim.opt.expandtab = true
--- vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -58,12 +55,7 @@ vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = vim.treesitter.foldexpr
--- vim.opt.foldnestmax = 1 -- maximum fold depth
-
 vim.opt.showmatch = true
--- vim.opt.lazyredraw = true
 vim.opt.undolevels = 10000
 vim.opt.swapfile = false
 vim.opt.undofile = true
@@ -88,7 +80,8 @@ vim.opt.diffopt = list({
 vim.opt.splitright = false
 vim.opt.splitbelow = true
 vim.opt.showmatch = false
--- vim.opt.shortmess = "at"
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+vim.opt.showmode = false -- Dont show mode since we have a statusline
 vim.opt.formatoptions = vim.opt.formatoptions
   - "a" -- Auto formatting is BAD.
   - "t" -- Don't auto format my code. I got linters for that.

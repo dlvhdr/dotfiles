@@ -95,6 +95,7 @@ M.config = function()
       hl.GitSignsAddNr = { fg = c.green }
       hl.GitSignsAddLn = { fg = c.green }
       hl.GitSignsAdd = { fg = c.green }
+      hl.MatchParen = { bg = c.fg_gutter }
     end,
   })
 
