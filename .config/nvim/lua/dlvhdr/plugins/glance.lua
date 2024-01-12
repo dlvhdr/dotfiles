@@ -1,6 +1,7 @@
 return {
   "dnlhc/glance.nvim",
-  lazy = true,
+  dependencies = { "folke/trouble.nvim" },
+  cmd = "Glance",
   keys = {
     { "gd", "<CMD>Glance definitions<CR>", desc = "Show Definitions" },
     { "gr", "<CMD>Glance references<CR>", desc = "Show References" },
@@ -24,6 +25,16 @@ return {
       },
       folds = {
         folded = false,
+      },
+      mappings = {
+        list = {
+          ["<c-t>"] = function()
+            local glance = require("glance")
+            glance.actions.quickfix()
+            vim.cmd("cclose")
+            vim.cmd("Trouble quickfix")
+          end,
+        },
       },
       hooks = {
         before_open = function(results, open, jump, method)
