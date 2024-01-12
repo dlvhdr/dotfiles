@@ -29,7 +29,7 @@ M.config = function()
     -- filetypes_allowlist: filetypes to illuminate, this is overriden by filetypes_denylist
     filetypes_allowlist = {},
     -- modes_denylist: modes to not illuminate, this overrides modes_allowlist
-    modes_denylist = {},
+    modes_denylist = { "v", "x", "V" },
     -- modes_allowlist: modes to illuminate, this is overriden by modes_denylist
     modes_allowlist = {},
     -- providers_regex_syntax_denylist: syntax to not illuminate, this overrides providers_regex_syntax_allowlist
@@ -42,6 +42,7 @@ M.config = function()
     providers_regex_syntax_allowlist = {},
     -- under_cursor: whether or not to illuminate under the cursor
     under_cursor = true,
+    large_file_overrides = nil,
   })
 end
 
