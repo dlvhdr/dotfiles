@@ -1,5 +1,5 @@
 local wezterm = require("wezterm")
-local h = require("utils/helpers")
+
 local M = {}
 
 M.get_wallpaper = function()
@@ -9,7 +9,7 @@ M.get_wallpaper = function()
 		table.insert(wallpapers, v)
 	end
 	return {
-		source = { File = { path = h.get_random_entry(wallpapers) } },
+		source = { File = { path = wallpapers[3] } },
 		height = "Cover",
 		width = "Cover",
 		horizontal_align = "Left",
