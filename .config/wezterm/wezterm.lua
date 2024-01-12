@@ -13,6 +13,9 @@ local config = {
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE | MACOS_FORCE_DISABLE_SHADOW",
 	default_prog = { "/opt/homebrew/bin/fish", "-l" },
+	text_background_opacity = 0.8,
+	-- window_background_opacity = 0.3,
+	-- macos_window_background_blur = 20,
 
 	-- font
 	font = wezterm.font_with_fallback({
@@ -43,7 +46,7 @@ local config = {
 
 		{ key = "+", mods = "CMD", action = wezterm.action.IncreaseFontSize },
 
-		k.cmd_key("q", k.multiple_actions(":qa!")), -- force quit vim
+		k.cmd_key("q", k.multiple_actions(" bQ")), -- force quit vim
 
 		k.cmd_to_tmux_prefix("1", "1"), -- first window
 		k.cmd_to_tmux_prefix("2", "2"),
@@ -172,14 +175,22 @@ local config = {
 			}),
 		},
 
-		-- vim - save file
+		-- nvim - save file
 		k.cmd_key(
 			"s",
 			act.Multiple({
 				act.SendKey({ key = "\x1b" }), -- escape
-				k.multiple_actions(":w"),
+				k.multiple_actions(" bw"),
 			})
 		),
+		{
+			mods = "CMD|SHIFT",
+			key = "s",
+			action = act.Multiple({
+				act.SendKey({ key = "\x1b" }), -- escape
+				k.multiple_actions(" bW"),
+			}),
+		},
 	},
 }
 

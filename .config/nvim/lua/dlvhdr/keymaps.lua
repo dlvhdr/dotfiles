@@ -25,12 +25,30 @@ keymap("n", "<C-y>", "3<C-y>", { silent = true, desc = "Scroll screen up" })
 -- disable Ex mode, I always enter in it by mistake
 keymap("n", "Q", "<Nop>", { silent = true })
 
--- Alternate file
+-- buffers
 keymap("n", "<leader><leader>", "<C-^>", { silent = true, desc = "Last Buffer" })
-
 keymap("n", "<leader>bn", "<cmd>enew<cr>", { silent = true, desc = "New File" })
+keymap("n", "<leader>bo", function()
+  local current_buffer = vim.api.nvim_get_current_buf()
+
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if bufnr ~= current_buffer then
+      vim.api.nvim_buf_delete(bufnr, {})
+    end
+  end
+end, { desc = "Close Other Buffers" })
+keymap("n", "<leader>bw", "<cmd>w<cr>", { silent = true, desc = "Write File" })
+keymap("n", "<leader>bW", "<cmd>w<cr>", { silent = true, desc = "Write All Files" })
+keymap("n", "<leader>bQ", "<cmd>qa!<cr>", { silent = true, desc = "Quit nvim" })
+keymap("n", "<leader>by", function()
+  vim.api.nvim_call_function("setreg", { "+", vim.fn.fnamemodify(vim.fn.expand("%:t"), ":.") })
+end, { silent = true, desc = "Copy File Name" })
+keymap("n", "<leader>bp", function()
+  vim.api.nvim_call_function("setreg", { "+", vim.fn.fnamemodify(vim.fn.expand("%"), ":.") })
+end, { silent = true, desc = "Copy File Name" })
 
 keymap("n", "<leader>fm", "<cmd>messages<cr>", { silent = true, desc = "Messages" })
+keymap("n", "<leader>fn", "<cmd>Noice telescope<cr>", { silent = true, desc = "Noice" })
 
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
 
@@ -85,13 +103,3 @@ keymap("n", "<C-M-l>", "<cmd>:TmuxResizeRight<CR>", { silent = true })
 keymap("n", "<leader>cL", function()
   util.toggle("relativenumber")
 end, { silent = true, desc = "Toggle Relative Line Numbers" })
-
-keymap("n", "<leader>bo", function()
-  local current_buffer = vim.api.nvim_get_current_buf()
-
-  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-    if bufnr ~= current_buffer then
-      vim.api.nvim_buf_delete(bufnr, {})
-    end
-  end
-end, { desc = "Close Other Buffers" })
