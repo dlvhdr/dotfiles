@@ -50,6 +50,11 @@ M.config = function()
       show_end = false,
     },
   })
+
+  local hooks = require("ibl.hooks")
+  hooks.register(hooks.type.ACTIVE, function(bufnr)
+    return vim.api.nvim_buf_line_count(bufnr) < 5000
+  end)
 end
 
 return M
