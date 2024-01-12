@@ -57,9 +57,6 @@ local format_augroup = vim.api.nvim_create_augroup("LSPFormatting", {})
 local auto_format_enabled = true
 
 M.on_attach = function(client, bufnr)
-  local lsp_status = require("lsp-status")
-  lsp_status.on_attach(client)
-
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false

@@ -4,17 +4,9 @@ M.setup = function()
   local handlers = require("dlvhdr.plugins.lsp.handlers")
   local lspconfig = require("lspconfig")
 
-  local lsp_status = require("lsp-status")
-  lsp_status.register_progress()
-  lsp_status.config({
-    status_symbol = "✔︎",
-  })
-
-  local capabilities = vim.tbl_extend("keep", handlers.capabilities or {}, lsp_status.capabilities)
-
   local opts = {
     on_attach = handlers.on_attach,
-    capabilities = capabilities,
+    capabilities = handlers.capabilities,
   }
 
   lspconfig.denols.setup({
@@ -23,7 +15,7 @@ M.setup = function()
   })
   lspconfig.html.setup(opts)
   -- trying out typescript-tools.nvim
-  -- require("dlvhdr.plugins.lsp.servers.tsserver").setup(opts)
+  require("dlvhdr.plugins.lsp.servers.tsserver").setup(opts)
   require("dlvhdr.plugins.lsp.servers.jsonls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.none-ls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.gopls").setup(opts)

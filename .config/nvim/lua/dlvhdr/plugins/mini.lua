@@ -1,5 +1,6 @@
-local mini = {
+local M = {
   "echasnovski/mini.nvim",
+  version = false,
   dependencies = {
     "folke/tokyonight.nvim",
     "JoosepAlviste/nvim-ts-context-commentstring",
@@ -7,29 +8,32 @@ local mini = {
   event = "BufReadPre",
 }
 
-function mini.comment()
+function M.config()
+  local theme = require("dlvhdr.plugins.theme")
+  local colors = theme.colors()
+  if not colors then
+    return
+  end
+
   require("mini.comment").setup({
-    event = "VeryLazy",
     options = {
       custom_commentstring = function()
         return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
       end,
     },
   })
-end
 
-function mini.jump()
+  -- require("mini.notify").setup({
+  --   window = {
+  --     border = "none",
+  --     anchor = "SE",
+  --     row = 20,
+  --   },
+  -- })
+
   require("mini.jump").setup({})
-
-  local theme = require("dlvhdr.plugins.theme")
-  local colors = theme.colors()
-  if not colors then
-    return
-  end
   vim.api.nvim_set_hl(0, "MiniJump", { bg = colors.bg_search, underdotted = true })
-end
 
-function mini.move()
   require("mini.move").setup({
     mappings = {
       left = "H",
@@ -42,17 +46,7 @@ function mini.move()
       line_up = "",
     },
   })
-end
-
-function mini.surround()
   require("mini.surround").setup({})
 end
 
-function mini.config()
-  mini.comment()
-  mini.jump()
-  mini.move()
-  mini.surround()
-end
-
-return mini
+return M

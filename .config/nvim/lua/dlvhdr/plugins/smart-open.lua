@@ -23,6 +23,7 @@ return {
   cmd = { "SmartOpen", "Telescope" },
   dependencies = {
     "kkharji/sqlite.lua",
+    "nvim-telescope/telescope.nvim",
   },
   keys = {
     {
