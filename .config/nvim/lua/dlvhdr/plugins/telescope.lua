@@ -8,7 +8,6 @@ local M = {
     "nvim-lua/plenary.nvim",
     "folke/trouble.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
-    -- "natecraddock/telescope-zf-native.nvim",
     "nvim-telescope/telescope-fzy-native.nvim",
     "aaronhallaert/advanced-git-search.nvim",
     "piersolenski/telescope-import.nvim",
@@ -21,7 +20,6 @@ local M = {
     { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume" },
     { "<leader>fp", "<cmd>Telescope pickers<cr>", desc = "Pickers" },
     { "<leader>fs", ":lua require('telescope.builtin').git_status()<CR>", desc = "Git Status" },
-
     {
       "<leader>ff",
       function()
@@ -44,11 +42,29 @@ local M = {
     {
       "<leader>fg",
       function()
-        require("telescope").extensions.egrepify.egrepify({})
+        require("telescope").extensions.egrepify.egrepify({
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
+            "--trim", -- add this value
+          },
+        })
       end,
       desc = "Live Grep",
     },
-    { "<leader>*", "<cmd>Telescope grep_string<cr>", desc = "Grep Word Under Cursor" },
+    {
+      "<leader>*",
+      function()
+        require("telescope.builtin").grep_string()
+      end,
+      desc = "Grep Word Under Cursor",
+    },
     {
       "<leader>fB",
       ":lua require('telescope.builtin').git_branches()<CR>",
@@ -197,19 +213,6 @@ M.config = function()
       },
     },
     extensions = {
-      -- ["zf-native"] = {
-      --   file = {
-      --     enable = true,
-      --     highlight_results = true,
-      --     -- enable zf filename match priority
-      --     match_filename = true,
-      --   },
-      --   generic = {
-      --     enable = true,
-      --     highlight_results = true,
-      --     match_filename = false,
-      --   },
-      -- },
       ["ui-select"] = {
         require("telescope.themes").get_dropdown({}),
       },
@@ -235,11 +238,12 @@ M.config = function()
             flag = "invert-match",
           },
         },
+        quiet = false,
+        level = vim.log.levels.DEBUG,
       },
     },
   })
 
-  -- telescope.load_extension("zf-native")
   telescope.load_extension("ui-select")
   telescope.load_extension("advanced_git_search")
   telescope.load_extension("import")
