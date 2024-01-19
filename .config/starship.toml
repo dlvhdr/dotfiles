@@ -3,8 +3,8 @@ command_timeout = 150
 format = "$directory$git_branch$kubernetes$line_break$character"
 
 [character]
-success_symbol = "[ ](fg:#7dcfff)"
-error_symbol = "[ ](gray)"
+success_symbol = "[󱝁 ](fg:#7dcfff)"
+error_symbol = "[󱝁 ](gray)"
 vicmd_symbol = "[ ](purple)"
 
 [git_state]
