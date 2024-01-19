@@ -61,6 +61,7 @@ local config = {
 		k.cmd_to_tmux_prefix("'", "'"), -- last session
 		k.cmd_to_tmux_prefix(";", ";"), -- last window
 
+		k.cmd_to_tmux_prefix("h", "h"), -- mono
 		k.cmd_to_tmux_prefix("g", "g"), -- lazygit
 		k.cmd_to_tmux_prefix("G", "G"), -- gh-dash
 		k.cmd_to_tmux_prefix("M", "M"), -- mprocs
@@ -103,7 +104,7 @@ local config = {
 			}),
 		},
 
-		-- t-smart-session-picker
+		-- sesh
 		{
 			mods = "CMD",
 			key = "k",
@@ -148,6 +149,7 @@ local config = {
 			mods = "CMD",
 			key = "a",
 			action = act.Multiple({
+				act.SendKey({ key = "\x1b" }), -- escape
 				act.SendKey({ key = "g" }),
 				act.SendKey({ key = "g" }),
 				act.SendKey({ key = "V" }),
@@ -169,6 +171,7 @@ local config = {
 			mods = "CMD|SHIFT",
 			key = "p",
 			action = act.Multiple({
+				act.SendKey({ key = "\x1b" }), -- escape
 				act.SendKey({ key = " " }),
 				act.SendKey({ key = "f" }),
 				act.SendKey({ key = "c" }),
