@@ -5,4 +5,4 @@ commands:
     description: checkout
     completion:
       positional:
-        - ["$_tools.git.LocalBranches()"]
+        - ["$carapace.tools.git.LocalBranches()"]
