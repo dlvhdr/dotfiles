@@ -23,7 +23,7 @@ alt - z : open -a /Applications/zoom.us.app
 alt - m : open -a /System/Applications/Mail.app
 
 # open calendar
-alt - p : open -a /Applications/Cron.app
+alt - p : open -a /Applications/Notion\ Calendar.app
 
 # open spotify
 alt - u : open -a /Users/dlvhdr/Applications/Music.app
