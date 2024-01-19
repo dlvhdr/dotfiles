@@ -15,6 +15,7 @@ return {
     vim.treesitter.language.register("markdown", "octo")
 
     octo.setup({
+      enable_builtin = true,
       mappings = {
         issue = {
           close_issue = { lhs = "<space>oic", desc = "close issue" },

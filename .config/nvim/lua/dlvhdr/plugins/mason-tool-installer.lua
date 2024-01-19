@@ -1,0 +1,27 @@
+return {
+  "WhoIsSethDaniel/mason-tool-installer.nvim",
+  cmd = { "MasonToolsInstall", "MasonToolsUpdate", "MasonToolsClean" },
+  opts = {
+    ensure_installed = {
+      "bash-language-server",
+      "delve",
+      "docker-compose-language-service",
+      "dockerfile-language-server",
+      "eslint_d",
+      "gofumpt",
+      "goimports",
+      "goimports-reviser",
+      "gopls",
+      "js-debug-adapter",
+      "json-lsp",
+      "lua-language-server",
+      "markdownlint",
+      "marksman",
+      "prettierd",
+      "shfmt",
+      "stylua",
+      "typescript-language-server",
+      "yaml-language-server",
+    },
+  },
+}

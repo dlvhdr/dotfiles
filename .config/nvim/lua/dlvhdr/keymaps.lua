@@ -1,9 +1,10 @@
 local util = require("dlvhdr.utils")
 local keymap = vim.keymap.set
 
--- Basic
-keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+-- Store relative line number jumps in the jumplist.
+keymap("n", "j", [[(v:count > 1 ? 'm`' . v:count : '') . 'gj']], { expr = true, silent = true })
+keymap("n", "k", [[(v:count > 1 ? 'm`' . v:count : '') . 'gk']], { expr = true, silent = true })
+
 keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 keymap({ "n" }, "<CR>", "viw", { desc = "Select word under cursor" })
 
@@ -103,3 +104,89 @@ keymap("n", "<C-M-l>", "<cmd>:TmuxResizeRight<CR>", { silent = true })
 keymap("n", "<leader>cL", function()
   util.toggle("relativenumber")
 end, { silent = true, desc = "Toggle Relative Line Numbers" })
+
+-- quick find and replace
+keymap("n", "<leader>cr", [[:%s/\<<C-r>=expand("<cword>")<CR>\>/]], {
+  silent = false,
+  desc = "Replace Word Under Cursor (File)",
+})
+keymap("n", "<leader>cR", [[gv:s/\<<C-r>=expand("<cword>")<CR>\>/]], {
+  silent = false,
+  desc = "Replace Word Under Cursor (Last Selection)",
+})
+keymap("v", "<leader>cr", [["zy:%s/<C-r><C-o>"/]], {
+  silent = false,
+  desc = "Replace Word Under Cursor (Visual)",
+})
+
+-- TLDR: Conditionally modify character at end of line
+-- Description:
+-- This function takes a delimiter character and:
+--   * removes that character from the end of the line if the character at the end
+--     of the line is that character
+--   * removes the character at the end of the line if that character is a
+--     delimiter that is not the input character and appends that character to
+--     the end of the line
+--   * adds that character to the end of the line if the line does not end with
+--     a delimiter
+-- Delimiters:
+-- - ","
+-- - ";"
+---@param character string
+---@return function
+local function modify_line_end_delimiter(character)
+  local delimiters = { ",", ";" }
+  return function()
+    local line = vim.api.nvim_get_current_line()
+    local last_char = line:sub(-1)
+    if last_char == character then
+      vim.api.nvim_set_current_line(line:sub(1, #line - 1))
+    elseif vim.tbl_contains(delimiters, last_char) then
+      vim.api.nvim_set_current_line(line:sub(1, #line - 1) .. character)
+    else
+      vim.api.nvim_set_current_line(line .. character)
+    end
+  end
+end
+
+keymap("n", "<leader>c,", modify_line_end_delimiter(","), { desc = "add ',' to end of line" })
+keymap("n", "<leader>c;", modify_line_end_delimiter(";"), { desc = "add ';' to end of line" })
+
+-----------------------------------------------------------------------------//
+-- Multiple Cursor Replacement
+-- http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
+-----------------------------------------------------------------------------//
+keymap("n", "<leader>cn", "*``cgn", { desc = "Replace Next Occurrence" })
+keymap("n", "cN", "*``cgN", { desc = "Replace Next Occurrence (Backwards)" })
+
+-----------------------------------------------------------------------------//
+-- GX - replicate netrw functionality
+-----------------------------------------------------------------------------//
+local function open(path)
+  vim.fn.jobstart({ vim.g.open_command, path }, { detach = true })
+  vim.notify(string.format("Opening %s", path))
+end
+keymap("n", "gx", function()
+  local file = vim.fn.expand("<cfile>")
+  if not file or vim.fn.isdirectory(file) > 0 then
+    return vim.cmd.edit(file)
+  end
+
+  if file:match("http[s]?://") then
+    return open(file)
+  end
+
+  -- consider anything that looks like string/string a github link
+  local link = file:match("[%a%d%-%.%_]*%/[%a%d%-%.%_]*")
+  if link then
+    return open(string.format("https://www.github.com/%s", link))
+  end
+end)
+-----------------------------------------------------------------------------//
+
+keymap("n", "<leader>ty", function()
+  vim.api.nvim_call_function("setreg", {
+    "+",
+    "yarn test " .. vim.fn.fnamemodify(vim.fn.expand("%:t"), ":."),
+  })
+end)

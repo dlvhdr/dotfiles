@@ -16,7 +16,6 @@ end
 M.lsp_keymaps = function(bufnr)
   -- builtins
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go To Declaration" })
-  vim.keymap.set("n", "gR", M.rename, { expr = true, desc = "Rename Symbol" })
   vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Code Action" })
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, { silent = true, buffer = bufnr, desc = "Hover Symbol" })
   vim.keymap.set("n", "ge", vim.diagnostic.open_float, { silent = true, buffer = bufnr, desc = "Show Diagnostic" })
@@ -37,14 +36,6 @@ M.lsp_keymaps = function(bufnr)
   )
 end
 
-function M.rename()
-  if pcall(require, "inc_rename") then
-    return ":IncRename " .. vim.fn.expand("<cword>")
-  else
-    vim.lsp.buf.rename()
-  end
-end
-
 function M.diagnostic_goto(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
   severity = severity and vim.diagnostic.severity[severity] or nil
@@ -54,7 +45,6 @@ function M.diagnostic_goto(next, severity)
 end
 
 local format_augroup = vim.api.nvim_create_augroup("LSPFormatting", {})
-local auto_format_enabled = true
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then

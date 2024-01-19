@@ -3,7 +3,7 @@ return {
   dependencies = { "folke/trouble.nvim" },
   cmd = "Glance",
   keys = {
-    { "gd", "<CMD>Glance definitions<CR>", desc = "Show Definitions" },
+    { "gd", "<CMD>Glance definitions<CR>zt", desc = "Show Definitions" },
     { "gr", "<CMD>Glance references<CR>", desc = "Show References" },
     { "gY", "<CMD>Glance type_definitions<CR>", desc = "Show Type Definitions" },
     { "gi", "<CMD>Glance implementations<CR>", desc = "Show Implementation" },

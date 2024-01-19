@@ -83,6 +83,14 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+local augroup = vim.api.nvim_create_augroup("CommandLineWindow", {})
+vim.api.nvim_create_autocmd("CmdwinEnter", {
+  group = augroup,
+  callback = function()
+    vim.api.nvim_buf_set_keymap(0, "n", "q", "<cmd>close<cr>")
+  end,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "markdown" },
   callback = function()

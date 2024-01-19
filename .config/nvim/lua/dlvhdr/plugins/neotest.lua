@@ -2,7 +2,7 @@ return {
   "nvim-neotest/neotest",
   dependencies = {
     "nvim-neotest/neotest-go",
-    "haydenmeade/neotest-jest",
+    "marilari88/neotest-vitest",
     "folke/trouble.nvim",
     "nvim-lua/plenary.nvim",
   },
@@ -10,13 +10,7 @@ return {
   opts = {
     adapters = {
       ["neotest-go"] = {},
-      ["neotest-jest"] = {
-        jestCommand = "yarn test",
-        jestConfigFile = "",
-        cwd = function(path)
-          return vim.fn.getcwd()
-        end,
-      },
+      ["neotest-vitest"] = {},
     },
     status = { virtual_text = true },
     output = { open_on_run = true },

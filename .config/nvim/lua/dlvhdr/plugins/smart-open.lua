@@ -20,7 +20,7 @@ end
 
 return {
   "danielfalk/smart-open.nvim",
-  cmd = { "SmartOpen", "Telescope" },
+  cmd = { "SmartOpen" },
   dependencies = {
     "kkharji/sqlite.lua",
     "nvim-telescope/telescope.nvim",
