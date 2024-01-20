@@ -2,6 +2,7 @@ node_modules
 yarn.lock
 
 # .config
+.config/lazyvim/
 .config/vscode/
 .config/zsh/.zcompdump
 .config/.fnm/
