@@ -3,7 +3,7 @@ return {
   dependencies = { "folke/trouble.nvim" },
   cmd = "Glance",
   keys = {
-    { "gd", "<CMD>Glance definitions<CR>zt", desc = "Show Definitions" },
+    { "gd", "<CMD>Glance definitions<CR>", desc = "Show Definitions" },
     { "gr", "<CMD>Glance references<CR>", desc = "Show References" },
     { "gY", "<CMD>Glance type_definitions<CR>", desc = "Show Type Definitions" },
     { "gi", "<CMD>Glance implementations<CR>", desc = "Show Implementation" },
@@ -40,6 +40,7 @@ return {
         before_open = function(results, open, jump, method)
           if #results == 1 then
             jump(results[1])
+            vim.cmd("normal zt")
             return
           end
 
@@ -52,9 +53,13 @@ return {
 
           if #filtered_results == 1 then
             jump(filtered_results[1])
+            vim.cmd("normal zt")
           else
             open(filtered_results)
           end
+        end,
+        after_close = function()
+          vim.cmd("normal zt")
         end,
       },
     })
