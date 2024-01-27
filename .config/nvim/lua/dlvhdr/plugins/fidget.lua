@@ -27,8 +27,8 @@ return {
         window = {
           align = "top",
           winblend = 0,
-          x_padding = "0",
-          y_padding = "0",
+          x_padding = 2,
+          y_padding = 0,
         },
         view = {
           group_separator = "",

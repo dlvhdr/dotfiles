@@ -1,5 +1,6 @@
 return {
   "ThePrimeagen/harpoon",
+  enabled = false,
   lazy = true,
   keys = {
     { "<Leader>ha", ':lua require("harpoon.mark").add_file()<CR>', desc = "Add File" },

@@ -23,8 +23,6 @@ M.setup = function(opts)
 
   local venv_path = os.getenv("VIRTUAL_ENV")
   local py_path = nil
-  -- decide which python executable to use for mypy
-  vim.notify("venv_path: " .. venv_path)
   if venv_path ~= nil then
     py_path = venv_path .. "/bin/python3"
   else

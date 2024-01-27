@@ -1,5 +1,6 @@
 return {
   "chrisgrieser/nvim-rulebook",
+  enabled = false,
   keys = {
     {
       "<leader>gi",

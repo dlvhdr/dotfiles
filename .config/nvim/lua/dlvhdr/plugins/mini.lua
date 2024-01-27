@@ -23,14 +23,6 @@ function M.config()
     },
   })
 
-  -- require("mini.notify").setup({
-  --   window = {
-  --     border = "none",
-  --     anchor = "SE",
-  --     row = 20,
-  --   },
-  -- })
-
   require("mini.jump").setup({})
   vim.api.nvim_set_hl(0, "MiniJump", { bg = colors.bg_search, underdotted = true })
 

@@ -70,13 +70,6 @@ return {
           dapui.close()
         end
 
-        -- vim.print("Configuring dap-vscode-js")
-        -- vim.print(
-        --   require("mason-registry").get_package("js-debug-adapter"):get_install_path()
-        --     .. "/js-debug/src/dapDebugServer.js",
-        --   "${port}"
-        -- )
-
         if not dap.adapters["pwa-node"] then
           require("dap").adapters["pwa-node"] = {
             type = "server",
@@ -84,7 +77,6 @@ return {
             port = "${port}",
             executable = {
               command = "node",
-              -- 💀 Make sure to update this path to point to your installation
               args = {
                 require("mason-registry").get_package("js-debug-adapter"):get_install_path()
                   .. "/js-debug/src/dapDebugServer.js",
@@ -105,8 +97,20 @@ return {
               },
               {
                 type = "pwa-node",
+                request = "launch",
+                name = "Debug Current Test File",
+                autoAttachChildProcesses = true,
+                skipFiles = { "<node_internals>/**", "**/node_modules/**" },
+                cwd = "${workspaceFolder}",
+                program = "node_modules/vitest/vitest.mjs",
+                args = { "run", "${file}" },
+                smartStep = true,
+                console = "integratedTerminal",
+              },
+              {
+                type = "pwa-node",
                 request = "attach",
-                name = "Attach",
+                name = "Attach To Process",
                 processId = require("dap.utils").pick_process,
                 cwd = "${workspaceFolder}",
               },
@@ -166,6 +170,9 @@ return {
       keys = {
         { "<leader>dt", function() require('dap-go').debug_test() end, desc = "Debug Test" },
       },
+    },
+    {
+      "mxsdev/nvim-dap-vscode-js",
     },
   },
   -- stylua: ignore
