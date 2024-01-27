@@ -24,7 +24,7 @@ return {
       },
       lead_custom_section = function()
         local root = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-        return { { root, "StatusLineWinnr" }, { "  ", "VertSplit" } }
+        return { { root, "barbecue_basename" }, { "  ", "VertSplit" } }
       end,
     })
   end,
