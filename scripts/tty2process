@@ -24,7 +24,7 @@ for cmd in $commands
 do
     case "$cmd" in
       nvim)
-        echo " nvim"
+        echo " nvim"
         exit 0
         ;;
     esac
