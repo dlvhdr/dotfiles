@@ -6,7 +6,7 @@ M.setup = function()
 
   local opts = {
     on_attach = handlers.on_attach,
-    capabilities = handlers.capabilities,
+    capabilities = handlers.capabilities(),
   }
 
   lspconfig.denols.setup({
@@ -24,6 +24,7 @@ M.setup = function()
   -- require("dlvhdr.plugins.lsp.servers.emmet-ls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.docker-langserver").setup(opts)
   require("dlvhdr.plugins.lsp.servers.yamlls").setup(opts)
+  require("dlvhdr.plugins.lsp.servers.pyright").setup(opts)
 end
 
 return M
