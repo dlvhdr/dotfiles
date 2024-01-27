@@ -14,11 +14,41 @@ return {
   "mfussenegger/nvim-dap",
   dependencies = {
     {
+      "theHamsta/nvim-dap-virtual-text",
+      config = function()
+        require("nvim-dap-virtual-text").setup({})
+      end,
+    },
+    {
       "rcarriga/nvim-dap-ui",
       -- stylua: ignore
       keys = {
         { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
         { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
+      },
+      opts = {
+        icons = {
+          collapsed = "",
+          current_frame = "",
+          expanded = "",
+        },
+        layouts = {
+          {
+            elements = {
+              "repl",
+              "stacks",
+              "breakpoints",
+              "watches",
+            },
+            size = 30,
+            position = "left",
+          },
+          {
+            elements = { "scopes" },
+            size = 10,
+            position = "bottom",
+          },
+        },
       },
       config = function(_, opts)
         -- setup dap config by VsCode launch.json file
@@ -26,22 +56,27 @@ return {
         local dap = require("dap")
         local dapui = require("dapui")
         dapui.setup(opts)
-        dap.listeners.after.event_initialized["dapui_config"] = function()
-          dapui.open({})
+
+        dap.listeners.before.attach.dapui_config = function()
+          dapui.open()
         end
-        dap.listeners.before.event_terminated["dapui_config"] = function()
-          dapui.close({})
+        dap.listeners.before.launch.dapui_config = function()
+          dapui.open()
         end
-        dap.listeners.before.event_exited["dapui_config"] = function()
-          dapui.close({})
+        dap.listeners.before.event_terminated.dapui_config = function()
+          dapui.close()
+        end
+        dap.listeners.before.event_exited.dapui_config = function()
+          dapui.close()
         end
 
-        vim.print("Configuring dap-vscode-js")
-        vim.print(
-          require("mason-registry").get_package("js-debug-adapter"):get_install_path()
-            .. "/js-debug/src/dapDebugServer.js",
-          "${port}"
-        )
+        -- vim.print("Configuring dap-vscode-js")
+        -- vim.print(
+        --   require("mason-registry").get_package("js-debug-adapter"):get_install_path()
+        --     .. "/js-debug/src/dapDebugServer.js",
+        --   "${port}"
+        -- )
+
         if not dap.adapters["pwa-node"] then
           require("dap").adapters["pwa-node"] = {
             type = "server",
