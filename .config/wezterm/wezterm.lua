@@ -20,7 +20,7 @@ local config = {
 	-- font
 	font = wezterm.font_with_fallback({
 		{ family = "Monaspace Neon" },
-		-- { family = "FiraCode Nerd Font Propo" },
+		{ family = "FiraCode Nerd Font" },
 	}),
 	font_size = 17,
 
