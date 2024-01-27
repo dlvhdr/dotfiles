@@ -34,6 +34,34 @@ M.config = function()
   configs.setup({
     sync_install = false,
     auto_install = true,
+    ensure_installed = {
+      "c",
+      "lua",
+      "vim",
+      "vimdoc",
+      "query",
+      "typescript",
+      "javascript",
+      "html",
+      "css",
+      "json",
+      "yaml",
+      "bash",
+      "dockerfile",
+      "go",
+      "java",
+      "jsonc",
+      "lua",
+      "regex",
+      "ruby",
+      "scss",
+      "tsx",
+      "yaml",
+      "ninja",
+      "python",
+      "rst",
+      "toml",
+    },
     modules = {},
     highlight = {
       enable = true,
@@ -100,7 +128,6 @@ M.config = function()
       enable = true,
       disable_virtual_text = true,
     },
-    ensure_installed = "all",
   })
 
   local parser_config = parsers.get_parser_configs()
