@@ -1,8 +1,0 @@
-name: gt
-description: graphite
-commands:
-  - name: co
-    description: checkout
-    completion:
-      positional:
-        - ["$carapace.tools.git.LocalBranches()"]

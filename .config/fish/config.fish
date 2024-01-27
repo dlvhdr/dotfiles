@@ -9,22 +9,19 @@ set -U fish_greeting # disable fish greeting
 # fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.local/share/npm/bin
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
+fish_add_path $PYENV_ROOT/bin
 
 set -gx DOCKER_CONFIG "$HOME/.docker"
 
 if status is-interactive
-  # pyenv init --path | source
+  pyenv init - | source
 
   source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
 
   eval "$(/opt/homebrew/bin/brew shellenv)"
 
-  carapace _carapace | source
-
   starship init fish | source
 
-  # if not test (pgrep gpg-agent)
-  # end
   gpg-agent --daemon --no-grab >/dev/null 2>&1
 end
 
