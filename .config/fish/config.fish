@@ -6,15 +6,15 @@
 #                                     
 set -U fish_greeting # disable fish greeting
 
-# fish_add_path /opt/homebrew/bin
 fish_add_path $HOME/.local/share/npm/bin
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
-fish_add_path $PYENV_ROOT/bin
 
 set -gx DOCKER_CONFIG "$HOME/.docker"
 
 if status is-interactive
+  # TODO: replace with direnv
   pyenv init - | source
+  eval "$(pyenv virtualenv-init -)"
 
   source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
 
@@ -23,6 +23,10 @@ if status is-interactive
   starship init fish | source
 
   gpg-agent --daemon --no-grab >/dev/null 2>&1
+
+  atuin init fish --disable-up-arrow | source
+
+  zoxide init fish | source
 end
 
 fnm env --use-on-cd --version-file-strategy recursive | source
@@ -111,7 +115,8 @@ abbr --add gra "git rebase --abort"
 abbr --add grc "git rebase --continue"
 abbr --add gpf "git push --force"
 abbr --add gcm 'git commit -m "$(gum input)"'
-abbr --add gm 'gt modify -cu -m "$(gum input)"'
+# abbr --add gm 'gt modify -cu -m "$(gum input)"'
+abbr --add gm 'git-machete'
 abbr --add gclean 'git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D'
 abbr --add pr "gh vpr"
 abbr --add vr "gh vr"
@@ -151,4 +156,6 @@ abbr --add dc "docker compose"
 abbr --add wip "gt modify -cu -m 'wip'"
 abbr --add hl "humanlog --truncate=false"
 abbr --add ld "lazydocker -f ~"
+
+abbr --add eslint-restart "~/.local/share/nvim/mason/bin/eslint_d --restart"
 
