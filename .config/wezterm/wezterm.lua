@@ -183,7 +183,9 @@ local config = {
 			"s",
 			act.Multiple({
 				act.SendKey({ key = "\x1b" }), -- escape
-				k.multiple_actions(" bw"),
+				act.SendKey({ key = " " }), -- escape
+				act.SendKey({ key = "b" }), -- escape
+				act.SendKey({ key = "w" }), -- escape
 			})
 		),
 		{
