@@ -11,6 +11,15 @@ local M = {
       desc = "NvimTree (root dir)",
       remap = true,
     },
+    {
+      "<leader>be",
+      function()
+        local actions = require("nvim-tree.actions")
+        actions.open_file.resize_window(true)
+      end,
+      desc = "[Toggle] NvimTree Resize",
+      remap = true,
+    },
   },
   lazy = true,
 }

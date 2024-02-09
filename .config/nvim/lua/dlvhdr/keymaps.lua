@@ -67,8 +67,8 @@ if vim.opt.diff:get() then
   keymap("n", "<leader>3", ":diffget REMOTE<CR>", { silent = true, desc = "Take Remote" })
 end
 
-keymap("n", "<leader>cj", "<cmd>%!jq<cr>", { silent = true, desc = "Format JSON" })
-keymap("n", "<leader>cJ", "<cmd>%!jq -c<cr>", { silent = true, desc = "Compact Format JSON" })
+keymap("n", "<leader>cj", "<cmd>%!jq<cr>", { silent = true, desc = "[JSON] Format" })
+keymap("n", "<leader>cJ", "<cmd>%!jq -c<cr>", { silent = true, desc = "[JSON] Compact Format" })
 
 keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", { silent = true, desc = "Format" })
 
@@ -98,20 +98,20 @@ keymap("n", "<C-M-l>", "<cmd>:TmuxResizeRight<CR>", { silent = true })
 
 keymap("n", "<leader>cL", function()
   util.toggle("relativenumber")
-end, { silent = true, desc = "Toggle Relative Line Numbers" })
+end, { silent = true, desc = "[Toggle] Relative Line Numbers" })
 
 -- quick find and replace
 keymap("n", "<leader>cr", [[:%s/\<<C-r>=expand("<cword>")<CR>\>/]], {
   silent = false,
-  desc = "Replace Word Under Cursor (File)",
+  desc = "[Replace] Word Under Cursor (File)",
 })
 keymap("n", "<leader>cR", [[gv:s/\<<C-r>=expand("<cword>")<CR>\>/]], {
   silent = false,
-  desc = "Replace Word Under Cursor (Last Selection)",
+  desc = "[Replace] Word Under Cursor (Last Selection)",
 })
 keymap("v", "<leader>cr", [["zy:%s/<C-r><C-o>"/]], {
   silent = false,
-  desc = "Replace Word Under Cursor (Visual)",
+  desc = "[Replace] Word Under Cursor (Visual)",
 })
 
 -- TLDR: Conditionally modify character at end of line
@@ -144,15 +144,15 @@ local function modify_line_end_delimiter(character)
   end
 end
 
-keymap("n", "<leader>c,", modify_line_end_delimiter(","), { desc = "add ',' to end of line" })
-keymap("n", "<leader>c;", modify_line_end_delimiter(";"), { desc = "add ';' to end of line" })
+keymap("n", "<leader>c,", modify_line_end_delimiter(","), { desc = "[Add] ',' to end of line" })
+keymap("n", "<leader>c;", modify_line_end_delimiter(";"), { desc = "[Add] ';' to end of line" })
 
 -----------------------------------------------------------------------------//
 -- Multiple Cursor Replacement
 -- http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
 -----------------------------------------------------------------------------//
-keymap("n", "<leader>cn", "*``cgn", { desc = "Replace Next Occurrence" })
-keymap("n", "cN", "*``cgN", { desc = "Replace Next Occurrence (Backwards)" })
+keymap("n", "<leader>cn", "*``cgn", { desc = "[Replace] Next Occurrence" })
+keymap("n", "cN", "*``cgN", { desc = "[Replace] Next Occurrence (Backwards)" })
 
 -----------------------------------------------------------------------------//
 -- GX - replicate netrw functionality
