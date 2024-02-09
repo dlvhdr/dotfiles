@@ -55,6 +55,9 @@ M.config = function()
     },
     d = {
       name = "Debug",
+      l = {
+        name = "Log",
+      },
     },
     h = {
       name = "Gitsigns",
