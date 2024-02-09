@@ -11,6 +11,7 @@ local formatters_by_ft = {
   json = { "prettierd" },
   yaml = { "prettierd" },
   go = { "gofmt", "goimports-reviser" },
+  python = { "black" },
 }
 
 return {
@@ -26,7 +27,7 @@ return {
     vim.keymap.set("n", "<leader>cF", function()
       vim.g.disable_autoformat = not vim.g.disable_autoformat
       vim.notify("Auto formatting is " .. (vim.g.disable_autoformat and "disabled" or "enabled"))
-    end, { desc = "Toggle Auto Formatting" })
+    end, { desc = "[Toggle] Auto Formatting" })
 
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       pattern = "*",

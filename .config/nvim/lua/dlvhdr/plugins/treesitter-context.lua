@@ -11,6 +11,6 @@ return {
     end, { silent = true, desc = "Go to TS context" })
     vim.keymap.set("n", "<leader>cc", function()
       require("treesitter-context").toggle()
-    end, { silent = true, desc = "Toggle TS Context" })
+    end, { silent = true, desc = "[Toggle] TS Context" })
   end,
 }

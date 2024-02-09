@@ -43,7 +43,7 @@ M.setup = function(opts)
         diagnostics = {},
       },
     })
-  end, { desc = "Organize Imports" })
+  end, { desc = "[LSP] Organize Imports" })
 end
 
 return M
