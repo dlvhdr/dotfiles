@@ -13,7 +13,7 @@ local config = {
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE | MACOS_FORCE_DISABLE_SHADOW",
 	default_prog = { "/opt/homebrew/bin/fish", "-l" },
-	text_background_opacity = 0.8,
+	text_background_opacity = 0.7,
 	-- window_background_opacity = 0.3,
 	-- macos_window_background_blur = 20,
 
@@ -30,7 +30,7 @@ local config = {
 	-- background
 	background = {
 		w.get_wallpaper(),
-		b.get_background(0.85),
+		b.get_background(0.89),
 	},
 
 	-- padding

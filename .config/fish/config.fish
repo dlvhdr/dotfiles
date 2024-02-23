@@ -13,12 +13,12 @@ set -gx DOCKER_CONFIG "$HOME/.docker"
 
 if status is-interactive
   # TODO: replace with direnv
-  pyenv init - | source
-  eval "$(pyenv virtualenv-init -)"
+  # pyenv init - | source
+  # eval "$(pyenv virtualenv-init -)"
 
   source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
 
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval (/opt/homebrew/bin/brew shellenv)
 
   starship init fish | source
 
@@ -27,15 +27,15 @@ if status is-interactive
   atuin init fish --disable-up-arrow | source
 
   zoxide init fish | source
+
+  # properly setup gpg tty
+  set -e SSH_AUTH_SOCK
+  set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+
+  set -x GPG_TTY (tty)
 end
 
 fnm env --use-on-cd --version-file-strategy recursive | source
-
-# properly setup gpg tty
-set -e SSH_AUTH_SOCK
-set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-
-set -x GPG_TTY (tty)
 
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
 set fzf_history_time_format "%d-%m %H:%M"
@@ -115,8 +115,7 @@ abbr --add gra "git rebase --abort"
 abbr --add grc "git rebase --continue"
 abbr --add gpf "git push --force"
 abbr --add gcm 'git commit -m "$(gum input)"'
-# abbr --add gm 'gt modify -cu -m "$(gum input)"'
-abbr --add gm 'git-machete'
+abbr --add gm 'gt modify -cu -m "$(gum input)"'
 abbr --add gclean 'git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D'
 abbr --add pr "gh vpr"
 abbr --add vr "gh vr"

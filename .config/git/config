@@ -64,6 +64,10 @@
 
 [diff]
   colorMoved = default
+  algorithm = histogram
+
+[branch]
+  sort = -committerdate
 
 [difftool]
   tool = nvimdiff

@@ -9,7 +9,7 @@ M.get_wallpaper = function()
 		table.insert(wallpapers, v)
 	end
 	return {
-		source = { File = { path = wallpapers[4] } },
+		source = { File = { path = wallpapers[16] } },
 		height = "Cover",
 		width = "Cover",
 		horizontal_align = "Left",
