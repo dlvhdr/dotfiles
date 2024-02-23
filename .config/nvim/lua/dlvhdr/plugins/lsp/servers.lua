@@ -25,6 +25,7 @@ M.setup = function()
   require("dlvhdr.plugins.lsp.servers.docker-langserver").setup(opts)
   require("dlvhdr.plugins.lsp.servers.yamlls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.pyright").setup(opts)
+  require("dlvhdr.plugins.lsp.servers.helm-ls").setup()
 end
 
 return M

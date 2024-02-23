@@ -175,13 +175,22 @@ return {
         table.insert(require("dap").configurations.python, {
           type = "python",
           request = "launch",
-          name = "Brain",
+          name = "Test: Brain",
           module = "pytest",
           -- args = {
           --   "<path/to/test>",
           --   "-k",
           --   "<name of test function>",
           -- },
+          env = {
+            PYTHONPATH = "/Users/dlvhdr/code/komodor/mono/services/brain/../",
+          },
+        })
+        table.insert(require("dap").configurations.python, {
+          type = "python",
+          request = "launch",
+          name = "Run: Brain",
+          module = "brain.consumer",
           env = {
             PYTHONPATH = "/Users/dlvhdr/code/komodor/mono/services/brain/../",
           },

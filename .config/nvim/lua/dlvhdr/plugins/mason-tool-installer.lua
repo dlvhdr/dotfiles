@@ -22,6 +22,7 @@ return {
       "stylua",
       "typescript-language-server",
       "yaml-language-server",
+      "helm-ls",
     },
   },
 }
