@@ -14,18 +14,16 @@ M.setup = function()
     root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
   })
   lspconfig.html.setup(opts)
-  -- trying out typescript-tools.nvim
   require("dlvhdr.plugins.lsp.servers.tsserver").setup(opts)
   require("dlvhdr.plugins.lsp.servers.jsonls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.none-ls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.gopls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.lua_ls").setup(opts)
-  -- annoying in tsx files - too many completion items
-  -- require("dlvhdr.plugins.lsp.servers.emmet-ls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.docker-langserver").setup(opts)
   require("dlvhdr.plugins.lsp.servers.yamlls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.pyright").setup(opts)
   require("dlvhdr.plugins.lsp.servers.helm-ls").setup()
+  require("dlvhdr.plugins.lsp.servers.bashls").setup()
 end
 
 return M

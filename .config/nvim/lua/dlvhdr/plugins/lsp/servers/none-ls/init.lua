@@ -12,14 +12,16 @@ M.setup = function(opts)
     root_dir = lspconfigUtils.root_pattern(".git"),
     timeout_ms = 7000,
     sources = {
-      null_ls.builtins.diagnostics.golangci_lint,
-      null_ls.builtins.code_actions.shellcheck,
-      null_ls.builtins.diagnostics.shellcheck.with({ filetypes = { "sh" } }),
-      null_ls.builtins.diagnostics.eslint_d.with({
+      require("none-ls.code_actions.eslint_d"),
+      require("none-ls.diagnostics.eslint_d").with({
         condition = function()
           local has = utils.has_eslint_config()
           return has
         end,
+      }),
+      null_ls.builtins.diagnostics.codespell,
+      null_ls.builtins.diagnostics.golangci_lint.with({
+        extra_args = { "-E", "errcheck" },
       }),
     },
   })

@@ -8,6 +8,7 @@ return {
     "b0o/schemastore.nvim",
     "nvimtools/none-ls.nvim",
     "williamboman/mason.nvim",
+    "nvimtools/none-ls-extras.nvim",
   },
   config = function()
     require("dlvhdr.plugins.lsp.handlers").setup()
