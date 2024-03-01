@@ -14,8 +14,8 @@ function M.config()
     "stylua",
     "luacheck",
     "eslint_d",
-    "shellcheck",
     "shfmt",
+    "bash-language-server",
   }
   require("mason").setup({
     ui = {
