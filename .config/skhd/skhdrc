@@ -4,8 +4,8 @@ alt - f : open -a /Applications/Figma.app
 # open arc
 alt - c : open -a /Applications/Arc.app
 
-# open wezterm ([i]Term)
-alt - i : open -a /Applications/WezTerm.app
+# open terminal ([i]Term)
+alt - i : open -a /Applications/kitty.app
 
 # open whatsapp
 alt - w : open -a /Applications/Whatsapp.app
