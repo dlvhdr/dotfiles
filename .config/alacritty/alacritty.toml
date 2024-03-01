@@ -1,0 +1,84 @@
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[[colors.indexed_colors]]
+color = "0xff9e64"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xdb4b4b"
+index = 17
+
+[colors.bright]
+black = "0x414868"
+blue = "0x7aa2f7"
+cyan = "0x7dcfff"
+green = "0x9ece6a"
+magenta = "0xbb9af7"
+red = "0xf7768e"
+white = "0xc0caf5"
+yellow = "0xe0af68"
+
+[colors.normal]
+black = "0x1D202F"
+blue = "0x7aa2f7"
+cyan = "0x7dcfff"
+green = "0x9ece6a"
+magenta = "0xbb9af7"
+red = "0xf7768e"
+white = "0xa9b1d6"
+yellow = "0xe0af68"
+
+[colors.primary]
+background = "0x24283b"
+foreground = "0xc0caf5"
+
+[cursor]
+unfocused_hollow = true
+
+[cursor.style]
+shape = "Beam"
+
+[cursor.vi_mode_style]
+shape = "Beam"
+
+[env]
+TERM = "alacritty"
+
+[font]
+normal = {family = "FiraCode Nerd Font Mono", style = "Regular"}
+bold = {family = "FiraCode Nerd Font Mono", style = "Bold"}
+size = 18.0
+
+# [font.glyph_offset]
+# x = 0
+# y = 0
+#
+# [font.offset]
+# x = 0
+# y = 0
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+opacity = 0.95
+blur = true
+decorations = "none"
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 110
+lines = 52
+
+[window.padding]
+x = 4
+y = 0
