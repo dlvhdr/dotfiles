@@ -50,8 +50,9 @@ return {
 
     dashboard.section.buttons.val = {
       dashboard.button("s", "  Last Session", "<cmd>silent lua require('persistence').load()<CR>"),
-      dashboard.button("e", "  New file", "<cmd>ene <BAR> startinsert<CR>"),
-      dashboard.button("q", "󰅚  Quit NVIM", "<cmd>qa<CR>"),
+      dashboard.button("m", "󰛢  Grapple", "<CMD>Grapple open_tags<CR>"),
+      dashboard.button("e", "  New file", "<CMD>ene <BAR> startinsert<CR>"),
+      dashboard.button("q", "󰅚  Quit NVIM", "<CMD>qa<CR>"),
     }
     dashboard.config.opts.noautocmd = true
     alpha.setup(dashboard.config)

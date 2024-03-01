@@ -43,7 +43,7 @@ keymap("n", "<leader>bw", "<cmd>w<cr>", { silent = true, desc = "Write File" })
 keymap("n", "<leader>bW", "<cmd>w<cr>", { silent = true, desc = "Write All Files" })
 keymap("n", "<leader>bQ", "<cmd>qa!<cr>", { silent = true, desc = "Quit nvim" })
 
-keymap("n", "<leader>fm", "<cmd>messages<cr>", { silent = true, desc = "Messages" })
+-- keymap("n", "<leader>fm", "<cmd>messages<cr>", { silent = true, desc = "Messages" })
 keymap("n", "<leader>fn", "<cmd>Noice telescope<cr>", { silent = true, desc = "Noice" })
 
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
