@@ -41,7 +41,7 @@ return {
         conform.format({
           bufnr = e.buf,
           timeout_ms = 3000,
-          lsp_fallback = true,
+          lsp_fallback = false,
         })
       end,
     })
