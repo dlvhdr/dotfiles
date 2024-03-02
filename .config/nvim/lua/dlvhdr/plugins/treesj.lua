@@ -7,7 +7,7 @@ return {
       function()
         require("treesj").toggle()
       end,
-      desc = "Toggle Split/Join Block",
+      desc = "  Split/Join Block",
     },
   },
   config = function()

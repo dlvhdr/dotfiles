@@ -67,10 +67,10 @@ if vim.opt.diff:get() then
   keymap("n", "<leader>3", ":diffget REMOTE<CR>", { silent = true, desc = "Take Remote" })
 end
 
-keymap("n", "<leader>cj", "<cmd>%!jq<cr>", { silent = true, desc = "[JSON] Format" })
-keymap("n", "<leader>cJ", "<cmd>%!jq -c<cr>", { silent = true, desc = "[JSON] Compact Format" })
+keymap("n", "<leader>lj", "<cmd>%!jq<cr>", { silent = true, desc = "[JSON] Format" })
+keymap("n", "<leader>lJ", "<cmd>%!jq -c<cr>", { silent = true, desc = "[JSON] Compact Format" })
 
-keymap("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", { silent = true, desc = "Format" })
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", { silent = true, desc = "Format" })
 
 keymap("n", "<F10>", function()
   if vim.o.conceallevel > 0 then
@@ -96,18 +96,14 @@ keymap("n", "<C-M-j>", "<cmd>:TmuxResizeDown<CR>", { silent = true })
 keymap("n", "<C-M-h>", "<cmd>:TmuxResizeLeft<CR>", { silent = true })
 keymap("n", "<C-M-l>", "<cmd>:TmuxResizeRight<CR>", { silent = true })
 
-keymap("n", "<leader>cL", function()
+keymap("n", "<leader>ul", function()
   util.toggle("relativenumber")
-end, { silent = true, desc = "[Toggle] Relative Line Numbers" })
+end, { silent = true, desc = "  Relative Line Numbers" })
 
 -- quick find and replace
 keymap("n", "<leader>cr", [[:%s/\<<C-r>=expand("<cword>")<CR>\>/]], {
   silent = false,
   desc = "[Replace] Word Under Cursor (File)",
-})
-keymap("n", "<leader>cR", [[gv:s/\<<C-r>=expand("<cword>")<CR>\>/]], {
-  silent = false,
-  desc = "[Replace] Word Under Cursor (Last Selection)",
 })
 keymap("v", "<leader>cr", [["zy:%s/<C-r><C-o>"/]], {
   silent = false,

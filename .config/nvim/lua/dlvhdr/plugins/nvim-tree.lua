@@ -8,16 +8,16 @@ local M = {
         local api = require("nvim-tree.api")
         api.tree.toggle()
       end,
-      desc = "NvimTree (root dir)",
+      desc = "󰙅 NvimTree",
       remap = true,
     },
     {
-      "<leader>be",
+      "<leader>ue",
       function()
-        local actions = require("nvim-tree.actions")
+        local actions = require("nvim-tree.actions.root")
         actions.open_file.resize_window(true)
       end,
-      desc = "[Toggle] NvimTree Resize",
+      desc = "󰙅 Resize NvimTree",
       remap = true,
     },
   },

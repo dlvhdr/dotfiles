@@ -28,7 +28,7 @@ M.setup = function(opts)
     },
   })
 
-  vim.keymap.set("n", "<leader>co", function()
+  vim.keymap.set("n", "<leader>lo", function()
     vim.lsp.buf.code_action({
       apply = true,
       context = {
@@ -43,7 +43,7 @@ M.setup = function(opts)
         diagnostics = {},
       },
     })
-  end, { desc = "[LSP] Organize Imports" })
+  end, { desc = "Organize Imports" })
 end
 
 return M

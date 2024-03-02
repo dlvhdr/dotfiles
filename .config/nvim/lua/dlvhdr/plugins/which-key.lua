@@ -39,52 +39,52 @@ M.config = function()
   wk.register({
     ["*"] = "which_key_ignore",
     ["<Tab>"] = {
-      name = "Tabs",
+      name = "󰓩 Tabs",
     },
     f = {
-      name = "Telescope",
+      name = " Telescope",
     },
     g = {
-      name = "Git",
+      name = "󰊢 Git",
       d = {
-        name = "Diff",
+        name = " Diff",
       },
       y = {
-        name = "Copy URLs",
+        name = " Copy URLs",
       },
     },
     d = {
-      name = "Debug",
+      name = " Debug",
       l = {
-        name = "Log",
+        name = " Log",
       },
     },
     h = {
-      name = "Gitsigns",
+      name = " Gitsigns",
       t = {
-        name = "Toggle",
+        name = " Toggle",
       },
     },
     c = {
-      name = "Code",
+      name = " Code",
     },
     x = {
-      name = "Trouble",
+      name = " Trouble",
     },
     o = {
-      name = "Octo",
+      name = " Octo",
     },
     t = {
-      name = "Test",
-    },
-    s = {
-      name = "Replace",
-    },
-    gz = {
-      name = "Surround",
+      name = " Test",
     },
     b = {
-      name = "Buffers",
+      name = " Buffers",
+    },
+    u = {
+      name = " UI",
+    },
+    l = {
+      name = "󱌢 LSP",
     },
   }, opts)
 end

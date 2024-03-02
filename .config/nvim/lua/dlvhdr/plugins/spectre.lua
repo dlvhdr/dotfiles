@@ -3,11 +3,11 @@ return {
   cmd = "Spectre",
   keys = {
     {
-      "<leader>sr",
+      "<leader>cR",
       function()
         require("spectre").open()
       end,
-      desc = "Replace in files (Spectre)",
+      desc = " Replace in files (Spectre)",
     },
   },
 }
