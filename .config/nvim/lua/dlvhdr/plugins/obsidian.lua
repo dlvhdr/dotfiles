@@ -1,0 +1,55 @@
+return {
+  "epwalsh/obsidian.nvim",
+  version = "*", -- recommended, use latest release instead of latest commit
+  -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+  event = {
+    -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+    -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+    "BufReadPre /Users/dlvhdr/obsidian/obsidian/**.md",
+    "BufNewFile /Users/dlvhdr/obsidian/obsidian/**.md",
+  },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
+  opts = {
+    workspaces = {
+      {
+        name = "obsidian",
+        path = "~/obsidian/obsidian",
+      },
+    },
+    daily_notes = {
+      folder = "Daily",
+      date_format = "%Y-%m-%d",
+    },
+    picker = {
+      name = "telescope.nvim",
+    },
+    ui = {
+      enable = true,
+      update_debounce = 200,
+      checkboxes = {
+        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+        ["x"] = { char = "", hl_group = "ObsidianDone" },
+        [">"] = { char = "", hl_group = "ObsidianRightArrow" },
+        ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+      },
+      bullets = { char = "•", hl_group = "ObsidianBullet" },
+      external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+      reference_text = { hl_group = "ObsidianRefText" },
+      highlight_text = { hl_group = "ObsidianHighlightText" },
+      tags = { hl_group = "ObsidianTag" },
+      hl_groups = {
+        ObsidianTodo = { bold = true, fg = "#f78c6c" },
+        ObsidianDone = { bold = true, fg = "#89ddff" },
+        ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
+        ObsidianTilde = { bold = true, fg = "#ff5370" },
+        ObsidianBullet = { bold = true, fg = "#89ddff" },
+        ObsidianRefText = { underline = true, fg = "#c792ea" },
+        ObsidianExtLinkIcon = { fg = "#c792ea" },
+        ObsidianTag = { italic = true, fg = "#89ddff" },
+        ObsidianHighlightText = { bg = "#75662e" },
+      },
+    },
+  },
+}
