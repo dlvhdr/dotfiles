@@ -7,7 +7,7 @@ function M.list_registered(bufnr)
   -- create a list of formatters
   local formatter_names = {}
   for _, v in ipairs(registered) do
-    if v.name ~= "eslint_d" then
+    if v.name ~= "eslint_d" and v.name ~= "goimports-reviser" then
       local name = v.name
       if name == "prettierd" then
         name = "󰄭 Prettier"

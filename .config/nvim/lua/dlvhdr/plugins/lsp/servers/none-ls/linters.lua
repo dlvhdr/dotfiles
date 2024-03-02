@@ -15,6 +15,10 @@ function M.list_registered(filetype)
     return registered_providers[m] or {}
   end, alternative_methods))
 
+  providers_for_methods = vim.tbl_filter(function(provider)
+    return provider ~= "codespell"
+  end, providers_for_methods)
+
   return providers_for_methods
 end
 
