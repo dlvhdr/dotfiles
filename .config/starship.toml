@@ -126,8 +126,14 @@ disabled=true
 disabled=true
 
 [kubernetes]
-disabled=false
-format = 'in [󱃾 $context \($namespace\)](blue) '
+format = 'in [$symbol](blue) [$context](blue bold) [(\($namespace\))](white)'
+symbol = "󱃾"
+disabled = false
+contexts = [
+    { context_pattern = ".*kind.*", style = "green", context_alias = "dev"},
+    { context_pattern = ".*lab.*", style = "green", context_alias = " lab"},
+    { context_pattern = ".*production.*", style = "red", context_alias = "production 🚨🚨🚨"},
+]
 
 [localip]
 disabled=true
