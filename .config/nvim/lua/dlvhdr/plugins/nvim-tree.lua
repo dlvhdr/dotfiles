@@ -1,6 +1,7 @@
 local M = {
   "kyazdani42/nvim-tree.lua",
   cmd = { "NvimTree", "NvimTreeToggle" },
+  enabled = false,
   keys = {
     -- {
     --   "<leader>e",

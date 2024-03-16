@@ -40,9 +40,8 @@ return {
     end
   end,
   cmd = "Alpha",
-  requires = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
-    local colors = require("tokyonight.colors").setup()
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
     dashboard.section.header.val = apple

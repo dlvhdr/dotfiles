@@ -4,6 +4,8 @@ local M = {
   dependencies = {
     "rafamadriz/friendly-snippets",
   },
+  version = "v2.*",
+  build = "make install_jsregexp",
 }
 
 M.config = function()

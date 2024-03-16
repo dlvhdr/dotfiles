@@ -5,7 +5,7 @@ return {
     "folke/tokyonight.nvim",
     "SmiteshP/nvim-navic",
     "neovim/nvim-lspconfig",
-    "kyazdani42/nvim-web-devicons",
+    "nvim-tree/nvim-web-devicons",
   },
   config = function()
     local colors = require("tokyonight.colors").setup()

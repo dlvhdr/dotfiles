@@ -1,19 +1,20 @@
 return {
   "bloznelis/before.nvim",
+  event = "VeryLazy",
   config = function()
     local before = require("before")
     before.setup()
   end,
   keys = {
     {
-      "<C-H>",
+      "<C-S-O>",
       function()
         require("before").jump_to_last_edit()
       end,
       { desc = "Jump to last edit" },
     },
     {
-      "<C-L>",
+      "<C-S-I>",
       function()
         require("before").jump_to_next_edit()
       end,

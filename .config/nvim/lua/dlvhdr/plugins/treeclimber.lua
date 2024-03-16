@@ -1,6 +1,6 @@
 return {
   "drybalka/tree-climber.nvim",
-  dependecies = { "nvim-treesitter/nvim-treesitter" },
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
   keys = {
     {
       "K",
