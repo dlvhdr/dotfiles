@@ -46,7 +46,8 @@ keymap("n", "<leader>bQ", "<cmd>qa!<cr>", { silent = true, desc = "Quit nvim" })
 -- keymap("n", "<leader>fm", "<cmd>messages<cr>", { silent = true, desc = "Messages" })
 keymap("n", "<leader>fn", "<cmd>Noice telescope<cr>", { silent = true, desc = "Noice" })
 
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
+-- keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
+keymap("n", "<leader>e", "<cmd>Yazi<CR>", { silent = true, desc = "Toggle File Tree" })
 
 -- Trouble
 keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, desc = "Toggle Trouble" })

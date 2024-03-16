@@ -2,15 +2,15 @@ local M = {
   "kyazdani42/nvim-tree.lua",
   cmd = { "NvimTree", "NvimTreeToggle" },
   keys = {
-    {
-      "<leader>e",
-      function()
-        local api = require("nvim-tree.api")
-        api.tree.toggle()
-      end,
-      desc = "󰙅 NvimTree",
-      remap = true,
-    },
+    -- {
+    --   "<leader>e",
+    --   function()
+    --     local api = require("nvim-tree.api")
+    --     api.tree.toggle()
+    --   end,
+    --   desc = "󰙅 NvimTree",
+    --   remap = true,
+    -- },
     {
       "<leader>ue",
       function()
