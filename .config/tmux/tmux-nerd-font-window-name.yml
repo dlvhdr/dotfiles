@@ -5,4 +5,8 @@ config:
   icon-position: "left" # show the icon to the "left" or "right" of the window name (defaults to left)
 
 icons:
-  gh: " "
+  gh: ""
+  gt: "󰊢"
+  nvim: ""
+  mprocs: ""
+  yazi: "󰙅"
