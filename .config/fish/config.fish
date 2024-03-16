@@ -156,6 +156,8 @@ abbr --add wip "gt modify -cu -m 'wip'"
 abbr --add hl "humanlog --truncate=false"
 abbr --add ld "lazydocker -f ~"
 abbr --add e "yazi"
+abbr --add "?" "tlm suggest"
+abbr --add "??" "tlm explain"
 
 abbr --add eslint-restart "~/.local/share/nvim/mason/bin/eslint_d --restart"
 
