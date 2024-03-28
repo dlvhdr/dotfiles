@@ -69,3 +69,6 @@ customCommands:
     context: "files"
     loadingText: "opening gum commit tool"
     subprocess: true
+  - key: "F"
+    command: "git push --force-with-lease --no-verify"
+    context: "localBranches"
