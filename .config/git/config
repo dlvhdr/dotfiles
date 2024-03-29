@@ -1,6 +1,7 @@
 [user]
   name = Dolev Hadar
   email = dolev@komodor.io
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDcfOgk+7fVQNwnD3WQBUnABIBGO8k7YwUN/WWGCfSEz
 
 [includeIf "gitdir:~/dotfiles/"]
   path = config-personal
@@ -9,20 +10,31 @@
 [includeIf "gitdir:~/code/komodor/"]
   path = config-komodor
 
-; [commit]
-; 	gpgsign = true
+[credential]
+	helper = osxkeychain
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+
+[credential "https://github.com"]
+	username = dlvhdr
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 
 [tag]
 	gpgsign = true
 
-[gpg]
-	program = gpg
-
 [format]
 	signOff = false
-
-; [init]
-;   defaultBranch = main
 
 [pull]
   ff = only
@@ -31,7 +43,6 @@
 [blame]
   date = relative
 	coloring = highlightRecent
-	; date = human
 
 [rebase]
   updateRefs = true
@@ -46,11 +57,11 @@
   pager = delta
 
 [help]
-  # Autocorrect mistyped commands.
+  ; Autocorrect mistyped commands.
   autocorrect = 1
 
 [rerere]
-  # Remember my merges
+  ; Remember my merges
   enabled = true
 
 [pager]
@@ -85,7 +96,7 @@
   diffFilter = delta --color-only
 
 [add.interactive]
-  useBuiltin = false # required for git 2.37.0
+  useBuiltin = false ; required for git 2.37.0
 
 [merge]
   tool = nvimdiff
@@ -145,17 +156,17 @@
   main = master
   rblame = !git blame -w -M -C -C -C
   
-  # Delete local branches that no longer exist on the remote
+  ; Delete local branches that no longer exist on the remote
   gone = !git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
 
-  # Rebase interactive for all commits on feature branch
+  ; Rebase interactive for all commits on feature branch
   rebase-branch = !git rebase -i --onto master `git rev-parse --abbrev-ref HEAD`~1 
 
-  # preferred git log view
+  ; preferred git log view
   lg = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) %C(white)%s%C(reset) %C(dim white)-%C(reset) %ar %C(dim white)<%an>%C(reset)%C(auto)%d%C(reset)' --all
   lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) %C(white)%s%C(reset) %C(dim white)-%C(reset) %ar %C(dim white)<%an>%C(reset)%C(auto)%d%C(reset)%n' --all --stat
 
-  # review
+  ; review
   review-base = !git merge-base HEAD \"${review_base:-origin/master}\"
   files = !git diff --name-only $(git review-base)
   stat = !git diff --stat $(git review-base)
@@ -228,13 +239,3 @@
     line-numbers-right-style = "#3d4163"
     line-numbers-left-format = "{nm:>4}│"
     line-numbers-right-format = "{np:>4}│"
-[credential]
-	helper = osxkeychain
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
-[credential "https://github.com"]
-	username = dlvhdr
-[commit]
-	gpgsign = true
-[credential "https://dev.azure.com"]
-	useHttpPath = true
