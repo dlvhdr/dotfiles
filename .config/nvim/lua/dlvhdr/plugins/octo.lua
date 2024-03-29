@@ -3,14 +3,11 @@ return {
   dependencies = {
     "nvim-treesitter",
     "folke/tokyonight.nvim",
+    "folke/which-key.nvim",
   },
   cmd = "Octo",
   config = function()
-    local status_ok, octo = pcall(require, "octo")
-    if not status_ok then
-      print("NO OCTO :(")
-      return
-    end
+    local octo = require("octo")
 
     vim.treesitter.language.register("markdown", "octo")
 
@@ -69,14 +66,15 @@ return {
           delete_comment = { lhs = "<space>ocd", desc = "delete comment" },
           next_comment = { lhs = "]c", desc = "go to next comment" },
           prev_comment = { lhs = "[c", desc = "go to previous comment" },
-          react_hooray = { lhs = "<space>orp", desc = "add/remove 🎉 reaction" },
-          react_heart = { lhs = "<space>orh", desc = "add/remove ❤️ reaction" },
-          react_eyes = { lhs = "<space>ore", desc = "add/remove 👀 reaction" },
-          react_thumbs_up = { lhs = "<space>or+", desc = "add/remove 👍 reaction" },
-          react_thumbs_down = { lhs = "<space>or-", desc = "add/remove 👎 reaction" },
-          react_rocket = { lhs = "<space>orr", desc = "add/remove 🚀 reaction" },
-          react_laugh = { lhs = "<space>orl", desc = "add/remove 😄 reaction" },
-          react_confused = { lhs = "<space>orc", desc = "add/remove 😕 reaction" },
+          react_hooray = { lhs = "<space>oRp", desc = "add/remove 🎉 reaction" },
+          react_heart = { lhs = "<space>oRh", desc = "add/remove ❤️ reaction" },
+          react_eyes = { lhs = "<space>oRe", desc = "add/remove 👀 reaction" },
+          react_thumbs_up = { lhs = "<space>oR+", desc = "add/remove 👍 reaction" },
+          react_thumbs_down = { lhs = "<space>oR-", desc = "add/remove 👎 reaction" },
+          react_rocket = { lhs = "<space>oRr", desc = "add/remove 🚀 reaction" },
+          react_laugh = { lhs = "<space>oRl", desc = "add/remove 😄 reaction" },
+          react_confused = { lhs = "<space>oRc", desc = "add/remove 😕 reaction" },
+          review_start = { lhs = "<space>ors", desc = "start a review for the current PR" },
         },
         review_thread = {
           goto_issue = { lhs = "<space>ogi", desc = "navigate to a local repo issue" },
@@ -128,6 +126,79 @@ return {
           toggle_viewed = { lhs = "<leader><space>o", desc = "toggle viewer viewed state" },
         },
       },
+    })
+
+    local wk = require("which-key")
+    -- Main Octo buffer
+    local function attach_octo(bufnr)
+      wk.register({
+        a = { name = "Assignee" },
+        c = { name = "Comment" },
+        g = { name = "Go To" },
+        i = { name = "Issue" },
+        l = { name = "Label" },
+        p = {
+          name = "Pull Request",
+          r = { "<cmd>Octo pr ready<CR>", "mark draft as ready to review" },
+          s = { "<cmd>Octo pr checks<CR>", "status of all checks" },
+          m = { name = "Manage pull request" },
+          M = { name = "Merge" },
+        },
+        R = { name = "Reaction" },
+        s = { name = "Submit" },
+        v = { name = "Reviewer" },
+        r = {
+          name = "Review",
+          s = { "<cmd>Octo review start<CR>", "start review" },
+          r = { "<cmd>Octo review resume<CR>", "resume" },
+          m = {
+            name = "Manage review",
+            d = { "<cmd>Octo review discard<CR>", "delete pending review" },
+            s = { "<cmd>Octo review submit<CR>", "submit review" },
+            c = { "<cmd>Octo review comments<CR>", "view pending comments" },
+            p = { "<cmd>Octo review commit<CR>", "pick a commit" },
+          },
+        },
+      }, {
+        name = " Octo",
+        buffer = bufnr,
+        mode = "n", -- NORMAL mode
+        prefix = "<leader>o",
+        silent = true, -- use `silent` when creating keymaps
+        noremap = true, -- use `noremap` when creating keymaps
+        nowait = false, -- use `nowait` when creating keymaps
+      })
+    end
+
+    -- Review buffer
+    local function attach_conf(bufnr)
+      wk.register({
+        c = { name = "Comment" },
+        s = { name = "Suggestion" },
+
+        q = { "<cmd>Octo review close<CR>", "quit review" },
+      }, {
+        buffer = bufnr,
+        mode = "n", -- NORMAL mode
+        prefix = "<leader>o",
+        silent = true, -- use `silent` when creating keymaps
+        noremap = true, -- use `noremap` when creating keymaps
+        nowait = false, -- use `nowait` when creating keymaps
+      })
+    end
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "octo",
+      callback = function()
+        attach_octo(0)
+      end,
+    })
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "conf",
+      callback = function()
+        attach_conf(0)
+      end,
     })
 
     vim.cmd("hi! link OctoEditable CursorLine")
