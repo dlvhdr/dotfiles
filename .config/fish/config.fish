@@ -114,8 +114,8 @@ abbr --add gaa "git add -A"
 abbr --add gra "git rebase --abort"
 abbr --add grc "git rebase --continue"
 abbr --add gpf "git push --force"
-abbr --add gcm 'git commit -m "$(gum input)"'
-abbr --add gm 'gt modify -cu -m "$(gum input)"'
+abbr --add gm 'git commit -m "$(gum input)"'
+abbr --add gcm 'gt modify -cu -m "$(gum input)"'
 abbr --add gclean 'git branch | cut -c 3- | gum choose --no-limit | xargs git branch -D'
 abbr --add pr "gh vpr"
 abbr --add vr "gh vr"
