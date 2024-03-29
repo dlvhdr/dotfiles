@@ -1,0 +1,20 @@
+{
+  "margin": [24, 24, 24, 24],
+  "padding": [20, 40, 20, 20],
+  "window": true,
+  "width": 0,
+  "height": 0,
+  "config": "default",
+  "theme": "catppuccin-frappe",
+  "border": { "radius": 8, "width": 0, "color": "#515151" },
+  "shadow": { "blur": 0, "x": 0, "y": 0 },
+  "font": {
+    "family": "CommitMonoDolev",
+    "file": "",
+    "size": 15,
+    "ligatures": true
+  },
+  "line_height": 1.2,
+  "line_numbers": true
+}
+
