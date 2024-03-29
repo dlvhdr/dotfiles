@@ -10,6 +10,7 @@ fish_add_path $HOME/.local/share/npm/bin
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
 
 set -gx DOCKER_CONFIG "$HOME/.docker"
+set -gx HOMEBREW_NO_AUTO_UPDATE true
 
 if status is-interactive
   # TODO: replace with direnv
@@ -90,7 +91,6 @@ abbr --add gcode "$CODE"
 abbr --add gd "cd $HOME/Downloads"
 alias r "cd_repo"
 alias p "cd_pkg"
-abbr --add ssh "kitty +kitten ssh"
 abbr --add "k" "kubectl"
 
 # others
