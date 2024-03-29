@@ -77,12 +77,12 @@ local M = {
       desc = "Live Grep Current Dir",
     },
     {
-      mode = "v",
-      "<leader>gdl",
+      mode = { "n", "x", "o", "v" },
+      "<leader>gda",
       function()
-        require("telescope").extensions.advanced_git_search.diff_commit_line()
+        require("telescope").extensions.advanced_git_search.show_custom_functions()
       end,
-      desc = "Commits That Affected The Selected Lines",
+      desc = "Advanced Git Search",
     },
   },
 }
