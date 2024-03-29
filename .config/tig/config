@@ -126,6 +126,13 @@ set mouse-scroll    = 3   # Number of lines to scroll via the mouse
 set mouse-wheel-cursor    = no    # Prefer moving the cursor to scrolling the view?
 set diff-highlight = true
 
+bind generic @ @sh -c "\
+  ( \
+    tmux has-session -t '.{last}' \
+    && tmux respawn-pane -t '.{last}' -k 'LESS= DELTA_PAGER=\"less -R\" git show %(commit)' \
+  ) \
+  || tmux split-window -l 80% 'LESS= DELTA_PAGER=\"less -R\" git show %(commit)'"
+
 # User-defined commands
 # ---------------------
 # These commands allow to run shell commands directly from within Tig.
