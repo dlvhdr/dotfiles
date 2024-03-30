@@ -176,6 +176,7 @@
 	reviewone = !$EDITOR -p +\"tabdo Gdiff ${review_base:-origin/master}\" +\"let g:gitgutter_diff_base = '${review_base:-origin/master}'\"
 	reviewf = !$EDITOR -p $(git files | fzf -m --reverse --height 40%) +\"tabdo Gdiff ${review_base:-origin/master}\" +\"let g:gitgutter_diff_base = '${review_base:-origin/master}'\"
 	root = !cd $(git rev-parse --show-toplevel)
+  yolo = !git commit -m "$(curl -s https://whatthecommit.com/index.txt)"
 
 [color]
   pager = true
