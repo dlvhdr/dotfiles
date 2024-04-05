@@ -124,7 +124,7 @@ set history-size    = 1000   # Size of persistent history, 0 to disable
 set mouse     = yes    # Enable mouse support?
 set mouse-scroll    = 3   # Number of lines to scroll via the mouse
 set mouse-wheel-cursor    = no    # Prefer moving the cursor to scrolling the view?
-set diff-highlight = true
+# set diff-highlight = true
 
 bind generic @ @sh -c "\
   ( \
