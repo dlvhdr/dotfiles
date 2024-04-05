@@ -10,7 +10,7 @@ function M.list_registered(bufnr)
     if v.name ~= "eslint_d" and v.name ~= "goimports-reviser" then
       local name = v.name
       if name == "prettierd" then
-        name = "󰄭 Prettier"
+        name = " Prettier"
       end
 
       table.insert(formatter_names, name)
