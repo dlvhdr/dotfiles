@@ -4,7 +4,7 @@
 # video file with `gum filter` Set the frame rate, desired width, and max
 # colors to use Then, converts the video to a GIF.
 
-INPUT=$(gum filter --placeholder "Input file")
+INPUT="$1"
 FRAMERATE=$(gum input --prompt "Frame rate: " --placeholder "Frame Rate" --prompt.foreground 240 --value "50")
 WIDTH=$(gum input --prompt "Width: " --placeholder "Width" --prompt.foreground 240 --value "1200")
 MAXCOLORS=$(gum input --prompt "Max Colors: " --placeholder "Max Colors" --prompt.foreground 240 --value "256")
