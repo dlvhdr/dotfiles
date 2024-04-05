@@ -84,6 +84,11 @@ M.config = function()
         luasnip.lsp_expand(args.body)
       end,
     },
+    view = {
+      entries = {
+        follow_cursor = true,
+      },
+    },
     window = {
       completion = {
         border = border("CmpBorder"),
