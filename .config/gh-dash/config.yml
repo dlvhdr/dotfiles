@@ -59,8 +59,6 @@ defaults:
         grow: true,
         width: 10
         hidden: false
-      # assignees:
-      #   hidden: false
 
   preview:
     open: true
@@ -68,7 +66,6 @@ defaults:
   prsLimit: 20
   issuesLimit: 20
 repoPaths:
-  CodinGame/monaco-vscode-api: ~/code/playground/monaco-vscode-api
   dlvhdr/gh-dash: ~/code/personal/gh-dash
   komodorio/*: ~/code/komodor/*
 
@@ -81,6 +78,10 @@ keybindings:
         '
     - key: b
       command: cd {{.RepoPath}} && gh pr view {{.PrNumber}} --json statusCheckRollup | command jq -rcj '.statusCheckRollup.[] | select(.context == "buildkite/mono") | .targetUrl' | xargs open
+    - key: a
+      command: >
+        gh pr review --repo {{.RepoName}} --approve --body "$(gum input --prompt='Approval Comment: ')" {{.PrNumber}}
+
 theme:
   colors:
     text:
