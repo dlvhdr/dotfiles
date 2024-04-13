@@ -8,15 +8,13 @@ set -U fish_greeting # disable fish greeting
 
 fish_add_path $HOME/.local/share/npm/bin
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
+fish_add_path /opt/homebrew/opt/postgresql@15/bin
 
 set -gx DOCKER_CONFIG "$HOME/.docker"
 set -gx HOMEBREW_NO_AUTO_UPDATE true
+set -gx devbox_no_prompt true
 
 if status is-interactive
-  # TODO: replace with direnv
-  # pyenv init - | source
-  # eval "$(pyenv virtualenv-init -)"
-
   source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
 
   eval (/opt/homebrew/bin/brew shellenv)
@@ -34,9 +32,12 @@ if status is-interactive
   set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 
   set -x GPG_TTY (tty)
+
+  set -gx DIRENV_LOG_FORMAT ""
+  direnv hook fish | source
 end
 
-fnm env --use-on-cd --version-file-strategy recursive | source
+# fnm env --use-on-cd --version-file-strategy recursive | source
 
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
 set fzf_history_time_format "%d-%m %H:%M"
@@ -48,7 +49,7 @@ set -gx FZF_DEFAULT_OPTS "\
 --pointer='' \
 --marker=' ' \
 --ansi \
---height=20%
+--height=20% \
 --color='16,bg+:-1,gutter:-1,prompt:5,pointer:5,marker:6,border:4,label:4,header:italic'"
 
 set -gx GUM_FILTER_INDICATOR "→"
@@ -160,3 +161,4 @@ abbr --add "?" "mods --role cmd -q"
 
 abbr --add eslint-restart "~/.local/share/nvim/mason/bin/eslint_d --restart"
 
+abbr --add dr "devbox run"
