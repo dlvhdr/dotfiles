@@ -20,7 +20,24 @@ return {
       end,
     },
     {
+      "jay-babu/mason-nvim-dap.nvim",
+      dependencies = "mason.nvim",
+      cmd = { "DapInstall", "DapUninstall" },
+      opts = {
+        automatic_installation = true,
+        handlers = {},
+        ensure_installed = {
+          "js-debug-adapter",
+          "debugpy",
+          "dlv",
+        },
+      },
+    },
+    {
       "rcarriga/nvim-dap-ui",
+      dependencies = {
+        "nvim-neotest/nvim-nio",
+      },
       -- stylua: ignore
       keys = {
         { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
@@ -123,16 +140,7 @@ return {
       "theHamsta/nvim-dap-virtual-text",
       opts = {},
     },
-    {
-      "jay-babu/mason-nvim-dap.nvim",
-      dependencies = "mason.nvim",
-      cmd = { "DapInstall", "DapUninstall" },
-      opts = {
-        automatic_installation = true,
-        handlers = {},
-        ensure_installed = {},
-      },
-    },
+
     {
       "leoluz/nvim-dap-go",
       config = function()

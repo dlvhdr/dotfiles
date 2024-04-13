@@ -3,7 +3,6 @@ local M = {
   cmd = { "Mason", "MasonUpdate" },
   build = ":MasonUpdate",
   dependencies = {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
     "williamboman/mason-lspconfig.nvim",
   },
 }
@@ -16,6 +15,8 @@ function M.config()
     "eslint_d",
     "shfmt",
     "bash-language-server",
+    "js-debug-adapter",
+    "codespell",
   }
   require("mason").setup({
     ui = {
