@@ -1,6 +1,6 @@
 add_newline = true
 command_timeout = 150
-format = "$directory$git_branch$kubernetes$line_break$character"
+format = "$directory$git_branch$kubernetes${custom.devbox}${env_var.DEVBOX_SHELL_ENABLED}$line_break$character"
 
 [character]
 success_symbol = "[󱝁 ](fg:#7dcfff)"
@@ -37,6 +37,14 @@ truncation_symbol = "…/"
 "~/code/playground" = "@playground"
 "~/code/personal" = "@personal"
 "~/code/scripts" = "@scripts"
+
+[env_var.DEVBOX_SHELL_ENABLED]
+format = "[\\(devbox\\) ](bold fg:green)"
+
+[custom.devbox]
+format = "[\\(devbox\\)]($style) "
+style = "fg:green dimmed"
+when = "env | grep DIRENV_FILE"
 
 [aws]
 disabled=true
@@ -130,9 +138,9 @@ format = 'in [$symbol](blue) [$context](blue bold) [(\($namespace\))](white)'
 symbol = "󱃾"
 disabled = false
 contexts = [
-    { context_pattern = ".*kind.*", style = "green", context_alias = "dev"},
-    { context_pattern = ".*lab.*", style = "green", context_alias = " lab"},
-    { context_pattern = ".*production.*", style = "red", context_alias = "production 🚨🚨🚨"},
+    { context_pattern = ".*kind.*", style = "green"},
+    { context_pattern = ".*lab.*", style = "green"},
+    { context_pattern = ".*production.*", style = "(red)", context_alias = "production 🚨🚨🚨"},
 ]
 
 [localip]
