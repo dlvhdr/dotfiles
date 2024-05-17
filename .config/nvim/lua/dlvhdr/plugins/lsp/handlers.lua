@@ -64,21 +64,22 @@ M.on_attach = function(client, bufnr)
     })
   end
 
-  -- if client.server_capabilities.codeLensProvider then
-  --   vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI", "InsertLeave" }, {
-  --     pattern = "<buffer>",
-  --     callback = function()
-  --       -- vim.lsp.codelens.refresh()
-  --     end,
-  --     group = vim.api.nvim_create_augroup("LSPCodeLens", { clear = true }),
-  --   })
-  --   vim.keymap.set(
-  --     "n",
-  --     "gl",
-  --     "<cmd>lua vim.lsp.codelens.run()<CR>",
-  --     { silent = true, buffer = bufnr, desc = "Codelens" }
-  --   )
-  -- end
+  if client.supports_method("textDocument/codeLens") then
+    vim.lsp.codelens.refresh()
+    vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+      buffer = bufnr,
+      callback = vim.lsp.codelens.refresh,
+    })
+  end
+
+  if client.supports_method("textDocument/inlayHint") then
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "", {
+      callback = function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end,
+      desc = "  Inlay [h]ints",
+    })
+  end
 
   local config = {
     -- disable virtual text

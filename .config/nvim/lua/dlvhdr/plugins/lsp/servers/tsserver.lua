@@ -9,6 +9,16 @@ M.setup = function(opts)
     root_dir = lspconfig.util.root_pattern("package.json"),
     settings = {
       typescript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        },
         format = {
           indentSize = vim.o.shiftwidth,
           convertTabsToSpaces = vim.o.expandtab,
@@ -16,6 +26,16 @@ M.setup = function(opts)
         },
       },
       javascript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        },
         format = {
           indentSize = vim.o.shiftwidth,
           convertTabsToSpaces = vim.o.expandtab,
