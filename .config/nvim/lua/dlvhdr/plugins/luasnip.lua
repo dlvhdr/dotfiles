@@ -6,6 +6,31 @@ local M = {
   },
   version = "v2.*",
   build = "make install_jsregexp",
+  keys = {
+    {
+      "<tab>",
+      function()
+        return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+      end,
+      expr = true,
+      silent = true,
+      mode = "i",
+    },
+    {
+      "<tab>",
+      function()
+        require("luasnip").jump(1)
+      end,
+      mode = "s",
+    },
+    {
+      "<s-tab>",
+      function()
+        require("luasnip").jump(-1)
+      end,
+      mode = { "i", "s" },
+    },
+  },
 }
 
 M.config = function()
@@ -48,31 +73,13 @@ M.config = function()
 
   luasnip.filetype_extend("typescriptreact", { "typescript" })
 
-  require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/dlvhdr/snippets" })
+  require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/lua/dlvhdr/snippets" } })
   require("luasnip.loaders.from_vscode").lazy_load()
 
   -- vim.keymap.set("n", "<leader>s", function()
   --   vim.cmd([[luafile $XDG_CONFIG_HOME/nvim/lua/dlvhdr/luasnip.lua]])
   --   vim.notify("Reloaded snippets!", "info")
   -- end, { silent = true })
-
-  vim.keymap.set({ "i", "s" }, "<c-k>", function()
-    if luasnip.expand_or_jumpable() then
-      luasnip.expand_or_jump()
-    end
-  end, { silent = true, desc = "LuaSnip Next Node" })
-
-  vim.keymap.set({ "i", "s" }, "<c-j>", function()
-    if luasnip.jumpable(-1) then
-      luasnip.jump(-1)
-    end
-  end, { silent = true, desc = "LuaSnip Previous Node" })
-
-  vim.keymap.set({ "i", "s" }, "<c-l>", function()
-    if luasnip.choice_active() then
-      luasnip.change_choice(1)
-    end
-  end, { silent = true, desc = "LuaSnip Next Choice" })
 end
 
 return M
