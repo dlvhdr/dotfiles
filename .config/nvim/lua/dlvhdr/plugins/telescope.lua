@@ -20,20 +20,6 @@ local M = {
     { "<leader>fp", "<cmd>Telescope pickers<cr>", desc = "Pickers" },
     { "<leader>fs", ":lua require('telescope.builtin').git_status()<CR>", desc = "Git Status" },
     {
-      "<leader>ff",
-      function()
-        local themes = require("telescope.themes")
-        local theme = themes.get_dropdown()
-        require("telescope.builtin").lsp_document_symbols({
-          layout_config = theme.layout_config,
-          previewer = false,
-          results_title = false,
-          symbols = { "function" },
-        })
-      end,
-      desc = "Functions In File",
-    },
-    {
       "<leader>fb",
       ":lua require('dlvhdr.plugins.telescope').buffers()<CR>",
       desc = "Open Buffers",
