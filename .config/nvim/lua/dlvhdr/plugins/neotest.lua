@@ -91,71 +91,72 @@ return {
 
     require("neotest").setup(opts)
   end,
-  keys = {
-    {
-      "<leader>tt",
-      function()
-        require("neotest").run.run(vim.fn.expand("%"))
-      end,
-      desc = "Run File",
-    },
-    {
-      "<leader>tT",
-      function()
-        require("neotest").run.run(vim.loop.cwd())
-      end,
-      desc = "Run All Test Files",
-    },
-    {
-      "<leader>tr",
-      function()
-        require("neotest").run.run()
-      end,
-      desc = "Run Nearest",
-    },
-    {
-      "<leader>ts",
-      function()
-        require("neotest").summary.toggle()
-      end,
-      desc = "Toggle Summary",
-    },
-    {
-      "<leader>to",
-      function()
-        require("neotest").output.open({
-          enter = true,
-          open_win = function(settings)
-            local height = math.min(settings.height, vim.o.lines - 2)
-            local width = math.min(settings.width, vim.o.columns - 2)
-            return vim.api.nvim_open_win(0, true, {
-              relative = "editor",
-              row = 7,
-              col = (vim.o.columns - width) / 2,
-              width = width,
-              height = height,
-              style = "minimal",
-              border = "rounded",
-              noautocmd = true,
-            })
-          end,
-        })
-      end,
-      desc = "Show Output",
-    },
-    {
-      "<leader>tO",
-      function()
-        require("neotest").output_panel.toggle()
-      end,
-      desc = "Toggle Output Panel",
-    },
-    {
-      "<leader>tS",
-      function()
-        require("neotest").run.stop()
-      end,
-      desc = "Stop",
-    },
-  },
+  enabled = false,
+  -- keys = {
+  --   {
+  --     "<leader>tt",
+  --     function()
+  --       require("neotest").run.run(vim.fn.expand("%"))
+  --     end,
+  --     desc = "Run File",
+  --   },
+  --   {
+  --     "<leader>tT",
+  --     function()
+  --       require("neotest").run.run(vim.loop.cwd())
+  --     end,
+  --     desc = "Run All Test Files",
+  --   },
+  --   {
+  --     "<leader>tr",
+  --     function()
+  --       require("neotest").run.run()
+  --     end,
+  --     desc = "Run Nearest",
+  --   },
+  --   {
+  --     "<leader>ts",
+  --     function()
+  --       require("neotest").summary.toggle()
+  --     end,
+  --     desc = "Toggle Summary",
+  --   },
+  --   {
+  --     "<leader>to",
+  --     function()
+  --       require("neotest").output.open({
+  --         enter = true,
+  --         open_win = function(settings)
+  --           local height = math.min(settings.height, vim.o.lines - 2)
+  --           local width = math.min(settings.width, vim.o.columns - 2)
+  --           return vim.api.nvim_open_win(0, true, {
+  --             relative = "editor",
+  --             row = 7,
+  --             col = (vim.o.columns - width) / 2,
+  --             width = width,
+  --             height = height,
+  --             style = "minimal",
+  --             border = "rounded",
+  --             noautocmd = true,
+  --           })
+  --         end,
+  --       })
+  --     end,
+  --     desc = "Show Output",
+  --   },
+  --   {
+  --     "<leader>tO",
+  --     function()
+  --       require("neotest").output_panel.toggle()
+  --     end,
+  --     desc = "Toggle Output Panel",
+  --   },
+  --   {
+  --     "<leader>tS",
+  --     function()
+  --       require("neotest").run.stop()
+  --     end,
+  --     desc = "Stop",
+  --   },
+  -- },
 }
