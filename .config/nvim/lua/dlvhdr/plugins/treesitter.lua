@@ -3,7 +3,8 @@ local M = {
   build = ":TSUpdate",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    -- TODO: wait for nvim 0.10.1
+    -- "nvim-treesitter/nvim-treesitter-textobjects",
     "RRethy/nvim-treesitter-textsubjects",
     "nvim-treesitter/nvim-treesitter-refactor",
     "mfussenegger/nvim-treehopper",
@@ -15,25 +16,13 @@ local M = {
 }
 
 M.config = function()
-  local parsers_ok, parsers = pcall(require, "nvim-treesitter.parsers")
-  if not parsers_ok then
-    return
-  end
+  local parsers = require("nvim-treesitter.parsers")
+  local configs = require("nvim-treesitter.configs")
 
-  local query_ok, _ = pcall(require, "nvim-treesitter.query_predicates")
-  if not query_ok then
-    return
-  end
-
-  local configs_ok, configs = pcall(require, "nvim-treesitter.configs")
-  if not configs_ok then
-    return
-  end
-
-  ---@diagnostic disable: missing-fields
   configs.setup({
     sync_install = false,
     auto_install = true,
+    ignore_install = {},
     ensure_installed = {
       "c",
       "lua",
@@ -134,10 +123,6 @@ M.config = function()
   parser_config.markdown.filetype_to_parsername = "octo"
 
   vim.g.skip_ts_context_commentstring_module = true
-  require("ts_context_commentstring").setup({
-    enable_autocmd = false,
-  })
-
   vim.g.matchup_matchparen_offscreen = { method = "popup" }
 end
 
