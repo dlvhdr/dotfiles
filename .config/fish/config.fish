@@ -37,7 +37,7 @@ if status is-interactive
   direnv hook fish | source
 end
 
-# fnm env --use-on-cd --version-file-strategy recursive | source
+fnm env --use-on-cd --version-file-strategy recursive | source
 
 set fzf_preview_dir_cmd exa --group-directories-first --icons -a
 set fzf_history_time_format "%d-%m %H:%M"
