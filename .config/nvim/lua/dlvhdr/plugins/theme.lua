@@ -78,6 +78,7 @@ M.config = function()
       hl.CmpBorder = { fg = c.fg_gutter, bg = "NONE" }
       hl.CmpDocBorder = { fg = c.fg_gutter, bg = "NONE" }
       hl.TelescopeBorder = { fg = c.fg_gutter, bg = "NONE" }
+      hl.TelescopePromptBorder = { fg = c.fg_gutter, bg = "NONE" }
       hl.TelescopePromptTitle = { fg = c.blue, bg = "NONE" }
       hl.TelescopeResultsTitle = { fg = c.teal, bg = "NONE" }
       hl.TelescopePreviewTitle = { fg = c.fg, bg = "NONE" }
@@ -98,6 +99,7 @@ M.config = function()
       hl.MatchParen = { bg = c.fg_gutter }
       hl.WinBar = { bg = "NONE" }
       hl.WinBarNC = { bg = "NONE" }
+      hl.LspInlayHint = { bg = "NONE", fg = c.dark3 }
     end,
   })
 
