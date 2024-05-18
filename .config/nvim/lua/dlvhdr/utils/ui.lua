@@ -9,12 +9,19 @@ local M = {}
 function M.get_signs(buf, lnum)
   -- Get regular signs
   ---@type Sign[]
-  local signs = vim.tbl_map(function(sign)
-    ---@type Sign
-    local ret = vim.fn.sign_getdefined(sign.name)[1]
-    ret.priority = sign.priority
-    return ret
-  end, vim.fn.sign_getplaced(buf, { group = "*", lnum = lnum })[1].signs)
+  local signs = {}
+
+  if vim.fn.has("nvim-0.10") == 0 then
+    -- Only needed for Neovim <0.10
+    -- Newer versions include legacy signs in nvim_buf_get_extmarks
+    for _, sign in ipairs(vim.fn.sign_getplaced(buf, { group = "*", lnum = lnum })[1].signs) do
+      local ret = vim.fn.sign_getdefined(sign.name)[1] --[[@as Sign]]
+      if ret then
+        ret.priority = sign.priority
+        signs[#signs + 1] = ret
+      end
+    end
+  end
 
   -- Get extmark signs
   local extmarks = vim.api.nvim_buf_get_extmarks(
@@ -64,7 +71,24 @@ function M.icon(sign, len)
   return sign.texthl and ("%#" .. sign.texthl .. "#" .. text .. "%*") or text
 end
 
-local print = true
+function M.foldtext()
+  local ok = pcall(vim.treesitter.get_parser, vim.api.nvim_get_current_buf())
+  local ret = ok and vim.treesitter.foldtext and vim.treesitter.foldtext()
+  if not ret or type(ret) == "string" then
+    ret = { { vim.api.nvim_buf_get_lines(0, vim.v.lnum - 1, vim.v.lnum, false)[1], {} } }
+  end
+  table.insert(ret, { " " .. "󰇘" })
+
+  if not vim.treesitter.foldtext then
+    return table.concat(
+      vim.tbl_map(function(line)
+        return line[1]
+      end, ret),
+      " "
+    )
+  end
+  return ret
+end
 
 function M.statuscolumn()
   local win = vim.g.statusline_winid
@@ -78,7 +102,7 @@ function M.statuscolumn()
     ---@type Sign?,Sign?,Sign?
     local left, right, fold
     for _, s in ipairs(M.get_signs(buf, vim.v.lnum)) do
-      if s.name and s.name:find("GitSign") then
+      if s.name and (s.name:find("GitSign") or s.name:find("MiniDiffSign")) then
         right = s
       else
         left = s
@@ -93,7 +117,7 @@ function M.statuscolumn()
       end
     end)
     -- Left: mark or non-git sign
-    components[1] = M.icon(left)
+    components[1] = M.icon(M.get_mark(buf, vim.v.lnum) or left)
     -- Right: fold icon or git sign (only if file)
     components[3] = is_file and M.icon(fold or right) or ""
   end
@@ -111,13 +135,119 @@ function M.statuscolumn()
     components[2] = "%=" .. components[2] .. " " -- right align
   end
 
+  if vim.v.virtnum ~= 0 then
+    components[2] = "%= "
+  end
+
   return table.concat(components, "")
 end
 
-M.test = function()
-  local win = vim.g.statusline_winid
-  local buf = vim.api.nvim_win_get_buf(win)
-  vim.print("test", buf)
+---@return {fg?:string}?
+function M.fg(name)
+  local color = M.color(name)
+  return color and { fg = color } or nil
+end
+
+---@param name string
+---@param bg? boolean
+---@return string?
+function M.color(name, bg)
+  ---@type {foreground?:number}?
+  ---@diagnostic disable-next-line: deprecated
+  local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name, link = false })
+    or vim.api.nvim_get_hl_by_name(name, true)
+  ---@diagnostic disable-next-line: undefined-field
+  ---@type string?
+  local color = nil
+  if hl then
+    if bg then
+      color = hl.bg or hl.background
+    else
+      color = hl.fg or hl.foreground
+    end
+  end
+  return color and string.format("#%06x", color) or nil
+end
+
+M.skip_foldexpr = {} ---@type table<number,boolean>
+local skip_check = assert(vim.uv.new_check())
+
+function M.foldexpr()
+  local buf = vim.api.nvim_get_current_buf()
+
+  -- still in the same tick and no parser
+  if M.skip_foldexpr[buf] then
+    return "0"
+  end
+
+  -- don't use treesitter folds for non-file buffers
+  if vim.bo[buf].buftype ~= "" then
+    return "0"
+  end
+
+  -- as long as we don't have a filetype, don't bother
+  -- checking if treesitter is available (it won't)
+  if vim.bo[buf].filetype == "" then
+    return "0"
+  end
+
+  local ok = pcall(vim.treesitter.get_parser, buf)
+
+  if ok then
+    return vim.treesitter.foldexpr()
+  end
+
+  -- no parser available, so mark it as skip
+  -- in the next tick, all skip marks will be reset
+  M.skip_foldexpr[buf] = true
+  skip_check:start(function()
+    M.skip_foldexpr = {}
+    skip_check:stop()
+  end)
+  return "0"
+end
+
+---@param buf number?
+function M.bufremove(buf)
+  buf = buf or 0
+  buf = buf == 0 and vim.api.nvim_get_current_buf() or buf
+
+  if vim.bo.modified then
+    local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+    if choice == 0 then -- Cancel
+      return
+    end
+    if choice == 1 then -- Yes
+      vim.cmd.write()
+    end
+  end
+
+  for _, win in ipairs(vim.fn.win_findbuf(buf)) do
+    vim.api.nvim_win_call(win, function()
+      if not vim.api.nvim_win_is_valid(win) or vim.api.nvim_win_get_buf(win) ~= buf then
+        return
+      end
+      -- Try using alternate buffer
+      local alt = vim.fn.bufnr("#")
+      if alt ~= buf and vim.fn.buflisted(alt) == 1 then
+        vim.api.nvim_win_set_buf(win, alt)
+        return
+      end
+
+      -- Try using previous buffer
+      local has_previous = pcall(vim.cmd, "bprevious")
+      if has_previous and buf ~= vim.api.nvim_win_get_buf(win) then
+        return
+      end
+
+      -- Create new listed buffer
+      local new_buf = vim.api.nvim_create_buf(true, false)
+      vim.api.nvim_win_set_buf(win, new_buf)
+    end)
+  end
+  if vim.api.nvim_buf_is_valid(buf) then
+    pcall(vim.cmd, "bdelete! " .. buf)
+  end
 end
 
 return M
