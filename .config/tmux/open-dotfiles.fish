@@ -1,7 +1,7 @@
 #!/opt/homebrew/bin/fish
 
 if not tmux has-session -t dotfiles 2>/dev/null;
-  tmux new-session -d -s dotfiles -c '$HOME/dotfiles'
+  tmux new-session -d -s dotfiles -c "$HOME/dotfiles"
 end
 
 set windows (tmux list-windows -t dotfiles -F '#{pane_tty} #{window_index}')
@@ -19,4 +19,4 @@ end
 
 tmux switch-client -t dotfiles
 tmux neww
-tmux send-keys -t dotfiles 'cd $HOME/dotfiles && ./.t' Enter;
+tmux send-keys -t dotfiles "cd $HOME/dotfiles && ./.t" Enter;

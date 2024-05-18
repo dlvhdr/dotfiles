@@ -1,6 +1,6 @@
 add_newline = true
 command_timeout = 150
-format = "$directory$git_branch$kubernetes${custom.devbox}${env_var.DEVBOX_SHELL_ENABLED}$line_break$character"
+format = "$directory$git_branch$kubernetes${env_var.DEVBOX_SHELL_ENABLED}$line_break$character"
 
 [character]
 success_symbol = "[󱝁 ](fg:#7dcfff)"
@@ -41,10 +41,10 @@ truncation_symbol = "…/"
 [env_var.DEVBOX_SHELL_ENABLED]
 format = "[\\(devbox\\) ](bold fg:green)"
 
-[custom.devbox]
-format = "[\\(devbox\\)]($style) "
-style = "fg:green dimmed"
-when = "env | grep DIRENV_FILE"
+# [custom.devbox]
+# format = "[\\(devbox\\)]($style) "
+# style = "fg:green dimmed"
+# when = "env | grep DIRENV_FILE"
 
 [aws]
 disabled=true
