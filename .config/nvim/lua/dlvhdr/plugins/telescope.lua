@@ -28,17 +28,17 @@ local M = {
       "<leader>fg",
       function()
         require("telescope").extensions.egrepify.egrepify({
-          vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--hidden",
-            "--trim", -- add this value
-          },
+          -- vimgrep_arguments = {
+          --   "rg",
+          --   "--color=never",
+          --   "--no-heading",
+          --   "--with-filename",
+          --   "--line-number",
+          --   "--column",
+          --   "--smart-case",
+          --   "--hidden",
+          --   "--trim", -- add this value
+          -- },
         })
       end,
       desc = "Live Grep",
@@ -79,7 +79,7 @@ M.config = function()
     return
   end
 
-  local trouble_ok, trouble = pcall(require, "trouble.providers.telescope")
+  local trouble_ok, trouble = pcall(require, "trouble.sources.telescope")
   if not trouble_ok then
     return
   end
@@ -111,7 +111,7 @@ M.config = function()
       entry_prefix = "  ",
       mappings = {
         i = {
-          ["<c-t>"] = trouble.open_with_trouble,
+          ["<c-t>"] = trouble.open,
           ["<c-h>"] = layout_actions.toggle_preview,
           ["<C-d>"] = actions.results_scrolling_down,
           ["<C-u>"] = actions.results_scrolling_up,
@@ -124,7 +124,7 @@ M.config = function()
         },
         n = {
           ["q"] = actions.delete_buffer,
-          ["<c-t>"] = trouble.open_with_trouble,
+          ["<c-t>"] = trouble.open,
           ["<c-h>"] = layout_actions.toggle_preview,
           ["<C-d>"] = actions.results_scrolling_down,
           ["<C-u>"] = actions.results_scrolling_up,
@@ -140,9 +140,9 @@ M.config = function()
       border = {},
       borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
       path_display = { "truncate" },
-      get_status_text = function()
-        return ""
-      end,
+      -- get_status_text = function()
+      --   return ""
+      -- end,
       preview = {
         filesize_limit = 3,
         timeout = 250,
@@ -216,16 +216,16 @@ M.config = function()
         -- Add imports to the top of the file keeping the cursor in place
         insert_at_top = true,
       },
-      egrepify = {
-        lnum_hl = "LineNr",
-        prefixes = {
-          ["!"] = {
-            flag = "invert-match",
-          },
-        },
-        quiet = false,
-        level = vim.log.levels.DEBUG,
-      },
+      -- egrepify = {
+      --   lnum_hl = "LineNr",
+      --   prefixes = {
+      --     ["!"] = {
+      --       flag = "invert-match",
+      --     },
+      --   },
+      --   quiet = false,
+      --   level = vim.log.levels.DEBUG,
+      -- },
     },
   })
 
