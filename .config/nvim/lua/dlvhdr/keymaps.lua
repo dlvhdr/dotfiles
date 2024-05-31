@@ -101,15 +101,15 @@ keymap("n", "<leader>ul", function()
   util.toggle("relativenumber")
 end, { silent = true, desc = "  Relative Line Numbers" })
 
--- quick find and replace
-keymap("n", "<leader>cr", [[:%s/\<<C-r>=expand("<cword>")<CR>\>/]], {
-  silent = false,
-  desc = "[Replace] Word Under Cursor (File)",
-})
-keymap("v", "<leader>cr", [["zy:%s/<C-r><C-o>"/]], {
-  silent = false,
-  desc = "[Replace] Word Under Cursor (Visual)",
-})
+-- -- quick find and replace
+-- keymap("n", "<leader>cr", [[:%s/\<<C-r>=expand("<cword>")<CR>\>/]], {
+--   silent = false,
+--   desc = "[Replace] Word Under Cursor (File)",
+-- })
+-- keymap("v", "<leader>cr", [["zy:%s/<C-r><C-o>"/]], {
+--   silent = false,
+--   desc = "[Replace] Word Under Cursor (Visual)",
+-- })
 
 -- TLDR: Conditionally modify character at end of line
 -- Description:

@@ -77,6 +77,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "neotest-summary",
     "neotest-output-panel",
     "fugitiveblame",
+    "CodeAction",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

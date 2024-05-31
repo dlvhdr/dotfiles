@@ -1,3 +1,4 @@
+-- Incremental and decremental selection
 return {
   "sustech-data/wildfire.nvim",
   event = "VeryLazy",
