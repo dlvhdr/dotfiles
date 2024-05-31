@@ -5,7 +5,7 @@ return {
     {
       "<leader>yp",
       function()
-        require("genghis").copyFilepath()
+        require("genghis").copyRelativePath()
       end,
       desc = "Copy file path",
     },
@@ -15,6 +15,13 @@ return {
         require("genghis").copyFilename()
       end,
       desc = "Copy file name",
+    },
+    {
+      "<leader>yx",
+      function()
+        require("genghis").moveSelectionToNewFile()
+      end,
+      desc = "Move selection to new file",
     },
   },
   init = function()

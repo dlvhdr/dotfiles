@@ -3,7 +3,9 @@ return {
   dependencies = { "stevearc/dressing.nvim" },
   cmd = "IncRename",
   config = function()
-    require("inc_rename").setup({})
+    require("inc_rename").setup({
+      -- input_buffer_type = "dressing",
+    })
   end,
   keys = {
     {

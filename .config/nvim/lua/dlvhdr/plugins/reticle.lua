@@ -1,3 +1,4 @@
+-- Plugin to highlight only the screen line of the cursor in the currently active window
 return {
   "tummetott/reticle.nvim",
   event = "BufReadPre",
