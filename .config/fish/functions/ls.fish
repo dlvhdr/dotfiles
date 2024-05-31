@@ -1,5 +1,5 @@
-function ls --wraps='exa --icons --group-directories-first' --description 'alias ls=exa --icons --group-directories-first'
-  exa -a --icons --group-directories-first $argv; 
+function ls --wraps='eza --icons --group-directories-first' --description 'alias ls=eza --icons --group-directories-first'
+  eza -a --icons --group-directories-first $argv; 
 end
 
 # directories
