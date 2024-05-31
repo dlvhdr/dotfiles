@@ -1,6 +1,6 @@
 function pkg
   set head (git rev-parse --show-toplevel)
-  set packages (ls -1 -D -r -s accessed --no-icons "$head"/packages "$head"/services "$head"/shared "$head"/tests 2>/dev/null | grep '^[a-zA-Z]') 
+  set packages (ls -1 -D -r -s accessed --icons=never "$head"/packages "$head"/services "$head"/shared "$head"/tests 2>/dev/null | grep '^[a-zA-Z]') 
 
   if not set -q packages[1]
     echo "no packages/services"
