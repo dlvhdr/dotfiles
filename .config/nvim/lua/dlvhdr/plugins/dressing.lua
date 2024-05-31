@@ -1,6 +1,7 @@
 return {
   "stevearc/dressing.nvim",
   event = { "BufReadPost", "BufNewFile" },
+  enabled = false,
   config = function()
     require("dressing").setup({
       input = {

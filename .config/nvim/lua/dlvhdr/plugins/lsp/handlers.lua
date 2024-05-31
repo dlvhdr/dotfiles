@@ -16,7 +16,7 @@ end
 M.lsp_keymaps = function(bufnr)
   -- builtins
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go To Declaration" })
-  vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Code Action" })
+  -- vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Code Action" })
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, { silent = true, buffer = bufnr, desc = "Hover Symbol" })
   vim.keymap.set("n", "ge", vim.diagnostic.open_float, { silent = true, buffer = bufnr, desc = "Show Diagnostic" })
   vim.keymap.set("n", "gH", vim.lsp.buf.signature_help, { silent = true, buffer = bufnr, desc = "Signature Help" })
@@ -64,13 +64,13 @@ M.on_attach = function(client, bufnr)
     })
   end
 
-  if client.supports_method("textDocument/codeLens") then
-    vim.lsp.codelens.refresh()
-    vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-      buffer = bufnr,
-      callback = vim.lsp.codelens.refresh,
-    })
-  end
+  -- if client.supports_method("textDocument/codeLens") then
+  --   -- vim.lsp.codelens.refresh()
+  --   vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+  --     buffer = bufnr,
+  --     callback = vim.lsp.codelens.refresh,
+  --   })
+  -- end
 
   if client.supports_method("textDocument/inlayHint") then
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "", {
