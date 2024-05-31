@@ -23,13 +23,13 @@ alt - m : open -a /System/Applications/Mail.app
 alt - p : open -a /Applications/Notion\ Calendar.app
 
 # open m[u]sic
-alt - u : open -a /Users/dlvhdr/Applications/Music.app
+alt - u : open -a /Applications/YouTube\ Music.app
 
 # open ticktick
 alt - t : open -a /Applications/TickTick.app
 
 # clickup ([n]otion)
-alt - n : open -a /Users/dlvhdr/Applications/ClickUp.app
+alt - n : open -a /Applications/ClickUp.app
 
 # datagrip
 alt - d : open -a /Applications/DataGrip.app
