@@ -10,13 +10,12 @@
 [includeIf "gitdir:~/code/komodor/"]
   path = config-komodor
 
-[credential]
-	helper = osxkeychain
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
+; [credential]
+;   helper = osxkeychain
 
 [credential "https://github.com"]
 	username = dlvhdr
+  helper = !/opt/homebrew/bin/gh auth git-credential
 
 [gpg]
 	format = ssh
