@@ -10,7 +10,6 @@ local M = {
     "mfussenegger/nvim-treehopper",
     { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
     "JoosepAlviste/nvim-ts-context-commentstring",
-    "windwp/nvim-ts-autotag",
     "andymass/vim-matchup",
   },
 }
@@ -80,9 +79,6 @@ M.config = function()
     indent = {
       enable = true,
       disable = {},
-    },
-    autotag = {
-      enable = true,
     },
     textsubjects = {
       enable = true,
