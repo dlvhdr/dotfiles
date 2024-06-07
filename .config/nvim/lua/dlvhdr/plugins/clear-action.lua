@@ -4,7 +4,22 @@ return {
   config = function()
     require("clear-action").setup({
       signs = {
-        enable = true,
+        enable = false,
+        position = "right_align",
+        separator = " ",
+        icons = {
+          quickfix = " ",
+          refactor = "󰁨 ",
+          source = " ",
+          combined = "󱉔 ",
+        },
+        highlights = {
+          quickfix = "DiagnosticInfo",
+          refactor = "DiagnosticInfo",
+          source = "DiagnosticInfo",
+          combined = "DiagnosticInfo",
+          label = "DiagnosticInfo",
+        },
       },
       mappings = {
         code_action = "ga",
