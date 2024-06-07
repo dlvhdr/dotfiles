@@ -7,6 +7,14 @@ M.setup = function(opts)
     on_attach = opts.on_attach,
     capabilities = opts.capabilities,
     root_dir = lspconfig.util.root_pattern("package.json"),
+    init_options = {
+      plugins = {
+        {
+          name = "@styled/typescript-styled-plugin",
+          location = vim.env.XDG_DATA_HOME .. "/npm/lib/node_modules/@styled/typescript-styled-plugin",
+        },
+      },
+    },
     settings = {
       typescript = {
         inlayHints = {
