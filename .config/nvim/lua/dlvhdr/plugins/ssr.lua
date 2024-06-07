@@ -1,6 +1,16 @@
 return {
   "cshuaimin/ssr.nvim",
   module = "ssr",
+  keys = {
+    {
+      "<leader>cr",
+      function()
+        require("ssr").open()
+      end,
+      desc = "Find and replace with Treesitter",
+      mode = { "n", "x" },
+    },
+  },
   config = function()
     require("ssr").setup({
       border = "rounded",
@@ -17,8 +27,5 @@ return {
         replace_all = "<leader><cr>",
       },
     })
-    vim.keymap.set({ "n", "x" }, "<leader>cr", function()
-      require("ssr").open()
-    end)
   end,
 }

@@ -5,7 +5,10 @@ return {
     {
       "<leader>e",
       function()
-        require("mini.files").open(vim.api.nvim_buf_get_name(0), false)
+        local MiniFiles = require("mini.files")
+        if not MiniFiles.close() then
+          MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+        end
       end,
       desc = "Files",
     },
@@ -25,5 +28,23 @@ return {
       require("mini.files").open(vim.api.nvim_buf_get_name(0), false)
     end
     vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_files })
+
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "MiniFilesWindowUpdate",
+      callback = function(args)
+        vim.wo[args.data.win_id].number = true
+        vim.wo[args.data.win_id].relativenumber = true
+      end,
+    })
+  end,
+  config = function()
+    require("mini.files").setup({
+      windows = {
+        preview = false,
+      },
+      mappings = {
+        synchronize = "<leader>bw",
+      },
+    })
   end,
 }
