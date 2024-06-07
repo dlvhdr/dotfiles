@@ -5,7 +5,7 @@ alt - f : open -a /Applications/Figma.app
 alt - c : open -a /Applications/Arc.app
 
 # open terminal ([i]Term)
-alt - i : open -a /Applications/kitty.app
+# alt - i : open -a /Applications/kitty.app
 
 # open whatsapp
 alt - w : open -a /Applications/Whatsapp.app
