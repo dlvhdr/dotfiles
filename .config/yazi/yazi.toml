@@ -1,3 +1,11 @@
 [manager]
 show_hidden    = true
 sort_dir_first = true
+
+[preview]
+max_width = 1024
+max_height = 768
+tab_size        = 2
+cache_dir       = ""
+ueberzug_scale  = 1
+ueberzug_offset = [ 0, 0, 0, 0 ]
