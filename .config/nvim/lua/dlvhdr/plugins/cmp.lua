@@ -1,5 +1,6 @@
 local M = {
   "hrsh7th/nvim-cmp",
+  version = false,
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     "L3MON4D3/LuaSnip",
@@ -37,9 +38,11 @@ M.config = function()
     return
   end
 
+  local bordered = require("cmp.config.window").bordered
+
   local next_completion = function(fallback)
     if cmp.visible() then
-      cmp.select_next_item()
+      cmp.select_next_item({ behavior = cmp.SelectBehavior.Replace })
     else
       cmp.complete()
     end
@@ -47,7 +50,7 @@ M.config = function()
 
   local prev_completion = function(fallback)
     if cmp.visible() then
-      cmp.select_prev_item()
+      cmp.select_prev_item({ behavior = cmp.SelectBehavior.Replace })
     else
       cmp.complete()
     end
@@ -78,7 +81,11 @@ M.config = function()
   end
 
   cmp.setup({
+    auto_brackets = {},
     preselect = cmp.PreselectMode.None,
+    completion = {
+      completeopt = "menu,menuone,noinsert",
+    },
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
@@ -90,13 +97,8 @@ M.config = function()
       },
     },
     window = {
-      completion = {
-        border = border("CmpBorder"),
-        winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-      },
-      documentation = {
-        border = border("CmpDocBorder"),
-      },
+      completion = bordered(border("CmpBorder")),
+      documentation = bordered(border("CmpDocBorder")),
     },
     mapping = cmp.mapping.preset.insert({
       ["<C-y>"] = cmp.mapping({
