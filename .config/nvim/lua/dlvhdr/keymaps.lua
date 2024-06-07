@@ -49,19 +49,6 @@ keymap("n", "<leader>fn", "<cmd>Noice telescope<cr>", { silent = true, desc = "N
 -- keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
 -- keymap("n", "<leader>e", "<cmd>Yazi<CR>", { silent = true, desc = "Toggle File Tree" })
 
--- Trouble
-keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { silent = true, desc = "Toggle Trouble" })
-keymap(
-  "n",
-  "<leader>xw",
-  "<cmd>Trouble lsp_workspace_diagnostics<cr>",
-  { silent = true, desc = "Workspace Diagnostics" }
-)
-keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", { silent = true, desc = "Document Diagnostics" })
-keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, desc = "Loclist" })
-keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, desc = "Quickfix" })
-keymap("n", "<leader>xr", "<cmd>Trouble lsp_references<cr>", { silent = true, desc = "LSP References" })
-
 if vim.opt.diff:get() then
   keymap("n", "<leader>1", ":diffget LOCAL<CR>", { silent = true, desc = "Take Local" })
   keymap("n", "<leader>2", ":diffget BASE<CR>", { silent = true, desc = "Take Base" })
@@ -100,16 +87,6 @@ keymap("n", "<C-M-l>", "<cmd>:TmuxResizeRight<CR>", { silent = true })
 keymap("n", "<leader>ul", function()
   util.toggle("relativenumber")
 end, { silent = true, desc = "  Relative Line Numbers" })
-
--- -- quick find and replace
--- keymap("n", "<leader>cr", [[:%s/\<<C-r>=expand("<cword>")<CR>\>/]], {
---   silent = false,
---   desc = "[Replace] Word Under Cursor (File)",
--- })
--- keymap("v", "<leader>cr", [["zy:%s/<C-r><C-o>"/]], {
---   silent = false,
---   desc = "[Replace] Word Under Cursor (Visual)",
--- })
 
 -- TLDR: Conditionally modify character at end of line
 -- Description:
@@ -173,12 +150,4 @@ keymap("n", "gx", function()
   if link then
     return open(string.format("https://www.github.com/%s", link))
   end
-end)
------------------------------------------------------------------------------//
-
-keymap("n", "<leader>ty", function()
-  vim.api.nvim_call_function("setreg", {
-    "+",
-    "yarn test " .. vim.fn.fnamemodify(vim.fn.expand("%:t"), ":."),
-  })
 end)
