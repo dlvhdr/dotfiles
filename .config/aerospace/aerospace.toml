@@ -216,3 +216,7 @@ if.app-id = 'com.github.th-ch.youtube-music'
 # check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace U']
 
+[[on-window-detected]]
+if.app-name-regex-substring = 'mpv'
+check-further-callbacks = true
+run = ['layout floating']  

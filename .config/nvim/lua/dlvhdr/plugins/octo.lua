@@ -19,7 +19,7 @@ return {
           reopen_issue = { lhs = "<space>oio", desc = "reopen issue" },
           list_issues = { lhs = "<space>oil", desc = "list open issues on same repo" },
           reload = { lhs = "<C-r>", desc = "reload issue" },
-          open_in_browser = { lhs = "<C-b>", desc = "open issue in browser" },
+          open_in_browser = { lhs = "<leader>oo", desc = "open issue in browser" },
           copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
           add_assignee = { lhs = "<space>oaa", desc = "add assignee" },
           remove_assignee = { lhs = "<space>oad", desc = "remove assignee" },
@@ -53,7 +53,7 @@ return {
           reopen_issue = { lhs = "<space>oio", desc = "reopen PR" },
           list_issues = { lhs = "<space>oil", desc = "list open issues on same repo" },
           reload = { lhs = "<C-r>", desc = "reload PR" },
-          open_in_browser = { lhs = "<C-b>", desc = "open PR in browser" },
+          open_in_browser = { lhs = "<space>oo", desc = "open PR in browser" },
           copy_url = { lhs = "<C-y>", desc = "copy url to system clipboard" },
           goto_file = { lhs = "gf", desc = "go to file" },
           add_assignee = { lhs = "<space>oaa", desc = "add assignee" },
@@ -137,6 +137,7 @@ return {
         g = { name = "Go To" },
         i = { name = "Issue" },
         l = { name = "Label" },
+        o = { "<cmd>Octo pr browser<CR>", "Open in browser" },
         p = {
           name = "Pull Request",
           r = { "<cmd>Octo pr ready<CR>", "mark draft as ready to review" },
@@ -177,6 +178,7 @@ return {
         s = { name = "Suggestion" },
 
         q = { "<cmd>Octo review close<CR>", "quit review" },
+        o = { "<cmd>Octo pr browser<CR>", "Open in browser" },
       }, {
         buffer = bufnr,
         mode = "n", -- NORMAL mode

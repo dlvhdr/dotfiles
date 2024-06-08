@@ -32,6 +32,25 @@ local apple = {
   [[         `"""""""' `""""""']],
 }
 
+local medusa = {
+  [[                                  ]],
+  [[                ,--.              ]],
+  [[       ,--.  .--,`) )  .--,       ]],
+  [[    .--,`) \( (` /,--./ (`        ]],
+  [[   ( ( ,--.  ) )\ /`) ).--,-.     ]],
+  [[    ;.__`) )/ /) ) ( (( (`_) )    ]],
+  [[   ( (  / /( (.' "-.) )) )__.'-,  ]],
+  [[  _,--.( ( /`         `,/ ,--,) ) ]],
+  [[ ( (``) \,` ==.    .==  \( (`,-;  ]],
+  [[  ;-,( (_) ~6~ \  / ~6~ (_) )_) ) ]],
+  [[ ( (_ \_ (      )(      )__/___.' ]],
+  [[ '.__,-,\ \     ''     /\ ,-.     ]],
+  [[    ( (_/ /\    __    /\ \_) )    ]],
+  [[     '._.'  \  \__/  /  '._.'     ]],
+  [[         .--`\      /`--.         ]],
+  [[ -jgs         '----'              ]],
+}
+
 return {
   "goolord/alpha-nvim",
   event = function()
@@ -44,7 +63,7 @@ return {
   config = function()
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
-    dashboard.section.header.val = apple
+    dashboard.section.header.val = medusa
     dashboard.section.header.opts.hl = "Error"
 
     dashboard.section.buttons.val = {

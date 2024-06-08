@@ -1,13 +1,10 @@
-package.path = table.concat({
-  package.path,
-  vim.fs.normalize("~/.luarocks/share/lua/5.1/?/init.lua"),
-  vim.fs.normalize("~/.luarocks/share/lua/5.1/?.lua"),
-}, ";")
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
 
 return {
   "3rd/image.nvim",
   event = {
-    "FileType markdown,norg",
+    "FileType markdown,norg,octo",
     "BufRead *.png,*.jpg,*.gif,*.webp,*.ipynb",
   },
   build = "luarocks --lua-version 5.1 --local install magick",
@@ -27,9 +24,9 @@ return {
           -- cursor is at
           -- I set this to true, because if the file has way too many images
           -- it will be laggy and will take time for the initial load
-          only_render_image_at_cursor = true,
+          only_render_image_at_cursor = false,
           -- markdown extensions (ie. quarto) can go here
-          filetypes = { "markdown", "vimwiki" },
+          filetypes = { "markdown", "vimwiki", "octo" },
         },
         -- This is disabled by default
         -- Detect and render images referenced in HTML files
@@ -46,10 +43,10 @@ return {
           enabled = true,
         },
       },
-      max_width = nil,
-      max_height = nil,
-      max_width_window_percentage = math.huge,
-      max_height_window_percentage = math.huge,
+      -- max_width = nil,
+      -- max_height = nil,
+      -- max_width_window_percentage = math.huge,
+      -- max_height_window_percentage = math.huge,
 
       -- toggles images when windows are overlapped
       window_overlap_clear_enabled = true,
