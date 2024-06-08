@@ -1,8 +1,6 @@
 local M = {}
 
 M.setup = function(opts)
-  require("neodev").setup({})
-
   local lspconfig = require("lspconfig")
   lspconfig.lua_ls.setup({
     on_attach = opts.on_attach,

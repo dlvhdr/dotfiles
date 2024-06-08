@@ -3,7 +3,6 @@ return {
   name = "lsp",
   event = "BufReadPost",
   dependencies = {
-    "folke/neodev.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "b0o/schemastore.nvim",
     "nvimtools/none-ls.nvim",
