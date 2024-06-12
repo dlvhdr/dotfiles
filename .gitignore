@@ -75,3 +75,4 @@ wallpapers
 .config/jgit
 .config/github-copilot
 .config/harlequin/harlequin.toml
+.config/ldcli/config.yml
