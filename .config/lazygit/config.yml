@@ -28,7 +28,8 @@ gui:
     show: true
   skipNoStagedFilesWarning: false
 os:
-  openCommand: session_nvim {{filename}}
+  editCommand: "$XDG_CONFIG_HOME/lazygit/edit-nvim"
+  editCommandTemplate: "{{editor}} {{filename}}"
 git:
   log:
     showGraph: always
