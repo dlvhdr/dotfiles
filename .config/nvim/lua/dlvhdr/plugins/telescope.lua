@@ -18,10 +18,18 @@ local M = {
     { "<leader>fH", "<cmd>Telescope highlights<CR>", desc = "Highlights" },
     { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume" },
     { "<leader>fp", "<cmd>Telescope pickers<cr>", desc = "Pickers" },
-    { "<leader>fs", ":lua require('telescope.builtin').git_status()<CR>", desc = "Git Status" },
+    {
+      "<leader>fs",
+      function()
+        require("telescope.builtin").git_status()
+      end,
+      desc = "Git Status",
+    },
     {
       "<leader>fb",
-      ":lua require('dlvhdr.plugins.telescope').buffers()<CR>",
+      function()
+        require("dlvhdr.plugins.telescope").buffers()
+      end,
       desc = "Open Buffers",
     },
     {

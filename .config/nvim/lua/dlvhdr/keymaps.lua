@@ -29,7 +29,8 @@ keymap("n", "Q", "<Nop>", { silent = true })
 -- buffers
 keymap("n", "<leader><leader>", "<C-^>", { silent = true, desc = "Last Buffer" })
 keymap("n", "<leader>bn", "<cmd>enew<cr>", { silent = true, desc = "New File" })
-keymap("n", "<leader>bz", "<cmd>tab split<cr>", { silent = true, desc = "Zoom Buffer" })
+keymap("n", "<leader>bq", "<cmd>q<cr>", { silent = true, desc = "Quit File" })
+-- keymap("n", "<leader>bz", "<cmd>tab split<cr>", { silent = true, desc = "Zoom Buffer" })
 keymap("n", "<leader>bo", function()
   local current_buffer = vim.api.nvim_get_current_buf()
 

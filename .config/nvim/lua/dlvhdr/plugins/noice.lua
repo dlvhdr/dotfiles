@@ -7,13 +7,9 @@ local M = {
 }
 
 M.config = function()
-  local ok, noice = pcall(require, "noice")
-  if not ok then
-    return
-  end
-
-  noice.setup({
+  require("noice").setup({
     presets = {
+      command_palette = true,
       lsp_doc_border = true,
       inc_rename = true, -- enables an input dialog for inc-rename.nvim
     },

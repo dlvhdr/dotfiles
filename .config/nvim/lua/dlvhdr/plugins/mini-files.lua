@@ -45,6 +45,14 @@ return {
       mappings = {
         synchronize = "<leader>bw",
       },
+      use_as_default_explorer = true,
+    })
+
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "MiniFilesActionRename",
+      callback = function(event)
+        require("dlvhdr.plugins.lsp.handlers").on_rename(event.data.from, event.data.to)
+      end,
     })
   end,
 }
