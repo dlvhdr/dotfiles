@@ -24,8 +24,6 @@ gui:
     selectedLineBgColor:
       - "#292e42"
       - bold
-    selectedRangeBgColor:
-      - "#89ddff"
   commitLength:
     show: true
   skipNoStagedFilesWarning: false
@@ -59,9 +57,9 @@ customCommands:
     loadingText: "opening github..."
     subprocess: false
   - key: "O"
-    command: "gh pr create -f --draft --head {{.SelectedLocalBranch.Name}}"
-    description: "create PR on GitHub"
-    context: "localBranches"
+    command: gh pr create -t {{index .PromptResponses 0}} -b {{index .PromptResponses 1}} -a {{index .PromptResponses 2}} -r {{index .PromptResponses 3}} {{ if eq (index .PromptResponses 4) "yes"}}{{ "--draft" }}{{ end }}
+    description: "Create a pull request using the GitHub CLI"
+    context: "global"
     subprocess: true
   - key: "C"
     command: "commit"
