@@ -25,6 +25,13 @@ gum spin --spinner globe --title "🐠 fisher plugins updating..." --show-output
 echo "\n" >>/tmp/u-$NOW.txt
 echo "✅ 🐠 fisher plugins updated"
 
+gum spin --spinner globe --title "🦀 cargo plugins updating..." --show-output -- cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ') >>/tmp/u-$NOW.txt
+echo "\n" >>/tmp/u-$NOW.txt
+echo "✅ 🦀 cargo plugins updated"
+
+
+
+
 gum spin --spinner globe --title "💤 lazy.nvim syncing..." -- nvim --headless "+Lazy! sync" +qa
 echo "\n" >>/tmp/u-$NOW.txt
 echo "✅ 💤 lazy.nvim synced"
