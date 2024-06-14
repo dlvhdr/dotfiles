@@ -57,10 +57,23 @@ customCommands:
     loadingText: "opening github..."
     subprocess: false
   - key: "O"
-    command: gh pr create -t {{index .PromptResponses 0}} -b {{index .PromptResponses 1}} -a {{index .PromptResponses 2}} -r {{index .PromptResponses 3}} {{ if eq (index .PromptResponses 4) "yes"}}{{ "--draft" }}{{ end }}
+    command: gh pr create -t {{index .PromptResponses 0}} -b {{index .PromptResponses 1}} {{ if eq (index .PromptResponses 2) "yes"}}{{ "--draft" }}{{ end }}
     description: "Create a pull request using the GitHub CLI"
-    context: "global"
+    context: "localBranches"
     subprocess: true
+    prompts:
+      - type: "input"
+        title: "Title"
+        initialValue: "{{index .CheckedOutBranch.Name}}"
+
+      - type: "input"
+        title: "Body"
+
+      - type: "menu"
+        title: "Mark pull request as draft?"
+        options:
+          - value: "yes"
+          - value: "no"
   - key: "C"
     command: "commit"
     description: "commit with gum"
