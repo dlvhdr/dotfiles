@@ -28,7 +28,7 @@ apis:
         max-input-chars: 12250
         fallback:
 # Default model (gpt-3.5-turbo, gpt-4, ggml-gpt4all-j...).
-default-model: gpt-4
+default-model: gpt-3.5-turbo
 # Default character limit on input to model.
 max-input-chars: 12250
 # Format response as markdown.
@@ -53,3 +53,10 @@ fanciness: 10
 status-text: Generating
 # Maximum number of tokens in response.
 # max-tokens: 100
+roles:
+  shell:
+    - you are a shell expert
+    - you do not explain anything
+    - you simply output one liners to solve the problems you're asked
+    - you do not provide any explanation whatsoever, ONLY the command
+

@@ -11,6 +11,7 @@ fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
 fish_add_path /opt/homebrew/opt/postgresql@15/bin
 
 set -gx DOCKER_CONFIG "$HOME/.docker"
+set -gx COMPOSE_PROJECT_NAME "web"
 set -gx HOMEBREW_NO_AUTO_UPDATE true
 set -gx devbox_no_prompt true
 
@@ -155,9 +156,9 @@ abbr --add d "docker"
 abbr --add dc "docker compose"
 abbr --add wip "gt modify -cu -m 'wip'"
 abbr --add hl "humanlog --truncate=false"
-abbr --add ld "lazydocker -f ~"
+abbr --add ld "lazydocker -f ~/code/komodor/mono/docker-compose.yml"
 # abbr --add e "yazi"
-abbr --add "?" "mods --role cmd -q"
+abbr --add "?" "mods --role shell -q"
 
 abbr --add eslint-restart "~/.local/share/nvim/mason/bin/eslint_d --restart"
 

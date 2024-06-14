@@ -17,3 +17,8 @@ gui:
   expandFocusedSidePanel: true
 commandTemplates:
   dockerCompose: docker compose
+customCommands:
+  containers:
+    - name: fancy logs
+      attach: true
+      command: "{{ .DockerCompose }} logs {{ .Service.Name }} --follow | tl"
