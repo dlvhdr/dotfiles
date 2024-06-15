@@ -7,7 +7,7 @@ local M = {
     "nvim-treesitter/nvim-treesitter-refactor",
     "mfussenegger/nvim-treehopper",
     { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
-    "JoosepAlviste/nvim-ts-context-commentstring",
+    { "JoosepAlviste/nvim-ts-context-commentstring" },
     "andymass/vim-matchup",
   },
 }

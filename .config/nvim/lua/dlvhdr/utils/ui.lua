@@ -11,18 +11,6 @@ function M.get_signs(buf, lnum)
   ---@type Sign[]
   local signs = {}
 
-  if vim.fn.has("nvim-0.10") == 0 then
-    -- Only needed for Neovim <0.10
-    -- Newer versions include legacy signs in nvim_buf_get_extmarks
-    for _, sign in ipairs(vim.fn.sign_getplaced(buf, { group = "*", lnum = lnum })[1].signs) do
-      local ret = vim.fn.sign_getdefined(sign.name)[1] --[[@as Sign]]
-      if ret then
-        ret.priority = sign.priority
-        signs[#signs + 1] = ret
-      end
-    end
-  end
-
   -- Get extmark signs
   local extmarks = vim.api.nvim_buf_get_extmarks(
     buf,
@@ -46,19 +34,6 @@ function M.get_signs(buf, lnum)
   end)
 
   return signs
-end
-
----@return Sign?
----@param buf number
----@param lnum number
-function M.get_mark(buf, lnum)
-  local marks = vim.fn.getmarklist(buf)
-  vim.list_extend(marks, vim.fn.getmarklist())
-  for _, mark in ipairs(marks) do
-    if mark.pos[1] == buf and mark.pos[2] == lnum and mark.mark:match("[a-zA-Z]") then
-      return { text = mark.mark:sub(2), texthl = "DiagnosticHint" }
-    end
-  end
 end
 
 ---@param sign? Sign
@@ -117,7 +92,7 @@ function M.statuscolumn()
       end
     end)
     -- Left: mark or non-git sign
-    components[1] = M.icon(M.get_mark(buf, vim.v.lnum) or left)
+    components[1] = M.icon(left)
     -- Right: fold icon or git sign (only if file)
     components[3] = is_file and M.icon(fold or right) or ""
   end

@@ -1,6 +1,7 @@
 local M = {
   "RRethy/vim-illuminate",
   event = "CursorHold",
+  enabled = false,
 }
 
 M.config = function()
@@ -15,7 +16,11 @@ M.config = function()
       "treesitter",
       "regex",
     },
-    delay = 120,
+    delay = 200,
+    large_file_cutoff = 2000,
+    large_file_overrides = {
+      providers = { "lsp" },
+    },
     filetypes_denylist = {
       "help",
       "dashboard",
@@ -43,7 +48,6 @@ M.config = function()
     providers_regex_syntax_allowlist = {},
     -- under_cursor: whether or not to illuminate under the cursor
     under_cursor = true,
-    large_file_overrides = nil,
   })
 end
 

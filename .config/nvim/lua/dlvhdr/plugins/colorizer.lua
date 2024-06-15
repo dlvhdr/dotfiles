@@ -1,10 +1,29 @@
 return {
   "NvChad/nvim-colorizer.lua",
   event = "BufReadPost",
+  filetypes = {
+    "css",
+    "less",
+    "scss",
+    "sass",
+    "javascript",
+    "jsx",
+    "typescript",
+    "tsx",
+    "vue",
+  },
   config = function()
     require("colorizer").setup({
       filetypes = {
-        "*",
+        "css",
+        "less",
+        "scss",
+        "sass",
+        "javascript",
+        "jsx",
+        "typescript",
+        "tsx",
+        "vue",
         "!TelescopePrompt",
         "!TelescopeResults",
         "!help",
@@ -24,11 +43,11 @@ return {
         tailwind = false,
         virtualtext = "■",
       },
-      buftypes = {
-        "*",
-        "!prompt",
-        "!popup",
-      },
+      -- buftypes = {
+      --   "*",
+      --   "!prompt",
+      --   "!popup",
+      -- },
     })
 
     vim.cmd(

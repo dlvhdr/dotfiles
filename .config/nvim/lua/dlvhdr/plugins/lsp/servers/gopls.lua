@@ -7,14 +7,23 @@ M.setup = function(opts)
     cmd = { "gopls", "serve" },
     on_attach = opts.on_attach,
     capabilities = opts.capabilities,
+    document_highlight = { enabled = false },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    flags = {
+      debounce_text_changes = 150,
+    },
     settings = {
       gopls = {
-        completeUnimported = true,
-        usePlaceholders = true,
-        analyses = {
-          unusedparams = true,
+        codelenses = {
+          gc_details = false,
+          generate = true,
+          regenerate_cgo = true,
+          run_govulncheck = true,
+          test = true,
+          tidy = true,
+          upgrade_dependency = true,
+          vendor = true,
         },
         hints = {
           assignVariableTypes = true,
@@ -25,6 +34,18 @@ M.setup = function(opts)
           parameterNames = true,
           rangeVariableTypes = true,
         },
+        analyses = {
+          fieldalignment = true,
+          nilness = true,
+          unusedparams = true,
+          unusedwrite = true,
+          useany = true,
+        },
+        usePlaceholders = true,
+        completeUnimported = true,
+        staticcheck = true,
+        directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+        semanticTokens = true,
       },
     },
   })

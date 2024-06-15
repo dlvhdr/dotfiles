@@ -22,6 +22,7 @@ M.config = function()
 
   indent_blankline.setup({
     enabled = true,
+    debounce = 500,
     exclude = {
       filetypes = {
         "terminal",
