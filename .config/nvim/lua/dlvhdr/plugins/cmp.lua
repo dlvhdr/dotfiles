@@ -127,6 +127,9 @@ M.config = function()
         if icons[item.kind] then
           item.kind = icons[item.kind] .. item.kind
         end
+        if item.menu then
+          item.menu = string.sub(item.menu, 1, 20)
+        end
         return item
       end,
     },

@@ -119,7 +119,7 @@ return {
                 autoAttachChildProcesses = true,
                 skipFiles = { "<node_internals>/**", "**/node_modules/**" },
                 cwd = "${workspaceFolder}",
-                program = "node_modules/vitest/vitest.mjs",
+                program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
                 args = { "run", "${file}" },
                 smartStep = true,
                 console = "integratedTerminal",
