@@ -107,6 +107,13 @@ M.setup = function(opts)
       },
     },
   })
+
+  vim.keymap.set(
+    "n",
+    "<leader>lu",
+    require("dlvhdr.plugins.lsp.handlers").action["source.removeUnused.ts"],
+    { desc = "Remove unused" }
+  )
 end
 
 return M
