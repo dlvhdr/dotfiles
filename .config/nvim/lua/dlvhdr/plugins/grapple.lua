@@ -8,12 +8,14 @@ return {
       desc = "Toggle Grapple",
     },
     {
-      "<leader>fM",
+      "<leader>fo",
       "<cmd>Grapple open_tags<cr>",
       desc = "Open Grapple Tags",
     },
   },
   config = function()
-    require("grapple").setup({})
+    require("grapple").setup({ win_opts = {
+      width = 120,
+    } })
   end,
 }
