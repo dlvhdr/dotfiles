@@ -73,37 +73,46 @@ M.setup = function(opts)
         autoUseWorkspaceTsdk = true,
         experimental = {
           completion = {
-            enableServerSideFuzzyMatch = true,
+            enableServerSideFuzzyMatch = false,
           },
         },
       },
       typescript = {
+        preferences = {
+          autoImportFileExcludePatterns = {
+            "**/lodash/**",
+            "**/process/**",
+            "**/events/**",
+            "date-fns",
+            "date-fns/esm",
+          },
+        },
         updateImportsOnFileMove = { enabled = "always" },
         suggest = {
           completeFunctionCalls = true,
         },
-        inlayHints = {
-          enumMemberValues = { enabled = true },
-          functionLikeReturnTypes = { enabled = true },
-          parameterNames = { enabled = "literals" },
-          parameterTypes = { enabled = true },
-          propertyDeclarationTypes = { enabled = true },
-          variableTypes = { enabled = false },
-        },
+        -- inlayHints = {
+        --   enumMemberValues = { enabled = true },
+        --   functionLikeReturnTypes = { enabled = true },
+        --   parameterNames = { enabled = "literals" },
+        --   parameterTypes = { enabled = true },
+        --   propertyDeclarationTypes = { enabled = true },
+        --   variableTypes = { enabled = false },
+        -- },
       },
       javascript = {
         updateImportsOnFileMove = { enabled = "always" },
         suggest = {
           completeFunctionCalls = true,
         },
-        inlayHints = {
-          enumMemberValues = { enabled = true },
-          functionLikeReturnTypes = { enabled = true },
-          parameterNames = { enabled = "literals" },
-          parameterTypes = { enabled = true },
-          propertyDeclarationTypes = { enabled = true },
-          variableTypes = { enabled = false },
-        },
+        -- inlayHints = {
+        --   enumMemberValues = { enabled = true },
+        --   functionLikeReturnTypes = { enabled = true },
+        --   parameterNames = { enabled = "literals" },
+        --   parameterTypes = { enabled = true },
+        --   propertyDeclarationTypes = { enabled = true },
+        --   variableTypes = { enabled = false },
+        -- },
       },
     },
   })

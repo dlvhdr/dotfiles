@@ -143,6 +143,11 @@ M.config = function()
       ghost_text = false,
     },
     sorting = defaults.sorting,
+    ---@diagnostic disable-next-line: missing-fields
+    performance = {
+      max_view_entries = 100,
+      -- debounce = 200,
+    },
   })
 
   cmp.setup.cmdline("/", {
