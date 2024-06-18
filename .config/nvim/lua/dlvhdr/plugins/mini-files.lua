@@ -54,5 +54,11 @@ return {
         require("dlvhdr.plugins.lsp.handlers").on_rename(event.data.from, event.data.to)
       end,
     })
+
+    local theme = require("dlvhdr.plugins.theme")
+    local colors = theme.colors()
+    if colors then
+      vim.api.nvim_set_hl(0, "MiniFilesDirectory", { fg = colors.blue })
+    end
   end,
 }

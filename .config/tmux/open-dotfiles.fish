@@ -19,4 +19,4 @@ end
 
 tmux switch-client -t dotfiles
 tmux neww
-tmux send-keys -t dotfiles "cd $HOME/dotfiles && ./.t" Enter;
+tmux send-keys -t dotfiles "cd $HOME/dotfiles && nvim +SmartOpen" Enter;
