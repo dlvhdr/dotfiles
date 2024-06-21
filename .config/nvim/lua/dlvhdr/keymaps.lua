@@ -6,7 +6,7 @@ keymap("n", "j", [[(v:count > 1 ? 'm`' . v:count : '') . 'gj']], { expr = true, 
 keymap("n", "k", [[(v:count > 1 ? 'm`' . v:count : '') . 'gk']], { expr = true, silent = true })
 
 keymap({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
-keymap({ "n" }, "<CR>", "viw", { desc = "Select word under cursor" })
+-- keymap({ "n" }, "<CR>", "viw", { desc = "Select word under cursor" })
 
 -- save and quit
 keymap("n", "<leader><Tab>d", ":tabclose<CR>", { silent = true, desc = "Close Tab" })

@@ -8,6 +8,13 @@ return {
   },
   keys = {
     {
+      "<CR>",
+      function()
+        require("substitute").operator({ count = 1, motion = "iw" })
+      end,
+      desc = "Substitute",
+    },
+    {
       "<leader>p",
       function(opts)
         require("substitute").operator(opts)
