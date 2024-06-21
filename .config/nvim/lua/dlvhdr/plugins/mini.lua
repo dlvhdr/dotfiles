@@ -39,6 +39,10 @@ function M.config()
     },
   })
   require("mini.surround").setup({})
+
+  require("mini.ai").setup({
+    search_method = "cover_or_next",
+  })
 end
 
 return M

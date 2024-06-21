@@ -6,4 +6,5 @@ return {
   config = function()
     require("wildfire").setup()
   end,
+  enabled = false,
 }
