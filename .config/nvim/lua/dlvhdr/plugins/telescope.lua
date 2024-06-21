@@ -35,19 +35,7 @@ local M = {
     {
       "<leader>fg",
       function()
-        require("telescope").extensions.egrepify.egrepify({
-          -- vimgrep_arguments = {
-          --   "rg",
-          --   "--color=never",
-          --   "--no-heading",
-          --   "--with-filename",
-          --   "--line-number",
-          --   "--column",
-          --   "--smart-case",
-          --   "--hidden",
-          --   "--trim", -- add this value
-          -- },
-        })
+        require("telescope").extensions.egrepify.egrepify({})
       end,
       desc = "Live Grep",
     },
@@ -125,9 +113,9 @@ M.config = function()
           ["<C-u>"] = actions.results_scrolling_up,
           ["<CR>"] = actions.select_default,
           ["<c-b>"] = actions.preview_scrolling_up,
-          ["<c-g>"] = actions.preview_scrolling_down,
+          ["<c-f>"] = actions.preview_scrolling_down,
           ["<c-q>"] = actions.delete_buffer,
-          ["<c-space>"] = layout_actions.cycle_layout_next,
+          ["<c-l>"] = layout_actions.cycle_layout_next,
           ["<c-e>"] = actions.to_fuzzy_refine,
         },
         n = {
@@ -137,8 +125,8 @@ M.config = function()
           ["<C-d>"] = actions.results_scrolling_down,
           ["<C-u>"] = actions.results_scrolling_up,
           ["<c-b>"] = actions.preview_scrolling_up,
-          ["<c-g>"] = actions.preview_scrolling_down,
-          ["<c-space>"] = layout_actions.cycle_layout_next,
+          ["<c-f>"] = actions.preview_scrolling_down,
+          ["<c-l>"] = layout_actions.cycle_layout_next,
           ["<c-e>"] = actions.to_fuzzy_refine,
           ["<CR>"] = actions.select_default,
         },
