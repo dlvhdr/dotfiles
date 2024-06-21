@@ -234,6 +234,17 @@ M.config = function()
       --   quiet = false,
       --   level = vim.log.levels.DEBUG,
       -- },
+      smart_open = {
+        preview = { hide_on_startup = true },
+        layout_config = {
+          width = 0.65,
+        },
+        mappings = {
+          i = {
+            ["<esc>"] = require("telescope.actions").close,
+          },
+        },
+      },
     },
   })
 
