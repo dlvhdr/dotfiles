@@ -131,7 +131,7 @@ M.config = function()
           ["<c-e>"] = actions.to_fuzzy_refine,
         },
         n = {
-          ["q"] = actions.delete_buffer,
+          ["q"] = actions.close,
           ["<c-t>"] = trouble.open,
           ["<c-h>"] = layout_actions.toggle_preview,
           ["<C-d>"] = actions.results_scrolling_down,
