@@ -6,9 +6,9 @@
 #                                     
 set -U fish_greeting # disable fish greeting
 
+eval (/opt/homebrew/bin/brew shellenv)
 fish_add_path $HOME/.local/share/npm/bin
 fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
-fish_add_path /opt/homebrew/opt/postgresql@15/bin
 
 set -gx DOCKER_CONFIG "$HOME/.docker"
 set -gx COMPOSE_PROJECT_NAME "web"
@@ -18,21 +18,17 @@ set -gx devbox_no_prompt true
 if status is-interactive
   source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
 
-  eval (/opt/homebrew/bin/brew shellenv)
-
   starship init fish | source
 
-  gpg-agent --daemon --no-grab >/dev/null 2>&1
+  # properly setup gpg tty
+  # gpg-agent --daemon --no-grab >/dev/null 2>&1
+  # set -e SSH_AUTH_SOCK
+  # set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+  # set -x GPG_TTY (tty)
 
   atuin init fish --disable-up-arrow | source
 
   zoxide init fish | source
-
-  # properly setup gpg tty
-  set -e SSH_AUTH_SOCK
-  set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-
-  set -x GPG_TTY (tty)
 
   set -gx DIRENV_LOG_FORMAT ""
   direnv hook fish | source
