@@ -20,8 +20,8 @@ return {
         lsp = { auto_attach = true },
         window = {
           border = "rounded",
-          position = { row = 1, col = 0 },
-          size = { width = "90%", height = "30%" },
+          position = { row = 1, col = "100%" },
+          size = { width = "70%", height = "30%" },
           sections = {
             left = {
               size = "33%",
