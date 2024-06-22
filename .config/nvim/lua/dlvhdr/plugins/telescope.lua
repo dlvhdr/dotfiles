@@ -212,16 +212,24 @@ M.config = function()
         -- Add imports to the top of the file keeping the cursor in place
         insert_at_top = true,
       },
-      -- egrepify = {
-      --   lnum_hl = "LineNr",
-      --   prefixes = {
-      --     ["!"] = {
-      --       flag = "invert-match",
-      --     },
-      --   },
-      --   quiet = false,
-      --   level = vim.log.levels.DEBUG,
-      -- },
+      egrepify = {
+        lnum_hl = "LineNr",
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+        },
+        prefixes = {
+          ["!"] = {
+            flag = "invert-match",
+          },
+        },
+      },
       smart_open = {
         preview = { hide_on_startup = true },
         layout_config = {
