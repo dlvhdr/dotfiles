@@ -41,7 +41,7 @@ keymap("n", "<leader>bo", function()
   end
 end, { desc = "Close Other Buffers" })
 keymap("n", "<leader>bw", "<cmd>w<cr>", { silent = true, desc = "Write File" })
-keymap("n", "<leader>bW", "<cmd>w<cr>", { silent = true, desc = "Write All Files" })
+keymap("n", "<leader>bW", "<cmd>wa<cr>", { silent = true, desc = "Write All Files" })
 keymap("n", "<leader>bQ", "<cmd>qa!<cr>", { silent = true, desc = "Quit nvim" })
 
 -- keymap("n", "<leader>fm", "<cmd>messages<cr>", { silent = true, desc = "Messages" })
