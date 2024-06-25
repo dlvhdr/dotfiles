@@ -101,13 +101,21 @@ M.on_attach = function(client, bufnr)
 end
 
 M.capabilities = function()
+  local global_capabilities = {
+    workspace = {
+      fileOperations = {
+        didRename = true,
+        willRename = true,
+      },
+    },
+  }
   local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
   return vim.tbl_deep_extend(
     "force",
     {},
     vim.lsp.protocol.make_client_capabilities(),
     has_cmp and cmp_nvim_lsp.default_capabilities() or {},
-    {}
+    global_capabilities or {}
   )
 end
 
