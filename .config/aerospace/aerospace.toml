@@ -113,6 +113,7 @@ alt-t = 'exec-and-forget open -b com.TickTick.task.mac'
 alt-u = 'exec-and-forget open -b com.github.th-ch.youtube-music'
 alt-w = 'exec-and-forget open -b net.whatsapp.WhatsApp'
 alt-z = 'exec-and-forget open -b us.zoom.xos'
+alt-v = 'workspace V'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 alt-shift-1 = 'move-node-to-workspace 1'
