@@ -15,17 +15,6 @@ prSections:
     filters: "is:open repo:dlvhdr/gh-dash"
   - title: Commented
     filters: commenter:@me
-  - title: Closed
-    filters: is:closed author:@me
-    layout:
-      repo:
-        hidden: true
-      author:
-        hidden: true
-      reviewStatus:
-        hidden: true
-      lines:
-        hidden: true
   - title: Subscribed
     filters: "\
       repo:nvim-telescope/telescope.nvim \
@@ -85,6 +74,8 @@ keybindings:
         gh pr review --repo {{.RepoName}} --approve --body "$(gum input --prompt='Approval Comment: ')" {{.PrNumber}}
 
 theme:
+  ui:
+    sectionsShowCount: true
   colors:
     text:
       primary: "#E2E1ED"
