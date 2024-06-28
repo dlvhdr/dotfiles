@@ -1,9 +1,8 @@
 # 🏠 dlvhdr's dotfiles
 
-💥 kitty | 🖥  tmux | ✍️ NeoVim
+💥 kitty | 🖥 tmux | ✍️ NeoVim
 
-![image](https://github.com/dlvhdr/dotfiles/assets/6196971/6f2e479b-e8e8-414c-a763-2a1e5db754f8)
-
+![screenshot of setup](https://github.com/dlvhdr/dotfiles/assets/6196971/6f2e479b-e8e8-414c-a763-2a1e5db754f8)
 
 ## Setup
 
@@ -31,4 +30,3 @@
 Author: Dolev Hadar
 
 Email: dolevc2@gmail.com
-
