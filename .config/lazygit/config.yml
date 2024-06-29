@@ -52,7 +52,7 @@ customCommands:
     loadingText: "opening github..."
     subprocess: false
   - key: "o"
-    command: "gh pr view --web"
+    command: "gh pr view --web {{ .SelectedLocalBranch.Name }}"
     description: "view PR on github"
     context: "localBranches"
     loadingText: "opening github..."

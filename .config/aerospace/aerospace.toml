@@ -10,7 +10,6 @@ after-startup-command = [
   'exec-and-forget borders active_color=0x50ffffff inactive_color=0x00494d64 width=3 style=round blur_radius=0 hidpi=on',
 ]
 
-
 # Start AeroSpace at login
 start-at-login = true
 

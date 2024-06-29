@@ -1,16 +1,19 @@
 # yaml-language-server: $schema=https://dlvhdr.github.io/gh-dash/configuration/gh-dash/schema.json
 prSections:
   - title: Mine
-    filters: is:open author:@me
+    filters: is:open author:@me -repo:microsoft/vscode
     layout:
       author:
         hidden: true
   - title: Review
     filters: is:open review-requested:@me
+  - title: Troubleshoot
+    filters: org:komodorio label:"Sprints - Troubleshooting" -author:@me is:open
+    layout:
+      repo:
+        width: 6
   - title: Komodor
     filters: repo:komodorio/mono
-  - title: Troubleshoot
-    filters: org:komodorio label:"Sprints - Troubleshooting" -author:@me
   - title: gh-dash
     filters: "is:open repo:dlvhdr/gh-dash"
   - title: Commented
