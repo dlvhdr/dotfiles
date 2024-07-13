@@ -167,4 +167,70 @@ return {
     text_node({ "", "}" }),
     insert_node(0),
   }),
+  snippet(
+    { trig = "test", name = "Go test", desc = "Create a Go test" },
+    fmt(
+      [[
+func Test_<>(t *testing.T) {
+	testEngine, qr := component.Setup(t)
+
+	ctx := kcontext.GetTestContext(tu.TEST_ACCOUNT_ID)
+	fake<> := generateFake<>()
+
+	tests := []struct {
+		name string
+		want *<>
+		code int
+	}{
+		{
+			name: "A Workspace",
+			want: <>
+			code: http.StatusOK,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			tu.InsertModelsToDB(t, qr.Qr.GetDb(), []db.<>{})
+
+			defaultClaims := &jwt.RawHasuraClaims{KomodorRole: common.KomodorRoleAccountAdmin, AccountID: tu.TEST_ACCOUNT_ID}
+			token, _ := tu.SetupTokenAndMockJwksServer(defaultClaims)
+			claims, _ := jwt.ParseJWT(token)
+			tu.MockAuthApiInternalAuthorization(&claims.RawHasuraClaims, nil)
+			path := fmt.Sprintf("%s%s", api.GroupAPI, "/<>")
+
+			w := tu.MakeRequestWithHeaders(testEngine, http.MethodPut, path, map[string]string{"Authorization": token}, workspacesapi.ConvertAppViewToWorkspace(ctx, tt.updatedAppView, true))
+			assert.Equal(t, tt.code, w.Code)
+			parsedRes := tu.GetResponseFor[<>](t, w)
+			assert.EqualValues(t, tt.want, *parsedRes)
+		})
+	}
+}
+
+func generateFake<>(size int) []<> {
+	data := make([]<>, size)
+	for i := 0; i << size; i++ {
+		var item <>
+		gofakeit.Struct(&item)
+	}
+	return data
+}
+  ]],
+      {
+        insert_node(1),
+        insert_node(2),
+        insert_node(3),
+        insert_node(4),
+        insert_node(5),
+        insert_node(6),
+        insert_node(7),
+        insert_node(8),
+        insert_node(9),
+        insert_node(10),
+        insert_node(11),
+        insert_node(12),
+      },
+      { delimiters = "<>" }
+    )
+  ),
 }

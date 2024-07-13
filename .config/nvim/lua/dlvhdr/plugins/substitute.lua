@@ -1,11 +1,20 @@
 return {
   "gbprod/substitute.nvim",
+  dependencies = { "folke/which-key.nvim" },
   opts = {
     highlight_substituted_text = {
       enabled = true,
       timer = 200,
     },
   },
+  init = function()
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>p", hidden = true },
+      { "<leader>P", hidden = true },
+      { "<leader>pp", hidden = true },
+    })
+  end,
   keys = {
     {
       "<CR>",

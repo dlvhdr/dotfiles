@@ -1,5 +1,6 @@
 return {
   "chrisgrieser/nvim-chainsaw",
+  dependencies = "folke/which-key.nvim",
   config = function()
     local beep_format = {
       "/* prettier-ignore */ // %s",
@@ -36,6 +37,11 @@ return {
           typescriptreact = message_format,
         },
       },
+    })
+
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>dl", group = " Log", nowait = false, remap = false },
     })
   end,
   keys = {

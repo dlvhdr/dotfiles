@@ -8,6 +8,7 @@ local formatters_by_ft = {
   css = { "prettierd" },
   postcsss = { "prettierd" },
   markdown = { "prettierd" },
+  mdx = { "prettierd" },
   json = { "prettierd" },
   yaml = { "prettierd" },
   go = { "gofmt", "goimports-reviser" },

@@ -1,7 +1,7 @@
 return {
   "SmiteshP/nvim-navic",
   enabled = true,
-  event = "BufReadPre",
+  event = "LspAttach",
   dependencies = {
     "folke/tokyonight.nvim",
     "nvim-tree/nvim-web-devicons",

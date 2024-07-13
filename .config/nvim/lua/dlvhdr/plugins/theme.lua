@@ -36,16 +36,7 @@ M.config = function()
       keywords = { italic = true },
       functions = {},
       variables = {},
-      sidebars = "transparent",
       floats = "transparent",
-    },
-    sidebars = {
-      "terminal",
-      "packer",
-      "help",
-      "NvimTree",
-      "Trouble",
-      "LspInfo",
     },
     dim_inactive = false,
     lualine_bold = false,
@@ -102,6 +93,9 @@ M.config = function()
       hl.WinBar = { bg = "NONE" }
       hl.WinBarNC = { bg = "NONE" }
       hl.LspInlayHint = { bg = "NONE", fg = c.dark3 }
+      hl.WhichKeyIcon = { bg = "NONE", fg = c.green }
+      hl.WhichKeyGroup = { bg = "NONE", fg = c.fg, bold = true }
+      hl.WhichKeyDesc = { bg = "NONE", fg = c.fg }
     end,
   })
 

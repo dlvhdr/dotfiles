@@ -52,4 +52,17 @@ return {
       },
     },
   },
+  config = function(opts)
+    require("obsidian").setup(opts)
+
+    vim.api.nvim_create_user_command("ObsidianArchive", function()
+      local head = string.format("%s", vim.fn.expand("%:h"))
+      local tail = string.format("'" .. vim.fn.expand("%:t:r") .. "'." .. vim.fn.expand("%:e"))
+      local from = string.format('"%s/%s"', head, tail)
+      local to = string.format('"%s/%s"', os.getenv("HOME"), "obsidian/obsidian/04 Archive")
+      local obj = vim.system({ "mv", from, to }):wait()
+      vim.print(obj)
+      vim.notify("Moved to archive: " .. from)
+    end, {})
+  end,
 }

@@ -3,7 +3,53 @@ local M = {
   version = false,
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
-    "L3MON4D3/LuaSnip",
+    {
+      "L3MON4D3/LuaSnip",
+      cmd = { "LuaSnip" },
+      event = "InsertEnter",
+      config = function()
+        local luasnip = require("luasnip")
+        local types = require("luasnip.util.types")
+
+        -- luasnip.cleanup()
+
+        luasnip.setup({
+          -- -- This tells LuaSnip to remember to keep around the last snippet.
+          -- -- You can jump back into it even if you move outside of the selection
+          keep_roots = true,
+          link_roots = false,
+          link_children = true,
+          --
+          -- -- This one is cool cause if you have dynamic snippets, it updates as you type!
+          update_events = "TextChanged,TextChangedI",
+          enable_autosnippets = true,
+
+          -- region_check_events = "CursorHold,InsertLeave",
+          delete_check_events = "TextChanged",
+          store_selection_keys = "<Tab>",
+
+          ext_opts = {
+            [types.choiceNode] = {
+              active = { hl_group = "Error", virt_text = { { "●", "Error" } } },
+            },
+            [types.insertNode] = {
+              active = { hl_group = "Error", virt_text = { { "●", "Error" } } },
+            },
+            [types.snippetNode] = {
+              active = { hl_group = "Error", virt_text = { { "●", "Error" } } },
+            },
+          },
+        })
+
+        luasnip.filetype_extend("typescriptreact", { "typescript" })
+
+        require("luasnip.loaders.from_vscode").load_standalone({
+          path = "~/.config/nvim/lua/dlvhdr/snippets/markdown.json",
+        })
+        require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/lua/dlvhdr/snippets" } })
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
+    },
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
@@ -14,6 +60,11 @@ local M = {
     "zbirenbaum/copilot-cmp",
   },
 }
+
+local function has_words_before()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
 
 M.config = function()
   local cmp_status_ok, cmp = pcall(require, "cmp")
@@ -33,17 +84,14 @@ M.config = function()
     },
   })
 
-  local luasnip_status_ok, luasnip = pcall(require, "luasnip")
-  if not luasnip_status_ok then
-    return
-  end
+  local luasnip = require("luasnip")
 
   local bordered = require("cmp.config.window").bordered
 
   local next_completion = function(fallback)
     if cmp.visible() then
       cmp.select_next_item({ behavior = cmp.SelectBehavior.Replace })
-    else
+    elseif has_words_before() then
       cmp.complete()
     end
   end
@@ -51,7 +99,7 @@ M.config = function()
   local prev_completion = function(fallback)
     if cmp.visible() then
       cmp.select_prev_item({ behavior = cmp.SelectBehavior.Replace })
-    else
+    elseif has_words_before() then
       cmp.complete()
     end
   end
@@ -81,10 +129,9 @@ M.config = function()
   end
 
   cmp.setup({
-    auto_brackets = {},
     preselect = cmp.PreselectMode.None,
     completion = {
-      completeopt = "menu,menuone,noinsert",
+      completeopt = "menu,menuone,noselect,noinsert",
     },
     snippet = {
       expand = function(args)
@@ -120,6 +167,20 @@ M.config = function()
         cmp.close()
         require("copilot.suggestion").accept()
       end,
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if luasnip.expand_or_locally_jumpable() then
+          luasnip.expand_or_jump()
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if luasnip.expand_or_locally_jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
     }),
     sources = sources,
 
@@ -166,6 +227,11 @@ M.config = function()
       { name = "cmdline" },
     }),
   })
+
+  vim.keymap.set("s", "<BS>", "<C-O>s")
+  vim.keymap.set("i", "<C-l>", function()
+    require("luasnip.extras.select_choice")()
+  end, { desc = "Select next snippet choice" })
 end
 
 return M

@@ -17,6 +17,8 @@ function M.config()
     "bash-language-server",
     "js-debug-adapter",
     "codespell",
+    "marksman",
+    "mdx-analyzer",
   }
   require("mason").setup({
     ui = {

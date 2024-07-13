@@ -8,6 +8,12 @@ return {
     "BufRead *.png,*.jpg,*.gif,*.webp,*.ipynb",
   },
   build = "luarocks --lua-version 5.1 --local install magick",
+  init = function()
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>i", group = " Images" },
+    })
+  end,
   config = function()
     require("image").setup({
       backend = "kitty",

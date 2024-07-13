@@ -1,4 +1,3 @@
-local util = require("dlvhdr.utils")
 local keymap = vim.keymap.set
 
 -- Store relative line number jumps in the jumplist.
@@ -85,10 +84,6 @@ keymap("n", "<C-M-j>", "<cmd>:TmuxResizeDown<CR>", { silent = true })
 keymap("n", "<C-M-h>", "<cmd>:TmuxResizeLeft<CR>", { silent = true })
 keymap("n", "<C-M-l>", "<cmd>:TmuxResizeRight<CR>", { silent = true })
 
-keymap("n", "<leader>ul", function()
-  util.toggle("relativenumber")
-end, { silent = true, desc = "  Relative Line Numbers" })
-
 -- TLDR: Conditionally modify character at end of line
 -- Description:
 -- This function takes a delimiter character and:
@@ -127,45 +122,4 @@ keymap("n", "<leader>c;", modify_line_end_delimiter(";"), { desc = "[Add] ';' to
 -- http://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
 -----------------------------------------------------------------------------//
 keymap("n", "<leader>cn", "*``cgn", { desc = "[Replace] Next Occurrence" })
-keymap("n", "cN", "*``cgN", { desc = "[Replace] Next Occurrence (Backwards)" })
-
------------------------------------------------------------------------------//
--- GX - replicate netrw functionality
------------------------------------------------------------------------------//
-local function open(path)
-  vim.fn.jobstart({ vim.g.open_command, path }, { detach = true })
-  vim.notify(string.format("Opening %s", path))
-end
-keymap("n", "gx", function()
-  local file = vim.fn.expand("<cfile>")
-  if not file or vim.fn.isdirectory(file) > 0 then
-    return vim.cmd.edit(file)
-  end
-
-  if file:match("http[s]?://") then
-    return open(file)
-  end
-
-  -- consider anything that looks like string/string a github link
-  local link = file:match("[%a%d%-%.%_]*%/[%a%d%-%.%_]*")
-  if link then
-    return open(string.format("https://www.github.com/%s", link))
-  end
-end)
-
-keymap("v", "gx", function()
-  local file = vim.fn.expand("<cfile>")
-  if not file or vim.fn.isdirectory(file) > 0 then
-    return vim.cmd.edit(file)
-  end
-
-  if file:match("http[s]?://") then
-    return open(file)
-  end
-
-  -- consider anything that looks like string/string a github link
-  local link = file:match("[%a%d%-%.%_]*%/[%a%d%-%.%_]*")
-  if link then
-    return open(string.format("https://www.github.com/%s", link))
-  end
-end)
+keymap("n", "<leader>cN", "*``cgN", { desc = "[Replace] Next Occurrence (Backwards)" })

@@ -66,7 +66,7 @@ M.config = function()
       map("n", "<leader>hD", function()
         gs.diffthis("~")
       end, { desc = "Diff ~" })
-      map("n", "<leader>htd", gs.toggle_deleted, { desc = "Toggle Deleted" })
+      map("n", "<leader>ht", gs.toggle_deleted, { desc = "Toggle Deleted" })
 
       -- Text object
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")

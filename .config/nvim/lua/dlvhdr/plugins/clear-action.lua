@@ -4,10 +4,8 @@ return {
   Event = "LspAttach",
   init = function()
     local wk = require("which-key")
-    wk.register({
-      ["ga"] = {
-        name = "Code Action",
-      },
+    wk.add({
+      { "ga", group = "Code Action" },
     })
   end,
   config = function()

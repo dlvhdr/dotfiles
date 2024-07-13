@@ -112,6 +112,7 @@ return {
           select_prev_entry = { lhs = "[q", desc = "move to next changed file" },
           close_review_tab = { lhs = "<C-c>", desc = "close review tab" },
           toggle_viewed = { lhs = "<leader><space>o", desc = "toggle viewer viewed state" },
+          submit_review = { lhs = "<leader>oS", desc = "submit review" },
         },
         file_panel = {
           next_entry = { lhs = "j", desc = "move to next changed file" },
@@ -129,63 +130,106 @@ return {
     })
 
     local wk = require("which-key")
+
     -- Main Octo buffer
     local function attach_octo(bufnr)
-      wk.register({
-        a = { name = "Assignee" },
-        c = { name = "Comment" },
-        g = { name = "Go To" },
-        i = { name = "Issue" },
-        l = { name = "Label" },
-        o = { "<cmd>Octo pr browser<CR>", "Open in browser" },
-        p = {
-          name = "Pull Request",
-          r = { "<cmd>Octo pr ready<CR>", "mark draft as ready to review" },
-          s = { "<cmd>Octo pr checks<CR>", "status of all checks" },
-          m = { name = "Manage pull request" },
-          M = { name = "Merge" },
+      wk.add({
+        { "<leader>o", buffer = bufnr, icon = " ", group = "Octo", nowait = false, remap = false },
+        { "<leader>oR", buffer = bufnr, group = "Reaction", nowait = false, remap = false },
+        { "<leader>oa", buffer = bufnr, group = "Assignee", nowait = false, remap = false },
+        { "<leader>oc", buffer = bufnr, group = "Comment", nowait = false, remap = false },
+        { "<leader>og", buffer = bufnr, group = "Go To", nowait = false, remap = false },
+        { "<leader>oi", buffer = bufnr, group = "Issue", nowait = false, remap = false },
+        { "<leader>ol", buffer = bufnr, group = "Label", nowait = false, remap = false },
+        {
+          "<leader>oo",
+          "<cmd>Octo pr browser<CR>",
+          buffer = bufnr,
+          desc = "Open in browser",
+          nowait = false,
+          remap = false,
         },
-        R = { name = "Reaction" },
-        s = { name = "Submit" },
-        v = { name = "Reviewer" },
-        r = {
-          name = "Review",
-          s = { "<cmd>Octo review start<CR>", "start review" },
-          r = { "<cmd>Octo review resume<CR>", "resume" },
-          m = {
-            name = "Manage review",
-            d = { "<cmd>Octo review discard<CR>", "delete pending review" },
-            s = { "<cmd>Octo review submit<CR>", "submit review" },
-            c = { "<cmd>Octo review comments<CR>", "view pending comments" },
-            p = { "<cmd>Octo review commit<CR>", "pick a commit" },
-          },
+        { "<leader>op", buffer = bufnr, group = "Pull Request", nowait = false, remap = false },
+        { "<leader>opM", buffer = bufnr, group = "Merge", nowait = false, remap = false },
+        { "<leader>opm", buffer = bufnr, group = "Manage pull request", nowait = false, remap = false },
+        {
+          "<leader>opr",
+          "<cmd>Octo pr ready<CR>",
+          buffer = bufnr,
+          desc = "mark draft as ready to review",
+          nowait = false,
+          remap = false,
         },
-      }, {
-        name = " Octo",
-        buffer = bufnr,
-        mode = "n", -- NORMAL mode
-        prefix = "<leader>o",
-        silent = true, -- use `silent` when creating keymaps
-        noremap = true, -- use `noremap` when creating keymaps
-        nowait = false, -- use `nowait` when creating keymaps
+        {
+          "<leader>ops",
+          "<cmd>Octo pr checks<CR>",
+          buffer = bufnr,
+          desc = "status of all checks",
+          nowait = false,
+          remap = false,
+        },
+        { "<leader>or", buffer = bufnr, group = "Review", nowait = false, remap = false },
+        { "<leader>orm", buffer = bufnr, group = "Manage review", nowait = false, remap = false },
+        {
+          "<leader>ormc",
+          "<cmd>Octo review comments<CR>",
+          buffer = bufnr,
+          desc = "view pending comments",
+          nowait = false,
+          remap = false,
+        },
+        {
+          "<leader>ormd",
+          "<cmd>Octo review discard<CR>",
+          buffer = bufnr,
+          desc = "delete pending review",
+          nowait = false,
+          remap = false,
+        },
+        {
+          "<leader>ormp",
+          "<cmd>Octo review commit<CR>",
+          buffer = bufnr,
+          desc = "pick a commit",
+          nowait = false,
+          remap = false,
+        },
+        {
+          "<leader>orms",
+          "<cmd>Octo review submit<CR>",
+          buffer = bufnr,
+          desc = "submit review",
+          nowait = false,
+          remap = false,
+        },
+        {
+          "<leader>orr",
+          "<cmd>Octo review resume<CR>",
+          buffer = bufnr,
+          desc = "resume",
+          nowait = false,
+          remap = false,
+        },
+        {
+          "<leader>ors",
+          "<cmd>Octo review start<CR>",
+          buffer = bufnr,
+          desc = "start review",
+          nowait = false,
+          remap = false,
+        },
+        { "<leader>os", buffer = bufnr, group = "Submit", nowait = false, remap = false },
+        { "<leader>ov", buffer = bufnr, group = "Reviewer", nowait = false, remap = false },
       })
     end
 
     -- Review buffer
     local function attach_conf(bufnr)
-      wk.register({
-        c = { name = "Comment" },
-        s = { name = "Suggestion" },
-
-        q = { "<cmd>Octo review close<CR>", "quit review" },
-        o = { "<cmd>Octo pr browser<CR>", "Open in browser" },
-      }, {
-        buffer = bufnr,
-        mode = "n", -- NORMAL mode
-        prefix = "<leader>o",
-        silent = true, -- use `silent` when creating keymaps
-        noremap = true, -- use `noremap` when creating keymaps
-        nowait = false, -- use `nowait` when creating keymaps
+      wk.add({
+        { "<leader>o", buffer = bufnr, group = " Octo", nowait = false, remap = false },
+        { "<leader>oc", desc = "Comment", buffer = bufnr },
+        { "<leader>os", desc = "Suggestion", buffer = bufnr },
+        { "<leader>oS", desc = "Submit Review", buffer = bufnr },
       })
     end
 

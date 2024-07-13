@@ -26,10 +26,8 @@ return {
   },
   init = function()
     local wk = require("which-key")
-    wk.register({
-      ["<leader>y"] = {
-        name = " Copy",
-      },
+    wk.add({
+      { "<leader>y", group = "Copy", icon = " " },
     })
   end,
 }

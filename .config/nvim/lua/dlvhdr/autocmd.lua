@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = "*.md",
+  pattern = { "*.md", "*.mdx" },
   callback = function()
     vim.o.conceallevel = 2
   end,

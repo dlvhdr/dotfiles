@@ -12,6 +12,7 @@ local M = {
     "piersolenski/telescope-import.nvim",
     "nvim-telescope/telescope-node-modules.nvim",
     "fdschmidt93/telescope-egrepify.nvim",
+    "benfowler/telescope-luasnip.nvim",
   },
   keys = {
     { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help Tags" },
@@ -65,6 +66,13 @@ local M = {
         require("telescope").extensions.advanced_git_search.show_custom_functions()
       end,
       desc = "Advanced Git Search",
+    },
+    {
+      "<leader>fs",
+      function()
+        require("telescope").extensions.luasnip.luasnip({})
+      end,
+      desc = "Snippets",
     },
   },
 }
@@ -250,6 +258,7 @@ M.config = function()
   telescope.load_extension("node_modules")
   telescope.load_extension("fzy_native")
   telescope.load_extension("egrepify")
+  telescope.load_extension("luasnip")
 end
 
 function M.project_files()

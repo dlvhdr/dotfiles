@@ -1,5 +1,6 @@
 vim.filetype.add({
   extension = {
-    mdx = "markdown.mdx",
+    mdx = "markdown",
   },
 })
+vim.treesitter.language.register("markdown", "mdx")
