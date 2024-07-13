@@ -11,7 +11,6 @@ M.setup = function(opts)
         local action, uri, range = unpack(command.arguments)
 
         local function move(newf)
-          print("moving!", newf)
           client.request("workspace/executeCommand", {
             command = command.command,
             arguments = { action, uri, range, newf },
@@ -122,6 +121,12 @@ M.setup = function(opts)
     "<leader>lu",
     require("dlvhdr.plugins.lsp.handlers").action["source.removeUnused.ts"],
     { desc = "Remove unused" }
+  )
+  vim.keymap.set(
+    "n",
+    "<leader>lm",
+    require("dlvhdr.plugins.lsp.handlers").action["source.addMissingImports.ts"],
+    { desc = "Add missing imports" }
   )
 end
 
