@@ -22,6 +22,7 @@ M.config = function()
     },
     filetypes_denylist = {
       "help",
+      "alpha",
       "dashboard",
       "NvimTree",
       "packer",
