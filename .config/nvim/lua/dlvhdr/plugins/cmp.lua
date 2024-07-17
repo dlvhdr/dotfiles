@@ -53,7 +53,8 @@ local M = {
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-path",
+    -- "hrsh7th/cmp-path",
+    "https://codeberg.org/FelipeLema/cmp-async-path",
     "hrsh7th/cmp-cmdline",
     "onsails/lspkind-nvim",
     "zbirenbaum/copilot.lua",
@@ -120,7 +121,7 @@ M.config = function()
   local sources = cmp.config.sources({
     { name = "nvim_lsp" },
     { name = "luasnip" },
-    { name = "path" },
+    { name = "async_path" },
   }, {
     { name = "buffer" },
   })
@@ -215,14 +216,14 @@ M.config = function()
     mapping = cmp.mapping.preset.cmdline(),
     sources = {
       { name = "buffer" },
-      { name = "path" },
+      { name = "async_path" },
     },
   })
 
   cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-      { name = "path" },
+      { name = "async_path" },
     }, {
       { name = "cmdline" },
     }),
