@@ -47,6 +47,10 @@ return {
     require("mini.files").setup({
       windows = {
         preview = false,
+        max_number = math.huge,
+        width_focus = 30,
+        width_nofocus = 20,
+        width_preview = 25,
       },
       mappings = {
         synchronize = "<leader>bw",

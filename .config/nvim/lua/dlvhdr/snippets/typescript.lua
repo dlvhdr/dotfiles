@@ -371,4 +371,29 @@ export const useGetSomething = (
       { delimiters = "<>" }
     )
   ),
+  snippet(
+    { trig = "msw", name = "MSW API Handler", desc = "MSW API Handler boilerplate code" },
+    fmt(
+      [[
+import { bypass, http, HttpResponse } from "msw";
+import { faker } from "@faker-js/faker/locale/en";
+
+export const Handlers = () => [
+  http.get(
+    `*`,
+    async ({ request }) => {
+      await useDelay();
+
+      return HttpResponse.json({
+        data: [
+        ],
+      });
+    }
+  ),
+];
+      ]],
+      {},
+      { delimiters = "%$" }
+    )
+  ),
 }

@@ -28,7 +28,12 @@ return {
     vim.keymap.set("n", "<leader>lF", function()
       vim.g.disable_autoformat = not vim.g.disable_autoformat
       vim.notify("Auto formatting is " .. (vim.g.disable_autoformat and "disabled" or "enabled"))
-    end, { desc = "  Auto Formatting" })
+    end, { desc = "Auto Formatting" })
+
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>lF", icon = "󰨚 " },
+    })
 
     vim.api.nvim_create_autocmd({ "BufWritePre" }, {
       pattern = "*",

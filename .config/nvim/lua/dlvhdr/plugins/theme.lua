@@ -36,6 +36,7 @@ M.config = function()
       keywords = { italic = true },
       functions = {},
       variables = {},
+      sidebars = "transparent",
       floats = "transparent",
     },
     dim_inactive = false,
@@ -94,7 +95,16 @@ M.config = function()
       hl.WinBarNC = { bg = "NONE" }
       hl.LspInlayHint = { bg = "NONE", fg = c.dark3 }
       hl.WhichKeyIcon = { bg = "NONE", fg = c.green }
-      hl.WhichKeyGroup = { bg = "NONE", fg = c.fg, bold = true }
+      hl.WhichKeyIconRed = { bg = "NONE", fg = c.fg_dark }
+      hl.WhichKeyIconBlue = { bg = "NONE", fg = c.fg_dark }
+      hl.WhichKeyIconCyan = { bg = "NONE", fg = c.fg_dark }
+      hl.WhichKeyIconGrey = { bg = "NONE", fg = c.fg_dark }
+      hl.WhichKeyIconAzure = { bg = "NONE", fg = c.fg_dark }
+      hl.WhichKeyIconGreen = { bg = "NONE", fg = c.fg_dark }
+      hl.WhichKeyIconOrange = { bg = "NONE", fg = c.fg_dark }
+      hl.WhichKeyIconPurple = { bg = "NONE", fg = c.fg_dark }
+      hl.WhichKeyIconYellow = { bg = "NONE", fg = c.fg_dark }
+      hl.WhichKeyGroup = { bg = "NONE", fg = c.fg }
       hl.WhichKeyDesc = { bg = "NONE", fg = c.fg }
     end,
   })

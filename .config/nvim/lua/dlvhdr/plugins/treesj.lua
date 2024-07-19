@@ -7,9 +7,15 @@ return {
       function()
         require("treesj").toggle()
       end,
-      desc = "  Split/Join Block",
+      desc = "Split/Join Block",
     },
   },
+  init = function()
+    local wk = require("which-key")
+    wk.add({
+      { "<space>cb", icon = "󰨚 " },
+    })
+  end,
   config = function()
     local ok, tsj = pcall(require, "treesj")
     if not ok then

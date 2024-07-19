@@ -15,6 +15,11 @@ return {
     require("lspconfig.ui.windows").default_options.border = "rounded"
 
     vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart all<CR>", { silent = true, desc = "Restart All Servers" })
-    vim.keymap.set("n", "<leader>le", "<cmd>!eslint_d restart<CR>", { silent = true, desc = "Restart eslint_d" })
+    vim.keymap.set(
+      "n",
+      "<leader>le",
+      "<cmd>!~/.local/share/nvim/mason/bin/eslint_d --restart<CR>",
+      { silent = true, desc = "Restart eslint_d" }
+    )
   end,
 }

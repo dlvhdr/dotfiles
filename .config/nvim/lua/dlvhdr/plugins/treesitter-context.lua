@@ -11,6 +11,11 @@ return {
     end, { silent = true, desc = "Go to TS context" })
     vim.keymap.set("n", "<leader>lc", function()
       require("treesitter-context").toggle()
-    end, { silent = true, desc = "  Treesitter Context" })
+    end, { silent = true, desc = "Treesitter Context" })
+
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>lc", icon = "󰨚 " },
+    })
   end,
 }

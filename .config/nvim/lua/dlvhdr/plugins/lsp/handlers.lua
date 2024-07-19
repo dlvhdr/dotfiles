@@ -72,7 +72,11 @@ M.on_attach = function(client, bufnr)
       callback = function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
       end,
-      desc = "  Inlay [h]ints",
+      desc = "Inlay hints",
+    })
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>lh", icon = "󰨚 " },
     })
   end
 

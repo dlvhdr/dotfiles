@@ -14,19 +14,12 @@ M.config = function()
       group = "", -- symbol prepended to a group
     },
     win = {
-      padding = { 1, 0 }, -- extra window padding [top/bottom, right/left]
+      padding = { 1, 1 }, -- extra window padding [top/bottom, right/left]
     },
-    modes = {
-      n = true, -- Normal mode
-      i = true, -- Insert mode
-      x = false, -- Visual mode
-      s = true, -- Select mode
-      o = false, -- Operator pending mode
-      t = true, -- Terminal mode
-      c = true, -- Command mode
+    triggers = {
+      { "<auto>", mode = "nistc" },
     },
-    -- sort = { "local", "order", "group", "alphanum", "mod", "lower", "icase" },
-    sort = { "lower", "group" },
+    sort = { "alphanum", "mod" },
     notify = false,
     show_help = false,
     show_keys = false,
@@ -63,7 +56,7 @@ M.config = function()
     { "<leader>gd", group = "Diff", icon = " ", nowait = false, remap = false },
     { "<leader>gy", group = "Copy URLs", icon = " ", nowait = false, remap = false },
     { "<leader>h", group = "Gitsigns", icon = " ", nowait = false, remap = false },
-    { "<leader>ht", group = "Toggle", icon = " ", nowait = false, remap = false },
+    { "<leader>ht", group = "Toggle", icon = "󰨚 ", nowait = false, remap = false },
     { "<leader>l", group = "LSP", icon = "󱌢 ", nowait = false, remap = false },
     { "<leader>o", group = "Octo", icon = " ", nowait = false, remap = false },
     { "<leader>t", group = "Test", icon = " ", nowait = false, remap = false },
