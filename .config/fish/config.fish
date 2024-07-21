@@ -6,9 +6,10 @@
 #                                     
 set -U fish_greeting # disable fish greeting
 
+# set -e fish_user_paths
+fish_add_path "$HOME/.krew/bin" "$XDG_DATA_HOME/google-cloud-sdk/bin" "$XDG_DATA_HOME/cargo/bin" "/usr/local/opt/ruby/bin" "$GOPATH/bin" "$HOME/.local/bin" "$DOTFILES/scripts" "$XDG_DATA_HOME/npm/bin" "$HOME/Library/Python/2.7/bin" "$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin" "$HOME/.local/share/npm/bin"
 eval (/opt/homebrew/bin/brew shellenv)
-fish_add_path $HOME/.local/share/npm/bin
-fish_add_path $HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
+fish_add_path /opt/homebrew/bin
 
 set -gx DOCKER_CONFIG "$HOME/.docker"
 set -gx COMPOSE_PROJECT_NAME "web"
