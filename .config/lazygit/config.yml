@@ -17,8 +17,10 @@ gui:
     activeBorderColor:
       - "#89ddff"
       - bold
+    inactiveViewSelectedLineBgColor:
+      - "#2c2f3d"
     inactiveBorderColor:
-      - "#565f89"
+      - "#2c2f3d"
     optionsTextColor:
       - "#3d59a1"
     selectedLineBgColor:
@@ -27,6 +29,19 @@ gui:
   commitLength:
     show: true
   skipNoStagedFilesWarning: false
+
+  spinner:
+    # The frames of the spinner animation.
+    frames:
+      - "⣾ "
+      - "⣽ "
+      - "⣻ "
+      - "⢿ "
+      - "⡿ "
+      - "⣟ "
+      - "⣯ "
+      - "⣷ "
+    rate: 100
 os:
   editCommand: "$XDG_CONFIG_HOME/lazygit/edit-nvim"
   editCommandTemplate: "{{editor}} {{filename}}"
