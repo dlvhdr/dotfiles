@@ -12,6 +12,7 @@ gui:
   skipStashWarning: true
   sidePanelWidth: 0.3333
   expandFocusedSidePanel: false
+  enlargedSideViewLocation: top
   mainPanelSplitMode: flexible
   theme:
     activeBorderColor:
@@ -42,17 +43,24 @@ gui:
       - "⣯ "
       - "⣷ "
     rate: 100
+  # portraitMode: always
+  windowSize: half
+  statusPanelView: allBranchesLog
+  commandLogSize: 2
+  showRandomTip: false
 os:
-  editCommand: "$XDG_CONFIG_HOME/lazygit/edit-nvim"
-  editCommandTemplate: "{{editor}} {{filename}}"
+  editPreset: "nvim"
+  # editCommand: "$XDG_CONFIG_HOME/lazygit/edit-nvim"
+  # editCommandTemplate: "{{editor}} {{filename}}"
 git:
   log:
     showGraph: always
-  branchLogCmd: "git log --graph --abbrev-commit --decorate --format=format:'%C(bold white)%s%C(reset) %C(dim white)- %ar %C(white)%d%C(reset)' master..{{branchName}} --"
+  # branchLogCmd: "git log --graph --abbrev-commit --decorate --format=format:'%C(bold white)%s%C(reset) %C(dim white)- %ar %C(white)%d%C(reset)' master..{{branchName}} --"
   overrideGpg: true
   paging:
     colorArg: always
     pager: delta --dark --paging=never
+  skipHookPrefix: skip
 customCommands:
   - key: "R"
     command: "gh repo view --web"
