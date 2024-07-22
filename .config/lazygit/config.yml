@@ -34,17 +34,17 @@ gui:
   spinner:
     # The frames of the spinner animation.
     frames:
-      - "⣾ "
-      - "⣽ "
-      - "⣻ "
-      - "⢿ "
-      - "⡿ "
-      - "⣟ "
-      - "⣯ "
       - "⣷ "
+      - "⣯ "
+      - "⣟ "
+      - "⡿ "
+      - "⢿ "
+      - "⣻ "
+      - "⣽ "
+      - "⣾ "
     rate: 100
   # portraitMode: always
-  windowSize: half
+  # windowSize: half
   statusPanelView: allBranchesLog
   commandLogSize: 2
   showRandomTip: false
@@ -60,7 +60,11 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
-  skipHookPrefix: skip
+  skipHookPrefix: SKIP-HOOKS
+  commitPrefix:
+    pattern: "^\\w*"
+    replace: "WIP"
+  branchPrefix: "dlvhdr/"
 customCommands:
   - key: "R"
     command: "gh repo view --web"
