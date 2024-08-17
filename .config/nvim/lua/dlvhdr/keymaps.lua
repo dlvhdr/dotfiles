@@ -13,6 +13,14 @@ keymap("n", "<leader><Tab>n", ":tabnext<CR>", { silent = true, desc = "Next Tab"
 keymap("n", "<leader><Tab>p", ":tabprevious<CR>", { silent = true, desc = "Previous Tab" })
 
 keymap("n", "x", '"_x', { silent = true })
+local dd = function()
+  if vim.api.nvim_get_current_line():match("^%s*$") then
+    return '"_dd'
+  else
+    return "dd"
+  end
+end
+keymap("n", "dd", dd, { noremap = true, expr = true })
 keymap("n", "Y", "y$", { silent = true })
 keymap("n", "n", "nzzzv", { silent = true })
 keymap("n", "N", "Nzzzv", { silent = true })
