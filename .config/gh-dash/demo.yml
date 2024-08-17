@@ -1,31 +1,15 @@
 prSections:
   - title: My PRs
-    layout:
-      lines:
-        hidden: true
     filters: author:@me
     limit: 5
 
 defaults:
   preview:
-    open: true
-    width: 40
+    open: false
+    width: 80
   prsLimit: 20
   issuesLimit: 20
-  view: prs
-  layout:
-    prs:
-      updatedAt:
-        width: 5
-      repo:
-        width: 15
-    issues:
-      updatedAt:
-        width: 5
-      repo:
-        width: 20
-      assignees:
-        hidden: true
+  view: repo
 keybindings:
   prs: []
 repoPaths: {}
@@ -41,7 +25,7 @@ theme:
       warning: "#F23D5C"
       success: "#3DF294"
     background:
-      selected: "#39386b"
+      selected: "#1b1b33"
     border:
       primary: "#383B5B"
       secondary: "#39386B"

@@ -9,10 +9,6 @@
   path = config-personal
 [includeIf "gitdir:~/code/komodor/"]
   path = config-komodor
-
-[credential]
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://github.com"]
 	username = dlvhdr
 
@@ -21,10 +17,6 @@
 
 [commit]
 	gpgsign = true
-
-[credential "https://dev.azure.com"]
-	useHttpPath = true
-
 [gpg "ssh"]
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 
@@ -239,3 +231,8 @@
     line-numbers-left-format = "{nm:>4}│"
     line-numbers-right-format = "{np:>4}│"
 
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true

@@ -1,10 +1,4 @@
 prSections:
-  - title: My PRs
-    layout:
-      lines:
-        hidden: true
-    filters: author:@me
-    limit: 1
 
 defaults:
   preview:

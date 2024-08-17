@@ -45,6 +45,7 @@ issuesSections:
 pager:
   diff: delta
 defaults:
+  view: repo
   layout:
     prs:
       repoName:
@@ -53,7 +54,7 @@ defaults:
         hidden: false
 
   preview:
-    open: true
+    open: false
     width: 55
   prsLimit: 20
   issuesLimit: 20
@@ -79,16 +80,18 @@ keybindings:
 theme:
   ui:
     sectionsShowCount: true
+    table:
+      compact: false
   colors:
     text:
       primary: "#E2E1ED"
       secondary: "#666CA6"
       inverted: "#242347"
-      faint: "#797d9c"
+      faint: "#b0b3bf"
       warning: "#F23D5C"
       success: "#3DF294"
     background:
-      selected: "#292e42"
+      selected: "#1b1b33"
     border:
       primary: "#383B5B"
       secondary: "#39386B"

@@ -44,7 +44,7 @@ gui:
       - "⣾ "
     rate: 100
   # portraitMode: always
-  # windowSize: half
+  windowSize: half
   statusPanelView: allBranchesLog
   commandLogSize: 2
   showRandomTip: false
@@ -60,10 +60,7 @@ git:
   paging:
     colorArg: always
     pager: delta --dark --paging=never
-  skipHookPrefix: SKIP-HOOKS
-  commitPrefix:
-    pattern: "^\\w*"
-    replace: "WIP"
+  skipHookPrefix: WIP
   branchPrefix: "dlvhdr/"
 customCommands:
   - key: "R"
