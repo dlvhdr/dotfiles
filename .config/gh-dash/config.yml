@@ -45,7 +45,7 @@ issuesSections:
 pager:
   diff: delta
 defaults:
-  view: repo
+  view: prs
   layout:
     prs:
       repoName:
@@ -73,7 +73,13 @@ keybindings:
         '
     - key: b
       command: cd {{.RepoPath}} && gh pr view {{.PrNumber}} --json statusCheckRollup | command jq -rcj '.statusCheckRollup.[] | select(.context == "buildkite/mono") | .targetUrl' | xargs open
+    - key: g
+      command: >
+        lazygit
     - key: a
+      command: >
+        git add -A && lazygit
+    - key: v
       command: >
         gh pr review --repo {{.RepoName}} --approve --body "$(gum input --prompt='Approval Comment: ')" {{.PrNumber}}
 
@@ -88,7 +94,7 @@ theme:
       secondary: "#666CA6"
       inverted: "#242347"
       faint: "#b0b3bf"
-      warning: "#F23D5C"
+      warning: "#E0AF68"
       success: "#3DF294"
     background:
       selected: "#1b1b33"

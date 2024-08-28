@@ -76,3 +76,4 @@ wallpapers
 .config/github-copilot
 .config/harlequin/harlequin.toml
 .config/ldcli/config.yml
+.config/bk.yaml
