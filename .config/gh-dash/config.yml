@@ -45,7 +45,7 @@ issuesSections:
 pager:
   diff: delta
 defaults:
-  view: prs
+  view: repo
   layout:
     prs:
       repoName:
@@ -54,8 +54,8 @@ defaults:
         hidden: false
 
   preview:
-    open: false
-    width: 55
+    open: true
+    width: 70
   prsLimit: 20
   issuesLimit: 20
 repoPaths:
@@ -63,6 +63,10 @@ repoPaths:
   komodorio/*: ~/code/komodor/*
 
 keybindings:
+  universal:
+    - key: g
+      command: >
+        cd {{.RepoPath}} && lazygit
   prs:
     - key: O
       builtin: checkout
@@ -73,12 +77,9 @@ keybindings:
         '
     - key: b
       command: cd {{.RepoPath}} && gh pr view {{.PrNumber}} --json statusCheckRollup | command jq -rcj '.statusCheckRollup.[] | select(.context == "buildkite/mono") | .targetUrl' | xargs open
-    - key: g
-      command: >
-        lazygit
     - key: a
       command: >
-        git add -A && lazygit
+        cd {{.RepoPath}} && git add -A && lazygit
     - key: v
       command: >
         gh pr review --repo {{.RepoName}} --approve --body "$(gum input --prompt='Approval Comment: ')" {{.PrNumber}}
@@ -94,7 +95,7 @@ theme:
       secondary: "#666CA6"
       inverted: "#242347"
       faint: "#b0b3bf"
-      warning: "#E0AF68"
+      warning: "#F7768E"
       success: "#3DF294"
     background:
       selected: "#1b1b33"

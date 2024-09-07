@@ -44,7 +44,7 @@ gui:
       - "⣾ "
     rate: 100
   # portraitMode: always
-  windowSize: half
+  # windowSize: half
   statusPanelView: allBranchesLog
   commandLogSize: 2
   showRandomTip: false
