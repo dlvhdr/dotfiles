@@ -52,5 +52,13 @@ return {
       desc = "Substitute Visual",
       mode = "x",
     },
+    {
+      "<CR>",
+      function(opts)
+        require("substitute").operator(opts)
+      end,
+      desc = "Substitute Visual",
+      mode = "x",
+    },
   },
 }

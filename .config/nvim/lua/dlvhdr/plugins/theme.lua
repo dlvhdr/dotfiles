@@ -47,6 +47,9 @@ M.config = function()
       hl.LineNr.fg = c.comment
       hl.LineNrAbove.fg = c.comment
       hl.LineNrBelow.fg = c.comment
+      hl.CursorLine = {
+        bg = darker_bg,
+      }
       hl.CursorLineNr = {
         fg = c.fg,
         bold = true,
@@ -84,7 +87,6 @@ M.config = function()
       hl.FoldColumn = { fg = c.blue }
       hl.DevIconFish = { fg = c.green }
       hl.GHThreadSep = { bg = c.bg_float }
-      hl.markdownH1 = { bg = c.bg_float }
       hl.DiagnosticUnnecessary = { fg = util.lighten(c.comment, 0.7), undercurl = true }
       hl.Directory = { fg = c.blue }
       hl.GitSignsAddNr = { fg = c.green }
@@ -106,6 +108,18 @@ M.config = function()
       hl.WhichKeyIconYellow = { bg = "NONE", fg = c.fg_dark }
       hl.WhichKeyGroup = { bg = "NONE", fg = c.fg }
       hl.WhichKeyDesc = { bg = "NONE", fg = c.fg }
+      hl.markdownH1 = { link = "@markup.strong" }
+      hl["@markup.list"] = { link = "@markup.strong" }
+      hl["@markup.list.markdown"] = { link = "@markup.strong" }
+      hl["@markup.heading"] = { link = "@markup.strong" }
+      hl["@markup.heading.1"] = { link = "@markup.strong" }
+      hl["@markup.heading.1.markdown"] = { link = "@markup.strong" }
+      hl["@markup.heading.2"] = { link = "@markup.strong" }
+      hl["@markup.heading.2.markdown"] = { link = "@markup.strong" }
+      hl["@markup.heading.3"] = { link = "@markup.strong" }
+      hl["@markup.heading.3.markdown"] = { link = "@markup.strong" }
+      hl["@markup.heading.4"] = { link = "@markup.strong" }
+      hl["@markup.heading.4.markdown"] = { link = "@markup.strong" }
     end,
   })
 
