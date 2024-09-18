@@ -66,7 +66,7 @@
   prune = true
 
 [diff]
-  colorMoved = default
+  colorMoved = no
   algorithm = histogram
 
 [branch]
@@ -209,27 +209,35 @@
 
 [delta]
   syntax-theme = tokyonight_night
-  navigate = true
   dark = true
-  side-by-side = false
-  file-modified-label = modified:
-  features = unobtrusive-line-numbers decorations
 
-[delta "decorations"]
-    file-style = bold yellow ul
-    file-decoration-style = ul "#555555"
-    hunk-header-decoration-style = omit
-    commit-decoration-style = none
+  file-style = white
+  file-decoration-style = "#17181a" ul
+  file-transformation = "s,(.*),  $1,"
 
-[delta "unobtrusive-line-numbers"]
-    line-numbers = true
-    line-numbers-minus-style = "#3d4163"
-    line-numbers-zero-style = "#3d4163"
-    line-numbers-plus-style = "#3d4163"
-    line-numbers-left-style = "#3d4163"
-    line-numbers-right-style = "#3d4163"
-    line-numbers-left-format = "{nm:>4}│"
-    line-numbers-right-format = "{np:>4}│"
+  line-numbers-left-format = "{nm:>4} "
+  line-numbers-right-format = "│ {np:>4} "
+  line-numbers-left-style = white  dim
+  line-numbers-right-style = "#1f2335" dim
+  line-numbers-zero-style = white dim
+  line-numbers-plus-style = white dim "#0e250e"
+  line-numbers-minus-style = white dim "#211b1a"
+  line-numbers-zero-style = white dim
+
+  wrap-left-symbol = " "
+  wrap-right-symbol = " "
+  wrap-right-prefix-symbol = " "
+
+  plus-style = syntax "#0e250e"
+  plus-emph-style = syntax "#103610"
+  minus-style = syntax "#402a26"
+  minus-emph-style = syntax "#45221c"
+
+  hunk-label = "  󰡏 "
+  hunk-header-line-number-style = "#10233A"
+  hunk-header-style = "#868E99"
+  hunk-header-file-style = "#868E99" dim
+  hunk-header-decoration-style = "#163050" ol ul
 
 [credential]
 	helper = 
