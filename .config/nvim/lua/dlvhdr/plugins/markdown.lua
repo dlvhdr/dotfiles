@@ -5,11 +5,10 @@ return {
     after = { "nvim-treesitter" },
     requires = { "echasnovski/mini.nvim", opt = true },
     config = function()
-      vim.cmd([[highlight Headline1Fg cterm=bold gui=bold guifg=#ffffff]])
       vim.api.nvim_set_hl(0, "RenderMarkdownBullet", { fg = "#ffffff", default = true })
       vim.api.nvim_set_hl(0, "@markup.list.markdown", { fg = "#ffffff", default = true })
       vim.api.nvim_set_hl(0, "CodeBlock", { bg = "#080808" })
-      vim.api.nvim_set_hl(0, "CodeInline", { bg = "#1A1B26", fg = "#c2c6f0" })
+      vim.api.nvim_set_hl(0, "CodeInline", { bg = "#1A1B26", fg = "#9199ed" })
       vim.api.nvim_set_hl(0, "RenderMarkdownCodeInline", { link = "CodeInline" })
       vim.api.nvim_set_hl(0, "@markup.raw", { link = "CodeInline" })
       vim.api.nvim_set_hl(0, "@markup.list", { link = "@markup.strong" })
@@ -24,9 +23,6 @@ return {
           backgrounds = {
             "@markup.strong",
           },
-          foregrounds = {
-            "@markup.strong",
-          },
         },
         bullet = {
           enabled = true,
@@ -34,7 +30,7 @@ return {
           highlight = "@markup.strong",
         },
         dash = {
-          highlight = "@markup.strong",
+          highlight = "Comment",
         },
         pipe_table = {
           head = "@markup.strong",

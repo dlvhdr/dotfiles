@@ -108,14 +108,14 @@ M.config = function()
       hl.WhichKeyIconYellow = { bg = "NONE", fg = c.fg_dark }
       hl.WhichKeyGroup = { bg = "NONE", fg = c.fg }
       hl.WhichKeyDesc = { bg = "NONE", fg = c.fg }
-      hl.markdownH1 = { link = "@markup.strong" }
       hl["@markup.list"] = { link = "@markup.strong" }
       hl["@markup.list.markdown"] = { link = "@markup.strong" }
-      hl["@markup.heading"] = { link = "@markup.strong" }
-      hl["@markup.heading.1"] = { link = "@markup.strong" }
-      hl["@markup.heading.1.markdown"] = { link = "@markup.strong" }
-      hl["@markup.heading.2"] = { link = "@markup.strong" }
-      hl["@markup.heading.2.markdown"] = { link = "@markup.strong" }
+      -- hl.markdownH1 = { link = "@markup.strong" }
+      -- hl["@markup.heading"] = { link = "@markup.strong" }
+      -- hl["@markup.heading.1"] = { link = "@markup.strong" }
+      -- hl["@markup.heading.1.markdown"] = { link = "@markup.strong" }
+      hl["@markup.heading.2"] = { fg = c.blue5, bold = true }
+      hl["@markup.heading.2.markdown"] = { fg = c.blue5, bold = true }
       hl["@markup.heading.3"] = { link = "@markup.strong" }
       hl["@markup.heading.3.markdown"] = { link = "@markup.strong" }
       hl["@markup.heading.4"] = { link = "@markup.strong" }
