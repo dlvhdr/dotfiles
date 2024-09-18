@@ -44,10 +44,10 @@ key-mapping.preset = 'qwerty'
 [gaps]
 inner.horizontal = 16
 inner.vertical =   16
-outer.left =       24
-outer.bottom =     24
-outer.top =        24
-outer.right =      24
+outer.left =       16
+outer.bottom =     16
+outer.top =        16
+outer.right =      16
 
 # See https://nikitabobko.github.io/AeroSpace/guide#exec-env-vars
 [exec]                   # Again, you don't need to copy all config sections to your config.
