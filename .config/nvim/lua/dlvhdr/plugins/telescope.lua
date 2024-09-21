@@ -190,6 +190,7 @@ M.config = function()
         "^sessions/",
         "^node_modules/",
         "^.yarn/",
+        "^generated/",
       },
     },
     pickers = {
