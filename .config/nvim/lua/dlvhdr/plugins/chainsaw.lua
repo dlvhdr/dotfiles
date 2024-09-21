@@ -2,7 +2,7 @@ return {
   "chrisgrieser/nvim-chainsaw",
   dependencies = "folke/which-key.nvim",
   config = function()
-    local beep_format = {
+    local emoji_format = {
       "/* prettier-ignore */ // %s",
       'console.log("%s beep %s");',
     }
@@ -18,11 +18,11 @@ return {
     require("chainsaw").setup({
       marker = "[🪲 dolev]",
       logStatements = {
-        beepLog = {
-          javascript = beep_format,
-          javascriptreact = beep_format,
-          typescript = beep_format,
-          typescriptreact = beep_format,
+        emojiLog = {
+          javascript = emoji_format,
+          javascriptreact = emoji_format,
+          typescript = emoji_format,
+          typescriptreact = emoji_format,
         },
         variableLog = {
           javascript = var_format,
@@ -62,9 +62,9 @@ return {
     {
       "<leader>dlb",
       function()
-        require("chainsaw").beepLog()
+        require("chainsaw").emojiLog()
       end,
-      desc = "Beep Log",
+      desc = "Emoji Log",
     },
     {
       "<leader>dlr",
