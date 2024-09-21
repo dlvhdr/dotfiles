@@ -44,7 +44,7 @@
 [core]
   excludesfile = ~/.config/git/ignore
   ignorecase = false
-  pager = delta
+  ; pager = delta
 
 [help]
   ; Autocorrect mistyped commands.
@@ -55,12 +55,12 @@
   enabled = true
 
 [pager]
-  diff = delta
   log = delta
   reflog = delta
   show = delta
   difftool = true
   branch = 
+	diff = diffnav
 
 [fetch]
   prune = true
@@ -82,8 +82,8 @@
 [difftool "nvimdiff"]
   cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
-[interactive]
-  diffFilter = delta --color-only
+; [interactive]
+;   diffFilter = diffnav --color-only
 
 [add.interactive]
   useBuiltin = false ; required for git 2.37.0
@@ -172,7 +172,7 @@
   pager = true
   ui = true
   status = auto
-  diff = auto
+  diff = false
   branch = auto
   showBranch = auto
   interactive = auto
@@ -210,18 +210,18 @@
 [delta]
   syntax-theme = tokyonight_night
   dark = true
+  tabs = 2
 
-  file-style = white
-  file-decoration-style = "#17181a" ul
-  file-transformation = "s,(.*),  $1,"
+  file-style = omit
+  file-decoration-style = none
 
   line-numbers-left-format = "{nm:>4} "
   line-numbers-right-format = "│ {np:>4} "
-  line-numbers-left-style = white  dim
+  line-numbers-left-style = white dim
   line-numbers-right-style = "#1f2335" dim
   line-numbers-zero-style = white dim
-  line-numbers-plus-style = white dim "#0e250e"
-  line-numbers-minus-style = white dim "#211b1a"
+  line-numbers-plus-style = white dim 
+  line-numbers-minus-style = white dim
   line-numbers-zero-style = white dim
 
   wrap-left-symbol = " "

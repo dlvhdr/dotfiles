@@ -43,7 +43,7 @@ issuesSections:
     filters: is:open assignee:@me
 
 pager:
-  diff: git-diff
+  diff: diffnav
 defaults:
   view: repo
   layout:
