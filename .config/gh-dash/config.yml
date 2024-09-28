@@ -52,6 +52,8 @@ defaults:
         grow: true,
         width: 10
         hidden: false
+      base:
+        hidden: true
 
   preview:
     open: true

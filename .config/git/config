@@ -228,10 +228,10 @@
   wrap-right-symbol = " "
   wrap-right-prefix-symbol = " "
 
-  plus-style = syntax "#0e250e"
+  plus-style = syntax "#001f00"
   plus-emph-style = syntax "#103610"
-  minus-style = syntax "#402a26"
-  minus-emph-style = syntax "#45221c"
+  minus-style = syntax "#240500"
+  minus-emph-style = syntax "#730000"
 
   hunk-label = "  󰡏 "
   hunk-header-line-number-style = "#10233A"
