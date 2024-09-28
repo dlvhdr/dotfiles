@@ -100,6 +100,7 @@ alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 alt-c = 'exec-and-forget open -b company.thebrowser.Browser'
+# alt-c = 'exec-and-forget open -b org.mozilla.com.zen.browser'
 alt-f = 'exec-and-forget open -b com.figma.Desktop'
 alt-i = 'exec-and-forget open -b net.kovidgoyal.kitty'
 alt-n = 'exec-and-forget open -b com.clickup.desktop-app'

@@ -23,6 +23,7 @@ M.config = function()
     enhanced_diff_hl = true,
     git_cmd = { "git" },
     use_icons = true,
+    show_help_hints = true,
     icons = {
       folder_closed = "",
       folder_open = "",

@@ -110,16 +110,17 @@ M.config = function()
       hl.WhichKeyDesc = { bg = "NONE", fg = c.fg }
       hl["@markup.list"] = { link = "@markup.strong" }
       hl["@markup.list.markdown"] = { link = "@markup.strong" }
-      -- hl.markdownH1 = { link = "@markup.strong" }
-      -- hl["@markup.heading"] = { link = "@markup.strong" }
-      -- hl["@markup.heading.1"] = { link = "@markup.strong" }
-      -- hl["@markup.heading.1.markdown"] = { link = "@markup.strong" }
       hl["@markup.heading.2"] = { fg = c.blue5, bold = true }
       hl["@markup.heading.2.markdown"] = { fg = c.blue5, bold = true }
       hl["@markup.heading.3"] = { link = "@markup.strong" }
       hl["@markup.heading.3.markdown"] = { link = "@markup.strong" }
       hl["@markup.heading.4"] = { link = "@markup.strong" }
       hl["@markup.heading.4.markdown"] = { link = "@markup.strong" }
+      hl.DiffAdd = { bg = "#001f00" }
+      hl.DiffDelete = { bg = "#240500" }
+      hl.DiffChange = { bg = "NONE" }
+      hl.DiffText = { bg = "#103610" }
+      hl["@diff.plus"] = { bg = "#001f00" }
     end,
   })
 

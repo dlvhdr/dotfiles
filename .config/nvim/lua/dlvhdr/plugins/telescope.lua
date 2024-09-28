@@ -22,7 +22,38 @@ local M = {
     {
       "<leader>fs",
       function()
-        require("telescope.builtin").git_status()
+        local delta = {}
+        if vim.fn.executable("delta") == 1 then
+          local previewers = require("telescope.previewers")
+          delta = previewers.new_termopen_previewer({
+            get_command = function(entry)
+              -- this is for status
+              -- You can get the AM things in entry.status. So we are displaying file if entry.status == '??' or 'A '
+              -- just do an if and return a different command
+              if entry.status == "??" or "A " then
+                return { "git", "-c", "pager.diff=delta", "-c", "delta.side-by-side=false", "diff", entry.value }
+              end
+
+              -- note we can't use pipes
+              -- this command is for git_commits and git_bcommits
+              return {
+                "git",
+                "-c",
+                "pager.diff=delta",
+                "-c",
+                "delta.side-by-side=false",
+                "diff",
+                entry.value .. "^!",
+              }
+            end,
+          })
+        end
+        require("telescope.builtin").git_status({
+          previewer = delta,
+          layout_config = {
+            preview_width = 0.65,
+          },
+        })
       end,
       desc = "Git Status",
     },
@@ -68,7 +99,7 @@ local M = {
       desc = "Advanced Git Search",
     },
     {
-      "<leader>fs",
+      "<leader>fS",
       function()
         require("telescope").extensions.luasnip.luasnip({})
       end,

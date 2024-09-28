@@ -2,12 +2,12 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "b0o/schemastore.nvim",
+    { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
+    { "b0o/schemastore.nvim", event = "VeryLazy" },
     "nvimtools/none-ls.nvim",
-    "williamboman/mason.nvim",
+    { "williamboman/mason.nvim", cmd = { "Mason", "MasonUpdate" } },
     "nvimtools/none-ls-extras.nvim",
-    "yioneko/nvim-vtsls",
+    { "yioneko/nvim-vtsls", ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" } },
   },
   config = function()
     require("dlvhdr.plugins.lsp.handlers").setup()

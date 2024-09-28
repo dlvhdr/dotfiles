@@ -1,6 +1,5 @@
 return {
   "neovim/nvim-lspconfig",
-  event = "LspAttach",
   keys = {
     {
       "<leader>ff",

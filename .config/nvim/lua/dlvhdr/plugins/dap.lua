@@ -173,6 +173,7 @@ return {
     {
       "mfussenegger/nvim-dap-python",
       enabled = true,
+      ft = "python",
       config = function()
         local debugpy_path = require("mason-registry").get_package("debugpy"):get_install_path()
         local dap_python = require("dap-python")

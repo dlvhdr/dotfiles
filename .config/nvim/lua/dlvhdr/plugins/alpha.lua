@@ -75,9 +75,9 @@ return {
     dashboard.config.opts.noautocmd = true
     alpha.setup(dashboard.config)
 
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "AlphaReady",
-      command = "set showtabline=0 | set laststatus=0",
-    })
+    -- vim.api.nvim_create_autocmd("User", {
+    --   pattern = "AlphaReady",
+    --   command = "set showtabline=0 | set laststatus=0",
+    -- })
   end,
 }
