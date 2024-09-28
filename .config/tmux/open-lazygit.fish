@@ -10,7 +10,7 @@ set SESS_PATH (tmux display-message -p -F "#{session_path}")
 tmux new-window -S -n gh-dash "FF_REPO_VIEW= gh dash $SESS_PATH" 
 tmux switch-client -t :gh-dash
 
-tmux set-option -p -t 1 pane-border-format '#{?pane_active,#[fg=green],#[fg=#63697F]}gh-dash#{?window_zoomed_flag, #[fg=white]#{pane_index}/#{window_panes} ,} '
+tmux set-option -p -t 1 pane-border-format '#{?pane_active,#[fg=green],#[fg=#63697F]} gh-dash#{?window_zoomed_flag, #[fg=white]#{pane_index}/#{window_panes} ,} '
 
 # set NUM_PANES (tmux display-message -p -F "#{window_panes}")
 # if test $NUM_PANES -eq 2
