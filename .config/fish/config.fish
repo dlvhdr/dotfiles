@@ -10,6 +10,7 @@ set -U fish_greeting # disable fish greeting
 fish_add_path "$GOPATH" "$HOME/.krew/bin" "$XDG_DATA_HOME/google-cloud-sdk/bin" "$XDG_DATA_HOME/cargo/bin" "/usr/local/opt/ruby/bin" "$GOPATH/bin" "$HOME/.local/bin" "$DOTFILES/scripts" "$XDG_DATA_HOME/npm/bin" "$HOME/Library/Python/2.7/bin" "$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin" "$HOME/.local/share/npm/bin"
 eval (/opt/homebrew/bin/brew shellenv)
 fish_add_path /opt/homebrew/bin
+fish_add_path /Applications/Ghostty.app/Contents/MacOS
 
 set -gx DOCKER_CONFIG "$HOME/.docker"
 set -gx COMPOSE_PROJECT_NAME "web"
