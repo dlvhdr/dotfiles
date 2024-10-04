@@ -102,7 +102,8 @@ alt-shift-equal = 'resize smart +50'
 alt-c = 'exec-and-forget open -b company.thebrowser.Browser'
 # alt-c = 'exec-and-forget open -b org.mozilla.com.zen.browser'
 alt-f = 'exec-and-forget open -b com.figma.Desktop'
-alt-i = 'exec-and-forget open -b net.kovidgoyal.kitty'
+# alt-i = 'exec-and-forget open -b net.kovidgoyal.kitty'
+alt-i = 'exec-and-forget open -b com.mitchellh.ghostty'
 alt-n = 'exec-and-forget open -b com.clickup.desktop-app'
 alt-m = 'exec-and-forget open -b com.apple.mail'
 alt-o = 'exec-and-forget open -b md.obsidian'
@@ -172,7 +173,8 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
+# if.app-id = 'net.kovidgoyal.kitty'
+if.app-id = 'com.mitchellh.ghostty'
 # check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace I']
 
