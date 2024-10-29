@@ -24,7 +24,7 @@ if not status is-interactive
     exit
 end
 
-set -g __done_version 1.19.1
+set -g __done_version 1.19.3
 
 function __done_run_powershell_script
     set -l powershell_exe (command --search "powershell.exe")
@@ -83,7 +83,7 @@ function __done_get_focused_window_id
         and type -q jq
         swaymsg --type get_tree | jq '.. | objects | select(.focused == true) | .id'
     else if test -n "$HYPRLAND_INSTANCE_SIGNATURE"
-        hyprctl activewindow | awk 'NR==13 {print $2}'
+        hyprctl activewindow | awk 'NR==1 {print $2}'
     else if begin
             test "$XDG_SESSION_DESKTOP" = gnome; and type -q gdbus
         end
@@ -152,7 +152,7 @@ function __done_is_process_window_focused
         string match --quiet --regex "^true" (swaymsg -t get_tree | jq ".. | objects | select(.id == "$__done_initial_window_id") | .visible")
         return $status
     else if test -n "$HYPRLAND_INSTANCE_SIGNATURE"
-        and test $__done_initial_window_id -eq (hyprctl activewindow | awk 'NR==13 {print $2}')
+        and test $__done_initial_window_id = (hyprctl activewindow | awk 'NR==1 {print $2}')
         return $status
     else if test "$__done_initial_window_id" != "$__done_focused_window_id"
         return 1
@@ -268,7 +268,6 @@ if set -q __done_enabled
                 set -l message (string replace --all '"' '\"' "$message")
                 set -l title (string replace --all '"' '\"' "$title")
 
-                osascript -e "display notification \"$message\" with title \"$title\""
                 if test "$__done_notify_sound" -eq 1
                     osascript -e "display notification \"$message\" with title \"$title\" sound name \"Glass\""
                 else
