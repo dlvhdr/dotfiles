@@ -1,41 +1,38 @@
-# open chrome
-alt - f : open -a /Applications/Figma.app
-
-# open arc
-alt - c : open -a /Applications/Arc.app
-
-# open terminal ([i]Term)
-# alt - i : open -a /Applications/kitty.app
-
-# open whatsapp
-alt - w : open -a /Applications/Whatsapp.app
-
-# open slack
-alt - s : open -a /Applications/Slack.app
-
-# open zoom
-alt - z : open -a /Applications/zoom.us.app
-
-# open mail
-alt - m : open -a /System/Applications/Mail.app
-
-# open calendar
-alt - p : open -a /Applications/Notion\ Calendar.app
-
-# open m[u]sic
-alt - u : open -a /Applications/YouTube\ Music.app
-
-# open ticktick
-alt - t : open -a /Applications/TickTick.app
-
-# clickup ([n]otion)
-alt - n : open -a /Applications/ClickUp.app
-
-# datagrip
-alt - d : open -a /Applications/DataGrip.app
-
-# obsidian
-alt - o : open -a /Applications/Obsidian.app
+# # open chrome
+# alt - f : open -a /Applications/Figma.app
+#
+# # open arc
+# alt - c : open -a /Applications/Arc.app
+#
+# # open terminal ([i]Term)
+# # alt - i : open -a /Applications/kitty.app
+#
+# # open whatsapp
+# alt - w : open -a /Applications/Whatsapp.app
+#
+# # open slack
+# alt - s : open -a /Applications/Slack.app
+#
+# # open zoom
+# alt - z : open -a /Applications/zoom.us.app
+#
+# # open mail
+# alt - m : open -a /System/Applications/Mail.app
+#
+# # open calendar
+# alt - p : open -a /Applications/Notion\ Calendar.app
+#
+# # open m[u]sic
+# alt - u : open -a /Applications/YouTube\ Music.app
+#
+# # open ticktick
+# alt - t : open -a /Applications/TickTick.app
+#
+# # clickup ([n]otion)
+# alt - n : open -a /Applications/ClickUp.app
+#
+# # obsidian
+# alt - o : open -a /Applications/Obsidian.app
 
 # ################################################################ #
 # THE FOLLOWING IS AN EXPLANATION OF THE GRAMMAR THAT SKHD PARSES. #
