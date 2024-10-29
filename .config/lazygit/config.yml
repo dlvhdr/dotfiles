@@ -55,7 +55,13 @@ os:
 git:
   log:
     showGraph: always
-  # branchLogCmd: "git log --graph --abbrev-commit --decorate --format=format:'%C(bold white)%s%C(reset) %C(dim white)- %ar %C(white)%d%C(reset)' master..{{branchName}} --"
+    showWholeGraph: false
+  # branchLogCmd:
+  #   'git log --graph --color=always --abbrev-commit --decorate --date=relative
+  #   --pretty=format:"%C(auto)%h: %s (%C(blue)%an %C(white)|
+  #   %C(cyan)%ad%C(white))" {{branchName}} --'
+  branchLogCmd: "git log --color=always --graph --date=relative --pretty=format:'%C(dim yellow)%h %C(reset)%<|(70,trunc)%s %C(dim white)@%an%C(reset) %C(dim white)(%cd)%C(reset)%C(auto)'"
+  allBranchesLogCmd: "git log --color=always --graph --all --date=relative --pretty=format:'%C(auto)%h %C(reset)%<|(50,trunc)%s %C(bold blue)<%an>%C(reset) %C(green)(%cd)%C(reset)%C(auto)%d'"
   overrideGpg: true
   paging:
     colorArg: always
