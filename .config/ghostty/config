@@ -1,5 +1,5 @@
 theme = tokyonight
-window-decoration = false
+macos-titlebar-style = hidden
 window-padding-x = 4
 window-padding-y = 0,0
 macos-window-shadow = false
@@ -72,7 +72,7 @@ keybind = cmd+g=text:\x01g
 # gh-dash in its own session
 keybind = cmd+shift+g=text:\x01G
 # go to mono session
-keybind = cmd+m=text:\x01m
+keybind = cmd+option+m=text:\x01m
 # keyb - doesn't work
 keybind = cmd+?=text:\x01?
 # open link
@@ -86,9 +86,9 @@ keybind = cmd+z=text:\x01z
 # last command output
 keybind = cmd+shift+c=text:\x01C
 # move window right
-keybind = cmd+shift+.=text:\x01>
+keybind = cmd+shift+comma=text:\x01<
 # move window left
-keybind = cmd+shift+,=text:\x01<
+keybind = cmd+shift+period=text:\x01>
 # command mode
 keybind = cmd+shift+;=text:\x01:
 # open dotfiles session in nvim
