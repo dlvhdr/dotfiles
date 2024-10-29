@@ -99,8 +99,9 @@ alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-c = 'exec-and-forget open -b company.thebrowser.Browser'
+alt-c = 'exec-and-forget open -b com.vivaldi.Vivaldi'
 # alt-c = 'exec-and-forget open -b org.mozilla.com.zen.browser'
+alt-d = 'workspace D'
 alt-f = 'exec-and-forget open -b com.figma.Desktop'
 # alt-i = 'exec-and-forget open -b net.kovidgoyal.kitty'
 alt-i = 'exec-and-forget open -b com.mitchellh.ghostty'
@@ -179,7 +180,7 @@ if.app-id = 'com.mitchellh.ghostty'
 run = ['layout tiling', 'move-node-to-workspace I']
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
+if.app-id = 'com.vivaldi.Vivaldi'
 # check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace C']
 
