@@ -20,6 +20,13 @@ local M = {
     { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume" },
     { "<leader>fp", "<cmd>Telescope pickers<cr>", desc = "Pickers" },
     {
+      "<leader>ff",
+      function()
+        require("telescope.builtin").lsp_document_symbols({ symbols = { "Function", "Method" } })
+      end,
+      desc = "Functions",
+    },
+    {
       "<leader>fs",
       function()
         local delta = {}
@@ -184,7 +191,7 @@ M.config = function()
       },
       selection_strategy = "reset",
       sorting_strategy = "ascending",
-      scroll_strategy = "limit",
+      scroll_strategy = "cycle",
       color_devicons = true,
       layout_strategy = "horizontal",
       layout_config = {
@@ -225,6 +232,9 @@ M.config = function()
       },
     },
     pickers = {
+      egrepify = {
+        scroll_strategy = "cycle",
+      },
       advanced_git_search = {
         layout_config = {
           horizontal = {
@@ -263,6 +273,11 @@ M.config = function()
           "--column",
           "--smart-case",
           "--hidden",
+          "-g",
+          "!generated/",
+          "-g",
+          "!{pnpm-lock.yaml,yarn.lock,devbox.lock,go.sum}",
+          "--max-count=1000",
         },
         prefixes = {
           ["!"] = {

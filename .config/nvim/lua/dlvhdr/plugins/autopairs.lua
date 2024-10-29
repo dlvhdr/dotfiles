@@ -1,7 +1,7 @@
 return {
   "windwp/nvim-autopairs",
   dependencies = {
-    "hrsh7th/nvim-cmp",
+    "iguanacucumber/magazine.nvim",
   },
   event = "InsertEnter",
   config = function()

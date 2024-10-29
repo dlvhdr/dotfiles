@@ -140,8 +140,9 @@ disabled = false
 contexts = [
     { context_pattern = ".*kind.*", style = "green"},
     { context_pattern = ".*lab.*", style = "green"},
-    { context_pattern = ".*production.*", style = "(red)", context_alias = "production 🚨🚨🚨"},
+    { context_pattern = ".*production.*", style = "(red)", context_alias = "production 🚨"},
 ]
+detect_folders = ["umbrella"]
 
 [localip]
 disabled=true

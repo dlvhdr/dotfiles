@@ -8,7 +8,9 @@ local get_opts = function()
     },
     mappings = {
       i = {
-        ["<esc>"] = require("telescope.actions").close,
+        ["<C-w>"] = function()
+          vim.api.nvim_input("<c-s-w>")
+        end,
       },
     },
     open_buffer_indicators = {

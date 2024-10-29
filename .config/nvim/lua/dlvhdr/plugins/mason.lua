@@ -45,7 +45,7 @@ function M.config()
 
   require("mason-lspconfig").setup({
     ensure_installed = {
-      "tsserver",
+      "vtsls",
       "gopls",
     },
     automatic_installation = true,

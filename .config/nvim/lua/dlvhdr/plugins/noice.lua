@@ -24,6 +24,14 @@ M.config = function()
         cmdline = { pattern = "^:", icon = "", lang = "vim" },
       },
     },
+    popupmenu = {
+      enabled = true, -- enables the Noice popupmenu UI
+      ---@type 'nui'|'cmp'
+      backend = "nui", -- backend to use to show regular cmdline completions
+      ---@type NoicePopupmenuItemKind|false
+      -- Icons for completion item kinds (see defaults at noice.config.icons.kinds)
+      kind_icons = {}, -- set to `false` to disable icons
+    },
     lsp = {
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -42,6 +50,10 @@ M.config = function()
       },
     },
     routes = {
+      {
+        filter = { event = "msg_show", min_height = 5 },
+        view = "popup",
+      },
       {
         filter = {
           event = "msg_show",
@@ -70,9 +82,23 @@ M.config = function()
       },
     },
     views = {
+      popup = {
+        relative = "editor",
+        enter = false,
+        position = "100%",
+        border = "none",
+        size = {
+          width = 50,
+          height = 8,
+        },
+        win_options = {
+          winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+        },
+      },
       mini = {
         zindex = 100,
         win_options = { winblend = 0 },
+        max_height = 3,
       },
       cmdline_popup = {
         position = {
@@ -86,6 +112,12 @@ M.config = function()
       },
     },
   })
+
+  vim.api.nvim_create_user_command("RemoveNotiAndHl", function()
+    vim.cmd("nohlsearch")
+    vim.cmd("Noice dismiss")
+  end, {})
+  vim.keymap.set("n", "<Esc>", "<cmd>RemoveNotiAndHl<CR>", { noremap = true, silent = true })
 end
 
 M.keys = {

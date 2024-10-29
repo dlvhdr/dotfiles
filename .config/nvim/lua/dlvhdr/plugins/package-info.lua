@@ -1,6 +1,6 @@
 return {
   "vuki656/package-info.nvim",
-  ft = { "json" },
+  event = { "BufRead package.json" },
   opts = {
     autostart = true,
     hide_up_to_date = true,
