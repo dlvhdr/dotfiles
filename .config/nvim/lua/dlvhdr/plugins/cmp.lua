@@ -91,16 +91,16 @@ M.config = function()
 
   local next_completion = function(fallback)
     if cmp.visible() then
-      cmp.select_next_item({ behavior = cmp.SelectBehavior.Replace })
-    elseif has_words_before() then
+      cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+    else
       cmp.complete()
     end
   end
 
   local prev_completion = function(fallback)
     if cmp.visible() then
-      cmp.select_prev_item({ behavior = cmp.SelectBehavior.Replace })
-    elseif has_words_before() then
+      cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+    else
       cmp.complete()
     end
   end
@@ -151,7 +151,7 @@ M.config = function()
     },
     mapping = cmp.mapping.preset.insert({
       ["<C-y>"] = cmp.mapping({
-        i = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+        i = cmp.mapping.confirm({ select = true }),
         c = function(fallback)
           if cmp.visible() then
             cmp.confirm({ select = true })
@@ -160,7 +160,7 @@ M.config = function()
           end
         end,
       }),
-      ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Replace }),
+      ["<CR>"] = cmp.mapping.confirm({ select = false, behavior = cmp.ConfirmBehavior.Insert }),
       ["<C-n>"] = next_completion,
       ["<C-p>"] = prev_completion,
       ["<C-c>"] = cmp.mapping.abort(),
@@ -176,7 +176,7 @@ M.config = function()
         end
       end, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if luasnip.expand_or_locally_jumpable(-1) then
+        if luasnip.jumpable(-1) then
           luasnip.jump(-1)
         else
           fallback()

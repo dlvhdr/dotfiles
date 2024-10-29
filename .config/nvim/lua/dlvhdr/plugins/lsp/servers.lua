@@ -9,10 +9,10 @@ M.setup = function()
     capabilities = handlers.capabilities(),
   }
 
-  lspconfig.denols.setup({
-    on_attach = opts.on_attach,
-    root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-  })
+  -- lspconfig.denols.setup({
+  --   on_attach = opts.on_attach,
+  --   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+  -- })
   lspconfig.html.setup(opts)
   -- require("dlvhdr.plugins.lsp.servers.tsserver").setup(opts)
   require("dlvhdr.plugins.lsp.servers.vtsls").setup(opts)
