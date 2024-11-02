@@ -1,6 +1,6 @@
-#!/opt/homebrew/bin/fish
+#!/usr/bin/env fish
 
-WINDOWS = (tmux list-windows -F "#{window_name}")
+set WINDOWS (tmux list-windows -F "#{window_name}")
 if contains "gh-dash" $WINDOWS
     tmux switch-client -t :gh-dash
     exit 0

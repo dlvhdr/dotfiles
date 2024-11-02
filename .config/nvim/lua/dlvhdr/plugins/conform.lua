@@ -13,6 +13,7 @@ local formatters_by_ft = {
   yaml = { "prettierd" },
   go = { "gofmt", "goimports-reviser" },
   python = { "black" },
+  nix = { "nixfmt" },
 }
 
 return {

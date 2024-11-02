@@ -22,6 +22,12 @@ vim.opt.fillchars = {
   foldsep = " ",
   msgsep = "─",
 }
+vim.opt.guicursor = {
+  "n-c-sm:block-Cursor",
+  "i-ci-ve:ver25-Cursor",
+  "r-cr:hor20-Cursor",
+  "o-v:block-Cursor-blinkwait300-blinkon200-blinkoff150",
+}
 vim.opt.conceallevel = 1
 vim.opt.showmode = false
 vim.opt.laststatus = 3
@@ -80,6 +86,10 @@ vim.opt.diffopt = list({
 })
 vim.opt.splitright = false
 vim.opt.splitbelow = true
+vim.opt.viewoptions = {
+  "cursor",
+  "folds",
+}
 vim.opt.showmatch = false
 vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 vim.opt.showmode = false -- Dont show mode since we have a statusline

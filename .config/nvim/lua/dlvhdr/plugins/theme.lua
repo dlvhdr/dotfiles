@@ -66,6 +66,7 @@ M.config = function()
         fg = c.yellow,
         bold = true,
       }
+      hl.TermCursor = { link = "Cursor" }
       hl.EndOfBuffer = { bg = "NONE" }
       hl.CmpDocumentation = { bg = darker_bg }
       hl.CmpDocumentationBorder = { bg = darker_bg }
