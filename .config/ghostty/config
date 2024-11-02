@@ -4,7 +4,7 @@ window-padding-x = 4
 window-padding-y = 0,0
 macos-window-shadow = false
 
-command = /opt/homebrew/bin/fish 
+command = /run/current-system/sw/bin/fish
 shell-integration = fish
 
 clipboard-read = allow
@@ -12,8 +12,11 @@ clipboard-write = allow
 confirm-close-surface = false
 macos-option-as-alt = left
 
-font-size = 18
 cursor-style = block
+cursor-style-blink = true
+cursor-opacity=0.96
+
+font-size = 18
 font-family = "CommitMonoDolev"
 font-family = "Symbols Nerd Font"
 font-family = "Apple Color Emoji"
@@ -23,7 +26,6 @@ adjust-cell-width = -5%
 
 background = #010101
 background-opacity = 0.95
-cursor-opacity=0.96
 
 #  _                        
 # | |_ _ __ ___  _   ___  __
