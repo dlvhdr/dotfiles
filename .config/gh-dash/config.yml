@@ -96,11 +96,11 @@ theme:
       primary: "#E2E1ED"
       secondary: "#666CA6"
       inverted: "#242347"
-      faint: "#b0b3bf"
-      warning: "#F7768E"
+      faint: "#B0B3BF"
+      warning: "#E0AF68"
       success: "#3DF294"
     background:
-      selected: "#1b1b33"
+      selected: "#1B1B33"
     border:
       primary: "#383B5B"
       secondary: "#39386B"

@@ -22,6 +22,7 @@ font-family = "Symbols Nerd Font"
 font-family = "Apple Color Emoji"
 font-family = "DejaVu Sans"
 font-family = "FiraCode Nerd Font"
+font-codepoint-map = U+F5D0-U+F60D=Flog Symbols
 adjust-cell-width = -5%
 
 background = #010101
