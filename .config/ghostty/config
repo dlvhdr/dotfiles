@@ -4,7 +4,7 @@ window-padding-x = 4
 window-padding-y = 0,0
 macos-window-shadow = false
 
-command = /run/current-system/sw/bin/fish
+command = /etc/profiles/per-user/dlvhdr/bin/fish
 shell-integration = fish
 
 clipboard-read = allow

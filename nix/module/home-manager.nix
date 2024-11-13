@@ -13,5 +13,6 @@
   programs.neovim.enable = true;
   imports = [
     ./tmux
+    ./fish
   ];
 }

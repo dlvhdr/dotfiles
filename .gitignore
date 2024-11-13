@@ -78,3 +78,7 @@ wallpapers
 .config/ldcli/config.yml
 .config/bk.yaml
 setup/VivalArc-main
+.config/fish/conf.d
+.config/fish/themes
+.config/tmux
+.config/fish

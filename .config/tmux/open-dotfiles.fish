@@ -1,1 +1,0 @@
-/nix/store/rsir3avgs53y427rjdkiy230fz2i4q0z-home-manager-files/.config/tmux/open-dotfiles.fish

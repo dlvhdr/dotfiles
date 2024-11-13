@@ -79,7 +79,7 @@ in
         {
           plugin = nerd-font-window-name;
           extraConfig = ''
-
+            set -g pane-border-format '#{?pane_active,#[fg=green],#[fg=#63697F]}#(${nerd-font-window-name}/share/tmux-plugins/nerd-font-window-name/bin/tmux-nerd-font-window-name #{pane_current_command} #{window_panes})#{?window_zoomed_flag, #[fg=white]#{pane_index}/#{window_panes} ,} '
           '';
         }
 
