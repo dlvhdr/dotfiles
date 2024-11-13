@@ -83,3 +83,6 @@ setup/VivalArc-main
 .config/tmux
 .config/fish
 .config/ghostty
+.config/git
+.config/glow
+.config/bat
