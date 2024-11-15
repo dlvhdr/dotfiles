@@ -36,6 +36,9 @@ inputs.darwin.lib.darwinSystem {
           "atuin"
           "dhth/tap/mult"
           "joshmedeski/sesh/sesh"
+
+          # for neovim
+          "sqlite"
         ];
 
         casks = [
@@ -50,6 +53,7 @@ inputs.darwin.lib.darwinSystem {
           "font-symbols-only-nerd-font"
           "google-chrome"
           "hiddenbar"
+          "homerow"
           "nikitabobko/tap/aerospace"
           "notion-calendar"
           "notunes"
@@ -60,9 +64,9 @@ inputs.darwin.lib.darwinSystem {
           "th-ch/youtube-music/youtube-music"
           "ticktick"
           "visual-studio-code"
+          "vivaldi"
           "whatsapp"
           "zoom"
-          "vivaldi"
 
           # komodor
           "clickup"

@@ -6,7 +6,10 @@
   home.stateVersion = "24.05";
   xdg.enable = true;
 
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [
+    # custom packages
+    (callPackage ../bins { })
+  ];
   programs.neovim.enable = true;
   imports = [
     ./tmux
