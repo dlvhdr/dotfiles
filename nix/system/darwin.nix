@@ -1,6 +1,7 @@
 {
   inputs,
   username,
+  overlays,
 }:
 system:
 let
@@ -14,6 +15,7 @@ inputs.darwin.lib.darwinSystem {
 
   # modules: allows for reusable code
   modules = [
+    { nixpkgs.overlays = overlays; }
     {
       environment.systemPackages = with pkgs; [
         nixd
@@ -23,6 +25,50 @@ inputs.darwin.lib.darwinSystem {
       system.stateVersion = 5;
 
       users.users.${username}.home = "/Users/${username}";
+    }
+
+    {
+      homebrew = {
+        enable = true;
+        onActivation.cleanup = "uninstall";
+
+        brews = [
+          "atuin"
+          "dhth/tap/mult"
+          "joshmedeski/sesh/sesh"
+        ];
+
+        casks = [
+          "1password"
+          "betterdisplay"
+          "discord"
+          "figma"
+          "font-commit-mono"
+          "font-commit-mono-nerd-font"
+          "font-dejavu-sans-mono-nerd-font"
+          "font-fira-code-nerd-font"
+          "font-symbols-only-nerd-font"
+          "google-chrome"
+          "hiddenbar"
+          "nikitabobko/tap/aerospace"
+          "notion-calendar"
+          "notunes"
+          "obsidian"
+          "raycast"
+          "slack"
+          "stats"
+          "th-ch/youtube-music/youtube-music"
+          "ticktick"
+          "visual-studio-code"
+          "whatsapp"
+          "zoom"
+          "vivaldi"
+
+          # komodor
+          "clickup"
+          "datagrip"
+        ];
+      };
     }
 
     system-config
@@ -36,4 +82,5 @@ inputs.darwin.lib.darwinSystem {
     }
     # add more nix modules here
   ];
+
 }

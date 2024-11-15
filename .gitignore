@@ -91,3 +91,6 @@ setup/VivalArc-main
 .config/lazygit
 .config/gh
 .config/tig
+.config/aerospace
+.config/btop
+.config/k9s

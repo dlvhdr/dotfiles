@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nur.url = "github:nix-community/NUR";
 
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -14,6 +15,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    caarlos0-nur.url = "github:caarlos0/nur";
+    charmbracelet-nur.url = "github:charmbracelet/nur";
+
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,15 +26,28 @@
 
   outputs =
     inputs@{
-      self,
-      darwin,
-      home-manager,
-      nixpkgs,
+      nur,
+      caarlos0-nur,
+      charmbracelet-nur,
       ...
     }:
     let
-      darwin-system = import ./system/darwin.nix { inherit inputs username; };
+      overlays = [
+        (final: prev: {
+          nur = import nur {
+            nurpkgs = prev;
+            pkgs = prev;
+            repoOverrides = {
+              caarlos0 = import caarlos0-nur { pkgs = prev; };
+              charmbracelet = import charmbracelet-nur { pkgs = prev; };
+            };
+          };
+        })
+      ];
+
+      darwin-system = import ./system/darwin.nix { inherit inputs username overlays; };
       username = "dlvhdr";
+
     in
     {
       darwinConfigurations = {

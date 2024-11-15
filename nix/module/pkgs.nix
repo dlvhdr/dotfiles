@@ -10,21 +10,53 @@
     with pkgs;
     with pkgs.nodePackages_latest;
     [
-      ripgrep
-      fd
-      eza
-      tldr
+      awscli
+      btop
+      clipboard-jh
       curl
       curlie
-      entr
-      sd
-      hyperfine
-      glow
+      delta
+      docker
       dust
-      jnv
+      entr
+      eza
+      fd
+      figlet
       fx
-      jqp
-      clipboard-jh
+      glow
+      gojq
+      goreleaser
+      graphviz
       gum
+      hyperfine
+      jnv
+      jq
+      jqp
+      kind
+      less
+      lolcat
+      nodejs
+      onefetch
+      process-compose
+      ripgrep
+      sd
+      terminal-notifier
+      tldr
+      wget
+      yarn
+      yq-go
+
+      (google-cloud-sdk.withExtraComponents [
+        google-cloud-sdk.components.gke-gcloud-auth-plugin
+      ])
+      kubectl
+      kubectx
+
+      nur.repos.caarlos0.gopls # always latest
+      nur.repos.caarlos0.golangci-lint # always latest
+
+      nur.repos.charmbracelet.mods
+      nur.repos.charmbracelet.vhs
+      nur.repos.caarlos0.svu
     ];
 }
