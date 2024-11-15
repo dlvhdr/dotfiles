@@ -10,6 +10,13 @@
     # custom packages
     (callPackage ../bins { })
   ];
+
+  home.file."Library/KeyBindings/DefaultKeyBinding.dict".text = ''
+    {
+        "^w" = deleteWordBackward:; 
+    }
+  '';
+
   programs.neovim.enable = true;
   imports = [
     ./tmux

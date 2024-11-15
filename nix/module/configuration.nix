@@ -1,5 +1,4 @@
 {
-  # add more system settings here
   nix = {
     settings = {
       auto-optimise-store = true;
@@ -32,6 +31,7 @@
       dock = {
         autohide = true;
         autohide-delay = 0.0;
+        autohide-time-modifier = 0.0;
         orientation = "bottom";
         tilesize = 42;
         showhidden = true;
@@ -47,8 +47,13 @@
           "/System/Applications/Mail.app"
         ];
       };
+      screencapture = {
+        location = "~/Pictures/Screenshots";
+        type = "jpg";
+      };
       NSGlobalDomain = {
         ApplePressAndHoldEnabled = false;
+        AppleMeasurementUnits = "Centimeters";
         KeyRepeat = 2;
         InitialKeyRepeat = 15;
         AppleShowScrollBars = "Always";
@@ -125,4 +130,5 @@
       };
     };
   };
+
 }
