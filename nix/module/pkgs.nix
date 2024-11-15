@@ -23,6 +23,7 @@
       fd
       figlet
       fx
+      git-credential-manager
       glow
       gojq
       goreleaser
