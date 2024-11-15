@@ -86,3 +86,6 @@ setup/VivalArc-main
 .config/git
 .config/glow
 .config/bat
+.config/starship.toml
+.config/yazi
+.config/lazygit

@@ -18,22 +18,9 @@ set -gx HOMEBREW_NO_AUTO_UPDATE true
 set -gx devbox_no_prompt true
 
 if status is-interactive
-  source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
-
-  starship init fish | source
-
-  # properly setup gpg tty
-  # gpg-agent --daemon --no-grab >/dev/null 2>&1
-  # set -e SSH_AUTH_SOCK
-  # set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-  # set -x GPG_TTY (tty)
-
   atuin init fish --disable-up-arrow | source
 
-  zoxide init fish | source
-
   set -gx DIRENV_LOG_FORMAT ""
-  direnv hook fish | source
 end
 
 # fnm env --use-on-cd --version-file-strategy recursive | source

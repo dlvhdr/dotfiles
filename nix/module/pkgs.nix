@@ -25,6 +25,6 @@
       fx
       jqp
       clipboard-jh
-      zoxide
+      gum
     ];
 }
