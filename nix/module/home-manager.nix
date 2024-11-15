@@ -17,7 +17,6 @@
     }
   '';
 
-  programs.neovim.enable = true;
   imports = [
     ./tmux
     ./fish
@@ -29,6 +28,7 @@
     ./gh
     ./tig
     ./k9s
+    ./nvim
 
     ./pkgs.nix
     ./bat.nix
