@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   # add home-manager user settings here
-  # generic: neovim, atuin, lazygit, gh, tig, svu, sesh
+  # generic: neovim, atuin, svu, sesh
   # k9s, bpytop, artprint, nixd, nixpkgs-fmt
   programs.home-manager.enable = true;
   home.stateVersion = "24.05";
@@ -17,6 +17,8 @@
     ./starship
     ./yazi
     ./lazygit
+    ./gh
+    ./tig
 
     ./pkgs.nix
     ./bat.nix

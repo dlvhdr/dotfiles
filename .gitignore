@@ -89,3 +89,5 @@ setup/VivalArc-main
 .config/starship.toml
 .config/yazi
 .config/lazygit
+.config/gh
+.config/tig
