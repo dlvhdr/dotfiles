@@ -1,12 +1,12 @@
 # 🏠 dlvhdr's dotfiles
 
-💥 kitty | 🖥 tmux | ✍️ Neovim
+💿 Nix | 👻 Ghostty | 🖥 tmux | ✍️ Neovim
 
 ![screenshot of setup](https://github.com/dlvhdr/dotfiles/assets/6196971/6f2e479b-e8e8-414c-a763-2a1e5db754f8)
 
 ## Setup
 
-- **Terminal:** kitty + tmux
+- **Terminal:** Ghostty + tmux
 - **Shell:** fish + starship
 - **Editor:** nvim
 - **Source control:** git + gh + tig + lazygit
