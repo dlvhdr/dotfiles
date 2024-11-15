@@ -94,3 +94,5 @@ setup/VivalArc-main
 .config/aerospace
 .config/btop
 .config/k9s
+
+.DS_Store
