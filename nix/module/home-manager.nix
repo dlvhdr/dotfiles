@@ -18,22 +18,30 @@
   '';
 
   imports = [
-    ./tmux
+    ./btop
+    ./dirs
     ./fish
+    ./gh
+    ./gh-dash
     ./ghostty
     ./git
-    ./starship
-    ./yazi
-    ./lazygit
-    ./gh
-    ./tig
     ./k9s
+    ./lazygit
+    ./npm
     ./nvim
+    ./raycast
+    ./sesh
+    ./starship
+    ./tig
+    ./tmux
+    ./vimium
+    ./yazi
 
     ./pkgs.nix
     ./bat.nix
     ./fzf.nix
     ./zoxide.nix
     ./direnv.nix
+    ./fd.nix
   ];
 }

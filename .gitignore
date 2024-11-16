@@ -1,98 +1,11 @@
+.config
 node_modules
 yarn.lock
 
-# .config
-.config/lazyvim/
-.config/vscode/
-.config/zsh/.zcompdump
-.config/.fnm/
-.config/.electron/
-.config/.gem/
-.config/docker/
-.config/raycast/extensions/
-.config/gh/hosts.yml
-.config/hammerspoon/stackline/
-.config/configstore/
-.config/ranger/plugins/
-.config/tmux/plugins/
-.config/z/
-.config/yarn/link/
-.config/asciinema
-.config/gcloud
-.config/wix
-enki-theme
-kitty-themes
-.config/gup/assets/
-
-# zsh
-.zsh_history
-.config/zsh/.oh-my-zsh/
-.config/zsh/.zsh_sessions/
-.zcompdump*
-
-# nvim
-.config/nvim/sessions/
-.config/nvim/undodir/
-packer_compiled.lua
-
-# fish
-.config/fish/fishd.tmp.*
-.config/fish/fish_variables
-
-# 1password
-.config/op
+wallpapers
+setup/VivalArc-main
 
 # misc
 error.log
-.config/gup
 debug.log
-
-lvim
-
-# spotify
-.config/spotify-tui/
-
-# lazygit
-**/lazygit/state.yml
-.config/nvim/.luarc.json
-
-# lnav
-.config/lnav/
-
-# wix
-bazelwrapper
-.config/k9s/config.yml
-.config/github-copilot/hosts.json
-.config/LazyVim
-.config/containers/podman/machine/qemu
-.config/containers
-.config/helm/repositories.yaml
-.config/raycast/config.json
-.config/bpytop
-.config/npm/npmrc
-wallpapers
-wallpapers
-.config/jgit
-.config/github-copilot
-.config/harlequin/harlequin.toml
-.config/ldcli/config.yml
-.config/bk.yaml
-setup/VivalArc-main
-.config/fish/conf.d
-.config/fish/themes
-.config/tmux
-.config/fish
-.config/ghostty
-.config/git
-.config/glow
-.config/bat
-.config/starship.toml
-.config/yazi
-.config/lazygit
-.config/gh
-.config/tig
-.config/aerospace
-.config/btop
-.config/k9s
-
 .DS_Store

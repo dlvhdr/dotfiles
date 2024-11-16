@@ -11,7 +11,6 @@
     with pkgs.nodePackages_latest;
     [
       awscli
-      btop
       clipboard-jh
       curl
       curlie
