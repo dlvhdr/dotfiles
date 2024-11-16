@@ -25,6 +25,10 @@
 - **Snippets:** LuaSnip
 - Other goodies...
 
+## Migration to Nix TODO
+
+- [] Install gh-dash extension
+
 ---
 
 Author: Dolev Hadar
