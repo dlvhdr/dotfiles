@@ -28,4 +28,3 @@ set -Ux CORE_D_DOTFILE "$XDG_RUNTIME_DIR/.eslint_d"
 set -Ux HISTFILE "$XDG_STATE_HOME/bash/history"
 set -Ux NODE_REPL_HISTORY "$XDG_DATA_HOME/node_repl_history"
 set -Ux RUSTUP_HOME "$XDG_DATA_HOME/rustup"
-set -Ux STARSHIP_CONFIG $DOTFILES/.config/starship.toml
