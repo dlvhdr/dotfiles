@@ -27,7 +27,7 @@
 
 ## Migration to Nix TODO
 
-- [] Install gh-dash extension
+- [ ] Install gh-dash extension
 
 ---
 
