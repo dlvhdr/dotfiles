@@ -66,6 +66,12 @@ M.on_attach = function(client, bufnr)
   --     callback = vim.lsp.codelens.refresh,
   --   })
   -- end
+  if client.supports_method("textDocument/publishDiagnostics") then
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+      require("ts-error-translator").translate_diagnostics(err, result, ctx, config)
+      vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+    end
+  end
 
   if client.supports_method("textDocument/inlayHint") then
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lh", "", {

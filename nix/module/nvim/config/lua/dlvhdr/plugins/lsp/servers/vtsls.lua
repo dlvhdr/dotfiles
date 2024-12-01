@@ -6,6 +6,7 @@ M.setup = function(opts)
   require("lspconfig").vtsls.setup({
     on_attach = function(client, bufnr)
       opts.on_attach(client, bufnr)
+
       client.commands["_typescript.moveToFileRefactoring"] = function(command, ctx)
         ---@type string, string, lsp.Range
         local action, uri, range = unpack(command.arguments)

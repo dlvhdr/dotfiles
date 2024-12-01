@@ -11,6 +11,7 @@
       interactiveShellInit = ''
         fish_add_path -p /etc/profiles/per-user/dlvhdr/bin
         source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
+        atuin init fish --disable-up-arrow | source
 
         function fish_user_key_bindings
           fish_default_key_bindings -M insert

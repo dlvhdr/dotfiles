@@ -21,6 +21,15 @@ inputs.darwin.lib.darwinSystem {
         nixd
         nixfmt-rfc-style
       ];
+      environment = {
+        etc."pam.d/sudo_local".text = ''
+          # Managed by Nix Darwin
+          auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh
+          auth       sufficient     pam_tid.so
+        '';
+      };
+      security.pam.enableSudoTouchIdAuth = true;
+
       services.nix-daemon.enable = true;
       system.stateVersion = 5;
 
@@ -30,7 +39,7 @@ inputs.darwin.lib.darwinSystem {
     {
       homebrew = {
         enable = true;
-        onActivation.cleanup = "uninstall";
+        onActivation.cleanup = "zap";
 
         brews = [
           "atuin"
@@ -39,6 +48,9 @@ inputs.darwin.lib.darwinSystem {
 
           # for neovim
           "sqlite"
+
+          # TODO: move to home-manager
+          "charmbracelet/tap/sequin"
         ];
 
         casks = [

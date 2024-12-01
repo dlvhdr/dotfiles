@@ -18,6 +18,7 @@
   '';
 
   imports = [
+    ./aerospace
     ./btop
     ./dirs
     ./fish
@@ -38,10 +39,12 @@
     ./yazi
 
     ./pkgs.nix
+
     ./bat.nix
-    ./fzf.nix
-    ./zoxide.nix
     ./direnv.nix
     ./fd.nix
+    ./fzf.nix
+    ./go.nix
+    ./zoxide.nix
   ];
 }

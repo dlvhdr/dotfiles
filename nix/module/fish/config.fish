@@ -17,11 +17,7 @@ set -gx COMPOSE_PROJECT_NAME "web"
 set -gx HOMEBREW_NO_AUTO_UPDATE true
 set -gx devbox_no_prompt true
 
-if status is-interactive
-  atuin init fish --disable-up-arrow | source
-
-  set -gx DIRENV_LOG_FORMAT ""
-end
+set -gx DIRENV_LOG_FORMAT ""
 
 # fnm env --use-on-cd --version-file-strategy recursive | source
 
