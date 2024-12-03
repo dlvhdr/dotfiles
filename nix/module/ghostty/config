@@ -17,11 +17,11 @@ cursor-style-blink = true
 cursor-opacity=0.96
 
 font-size = 18
-font-family = "CommitMonoDolev"
-font-family = "Symbols Nerd Font"
+font-family = "CommitMono Nerd Font"
+font-family = "Symbols Nerd Font Mono"
 font-family = "Apple Color Emoji"
-font-family = "DejaVu Sans"
-font-family = "FiraCode Nerd Font"
+font-family = "DejaVu SansM Nerd Font Mono"
+font-family = "FiraCode Nerd Font Mono"
 font-codepoint-map = U+F5D0-U+F60D=Flog Symbols
 adjust-cell-width = -5%
 

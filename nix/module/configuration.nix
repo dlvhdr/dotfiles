@@ -30,6 +30,8 @@
 
   system = {
     defaults = {
+      ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;
+      menuExtraClock.Show24Hour = true;
       dock = {
         autohide = true;
         autohide-delay = 0.0;
@@ -50,6 +52,7 @@
         ];
       };
       screencapture = {
+        disable-shadow = true;
         location = "~/Pictures/Screenshots";
         type = "jpg";
       };
@@ -69,6 +72,7 @@
         NSDocumentSaveNewDocumentsToCloud = false;
         _HIHideMenuBar = false;
         "com.apple.springing.delay" = 0.0;
+        "com.apple.swipescrolldirection" = false;
       };
       finder = {
         FXPreferredViewStyle = "Nlsv";
