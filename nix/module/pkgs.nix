@@ -40,6 +40,7 @@
       process-compose
       ripgrep
       sd
+      stats
       terminal-notifier
       tldr
       wget

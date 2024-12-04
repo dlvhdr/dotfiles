@@ -49,6 +49,10 @@
         persistent-apps = [
           "/Applications/Ghostty.app"
           "/System/Applications/Mail.app"
+          "/Applications/Vivaldi.app"
+          "/Applications/1Password.app"
+          "/Applications/Notion Calendar.app"
+          "/Applications/Obsidian.app"
         ];
       };
       screencapture = {
@@ -94,7 +98,7 @@
           scaling = 2;
         };
         "com.apple.mouse" = {
-          scaling = 2.5;
+          scaling = -1.0;
         };
         "com.apple.desktopservices" = {
           DSDontWriteNetworkStores = false;
