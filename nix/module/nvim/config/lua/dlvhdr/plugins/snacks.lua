@@ -5,24 +5,13 @@ return {
   opts = {
     dashboard = {
       sections = {
-        {
-          section = "terminal",
-          cmd = "artprint --random -t dlvhdr --tc 5 --ac 4",
-          padding = 0,
-          align = "center",
-          height = 30,
-          width = 60,
-          ttl = 86400,
-          gap = 2,
-        },
-        { section = "startup", align = "center", padding = 2 },
+        { section = "header" },
         {
           icon = " ",
           desc = "Last Session",
           padding = 1,
           key = "s",
           action = "<cmd>silent lua require('persistence').load()<CR>",
-          pane = 2,
         },
         {
           icon = "󰛢 ",
@@ -30,7 +19,6 @@ return {
           padding = 1,
           key = "m",
           action = "<CMD>Grapple open_tags<CR>",
-          pane = 2,
         },
         {
           icon = " ",
@@ -38,7 +26,6 @@ return {
           padding = 1,
           key = "e",
           action = "<CMD>ene <BAR> startinsert<CR>",
-          pane = 2,
         },
         {
           icon = "󰅚 ",
@@ -46,6 +33,17 @@ return {
           padding = 1,
           key = "q",
           action = "<CMD>qa<CR>",
+        },
+        { section = "startup", align = "center", padding = 2 },
+        {
+          section = "terminal",
+          cmd = "artprint --random -t dlvhdr --tc 5",
+          padding = 0,
+          align = "center",
+          height = 30,
+          width = 60,
+          ttl = 86400,
+          gap = 2,
           pane = 2,
         },
       },
@@ -104,5 +102,3 @@ return {
     },
   },
 }
--- want:
--- dashboard
