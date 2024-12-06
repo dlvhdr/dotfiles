@@ -13,6 +13,7 @@ vim.opt.runtimepath:prepend(lazypath)
 
 require("lazy").setup("dlvhdr.plugins", {
   install = { colorscheme = { "tokyonight" } },
+  lockfile = "~/dotfiles/nix/module/nvim/config/lazy-lock.json",
   ui = {
     border = "rounded",
   },

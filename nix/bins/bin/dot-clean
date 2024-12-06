@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+
+nix-collect-garbage -d --delete-older-than 30d

@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+brew update
+nix flake update --flake /Users/dlvhdr/dotfiles/nix#aarch64
+dot-clean
+dot-apply

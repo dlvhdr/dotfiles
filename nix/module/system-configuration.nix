@@ -29,10 +29,16 @@
   };
 
   system = {
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToEscape = true;
+    };
     defaults = {
       ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;
       menuExtraClock.Show24Hour = true;
+      WindowManager.EnableStandardClickToShowDesktop = false;
       dock = {
+        wvous-br-corner = 1;
         autohide = true;
         autohide-delay = 0.0;
         autohide-time-modifier = 0.0;
@@ -42,7 +48,7 @@
         show-recents = true;
         show-process-indicators = true;
         expose-animation-duration = 0.1;
-        expose-group-by-app = true;
+        expose-group-apps = true;
         launchanim = false;
         mineffect = "scale";
         mru-spaces = false;

@@ -29,6 +29,7 @@
       nur,
       caarlos0-nur,
       charmbracelet-nur,
+      nixpkgs,
       ...
     }:
     let
@@ -47,12 +48,35 @@
 
       darwin-system = import ./system/darwin.nix { inherit inputs username overlays; };
       username = "dlvhdr";
+      forAllSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.unix;
 
+      nixpkgsFor = forAllSystems (
+        system:
+        import nixpkgs {
+          inherit system;
+          overlays = overlays;
+        }
+      );
     in
     {
       darwinConfigurations = {
         aarch64 = darwin-system "aarch64-darwin";
         x86_64 = darwin-system "x86_64-darwin";
       };
+
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgsFor.${system};
+        in
+        {
+          default = pkgs.mkShellNoCC {
+            buildInputs =
+              with pkgs;
+              [
+              ];
+          };
+        }
+      );
     };
 }

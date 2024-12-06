@@ -7,10 +7,10 @@
   path = config-personal
 [includeIf "gitdir:~/code/personal/"]
   path = config-personal
-[includeIf "gitdir:~/code/komodor/"]
-  path = config-komodor
-[credential "https://github.com"]
-	username = dlvhdr
+
+
+[url "git@github.com:"]
+  insteadOf = https://github.com/
 
 [gpg]
 	format = ssh
@@ -239,8 +239,6 @@
   hunk-header-file-style = "#868E99" dim
   hunk-header-decoration-style = "#163050" ol ul
 
-[credential]
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+

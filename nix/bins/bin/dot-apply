@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+
+darwin-rebuild switch --flake /Users/dlvhdr/dotfiles/nix#aarch64

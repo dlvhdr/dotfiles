@@ -133,3 +133,4 @@ abbr --add eslint-restart "~/.local/share/nvim/mason/bin/eslint_d restart"
 abbr --add dr "devbox run"
 abbr --add lsi "timg -pk --grid=4x1 --upscale=i --center --title --frames=1 -bgray -Bdarkgray *.{png,jpg,jpeg,svg}"
 abbr --add pk "procs-kill"
+

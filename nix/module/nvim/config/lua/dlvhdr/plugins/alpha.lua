@@ -53,6 +53,7 @@ local medusa = {
 
 return {
   "goolord/alpha-nvim",
+  enabled = false,
   event = function()
     if vim.fn.argc() == 0 then
       return "VimEnter"

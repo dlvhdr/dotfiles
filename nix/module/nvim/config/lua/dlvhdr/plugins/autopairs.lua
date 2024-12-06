@@ -1,8 +1,5 @@
 return {
   "windwp/nvim-autopairs",
-  dependencies = {
-    "iguanacucumber/magazine.nvim",
-  },
   event = "InsertEnter",
   config = function()
     local npairs = require("nvim-autopairs")

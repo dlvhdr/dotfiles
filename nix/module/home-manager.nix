@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     # custom packages
     (callPackage ../bins { })
+    (callPackage ./arttime { })
   ];
 
   home.file."Library/KeyBindings/DefaultKeyBinding.dict".text = ''

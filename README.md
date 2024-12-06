@@ -26,17 +26,31 @@
 
 ## Getting Started
 
-1. Install nix with `sh <(curl -L https://nixos.org/nix/install)`
-2. Add to fish path with `fish_add_path -p /run/current-system/sw/bin`
-3. Install nix-darwin with `nix run nix-darwin -- switch --flake ~/.config/nix-darwin`
-4. Clone this repo with `git clone https://github.com/dlvhdr/dotfiles.git`
-5. Switch: `darwin-rebuild switch --flake ~/dotfiles/nix#aarch64`
+First
+
+```shell
+# 1. Install nix
+sh <(curl -L https://nixos.org/nix/install)
+# 2. Add to fish path
+fish_add_path -p /run/current-system/sw/bin
+# 3. Install nix-darwin
+nix run nix-darwin -- switch --flake ~/.config/nix-darwin
+# 4. Clone this repo
+git clone https://github.com/dlvhdr/dotfiles.git
+# 5. Switch
+darwin-rebuild switch --flake ~/dotfiles/nix#aarch64
+```
+
+Then:
+
 6. Login to 1Password and enable the SSH Agent under "Developer"
 7. Start Raycast and import settings under `dotfiles/nix/module/raycast/backups` (the password is in 1Password under www.raycast.com -> Backup Password)
 
 ## Migration to Nix TODO
 
 - [ ] Install gh-dash extension
+- [ ] Figure out how to update tmux plugins
+- [ ] Figure out how to manage Neovim plugins
 
 ---
 

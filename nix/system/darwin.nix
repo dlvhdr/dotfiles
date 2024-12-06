@@ -5,7 +5,7 @@
 }:
 system:
 let
-  system-config = import ../module/configuration.nix;
+  system-config = import ../module/system-configuration.nix;
   home-manager-config = import ../module/home-manager.nix;
   pkgs = inputs.nixpkgs.legacyPackages.${system};
 
@@ -33,8 +33,18 @@ inputs.darwin.lib.darwinSystem {
       services.nix-daemon.enable = true;
       system.stateVersion = 5;
 
+      security.sudo = {
+        extraConfig = ''
+          Defaults pwfeedback
+          Defaults timestamp_timeout=60
+          Defaults timestamp_type=global
+        '';
+      };
+
       users.users.${username}.home = "/Users/${username}";
     }
+
+    system-config
 
     {
       homebrew = {
@@ -88,16 +98,12 @@ inputs.darwin.lib.darwinSystem {
       };
     }
 
-    system-config
-
     inputs.home-manager.darwinModules.home-manager
     {
-      # add home-manager settings here
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users."${username}" = home-manager-config;
     }
-    # add more nix modules here
   ];
 
 }

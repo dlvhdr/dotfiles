@@ -11,5 +11,9 @@
 
   home.packages = with pkgs; [
     codespell
+    imagemagick
+    lua51Packages.lua
+    lua51Packages.luarocks
+    stylua
   ];
 }

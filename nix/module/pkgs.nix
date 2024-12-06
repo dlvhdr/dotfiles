@@ -26,6 +26,7 @@
       glow
       gojq
       goreleaser
+      gofumpt
       graphviz
       gum
       hyperfine
