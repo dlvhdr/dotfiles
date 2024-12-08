@@ -1,13 +1,9 @@
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua"
-package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua"
-
 return {
   "3rd/image.nvim",
   event = {
     "FileType markdown,norg,octo",
     "BufRead *.png,*.jpg,*.gif,*.webp,*.ipynb",
   },
-  build = "luarocks --lua-version 5.1 --local install magick",
   init = function()
     local wk = require("which-key")
     wk.add({

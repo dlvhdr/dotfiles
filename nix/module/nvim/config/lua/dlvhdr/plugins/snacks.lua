@@ -5,7 +5,7 @@ return {
   opts = {
     dashboard = {
       sections = {
-        { section = "header" },
+        { section = "header", row = nil, padding = { 4, 15 } },
         {
           icon = " ",
           desc = "Last Session",
@@ -34,15 +34,16 @@ return {
           key = "q",
           action = "<CMD>qa<CR>",
         },
-        { section = "startup", align = "center", padding = 2 },
+        { section = "startup", align = "center", padding = { 10, 4 } },
         {
           section = "terminal",
-          cmd = "artprint --random -t dlvhdr --tc 5",
-          padding = 0,
+          cmd = "artprint --random -t dlvhdr --tc 5 --style 1",
+          row = nil,
           align = "center",
           height = 30,
+          padding = 10,
           width = 60,
-          ttl = 86400,
+          random = 200,
           gap = 2,
           pane = 2,
         },

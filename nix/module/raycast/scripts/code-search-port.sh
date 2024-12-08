@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Code Search (Komodor)
+# @raycast.title Code Search (Port)
 # @raycast.mode compact
 
 # Optional parameters:
@@ -20,5 +20,5 @@ if [ -z "$1" ]; then
 	exit 1;
 fi
 
-open "https://github.com/search?type=code&q=owner:komodorio%20""$1"
+open "https://github.com/search?type=code&q=owner:portio%20""$1"
 echo "Searching for: $1"
