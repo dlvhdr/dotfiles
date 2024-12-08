@@ -24,9 +24,9 @@
       fx
       git-credential-manager
       glow
+      gofumpt
       gojq
       goreleaser
-      gofumpt
       graphviz
       gum
       hyperfine
@@ -43,6 +43,7 @@
       sd
       stats
       terminal-notifier
+      tig
       tldr
       wget
       yarn
