@@ -10,6 +10,7 @@
     # custom packages
     (callPackage ../bins { })
     (callPackage ./arttime { })
+    (callPackage ./monocd { })
   ];
 
   home.file."Library/KeyBindings/DefaultKeyBinding.dict".text = ''
