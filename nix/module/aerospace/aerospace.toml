@@ -106,6 +106,7 @@ alt-f = 'exec-and-forget open -b com.figma.Desktop'
 # alt-i = 'exec-and-forget open -b net.kovidgoyal.kitty'
 alt-i = 'exec-and-forget open -b com.mitchellh.ghostty'
 alt-m = 'exec-and-forget open -b com.apple.mail'
+alt-n = 'exec-and-forget open -b notion.id'
 alt-o = 'exec-and-forget open -b md.obsidian'
 alt-p = 'exec-and-forget open -b com.cron.electron'
 alt-s = 'exec-and-forget open -b com.tinyspeck.slackmacgap'
@@ -222,6 +223,11 @@ run = ['layout tiling', 'move-node-to-workspace F']
 if.app-id = 'com.github.th-ch.youtube-music'
 # check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace U']
+
+[[on-window-detected]]
+if.app-id = 'notion.id'
+# check-further-callbacks = true
+run = ['layout tiling', 'move-node-to-workspace N']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'mpv'
