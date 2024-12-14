@@ -66,8 +66,10 @@ inputs.darwin.lib.darwinSystem {
 
         casks = [
           "1password"
+          "aws-vpn-client"
           "betterdisplay"
           "discord"
+          "docker"
           "figma"
           "font-commit-mono"
           "font-commit-mono-nerd-font"
@@ -77,7 +79,9 @@ inputs.darwin.lib.darwinSystem {
           "google-chrome"
           "hiddenbar"
           "homerow"
+          "iina"
           "nikitabobko/tap/aerospace"
+          "notion"
           "notion-calendar"
           "notunes"
           "obsidian"

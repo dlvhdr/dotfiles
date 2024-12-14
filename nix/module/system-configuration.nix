@@ -67,22 +67,23 @@
         type = "jpg";
       };
       NSGlobalDomain = {
-        ApplePressAndHoldEnabled = false;
+        "com.apple.springing.delay" = 0.0;
+        "com.apple.swipescrolldirection" = false;
+        AppleInterfaceStyle = "Dark";
         AppleMeasurementUnits = "Centimeters";
-        KeyRepeat = 2;
-        InitialKeyRepeat = 15;
+        ApplePressAndHoldEnabled = false;
         AppleShowScrollBars = "Always";
-        NSWindowResizeTime = 0.1;
+        InitialKeyRepeat = 15;
+        KeyRepeat = 2;
         NSAutomaticCapitalizationEnabled = false;
         NSAutomaticDashSubstitutionEnabled = false;
         NSAutomaticPeriodSubstitutionEnabled = false;
         NSAutomaticQuoteSubstitutionEnabled = false;
         NSAutomaticSpellingCorrectionEnabled = false;
-        AppleInterfaceStyle = "Dark";
         NSDocumentSaveNewDocumentsToCloud = false;
+        NSTableViewDefaultSizeMode = 2;
+        NSWindowResizeTime = 0.1;
         _HIHideMenuBar = false;
-        "com.apple.springing.delay" = 0.0;
-        "com.apple.swipescrolldirection" = false;
       };
       finder = {
         FXPreferredViewStyle = "Nlsv";

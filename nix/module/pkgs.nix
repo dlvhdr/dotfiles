@@ -15,7 +15,6 @@
       curl
       curlie
       delta
-      docker
       dust
       entr
       eza

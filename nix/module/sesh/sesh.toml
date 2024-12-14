@@ -15,7 +15,7 @@ startup_command = "nvim"
 
 [[session]]
 name = "mono 💼"
-path = "~/code/komodor/mono"
+path = "~/code/port/mono"
 
 [[session]]
 name = "gh-dash 🚀"
