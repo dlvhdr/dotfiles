@@ -5,6 +5,7 @@ local opts = {
 }
 return {
   "drybalka/tree-climber.nvim",
+  enabled = false,
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   keys = {
     {
