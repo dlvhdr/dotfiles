@@ -1,6 +1,8 @@
 #!/usr/bin/env fish
 
+cd $HOME/dotfiles/nix 
 brew update
-nix flake update --flake /Users/dlvhdr/dotfiles/nix
+nix flake update --flake .
+fd .nix --exec update-nix-fetchgit
 dot-clean
 dot-apply
