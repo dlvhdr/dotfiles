@@ -7,13 +7,13 @@ prSections:
         hidden: true
   - title: Review
     filters: is:open review-requested:@me
-  - title: Troubleshoot
-    filters: org:komodorio label:"Sprints - Troubleshooting" -author:@me is:open
+  - title: Developers
+    filters: org:port-labs -author:@me is:open author:MPTG94 author:ozzs author:matanAlltra author:matanl490 author:pazhersh author:Eyal-Be author:Tomer-Buhadana-Port author:imran-port author:KeenBeast author:MatanPort
     layout:
       repo:
         width: 6
-  - title: Komodor
-    filters: repo:komodorio/mono
+  - title: Port
+    filters: org:port-labs
   - title: gh-dash
     filters: "is:open repo:dlvhdr/gh-dash"
   - title: Commented
@@ -46,6 +46,7 @@ pager:
   diff: diffnav
 defaults:
   view: repo
+  refetchIntervalMinutes: 1
   layout:
     prs:
       repoName:
@@ -62,7 +63,7 @@ defaults:
   issuesLimit: 20
 repoPaths:
   dlvhdr/gh-dash: ~/code/personal/gh-dash
-  komodorio/*: ~/code/komodor/*
+  port-labs/*: ~/code/port/*
 
 keybindings:
   universal:

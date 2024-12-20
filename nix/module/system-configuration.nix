@@ -54,11 +54,12 @@
         mru-spaces = false;
         persistent-apps = [
           "/Applications/Ghostty.app"
+          "/Applications/Arc.app"
           "/System/Applications/Mail.app"
-          "/Applications/Vivaldi.app"
-          "/Applications/1Password.app"
           "/Applications/Notion Calendar.app"
+          "/Applications/Slack.app"
           "/Applications/Obsidian.app"
+          "/Applications/1Password.app"
         ];
       };
       screencapture = {

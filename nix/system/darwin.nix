@@ -51,6 +51,16 @@ inputs.darwin.lib.darwinSystem {
         enable = true;
         onActivation.cleanup = "zap";
 
+        taps = [
+          "dlvhdr/formulae"
+          "charmbracelet/tap"
+          "joshmedeski/sesh"
+          "th-ch/youtube-music"
+          "nikitabobko/tap"
+          "nikitabobko/aerospace"
+          "dhth/tap"
+        ];
+
         brews = [
           "atuin"
           "dhth/tap/mult"
@@ -66,8 +76,10 @@ inputs.darwin.lib.darwinSystem {
 
         casks = [
           "1password"
+          "arc"
           "aws-vpn-client"
           "betterdisplay"
+          "datagrip"
           "discord"
           "docker"
           "figma"
@@ -94,11 +106,10 @@ inputs.darwin.lib.darwinSystem {
           "vivaldi"
           "whatsapp"
           "zoom"
-
-          # komodor
-          "clickup"
-          "datagrip"
         ];
+
+        masApps = {
+        };
       };
     }
 

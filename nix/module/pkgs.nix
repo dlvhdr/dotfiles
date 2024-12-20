@@ -36,6 +36,7 @@
       less
       lolcat
       nodejs
+      npkill
       onefetch
       process-compose
       ripgrep
@@ -44,6 +45,7 @@
       terminal-notifier
       tig
       tldr
+      update-nix-fetchgit
       wget
       yarn
       yq-go

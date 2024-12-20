@@ -88,7 +88,7 @@ customCommands:
     loadingText: "opening github..."
     subprocess: false
   - key: "O"
-    command: gh pr create -t "{{index .PromptResponses 0}}" -b "{{index .PromptResponses 1}}" {{ if eq (index .PromptResponses 2) "yes"}}{{ "--draft" }}{{ end }}
+    command: gh pr create -t "{{index .PromptResponses 0}}" {{ if eq (index .PromptResponses 1) "yes"}}{{ "--draft" }}{{ end }}
     description: "Create a pull request using the GitHub CLI"
     context: "localBranches"
     subprocess: true
@@ -96,9 +96,6 @@ customCommands:
       - type: "input"
         title: "Title"
         initialValue: "{{index .CheckedOutBranch.Name}}"
-
-      - type: "input"
-        title: "Body"
 
       - type: "menu"
         title: "Mark pull request as draft?"
