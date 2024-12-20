@@ -50,6 +50,17 @@ local M = {
         require("luasnip.loaders.from_vscode").lazy_load()
       end,
     },
+    {
+      "luckasRanarison/tailwind-tools.nvim",
+      name = "tailwind-tools",
+      build = ":UpdateRemotePlugins",
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-telescope/telescope.nvim",
+        "neovim/nvim-lspconfig",
+      },
+      opts = {}, -- your configuration
+    },
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-nvim-lsp",
@@ -181,20 +192,25 @@ M.config = function()
     sources = sources,
 
     ---@diagnostic disable-next-line: missing-fields
+    -- formatting = {
+    --   format = function(_, item)
+    --     local icons = require("dlvhdr.plugins.lsp.icons").icons.kinds
+    --     if icons[item.kind] then
+    --       item.kind = icons[item.kind] .. item.kind
+    --     end
+    --     if item.abbr and string.len(item.abbr) > 30 then
+    --       item.abbr = string.sub(item.abbr, 1, 30) .. "…"
+    --     end
+    --     if item.menu and string.len(item.menu) > 30 then
+    --       item.menu = string.sub(item.menu, 1, 30) .. "…"
+    --     end
+    --     return item
+    --   end,
+    -- },
     formatting = {
-      format = function(_, item)
-        local icons = require("dlvhdr.plugins.lsp.icons").icons.kinds
-        if icons[item.kind] then
-          item.kind = icons[item.kind] .. item.kind
-        end
-        if item.abbr and string.len(item.abbr) > 30 then
-          item.abbr = string.sub(item.abbr, 1, 30) .. "…"
-        end
-        if item.menu and string.len(item.menu) > 30 then
-          item.menu = string.sub(item.menu, 1, 30) .. "…"
-        end
-        return item
-      end,
+      format = require("lspkind").cmp_format({
+        before = require("tailwind-tools.cmp").lspkind_format,
+      }),
     },
     experimental = {
       ghost_text = false,

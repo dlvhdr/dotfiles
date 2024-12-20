@@ -15,5 +15,6 @@
     lua51Packages.lua
     lua51Packages.luarocks
     stylua
+    tailwindcss-language-server
   ];
 }
