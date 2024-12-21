@@ -3,8 +3,8 @@ show_hidden    = true
 sort_dir_first = true
 
 [preview]
-max_width = 1024
-max_height = 768
+max_width = 1200
+max_height = 1000
 tab_size        = 2
 cache_dir       = ""
 ueberzug_scale  = 1
