@@ -24,6 +24,8 @@ set -gx DIRENV_LOG_FORMAT ""
 set -gx GUM_FILTER_INDICATOR "→"
 set -gx GUM_FILTER_PROMPT " "
 
+alias cd="z"
+
 # scary
 abbr --add rm "rm -i"
 abbr --add mv "mv -i"

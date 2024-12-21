@@ -34,6 +34,7 @@
       jqp
       kind
       less
+      lla
       lolcat
       nodejs
       npkill

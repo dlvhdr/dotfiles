@@ -30,6 +30,7 @@
     ./git
     ./k9s
     ./lazygit
+    ./lla
     ./npm
     ./nvim
     ./raycast
