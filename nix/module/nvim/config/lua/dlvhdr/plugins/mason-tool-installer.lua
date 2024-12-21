@@ -1,5 +1,6 @@
 return {
   "WhoIsSethDaniel/mason-tool-installer.nvim",
+  enabled = false,
   cmd = { "MasonToolsInstall", "MasonToolsUpdate", "MasonToolsClean" },
   opts = {
     ensure_installed = {

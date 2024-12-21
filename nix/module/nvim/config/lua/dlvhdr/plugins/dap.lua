@@ -21,6 +21,7 @@ return {
     },
     {
       "jay-babu/mason-nvim-dap.nvim",
+      enabled = false,
       dependencies = "mason.nvim",
       cmd = { "DapInstall", "DapUninstall" },
       opts = {

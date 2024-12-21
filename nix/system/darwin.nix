@@ -72,6 +72,7 @@ inputs.darwin.lib.darwinSystem {
           # TODO: move to home-manager
           "charmbracelet/tap/sequin"
           "dlvhdr/formulae/diffnav"
+          "tailwindcss-language-server"
         ];
 
         casks = [

@@ -87,10 +87,6 @@ M.config = function()
         enter = false,
         position = "100%",
         border = "none",
-        size = {
-          width = 50,
-          height = 8,
-        },
         win_options = {
           winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
         },

@@ -3,9 +3,9 @@ return {
   event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   dependencies = {
     { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
-    { "b0o/schemastore.nvim", event = "VeryLazy" },
+    { "b0o/schemastore.nvim", event = "InsertEnter" },
     "nvimtools/none-ls.nvim",
-    { "williamboman/mason.nvim", cmd = { "Mason", "MasonUpdate" } },
+    { "williamboman/mason.nvim", cmd = { "Mason", "MasonUpdate" }, enabled = false },
     "nvimtools/none-ls-extras.nvim",
     { "yioneko/nvim-vtsls", ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" } },
   },
