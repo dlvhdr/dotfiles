@@ -1,10 +1,10 @@
-# function ls --wraps='eza --icons --group-directories-first' --description 'alias ls=eza --icons --group-directories-first'
-#   eza -a --icons --group-directories-first $argv; 
-# end
-
-function ls --wraps='lla --icons -g --sort-dirs-first' --description 'alias ls=lla --icons -g --sort-dirs-first'
-  lla --icons -g --sort-dirs-first $argv;
+function ls --wraps='eza --icons --group-directories-first' --description 'alias ls=eza --icons --group-directories-first'
+  eza -a --icons --group-directories-first $argv; 
 end
+
+# function ls --wraps='lla --icons -g --sort-dirs-first' --description 'alias ls=lla --icons -g --sort-dirs-first'
+#   lla --icons -g --sort-dirs-first $argv;
+# end
 
 # directories
 # if command -qs exa
