@@ -2,7 +2,8 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   dependencies = {
-    { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
+    { "saghen/blink.cmp", event = "InsertEnter" },
+    -- { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
     { "b0o/schemastore.nvim", event = "InsertEnter" },
     "nvimtools/none-ls.nvim",
     { "williamboman/mason.nvim", cmd = { "Mason", "MasonUpdate" }, enabled = false },

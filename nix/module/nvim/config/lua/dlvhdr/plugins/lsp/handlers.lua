@@ -105,8 +105,6 @@ M.capabilities = function()
       },
     },
   }
-  local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem = {
     documentationFormat = { "markdown", "plaintext" },
@@ -128,7 +126,7 @@ M.capabilities = function()
 
   return vim.tbl_deep_extend(
     "force",
-    has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+    require("blink.cmp").get_lsp_capabilities(),
     global_capabilities or {},
     capabilities
   )

@@ -246,7 +246,5 @@ return {
         attach_conf(0)
       end,
     })
-
-    vim.cmd("hi! link OctoEditable CursorLine")
   end,
 }

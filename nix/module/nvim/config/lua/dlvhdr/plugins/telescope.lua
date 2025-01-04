@@ -227,6 +227,7 @@ M.config = function()
         "^plugged/",
         "^sessions/",
         "^node_modules/",
+        "^dist/",
         "^.yarn/",
         "^generated/",
       },

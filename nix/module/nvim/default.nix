@@ -30,7 +30,6 @@
       prettierd
       shfmt
       stylua
-      stylua
 
       typescript-language-server
       vscode-js-debug

@@ -29,6 +29,9 @@ M.config = function()
       folder_open = "",
     },
     view = {
+      default = {
+        winbar_info = true,
+      },
       diff_view = {
         winbar_info = true,
         layout = "diff2_horizontal",
@@ -66,6 +69,39 @@ M.config = function()
         -- Disable some performance heavy stuff in long files.
         if vim.api.nvim_buf_line_count(bufnr) >= 2500 then
           vim.cmd("IndentBlanklineDisable")
+        end
+      end,
+      -- diff_buf_win_enter = function(bufnr, winid, ctx)
+      --   if ctx.layout_name:match("^diff2") then
+      --     if ctx.symbol == "a" then
+      --       vim.opt_local.winhl = table.concat({
+      --         "DiffAdd:DiffviewDiffAddAsDelete",
+      --         "DiffDelete:DiffviewDiffDelete",
+      --       }, ",")
+      --     elseif ctx.symbol == "b" then
+      --       vim.opt_local.winhl = table.concat({
+      --         "DiffDelete:DiffviewDiffDelete",
+      --       }, ",")
+      --     end
+      --   end
+      -- end,
+      diff_buf_win_enter = function(_, _, ctx)
+        -- Highlight 'DiffChange' as 'DiffDelete' on the left, and 'DiffAdd' on the right.
+        if ctx.layout_name:match("^diff2") then
+          if ctx.symbol == "a" then
+            vim.opt_local.winhl = table.concat({
+              "DiffAdd:DiffviewDiffAdd",
+              "DiffDelete:DiffviewDiffDelete",
+              "DiffChange:DiffviewDiffDeleteDim",
+              "DiffText:DiffviewDiffDelete",
+            }, ",")
+          elseif ctx.symbol == "b" then
+            vim.opt_local.winhl = table.concat({
+              "DiffAdd:DiffviewDiffAdd",
+              "DiffDelete:DiffviewDiffDelete",
+              -- "DiffChange:DiffAdd",
+            }, ",")
+          end
         end
       end,
     },

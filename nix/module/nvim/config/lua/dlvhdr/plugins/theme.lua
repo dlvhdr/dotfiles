@@ -68,6 +68,17 @@ M.config = function()
       }
       hl.TermCursor = { link = "Cursor" }
       hl.EndOfBuffer = { bg = "NONE" }
+
+      hl.PmenuMatchSel = { fg = c.orange }
+      hl.PmenuMatch = { fg = c.orange, bg = c.bg_highlight }
+
+      hl.BlinkCmpMenu = { bg = "#010101" }
+      hl.BlinkCmpMenuBorder = { fg = c.fg_gutter, bg = "#010101" }
+      hl.BlinkCmpDoc = { bg = "#010101" }
+      hl.BlinkCmpDocBorder = { fg = c.fg_gutter, bg = "#010101" }
+      hl.BlinkCmpLabelMatch = { fg = c.orange, bg = c.none }
+      -- hl.BlinkCmpLabel = { bg = "#010101" }
+
       hl.CmpDocumentation = { bg = darker_bg }
       hl.CmpDocumentationBorder = { bg = darker_bg }
       hl.TelescopeMatching = { fg = c.warning, bold = true }
@@ -84,8 +95,8 @@ M.config = function()
       hl.TelescopeResultsDiffAdd = { fg = c.green, bg = "NONE" }
       hl.TelescopeResultsDiffChange = { fg = c.yellow, bg = "NONE" }
       hl.TelescopeResultsDiffDelete = { fg = c.red, bg = "NONE" }
-      hl.TelescopeMatching = { fg = c.green, bold = true, bg = "NONE" }
-      hl.FoldColumn = { fg = c.blue }
+      hl.TelescopeMatching = { fg = c.orange, bold = true, bg = "NONE" }
+      hl.FoldColumn = { fg = "#141B23" }
       hl.DevIconFish = { fg = c.green }
       hl.GHThreadSep = { bg = c.bg_float }
       hl.DiagnosticUnnecessary = { fg = util.lighten(c.comment, 0.7), undercurl = true }
@@ -117,11 +128,11 @@ M.config = function()
       hl["@markup.heading.3.markdown"] = { link = "@markup.strong" }
       hl["@markup.heading.4"] = { link = "@markup.strong" }
       hl["@markup.heading.4.markdown"] = { link = "@markup.strong" }
-      hl.DiffAdd = { bg = "#001f00" }
-      hl.DiffDelete = { bg = "#240500" }
-      hl.DiffChange = { bg = "NONE" }
-      hl.DiffText = { bg = "#103610" }
-      hl["@diff.plus"] = { bg = "#001f00" }
+      hl.DiffText = { bg = "#234E88" }
+      hl.DiffChange = { bg = "#152339" }
+      hl.DiffDelete = { bg = "#724022" }
+      hl.DiffAdd = { bg = "#234E88" }
+      hl.DiffviewDiffDeleteDim = { bg = "#2D1F1B" }
     end,
   })
 

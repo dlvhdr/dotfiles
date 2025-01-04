@@ -28,7 +28,7 @@ vim.opt.guicursor = {
   "r-cr:hor20-Cursor",
   "o-v:block-Cursor-blinkwait300-blinkon200-blinkoff150",
 }
-vim.opt.conceallevel = 1
+vim.opt.conceallevel = 0
 vim.opt.showmode = false
 vim.opt.laststatus = 3
 vim.opt.mouse = "a"

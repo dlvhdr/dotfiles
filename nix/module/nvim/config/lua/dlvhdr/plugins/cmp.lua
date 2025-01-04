@@ -2,6 +2,7 @@ local M = {
   "hrsh7th/nvim-cmp",
   version = false,
   event = { "InsertEnter", "CmdlineEnter" },
+  enabled = false,
   dependencies = {
     {
       "L3MON4D3/LuaSnip",
