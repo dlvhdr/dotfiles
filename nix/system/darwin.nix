@@ -49,7 +49,7 @@ inputs.darwin.lib.darwinSystem {
     {
       homebrew = {
         enable = true;
-        onActivation.cleanup = "zap";
+        global.autoUpdate = false;
 
         taps = [
           "dlvhdr/formulae"
@@ -82,6 +82,7 @@ inputs.darwin.lib.darwinSystem {
           "betterdisplay"
           "datagrip"
           "discord"
+          "dockdoor"
           "docker"
           "figma"
           "font-commit-mono"
@@ -89,6 +90,7 @@ inputs.darwin.lib.darwinSystem {
           "font-dejavu-sans-mono-nerd-font"
           "font-fira-code-nerd-font"
           "font-symbols-only-nerd-font"
+          "ghostty"
           "google-chrome"
           "hiddenbar"
           "homerow"
@@ -99,6 +101,7 @@ inputs.darwin.lib.darwinSystem {
           "notunes"
           "obsidian"
           "raycast"
+          "redis-insight"
           "slack"
           "stats"
           "th-ch/youtube-music/youtube-music"
