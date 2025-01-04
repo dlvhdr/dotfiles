@@ -2,14 +2,15 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Dismiss Notifications Test
+# @raycast.title Dismiss Notifications
 # @raycast.mode silent
 
 # Optional parameters:
+# @raycast.icon 🔕
 # @raycast.packageName System
 
 # Documentation:
-# @raycast.description Close all notification alerts staying on screen
+# @raycast.description Close all notification alerts staying on screen, e.g., Calendar notifications.
 # @raycast.author dlvhdr
 # @raycast.authorURL github.com/dlvhdr
 
