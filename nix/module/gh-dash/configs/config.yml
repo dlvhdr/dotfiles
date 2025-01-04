@@ -63,6 +63,7 @@ defaults:
   issuesLimit: 20
 repoPaths:
   dlvhdr/gh-dash: ~/code/personal/gh-dash
+  port-labs/Port: ~/code/port/mono
   port-labs/*: ~/code/port/*
 
 keybindings:
