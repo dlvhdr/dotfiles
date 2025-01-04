@@ -36,6 +36,8 @@
       less
       lla
       lolcat
+      nixd
+      nixfmt-rfc-style
       nodejs
       npkill
       onefetch
