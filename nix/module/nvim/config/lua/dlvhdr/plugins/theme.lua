@@ -44,6 +44,7 @@ M.config = function()
     on_highlights = function(hl, c)
       local util = require("tokyonight.util")
       local darker_bg = util.darken(c.bg_popup, 2.5)
+      local darker_orange = util.darken(c.orange, 0.9)
       hl.LineNr.fg = c.comment
       hl.LineNrAbove.fg = c.comment
       hl.LineNrBelow.fg = c.comment
@@ -69,14 +70,16 @@ M.config = function()
       hl.TermCursor = { link = "Cursor" }
       hl.EndOfBuffer = { bg = "NONE" }
 
-      hl.PmenuMatchSel = { fg = c.orange }
-      hl.PmenuMatch = { fg = c.orange, bg = c.bg_highlight }
+      hl.PmenuMatchSel = { fg = darker_orange }
+      hl.PmenuMatch = { fg = darker_orange, bg = c.bg_highlight }
 
       hl.BlinkCmpMenu = { bg = "#010101" }
       hl.BlinkCmpMenuBorder = { fg = c.fg_gutter, bg = "#010101" }
       hl.BlinkCmpDoc = { bg = "#010101" }
       hl.BlinkCmpDocBorder = { fg = c.fg_gutter, bg = "#010101" }
-      hl.BlinkCmpLabelMatch = { fg = c.orange, bg = c.none }
+      hl.BlinkCmpLabelMatch = { fg = darker_orange, bg = c.none }
+      hl.BlinkCmpMenuSelection = { bg = c.bg_highlight }
+      hl.BlinkCmpScrollBarThumb = { bg = darker_bg }
       -- hl.BlinkCmpLabel = { bg = "#010101" }
 
       hl.CmpDocumentation = { bg = darker_bg }

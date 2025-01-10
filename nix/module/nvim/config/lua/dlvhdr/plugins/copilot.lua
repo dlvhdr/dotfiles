@@ -5,6 +5,7 @@ local plugin = {
   },
   cmd = "Copilot",
   event = "InsertEnter",
+  enabled = false,
 }
 
 function plugin.config()

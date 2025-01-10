@@ -114,7 +114,7 @@ return {
               {
                 type = "pwa-node",
                 request = "launch",
-                name = "Debug Current Test File",
+                name = "[Vitest] Debug Current Test File",
                 autoAttachChildProcesses = true,
                 skipFiles = { "<node_internals>/**", "**/node_modules/**" },
                 cwd = "${workspaceFolder}",
@@ -122,6 +122,20 @@ return {
                 args = { "run", "${file}" },
                 smartStep = true,
                 console = "integratedTerminal",
+              },
+              {
+                type = "pwa-node",
+                request = "launch",
+                name = "[Jest] Debug Current Test File",
+                cwd = vim.fn.getcwd(),
+                sourceMaps = true,
+                runtimeArgs = {
+                  "--inspect-brk",
+                  "./node_modules/jest/bin/jest.js",
+                },
+                args = { "${file}", "-c", "./e2e/backend/jest.config.ts", "--runInBand" },
+                console = "integratedTerminal",
+                internalConsoleOptions = "neverOpen",
               },
               {
                 type = "pwa-node",

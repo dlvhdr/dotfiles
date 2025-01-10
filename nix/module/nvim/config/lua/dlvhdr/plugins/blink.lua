@@ -91,10 +91,34 @@ return {
         },
         menu = {
           border = "rounded",
-          winblend = 0,
           draw = {
-            treesitter = { "lsp" },
+            gap = 2,
+            columns = {
+              { "kind_icon", gap = 1 },
+              { "label", "label_description", gap = 1 },
+              { "source_name", gap = 1 },
+            },
+            components = {
+              source_name = {
+                text = function(ctx)
+                  return "[" .. ctx.source_name .. "]"
+                end,
+              },
+              kind_icon = {
+                text = function(ctx)
+                  if require("blink.cmp.completion.windows.render.tailwind").get_hex_color(ctx.item) then
+                    return "󱓻"
+                  end
+                  local client = vim.lsp.get_client_by_id(ctx.item.client_id)
+                  if client and client.name == "tailwindcss" then
+                    return "󱏿"
+                  end
+                  return ctx.kind_icon .. ctx.icon_gap
+                end,
+              },
+            },
           },
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
         },
         documentation = {
           window = {
@@ -116,7 +140,6 @@ return {
             name = "lsp",
             enabled = true,
             module = "blink.cmp.sources.lsp",
-            kind = "LSP",
             score_offset = 90, -- the higher the number, the higher the priority
           },
           luasnip = {
@@ -125,7 +148,7 @@ return {
             module = "blink.cmp.sources.luasnip",
             min_keyword_length = 2,
             fallbacks = { "snippets" },
-            score_offset = 85,
+            score_offset = 80,
             max_items = 8,
           },
           path = {
@@ -202,8 +225,8 @@ return {
         preset = "default",
         ["<C-y>"] = { "select_and_accept" },
 
-        ["<Tab>"] = { "snippet_forward", "fallback" },
-        ["<S-Tab>"] = { "snippet_backward", "fallback" },
+        ["<C-l>"] = { "snippet_forward", "fallback" },
+        ["<C-h>"] = { "snippet_backward", "fallback" },
 
         ["<Up>"] = { "select_prev", "fallback" },
         ["<Down>"] = { "select_next", "fallback" },
@@ -218,36 +241,6 @@ return {
       }
 
       return opts
-    end,
-    config = function(_, opts)
-      -- check if we need to override symbol kinds
-      for _, provider in pairs(opts.sources.providers or {}) do
-        ---@cast provider blink.cmp.SourceProviderConfig|{kind?:string}
-        if provider.kind then
-          local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-          local kind_idx = #CompletionItemKind + 1
-
-          CompletionItemKind[kind_idx] = provider.kind
-          ---@diagnostic disable-next-line: no-unknown
-          CompletionItemKind[provider.kind] = kind_idx
-
-          ---@type fun(ctx: blink.cmp.Context, items: blink.cmp.CompletionItem[]): blink.cmp.CompletionItem[]
-          local transform_items = provider.transform_items
-          ---@param ctx blink.cmp.Context
-          ---@param items blink.cmp.CompletionItem[]
-          provider.transform_items = function(ctx, items)
-            items = transform_items and transform_items(ctx, items) or items
-            for _, item in ipairs(items) do
-              item.kind = kind_idx or item.kind
-            end
-            return items
-          end
-
-          -- Unset custom prop to pass blink.cmp validation
-          provider.kind = nil
-        end
-      end
-      require("blink.cmp").setup(opts)
     end,
   },
 }

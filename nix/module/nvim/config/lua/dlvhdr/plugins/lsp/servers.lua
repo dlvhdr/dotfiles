@@ -14,7 +14,6 @@ M.setup = function()
   --   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
   -- })
   lspconfig.html.setup(opts)
-  -- require("dlvhdr.plugins.lsp.servers.tsserver").setup(opts)
   require("dlvhdr.plugins.lsp.servers.vtsls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.jsonls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.none-ls").setup(opts)
@@ -26,7 +25,6 @@ M.setup = function()
   require("dlvhdr.plugins.lsp.servers.helm-ls").setup()
   require("dlvhdr.plugins.lsp.servers.bashls").setup()
   require("dlvhdr.plugins.lsp.servers.nixd").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.tailwindcss").setup(opts)
 end
 
 return M

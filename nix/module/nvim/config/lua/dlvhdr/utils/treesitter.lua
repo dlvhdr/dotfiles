@@ -1,6 +1,6 @@
 local M = {}
 
-local function get_language_tree_for_cursor_location()
+function M.get_language_tree_for_cursor_location()
   local bufnr = 0
   local cursor = vim.api.nvim_win_get_cursor(bufnr)
   local language_tree =
@@ -126,7 +126,7 @@ end
 ---@param package string
 function M.ensure_js_package_imported(variable_name, package)
   return function()
-    local language_tree = get_language_tree_for_cursor_location()
+    local language_tree = M.get_language_tree_for_cursor_location()
     local tree = language_tree:parse()[1]
     local language = language_tree._lang
 

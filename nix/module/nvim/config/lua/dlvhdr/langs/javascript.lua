@@ -30,4 +30,49 @@ function M.add_async()
   vim.api.nvim_buf_set_text(0, start_row, start_col, start_row, start_col, { "async " })
 end
 
+function M.goto_exported_symbol()
+  local current_node = vim.treesitter.get_node({ ignore_injections = false })
+  if not current_node then
+    vim.notify("No current node", vim.log.levels.ERROR)
+    return
+  end
+  local language_tree = require("dlvhdr.utils.treesitter").get_language_tree_for_cursor_location()
+  local language = language_tree._lang
+  vim.print(language)
+
+  local query = vim.treesitter.query.parse(
+    language,
+    [[
+      [
+        (export_statement
+          (declaration
+            [
+              (type_identifier) @name
+              (identifier) @name
+            ]
+          )
+        )
+        (method_definition
+          (accessibility_modifier)
+          (property_identifier) @name
+        )
+      ]
+    ]]
+  )
+  -- ((export_statement) @export
+  --   (#contains? @export "export default")
+  -- )
+
+  while current_node:parent() do
+    current_node = current_node:parent()
+    vim.print("wat", vim.treesitter.get_node_text(current_node, 0))
+    local pos = current_node:start()
+    for _, node, _, _ in query:iter_captures(current_node, 0, nil, pos + 1) do
+      local row1, col1 = node:range()
+      vim.api.nvim_win_set_cursor(0, { row1 + 1, col1 })
+      return
+    end
+  end
+end
+
 return M

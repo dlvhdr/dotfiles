@@ -4,8 +4,6 @@ local M = {
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
     "RRethy/nvim-treesitter-textsubjects",
-    "nvim-treesitter/nvim-treesitter-refactor",
-    "mfussenegger/nvim-treehopper",
     { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
     { "JoosepAlviste/nvim-ts-context-commentstring" },
     "andymass/vim-matchup",

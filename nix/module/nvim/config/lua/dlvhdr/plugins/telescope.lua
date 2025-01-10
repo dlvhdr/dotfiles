@@ -22,7 +22,10 @@ local M = {
     {
       "<leader>ff",
       function()
-        require("telescope.builtin").lsp_document_symbols({ symbols = { "Function", "Method" } })
+        require("telescope.builtin").lsp_document_symbols({
+          layout_config = { preview_width = 0.6, height = 0.5 },
+          symbols = { "Function", "Method" },
+        })
       end,
       desc = "Functions",
     },
