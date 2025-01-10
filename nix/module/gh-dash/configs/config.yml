@@ -7,13 +7,9 @@ prSections:
         hidden: true
   - title: Review
     filters: is:open review-requested:@me
-  - title: Developers
-    filters: org:port-labs -author:@me is:open author:MPTG94 author:ozzs author:matanAlltra author:matanl490 author:pazhersh author:Eyal-Be author:Tomer-Buhadana-Port author:imran-port author:KeenBeast author:MatanPort
     layout:
       repo:
         width: 6
-  - title: Port
-    filters: org:port-labs
   - title: gh-dash
     filters: "is:open repo:dlvhdr/gh-dash"
   - title: Commented
