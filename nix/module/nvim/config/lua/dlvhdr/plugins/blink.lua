@@ -2,11 +2,12 @@ return {
   {
     "saghen/blink.cmp",
     enabled = true,
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     version = "*",
     dependencies = {
       {
         "saghen/blink.compat",
+        event = { "InsertEnter", "CmdlineEnter" },
         opts = {},
       },
       {
@@ -58,6 +59,7 @@ return {
       },
       {
         "luckasRanarison/tailwind-tools.nvim",
+        event = "LspAttach",
         name = "tailwind-tools",
         build = ":UpdateRemotePlugins",
         dependencies = {

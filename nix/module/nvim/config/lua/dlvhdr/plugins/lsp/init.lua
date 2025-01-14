@@ -1,8 +1,9 @@
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+  -- event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+  event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
-    { "saghen/blink.cmp", event = "InsertEnter" },
+    { "saghen/blink.cmp", event = { "InsertEnter", "CmdlineEnter" } },
     -- { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
     { "b0o/schemastore.nvim", event = "InsertEnter" },
     "nvimtools/none-ls.nvim",
