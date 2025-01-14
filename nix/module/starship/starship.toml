@@ -33,7 +33,7 @@ read_only = " 󰌾"
 truncation_symbol = "…/"
 
 [directory.substitutions]
-"~/code/komodor" = "@komodor"
+"~/code/port" = "@port"
 "~/code/playground" = "@playground"
 "~/code/personal" = "@personal"
 "~/code/scripts" = "@scripts"
