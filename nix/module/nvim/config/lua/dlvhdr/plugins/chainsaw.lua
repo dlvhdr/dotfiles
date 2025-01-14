@@ -31,16 +31,16 @@ return {
     dependencies = "folke/which-key.nvim",
     config = function()
       local emoji_format = {
-        "/* prettier-ignore */ // %s",
-        'console.log("%s beep %s");',
+        "/* prettier-ignore */ // {{marker}}",
+        'console.log("{{marker}} beep {{emoji}}");',
       }
       local var_format = {
-        "/* prettier-ignore */ // %s",
-        'console.log("%s %s:", %s);',
+        "/* prettier-ignore */ // {{marker}}",
+        'console.log("{{marker}} {{var}}:", {{var}});',
       }
       local message_format = {
-        "/* prettier-ignore */ // %s",
-        'console.log("%s ");',
+        "/* prettier-ignore */ // {{marker}}",
+        'console.log("{{marker}} ");',
       }
       ---@diagnostic disable: missing-fields
       require("chainsaw").setup({
