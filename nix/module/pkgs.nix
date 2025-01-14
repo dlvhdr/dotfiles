@@ -42,6 +42,7 @@
       npkill
       onefetch
       process-compose
+      procs
       ripgrep
       sd
       stats

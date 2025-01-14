@@ -11,12 +11,14 @@
       "nikitabobko/tap"
       "nikitabobko/aerospace"
       "dhth/tap"
+      "friendsofgo/tap"
     ];
 
     brews = [
       "atuin"
       "dhth/tap/mult"
       "joshmedeski/sesh/sesh"
+      "friendsofgo/tap/killgrave"
 
       # for neovim
       "sqlite"
