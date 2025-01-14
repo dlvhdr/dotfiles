@@ -79,6 +79,7 @@ M.config = function()
         -- components.breadcrumbs,
       },
       lualine_x = {
+        { require("recorder").recordingStatus },
         components.treesitter,
         components.lsp,
         -- components.filetype,
