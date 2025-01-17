@@ -14,6 +14,7 @@ return {
         "L3MON4D3/LuaSnip",
         cmd = { "LuaSnip" },
         event = "InsertEnter",
+        build = "make install_jsregexp",
         config = function()
           local luasnip = require("luasnip")
           local types = require("luasnip.util.types")
@@ -33,7 +34,6 @@ return {
 
             -- region_check_events = "CursorHold,InsertLeave",
             delete_check_events = "TextChanged",
-            store_selection_keys = "<Tab>",
 
             ext_opts = {
               [types.choiceNode] = {
@@ -53,7 +53,8 @@ return {
           require("luasnip.loaders.from_vscode").load_standalone({
             path = "~/.config/nvim/lua/dlvhdr/snippets/markdown.json",
           })
-          require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/lua/dlvhdr/snippets" } })
+
+          require("luasnip.loaders.from_lua").load({ paths = { "/Users/dlvhdr/.config/nvim/lua/dlvhdr/snippets" } })
           require("luasnip.loaders.from_vscode").lazy_load()
         end,
       },
@@ -82,6 +83,25 @@ return {
         -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
+      }
+
+      opts.snippets = {
+        preset = "luasnip",
+        -- This comes from the luasnip extra, if you don't add it, won't be able to
+        -- jump forward or backward in luasnip snippets
+        -- https://www.lazyvim.org/extras/coding/luasnip#blinkcmp-optional
+        expand = function(snippet)
+          require("luasnip").lsp_expand(snippet)
+        end,
+        active = function(filter)
+          if filter and filter.direction then
+            return require("luasnip").jumpable(filter.direction)
+          end
+          return require("luasnip").in_snippet()
+        end,
+        jump = function(direction)
+          require("luasnip").jump(direction)
+        end,
       }
 
       opts.completion = {
@@ -136,22 +156,13 @@ return {
       }
 
       opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
-        default = { "lsp", "path", "snippets", "buffer", "luasnip", "lazydev" },
+        default = { "lsp", "path", "snippets", "buffer" },
         providers = {
           lsp = {
             name = "lsp",
             enabled = true,
             module = "blink.cmp.sources.lsp",
             score_offset = 90, -- the higher the number, the higher the priority
-          },
-          luasnip = {
-            name = "luasnip",
-            enabled = true,
-            module = "blink.cmp.sources.luasnip",
-            min_keyword_length = 2,
-            fallbacks = { "snippets" },
-            score_offset = 80,
-            max_items = 8,
           },
           path = {
             name = "Path",
@@ -160,7 +171,7 @@ return {
             -- When typing a path, I would get snippets and text in the
             -- suggestions, I want those to show only if there are no path
             -- suggestions
-            fallbacks = { "luasnip", "buffer" },
+            fallbacks = { "snippets", "buffer" },
             opts = {
               trailing_slash = false,
               label_trailing_slash = true,
@@ -180,10 +191,10 @@ return {
           snippets = {
             name = "snippets",
             enabled = true,
-            max_items = 3,
-            module = "blink.cmp.sources.snippets",
-            min_keyword_length = 4,
-            score_offset = 80, -- the higher the number, the higher the priority
+            max_items = 8,
+            min_keyword_length = 2,
+            -- module = "blink.cmp.sources.snippets",
+            score_offset = 100,
           },
           lazydev = {
             name = "LazyDev",
@@ -205,24 +216,6 @@ return {
         end,
       })
 
-      -- This comes from the luasnip extra, if you don't add it, won't be able to
-      -- jump forward or backward in luasnip snippets
-      -- https://www.lazyvim.org/extras/coding/luasnip#blinkcmp-optional
-      opts.snippets = {
-        expand = function(snippet)
-          require("luasnip").lsp_expand(snippet)
-        end,
-        active = function(filter)
-          if filter and filter.direction then
-            return require("luasnip").jumpable(filter.direction)
-          end
-          return require("luasnip").in_snippet()
-        end,
-        jump = function(direction)
-          require("luasnip").jump(direction)
-        end,
-      }
-
       opts.keymap = {
         preset = "default",
         ["<C-y>"] = { "select_and_accept" },
@@ -240,6 +233,8 @@ return {
 
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-e>"] = { "hide", "fallback" },
+        ["<Tab>"] = {},
+        ["<S-Tab>"] = {},
       }
 
       return opts
