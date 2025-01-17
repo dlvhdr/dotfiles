@@ -22,10 +22,12 @@
       figlet
       fx
       git-credential-manager
+      gitmux
       glow
       gofumpt
       gojq
       goreleaser
+      gnupg
       graphviz
       gum
       hyperfine
@@ -53,7 +55,6 @@
       wget
       yarn
       yq-go
-      gitmux
 
       vscode-js-debug
 

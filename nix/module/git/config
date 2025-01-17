@@ -1,6 +1,6 @@
 [user]
   name = Dolev Hadar
-  email = dolev@komodor.io
+  email = dolevh@getport.io
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDcfOgk+7fVQNwnD3WQBUnABIBGO8k7YwUN/WWGCfSEz
 
 [includeIf "gitdir:~/dotfiles/"]
