@@ -65,7 +65,6 @@ M.config = function()
             return ""
           end,
         },
-        components.branch,
       },
       lualine_b = {
         components.diff,
