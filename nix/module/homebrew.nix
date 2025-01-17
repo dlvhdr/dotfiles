@@ -15,7 +15,6 @@
     ];
 
     brews = [
-      "atuin"
       "dhth/tap/mult"
       "joshmedeski/sesh/sesh"
       "friendsofgo/tap/killgrave"
@@ -27,6 +26,7 @@
       "charmbracelet/tap/sequin"
       "dlvhdr/formulae/diffnav"
       "tailwindcss-language-server"
+      "posting"
     ];
 
     casks = [

@@ -20,6 +20,7 @@
   '';
 
   imports = [
+    ./atuin
     ./aerospace
     ./btop
     ./dirs

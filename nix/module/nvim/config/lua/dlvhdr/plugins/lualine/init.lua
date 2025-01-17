@@ -16,22 +16,6 @@ M.config = function()
     return
   end
 
-  -- local tree_view_ok, tree_view = pcall(require, "nvim-tree.view")
-  -- if not tree_view_ok then
-  --   return
-  -- end
-  --
-  -- local nvim_tree_shift = {
-  --   function()
-  --     local name = "󰙅 Nvim Tree"
-  --     local winnr = tree_view.get_winnr()
-  --     local empty_space = string.rep(" ", ((vim.api.nvim_win_get_width(winnr or 0) - #name) / 2))
-  --     return empty_space .. name .. empty_space
-  --   end,
-  --   cond = tree_view.is_visible,
-  --   color = { fg = colors.fg_dark, bg = "NONE", gui = "italic" },
-  -- }
-
   require("lualine").setup({
     options = {
       theme = require("dlvhdr.plugins.transparent").theme(),
