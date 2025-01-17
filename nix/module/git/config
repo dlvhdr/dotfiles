@@ -1,7 +1,7 @@
 [user]
   name = Dolev Hadar
   email = dolevh@getport.io
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDcfOgk+7fVQNwnD3WQBUnABIBGO8k7YwUN/WWGCfSEz
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEZv/9yRxNDb/E/eyfJzNBeGbkIzTY191Enr9xbz+PCZ
 
 [includeIf "gitdir:~/dotfiles/"]
   path = config-personal
