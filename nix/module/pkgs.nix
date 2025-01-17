@@ -53,6 +53,7 @@
       wget
       yarn
       yq-go
+      gitmux
 
       vscode-js-debug
 
