@@ -1,6 +1,6 @@
 add_newline = true
 command_timeout = 150
-format = "$directory$git_branch$kubernetes${env_var.DEVBOX_SHELL_ENABLED}$line_break$character"
+format = "$directory$git_branch$kubernetes${env_var.DEVBOX_SHELL_ENABLED}$nix_shell$line_break$character"
 
 [character]
 success_symbol = "[󱝁 ](fg:#7dcfff)"
@@ -157,7 +157,9 @@ disabled=true
 disabled=true
 
 [nix_shell]
-disabled=true
+disabled=false
+symbol = " "
+format='via [$symbol $name]($style)'
 
 [nodejs]
 disabled=true
