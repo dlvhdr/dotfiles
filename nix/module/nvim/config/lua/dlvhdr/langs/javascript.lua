@@ -52,9 +52,19 @@ function M.goto_exported_symbol()
             ]
           )
         )
+        ((export_statement
+          (lexical_declaration
+            (variable_declarator
+              (identifier) @name))))
+        (export_statement
+          (arrow_function)
+        ) @name
         (method_definition
           (accessibility_modifier)
           (property_identifier) @name
+        )
+        (function_declaration
+          (identifier) @name
         )
       ]
     ]]
@@ -65,9 +75,23 @@ function M.goto_exported_symbol()
 
   while current_node:parent() do
     current_node = current_node:parent()
-    vim.print("wat", vim.treesitter.get_node_text(current_node, 0))
+
+    -- top level function
+    if current_node:type() == "function_declaration" and current_node:parent():type() == "program" then
+      local row1, col1 = current_node:range()
+      vim.api.nvim_win_set_cursor(0, { row1 + 1, col1 })
+    end
+
+    -- go over captures
     local pos = current_node:start()
     for _, node, _, _ in query:iter_captures(current_node, 0, nil, pos + 1) do
+      if
+        node:type() == "export_statement" and vim.treesitter.get_node_text(node, 0):find("^export default ()") ~= nil
+      then
+        local row1, col1 = node:range()
+        vim.api.nvim_win_set_cursor(0, { row1 + 1, col1 + ("export "):len() })
+        return
+      end
       local row1, col1 = node:range()
       vim.api.nvim_win_set_cursor(0, { row1 + 1, col1 })
       return
