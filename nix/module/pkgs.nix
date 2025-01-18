@@ -66,9 +66,9 @@
 
       nur.repos.caarlos0.gopls # always latest
       nur.repos.caarlos0.golangci-lint # always latest
+      nur.repos.caarlos0.svu
 
       nur.repos.charmbracelet.mods
       nur.repos.charmbracelet.vhs
-      nur.repos.caarlos0.svu
     ];
 }

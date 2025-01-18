@@ -25,6 +25,8 @@
     # modules published by charm like mods and vhs
     charmbracelet-nur.url = "github:charmbracelet/nur";
 
+    gh-dash.url = "git+file:/Users/dlvhdr/code/personal/gh-dash?shallow=1";
+
     # Weekly updated nix-index database
     # Not sure why I need this.
     # nixos-unstable seems to be updated on every commit essentially unless there are delays.
@@ -38,6 +40,7 @@
     inputs@{
       nur,
       caarlos0-nur,
+      gh-dash,
       charmbracelet-nur,
       nix-index-database,
       ...
@@ -67,6 +70,7 @@
           username
           overlays
           nix-index-database
+          gh-dash
           ;
       };
     in

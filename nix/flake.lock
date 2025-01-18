@@ -77,6 +77,26 @@
         "type": "github"
       }
     },
+    "gh-dash": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1737236691,
+        "narHash": "sha256-Pw89vj4M6aGsa4P271EIZlZaR9k9BCHuK9ZEAK0+NNc=",
+        "ref": "refs/heads/dlvhdr/nix",
+        "rev": "bcff5db2158b50f93a5d5daa769fd15a625d94a6",
+        "revCount": 372,
+        "shallow": true,
+        "type": "git",
+        "url": "file:/Users/dlvhdr/code/personal/gh-dash"
+      },
+      "original": {
+        "shallow": true,
+        "type": "git",
+        "url": "file:/Users/dlvhdr/code/personal/gh-dash"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -151,16 +171,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1736883708,
-        "narHash": "sha256-uQ+NQ0/xYU0N1CnXsa2zghgNaOPxWpMJXSUJJ9W7140=",
+        "lastModified": 1737003892,
+        "narHash": "sha256-RCzJE9wKByLCXmRBp+z8LK9EgdW+K+W/DXnJS4S/NVo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "eb62e6aa39ea67e0b8018ba8ea077efe65807dc8",
+        "rev": "ae06b9c2d83cb5c8b12d7d0e32692e93d1379713",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
-        "ref": "nixos-unstable",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -181,10 +201,26 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1736883708,
+        "narHash": "sha256-uQ+NQ0/xYU0N1CnXsa2zghgNaOPxWpMJXSUJJ9W7140=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "eb62e6aa39ea67e0b8018ba8ea077efe65807dc8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -206,9 +242,10 @@
         "caarlos0-nur": "caarlos0-nur",
         "charmbracelet-nur": "charmbracelet-nur",
         "darwin": "darwin",
+        "gh-dash": "gh-dash",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "nur": "nur"
       }
     },
