@@ -1,3 +1,3 @@
 function ll
-  set loc (walk --icons $argv); and cd $loc;
+  ls -l
 end
