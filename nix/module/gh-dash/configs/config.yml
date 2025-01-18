@@ -42,7 +42,7 @@ pager:
   diff: diffnav
 defaults:
   view: repo
-  refetchIntervalMinutes: 1
+  refetchIntervalMinutes: 10
   layout:
     prs:
       repoName:
