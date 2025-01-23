@@ -24,12 +24,13 @@
       git-credential-manager
       gitmux
       glow
+      gnupg
       gofumpt
       gojq
       goreleaser
-      gnupg
       graphviz
       gum
+      harlequin
       hyperfine
       jnv
       jq
@@ -45,6 +46,7 @@
       onefetch
       process-compose
       procs
+      python312Packages.harlequin-postgres
       ripgrep
       sd
       stats
@@ -52,6 +54,7 @@
       tig
       tldr
       update-nix-fetchgit
+      watch
       wget
       yarn
       yq-go

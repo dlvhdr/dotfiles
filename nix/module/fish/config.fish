@@ -133,6 +133,10 @@ abbr --add "?" "mods --role shell -q"
 abbr --add eslint-restart "~/.local/share/nvim/mason/bin/eslint_d restart"
 
 abbr --add dr "devbox run"
+abbr --add ds "devbox services"
 abbr --add lsi "timg -pk --grid=4x1 --upscale=i --center --title --frames=1 -bgray -Bdarkgray *.{png,jpg,jpeg,svg}"
 abbr --add pk "procs-kill"
 
+abbr --add db "harlequin --config-path ~/.config/harlequin/config.toml"
+
+abbr --add refresh "yarn && yarn pkg:build && devbox services restart"
