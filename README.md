@@ -26,9 +26,9 @@
 
 ## Getting Started
 
-First
+First:
 
-```shell
+```bash
 # 1. Install nix
 sh <(curl -L https://nixos.org/nix/install)
 # 2. Add to fish path

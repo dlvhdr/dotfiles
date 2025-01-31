@@ -4,6 +4,7 @@ return {
     "FileType markdown,norg,octo",
     "BufRead *.png,*.jpg,*.gif,*.webp,*.ipynb",
   },
+  build = false,
   init = function()
     local wk = require("which-key")
     wk.add({
@@ -12,6 +13,7 @@ return {
   end,
   config = function()
     require("image").setup({
+      processor = "magick_cli",
       backend = "kitty",
       kitty_method = "normal",
       integrations = {

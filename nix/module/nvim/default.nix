@@ -24,8 +24,8 @@
       helm-ls
       imagemagick
       lua-language-server
-      lua51Packages.lua
-      lua51Packages.luarocks
+      lua
+      luarocks
       marksman
       prettierd
       shfmt
@@ -37,6 +37,8 @@
       vtsls
       yaml-language-server
     ];
+
+    extraLuaPackages = ps: [ ps.magick ];
   };
 
   # Need to use the absolute path to my nvim configuration. When using Flakes, your Flake directory is first copied to the Nix store. During evaluation, relative paths are resolved within this store path rather than your home directory. Using an absolute path ensures correct symlinking.

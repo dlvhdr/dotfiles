@@ -3,7 +3,7 @@
   programs.yazi = {
     enable = true;
 
-    enableFishIntegration = true;
+    enableFishIntegration = false;
   };
 
   xdg.configFile."yazi/theme.toml" = {
