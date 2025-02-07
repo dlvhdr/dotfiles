@@ -82,8 +82,11 @@ vim.opt.diffopt = list({
   "filler",
   "closeoff",
   "iwhite",
-  "vertical",
+  -- "vertical",
+  "context:5",
+  "linematch:60",
 })
+
 vim.opt.splitright = false
 vim.opt.splitbelow = true
 vim.opt.viewoptions = {
