@@ -16,6 +16,7 @@
       bash-language-server
       codespell
       delve
+      deno # used for peek.nvim
       docker-compose-language-service
       dockerfile-language-server-nodejs
       eslint_d
@@ -23,14 +24,13 @@
       goimports-reviser
       helm-ls
       imagemagick
-      lua-language-server
       lua
+      lua-language-server
       luarocks
       marksman
       prettierd
       shfmt
       stylua
-
       typescript-language-server
       vscode-js-debug
       vscode-langservers-extracted

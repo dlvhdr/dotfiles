@@ -30,7 +30,8 @@
       goreleaser
       graphviz
       gum
-      harlequin
+      # harlequin
+      aerospace
       hyperfine
       jnv
       jq
@@ -46,7 +47,7 @@
       onefetch
       process-compose
       procs
-      python312Packages.harlequin-postgres
+      # python312Packages.harlequin-postgres
       ripgrep
       sd
       stats

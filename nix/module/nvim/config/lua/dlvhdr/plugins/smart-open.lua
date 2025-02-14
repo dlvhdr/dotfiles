@@ -22,6 +22,7 @@ end
 
 return {
   "danielfalk/smart-open.nvim",
+  enabled = false,
   cmd = { "SmartOpen" },
   dependencies = {
     "kkharji/sqlite.lua",

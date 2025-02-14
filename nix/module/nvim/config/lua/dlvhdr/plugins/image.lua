@@ -1,5 +1,6 @@
 return {
   "3rd/image.nvim",
+  enabled = false,
   event = {
     "FileType markdown,norg,octo",
     "BufRead *.png,*.jpg,*.gif,*.webp,*.ipynb",

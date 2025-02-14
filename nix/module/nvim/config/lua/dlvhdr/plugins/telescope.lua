@@ -1,6 +1,7 @@
 local M = {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
+  enabled = false,
   cmd = "Telescope",
   dependencies = {
     "kkharji/sqlite.lua",
@@ -15,91 +16,91 @@ local M = {
     "benfowler/telescope-luasnip.nvim",
   },
   keys = {
-    { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help Tags" },
-    { "<leader>fH", "<cmd>Telescope highlights<CR>", desc = "Highlights" },
-    { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume" },
-    { "<leader>fp", "<cmd>Telescope pickers<cr>", desc = "Pickers" },
-    {
-      "<leader>ff",
-      function()
-        require("telescope.builtin").lsp_document_symbols({
-          layout_config = { preview_width = 0.6, height = 0.5 },
-          symbols = { "Function", "Method" },
-        })
-      end,
-      desc = "Functions",
-    },
-    {
-      "<leader>fs",
-      function()
-        local delta = {}
-        if vim.fn.executable("delta") == 1 then
-          local previewers = require("telescope.previewers")
-          delta = previewers.new_termopen_previewer({
-            get_command = function(entry)
-              -- this is for status
-              -- You can get the AM things in entry.status. So we are displaying file if entry.status == '??' or 'A '
-              -- just do an if and return a different command
-              if entry.status == "??" or "A " then
-                return { "git", "-c", "pager.diff=delta", "-c", "delta.side-by-side=false", "diff", entry.value }
-              end
-
-              -- note we can't use pipes
-              -- this command is for git_commits and git_bcommits
-              return {
-                "git",
-                "-c",
-                "pager.diff=delta",
-                "-c",
-                "delta.side-by-side=false",
-                "diff",
-                entry.value .. "^!",
-              }
-            end,
-          })
-        end
-        require("telescope.builtin").git_status({
-          previewer = delta,
-          layout_config = {
-            preview_width = 0.65,
-          },
-        })
-      end,
-      desc = "Git Status",
-    },
-    {
-      "<leader>fb",
-      function()
-        require("dlvhdr.plugins.telescope").buffers()
-      end,
-      desc = "Open Buffers",
-    },
-    {
-      "<leader>fg",
-      function()
-        require("telescope").extensions.egrepify.egrepify({})
-      end,
-      desc = "Live Grep",
-    },
-    {
-      "<leader>*",
-      function()
-        require("telescope.builtin").grep_string()
-      end,
-      desc = "Grep Word Under Cursor",
-    },
-    {
-      "<leader>fB",
-      ":lua require('telescope.builtin').git_branches()<CR>",
-      desc = "Git Branches",
-    },
-    { "<leader>fi", "<cmd>Telescope import<cr>", desc = "Imports" },
-    { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
-    {
-      "<leader>fG",
-      ":lua require('dlvhdr.plugins.telescope').grep_current_dir()<CR>",
-      desc = "Live Grep Current Dir",
-    },
+    -- { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Help Tags" },
+    -- { "<leader>fH", "<cmd>Telescope highlights<CR>", desc = "Highlights" },
+    -- { "<leader>fr", "<cmd>Telescope resume<cr>", desc = "Resume" },
+    -- { "<leader>fp", "<cmd>Telescope pickers<cr>", desc = "Pickers" },
+    -- {
+    --   "<leader>ff",
+    --   function()
+    --     require("telescope.builtin").lsp_document_symbols({
+    --       layout_config = { preview_width = 0.6, height = 0.5 },
+    --       symbols = { "Function", "Method" },
+    --     })
+    --   end,
+    --   desc = "Functions",
+    -- },
+    -- {
+    --   "<leader>fs",
+    --   function()
+    --     local delta = {}
+    --     if vim.fn.executable("delta") == 1 then
+    --       local previewers = require("telescope.previewers")
+    --       delta = previewers.new_termopen_previewer({
+    --         get_command = function(entry)
+    --           -- this is for status
+    --           -- You can get the AM things in entry.status. So we are displaying file if entry.status == '??' or 'A '
+    --           -- just do an if and return a different command
+    --           if entry.status == "??" or "A " then
+    --             return { "git", "-c", "pager.diff=delta", "-c", "delta.side-by-side=false", "diff", entry.value }
+    --           end
+    --
+    --           -- note we can't use pipes
+    --           -- this command is for git_commits and git_bcommits
+    --           return {
+    --             "git",
+    --             "-c",
+    --             "pager.diff=delta",
+    --             "-c",
+    --             "delta.side-by-side=false",
+    --             "diff",
+    --             entry.value .. "^!",
+    --           }
+    --         end,
+    --       })
+    --     end
+    --     require("telescope.builtin").git_status({
+    --       previewer = delta,
+    --       layout_config = {
+    --         preview_width = 0.65,
+    --       },
+    --     })
+    --   end,
+    --   desc = "Git Status",
+    -- },
+    -- {
+    --   "<leader>fb",
+    --   function()
+    --     require("dlvhdr.plugins.telescope").buffers()
+    --   end,
+    --   desc = "Open Buffers",
+    -- },
+    -- {
+    --   "<leader>fg",
+    --   function()
+    --     require("telescope").extensions.egrepify.egrepify({})
+    --   end,
+    --   desc = "Live Grep",
+    -- },
+    -- {
+    --   "<leader>*",
+    --   function()
+    --     require("telescope.builtin").grep_string()
+    --   end,
+    --   desc = "Grep Word Under Cursor",
+    -- },
+    -- {
+    --   "<leader>fB",
+    --   ":lua require('telescope.builtin').git_branches()<CR>",
+    --   desc = "Git Branches",
+    -- },
+    -- { "<leader>fi", "<cmd>Telescope import<cr>", desc = "Imports" },
+    -- { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
+    -- {
+    --   "<leader>fG",
+    --   ":lua require('dlvhdr.plugins.telescope').grep_current_dir()<CR>",
+    --   desc = "Live Grep Current Dir",
+    -- },
     {
       mode = { "n", "x", "o", "v" },
       "<leader>gda",

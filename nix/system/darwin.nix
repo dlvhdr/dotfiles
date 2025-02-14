@@ -3,12 +3,12 @@
   username,
   overlays,
   nix-index-database,
-  gh-dash,
+# gh-dash,
 }:
 system:
 let
   pkgs = inputs.nixpkgs.legacyPackages.${system};
-  system-config = import ../module/system-configuration.nix { inherit username pkgs gh-dash; };
+  system-config = import ../module/system-configuration.nix { inherit username pkgs; };
   homebrew = import ../module/homebrew.nix;
   home-manager-config = import ../module/home-manager.nix;
 in

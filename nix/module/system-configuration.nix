@@ -1,7 +1,7 @@
 {
   username,
   pkgs,
-  gh-dash,
+# gh-dash,
 }:
 {
   environment = {
@@ -10,13 +10,12 @@
       auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh
       auth       sufficient     pam_tid.so
     '';
-    systemPackages = [
-      gh-dash.packages.aarch64-darwin.default
-    ];
+    # systemPackages = [
+    #   gh-dash.packages.aarch64-darwin.default
+    # ];
   };
   security.pam.enableSudoTouchIdAuth = true;
 
-  services.nix-daemon.enable = true;
   system.stateVersion = 5;
 
   security.sudo = {

@@ -7,7 +7,11 @@ if contains "gh-dash" $WINDOWS
 end
 
 set SESS_PATH (tmux display-message -p -F "#{session_path}")
-tmux new-window -c "$SESS_PATH" -S -n gh-dash "gh dash" 
+if test -e "$SESS_PATH/.envrc"
+  direnv exec $SESS_PATH tmux new-window -c "$SESS_PATH" -S -n gh-dash "gh dash" 
+else
+  tmux new-window -c "$SESS_PATH" -S -n gh-dash "gh dash" 
+end
 # tmux new-window -S -n gh-dash "FF_REPO_VIEW= gh dash $SESS_PATH" 
 tmux switch-client -t :gh-dash
 

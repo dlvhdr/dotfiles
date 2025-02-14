@@ -9,7 +9,6 @@
       "joshmedeski/sesh"
       "th-ch/youtube-music"
       "nikitabobko/tap"
-      "nikitabobko/aerospace"
       "dhth/tap"
       "friendsofgo/tap"
     ];
@@ -49,7 +48,6 @@
       "hiddenbar"
       "homerow"
       "iina"
-      "nikitabobko/tap/aerospace"
       "notion"
       "notion-calendar"
       "notunes"
