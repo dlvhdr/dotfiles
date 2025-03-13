@@ -2,13 +2,13 @@ return {
   "chrisgrieser/nvim-recorder",
   opts = {
     mapping = {
-      startStopRecording = "q",
+      startStopRecording = "qq",
       playMacro = "Q",
       addBreakPoint = "!!",
     },
   },
   keys = {
-    { "q", desc = "Start Recording" },
+    { "qq", desc = "Start Recording" },
     { "Q", desc = "Play Recording" },
     { "cq", desc = "Edit Recording" },
   },
