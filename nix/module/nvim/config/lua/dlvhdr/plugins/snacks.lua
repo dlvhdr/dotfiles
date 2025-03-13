@@ -431,8 +431,17 @@ return {
             },
           },
           regex = false,
-          args = { "-g", "!{node_modules,.git,.direnv}/", "--trim", "--ignore-case" },
-          exclude = { "%.lock$", "%-lock.json$" },
+          args = {
+            "-g",
+            "!{node_modules,.git,.direnv,dist}/",
+            "-g",
+            "!tsconfig.tsbuildinfo",
+            "-g",
+            "!yarn.lock",
+            "--trim",
+            "--ignore-case",
+          },
+          exclude = { "%.lock$", "%-lock.json$", "tsconfig.tsbuildinfo" },
         })
       end,
       desc = "Grep",
@@ -473,7 +482,14 @@ return {
     {
       "<leader>fb",
       function()
-        Snacks.picker.buffers()
+        Snacks.picker.buffers({
+          formatters = {
+            file = {
+              filename_first = true,
+              truncate = 60,
+            },
+          },
+        })
       end,
       desc = "Buffers",
     },

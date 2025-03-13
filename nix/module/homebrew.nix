@@ -17,7 +17,6 @@
       "dhth/tap/mult"
       "joshmedeski/sesh/sesh"
       "friendsofgo/tap/killgrave"
-
       # for neovim
       "sqlite"
 
@@ -25,7 +24,6 @@
       "charmbracelet/tap/sequin"
       "dlvhdr/formulae/diffnav"
       "tailwindcss-language-server"
-      "posting"
     ];
 
     casks = [
@@ -61,6 +59,8 @@
       "visual-studio-code"
       "vivaldi"
       "whatsapp"
+      "yubico-authenticator"
+      "zen-browser"
       "zoom"
     ];
 

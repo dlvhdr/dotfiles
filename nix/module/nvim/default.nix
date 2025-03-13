@@ -24,7 +24,7 @@
       goimports-reviser
       helm-ls
       imagemagick
-      lua
+      lua51Packages.lua
       lua-language-server
       luarocks
       marksman

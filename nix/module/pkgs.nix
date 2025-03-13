@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nur, ... }:
 {
   nixpkgs = {
     config = {
@@ -10,6 +10,9 @@
     with pkgs;
     with pkgs.nodePackages_latest;
     [
+      # harlequin
+      # python312Packages.harlequin-postgres
+      aerospace
       awscli
       clipboard-jh
       curl
@@ -30,8 +33,6 @@
       goreleaser
       graphviz
       gum
-      # harlequin
-      aerospace
       hyperfine
       jnv
       jq
@@ -47,7 +48,6 @@
       onefetch
       process-compose
       procs
-      # python312Packages.harlequin-postgres
       ripgrep
       sd
       stats
@@ -68,11 +68,11 @@
       kubectl
       kubectx
 
-      nur.repos.caarlos0.gopls # always latest
-      nur.repos.caarlos0.golangci-lint # always latest
-      nur.repos.caarlos0.svu
-
-      nur.repos.charmbracelet.mods
-      nur.repos.charmbracelet.vhs
+      # nur.repos.caarlos0.gopls # always latest
+      # nur.repos.caarlos0.golangci-lint # always latest
+      # nur.repos.caarlos0.svu
+      #
+      # nur.repos.charmbracelet.mods
+      # nur.repos.charmbracelet.vhs
     ];
 }

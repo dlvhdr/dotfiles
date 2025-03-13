@@ -14,7 +14,7 @@
     #   gh-dash.packages.aarch64-darwin.default
     # ];
   };
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system.stateVersion = 5;
 
