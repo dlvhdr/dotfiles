@@ -7,6 +7,7 @@ local M = {
 }
 
 M.config = function()
+  ---@diagnostic disable: missing-fields
   require("noice").setup({
     presets = {
       command_palette = true,
@@ -23,6 +24,9 @@ M.config = function()
       format = {
         cmdline = { pattern = "^:", icon = "", lang = "vim" },
       },
+    },
+    notify = {
+      enabled = false,
     },
     popupmenu = {
       enabled = true, -- enables the Noice popupmenu UI
@@ -50,10 +54,10 @@ M.config = function()
       },
     },
     routes = {
-      {
-        filter = { event = "msg_show", min_height = 5 },
-        view = "popup",
-      },
+      -- {
+      --   filter = { event = "msg_show", min_height = 5 },
+      --   view = "popup",
+      -- },
       {
         filter = {
           event = "msg_show",
@@ -86,7 +90,7 @@ M.config = function()
         relative = "editor",
         enter = false,
         position = "100%",
-        border = "none",
+        border = "rounded",
         win_options = {
           winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
         },

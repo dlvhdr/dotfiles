@@ -80,7 +80,7 @@ M.config = function()
       hl.BlinkCmpLabelMatch = { fg = darker_orange, bg = c.none }
       hl.BlinkCmpMenuSelection = { bg = c.bg_highlight }
       hl.BlinkCmpScrollBarThumb = { bg = darker_bg }
-      -- hl.BlinkCmpLabel = { bg = "#010101" }
+      hl.BlinkCmpSource = { bg = c.none, fg = c.comment }
 
       hl.CmpDocumentation = { bg = darker_bg }
       hl.CmpDocumentationBorder = { bg = darker_bg }

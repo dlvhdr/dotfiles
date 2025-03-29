@@ -61,7 +61,7 @@ return {
     function(msg)
       msg = msg or "LS Inactive"
       local bufnr = vim.api.nvim_get_current_buf()
-      local buf_clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+      local buf_clients = vim.lsp.get_clients({ bufnr = bufnr })
       if next(buf_clients) == nil then
         if type(msg) == "boolean" or #msg == 0 then
           return "LS Inactive"

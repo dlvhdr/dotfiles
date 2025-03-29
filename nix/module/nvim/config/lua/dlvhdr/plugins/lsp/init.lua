@@ -12,7 +12,6 @@ return {
     { "yioneko/nvim-vtsls", ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" } },
   },
   config = function()
-    require("dlvhdr.plugins.lsp.handlers").setup()
     require("dlvhdr.plugins.lsp.servers").setup()
     require("lspconfig.ui.windows").default_options.border = "rounded"
 

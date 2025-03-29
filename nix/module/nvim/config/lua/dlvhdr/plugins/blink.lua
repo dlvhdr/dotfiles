@@ -128,7 +128,7 @@ return {
               },
               kind_icon = {
                 text = function(ctx)
-                  if require("blink.cmp.completion.windows.render.tailwind").get_hex_color(ctx.item) then
+                  if require("blink.cmp.sources.lsp.hacks.tailwind").get_hex_color(ctx.item) then
                     return "󱓻"
                   end
                   local client = vim.lsp.get_client_by_id(ctx.item.client_id)
@@ -214,7 +214,7 @@ return {
         ["<Up>"] = { "select_prev", "fallback" },
         ["<Down>"] = { "select_next", "fallback" },
         ["<C-p>"] = { "select_prev", "fallback" },
-        ["<C-n>"] = { "select_next", "fallback" },
+        ["<C-n>"] = { "select_next", "show", "fallback" },
 
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },

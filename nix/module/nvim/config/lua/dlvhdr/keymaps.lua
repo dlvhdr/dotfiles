@@ -52,7 +52,7 @@ keymap("n", "<leader>bW", "<cmd>wa<cr>", { silent = true, desc = "Write All File
 keymap("n", "<leader>bQ", "<cmd>qa!<cr>", { silent = true, desc = "Quit nvim" })
 
 -- keymap("n", "<leader>fm", "<cmd>messages<cr>", { silent = true, desc = "Messages" })
-keymap("n", "<leader>fn", "<cmd>Noice telescope<cr>", { silent = true, desc = "Noice" })
+keymap("n", "<leader>fn", "<cmd>Noice snacks<cr>", { silent = true, desc = "Noice" })
 
 -- keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
 -- keymap("n", "<leader>e", "<cmd>Yazi<CR>", { silent = true, desc = "Toggle File Tree" })
@@ -131,3 +131,25 @@ keymap("n", "<leader>c;", modify_line_end_delimiter(";"), { desc = "[Add] ';' to
 -----------------------------------------------------------------------------//
 keymap("n", "<leader>cn", "*``cgn", { desc = "[Replace] Next Occurrence" })
 keymap("n", "<leader>cN", "*``cgN", { desc = "[Replace] Next Occurrence (Backwards)" })
+
+keymap("n", "<leader>oc", function()
+  local filenameAndLine = vim.fn.expand("%:t") .. ":" .. vim.fn.line(".")
+  local script = [[
+    tell application "Arc"
+      activate
+      tell application "System Events"
+        keystroke "i" using {command down, option down}
+        delay 0.5
+        keystroke "p" using command down
+        delay 1
+        keystroke "<<filenameAndLine>>"
+      end tell
+    end tell
+  ]]
+  script = script:gsub("<<filenameAndLine>>", filenameAndLine)
+  vim.system({
+    "osascript",
+    "-e",
+    script,
+  })
+end, { desc = 'Open chrome dev tools and run "open file" with current file and line' })

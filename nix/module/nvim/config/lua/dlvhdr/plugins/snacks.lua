@@ -3,6 +3,9 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    notifier = {
+      enabled = true,
+    },
     dashboard = {
       sections = {
         { section = "header", row = nil, padding = { 4, 15 } },

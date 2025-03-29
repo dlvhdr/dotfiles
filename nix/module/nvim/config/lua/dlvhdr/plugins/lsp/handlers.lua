@@ -1,18 +1,5 @@
 local M = {}
 
-local signs = {
-  { name = "DiagnosticSignError", text = "󰅙" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-}
-
-M.setup = function()
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-  end
-end
-
 M.lsp_keymaps = function(bufnr)
   -- builtins
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go To Declaration" })
@@ -37,10 +24,13 @@ M.lsp_keymaps = function(bufnr)
 end
 
 function M.diagnostic_goto(next, severity)
-  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
   severity = severity and vim.diagnostic.severity[severity] or nil
   return function()
-    go({ severity = severity })
+    if next then
+      vim.diagnostic.jump({ count = 1 })
+    else
+      vim.diagnostic.jump({ count = -1 })
+    end
   end
 end
 
@@ -75,10 +65,6 @@ M.on_attach = function(client, bufnr)
   local config = {
     -- disable virtual text
     virtual_text = false,
-    -- show signs
-    signs = {
-      active = signs,
-    },
     update_in_insert = true,
     underline = true,
     severity_sort = true,
@@ -89,6 +75,20 @@ M.on_attach = function(client, bufnr)
       source = "always",
       header = "",
       prefix = "",
+    },
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = "󰅙",
+        [vim.diagnostic.severity.WARN] = "",
+        [vim.diagnostic.severity.INFO] = "",
+        [vim.diagnostic.severity.HINT] = "",
+      },
+      numhl = {
+        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+      },
     },
   }
   vim.diagnostic.config(config)
@@ -138,8 +138,7 @@ function M.get_clients(opts)
   if vim.lsp.get_clients then
     ret = vim.lsp.get_clients(opts)
   else
-    ---@diagnostic disable-next-line: deprecated
-    ret = vim.lsp.get_active_clients(opts)
+    ret = vim.lsp.get_clients()(opts)
     if opts and opts.method then
       ---@param client vim.lsp.Client
       ret = vim.tbl_filter(function(client)
