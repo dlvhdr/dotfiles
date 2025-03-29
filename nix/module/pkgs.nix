@@ -55,6 +55,7 @@
       tig
       tldr
       update-nix-fetchgit
+      uv
       watch
       wget
       yarn

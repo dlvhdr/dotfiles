@@ -1,6 +1,6 @@
 add_newline = true
 command_timeout = 150
-format = "$directory$git_branch$kubernetes${env_var.DEVBOX_SHELL_ENABLED}$nix_shell$line_break$character"
+format = "$directory$kubernetes${env_var.DEVBOX_SHELL_ENABLED}$nix_shell$line_break$character"
 
 [character]
 success_symbol = "[󱝁 ](fg:#7dcfff)"
@@ -12,6 +12,7 @@ disabled=false
 
 [git_branch]
 format = "on [$symbol$branch](bold purple) "
+disabled = true
 
 [git_status]
 disabled = true

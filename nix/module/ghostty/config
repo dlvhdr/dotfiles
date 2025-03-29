@@ -117,4 +117,6 @@ keybind = cmd+p=text:\x10
 # command palette
 keybind = cmd+shift+p=text:\x1b fc
 
+keybind = ctrl+shift+p=unbind
+
 # vim: ft=conf

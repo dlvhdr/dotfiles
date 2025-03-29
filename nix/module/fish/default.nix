@@ -9,6 +9,7 @@
       enable = true;
       loginShellInit = builtins.readFile ./config.fish;
       interactiveShellInit = ''
+        fish_add_path "/Users/dlvhdr/.local/share/../bin"
         fish_add_path -p /etc/profiles/per-user/dlvhdr/bin
         source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
         atuin init fish --disable-up-arrow | source
