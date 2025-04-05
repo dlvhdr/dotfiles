@@ -54,10 +54,6 @@ M.config = function()
       },
     },
     routes = {
-      -- {
-      --   filter = { event = "msg_show", min_height = 5 },
-      --   view = "popup",
-      -- },
       {
         filter = {
           event = "msg_show",
@@ -65,6 +61,8 @@ M.config = function()
             { find = "%d+L, %d+B" },
             { find = "; after #%d+" },
             { find = "; before #%d+" },
+            { find = "lines yanked" },
+            { find = "fewer lines" },
           },
         },
         opts = { skip = true },

@@ -5,6 +5,7 @@ return {
   opts = {
     notifier = {
       enabled = true,
+      timeout = 2000,
     },
     dashboard = {
       sections = {
