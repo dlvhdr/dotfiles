@@ -1,17 +1,13 @@
 { pkgs, ... }:
 {
-  # add home-manager user settings here
-  # generic: neovim, atuin, arttime/artprint,
   programs.home-manager.enable = true;
   home.stateVersion = "24.05";
   xdg.enable = true;
 
   home.packages = with pkgs; [
     # custom packages
-    (callPackage ../bins { })
     (callPackage ./arttime { })
     (callPackage ./monocd { })
-    # (callPackage ./posting { })
   ];
 
   home.file."Library/KeyBindings/DefaultKeyBinding.dict".text = ''
@@ -21,8 +17,9 @@
   '';
 
   imports = [
-    ./atuin
     ./aerospace
+    ./atuin
+    ./bins
     ./btop
     ./dirs
     ./fish
@@ -32,6 +29,7 @@
     ./git
     ./k9s
     ./lazygit
+    ./linearmouse
     ./lla
     ./npm
     ./nvim

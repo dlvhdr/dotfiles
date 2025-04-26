@@ -44,7 +44,6 @@ inputs.darwin.lib.darwinSystem {
           remapCapsLockToEscape = true;
         };
         defaults = {
-          ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;
           trackpad = {
             Clicking = true;
             TrackpadThreeFingerTapGesture = 0;
@@ -119,9 +118,6 @@ inputs.darwin.lib.darwinSystem {
             "com.apple.trackpad" = {
               scaling = 2;
             };
-            "com.apple.mouse" = {
-              scaling = -1.0;
-            };
             "com.apple.desktopservices" = {
               DSDontWriteNetworkStores = false;
             };
@@ -134,6 +130,7 @@ inputs.darwin.lib.darwinSystem {
               WarnOnEmptyTrash = false;
             };
             "NSGlobalDomain" = {
+              "com.apple.mouse.linear" = true;
               NSNavPanelExpandedStateForSaveMode = true;
               NSTableViewDefaultSizeMode = 1;
               WebKitDeveloperExtras = true;

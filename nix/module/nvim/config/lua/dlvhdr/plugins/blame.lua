@@ -14,7 +14,7 @@ return {
         show_commit = "<CR>",
         close = { "q" },
       },
-      date_format = "%d.%m.%y",
+      date_format = "%r",
       format_fn = function(line_porcelain, config, idx)
         local hash = string.sub(line_porcelain.hash, 0, 7)
         local line_with_hl = {}

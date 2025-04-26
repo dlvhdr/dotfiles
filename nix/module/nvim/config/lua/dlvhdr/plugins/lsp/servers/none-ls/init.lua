@@ -19,7 +19,13 @@ M.setup = function(opts)
           return has
         end,
       }),
-      null_ls.builtins.diagnostics.codespell,
+      null_ls.builtins.diagnostics.codespell.with({
+        args = {
+          "--ignore-words",
+          vim.env.HOME .. "/.config/codespell/ignore_words",
+          "-",
+        },
+      }),
       null_ls.builtins.diagnostics.golangci_lint.with({
         extra_args = { "-E", "errcheck" },
       }),

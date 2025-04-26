@@ -69,6 +69,19 @@ git:
   skipHookPrefix: WIP
   branchPrefix: "dlvhdr/"
 customCommands:
+  - key: "J"
+    command: $XDG_CONFIG_HOME/lazygit/create-jira-branch {{index .PromptResponses 0 | quote}}
+    description: "create task in JIRA"
+    context: "localBranches"
+    loadingText: "creating task in JIRA"
+    subprocess: false
+    showOutput: true
+    prompts:
+      - type: "input"
+        title: "JIRA Task Title"
+        key: "Title"
+        suggestions:
+          preset: "branches"
   - key: "R"
     command: "gh repo view --web"
     description: "view repo on github"

@@ -136,6 +136,7 @@ M.config = function()
       hl.DiffDelete = { bg = "#724022" }
       hl.DiffAdd = { bg = "#234E88" }
       hl.DiffviewDiffDeleteDim = { bg = "#2D1F1B" }
+      hl.StatusLine = { bg = c.none }
     end,
   })
 

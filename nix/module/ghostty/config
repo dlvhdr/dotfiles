@@ -1,4 +1,5 @@
 theme = tokyonight
+# theme = "catppuccin-latte"
 macos-titlebar-style = hidden
 window-padding-x = 4
 window-padding-y = 0,0

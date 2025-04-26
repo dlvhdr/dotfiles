@@ -8,4 +8,9 @@
     package = pkgs.go_1_22;
     goPath = "code/go";
   };
+  home.packages = with pkgs; [
+    gopls
+    golangci-lint
+    go-task
+  ];
 }

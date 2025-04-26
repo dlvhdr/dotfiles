@@ -46,6 +46,7 @@
       "hiddenbar"
       "homerow"
       "iina"
+      "linearmouse"
       "notion"
       "notion-calendar"
       "notunes"
