@@ -7,6 +7,7 @@ return {
     config = function()
       vim.api.nvim_set_hl(0, "RenderMarkdownBullet", { fg = "#ffffff", default = true })
       vim.api.nvim_set_hl(0, "@markup.list.markdown", { fg = "#ffffff", default = true })
+      vim.api.nvim_set_hl(0, "RenderMarkdownCode", { bg = "#16161e" })
       vim.api.nvim_set_hl(0, "CodeBlock", { bg = "#16161e" })
       vim.api.nvim_set_hl(0, "CodeInline", { bg = "#1A1B26", fg = "#9199ed" })
       vim.api.nvim_set_hl(0, "RenderMarkdownCodeInline", { link = "CodeInline" })

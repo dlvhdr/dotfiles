@@ -15,6 +15,7 @@
   "fidget.nvim": { "branch": "main", "commit": "d9ba6b7bfe29b3119a610892af67602641da778e" },
   "gh-addressed.nvim": { "branch": "main", "commit": "64c12f0f2a1d28afe53220da5fb86e1adb79be07" },
   "gh-blame.nvim": { "branch": "main", "commit": "1a6e6444a6988135c5e71e73fa207277dceba906" },
+  "git-conflict.nvim": { "branch": "main", "commit": "4bbfdd92d547d2862a75b4e80afaf30e73f7bbb4" },
   "gitlinker.nvim": { "branch": "master", "commit": "23982c86f50a9c3f4bc531d41b7a4a68ddd12355" },
   "gitsigns.nvim": { "branch": "main", "commit": "02eafb1273afec94447f66d1a43fc5e477c2ab8a" },
   "glance.nvim": { "branch": "master", "commit": "cb19b86349cbe634eec0ea768b9a27fdd6d24f34" },

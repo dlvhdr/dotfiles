@@ -121,6 +121,9 @@ customCommands:
     context: "files"
     loadingText: "opening gum commit tool"
     subprocess: true
+  - key: "P"
+    command: 'git push && gh pr checks --watch --json name,state -q ".[] | select(.name == "Mark as draft") | .state == "SUCCESS" or .state == "SKIPPED""'
+    context: "localBranches"
   - key: "F"
     command: "git push --force-with-lease --no-verify"
     context: "localBranches"

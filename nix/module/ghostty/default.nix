@@ -1,6 +1,7 @@
 { config, ... }:
+let
+  ghosttyPath = "${config.home.homeDirectory}/dotfiles/nix/module/ghostty/config";
+in
 {
-  xdg.configFile."ghostty/config" = {
-    source = config.lib.file.mkOutOfStoreSymlink ./config;
-  };
+  xdg.configFile."ghostty".source = config.lib.file.mkOutOfStoreSymlink ghosttyPath;
 }

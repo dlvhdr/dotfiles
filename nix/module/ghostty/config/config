@@ -27,7 +27,7 @@ font-codepoint-map = U+F5D0-U+F60D=Flog Symbols
 adjust-cell-width = -5%
 
 background = #010101
-background-opacity = 0.93
+background-opacity = 0.90
 
 #  _                        
 # | |_ _ __ ___  _   ___  __

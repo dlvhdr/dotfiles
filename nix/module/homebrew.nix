@@ -61,7 +61,7 @@
       "vivaldi"
       "whatsapp"
       "yubico-authenticator"
-      "zen-browser"
+      "zen"
       "zoom"
     ];
 

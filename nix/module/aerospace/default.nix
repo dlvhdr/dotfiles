@@ -1,9 +1,7 @@
 { config, ... }:
+let
+  aerospacePath = "${config.home.homeDirectory}/dotfiles/nix/module/aerospace/config";
+in
 {
-  xdg.configFile."aerospace/aerospace.toml" = {
-    source = config.lib.file.mkOutOfStoreSymlink ./aerospace.toml;
-  };
-  xdg.configFile."aerospace/default-config.toml" = {
-    source = config.lib.file.mkOutOfStoreSymlink ./default-config.toml;
-  };
+  xdg.configFile."aerospace".source = config.lib.file.mkOutOfStoreSymlink aerospacePath;
 }

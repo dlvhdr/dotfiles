@@ -93,8 +93,11 @@ vim.api.nvim_create_autocmd("CmdwinEnter", {
   end,
 })
 
+local SpellCheckGroup = vim.api.nvim_create_augroup("WrapSpell", {})
+-- wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "gitcommit", "markdown" },
+  group = SpellCheckGroup,
+  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true

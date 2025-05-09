@@ -25,6 +25,7 @@
       figlet
       fx
       git-credential-manager
+      gitleaks
       gitmux
       glow
       gnupg

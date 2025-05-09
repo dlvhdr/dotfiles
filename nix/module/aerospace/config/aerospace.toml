@@ -176,64 +176,76 @@ alt-shift-l = ['join-with right', 'mode main']
 [[on-window-detected]]
 # if.app-id = 'net.kovidgoyal.kitty'
 if.app-id = 'com.mitchellh.ghostty'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace I']
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'
 # if.app-id = 'app.zen-browser.zen'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace C']
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace W']
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace S']
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace D']
 
 [[on-window-detected]]
 if.app-id = 'com.cron.electron'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace P']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace M']
 
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace Z']
 
 [[on-window-detected]]
 if.app-id = 'md.obsidian'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace O']
 
 [[on-window-detected]]
 if.app-id = 'com.figma.Desktop'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace F']
 
 [[on-window-detected]]
 if.app-id = 'com.github.th-ch.youtube-music'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace U']
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
-# check-further-callbacks = true
 run = ['layout tiling', 'move-node-to-workspace N']
+
+[[on-window-detected]]
+if.app-id = 'com.hnc.Discord'
+run = ['layout tiling', 'move-node-to-workspace P']
+
+[[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
+run = ['layout tiling', 'move-node-to-workspace P']
+
+[[on-window-detected]]
+if.app-id = 'com.1password.1password'
+run = ['layout tiling', 'move-node-to-workspace P']
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = ['layout tiling', 'move-node-to-workspace P']
+
+[[on-window-detected]]
+if.app-id = 'com.electron.cypress'
+run = ['layout tiling', 'move-node-to-workspace P']
+
+[[on-window-detected]]
+if.window-title-regex-substring = 'Developer Tools'
+run = ['layout tiling']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'mpv'
