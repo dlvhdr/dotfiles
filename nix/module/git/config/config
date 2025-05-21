@@ -49,6 +49,8 @@
 [hooks]
 global = ~/.config/git/hooks
 ; 🪲 dolev
+; 🪲 dolev
+; 🪲 dolev
 
 [help]
   ; Autocorrect mistyped commands.
