@@ -47,7 +47,8 @@
   ; pager = delta
 
 [hooks]
-pre-commit = ~/.config/git/pre-commit
+global = ~/.config/git/hooks
+; 🪲 dolev
 
 [help]
   ; Autocorrect mistyped commands.
