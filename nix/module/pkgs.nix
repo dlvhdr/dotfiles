@@ -55,6 +55,7 @@
       terminal-notifier
       tig
       tldr
+      tuptime
       update-nix-fetchgit
       uv
       watch

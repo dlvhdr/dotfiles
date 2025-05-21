@@ -1,0 +1,6 @@
+#!/bin/sh
+if git grep --fixed-strings --line-number "🪲 dolev" .; then
+  echo
+  echo "nvim-chainsaw marker found. Aborting commit."
+  exit 1
+fi

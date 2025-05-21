@@ -46,6 +46,9 @@
   ignorecase = false
   ; pager = delta
 
+[hooks]
+pre-commit = ~/.config/git/pre-commit
+
 [help]
   ; Autocorrect mistyped commands.
   autocorrect = 1
