@@ -17,7 +17,9 @@
         function fish_user_key_bindings
           fish_default_key_bindings -M insert
           fish_vi_key_bindings --no-erase insert
-          bind --preset -M command \cp up-or-search
+          bind --preset -M command ctrl-p up-or-search
+          bind --preset -M command ctrl-n down-or-search
+          bind --preset -M insert ctrl-n down-or-search
           bind -s --preset -M visual -m default y 'fish_clipboard_copy; commandline -f end-selection repaint-mode'
           bind --preset --erase \ep
           bind --preset -M visual --erase \ep
