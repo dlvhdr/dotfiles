@@ -32,7 +32,7 @@ return {
     config = function()
       local emoji_format = {
         "/* prettier-ignore */ // {{marker}}",
-        'console.log("{{marker}} beep {{emoji}}");',
+        'console.log("{{marker}} {{index}}");',
       }
       local var_format = {
         "/* prettier-ignore */ // {{marker}}",
@@ -44,7 +44,7 @@ return {
       }
       ---@diagnostic disable: missing-fields
       require("chainsaw").setup({
-        marker = "[🪲 dolev]",
+        marker = "[🪲 dlv]",
         logStatements = {
           emojiLog = {
             javascript = emoji_format,

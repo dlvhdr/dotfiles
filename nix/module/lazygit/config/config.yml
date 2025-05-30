@@ -30,7 +30,6 @@ gui:
   commitLength:
     show: true
   skipNoStagedFilesWarning: false
-
   spinner:
     # The frames of the spinner animation.
     frames:
@@ -61,66 +60,62 @@ git:
   #   --pretty=format:"%C(auto)%h: %s (%C(blue)%an %C(white)|
   #   %C(cyan)%ad%C(white))" {{branchName}} --'
   branchLogCmd: "git log --color=always --graph --date=relative --pretty=format:'%C(dim yellow)%h %C(reset)%<|(70,trunc)%s %C(dim white)@%an%C(reset) %C(dim white)(%cd)%C(reset)%C(auto)'"
-  allBranchesLogCmd: "git log --color=always --graph --all --date=relative --pretty=format:'%C(auto)%h %C(reset)%<|(50,trunc)%s %C(bold blue)<%an>%C(reset) %C(green)(%cd)%C(reset)%C(auto)%d'"
   overrideGpg: true
   paging:
     colorArg: always
     pager: delta --dark --paging=never
   skipHookPrefix: WIP
   branchPrefix: "dlvhdr/"
+  allBranchesLogCmds:
+    - git log --color=always --graph --all --date=relative --pretty=format:'%C(auto)%h %C(reset)%<|(50,trunc)%s %C(bold blue)<%an>%C(reset) %C(green)(%cd)%C(reset)%C(auto)%d'
 customCommands:
   - key: "J"
     command: $XDG_CONFIG_HOME/lazygit/create-jira-branch {{index .PromptResponses 0 | quote}}
     description: "create task in JIRA"
     context: "localBranches"
     loadingText: "creating task in JIRA"
-    subprocess: false
-    showOutput: true
     prompts:
       - type: "input"
         title: "JIRA Task Title"
         key: "Title"
         suggestions:
           preset: "branches"
+    output: popup
   - key: "R"
     command: "gh repo view --web"
     description: "view repo on github"
     context: "global"
     loadingText: "opening github..."
-    subprocess: false
   - key: "o"
     command: "gh pr view --web"
     description: "view PR on github"
     context: "global"
     loadingText: "opening github..."
-    subprocess: false
   - key: "o"
     command: "gh pr view --web {{ .SelectedLocalBranch.Name }}"
     description: "view PR on github"
     context: "localBranches"
     loadingText: "opening github..."
-    subprocess: false
   - key: "O"
     command: gh pr create -t "{{index .PromptResponses 0}}" {{ if eq (index .PromptResponses 1) "yes"}}{{ "--draft" }}{{ end }}
     description: "Create a pull request using the GitHub CLI"
     context: "localBranches"
-    subprocess: true
     prompts:
       - type: "input"
         title: "Title"
         initialValue: "{{index .CheckedOutBranch.Name}}"
-
       - type: "menu"
         title: "Mark pull request as draft?"
         options:
           - value: "yes"
           - value: "no"
+    output: terminal
   - key: "C"
     command: "commit"
     description: "commit with gum"
     context: "files"
     loadingText: "opening gum commit tool"
-    subprocess: true
+    output: terminal
   # - key: "P"
   #   command: 'git push && gh pr checks --watch --json name,state -q ".[] | select(.name == "Mark as draft") | .state == "SUCCESS" or .state == "SKIPPED""'
   # context: "localBranches"

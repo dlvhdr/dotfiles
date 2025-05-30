@@ -27,6 +27,7 @@ inputs.darwin.lib.darwinSystem {
       home-manager.useGlobalPkgs = false;
       home-manager.useUserPackages = true;
       home-manager.users."${username}" = home-manager-config;
+      home-manager.backupFileExtension = "backup";
     }
 
     # shareable main system config
@@ -39,6 +40,7 @@ inputs.darwin.lib.darwinSystem {
     # settings
     {
       system = {
+        primaryUser = username;
         keyboard = {
           enableKeyMapping = true;
           remapCapsLockToEscape = true;

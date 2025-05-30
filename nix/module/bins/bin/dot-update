@@ -5,4 +5,4 @@ brew update
 nix flake update --flake .
 fd .nix --exec update-nix-fetchgit
 dot-clean
-dot-apply
+sudo dot-apply
