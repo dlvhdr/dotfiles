@@ -32,15 +32,15 @@ return {
     config = function()
       local emoji_format = {
         "/* prettier-ignore */ // {{marker}}",
-        'console.log("{{marker}} {{index}}");',
+        "console.log(`${new Date().toISOString()}{{marker}} {{index}}`);",
       }
       local var_format = {
         "/* prettier-ignore */ // {{marker}}",
-        'console.log("{{marker}} {{var}}:", {{var}});',
+        "console.log(`${new Date().toISOString()}{{marker}} {{var}}:`, {{var}});",
       }
       local message_format = {
         "/* prettier-ignore */ // {{marker}}",
-        'console.log("{{marker}} ");',
+        "console.log(`${new Date().toISOString()}{{marker}} `);",
       }
       ---@diagnostic disable: missing-fields
       require("chainsaw").setup({

@@ -5,6 +5,7 @@ local M = {}
 M.setup = function(opts)
   require("lspconfig").gopls.setup({
     cmd = { "gopls", "serve" },
+    cmd_env = { GOFUMPT_SPLIT_LONG_LINES = "on" },
     on_attach = opts.on_attach,
     capabilities = opts.capabilities,
     document_highlight = { enabled = false },
@@ -15,6 +16,7 @@ M.setup = function(opts)
     },
     settings = {
       gopls = {
+        gofumpt = true,
         analyses = {
           nilness = true,
           unusedparams = true,

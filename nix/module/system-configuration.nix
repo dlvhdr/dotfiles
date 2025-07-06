@@ -29,9 +29,10 @@
   users.users.${username}.home = "/Users/${username}";
 
   nix = {
-    optimise = {
-      automatic = true;
-    };
+    enable = false;
+    # optimise = {
+    #   automatic = true;
+    # };
     settings = {
       builders-use-substitutes = true;
       experimental-features = [
@@ -51,10 +52,10 @@
       ];
       warn-dirty = false;
     };
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 14d";
-    };
+    # gc = {
+    #   automatic = true;
+    #   options = "--delete-older-than 14d";
+    # };
   };
 
 }

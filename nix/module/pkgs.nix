@@ -1,4 +1,7 @@
-{ pkgs, nur, ... }:
+{ pkgs, ... }:
+let
+  mdfried = builtins.getFlake "github:benjajaja/mdfried/d552cbaa4ba6b73091871b549fbc5b39552ec95f";
+in
 {
   nixpkgs = {
     config = {
@@ -50,6 +53,7 @@
       process-compose
       procs
       ripgrep
+      rsbkb
       sd
       stats
       terminal-notifier
@@ -70,6 +74,7 @@
       ])
       kubectl
       kubectx
+      lnav
 
       # nur.repos.caarlos0.gopls # always latest
       # nur.repos.caarlos0.golangci-lint # always latest
@@ -77,5 +82,6 @@
       #
       # nur.repos.charmbracelet.mods
       # nur.repos.charmbracelet.vhs
+      mdfried.packages.${pkgs.system}.default
     ];
 }

@@ -15,6 +15,7 @@
       # markdownlint
       bash-language-server
       codespell
+      harper
       delve
       deno # used for peek.nvim
       docker-compose-language-service

@@ -25,6 +25,7 @@ M.setup = function()
   require("dlvhdr.plugins.lsp.servers.helm-ls").setup()
   require("dlvhdr.plugins.lsp.servers.bashls").setup()
   require("dlvhdr.plugins.lsp.servers.nixd").setup(opts)
+  require("dlvhdr.plugins.lsp.servers.harper_ls").setup(opts)
 end
 
 return M

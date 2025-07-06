@@ -8,9 +8,27 @@
     fish = {
       enable = true;
       loginShellInit = builtins.readFile ./config.fish;
+      shellInit = ''
+        # Nix
+        if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+          source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+        end
+        if [ -f '/nix/var/nix/profiles/default/etc/profile.d/nix.fish' ];
+          source '/nix/var/nix/profiles/default/etc/profile.d/nix.fish'
+        end
+        # End Nix
+      '';
       interactiveShellInit = ''
+        if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+          source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+        end
+        if [ -f '/nix/var/nix/profiles/default/etc/profile.d/nix.fish' ];
+          source '/nix/var/nix/profiles/default/etc/profile.d/nix.fish'
+        end
         fish_add_path "/Users/dlvhdr/.local/share/../bin"
         fish_add_path -p /etc/profiles/per-user/dlvhdr/bin
+        fish_add_path -p ~/.nix-profile/bin /nix/var/nix/profiles/default/bin
+        fish_add_path --path --move /run/current-system/sw/bin
         source $XDG_CONFIG_HOME/fish/themes/fish_tokyonight_storm.fish
         atuin init fish --disable-up-arrow | source
 

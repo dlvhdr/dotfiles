@@ -374,24 +374,25 @@ return {
     bufdelete = { enabled = true },
     scratch = { enabled = true },
     words = { enabled = true },
+    zen = { enabled = true },
   },
   keys = {
-    {
-      "<C-p>",
-      function()
-        Snacks.picker.smart({
-          layout = {
-            preset = "select",
-          },
-          formatters = {
-            file = {
-              filename_first = true,
-            },
-          },
-        })
-      end,
-      desc = "Smart Find Files",
-    },
+    -- {
+    --   "<C-p>",
+    --   function()
+    --     Snacks.picker.smart({
+    --       layout = {
+    --         preset = "select",
+    --       },
+    --       formatters = {
+    --         file = {
+    --           filename_first = true,
+    --         },
+    --       },
+    --     })
+    --   end,
+    --   desc = "Smart Find Files",
+    -- },
     {
       "<leader>fg",
       function()

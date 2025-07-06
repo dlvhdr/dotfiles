@@ -20,11 +20,25 @@ cursor-opacity=0.96
 font-size = 18
 font-family = "CommitMono Nerd Font"
 font-family = "Symbols Nerd Font Mono"
-font-family = "Apple Color Emoji"
-font-family = "DejaVu SansM Nerd Font Mono"
+# font-family = "Apple Color Emoji"
+font-family = "DejaVuSansM Nerd Font Mono"
 font-family = "FiraCode Nerd Font Mono"
-font-codepoint-map = U+F5D0-U+F60D=Flog Symbols
-adjust-cell-width = -5%
+# font-codepoint-map = U+F5D0-U+F60D=Flog Symbols
+
+# https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
+# powerline & powerline-extras
+font-codepoint-map = U+e0b0-U+e0b3,U+e0b4-U+e0c8,U+e0cc-U+e0d4,U+e0ca=JetBrainsMono Nerd Font Mono
+
+# font-awesome
+font-codepoint-map = U+f000-U+f2e0,U+e200-U+e2a9=JetBrainsMono Nerd Font Mono
+
+# seti-ui
+font-codepoint-map = U+e5fa-U+e6b1=JetBrainsMono Nerd Font Mono
+
+# codicons
+font-codepoint-map = U+ea60-U+ebeb=JetBrainsMono Nerd Font Mono
+
+adjust-cell-width = -3%
 
 background = #010101
 background-opacity = 0.90

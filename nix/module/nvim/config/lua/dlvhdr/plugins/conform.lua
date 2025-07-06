@@ -11,7 +11,7 @@ local formatters_by_ft = {
   mdx = { "prettierd" },
   json = { "prettierd" },
   yaml = { "prettierd" },
-  go = { "gofmt", "goimports-reviser" },
+  go = { "gofumpt", "goimports-reviser" },
   python = { "black" },
   nix = { "nixfmt" },
 }
@@ -24,6 +24,13 @@ return {
 
     conform.setup({
       formatters_by_ft = formatters_by_ft,
+      formatters = {
+        gofumpt = {
+          env = {
+            GOFUMPT_SPLIT_LONG_LINES = "on",
+          },
+        },
+      },
     })
 
     vim.keymap.set("n", "<leader>lF", function()

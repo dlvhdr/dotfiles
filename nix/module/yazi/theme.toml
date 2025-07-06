@@ -1,7 +1,0 @@
-"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
-
-[flavor]
-# use = "tokyo-night"
-use = "catppuccin-mocha"
-# For upcoming Yazi 0.4 (nightly version):
-dark = "catppuccin-mocha"

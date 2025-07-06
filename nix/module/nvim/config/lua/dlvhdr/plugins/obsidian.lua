@@ -34,6 +34,7 @@ return {
     },
     ui = {
       enable = false,
+      ignore_conceal_warn = true,
       update_debounce = 200,
       checkboxes = {
         [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },

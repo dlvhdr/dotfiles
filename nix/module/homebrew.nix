@@ -14,6 +14,7 @@
     ];
 
     brews = [
+      "presenterm"
       "dhth/tap/mult"
       "joshmedeski/sesh/sesh"
       "friendsofgo/tap/killgrave"
@@ -40,12 +41,15 @@
       "font-commit-mono-nerd-font"
       "font-dejavu-sans-mono-nerd-font"
       "font-fira-code-nerd-font"
+      "font-jetbrains-mono"
+      "font-jetbrains-mono-nerd-font"
       "font-symbols-only-nerd-font"
       "ghostty"
       "google-chrome"
       "hiddenbar"
       "homerow"
       "iina"
+      "kitty"
       "linearmouse"
       "notion"
       "notion-calendar"
