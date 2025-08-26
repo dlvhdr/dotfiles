@@ -1,3 +1,13 @@
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "TelescopeResults",
+  callback = function(ctx)
+    vim.api.nvim_buf_call(ctx.buf, function()
+      vim.fn.matchadd("TelescopeParent", "\t\t.*$")
+      vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
+    end)
+  end,
+})
+
 local get_opts = function()
   return {
     cwd_only = true,
@@ -106,9 +116,8 @@ return {
       },
     },
     config = function()
+      vim.api.nvim_set_hl(0, "Directory", { link = "Comment" })
       require("telescope").load_extension("smart_open")
-      local colors = require("tokyonight.colors").setup()
-      vim.api.nvim_set_hl(0, "Directory", { fg = colors.comment })
 
       local opts = get_opts()
       vim.api.nvim_create_user_command("SmartOpen", function()

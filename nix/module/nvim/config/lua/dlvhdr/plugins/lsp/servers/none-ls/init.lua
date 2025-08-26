@@ -29,6 +29,7 @@ M.setup = function(opts)
       null_ls.builtins.diagnostics.golangci_lint.with({
         extra_args = { "-E", "errcheck" },
       }),
+      null_ls.builtins.formatting.prisma_format,
     },
   })
 

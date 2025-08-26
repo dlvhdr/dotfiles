@@ -224,30 +224,6 @@ if.app-id = 'notion.id'
 run = ['layout tiling', 'move-node-to-workspace N']
 
 [[on-window-detected]]
-if.app-id = 'com.hnc.Discord'
-run = ['layout tiling', 'move-node-to-workspace P']
-
-[[on-window-detected]]
-if.app-id = 'com.electron.dockerdesktop'
-run = ['layout tiling', 'move-node-to-workspace P']
-
-[[on-window-detected]]
-if.app-id = 'com.apple.Notes'
-run = ['layout tiling', 'move-node-to-workspace P']
-
-[[on-window-detected]]
-if.app-id = 'com.1password.1password'
-run = ['layout tiling', 'move-node-to-workspace P']
-
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-run = ['layout tiling', 'move-node-to-workspace P']
-
-[[on-window-detected]]
-if.app-id = 'com.electron.cypress'
-run = ['layout tiling', 'move-node-to-workspace P']
-
-[[on-window-detected]]
 if.window-title-regex-substring = 'Developer Tools'
 run = ['layout tiling']
 
@@ -255,3 +231,7 @@ run = ['layout tiling']
 if.app-name-regex-substring = 'mpv'
 check-further-callbacks = true
 run = ['layout floating']  
+
+[[on-window-detected]]
+if.app-name-regex-substring = '^.*$'
+run = 'move-node-to-workspace P'

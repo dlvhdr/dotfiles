@@ -68,7 +68,7 @@ M.config = function()
         bold = true,
       }
       hl.TermCursor = { link = "Cursor" }
-      hl.EndOfBuffer = { bg = "NONE" }
+      hl.EndOfBuffer = { bg = "NONE", fg = util.darken(c.border_highlight, 0.3) }
 
       hl.PmenuMatchSel = { fg = darker_orange }
       hl.PmenuMatch = { fg = darker_orange, bg = c.bg_highlight }
@@ -133,10 +133,16 @@ M.config = function()
       hl["@markup.heading.4.markdown"] = { link = "@markup.strong" }
       hl.DiffText = { bg = "#234E88" }
       hl.DiffChange = { bg = "#152339" }
-      hl.DiffDelete = { bg = "#724022" }
-      hl.DiffAdd = { bg = "#234E88" }
+      hl.DiffDelete = { bg = "#2C1F1C" }
+      hl.DiffAdd = { bg = "#14233A" }
       hl.DiffviewDiffDeleteDim = { bg = "#2D1F1B" }
       hl.StatusLine = { bg = c.none }
+      hl["GrugFarResultsMatch"] = { bg = "#234E88" }
+      hl["GrugFarResultsMatchRemoved"] = { bg = "#724022", fg = c.orange }
+      hl["GrugFarResultsMatchAdded"] = { bg = "#234E88", fg = c.blue }
+      hl["GrugFarResultsChangeIndicator"] = { fg = "#234E88" }
+      hl["GrugFarResultsRemoveIndicator"] = { fg = c.orange }
+      hl["GrugFarResultsAddIndicator"] = { fg = c.blue }
     end,
   })
 

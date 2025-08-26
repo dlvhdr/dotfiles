@@ -179,6 +179,7 @@ return {
               name = "Attach remote",
               mode = "remote",
               request = "attach",
+              port = 43000,
             },
           },
           delve = {

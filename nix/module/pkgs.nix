@@ -15,7 +15,6 @@ in
     [
       # harlequin
       # python312Packages.harlequin-postgres
-      aerospace
       awscli
       clipboard-jh
       curl

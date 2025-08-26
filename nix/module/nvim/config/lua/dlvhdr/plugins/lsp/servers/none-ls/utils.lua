@@ -29,7 +29,9 @@ M.has_eslint_config = function()
   if nearest_package_json == nil then
     return false
   end
-  return lspconfigUtils.root_pattern(".eslintrc", ".eslintrc.json", ".eslintrc.js")(nearest_package_json) ~= nil
+  return lspconfigUtils.root_pattern(".eslintrc", ".eslintrc.json", ".eslintrc.js", "eslint.config.mjs")(
+    nearest_package_json
+  ) ~= nil
 end
 
 return M

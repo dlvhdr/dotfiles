@@ -35,7 +35,7 @@
       "datagrip"
       "discord"
       "dockdoor"
-      "docker"
+      # "docker"
       "figma"
       "font-commit-mono"
       "font-commit-mono-nerd-font"

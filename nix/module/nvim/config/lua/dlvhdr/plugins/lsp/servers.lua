@@ -26,6 +26,8 @@ M.setup = function()
   require("dlvhdr.plugins.lsp.servers.bashls").setup()
   require("dlvhdr.plugins.lsp.servers.nixd").setup(opts)
   require("dlvhdr.plugins.lsp.servers.harper_ls").setup(opts)
+  require("dlvhdr.plugins.lsp.servers.astro").setup(opts)
+  vim.lsp.enable("prismals")
 end
 
 return M

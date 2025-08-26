@@ -52,7 +52,7 @@ keymap("n", "<leader>bW", "<cmd>wa<cr>", { silent = true, desc = "Write All File
 keymap("n", "<leader>bQ", "<cmd>qa!<cr>", { silent = true, desc = "Quit nvim" })
 
 -- keymap("n", "<leader>fm", "<cmd>messages<cr>", { silent = true, desc = "Messages" })
-keymap("n", "<leader>fn", "<cmd>Noice snacks<cr>", { silent = true, desc = "Noice" })
+keymap("n", "<leader>fn", "<cmd>lua Snacks.notifier.show_history()<cr>", { silent = true, desc = "Noice" })
 
 -- keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { silent = true, desc = "Toggle File Tree" })
 -- keymap("n", "<leader>e", "<cmd>Yazi<CR>", { silent = true, desc = "Toggle File Tree" })

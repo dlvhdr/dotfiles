@@ -53,6 +53,7 @@
         bind yy fish_clipboard_copy
         bind Y fish_clipboard_copy
         bind p fish_clipboard_paste
+        bind \cv edit_command_buffer
 
         set __done_notification_command 'terminal-notifier -title \\\$title -message \\\$message'
       '';

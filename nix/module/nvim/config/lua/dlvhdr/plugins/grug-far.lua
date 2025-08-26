@@ -13,6 +13,11 @@ return {
     },
   },
   config = function()
-    require("grug-far").setup({})
+    require("grug-far").setup({
+      resultsSeparatorLineChar = "―",
+      openTargetWindow = {
+        preferredLocation = "right",
+      },
+    })
   end,
 }

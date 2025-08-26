@@ -25,7 +25,7 @@ M.setup = function(opts)
         },
         usePlaceholders = true,
         completeUnimported = true,
-        directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+        directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-vendor" },
         semanticTokens = true,
       },
     },

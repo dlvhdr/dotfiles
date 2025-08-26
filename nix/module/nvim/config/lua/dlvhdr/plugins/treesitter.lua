@@ -81,7 +81,7 @@ M.config = function()
       prev_selection = ",",
       keymaps = {
         ["."] = "textsubjects-smart",
-        [";"] = "textsubjects-container-outer",
+        ["o;"] = "textsubjects-container-outer",
         ["i;"] = "textsubjects-container-inner",
       },
     },

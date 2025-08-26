@@ -12,6 +12,8 @@ eval (/opt/homebrew/bin/brew shellenv)
 fish_add_path /opt/homebrew/bin
 fish_add_path /Applications/Ghostty.app/Contents/MacOS
 
+bind -M insert \cv edit_command_buffer
+
 set -gx DOCKER_CONFIG "$HOME/.docker"
 set -gx COMPOSE_PROJECT_NAME "web"
 set -gx HOMEBREW_NO_AUTO_UPDATE true
