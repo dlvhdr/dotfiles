@@ -36,8 +36,6 @@
   outputs =
     inputs@{
       nur,
-      caarlos0-nur,
-      # gh-dash,
       charmbracelet-nur,
       nix-index-database,
       ...
