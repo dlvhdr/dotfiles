@@ -33,6 +33,7 @@ end
 return {
   {
     "nvim-telescope/telescope.nvim",
+    enabled = false,
     config = function()
       local actions = require("telescope.actions")
       require("telescope").setup({
@@ -99,7 +100,7 @@ return {
   },
   {
     "danielfalk/smart-open.nvim",
-    -- enabled = false,
+    enabled = false,
     cmd = { "SmartOpen" },
     dependencies = {
       "kkharji/sqlite.lua",

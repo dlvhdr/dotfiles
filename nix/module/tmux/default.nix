@@ -48,6 +48,8 @@ in
   xdg.configFile."tmux/gitmux.yml".source = mkOutOfStoreSymlink ./gitmux.yml;
   xdg.configFile."tmux/kill.sh".source = mkOutOfStoreSymlink ./kill.sh;
   xdg.configFile."tmux/open-dotfiles.fish".source = mkOutOfStoreSymlink ./open-dotfiles.fish;
+  xdg.configFile."tmux/tmux-window-switcher.sh".source =
+    mkOutOfStoreSymlink ./tmux-window-switcher.sh;
   xdg.configFile."tmux/open-lazygit.fish".source = mkOutOfStoreSymlink ./open-lazygit.fish;
   xdg.configFile."tmux/tmux-nerd-font-window-name.yml".source =
     mkOutOfStoreSymlink ./tmux-nerd-font-window-name.yml;

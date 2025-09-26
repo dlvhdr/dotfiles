@@ -9,3 +9,9 @@ setup/VivalArc-main
 error.log
 debug.log
 .DS_Store
+nix/module/yazi/config/plugins/yatline-tokyo-night.yazi
+nix/module/yazi/config/plugins/yatline.yazi
+nix/module/yazi/config/plugins/yatline-modified-time.yazi
+nix/module/yazi/config/plugins/relative-motions.yazi
+nix/module/yazi/config/plugins/full-border.yazi
+nix/module/yazi/config/flavors/tokyo-night.yazi

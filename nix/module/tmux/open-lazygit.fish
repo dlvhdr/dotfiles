@@ -1,17 +1,17 @@
 #!/usr/bin/env fish
 
+echo "Starting" >> debug.log
 set WINDOWS (tmux list-windows -F "#{window_name}")
+echo "WINDOWS=$WINDOWS" >> debug.log
 if contains "gh-dash" $WINDOWS
+    echo "switching window to :gh-dash" >> debug.log
     tmux switch-client -t :gh-dash
     exit 0
 end
 
 set SESS_PATH (tmux display-message -p -F "#{session_path}")
-if test -e "$SESS_PATH/.envrc"
-  direnv exec $SESS_PATH tmux new-window -c "$SESS_PATH" -S -n gh-dash "gh dash" 
-else
-  tmux new-window -c "$SESS_PATH" -S -n gh-dash "gh dash" 
-end
+echo "SESS_PATH=$SESS_PATH" >> debug.log
+tmux new-window -c "$SESS_PATH" -S -n gh-dash "gh dash" 
 # tmux new-window -S -n gh-dash "FF_REPO_VIEW= gh dash $SESS_PATH" 
 tmux switch-client -t :gh-dash
 

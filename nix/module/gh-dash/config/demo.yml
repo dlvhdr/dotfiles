@@ -1,7 +1,19 @@
 prSections:
-  - title: My PRs
-    filters: author:@me
-    limit: 5
+  - title: My Pull Requests
+    filters: is:open author:@me owner:charmbracelet updated:>={{ nowModify "-3w" }}
+  - title: Review Requested
+    filters: review-requested:@me owner:charmbraclet
+  - title: My Team
+    filters: is:open owner:neovim author:gpanders author:tjdevries
+  - title: Open Source
+    filters: is:open repo:ghostty-org/ghostty repo:neovim/neovim
+issuesSections:
+  - title: Ghostty
+    filters: is:open ghostty-org/ghostty
+  - title: Neovim
+    filters: is:open neovim/neovim
+  - title: Bubbletea
+    filters: repo:charmbracelet/bubbletea
 
 defaults:
   preview:

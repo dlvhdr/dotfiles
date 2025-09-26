@@ -10,6 +10,7 @@ set -U fish_greeting # disable fish greeting
 fish_add_path "$GOPATH" "$HOME/.krew/bin" "$XDG_DATA_HOME/google-cloud-sdk/bin" "$XDG_DATA_HOME/cargo/bin" "/usr/local/opt/ruby/bin" "$GOPATH/bin" "$HOME/.local/bin" "$DOTFILES/scripts" "$XDG_DATA_HOME/npm/bin" "$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin" "$HOME/.local/share/npm/bin"
 eval (/opt/homebrew/bin/brew shellenv)
 fish_add_path /opt/homebrew/bin
+fish_add_path /opt/homebrew/opt/rustup/bin
 fish_add_path /Applications/Ghostty.app/Contents/MacOS
 
 bind -M insert \cv edit_command_buffer
@@ -142,3 +143,6 @@ abbr --add pk "procs-kill"
 abbr --add db "harlequin --config-path ~/.config/harlequin/config.toml"
 
 abbr --add refresh "yarn && yarn pkg:build && devbox services restart"
+
+set -gx GRANTED_ALIAS_CONFIGURED "true"
+alias assume="source /opt/homebrew/bin/assume.fish"

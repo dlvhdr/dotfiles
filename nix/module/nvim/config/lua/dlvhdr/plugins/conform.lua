@@ -25,6 +25,19 @@ return {
     conform.setup({
       formatters_by_ft = formatters_by_ft,
       formatters = {
+        -- astro = {
+        --   command = "prettierd",
+        --   prepend_args = {
+        --     "--plugin=prettier-plugin-astro",
+        --     "--plugin=prettier-plugin-tailwindcss",
+        --   },
+        --   args = { "$FILENAME" },
+        --   range_args = function(self, ctx)
+        --     local start_offset, end_offset = require("conform.util").get_offsets_from_range(ctx.buf, ctx.range)
+        --     return { "$FILENAME", "--range-start=" .. start_offset, "--range-end=" .. end_offset }
+        --   end,
+        --   cwd = require("conform.util").root_file({ "astro.config.mjs" }),
+        -- },
         gofumpt = {
           env = {
             GOFUMPT_SPLIT_LONG_LINES = "on",

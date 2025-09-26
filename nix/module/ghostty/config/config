@@ -4,6 +4,7 @@ macos-titlebar-style = hidden
 window-padding-x = 4
 window-padding-y = 0,0
 macos-window-shadow = false
+custom-shader = cursor_smear.glsl
 
 command = /etc/profiles/per-user/dlvhdr/bin/fish
 shell-integration = fish
@@ -41,7 +42,7 @@ font-codepoint-map = U+ea60-U+ebeb=JetBrainsMono Nerd Font
 adjust-cell-width = -3%
 
 background = #010101
-background-opacity = 0.90
+# background-opacity = 0.90
 
 #  _                        
 # | |_ _ __ ___  _   ___  __

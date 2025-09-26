@@ -1,5 +1,5 @@
 local M = {
-  "echasnovski/mini.nvim",
+  "nvim-mini/mini.nvim",
   version = false,
   dependencies = {
     "folke/tokyonight.nvim",

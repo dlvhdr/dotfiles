@@ -104,9 +104,11 @@ M.config = function()
       hl.GHThreadSep = { bg = c.bg_float }
       hl.DiagnosticUnnecessary = { fg = util.lighten(c.comment, 0.7), undercurl = true }
       hl.Directory = { fg = c.blue }
-      hl.GitSignsAddNr = { fg = c.green }
-      hl.GitSignsAddLn = { fg = c.green }
-      hl.GitSignsAdd = { fg = c.green }
+      hl.GitSignsAddNr = { fg = c.blue }
+      hl.GitSignsChange = { fg = "#152339" }
+      hl.GitSignsAddLn = { fg = c.blue }
+      hl.GitSignsAdd = { fg = c.blue }
+      hl.GitSignsDelete = { fg = c.orange }
       hl.MatchParen = { bg = c.fg_gutter }
       hl.WinBar = { bg = "NONE" }
       hl.WinBarNC = { bg = "NONE" }
@@ -133,7 +135,7 @@ M.config = function()
       hl["@markup.heading.4.markdown"] = { link = "@markup.strong" }
       hl.DiffText = { bg = "#234E88" }
       hl.DiffChange = { bg = "#152339" }
-      hl.DiffDelete = { bg = "#2C1F1C" }
+      hl.DiffDelete = { bg = "#2C1F1C", fg = c.fg_gutter }
       hl.DiffAdd = { bg = "#14233A" }
       hl.DiffviewDiffDeleteDim = { bg = "#2D1F1B" }
       hl.StatusLine = { bg = c.none }
@@ -143,6 +145,10 @@ M.config = function()
       hl["GrugFarResultsChangeIndicator"] = { fg = "#234E88" }
       hl["GrugFarResultsRemoveIndicator"] = { fg = c.orange }
       hl["GrugFarResultsAddIndicator"] = { fg = c.blue }
+      hl["FFFGitStaged"] = { fg = c.blue }
+      hl["FFFGitDeleted"] = { fg = c.orange }
+      hl["FFFGitModified"] = { fg = "#152339" }
+      hl["FFFGitSignDeleted"] = { fg = c.orange }
     end,
   })
 

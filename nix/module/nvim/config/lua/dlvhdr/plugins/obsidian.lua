@@ -8,6 +8,7 @@ return {
   --   "BufReadPre /Users/dlvhdr/notes/**.md",
   --   "BufNewFile /Users/dlvhdr/notes/**.md",
   -- },
+  enabled = false,
   ft = "markdown",
   dependencies = {
     "nvim-lua/plenary.nvim",

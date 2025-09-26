@@ -186,7 +186,7 @@ NVIM_APPNAME=dlvhdr/dotfiles/.config/nvim nvim
 - [kevinhwang91/nvim-ufo](https://dotfyle.com/plugins/kevinhwang91/nvim-ufo)
 - [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
 - [jghauser/mkdir.nvim](https://dotfyle.com/plugins/jghauser/mkdir.nvim)
-- [echasnovski/mini.nvim](https://dotfyle.com/plugins/echasnovski/mini.nvim)
+- [nvim-mini/mini.nvim](https://dotfyle.com/plugins/nvim-mini/mini.nvim)
 - [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
 - [chrisgrieser/nvim-genghis](https://dotfyle.com/plugins/chrisgrieser/nvim-genghis)
 

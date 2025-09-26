@@ -41,6 +41,9 @@ key-mapping.preset = 'qwerty'
 #                 In this example, 24 is a default value when there is no match.
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+
+on-focus-changed = ['move-mouse window-force-center']
+
 [gaps]
 inner.horizontal = 8
 inner.vertical =   8
@@ -102,6 +105,8 @@ alt-shift-equal = 'resize smart +50'
 alt-c = 'exec-and-forget open -b company.thebrowser.Browser'
 # alt-c = 'exec-and-forget open -b app.zen-browser.zen'
 alt-d = 'exec-and-forget open -b org.mozilla.firefox'
+# alt-e = 'exec-and-forget kitty fish -c yazi (tmux display-message -p "#{current_dir}")'
+alt-e = 'exec-and-forget open -b net.kovidgoyal.kitty --args --title="yazi" -o hide_window_decorations=no -o active_border_color=#ff0000 -o background=#000000 -o background_opacity=1 --directory $(tmux display-message -p "#{pane_current_path}") yazi'
 alt-f = 'exec-and-forget open -b com.figma.Desktop'
 # alt-i = 'exec-and-forget open -b net.kovidgoyal.kitty'
 alt-i = 'exec-and-forget open -b com.mitchellh.ghostty'
@@ -173,6 +178,7 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+
 [[on-window-detected]]
 # if.app-id = 'net.kovidgoyal.kitty'
 if.app-id = 'com.mitchellh.ghostty'
@@ -231,6 +237,10 @@ run = ['layout tiling']
 if.app-name-regex-substring = 'mpv'
 check-further-callbacks = true
 run = ['layout floating']  
+
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-name-regex-substring = '^.*$'

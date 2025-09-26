@@ -1,31 +1,114 @@
-dashboards:
-  - title: Immediate Action
-    sections:
-      - title: My PRs
-        filters: is:pr author:@me
-        limit: 2
-      - title: Review
-        filters: is:pr review-requested:@me is:open
-        limit: 10
-  - title: Others
-    sections:
-      - title: My PRs
-        filters: is:pr author:@me
-        limit: 2
-      - title: Review
-        filters: is:pr review-requested:@me is:open
-        limit: 10
 prSections:
   - title: Yay
     layout:
       lines:
         hidden: true
-    filters: org:wix-private author:@me
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-1w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-1d" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2d" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-3d" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-4d" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-5d" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-6d" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-7d" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
+  - title: Yay
+    layout:
+      lines:
+        hidden: true
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
   - title: Yay2
     layout:
       lines:
         hidden: true
-    filters: org:wix-private author:@me
+    filters: org:wix-private author:@me updated:>{{ nowModify "-2w" }}
 issuesSections:
   - title: My Issues
     filters: is:open author:@me
@@ -76,3 +159,4 @@ theme:
       primary: "#383B5B"
       secondary: "#39386B"
       faint: "#2B2B40"
+# smartFilteringAtLaunch: false
