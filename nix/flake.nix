@@ -19,9 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # modules published by caarlos like gopls, svu, etc.
-    caarlos0-nur.url = "github:caarlos0/nur";
-
     # modules published by charm like mods and vhs
     charmbracelet-nur.url = "github:charmbracelet/nur";
 
@@ -54,7 +51,6 @@
             pkgs = prev;
             # add caarlos0 and charmbracelet modules to nixpkgs
             repoOverrides = {
-              caarlos0 = import caarlos0-nur { pkgs = prev; };
               charmbracelet = import charmbracelet-nur { pkgs = prev; };
             };
           };

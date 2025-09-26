@@ -6,7 +6,9 @@
   programs.go = {
     enable = true;
     package = pkgs.go_1_24;
-    goPath = "code/go";
+    env = {
+      GOPATH = "code/go";
+    };
   };
   home.packages = with pkgs; [
     gopls

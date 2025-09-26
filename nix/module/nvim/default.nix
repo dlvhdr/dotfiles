@@ -11,7 +11,6 @@
     vimAlias = true;
 
     extraPackages = with pkgs; [
-      # gopls - using caarlos0's gopls which is always latest
       # markdownlint
       bash-language-server
       codespell
