@@ -201,13 +201,13 @@ return {
       enabled = true,
       ft = "python",
       config = function()
-        -- local debugpy_path = require("mason-registry").get_package("debugpy"):get_install_path()
-        -- local dap_python = require("dap-python")
-        -- dap_python.setup(debugpy_path .. "/venv/bin/python")
-        -- dap_python.test_runner = "pytest"
-        -- dap_python.resolve_python = function()
-        --   return "/Users/dlvhdr/code/komodor/mono/services/venv/bin/python"
-        -- end
+        local debugpy_path = require("mason-registry").get_package("debugpy"):get_install_path()
+        local dap_python = require("dap-python")
+        dap_python.setup(debugpy_path .. "/venv/bin/python")
+        dap_python.test_runner = "pytest"
+        dap_python.resolve_python = function()
+          return "/Users/dlvhdr/code/personal/sponsors/.venv/bin/python"
+        end
         -- table.insert(require("dap").configurations.python, {
         --   type = "python",
         --   request = "launch",

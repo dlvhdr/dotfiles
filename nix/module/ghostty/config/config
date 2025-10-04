@@ -86,9 +86,9 @@ keybind = cmd+physical:six=text:\x01\x36
 keybind = cmd+physical:seven=text:\x01\x37
 keybind = cmd+physical:eight=text:\x01\x38
 keybind = cmd+physical:nine=text:\x01\x39
-# gh-dash in new tab
+# lazygit in new tab
 keybind = cmd+g=text:\x01g
-# gh-dash in its own session
+# gh-dash in a new tab
 keybind = cmd+shift+g=text:\x01G
 # go to mono session
 keybind = cmd+option+m=text:\x01m

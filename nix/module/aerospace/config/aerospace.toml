@@ -42,7 +42,7 @@ key-mapping.preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 
-on-focus-changed = ['move-mouse window-force-center']
+# on-focus-changed = ['move-mouse window-force-center']
 
 [gaps]
 inner.horizontal = 8
