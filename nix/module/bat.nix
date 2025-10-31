@@ -12,8 +12,8 @@
           pkgs.fetchFromGitHub {
             owner = "folke";
             repo = "tokyonight.nvim";
-            rev = "4d159616aee17796c2c94d2f5f87d2ee1a3f67c7";
-            sha256 = "1bpki7gglch1n77kcrnyabmz7r41d6b6yq5fa70w4pxwp7y62d6h";
+            rev = "2642dbb83333e0575d1c3436e1d837926871c5fb";
+            sha256 = "0835zvgf1k6xszc4rz5pyb5cz1cyf95vj1q17nx48zz95p4vk0bl";
           }
           + "/extras/sublime/tokyonight_night.tmTheme";
       };

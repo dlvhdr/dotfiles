@@ -61,9 +61,9 @@ git:
   #   %C(cyan)%ad%C(white))" {{branchName}} --'
   branchLogCmd: "git log --color=always --graph --date=relative --pretty=format:'%C(dim yellow)%h %C(reset)%<|(70,trunc)%s %C(dim white)@%an%C(reset) %C(dim white)(%cd)%C(reset)%C(auto)'"
   overrideGpg: true
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
   skipHookPrefix: WIP
   branchPrefix: "dlvhdr/"
   allBranchesLogCmds:
