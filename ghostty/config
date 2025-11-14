@@ -1,0 +1,138 @@
+theme = tokyonight
+# theme = "catppuccin-latte"
+macos-titlebar-style = hidden
+window-padding-x = 4
+window-padding-y = 0,0
+macos-window-shadow = false
+custom-shader = cursor_smear.glsl
+
+command = /etc/profiles/per-user/dlvhdr/bin/fish
+shell-integration = fish
+
+clipboard-read = allow
+clipboard-write = allow
+confirm-close-surface = false
+macos-option-as-alt = left
+
+cursor-style = block
+cursor-style-blink = true
+cursor-opacity=0.96
+
+font-size = 18
+font-family = "CommitMono Nerd Font"
+font-family = "Symbols Nerd Font"
+font-family = "Apple Color Emoji"
+font-family = "DejaVuSansM Nerd Font"
+font-family = "FiraCode Nerd Font"
+font-codepoint-map = U+F5D0-U+F60D=Flog Symbols
+
+# https://github.com/ryanoasis/nerd-fonts/wiki/Glyph-Sets-and-Code-Points
+# powerline & powerline-extras
+# font-codepoint-map = U+e0b0-U+e0b3,U+e0b4-U+e0c8,U+e0cc-U+e0d4,U+e0ca=JetBrainsMono Nerd Font
+
+# font-awesome
+font-codepoint-map = U+f000-U+f2e0,U+e200-U+e2a9=JetBrainsMono Nerd Font
+
+# seti-ui
+font-codepoint-map = U+e5fa-U+e6b1=JetBrainsMono Nerd Font
+
+# codicons
+font-codepoint-map = U+ea60-U+ebeb=JetBrainsMono Nerd Font
+
+adjust-cell-width = -3%
+
+background = #010101
+# background-opacity = 0.90
+
+#  _                        
+# | |_ _ __ ___  _   ___  __
+# | __| '_ ` _ \| | | \ \/ /
+# | |_| | | | | | |_| |>  < 
+#  \__|_| |_| |_|\__,_/_/\_\
+# --------------------------
+# NOTE: \x01 is ctrl+a which is the tmux prefix
+# ---------------------------------------------
+# close tab
+keybind = cmd+w=text:\x01x
+# new tab
+keybind = cmd+t=text:\x01c
+# search in pane - ctrl+a + ctrl+f
+keybind = cmd+f=text:\x01\x06
+# search in pane - tmux-fingers
+keybind = cmd+shift+f=text:\x01F
+# clear
+keybind = cmd+l=text:\x01\x0c
+# hard clear
+keybind = cmd+ctrl+l=text:\x01\x1b\x0c
+# sesh
+keybind = cmd+k=text:\x01T
+# mprocs
+keybind = cmd+shift+m=text:\x01M
+# last session
+keybind = cmd+'=text:\x01\'
+# last window
+keybind = cmd+;=text:\x01;
+# split vertical
+keybind = cmd+e=text:\x01|
+# split horizontal
+keybind = cmd+shift+e=text:\x01-
+# tmux window #
+keybind = cmd+physical:one=text:\x01\x31
+keybind = cmd+physical:two=text:\x01\x32
+keybind = cmd+physical:three=text:\x01\x33
+keybind = cmd+physical:four=text:\x01\x34
+keybind = cmd+physical:five=text:\x01\x35
+keybind = cmd+physical:six=text:\x01\x36
+keybind = cmd+physical:seven=text:\x01\x37
+keybind = cmd+physical:eight=text:\x01\x38
+keybind = cmd+physical:nine=text:\x01\x39
+# lazygit in new tab
+keybind = cmd+g=text:\x01g
+# gh-dash in a new tab
+keybind = cmd+shift+g=text:\x01G
+# go to mono session
+keybind = cmd+option+m=text:\x01m
+# keyb - doesn't work
+keybind = cmd+?=text:\x01?
+# open link
+keybind = cmd+o=text:\x01u
+# enter copy mode
+keybind = cmd+u=text:\x01[
+# update plugins
+keybind = cmd+shift+u=text:\x01U
+# toggle zoom
+keybind = cmd+z=text:\x01z
+# last command output
+keybind = cmd+shift+c=text:\x01C
+# move window right
+keybind = cmd+shift+comma=text:\x01<
+# move window left
+keybind = cmd+shift+period=text:\x01>
+# command mode
+keybind = cmd+shift+;=text:\x01:
+# open dotfiles session in nvim
+keybind = cmd+comma=text:\x01\x2c
+# show pane info
+keybind = cmd+i=text:\x01i
+
+#  _ ____   _(_)_ __ ___  
+# | '_ \ \ / / | '_ ` _ \ 
+# | | | \ V /| | | | | | |
+# |_| |_|\_/ |_|_| |_| |_|
+# ------------------------
+# quit
+keybind = cmd+q=text:\x1bZQ
+# save
+keybind = cmd+s=text:\x1b bw
+# save all
+keybind = cmd+shift+s=text:\x1b bW
+# select all
+keybind = cmd+a=text:\x1bggVG
+# open file
+keybind = cmd+p=text:\x10
+# command palette
+keybind = cmd+shift+p=text:\x1b fc
+
+keybind = ctrl+shift+p=unbind
+
+# vim: ft=conf

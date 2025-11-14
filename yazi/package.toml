@@ -1,0 +1,29 @@
+[[plugin.deps]]
+use = "dedukun/relative-motions"
+rev = "a603d9e"
+hash = "e02a788e5b8ae0fb47fd0193dda589cc"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "d1c8baa"
+hash = "3996fc74044bc44144b323686f887e1"
+
+[[plugin.deps]]
+use = "imsi32/yatline"
+rev = "88bd1c5"
+hash = "981acbe9b758b1af3a8154c932bb936d"
+
+[[plugin.deps]]
+use = "wekauwau/yatline-tokyo-night"
+rev = "b4a6310"
+hash = "215729a555fe5286f1eb35520963d08"
+
+[[plugin.deps]]
+use = "wekauwau/yatline-modified-time"
+rev = "2d33471"
+hash = "8fa6028ef832b34cf32f4ee43cb0ae35"
+
+[[flavor.deps]]
+use = "BennyOe/tokyo-night"
+rev = "5f56364"
+hash = "c0bf69ad2c44005892d586e9693993c6"

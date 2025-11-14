@@ -1,0 +1,7 @@
+#!/bin/bash
+
+tmux kill-server
+killall node
+killall prettierd
+killall eslint_d
+

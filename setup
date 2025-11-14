@@ -1,0 +1,84 @@
+#!/bin/bash
+set -euo pipefail
+
+link() {
+  mkdir -p "$(dirname "$2")"
+  if [ -e "$2" ]; then
+    echo "Skipping $2, already exists."
+  else
+    ln -sf "$1" "$2"
+    echo "Linked $1 to $2"
+  fi
+}
+
+# bins
+link "$PWD"/bin ~/.bin
+
+if which tmux; then
+  link "$PWD"/tmux ~/.config/tmux
+
+  echo "Installing tmux plugin manager (TPM)..."
+  if [ ! -d ~/.config/tmux/plugins ]; then
+    mkdir -p ~/.config/tmux/plugins
+    git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm > /dev/null
+  fi
+
+  tmux source ~/.config/tmux/tmux.conf
+  "$HOME"/.config/tmux/plugins/tpm/bin/install_plugins
+fi
+
+#
+# shell
+link "$PWD"/fish/functions ~/.config/fish/functions
+link "$PWD"/fish/themes ~/.config/fish/themes
+link "$PWD"/fish/config.fish ~/.config/fish/config.fish
+
+# terms
+link "$PWD"/ghostty ~/.config/ghostty
+
+# neovim
+if which nvim; then
+  link "$PWD"/nvim ~/.config/nvim
+  nvim --headless "+Lazy! sync" +qa &>/dev/null
+fi
+
+# other apps
+link "$PWD"/git ~/.config/git
+link "$PWD"/gh/config.yml ~/.config/gh/config.yml
+link "$PWD"/gh-dash ~/.config/gh-dash
+link "$PWD"/fd/ignore ~/.config/fd/ignore
+link "$PWD"/direnv ~/.config/direnv
+link "$PWD"/aerospace ~/.config/aerospace
+link "$PWD"/atuin/config.toml ~/.config/atuin/config.toml
+link "$PWD"/btop ~/.config/btop
+link "$PWD"/lazygit ~/.config/lazygit
+link "$PWD"/process-compose ~/.config/process-compose
+link "$PWD"/raycast/scripts ~/.config/raycast/scripts
+link "$PWD"/sesh ~/.config/sesh
+link "$PWD"/starship/starship.toml ~/.config/starship.toml
+link "$PWD"/yazi ~/.config/yazi
+link "$PWD"/bat ~/.config/bat
+
+if [[ $OSTYPE == 'darwin'* ]]; then
+  brew bundle
+fi
+if ! which vtsls; then
+  npm install -g @vtsls/language-server
+fi
+
+
+# Fish setup
+if ! grep -q fish /etc/shells; then
+  echo "Adding $(which fish) to /etc/shells - will ask sudo password"
+  which fish | sudo tee -a /etc/shells
+fi
+if ! finger "$USER" | grep -q 'Shell: .*fish'; then
+  echo "Setting $(which fish) as the default shell - will ask user password"
+  chsh -s "$(which fish)"
+fi
+"$PWD"/scripts/setup.fish
+
+
+CODE="$HOME/code"
+mkdir -p "$CODE/personal"
+mkdir -p "$CODE/playground"

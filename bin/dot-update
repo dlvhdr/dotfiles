@@ -1,0 +1,8 @@
+#!/usr/bin/env fish
+
+cd $HOME/dotfiles/nix 
+brew update
+nix flake update --flake .
+fd .nix --exec update-nix-fetchgit
+dot-clean
+sudo dot-apply

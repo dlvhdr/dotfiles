@@ -49,7 +49,6 @@
       "hiddenbar"
       "homerow"
       "iina"
-      "kitty"
       "linearmouse"
       "notion"
       "notion-calendar"

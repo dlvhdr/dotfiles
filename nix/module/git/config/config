@@ -51,9 +51,6 @@
 
 [hooks]
 global = ~/.config/git/hooks
-; 🪲 dolev
-; 🪲 dolev
-; 🪲 dolev
 
 [help]
   ; Autocorrect mistyped commands.
@@ -251,3 +248,6 @@ global = ~/.config/git/hooks
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager

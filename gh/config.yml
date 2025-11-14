@@ -1,0 +1,12 @@
+aliases:
+  clean-branches: poi
+  co: pr checkout
+  vpr: pr view --web
+  vr: repo view --web
+browser: ''
+editor: nvim
+git_protocol: https
+http_unix_socket: ''
+pager: ''
+prompt: enabled
+version: '1'

@@ -1,0 +1,250 @@
+[user]
+  name = Dolev Hadar
+  email = dolevh@getport.io
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEZv/9yRxNDb/E/eyfJzNBeGbkIzTY191Enr9xbz+PCZ
+
+[includeIf "gitdir:~/dotfiles/"]
+  path = config-personal
+[includeIf "gitdir:~/code/personal/"]
+  path = config-personal
+
+
+# [url "git@github.com:"]
+#  insteadOf = https://github.com/
+
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[tag]
+	gpgsign = true
+
+[format]
+	signOff = false
+
+[pull]
+  ff = only
+  rebase = true
+
+[blame]
+  date = relative
+	coloring = highlightRecent
+
+[rebase]
+  updateRefs = true
+
+[push]
+  default = current
+  autoSetupRemote = true
+
+[core]
+  excludesfile = ~/.config/git/ignore
+  ignorecase = false
+  ; pager = delta
+
+[hooks]
+global = ~/.config/git/hooks
+
+[help]
+  ; Autocorrect mistyped commands.
+  autocorrect = 1
+
+[rerere]
+  ; Remember my merges
+  enabled = true
+
+[pager]
+  log = delta
+  reflog = delta
+  show = delta
+  difftool = true
+  branch = 
+	diff = diffnav
+
+[fetch]
+  prune = true
+
+[diff]
+  colorMoved = no
+  algorithm = histogram
+
+[branch]
+  sort = -committerdate
+
+[difftool]
+  tool = nvimdiff
+  prompt = false
+
+[difftool "vscode"]
+  cmd = "code --wait --diff $LOCAL $REMOTE"
+
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+; [interactive]
+;   diffFilter = diffnav --color-only
+
+[add.interactive]
+  useBuiltin = false ; required for git 2.37.0
+
+[merge]
+  tool = nvimdiff
+  conflictstyle = diff3
+
+[mergetool]
+  keepBackup = false
+
+[mergetool "nvimdiff"]
+  cmd = nvim -d $MERGED $LOCAL $BASE $REMOTE -c '$wincmd J' -c 'wincmd ='
+
+[mergetool "fugitive"]
+  cmd = nvim -f -c "Gvdiffsplit!" "$MERGED"
+  
+[advice]
+  statusHints = false
+
+[pull]
+  rebase = true
+
+[log]
+  decorate = auto
+  abbrevCommit = true
+  showSignature = false
+
+[alias]
+  aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+  commit = commit -s
+  s = !git checkout $(git remote show origin | awk '/HEAD branch/ {print $NF}') && git pull && git clean-branches
+  st = status
+  ca = !git add -A && git commit
+  c = commit -m
+  aa = add -A
+  amend-all = !git add -A && git commit --amend --no-verify
+  commit-all = !git add -A && git commit --no-verify
+  co = checkout
+  pr = !gh pr
+  prv = !gh pr view
+  prvw = !gh pr view -w
+  prs = !gh pr status
+  prls = !gh pr list --author=@me
+  l = !gt l
+  ls = !gt ls
+  stack = !gt stack
+  fix = !gt stack fix --rebase
+  nuke = clean -f -d
+  clean-branches = !git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+  update-master = !git checkout master && git pull --rebase && git merge origin/master --ff-only
+  sync = !gt sync
+  branches = branch --sort=-authordate
+  stashes = stash list
+  remotes = remote -v
+  conflicts = !git --no-pager diff --name-only --diff-filter=U | xargs grep -c '^=======$'
+  unstage = reset -q HEAD --
+  uncommit = reset --mixed HEAD~
+  master = !git checkout $(git remote show origin | awk '/HEAD branch/ {print $NF}')
+  main = master
+  rblame = !git blame -w -M -C -C -C
+  
+  ; Delete local branches that no longer exist on the remote
+  gone = !git fetch -p && git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+
+  ; Rebase interactive for all commits on feature branch
+  rebase-branch = !git rebase -i --onto master `git rev-parse --abbrev-ref HEAD`~1 
+
+  ; preferred git log view
+  lg = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) %C(white)%s%C(reset) %C(dim white)-%C(reset) %ar %C(dim white)<%an>%C(reset)%C(auto)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) %C(white)%s%C(reset) %C(dim white)-%C(reset) %ar %C(dim white)<%an>%C(reset)%C(auto)%d%C(reset)%n' --all --stat
+
+  ; review
+  review-base = !git merge-base HEAD \"${review_base:-origin/master}\"
+  files = !git diff --name-only $(git review-base)
+  stat = !git diff --stat $(git review-base)
+  pr-summary = !git log --reverse --format=\"- **%s** (%h)%n%n%w(74,2,2)%b\" \"${review_base:-origin/master}\"..HEAD
+  depgraph = !git madge image --webpack-config config/webpack.config.babel.js --basedir . --style solarized-dark src
+  review = !$EDITOR $(git files) +\"bufdo Gitsigns diffthis master\"
+	reviewone = !$EDITOR -p +\"tabdo Gdiff ${review_base:-origin/master}\" +\"let g:gitgutter_diff_base = '${review_base:-origin/master}'\"
+	reviewf = !$EDITOR -p $(git files | fzf -m --reverse --height 40%) +\"tabdo Gdiff ${review_base:-origin/master}\" +\"let g:gitgutter_diff_base = '${review_base:-origin/master}'\"
+	root = !git rev-parse --show-toplevel
+  yolo = !git commit -m "$(curl -s https://whatthecommit.com/index.txt)"
+
+[color]
+  pager = true
+  ui = true
+  status = auto
+  diff = false
+  branch = auto
+  showBranch = auto
+  interactive = auto
+  grep = auto
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red dim
+  header = dim white
+  branch = cyan
+  nobranch = red
+
+[color "branch"]
+  current = green bold
+  local = yellow dim
+  remote = blue
+
+[color "decorate"]
+  branch = blue
+  remoteBranch = magenta
+  tag = magenta
+  stash = cyan
+  HEAD = blue
+
+[color "interactive"]
+  prompt = red
+  header = red bold
+  error = red
+  help = black bold
+
+[color "blame"]
+    highlightRecent = 237, 20 month ago, 238, 19 month ago, 239, 18 month ago, 240, 17 month ago, 241, 16 month ago, 242, 15 month ago, 243, 14 month ago, 244, 13 month ago, 245, 12 month ago, 246, 11 month ago, 247, 10 month ago, 248, 9 month ago, 249, 8 month ago, 250, 7 month ago, 251, 6 month ago, 252, 5 month ago, 253, 4 month ago, 254, 3 month ago, 231, 2 month ago, 230, 1 month ago, 229, 3 weeks ago, 228, 2 weeks ago, 227, 1 week ago, 226
+
+[delta]
+  syntax-theme = tokyonight_night
+  dark = true
+  tabs = 2
+
+  file-style = omit
+  file-decoration-style = none
+
+  line-numbers-left-format = "{nm:>4} "
+  line-numbers-right-format = "│ {np:>4} "
+  line-numbers-left-style = white dim
+  line-numbers-right-style = "#1f2335" dim
+  line-numbers-zero-style = white dim
+  line-numbers-plus-style = white dim 
+  line-numbers-minus-style = white dim
+  line-numbers-zero-style = white dim
+
+  wrap-left-symbol = " "
+  wrap-right-symbol = " "
+  wrap-right-prefix-symbol = " "
+
+  plus-style = syntax "#152339"
+  plus-emph-style = syntax "#234E88"
+  minus-style = syntax "#2D1F1B"
+  minus-emph-style = syntax "#724022"
+
+  hunk-label = "  󰡏 "
+  hunk-header-line-number-style = "#10233A"
+  hunk-header-style = "#868E99"
+  hunk-header-file-style = "#868E99" dim
+  hunk-header-decoration-style = "#163050" ol ul
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+

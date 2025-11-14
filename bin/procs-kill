@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+
+procs "$1" --no-header | awk -F '│' '{printf $1}{printf "│"}{print $3}' | gum choose --no-limit | awk '{print $1}' | xargs kill -9

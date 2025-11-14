@@ -1,0 +1,24 @@
+#!/bin/bash
+
+source "$XDG_CONFIG_HOME"/tmux/utils.sh
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <file>"
+    exit 1
+fi
+
+file_to_edit="$1"
+
+nvim_pane_id=$(get_pane_id_by_command nvim)
+nvim_window_id=$(get_window_id_by_command nvim)
+echo "nvim_pane_id: $nvim_pane_id"
+echo "nvim_window_id: $nvim_window_id"
+echo "file_to_edit: $file_to_edit"
+
+if [ -z "$nvim_pane_id" ]; then
+    tmux new-window -n "nvim" "nvim ${file_to_edit}"
+else
+    tmux select-window -t "$nvim_window_id"
+    tmux select-pane -t "$nvim_pane_id"
+    tmux send-keys ":edit ${file_to_edit}" Enter
+fi

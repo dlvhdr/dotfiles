@@ -1,0 +1,4 @@
+#!/bin/bash
+# quick-diff between two buffers
+
+nvim --cmd "set number" --cmd "set relativenumber" --cmd enew --cmd vsplit --cmd enew --cmd "windo diffthis" -o 2

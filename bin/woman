@@ -1,0 +1,4 @@
+#!/bin/bash
+
+CMD=$(gum input --placeholder="command")
+tmux new-window man "$CMD"

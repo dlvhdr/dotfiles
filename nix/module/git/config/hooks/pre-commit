@@ -1,5 +1,5 @@
 #!/bin/sh
-if git grep --fixed-strings --line-number "🪲 dolev" .; then
+if git grep --fixed-strings --line-number "[🪲 dlv]" .; then
   echo
   echo "nvim-chainsaw marker found. Aborting commit."
   exit 1

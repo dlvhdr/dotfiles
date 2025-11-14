@@ -1,0 +1,11 @@
+dialect = "uk"
+inline_height = 16
+invert = true
+scroll_context_lines = 3
+show_help = false
+style = "compact"
+
+[keymap_cursor]
+emacs = "blink-bar"
+vim_insert = "blink-bar"
+vim_normal = "blink-block"
