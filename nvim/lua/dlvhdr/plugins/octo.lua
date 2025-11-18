@@ -12,6 +12,7 @@ return {
     vim.treesitter.language.register("markdown", "octo")
 
     octo.setup({
+      picker = "snacks",
       enable_builtin = true,
       mappings = {
         issue = {

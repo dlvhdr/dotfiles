@@ -1,0 +1,5 @@
+theme: Default
+sort:
+    by: NAME
+    isReversed: false
+disable_exit_confirmation: false

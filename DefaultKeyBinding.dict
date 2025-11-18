@@ -1,0 +1,12 @@
+// Set a binding for repeating action (e.g.: opt-r, 5, right arrow)
+// $ defaults write -g NSRepeatCountBinding -string "~r"
+{
+  // delete word before cursor
+  "^w" = (deleteWordBackward:);
+  // delete to beginning of paragraph (if this isn't already defined?)
+  "^u" = (deleteToBeginningOfParagraph:);
+  // select to beginning of paragraph and copy
+  "^A" = (moveToBeginningOfParagraphAndModifySelection:, copy:);
+  // select to end of paragraph and copy
+  "^E" = (moveToEndOfParagraphAndModifySelection:, copy:);
+}

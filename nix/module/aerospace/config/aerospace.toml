@@ -102,7 +102,7 @@ alt-shift-minus = 'resize smart -50'
 alt-shift-equal = 'resize smart +50'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-alt-c = 'exec-and-forget open -b company.thebrowser.Browser'
+alt-c = 'exec-and-forget open -b net.imput.helium'
 # alt-c = 'exec-and-forget open -b app.zen-browser.zen'
 alt-d = 'exec-and-forget open -b org.mozilla.firefox'
 # alt-e = 'exec-and-forget kitty fish -c yazi (tmux display-message -p "#{current_dir}")'
@@ -185,7 +185,7 @@ if.app-id = 'com.mitchellh.ghostty'
 run = ['layout tiling', 'move-node-to-workspace I']
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'
+if.app-id = 'net.imput.helium'
 # if.app-id = 'app.zen-browser.zen'
 run = ['layout tiling', 'move-node-to-workspace C']
 

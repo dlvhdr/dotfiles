@@ -31,6 +31,11 @@ set -gx GUM_FILTER_PROMPT " "
 
 alias cd="z"
 
+set -gx FZF_DEFAULT_OPTS "--layout=reverse --gutter=' ' --border rounded --no-info --pointer='' --marker=' ' --ansi --height=20% --color='16,bg+:-1,gutter:-1,prompt:5,pointer:5,marker:6,border:4,label:4,header:italic'"
+set -gx FZF_COMPLETION_OPTS "--nth=4.. --preview='' --border-label=' history ' --prompt='  '"
+tmux set-environment -g FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS
+tmux set-environment -g FZF_COMPLETION_OPTS $FZF_COMPLETION_OPTS
+
 # scary
 abbr --add rm "rm -i"
 abbr --add mv "mv -i"
@@ -192,11 +197,6 @@ status is-interactive; and begin
     set __done_notification_command 'terminal-notifier -title \\\$title -message \\\$message'
 
     zoxide init fish | source
-
-    if test "$TERM" != dumb
-        starship init fish | source
-
-    end
-
+    starship init fish | source
     direnv hook fish | source
 end

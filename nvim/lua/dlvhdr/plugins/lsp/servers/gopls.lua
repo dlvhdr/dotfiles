@@ -1,35 +1,14 @@
-local util = require("lspconfig.util")
-
 local M = {}
 
 M.setup = function(opts)
-  require("lspconfig").gopls.setup({
-    cmd = { "gopls", "serve" },
-    cmd_env = { GOFUMPT_SPLIT_LONG_LINES = "on" },
+  vim.lsp.config("gopls", {
+    -- change to LspAttach autocmd
     on_attach = opts.on_attach,
+    -- use opts.servers['*'].capabilities = vim.tbl_deep_extend('force', opts.servers['*'].capabilities or {}, capabilities)
+    -- https://github.com/LazyVim/LazyVim/blob/c64a61734fc9d45470a72603395c02137802bc6f/lua/lazyvim/plugins/lsp/init.lua#L213
     capabilities = opts.capabilities,
-    document_highlight = { enabled = false },
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-    flags = {
-      debounce_text_changes = 150,
-    },
-    settings = {
-      gopls = {
-        gofumpt = true,
-        analyses = {
-          nilness = true,
-          unusedparams = true,
-          unusedwrite = true,
-          useany = true,
-        },
-        usePlaceholders = true,
-        completeUnimported = true,
-        directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-vendor" },
-        semanticTokens = true,
-      },
-    },
   })
+  vim.lsp.enable("gopls")
 end
 
 vim.api.nvim_create_autocmd("BufWritePre", {

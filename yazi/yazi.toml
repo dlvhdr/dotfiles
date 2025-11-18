@@ -14,7 +14,7 @@ ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
-	{ run = '/etc/profiles/per-user/dlvhdr/bin/nvim "$@"', block = true, for = "unix" },
+	{ run = 'nvim "$@"', block = true, for = "unix" },
 ]
 open = [
 	{ run = 'open "$@"', desc = "Open" },

@@ -59,7 +59,7 @@ return {
         end,
       },
       {
-        "luckasRanarison/tailwind-tools.nvim",
+        "garrett-hopper/tailwind-tools.nvim",
         event = "LspAttach",
         name = "tailwind-tools",
         build = ":UpdateRemotePlugins",

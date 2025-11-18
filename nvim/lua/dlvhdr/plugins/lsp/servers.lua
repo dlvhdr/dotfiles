@@ -1,6 +1,8 @@
 local M = {}
 
 M.setup = function()
+  vim.lsp.enable("gopls")
+
   local handlers = require("dlvhdr.plugins.lsp.handlers")
   local lspconfig = require("lspconfig")
 

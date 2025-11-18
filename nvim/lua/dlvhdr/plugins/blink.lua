@@ -59,7 +59,8 @@ return {
         end,
       },
       {
-        "luckasRanarison/tailwind-tools.nvim",
+        "garrett-hopper/tailwind-tools.nvim",
+        branch = "vim-lsp-api",
         event = "LspAttach",
         name = "tailwind-tools",
         build = ":UpdateRemotePlugins",
@@ -68,6 +69,7 @@ return {
           "nvim-telescope/telescope.nvim",
           "neovim/nvim-lspconfig",
         },
+        ft = { "html", "css", "javascriptreact", "typescriptreact" },
         opts = {}, -- your configuration
       },
       -- "onsails/lspkind-nvim",

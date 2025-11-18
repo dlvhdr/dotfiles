@@ -27,6 +27,8 @@ M.config = function()
       "typescript",
       "javascript",
       "html",
+      "http",
+      "graphql",
       "css",
       "json",
       "yaml",
