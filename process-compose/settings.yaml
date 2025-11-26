@@ -1,5 +1,5 @@
-theme: Default
+theme: Custom Style
 sort:
-    by: NAME
-    isReversed: false
+  by: NAMESPACE
+  isReversed: false
 disable_exit_confirmation: false

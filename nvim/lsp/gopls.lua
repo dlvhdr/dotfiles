@@ -1,3 +1,4 @@
+-- Install with: `brew install gopls`
 return {
   cmd = { "gopls", "serve" },
   cmd_env = { GOFUMPT_SPLIT_LONG_LINES = "on" },

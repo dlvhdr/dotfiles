@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://dlvhdr.github.io/gh-dash/configuration/gh-dash/schema.json
+# yaml-language-server: $schema=https://gh-dash.dev/schema.json
 prSections:
   - title: Mine
     filters: is:open -org:Port-labs author:@me -repo:microsoft/vscode

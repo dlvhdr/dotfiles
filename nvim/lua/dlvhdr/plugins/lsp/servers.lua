@@ -1,36 +1,64 @@
 local M = {}
 
 M.setup = function()
-  vim.lsp.enable("gopls")
-
   local handlers = require("dlvhdr.plugins.lsp.handlers")
-  local lspconfig = require("lspconfig")
 
   local opts = {
     on_attach = handlers.on_attach,
     capabilities = handlers.capabilities(),
   }
 
-  -- lspconfig.denols.setup({
-  --   on_attach = opts.on_attach,
-  --   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-  -- })
-  lspconfig.html.setup(opts)
   require("dlvhdr.plugins.lsp.servers.vtsls").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.jsonls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.none-ls").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.gopls").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.lua_ls").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.docker-langserver").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.yamlls").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.pyright").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.helm-ls").setup()
-  require("dlvhdr.plugins.lsp.servers.bashls").setup()
-  require("dlvhdr.plugins.lsp.servers.nixd").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.harper_ls").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.astro").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.kulala_ls").setup(opts)
-  vim.lsp.enable("prismals")
+  vim.lsp.enable("kulala_ls") -- brew install kulala-ls
+  -- vim.lsp.enable("vtsls")
+  vim.lsp.enable("astro")
+  vim.lsp.enable("pyright")
+  vim.lsp.enable("dockerls") -- npm install -g dockerfile-language-server-nodejs
+  vim.lsp.enable("lua_ls") -- brew install lua-language-server
+  vim.lsp.enable("jsonls") -- brew install vscode-langservers-extracted
+  vim.lsp.enable("yamlls") -- npm i -g add yaml-language-server
+  vim.lsp.enable("prismals") -- npm install -g @prisma/language-server
+  vim.lsp.enable("html") -- brew install vscode-langservers-extracted
+  vim.lsp.enable("gopls") -- brew install gopls
+  vim.lsp.enable("bashls") -- npm i -g bash-language-server
+  vim.lsp.enable("helm_ls") -- brew install helm-ls
+  vim.lsp.enable("harper_ls")
+  -- vim.lsp.enable("denols")
+  -- require("dlvhdr.plugins.lsp.servers.nixd").setup(opts)
+
+  vim.lsp.config("*", {
+    capabilities = handlers.capabilities(),
+  })
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+    callback = function(event)
+      local client = vim.lsp.get_client_by_id(event.data.client_id)
+      handlers.on_attach(client, event.buf)
+
+      if client ~= nil and client.name == "gopls" then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = { "*.go" },
+          callback = function()
+            local params = vim.lsp.util.make_range_params(nil, "utf-16")
+            ---@diagnostic disable-next-line: inject-field
+            params.context = { only = { "source.organizeImports" } }
+            local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+            for _, res in pairs(result or {}) do
+              for _, r in pairs(res.result or {}) do
+                if r.edit then
+                  vim.lsp.util.apply_workspace_edit(r.edit, "utf-16")
+                else
+                  vim.lsp.buf.execute_command(r.command)
+                end
+              end
+            end
+          end,
+        })
+      end
+    end,
+  })
 end
 
 return M
