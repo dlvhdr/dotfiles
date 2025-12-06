@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-echo "Starting bwatch..."
-tmux send-keys -t 2 C-c
-sleep 0.5
-tmux send-keys -t 2 clear C-m
-sleep 0.2
-tmux send-keys -t 2 "go run ." C-m
-sleep 0.2
