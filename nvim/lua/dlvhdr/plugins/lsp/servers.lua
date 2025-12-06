@@ -8,10 +8,10 @@ M.setup = function()
     capabilities = handlers.capabilities(),
   }
 
-  require("dlvhdr.plugins.lsp.servers.vtsls").setup(opts)
+  -- require("dlvhdr.plugins.lsp.servers.vtsls").setup(opts)
   require("dlvhdr.plugins.lsp.servers.none-ls").setup(opts)
   vim.lsp.enable("kulala_ls") -- brew install kulala-ls
-  -- vim.lsp.enable("vtsls")
+  vim.lsp.enable("vtsls")
   vim.lsp.enable("astro")
   vim.lsp.enable("pyright")
   vim.lsp.enable("dockerls") -- npm install -g dockerfile-language-server-nodejs
@@ -24,6 +24,7 @@ M.setup = function()
   vim.lsp.enable("bashls") -- npm i -g bash-language-server
   vim.lsp.enable("helm_ls") -- brew install helm-ls
   vim.lsp.enable("harper_ls")
+  vim.lsp.enable("tailwindcss")
   -- vim.lsp.enable("denols")
   -- require("dlvhdr.plugins.lsp.servers.nixd").setup(opts)
 

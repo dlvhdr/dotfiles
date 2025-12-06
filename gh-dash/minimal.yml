@@ -19,6 +19,8 @@ defaults:
         width: 5
       repo:
         width: 15
+      numComments:
+        hidden: true
     issues:
       updatedAt:
         width: 5
@@ -32,16 +34,20 @@ repoPaths: {}
 pager:
   diff: delta
 theme:
+  ui:
+    sectionsShowCount: true
+    table:
+      compact: false
   colors:
     text:
       primary: "#E2E1ED"
       secondary: "#666CA6"
       inverted: "#242347"
-      faint: "#b0b3bf"
-      warning: "#F23D5C"
+      faint: "#B0B3BF"
+      warning: "#E0AF68"
       success: "#3DF294"
     background:
-      selected: "#39386b"
+      selected: "#1B1B33"
     border:
       primary: "#383B5B"
       secondary: "#39386B"

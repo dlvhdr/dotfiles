@@ -14,6 +14,11 @@ return {
   "mfussenegger/nvim-dap",
   dependencies = {
     {
+      "microsoft/vscode-js-debug",
+      version = "1.x",
+      build = "npm i && npm run compile dapDebugServer && mv dist out",
+    },
+    {
       "theHamsta/nvim-dap-virtual-text",
       config = function()
         require("nvim-dap-virtual-text").setup({})
@@ -94,9 +99,27 @@ return {
             host = "localhost",
             port = "${port}",
             executable = {
-              command = vim.fn.exepath("js-debug"),
+              command = "node",
               args = {
+                vim.fn.stdpath("data") .. "/lazy/vscode-js-debug/dist/src/dapDebugServer.js",
                 "${port}",
+                "localhost",
+              },
+            },
+          }
+        end
+
+        if not dap.adapters["node-terminal"] then
+          require("dap").adapters["node-terminal"] = {
+            type = "server",
+            host = "localhost",
+            port = "${port}",
+            executable = {
+              command = "node",
+              args = {
+                vim.fn.stdpath("data") .. "/lazy/vscode-js-debug/dist/src/dapDebugServer.js",
+                "${port}",
+                "localhost",
               },
             },
           }
@@ -116,7 +139,12 @@ return {
           end
         end
 
-        for _, language in ipairs({ "typescript", "javascript", "typescriptreact", "javascriptreact" }) do
+        local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
+        local vscode = require("dap.ext.vscode")
+        vscode.type_to_filetypes["node"] = js_filetypes
+        vscode.type_to_filetypes["pwa-node"] = js_filetypes
+
+        for _, language in ipairs(js_filetypes) do
           if not dap.configurations[language] then
             dap.configurations[language] = {
               {
@@ -196,43 +224,43 @@ return {
         { "<leader>dt", function() require('dap-go').debug_test() end, desc = "Debug Test" },
       },
     },
-    {
-      "mfussenegger/nvim-dap-python",
-      enabled = true,
-      ft = "python",
-      config = function()
-        local debugpy_path = require("mason-registry").get_package("debugpy"):get_install_path()
-        local dap_python = require("dap-python")
-        dap_python.setup(debugpy_path .. "/venv/bin/python")
-        dap_python.test_runner = "pytest"
-        dap_python.resolve_python = function()
-          return "/Users/dlvhdr/code/personal/sponsors/.venv/bin/python"
-        end
-        -- table.insert(require("dap").configurations.python, {
-        --   type = "python",
-        --   request = "launch",
-        --   name = "Test: Brain",
-        --   module = "pytest",
-        --   -- args = {
-        --   --   "<path/to/test>",
-        --   --   "-k",
-        --   --   "<name of test function>",
-        --   -- },
-        --   env = {
-        --     PYTHONPATH = "/Users/dlvhdr/code/komodor/mono/services/brain/../",
-        --   },
-        -- })
-        -- table.insert(require("dap").configurations.python, {
-        --   type = "python",
-        --   request = "launch",
-        --   name = "Run: Brain",
-        --   module = "brain.consumer",
-        --   env = {
-        --     PYTHONPATH = "/Users/dlvhdr/code/komodor/mono/services/brain/../",
-        --   },
-        -- })
-      end,
-    },
+    -- {
+    --   "mfussenegger/nvim-dap-python",
+    --   enabled = true,
+    --   ft = "python",
+    --   config = function()
+    --     local debugpy_path = require("mason-registry").get_package("debugpy"):get_install_path()
+    --     local dap_python = require("dap-python")
+    --     dap_python.setup(debugpy_path .. "/venv/bin/python")
+    --     dap_python.test_runner = "pytest"
+    --     dap_python.resolve_python = function()
+    --       return "/Users/dlvhdr/code/personal/sponsors/.venv/bin/python"
+    --     end
+    --     -- table.insert(require("dap").configurations.python, {
+    --     --   type = "python",
+    --     --   request = "launch",
+    --     --   name = "Test: Brain",
+    --     --   module = "pytest",
+    --     --   -- args = {
+    --     --   --   "<path/to/test>",
+    --     --   --   "-k",
+    --     --   --   "<name of test function>",
+    --     --   -- },
+    --     --   env = {
+    --     --     PYTHONPATH = "/Users/dlvhdr/code/komodor/mono/services/brain/../",
+    --     --   },
+    --     -- })
+    --     -- table.insert(require("dap").configurations.python, {
+    --     --   type = "python",
+    --     --   request = "launch",
+    --     --   name = "Run: Brain",
+    --     --   module = "brain.consumer",
+    --     --   env = {
+    --     --     PYTHONPATH = "/Users/dlvhdr/code/komodor/mono/services/brain/../",
+    --     --   },
+    --     -- })
+    --   end,
+    -- },
   },
   -- stylua: ignore
   keys = {

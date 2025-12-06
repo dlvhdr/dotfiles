@@ -23,6 +23,11 @@ use = "wekauwau/yatline-modified-time"
 rev = "2d33471"
 hash = "8fa6028ef832b34cf32f4ee43cb0ae35"
 
+[[plugin.deps]]
+use = "Gallardo994/clippy"
+rev = "8ce5541"
+hash = "977c6f4ffceada33ced20d941f1defab"
+
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"
 rev = "5f56364"

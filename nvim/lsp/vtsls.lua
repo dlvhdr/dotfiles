@@ -1,36 +1,44 @@
-local util = require("lspconfig.util")
-
 return {
-  root_dir = function(bufnr, on_dir)
-    local file = vim.api.nvim_buf_get_name(bufnr)
-    local found = vim.fs.dirname(vim.fs.find(".git", { path = file, upward = true })[1])
-      or util.root_pattern(".git", "package.json", "tsconfig.json")(file)
-    on_dir(found)
-  end,
   settings = {
     complete_function_calls = true,
     vtsls = {
       enableMoveToFileCodeAction = true,
       autoUseWorkspaceTsdk = true,
       experimental = {
-        completion = { enableServerSideFuzzyMatch = true },
+        completion = {
+          enableServerSideFuzzyMatch = false,
+        },
       },
     },
     typescript = {
-      updateImportsOnFileMove = "always",
-      suggest = { completeFunctionCalls = true },
-      inlayHints = {
-        enumMemberValues = { enabled = true },
-        functionLikeReturnTypes = { enabled = true },
-        parameterNames = { enabled = "literals" },
-        parameterTypes = { enabled = true },
-        propertyDeclarationTypes = { enabled = true },
-        variableTypes = { enabled = false },
+      tsserver = {
+        maxTsServerMemory = 8192,
+        nodePath = "node",
+      },
+      preferences = {
+        autoImportFileExcludePatterns = {
+          "**/lodash/**",
+          "**/process/**",
+          "**/events/**",
+          "date-fns",
+          "date-fns/esm",
+        },
+      },
+      updateImportsOnFileMove = { enabled = "always" },
+      suggest = {
+        completeFunctionCalls = true,
       },
     },
-    referencesCodeLens = {
-      showOnAllFunctions = true,
-      enabled = true,
+    javascript = {
+      tsserver = {
+        maxTsServerMemory = 8192,
+        nodePath = "node",
+      },
+      updateImportsOnFileMove = { enabled = "always" },
+      suggest = {
+        completeFunctionCalls = true,
+      },
     },
   },
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 }

@@ -1,15 +1,13 @@
 return {
   "neovim/nvim-lspconfig",
-  -- event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     { "saghen/blink.cmp", event = { "InsertEnter", "CmdlineEnter" } },
-    -- { "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
     { "b0o/schemastore.nvim", event = "InsertEnter" },
     "nvimtools/none-ls.nvim",
     { "williamboman/mason.nvim", cmd = { "Mason", "MasonUpdate" }, enabled = false },
     "nvimtools/none-ls-extras.nvim",
-    { "yioneko/nvim-vtsls", ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" } },
+    -- { "yioneko/nvim-vtsls", ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" } },
     {
       "youyoumu/pretty-ts-errors.nvim",
       ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },

@@ -473,6 +473,15 @@ return {
       "<leader>fb",
       function()
         Snacks.picker.buffers({
+          win = {
+            input = {
+              keys = {
+                ["dd"] = "bufdelete",
+                ["<c-d>"] = { "bufdelete", mode = { "n", "i" } },
+              },
+            },
+            list = { keys = { ["dd"] = "bufdelete" } },
+          },
           formatters = {
             file = {
               filename_first = true,

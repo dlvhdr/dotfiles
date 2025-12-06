@@ -149,6 +149,13 @@ M.config = function()
       hl["FFFGitDeleted"] = { fg = c.orange }
       hl["FFFGitModified"] = { fg = "#152339" }
       hl["FFFGitSignDeleted"] = { fg = c.orange }
+
+      -- Winbar styling.
+      hl["WinBar"] = { fg = c.comment, bg = "NONE" }
+      hl["WinBarNC"] = { fg = c.fg, bg = "NONE" }
+      hl["WinBarDir"] = { fg = c.fg, bg = "NONE", bold = true }
+      hl["WinBarSeparator"] = { fg = c.bg, bg = "NONE" }
+      hl["WinbarFilename"] = { fg = c.fg, bg = "NONE", bold = true }
     end,
   })
 

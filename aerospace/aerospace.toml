@@ -105,7 +105,6 @@ alt-shift-equal = 'resize smart +50'
 alt-c = 'exec-and-forget open -b net.imput.helium'
 # alt-c = 'exec-and-forget open -b app.zen-browser.zen'
 alt-d = 'exec-and-forget open -b org.mozilla.firefox'
-# alt-e = 'exec-and-forget kitty fish -c yazi (tmux display-message -p "#{current_dir}")'
 alt-e = 'exec-and-forget open -b net.kovidgoyal.kitty --args --title="yazi" -o hide_window_decorations=no -o active_border_color=#ff0000 -o background=#000000 -o background_opacity=1 --directory $(tmux display-message -p "#{pane_current_path}") yazi'
 alt-f = 'exec-and-forget open -b com.figma.Desktop'
 # alt-i = 'exec-and-forget open -b net.kovidgoyal.kitty'
@@ -238,9 +237,9 @@ if.app-name-regex-substring = 'mpv'
 check-further-callbacks = true
 run = ['layout floating']  
 
-[[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
-run = ['layout floating']
+# [[on-window-detected]]
+# if.app-id = 'net.kovidgoyal.kitty'
+# run = ['layout floating']
 
 [[on-window-detected]]
 if.app-name-regex-substring = '^.*$'

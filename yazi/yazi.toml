@@ -19,3 +19,4 @@ edit = [
 open = [
 	{ run = 'open "$@"', desc = "Open" },
 ]
+

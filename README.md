@@ -1,6 +1,6 @@
 🏠 dlvhdr's dotfiles
 
-💿 Nix | 👻 Ghostty | 🖥 tmux | ✍️ Neovim
+👻 Ghostty | 🖥 tmux | ✍️ Neovim
 
 ![screenshot of setup](https://github.com/dlvhdr/dotfiles/assets/6196971/6f2e479b-e8e8-414c-a763-2a1e5db754f8)
 
@@ -24,33 +24,11 @@
 - **Snippets:** LuaSnip
 - Other goodies...
 
-## Getting Started
+## Setup
 
-First:
-
-```bash
-# 1. Install nix
-sh <(curl -L https://nixos.org/nix/install)
-# 2. Add to fish path
-fish_add_path -p /run/current-system/sw/bin
-# 3. Install nix-darwin
-nix run nix-darwin -- switch --flake ~/.config/nix-darwin
-# 4. Clone this repo
-git clone https://github.com/dlvhdr/dotfiles.git
-# 5. Switch
-darwin-rebuild switch --flake ~/dotfiles/nix#aarch64
-```
-
-Then:
-
-6. Login to 1Password and enable the SSH Agent under "Developer"
-7. Start Raycast and import settings under `dotfiles/nix/module/raycast/backups` (the password is in 1Password under www.raycast.com -> Backup Password)
-
-## Migration to Nix TODO
-
-- [ ] Install gh-dash extension
-- [ ] Figure out how to update tmux plugins
-- [ ] Figure out how to manage Neovim plugins
+1. Run `./setup`
+2. Login to 1Password and enable the SSH Agent under "Developer"
+3. Start Raycast and import settings under `dotfiles/raycast/backups` (the password is in 1Password under www.raycast.com -> Backup Password)
 
 ---
 

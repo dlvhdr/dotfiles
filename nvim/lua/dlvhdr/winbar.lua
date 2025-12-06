@@ -1,0 +1,96 @@
+local M = {}
+
+local function color(highlight_group, content)
+  return "%#" .. highlight_group .. "#" .. content .. "%*"
+end
+
+--- Window bar that shows the current filepath (in a fancy way).
+---@return string
+function M.render()
+  -- Get the path and expand variables.
+  local path = vim.fs.normalize(vim.fn.expand("%:p") --[[@as string]])
+
+  -- No special styling for diff views.
+  if vim.startswith(path, "diffview") then
+    return string.format("%%#Winbar#%s", path)
+  end
+
+  -- Replace slashes by arrows.
+  local separator = " %#WinbarSeparator# "
+
+  local prefix, prefix_path = "", ""
+
+  -- If the window gets too narrow, shorten the path and drop the prefix.
+  if vim.api.nvim_win_get_width(0) < math.floor(vim.o.columns / 3) then
+    path = vim.fn.pathshorten(path)
+  else
+    -- For some special folders, add a prefix instead of the full path (making
+    -- sure to pick the longest prefix).
+    ---@type table<string, string>
+    local special_dirs = {
+      personal = vim.g.projects_dir,
+      config = vim.env.XDG_CONFIG_HOME,
+      dotfiles = vim.env.HOME .. "/dotfiles",
+      port = vim.g.work_projects_dir,
+      ["~"] = vim.env.HOME,
+    }
+    for dir_name, dir_path in pairs(special_dirs) do
+      if vim.startswith(path, vim.fs.normalize(dir_path)) and #dir_path > #prefix_path then
+        prefix, prefix_path = dir_name, dir_path
+      end
+    end
+    if prefix ~= "" then
+      path = path:gsub("^" .. vim.pesc(prefix_path), "")
+      prefix = string.format("%%#WinBarDir#%s%s", prefix, separator)
+    end
+  end
+
+  -- Remove leading slash.
+  path = path:gsub("^/", "")
+  local split = vim.split(path, "/")
+
+  return table.concat({
+    prefix,
+    table.concat(
+      vim
+        .iter(ipairs(split))
+        :map(function(i, segment)
+          if i == #split then
+            local modified = ""
+            if segment ~= "" and vim.api.nvim_get_option_value("modified", { buf = 0 }) then
+              modified = color("WarningMsg", "●")
+            end
+
+            local file_name = vim.fn.fnamemodify(segment, ":t")
+            local extension = vim.fn.expand("#" .. 0 .. ":e")
+            local icon, devicon_color = require("nvim-web-devicons").get_icon_color(file_name, extension)
+            vim.api.nvim_set_hl(0, "WinbarFileIcon", { fg = devicon_color, bg = "NONE" })
+            if modified ~= "" then
+              icon = modified
+            end
+            return color("WinbarFileIcon", icon or "") .. " " .. string.format("%%#WinbarFilename#%s", segment)
+          end
+          return string.format("%%#Winbar#%s", segment)
+        end)
+        :totable(),
+      separator
+    ),
+  })
+end
+
+vim.api.nvim_create_autocmd({ "BufWinEnter", "TextChanged", "TextChangedI" }, {
+  group = vim.api.nvim_create_augroup("dlvhdr/winbar", { clear = true }),
+  desc = "Attach winbar",
+  callback = function(args)
+    if
+      not vim.api.nvim_win_get_config(0).zindex -- Not a floating window
+      and vim.bo[args.buf].buftype == "" -- Normal buffer
+      and vim.api.nvim_buf_get_name(args.buf) ~= "" -- Has a file name
+      and not vim.wo[0].diff -- Not in diff mode
+    then
+      vim.wo.winbar = "%{%v:lua.require'dlvhdr.winbar'.render()%}"
+    end
+  end,
+})
+
+return M
