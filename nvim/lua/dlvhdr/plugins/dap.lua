@@ -74,8 +74,6 @@ return {
         },
       },
       config = function(_, opts)
-        -- setup dap config by VsCode launch.json file
-        -- require("dap.ext.vscode").load_launchjs()
         local dap = require("dap")
         local dapui = require("dapui")
         dapui.setup(opts)
@@ -147,46 +145,46 @@ return {
         for _, language in ipairs(js_filetypes) do
           if not dap.configurations[language] then
             dap.configurations[language] = {
-              {
-                type = "pwa-node",
-                request = "launch",
-                name = "Launch file",
-                program = "${file}",
-                cwd = "${workspaceFolder}",
-              },
-              {
-                type = "pwa-node",
-                request = "launch",
-                name = "[Vitest] Debug Current Test File",
-                autoAttachChildProcesses = true,
-                skipFiles = { "<node_internals>/**", "**/node_modules/**" },
-                cwd = "${workspaceFolder}",
-                program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
-                args = { "run", "${file}" },
-                smartStep = true,
-                console = "integratedTerminal",
-              },
-              {
-                type = "pwa-node",
-                request = "launch",
-                name = "[Jest] Debug Current Test File",
-                cwd = vim.fn.getcwd(),
-                sourceMaps = true,
-                runtimeArgs = {
-                  "--inspect-brk",
-                  "./node_modules/jest/bin/jest.js",
-                },
-                args = { "${file}", "-c", "./e2e/backend/jest.config.ts", "--runInBand" },
-                console = "integratedTerminal",
-                internalConsoleOptions = "neverOpen",
-              },
-              {
-                type = "pwa-node",
-                request = "attach",
-                name = "Attach To Process",
-                processId = require("dap.utils").pick_process,
-                cwd = "${workspaceFolder}",
-              },
+              -- {
+              --   type = "pwa-node",
+              --   request = "launch",
+              --   name = "Launch file",
+              --   program = "${file}",
+              --   cwd = "${workspaceFolder}",
+              -- },
+              -- {
+              --   type = "pwa-node",
+              --   request = "launch",
+              --   name = "[Vitest] Debug Current Test File",
+              --   autoAttachChildProcesses = true,
+              --   skipFiles = { "<node_internals>/**", "**/node_modules/**" },
+              --   cwd = "${workspaceFolder}",
+              --   program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+              --   args = { "run", "${file}" },
+              --   smartStep = true,
+              --   console = "integratedTerminal",
+              -- },
+              -- {
+              --   type = "pwa-node",
+              --   request = "launch",
+              --   name = "[Jest] Debug Current Test File",
+              --   cwd = vim.fn.getcwd(),
+              --   sourceMaps = true,
+              --   runtimeArgs = {
+              --     "--inspect-brk",
+              --     "./node_modules/jest/bin/jest.js",
+              --   },
+              --   args = { "${file}", "-c", "./e2e/backend/jest.config.ts", "--runInBand" },
+              --   console = "integratedTerminal",
+              --   internalConsoleOptions = "neverOpen",
+              -- },
+              -- {
+              --   type = "pwa-node",
+              --   request = "attach",
+              --   name = "Attach To Process",
+              --   processId = require("dap.utils").pick_process,
+              --   cwd = "${workspaceFolder}",
+              -- },
             }
           end
         end

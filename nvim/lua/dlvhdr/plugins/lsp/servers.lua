@@ -23,6 +23,7 @@ M.setup = function()
   vim.lsp.enable("gopls") -- brew install gopls
   vim.lsp.enable("bashls") -- npm i -g bash-language-server
   vim.lsp.enable("helm_ls") -- brew install helm-ls
+  vim.lsp.config("harper_ls", { filetypes = { "markdown" } })
   vim.lsp.enable("harper_ls")
   vim.lsp.enable("tailwindcss")
   -- vim.lsp.enable("denols")

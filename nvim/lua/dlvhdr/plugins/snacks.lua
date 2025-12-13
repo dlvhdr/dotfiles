@@ -421,6 +421,7 @@ return {
             },
           },
           regex = false,
+          hidden = true,
           args = {
             "-g",
             "!{node_modules,.git,.direnv,dist}/",

@@ -35,14 +35,14 @@ local function finder(opts, ctx)
     if current_buf and vim.api.nvim_buf_is_valid(current_buf) then
       local current_file = vim.api.nvim_buf_get_name(current_buf)
       if current_file ~= "" and vim.fn.filereadable(current_file) == 1 then
-        M.state.current_file_cache = current_file
+        M.state.current_file_cache = vim.fn.fnamemodify(current_file, ":.")
       else
         M.state.current_file_cache = nil
       end
     end
   end
 
-  local fff_result = file_picker.search_files(ctx.filter.search, 100, 4, M.state.current_file_cache, false)
+  local fff_result = file_picker.search_files(ctx.filter.search, M.state.current_file_cache, 100, 4, false)
 
   ---@type snacks.picker.finder.Item[]
   local items = {}
