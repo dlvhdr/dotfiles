@@ -424,7 +424,7 @@ return {
           hidden = true,
           args = {
             "-g",
-            "!{node_modules,.git,.direnv,dist}/",
+            "!{node_modules,.git,.direnv,dist,third-party}/",
             "-g",
             "!tsconfig.tsbuildinfo",
             "-g",

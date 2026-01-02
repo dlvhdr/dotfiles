@@ -4,6 +4,7 @@ return {
     "nvim-treesitter",
     "folke/tokyonight.nvim",
     "folke/which-key.nvim",
+    "nvim-lua/plenary.nvim",
   },
   cmd = "Octo",
   config = function()

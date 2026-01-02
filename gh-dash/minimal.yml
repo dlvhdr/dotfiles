@@ -20,7 +20,7 @@ defaults:
       repo:
         width: 15
       numComments:
-        hidden: true
+        hidden: false
     issues:
       updatedAt:
         width: 5
@@ -37,7 +37,7 @@ theme:
   ui:
     sectionsShowCount: true
     table:
-      compact: false
+      compact: true
   colors:
     text:
       primary: "#E2E1ED"
