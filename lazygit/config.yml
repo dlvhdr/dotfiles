@@ -98,7 +98,7 @@ customCommands:
     context: "localBranches"
     loadingText: "opening github..."
   - key: "O"
-    command: gh pr create -t "{{index .PromptResponses 0}}" {{ if eq (index .PromptResponses 1) "yes"}}{{ "--draft" }}{{ end }}
+    command: gh pr create -t "{{index .PromptResponses 0}}" {{ if eq (index .PromptResponses 1) "yes"}}{{ "--draft" }}{{ end }} && $XDG_CONFIG_HOME/lazygit/watch-draft-pr
     description: "Create a pull request using the GitHub CLI"
     context: "localBranches"
     prompts:

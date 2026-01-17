@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+IS_DRAFT = $(gh pr view --json isDraft | jq ".isDraft")
+if [[ IS_DRAFT == true ]]; then
+  # if this is a draft mark it as ready
+  echo "pr is a draft, marking as ready"
+  gh pr ready
+else
+  # watch until the draft state changes and then mark it as ready
+  echo "pr is not a draft, waiting"
+  watch --interval 1 --chgexit "gh pr view --json isDraft | jq .isDraft" 
+  echo "pr is a draft, marking as ready"
+  gh pr ready
+fi
