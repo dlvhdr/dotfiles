@@ -42,7 +42,7 @@ local function finder(opts, ctx)
     end
   end
 
-  local fff_result = file_picker.search_files(ctx.filter.search, M.state.current_file_cache, 100, 4, false)
+  local fff_result = file_picker.search_files(ctx.filter.search, M.state.current_file_cache, 100, 4, nil)
 
   ---@type snacks.picker.finder.Item[]
   local items = {}

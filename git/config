@@ -221,6 +221,7 @@ global = ~/.config/git/hooks
   file-style = omit
   file-decoration-style = none
 
+  line-numbers = true
   line-numbers-left-format = "{nm:>4} "
   line-numbers-right-format = "│ {np:>4} "
   line-numbers-left-style = white dim

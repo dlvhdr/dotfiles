@@ -12,7 +12,8 @@ return {
       {
         "<C-p>",
         function()
-          require("dlvhdr.plugins.fff.fff").fff()
+          -- require("dlvhdr.plugins.fff.fff").fff()
+          require("fff").find_files()
         end,
         desc = "Project Files",
       },
@@ -28,7 +29,6 @@ return {
       formatters = {
         file = {
           filename_first = true, -- display filename before the file path
-          truncate = 80, -- truncate the file path to (roughly) this length
           filename_only = false, -- only show the filename
           icon_width = 2, -- width of the icon (in characters)
           git_status_hl = true, -- use the git status highlight group for the filename
