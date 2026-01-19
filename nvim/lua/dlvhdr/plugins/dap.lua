@@ -16,7 +16,7 @@ return {
     {
       "microsoft/vscode-js-debug",
       version = "1.x",
-      build = "npm i && npm run compile dapDebugServer && mv dist out",
+      build = "rm -rf out/dist rm -rf out/dist && npm ci && npm run compile dapDebugServer && mv dist out",
     },
     {
       "theHamsta/nvim-dap-virtual-text",
@@ -99,7 +99,7 @@ return {
             executable = {
               command = "node",
               args = {
-                vim.fn.stdpath("data") .. "/lazy/vscode-js-debug/dist/src/dapDebugServer.js",
+                vim.fn.stdpath("data") .. "/lazy/vscode-js-debug/out/dist/src/dapDebugServer.js",
                 "${port}",
                 "localhost",
               },
@@ -115,7 +115,7 @@ return {
             executable = {
               command = "node",
               args = {
-                vim.fn.stdpath("data") .. "/lazy/vscode-js-debug/dist/src/dapDebugServer.js",
+                vim.fn.stdpath("data") .. "/lazy/vscode-js-debug/out/dist/src/dapDebugServer.js",
                 "${port}",
                 "localhost",
               },

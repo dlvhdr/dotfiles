@@ -58,6 +58,7 @@ link "$PWD"/sesh ~/.config/sesh
 link "$PWD"/starship/starship.toml ~/.config/starship.toml
 link "$PWD"/yazi ~/.config/yazi
 link "$PWD"/bat ~/.config/bat
+link "$PWD"/diffnav ~/.config/diffnav
 
 if [[ $OSTYPE == 'darwin'* ]]; then
   brew bundle
@@ -78,7 +79,7 @@ if ! finger "$USER" | grep -q 'Shell: .*fish'; then
 fi
 "$PWD"/scripts/setup.fish
 
-title "Making C-w (delete word backward) etc. work globally in macOS"
+echo "Making C-w (delete word backward) etc. work globally in macOS"
 cp DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
 
 CODE="$HOME/code"

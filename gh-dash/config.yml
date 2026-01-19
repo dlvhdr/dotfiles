@@ -69,11 +69,11 @@ keybindings:
       command: >
         cd {{.RepoPath}} && lazygit
   prs:
-    - key: O
+    - key: C
       builtin: checkout
     - key: m
       command: gh pr merge --admin --repo {{.RepoName}} {{.PrNumber}}
-    - key: C
+    - key: O
       name: code review
       command: >
         tmux new-window -c {{.RepoPath}} -n "octo" '
