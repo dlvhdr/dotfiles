@@ -245,7 +245,8 @@ global = ~/.config/git/hooks
   hunk-header-style = "#868E99"
   hunk-header-file-style = "#868E99" dim
   hunk-header-decoration-style = "#163050" ol ul
-
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
-
