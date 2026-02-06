@@ -152,11 +152,6 @@ abbr --add db "harlequin --config-path ~/.config/harlequin/config.toml"
 abbr --add refresh "yarn && yarn pkg:build && devbox services restart"
 abbr fd 'fd --hidden'
 
-
-set -gx GRANTED_ALIAS_CONFIGURED "true"
-alias assume="source /opt/homebrew/bin/assume.fish"
-
-
 status is-interactive; and begin
 
     # Abbreviations

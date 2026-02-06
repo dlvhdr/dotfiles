@@ -541,9 +541,9 @@ return {
     {
       "<leader>ff",
       function()
-        Snacks.picker.lsp_symbols()
+        Snacks.picker.lsp_symbols({ filter = { default = { "Function", "Method", "Field" } } })
       end,
-      desc = "LSP Symbols",
+      desc = "LSP Functions",
     },
     {
       "<leader>.",

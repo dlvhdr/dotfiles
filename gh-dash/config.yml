@@ -84,11 +84,6 @@ keybindings:
         tmux new-window -n "enhance" '
           gh enhance -R {{.RepoName}} {{.PrNumber}}
         '
-
-    - key: a
-      name: lazygit add
-      command: >
-        cd {{.RepoPath}} && git add -A && lazygit
     - key: v
       name: approve
       command: >
