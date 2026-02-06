@@ -1,3 +1,4 @@
+-- sense.nvim shows diagnostics that are not visible in current view with their distance.
 vim.g.sense_nvim = {
   presets = {
     virtualtext = {
