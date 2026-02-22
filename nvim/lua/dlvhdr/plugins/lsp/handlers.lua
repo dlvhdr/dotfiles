@@ -42,6 +42,13 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentRangeFormattingProvider = false
   end
 
+  if client.name == "oxlint" then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "LspOxlintFixAll",
+    })
+  end
+
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_clear_autocmds({
       group = format_augroup,

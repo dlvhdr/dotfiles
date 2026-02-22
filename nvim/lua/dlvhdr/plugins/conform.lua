@@ -1,9 +1,10 @@
 local formatters_by_ft = {
   lua = { "stylua" },
-  typescript = { "prettierd", "eslint_d" },
-  typescriptreact = { "prettierd", "eslint_d" },
-  javascript = { "prettierd", "eslint_d" },
-  javascriptreact = { "prettierd", "eslint_d" },
+  -- typescript = { "prettierd", "eslint_d" },
+  typescript = { "prettierd" },
+  typescriptreact = { "prettierd" },
+  javascript = { "prettierd" },
+  javascriptreact = { "prettierd",},
   html = { "prettierd" },
   css = { "prettierd" },
   postcsss = { "prettierd" },
@@ -12,7 +13,7 @@ local formatters_by_ft = {
   mdx = { "prettierd" },
   json = { "prettierd" },
   yaml = { "prettierd" },
-  go = { "gofumpt", "goimports-reviser" },
+  go = { "golangci-lint" },
   python = { "black" },
   nix = { "nixfmt" },
 }

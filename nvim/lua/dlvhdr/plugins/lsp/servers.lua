@@ -3,13 +3,6 @@ local M = {}
 M.setup = function()
   local handlers = require("dlvhdr.plugins.lsp.handlers")
 
-  local opts = {
-    on_attach = handlers.on_attach,
-    capabilities = handlers.capabilities(),
-  }
-
-  -- require("dlvhdr.plugins.lsp.servers.vtsls").setup(opts)
-  require("dlvhdr.plugins.lsp.servers.none-ls").setup(opts)
   vim.lsp.enable("kulala_ls") -- brew install kulala-ls
   vim.lsp.enable("vtsls")
   vim.lsp.enable("astro")
@@ -26,8 +19,8 @@ M.setup = function()
   vim.lsp.config("harper_ls", { filetypes = { "markdown" } })
   vim.lsp.enable("harper_ls")
   vim.lsp.enable("tailwindcss")
+  vim.lsp.enable("oxlint") -- npm i -g oxlint
   -- vim.lsp.enable("denols")
-  -- require("dlvhdr.plugins.lsp.servers.nixd").setup(opts)
 
   vim.lsp.config("*", {
     capabilities = handlers.capabilities(),

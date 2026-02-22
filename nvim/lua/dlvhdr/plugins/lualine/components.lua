@@ -83,14 +83,17 @@ return {
       end
 
       -- add formatter
-      local formatters = require("dlvhdr.plugins.formatting.formatters")
-      local supported_formatters = formatters.list_registered(bufnr)
-      vim.list_extend(buf_client_names, supported_formatters)
+      local formatters = require("conform").list_formatters(bufnr)
+      local formatter_names = {}
+      for _, source in ipairs(formatters) do
+        table.insert(formatter_names, source.name)
+      end
+      vim.list_extend(buf_client_names, formatter_names)
 
-      -- add linter
-      local linters = require("dlvhdr.plugins.lsp.servers.none-ls.linters")
-      local supported_linters = linters.list_registered(buf_ft)
-      vim.list_extend(buf_client_names, supported_linters)
+      -- -- add linter
+      -- local linters = require("dlvhdr.plugins.lsp.servers.none-ls.linters")
+      -- local supported_linters = linters.list_registered(buf_ft)
+      -- vim.list_extend(buf_client_names, supported_linters)
 
       local unique_client_names = vim.fn.sort(buf_client_names)
       unique_client_names = vim.fn.uniq(unique_client_names)

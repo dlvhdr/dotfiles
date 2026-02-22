@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://gh-dash.dev/schema.json
 prSections:
-  - title: Mine
-    filters: is:open -org:Port-labs author:@me -repo:microsoft/vscode
+  - title: gh-dash
+    filters: is:open repo:dlvhdr/gh-dash
     layout:
       author:
         hidden: true
@@ -52,4 +52,3 @@ theme:
       primary: "#383B5B"
       secondary: "#39386B"
       faint: "#2B2B40"
-smartFilteringAtLaunch: false

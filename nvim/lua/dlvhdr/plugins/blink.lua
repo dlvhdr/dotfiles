@@ -1,7 +1,6 @@
 return {
   {
     "saghen/blink.cmp",
-    enabled = true,
     event = { "InsertEnter", "CmdlineEnter" },
     version = "*",
     dependencies = {

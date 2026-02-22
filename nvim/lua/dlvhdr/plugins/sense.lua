@@ -11,5 +11,6 @@ vim.g.sense_nvim = {
 }
 return {
   "boltlessengineer/sense.nvim",
+  enabled = false,
   event = "LspAttach",
 }

@@ -54,7 +54,7 @@ defaults:
 
   preview:
     open: true
-    width: 70
+    width: 80
   prsLimit: 20
   issuesLimit: 20
 repoPaths:
@@ -88,6 +88,11 @@ keybindings:
       name: approve
       command: >
         gh pr review --repo {{.RepoName}} --approve --body "$(gum input --prompt='Approval Comment: ')" {{.PrNumber}}
+  notifications:
+    - key: d
+      builtin: markAsDone
+    - key: D
+      builtin: markAllAsDone
 
 theme:
   ui:

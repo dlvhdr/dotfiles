@@ -10,7 +10,6 @@ return {
   },
   settings = {
     gopls = {
-      gofumpt = true,
       analyses = {
         nilness = true,
         unusedparams = true,
