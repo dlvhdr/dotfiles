@@ -1,5 +1,6 @@
 theme = tokyonight
 # theme = "catppuccin-latte"
+window-decoration = false
 macos-titlebar-style = hidden
 window-padding-x = 4
 window-padding-y = 0,0
@@ -52,6 +53,10 @@ background-opacity = 0.93
 # --------------------------
 # NOTE: \x01 is ctrl+a which is the tmux prefix
 # ---------------------------------------------
+
+# clear all keybinds first
+keybind=clear
+
 # close tab
 keybind = cmd+w=text:\x01x
 # new tab

@@ -67,6 +67,7 @@ global = ~/.config/git/hooks
   difftool = true
   branch = 
 	diff = diffnav
+	show = diffnav
 
 [fetch]
   prune = true

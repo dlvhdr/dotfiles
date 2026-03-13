@@ -31,7 +31,7 @@ set -gx GUM_FILTER_PROMPT " "
 
 alias cd="z"
 
-set -gx FZF_DEFAULT_OPTS "--layout=reverse --gutter=' ' --border rounded --no-info --pointer='' --marker=' ' --ansi --height=20% --color='16,bg+:-1,gutter:-1,prompt:5,pointer:5,marker:6,border:4,label:4,header:italic'"
+set -gx FZF_DEFAULT_OPTS "--layout=reverse --border rounded --no-info --pointer='' --marker=' ' --ansi --height=20% --color='16,bg+:-1,gutter:-1,prompt:5,pointer:5,marker:6,border:4,label:4,header:italic'"
 set -gx FZF_COMPLETION_OPTS "--nth=4.. --preview='' --border-label=' history ' --prompt='  '"
 # tmux set-environment -g FZF_DEFAULT_OPTS $FZF_DEFAULT_OPTS
 # tmux set-environment -g FZF_COMPLETION_OPTS $FZF_COMPLETION_OPTS
