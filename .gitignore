@@ -12,3 +12,6 @@ debug.log
 
 tmux/plugins
 tmux/plugins
+/resterm/history.db
+/resterm/history.db-shm
+/resterm/history.db-wal
