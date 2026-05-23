@@ -1,3 +1,4 @@
+#:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
 import = []
 
 [[session]]
@@ -25,3 +26,7 @@ path = "~/code/personal/gh-dash"
 name = "downloads 📂"
 path = "~/Downloads"
 startup_command = "e"
+
+[[session]]
+name = "late.sh 👾"
+path = "~/"

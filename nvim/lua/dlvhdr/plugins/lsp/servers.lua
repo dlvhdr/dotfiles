@@ -10,16 +10,19 @@ M.setup = function()
   vim.lsp.enable("dockerls") -- npm install -g dockerfile-language-server-nodejs
   vim.lsp.enable("lua_ls") -- brew install lua-language-server
   vim.lsp.enable("jsonls") -- brew install vscode-langservers-extracted
-  vim.lsp.enable("yamlls") -- npm i -g add yaml-language-server
+  -- vim.lsp.enable("yamlls") -- npm i -g add yaml-language-server
+  vim.lsp.enable("golangci_lint_ls")
   vim.lsp.enable("prismals") -- npm install -g @prisma/language-server
   vim.lsp.enable("html") -- brew install vscode-langservers-extracted
   vim.lsp.enable("gopls") -- brew install gopls
-  vim.lsp.enable("bashls") -- npm i -g bash-language-server
+  vim.lsp.enable("bash") -- npm i -g bash-language-server
+  -- vim.lsp.enable("shfmt") -- go install mvdan.cc/sh/v3/cmd/shfmt@latest
   vim.lsp.enable("helm_ls") -- brew install helm-ls
   vim.lsp.config("harper_ls", { filetypes = { "markdown" } })
-  vim.lsp.enable("harper_ls")
+  -- vim.lsp.enable("harper_ls")
   vim.lsp.enable("tailwindcss")
   vim.lsp.enable("oxlint") -- npm i -g oxlint
+  vim.lsp.enable("graphql") -- npm install -g graphql-language-service-cli
   -- vim.lsp.enable("denols")
 
   vim.lsp.config("*", {
@@ -45,7 +48,7 @@ M.setup = function()
                 if r.edit then
                   vim.lsp.util.apply_workspace_edit(r.edit, "utf-16")
                 else
-                  vim.lsp.buf.execute_command(r.command)
+                  client:exec_cmd(r.command)
                 end
               end
             end

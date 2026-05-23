@@ -1,0 +1,3 @@
+[bindings]
+quit_app = ["ctrl+c"]
+cancel_run = ["ctrl+q"]

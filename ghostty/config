@@ -1,4 +1,4 @@
-theme = tokyonight
+theme = Tokyonight
 # theme = "catppuccin-latte"
 window-decoration = false
 macos-titlebar-style = hidden
@@ -56,6 +56,11 @@ background-opacity = 0.93
 
 # clear all keybinds first
 keybind=clear
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+keybind = cmd++=increase_font_size:1.5
+keybind = cmd+-=decrease_font_size:1.5
+keybind = cmd+0=reset_font_size
 
 # close tab
 keybind = cmd+w=text:\x01x

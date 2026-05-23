@@ -4,7 +4,7 @@ local formatters_by_ft = {
   typescript = { "prettierd" },
   typescriptreact = { "prettierd" },
   javascript = { "prettierd" },
-  javascriptreact = { "prettierd",},
+  javascriptreact = { "prettierd" },
   html = { "prettierd" },
   css = { "prettierd" },
   postcsss = { "prettierd" },
@@ -16,6 +16,8 @@ local formatters_by_ft = {
   go = { "golangci-lint" },
   python = { "black" },
   nix = { "nixfmt" },
+  bash = { "shfmt" },
+  sh = { "shfmt" },
 }
 
 return {

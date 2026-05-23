@@ -1,6 +1,7 @@
 return {
   "cshuaimin/ssr.nvim",
   module = "ssr",
+  enabled = false,
   keys = {
     {
       "<leader>cr",

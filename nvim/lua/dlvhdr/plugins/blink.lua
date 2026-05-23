@@ -58,8 +58,7 @@ return {
         end,
       },
       {
-        "garrett-hopper/tailwind-tools.nvim",
-        branch = "vim-lsp-api",
+        "Eingin/tailwind-tools.nvim",
         event = "LspAttach",
         name = "tailwind-tools",
         build = ":UpdateRemotePlugins",

@@ -20,7 +20,7 @@ if which tmux; then
   echo "Installing tmux plugin manager (TPM)..."
   if [ ! -d ~/.config/tmux/plugins ]; then
     mkdir -p ~/.config/tmux/plugins
-    git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm > /dev/null
+    git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm >/dev/null
   fi
 
   tmux source ~/.config/tmux/tmux.conf
@@ -59,6 +59,7 @@ link "$PWD"/starship/starship.toml ~/.config/starship.toml
 link "$PWD"/yazi ~/.config/yazi
 link "$PWD"/bat ~/.config/bat
 link "$PWD"/diffnav ~/.config/diffnav
+link "$PWD"/resterm ~/.config/resterm
 
 if [[ $OSTYPE == 'darwin'* ]]; then
   brew bundle
@@ -66,7 +67,6 @@ fi
 if ! which vtsls; then
   npm install -g @vtsls/language-server
 fi
-
 
 # Fish setup
 if ! grep -q fish /etc/shells; then

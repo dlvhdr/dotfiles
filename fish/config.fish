@@ -14,6 +14,7 @@ eval (/opt/homebrew/bin/brew shellenv)
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/opt/rustup/bin
 fish_add_path /Applications/Ghostty.app/Contents/MacOS
+fish_add_path "$HOME/code/port/scripties"
 
 bind -M insert \cv edit_command_buffer
 
@@ -21,6 +22,7 @@ set -gx EDITOR "nvim"
 set -gx DOCKER_CONFIG "$HOME/.docker"
 set -gx HOMEBREW_NO_AUTO_UPDATE true
 set -gx devbox_no_prompt true
+set -gx RESTERM_CONFIG_DIR "$XDG_CONFIG_HOME/resterm"
 
 set -gx DIRENV_LOG_FORMAT ""
 
@@ -81,7 +83,6 @@ abbr --add c "clear"
 abbr --add fh 'open -a Finder .'
 abbr --add fix "stty sane"
 abbr --add nuke-desktop 'rm -rf ~/Desktop/*'
-abbr --add jq "jqless"
 abbr --add dinner "roulette -o=🍕,🍔,🥓,🌯,🥒,🍗 --title=\"What's for dinner?\""
 abbr --add scripts "bat package.json | jq -r '.scripts | to_entries[] | \"\(.key) => \(.value)\"' | sort | fzf | cut -d' ' -f1 | xargs nr"
 

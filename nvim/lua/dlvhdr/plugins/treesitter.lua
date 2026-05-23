@@ -2,9 +2,10 @@ local M = {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   event = { "BufReadPre", "BufNewFile" },
+  branch = "main",
   dependencies = {
-    "RRethy/nvim-treesitter-textsubjects",
-    { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+    -- "RRethy/nvim-treesitter-textsubjects",
+    -- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
     { "JoosepAlviste/nvim-ts-context-commentstring" },
     "andymass/vim-matchup",
   },
@@ -12,54 +13,20 @@ local M = {
 
 M.config = function()
   local parsers = require("nvim-treesitter.parsers")
-  local configs = require("nvim-treesitter.configs")
 
-  configs.setup({
-    sync_install = false,
-    auto_install = true,
-    ignore_install = {},
-    ensure_installed = {
-      "c",
-      "lua",
-      "vim",
-      "vimdoc",
-      "query",
-      "typescript",
-      "javascript",
-      "html",
-      "http",
-      "graphql",
-      "css",
-      "json",
-      "yaml",
-      "bash",
-      "dockerfile",
-      "go",
-      "java",
-      "jsonc",
-      "lua",
-      "regex",
-      "ruby",
-      "scss",
-      "tsx",
-      "yaml",
-      "ninja",
-      "python",
-      "rst",
-      "toml",
-    },
+  require("nvim-treesitter").setup({
     modules = {},
-    highlight = {
-      enable = true,
-      disable = function(_, bufnr)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
-        if ok and stats and stats.size > max_filesize then
-          return true
-        end
-      end,
-      additional_vim_regex_highlighting = false,
-    },
+    -- highlight = {
+    --   enable = true,
+    --   disable = function(_, bufnr)
+    --     local max_filesize = 100 * 1024 -- 100 KB
+    --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+    --     if ok and stats and stats.size > max_filesize then
+    --       return true
+    --     end
+    --   end,
+    --   additional_vim_regex_highlighting = false,
+    -- },
     query_linter = {
       enable = false,
       use_virtual_text = true,
@@ -74,10 +41,10 @@ M.config = function()
       updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
       persist_queries = false, -- Whether the query persists across vim sessions
     },
-    indent = {
-      enable = true,
-      disable = {},
-    },
+    -- indent = {
+    --   enable = true,
+    --   disable = {},
+    -- },
     textsubjects = {
       enable = true,
       prev_selection = ",",
@@ -113,8 +80,63 @@ M.config = function()
     },
   })
 
-  local parser_config = parsers.get_parser_configs()
-  parser_config.markdown.filetype_to_parsername = "octo"
+  local ensureInstalled = {
+    "c",
+    "lua",
+    "vim",
+    "vimdoc",
+    "query",
+    "typescript",
+    "javascript",
+    "html",
+    "http",
+    "graphql",
+    "css",
+    "json",
+    "yaml",
+    "bash",
+    "dockerfile",
+    "go",
+    "java",
+    "jsonc",
+    "lua",
+    "regex",
+    "ruby",
+    "scss",
+    "tsx",
+    "yaml",
+    "ninja",
+    "python",
+    "rst",
+    "toml",
+  }
+  local alreadyInstalled = require("nvim-treesitter.config").get_installed()
+  local parsersToInstall = vim
+    .iter(ensureInstalled)
+    :filter(function(parser)
+      return not vim.tbl_contains(alreadyInstalled, parser)
+    end)
+    :totable()
+  require("nvim-treesitter").install(parsersToInstall)
+
+  vim.api.nvim_create_autocmd("FileType", {
+    callback = function(args)
+      local max_filesize = 100 * 1024 -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+      if ok and stats and stats.size > max_filesize then
+        return
+      end
+
+      -- Enable treesitter highlighting and disable regex syntax
+      pcall(vim.treesitter.start)
+      -- Enable treesitter-based indentation
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+  })
+  -- ...
+
+  -- local alread = parsers.get_parser_configs()
+  -- parser_config.markdown.filetype_to_parsername = "octo"
 
   vim.g.skip_ts_context_commentstring_module = true
   vim.g.matchup_matchparen_offscreen = { method = "popup" }
