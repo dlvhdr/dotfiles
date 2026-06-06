@@ -2,7 +2,12 @@
 return {
   settings = {
     json = {
-      schemas = require("schemastore").json.schemas(),
+      schemas = require("schemastore").json.schemas({
+        select = {
+          ".eslintrc",
+          "package.json",
+        },
+      }),
       format = {
         enable = true,
       },

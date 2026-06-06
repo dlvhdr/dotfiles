@@ -9,7 +9,9 @@ return {
     })
   end,
   config = function()
-    require("fastaction").setup({})
+    require("fastaction").setup({
+      dismiss_keys = { "j", "k", "<c-c>", "q", "<esc>" },
+    })
 
     vim.keymap.set(
       { "n", "x" },

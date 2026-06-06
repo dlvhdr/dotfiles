@@ -3,7 +3,8 @@ local M = {}
 M.lsp_keymaps = function(bufnr)
   -- builtins
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { silent = true, buffer = bufnr, desc = "Go To Declaration" })
-  -- vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Code Action" })
+  -- ga is handled by fastaction
+  vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, { silent = true, buffer = bufnr, desc = "Code Action" })
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, { silent = true, buffer = bufnr, desc = "Hover Symbol" })
   vim.keymap.set("n", "ge", vim.diagnostic.open_float, { silent = true, buffer = bufnr, desc = "Show Diagnostic" })
   vim.keymap.set("n", "gH", vim.lsp.buf.signature_help, { silent = true, buffer = bufnr, desc = "Signature Help" })
@@ -54,13 +55,6 @@ M.on_attach = function(client, bufnr)
   if client.name == "lua_ls" then
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
-  end
-
-  if client.name == "oxlint" then
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "LspOxlintFixAll",
-    })
   end
 
   if client.server_capabilities.documentFormattingProvider then

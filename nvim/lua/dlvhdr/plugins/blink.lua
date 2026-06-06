@@ -57,19 +57,6 @@ return {
           require("luasnip.loaders.from_vscode").lazy_load()
         end,
       },
-      {
-        "Eingin/tailwind-tools.nvim",
-        event = "LspAttach",
-        name = "tailwind-tools",
-        build = ":UpdateRemotePlugins",
-        dependencies = {
-          "nvim-treesitter/nvim-treesitter",
-          "nvim-telescope/telescope.nvim",
-          "neovim/nvim-lspconfig",
-        },
-        ft = { "html", "css", "javascriptreact", "typescriptreact" },
-        opts = {}, -- your configuration
-      },
       -- "onsails/lspkind-nvim",
       -- "zbirenbaum/copilot.lua",
       -- "zbirenbaum/copilot-cmp",

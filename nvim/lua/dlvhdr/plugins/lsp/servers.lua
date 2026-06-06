@@ -3,6 +3,10 @@ local M = {}
 M.setup = function()
   local handlers = require("dlvhdr.plugins.lsp.handlers")
 
+  vim.lsp.config("*", {
+    capabilities = handlers.capabilities(),
+  })
+
   vim.lsp.enable("kulala_ls") -- brew install kulala-ls
   vim.lsp.enable("vtsls")
   vim.lsp.enable("astro")
@@ -20,14 +24,66 @@ M.setup = function()
   vim.lsp.enable("helm_ls") -- brew install helm-ls
   vim.lsp.config("harper_ls", { filetypes = { "markdown" } })
   -- vim.lsp.enable("harper_ls")
-  vim.lsp.enable("tailwindcss")
+  vim.lsp.enable("tailwindcss") -- brew install tailwind-language-server
+
+  -- For some reason putting this in ~/.config/nvim/lsp/oxlint.lua doesn't override
+  --  the config from lspconfig - which doesn't work for monorepos with a globally installed oxlint.
+  -- See https://github.com/neovim/nvim-lspconfig/issues/4432
+  -- I had to override both cmd and root_dir here.
+  vim.lsp.config("oxlint", {
+    settings = {
+      fixKind = "all",
+      typeAware = false,
+    },
+    cmd = function(dispatchers, config)
+      local cmd = "oxlint"
+      if (config or {}).root_dir then
+        local local_cmd = vim.fs.joinpath(config.root_dir, "node_modules/.bin", cmd)
+        if vim.fn.executable(local_cmd) == 1 then
+          cmd = local_cmd
+        end
+      end
+      return vim.lsp.rpc.start({ cmd, "--lsp" }, dispatchers)
+    end,
+    root_dir = function(bufnr, on_dir)
+      local cmd = "oxlint"
+      local fname = vim.api.nvim_buf_get_name(bufnr)
+
+      local root_markers = require("lspconfig.util").insert_package_json(
+        { ".oxlintrc.json", ".oxlintrc.jsonc", "oxlint.config.ts" },
+        { "oxlint", "vite%-plus" },
+        fname
+      )
+
+      root_markers =
+        require("lspconfig.util").root_markers_with_field(root_markers, { "vite.config.ts" }, "vite%-plus", fname)
+
+      local dirs = vim.fs.find(root_markers, { path = fname, upward = true, limit = 3 })
+
+      local root_dir = vim.fs.dirname(dirs[1])
+      local local_cmd = vim.fs.joinpath(root_dir, "node_modules/.bin", cmd)
+
+      if vim.fn.executable(local_cmd) == 1 then
+        on_dir(root_dir)
+        return
+      end
+
+      for i = 2, #dirs do
+        local dirname = vim.fs.dirname(dirs[i])
+        local_cmd = vim.fs.joinpath(dirname, "node_modules/.bin", cmd)
+
+        if vim.fn.executable(local_cmd) == 1 then
+          root_dir = dirname
+          break
+        end
+      end
+
+      on_dir(root_dir)
+    end,
+  })
   vim.lsp.enable("oxlint") -- npm i -g oxlint
   vim.lsp.enable("graphql") -- npm install -g graphql-language-service-cli
   -- vim.lsp.enable("denols")
-
-  vim.lsp.config("*", {
-    capabilities = handlers.capabilities(),
-  })
 
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
@@ -54,6 +110,25 @@ M.setup = function()
             end
           end,
         })
+      end
+
+      if client ~= nil and client.name == "oxlint" then
+        vim.keymap.set("n", "<leader>lo", "LspOxlintFixAll", { desc = "oxlint fix all" })
+      end
+
+      if client ~= nil and client.name == "vtsls" then
+        vim.keymap.set(
+          "n",
+          "<leader>lu",
+          require("dlvhdr.plugins.lsp.handlers").action["source.removeUnused.ts"],
+          { desc = "Remove unused" }
+        )
+        vim.keymap.set(
+          "n",
+          "<leader>lm",
+          require("dlvhdr.plugins.lsp.handlers").action["source.addMissingImports.ts"],
+          { desc = "Add missing imports" }
+        )
       end
     end,
   })
