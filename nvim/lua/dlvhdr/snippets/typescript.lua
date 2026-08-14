@@ -305,7 +305,7 @@ export const useGetSomething = (
     {
       trig = "us",
       name = "useState",
-      desc = "useState with type annotation",
+      desc = "useState",
     },
     fmt([[const [{state}, {setState}] = useState({initial_value})]], {
       state = insert_node(1),

@@ -1,7 +1,7 @@
 return {
   "NvChad/nvim-colorizer.lua",
   event = "BufReadPost",
-  filetypes = {
+  ft = {
     "css",
     "less",
     "scss",
