@@ -49,10 +49,11 @@ return {
   treesitter = {
     function()
       local b = vim.api.nvim_get_current_buf()
-      if next(vim.treesitter.highlighter.active[b]) then
-        return "  "
+      local ok, parser = pcall(vim.treesitter.get_parser, b)
+      if ok and parser then
+        return " TS"
       end
-      return ""
+      return " TS"
     end,
     color = { fg = colors.fg_dark, bg = "NONE" },
     cond = conditions.hide_in_width,

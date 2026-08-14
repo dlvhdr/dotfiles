@@ -24,50 +24,50 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 return {
-  -- {
-  --   "nvim-treesitter/nvim-treesitter-context",
-  --   dependencies = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --   },
-  --   event = { "BufReadPost", "BufNewFile" },
-  --   cmd = "TSContextToggle",
-  --   init = function()
-  --     vim.keymap.set("n", "[c", function()
-  --       require("treesitter-context").go_to_context()
-  --     end, { silent = true, desc = "Go to TS context" })
-  --     vim.keymap.set("n", "<leader>lc", function()
-  --       require("treesitter-context").toggle()
-  --     end, { silent = true, desc = "Treesitter Context" })
-  --
-  --     local wk = require("which-key")
-  --     wk.add({
-  --       { "<leader>lc", icon = "󰨚 " },
-  --     })
-  --   end,
-  --   config = function()
-  --     local tscontext = require("treesitter-context")
-  --     tscontext.setup({
-  --       mode = "cursor",
-  --       max_lines = 3,
-  --       -- don't start by default, only when toggled on
-  --       enable = false,
-  --     })
-  --     Snacks.toggle
-  --       .new({
-  --         id = "treesitter_context",
-  --         name = "Treesitter Context",
-  --         get = tscontext.enabled,
-  --         set = function(state)
-  --           if state then
-  --             tscontext.enable()
-  --           else
-  --             tscontext.disable()
-  --           end
-  --         end,
-  --       })
-  --       :map([[\t]])
-  --   end,
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = "TSContextToggle",
+    init = function()
+      vim.keymap.set("n", "[c", function()
+        require("treesitter-context").go_to_context()
+      end, { silent = true, desc = "Go to TS context" })
+      vim.keymap.set("n", "<leader>lc", function()
+        require("treesitter-context").toggle()
+      end, { silent = true, desc = "Treesitter Context" })
+
+      local wk = require("which-key")
+      wk.add({
+        { "<leader>lc", icon = "󰨚 " },
+      })
+    end,
+    config = function()
+      local tscontext = require("treesitter-context")
+      tscontext.setup({
+        mode = "cursor",
+        max_lines = 3,
+        -- don't start by default, only when toggled on
+        enable = false,
+      })
+      Snacks.toggle
+        .new({
+          id = "treesitter_context",
+          name = "Treesitter Context",
+          get = tscontext.enabled,
+          set = function(state)
+            if state then
+              tscontext.enable()
+            else
+              tscontext.disable()
+            end
+          end,
+        })
+        :map([[\t]])
+    end,
+  },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
     ft = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },

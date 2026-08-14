@@ -156,6 +156,15 @@ M.config = function()
       hl["WinBarDir"] = { fg = c.fg, bg = "NONE", bold = true }
       hl["WinBarSeparator"] = { fg = c.bg, bg = "NONE" }
       hl["WinbarFilename"] = { fg = c.fg, bg = "NONE", bold = true }
+
+      -- html
+      hl["htmlTagName"] = { link = "Tag" }
+      hl["htmlTag"] = { link = "htmlTagName" }
+      hl["htmlEndTag"] = { link = "htmlTagName" }
+      hl["htmlTagN"] = { link = "htmlTagName" }
+      hl["htmlArg"] = { link = "Special" }
+      hl["htmlSpecialChar"] = { link = "Constant" }
+      hl["htmlSpecialTagName"] = { link = "Tag" }
     end,
   })
 

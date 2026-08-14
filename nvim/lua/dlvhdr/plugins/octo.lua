@@ -1,6 +1,5 @@
 return {
   "pwntester/octo.nvim",
-  enabled = false,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "folke/tokyonight.nvim",
