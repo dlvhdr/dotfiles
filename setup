@@ -60,6 +60,8 @@ link "$PWD"/yazi ~/.config/yazi
 link "$PWD"/bat ~/.config/bat
 link "$PWD"/diffnav ~/.config/diffnav
 link "$PWD"/resterm ~/.config/resterm
+link "$PWD"/nvpm/nvpm-lock.json ~/.config/nvpm/nvpm-lock.json
+link "$PWD"/nvpm/discovery.json ~/.config/nvpm/discovery.json
 
 if [[ $OSTYPE == 'darwin'* ]]; then
   brew bundle

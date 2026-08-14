@@ -82,6 +82,10 @@ customCommands:
         suggestions:
           preset: "branches"
     output: popup
+  - key: "D"
+    command: tmux new-window -n "diffnav {{ .SelectedLocalBranch.Name }}" 'gh pr diff {{ .SelectedLocalBranch.Name }} | diffnav'
+    description: "Diffnav"
+    context: "localBranches"
   - key: "R"
     command: "gh repo view --web"
     description: "view repo on github"

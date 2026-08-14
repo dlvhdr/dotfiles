@@ -28,5 +28,5 @@ path = "~/Downloads"
 startup_command = "e"
 
 [[session]]
-name = "late.sh 👾"
+name = "late 👾"
 path = "~/"

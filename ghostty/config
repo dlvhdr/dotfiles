@@ -3,7 +3,7 @@ theme = Tokyonight
 window-decoration = false
 macos-titlebar-style = hidden
 window-padding-x = 4
-window-padding-y = 0,0
+window-padding-y = 0
 macos-window-shadow = false
 custom-shader = cursor_smear.glsl
 
@@ -43,7 +43,7 @@ font-codepoint-map = U+ea60-U+ebeb=JetBrainsMono Nerd Font
 adjust-cell-width = -3%
 
 background = #010101
-background-opacity = 0.93
+background-opacity = 0.90
 
 #  _                        
 # | |_ _ __ ___  _   ___  __

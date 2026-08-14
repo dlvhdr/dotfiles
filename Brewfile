@@ -10,147 +10,242 @@ tap "f1bonacc1/tap"
 tap "friendsofgo/tap"
 tap "go-task/tap"
 tap "homebrew/bundle"
+tap "jonas-grgt/ktea"
 tap "joshmedeski/sesh"
-tap "kenzo-wada/thanks-stars"
+tap "kenzo-wada/thanks-stars", "https://github.com/Kenzo-Wada/homebrew-thanks-stars"
 tap "marle3003/tap"
 tap "morantron/tmux-fingers"
 tap "muesli/tap"
-tap "nikitabobko/aerospace"
+tap "nikitabobko/aerospace", "https://github.com/nikitabobko/homebrew-tap.git"
 tap "nikitabobko/tap"
 tap "pamburus/tap"
 tap "pear-devs/pear"
+tap "robinovitch61/tap"
 tap "silesky/tap"
 tap "skatkov/tap"
-tap "stanmarek/tap"
-tap "thezoraiz/ascii-image-converter"
+tap "stanmarek/tap", "https://github.com/StanMarek/homebrew-tap"
+tap "thezoraiz/ascii-image-converter", "https://github.com/TheZoraiz/homebrew-ascii-image-converter"
+# Run your GitHub Actions locally
+brew "act"
+# Static checker for GitHub Actions workflow files
 brew "actionlint"
+# Clock, timer, time manager and ASCII+ text-art viewer for the terminal
 brew "arttime"
+# Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
+# Interpreted, interactive, object-oriented programming language
 brew "python@3.14"
+# Official Amazon AWS command-line interface
 brew "awscli"
+# Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# Language Server for Bash
 brew "bash-language-server"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# Sexy ANSI fonts for the console
 brew "cfonts"
+# Fuzzy matcher that uses std{in,out} and a native GUI
+brew "choose-gui"
+# Hacker News in your terminal
 brew "circumflex"
+# Copy files from your terminal that actually paste into GUI apps
 brew "clippy"
+# Statistics utility to count lines of code
+brew "cloc"
+# Fix common misspellings in source code and text files
 brew "codespell"
+# CPU usage limiter
 brew "cpulimit"
+# Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Power of curl, ease of use of httpie
 brew "curlie"
+# Debugger for the Go programming language
 brew "delve"
+# Secure runtime for JavaScript and TypeScript
 brew "deno"
+# Load/unload environment variables based on $PWD
 brew "direnv"
+# More intuitive version of du in rust
 brew "dust"
+# Run arbitrary commands when files change
 brew "entr"
+# Speed up eslint to accelerate your development workflow
 brew "eslint_d"
+# Modern, maintained replacement for ls
 brew "eza"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# Banner-like program prints strings as ASCII art
 brew "figlet"
+# User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Fast and simple Node.js version manager
+brew "fnm"
+# Terminal JSON viewer
 brew "fx"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Audit git repos for secrets
 brew "gitleaks"
+# Git status in tmux status bar
 brew "gitmux"
+# Render markdown on the CLI
 brew "glow"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-brew "gofumpt"
+# Pure Go implementation of jq
 brew "gojq"
-brew "golangci-lint"
-brew "gopls"
+# Deliver Go binaries as fast and easily as possible
 brew "goreleaser"
+# Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
+# Tool for glamorous shell scripts
 brew "gum"
+# Grammar Checker for Developers
 brew "harper"
+# Kubernetes package manager
 brew "helm"
+# Language server for Helm
 brew "helm-ls"
+# Fast and powerful log viewer and processor
 brew "hl"
+# User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# Command-line benchmarking tool
 brew "hyperfine"
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
+# Feature-rich interactive Jira CLI
 brew "jira-cli"
+# Interactive JSON filter using jq
 brew "jnv"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# TUI playground to experiment and play with jq
 brew "jqp"
+# CLI for managing Apache Kafka
 brew "kafkactl"
+# Generic command-line non-JVM Apache Kafka producer and consumer
 brew "kcat"
+# Run local Kubernetes cluster in Docker
 brew "kind"
+# Kafka TUI client
+brew "ktea"
+# Tool that can switch between kubectl contexts easily and create aliases
 brew "kubectx"
+# Kubernetes command-line interface
 brew "kubernetes-cli"
+# Simple terminal UI for git commands
 brew "lazygit"
+# Pager program similar to more
 brew "less"
+# High-performance, extensible alternative to ls
 brew "lla"
+# Curses-based tool for viewing and analyzing log files
 brew "lnav"
+# Rainbows and unicorns in your console!
 brew "lolcat"
-brew "lua-language-server"
+# Run a Kubernetes cluster locally
 brew "minikube"
+# MongoDB Shell to connect, configure, query, and work with your MongoDB database
+brew "mongosh"
+# Interactive cheatsheet tool for the command-line
 brew "navi"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Build better apps by developing and testing code directly in Kubernetes
 brew "okteto"
+# Command-line Git information tool
 brew "onefetch"
+# Command-line tool to generate, analyze, convert and manipulate colors
 brew "pastel"
+# PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
+# Modern API client that lives in your terminal
 brew "posting"
+# Terminal slideshow tool
 brew "presenterm"
-brew "prettierd"
+# Modern replacement for ps written in Rust
 brew "procs"
-brew "pyright"
+# Terminal client for .http/.rest files with HTTP, GraphQL, and gRPC support
 brew "resterm"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
-brew "rustup"
+# Intuitive find & replace CLI
 brew "sd"
+# 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Prints a steam locomotive if you type sl instead of ls
 brew "sl"
+# Cross-shell prompt for astronauts
 brew "starship"
-brew "stylua"
-brew "tailwindcss-language-server"
+# User interface to the TELNET protocol
 brew "telnet"
+# Send macOS User Notifications from the command-line
 brew "terminal-notifier"
+# Text interface for Git repositories
 brew "tig"
+# Simplified and community-driven man pages
 brew "tldr", link: false
+# Official tldr client written in Rust
 brew "tlrc"
+# Parser generator tool
 brew "tree-sitter-cli"
+# Command-line unarchiving tools supporting multiple formats
 brew "unar"
+# Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Language servers for HTML, CSS, JavaScript, and JSON extracted from vscode
 brew "vscode-langservers-extracted"
+# Executes a program periodically, showing output fullscreen
 brew "watch"
+# Internet file retriever
 brew "wget"
+# Why is this running?
 brew "witr"
+# CSV CLI magician written in Rust
 brew "xan"
-brew "yaml-language-server"
+# JavaScript package manager
 brew "yarn"
+# Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
+# TUI for exploring data in a Kafka cluster
 brew "yozefu"
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
-brew "abhimanyu003/sttr/sttr"
-brew "charmbracelet/tap/crush"
-brew "charmbracelet/tap/sequin"
-brew "charmbracelet/tap/vhs"
-brew "common-fate/granted/granted"
-brew "dhth/tap/mult"
-brew "dlvhdr/formulae/diffnav"
-brew "f1bonacc1/tap/process-compose"
-brew "friendsofgo/tap/killgrave"
-brew "go-task/tap/go-task"
-brew "joshmedeski/sesh/sesh"
-brew "kenzo-wada/thanks-stars/thanks-stars"
-brew "marle3003/tap/mokapi"
-brew "morantron/tmux-fingers/tmux-fingers"
-brew "muesli/tap/markscribe"
-brew "silesky/tap/node-run"
-brew "skatkov/tap/devtui"
-brew "thezoraiz/ascii-image-converter/ascii-image-converter"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
+# Git diff pager based on delta but with a file tree, à la GitHub
+brew "dlvhdr/formulae/diffnav", trusted: true
+# An interactive Kubernetes log viewer for your terminal.
+brew "robinovitch61/tap/kl", trusted: true
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Command-line interface for 1Password
 cask "1password-cli"
+# Chromium based browser
 cask "arc"
+# Managed client-based VPN service to securely access AWS resources
 cask "aws-vpn-client"
+# Display management tool
 cask "betterdisplay"
+# Databases and SQL IDE
 cask "datagrip"
+# Voice and text chat software
 cask "discord"
+# Window peeking utility app
 cask "dockdoor"
+# App to build and share containerised applications and microservices
 cask "docker-desktop"
+# Web browser
 cask "firefox"
+# Web browser
+cask "firefox@developer-edition"
+# Screen colour temperature controller
 cask "flux-app"
 cask "font-commit-mono"
 cask "font-commit-mono-nerd-font"
@@ -159,30 +254,54 @@ cask "font-fira-code-nerd-font"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Cross-platform Git credential storage for multiple hosting providers
 cask "git-credential-manager"
+# GitHub notifications on your menu bar
 cask "gitify"
+# Web browser
 cask "google-chrome"
+# Chromium-based web browser
 cask "helium-browser"
+# Keyboard shortcuts for every button on your screen
 cask "homerow"
+# Free and open-source media player
 cask "iina"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Open-source keystroke visualiser
 cask "keycastr"
+# Use Vim in input fields and non input fields
 cask "kindavim"
+# GPU-based terminal emulator
 cask "kitty"
+# Customise mouse behavior
 cask "linearmouse"
+# Music app blocker utility
+cask "music-decoy"
+# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# Calendar for professionals and teams
 cask "notion-calendar"
-cask "notunes"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Control your tools with a few keystrokes
 cask "raycast"
+# GUI for streamlined Redis application development
 cask "redis-insight"
+# Team communication and collaboration software
 cask "slack"
+# System monitor for the menu bar
 cask "stats"
-cask "caarlos0/tap/svu"
+cask "svu"
+# To-do & task list manager
 cask "ticktick"
+# Open-source code editor
 cask "visual-studio-code"
+# Native desktop client for WhatsApp
 cask "whatsapp"
+# Video communication and virtual meeting platform
 cask "zoom"
 vscode "2gua.rainbow-brackets"
 vscode "akamud.vscode-theme-onedark"
@@ -207,6 +326,7 @@ vscode "mohsen1.react-javascript-to-typescript-transform-vscode"
 vscode "mrmlnc.vscode-scss"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "orta.vscode-jest"
+vscode "oxc.oxc-vscode"
 vscode "ritwickdey.liveserver"
 vscode "sdras.night-owl"
 vscode "shakram02.bash-beautify"
@@ -238,19 +358,10 @@ go "taskfile-language-server"
 go "github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs"
 uv "insiders"
 uv "posting"
-npm "@astrojs/language-server"
-npm "@mistweaverco/kulala-ls"
 npm "@port-experimental/port-cli"
-npm "@prisma/language-server"
-npm "@vtsls/language-server"
+npm "0x"
 npm "cli-node"
-npm "dockerfile-language-server-nodejs"
 npm "git-split-diffs"
-npm "graphql-language-service-cli"
-npm "graphql"
 npm "jscodeshift"
-npm "oxlint"
+npm "memory-usage"
 npm "pnpm"
-npm "tree-sitter-cli"
-npm "typescript-language-server"
-npm "typescript"

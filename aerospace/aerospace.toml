@@ -1,3 +1,12 @@
+config-version = 2
+
+persistent-workspaces = ['I', 'C', 'W', 'S', 'D', 'P', 'M', 'Z', 'O', 'F', 'U', 'N']
+
+exec-on-workspace-change = [
+    '/bin/bash', '-c',
+    '~/.config/aerospace/sticky.sh',
+]
+
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
@@ -237,9 +246,9 @@ if.app-name-regex-substring = 'mpv'
 check-further-callbacks = true
 run = ['layout floating']  
 
-# [[on-window-detected]]
-# if.app-id = 'net.kovidgoyal.kitty'
-# run = ['layout floating']
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-name-regex-substring = '^.*$'
@@ -247,4 +256,8 @@ run = 'move-node-to-workspace P'
 
 [[on-window-detected]]
 if.app-id = 'io.github.keycastr'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'late\.sh — YouTube'
 run = ['layout floating']

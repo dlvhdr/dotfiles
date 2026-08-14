@@ -67,7 +67,7 @@ keybindings:
     - key: g
       name: lazygit
       command: >
-        cd {{.RepoPath}} && lazygit
+        command cd {{.RepoPath}} && lazygit
   prs:
     - key: C
       builtin: checkout

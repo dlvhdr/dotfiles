@@ -1,4 +1,4 @@
-function ws
+function wscd
   set TARGETPATH ("/etc/profiles/per-user/dlvhdr/bin/mono-cd" $1)
 
   if not test -z $TARGETPATH

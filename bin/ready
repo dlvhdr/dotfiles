@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+gh stack view --json | jq '.branches.[].pr.url' | xargs -I{} gh pr ready {};
