@@ -24,30 +24,6 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "*.md", "*.mdx" },
-  callback = function()
-    vim.o.conceallevel = 2
-  end,
-})
-
--- vim.api.nvim_create_autocmd("User", {
---   pattern = { "DiffviewViewEnter", "DiffviewViewLeave" },
---   callback = function()
---     local ok, barbecue = pcall(require, "barbecue.ui")
---     if not ok then
---       return
---     end
---     barbecue.toggle()
---   end,
--- })
-
--- vim.api.nvim_create_autocmd({ "TabEnter" }, {
---   callback = function()
---     vim.o.showtabline = 1
---   end,
--- })
-
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
   callback = function()
@@ -93,17 +69,6 @@ vim.api.nvim_create_autocmd("CmdwinEnter", {
   end,
 })
 
-local SpellCheckGroup = vim.api.nvim_create_augroup("WrapSpell", {})
--- wrap and check for spell in text filetypes
-vim.api.nvim_create_autocmd("FileType", {
-  group = SpellCheckGroup,
-  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
-  callback = function()
-    -- vim.opt_local.wrap = true
-    -- vim.opt_local.spell = true
-  end,
-})
-
 local FormatOptions = vim.api.nvim_create_augroup("FormatOptions", { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {
   group = FormatOptions,
@@ -144,3 +109,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end
   end,
 })
+

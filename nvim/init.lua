@@ -10,5 +10,6 @@ vim.g.work_projects_dir = vim.env.HOME .. "/code/port"
 require("dlvhdr.lazy")
 require("dlvhdr.options")
 require("dlvhdr.keymaps")
+-- require("dlvhdr.treesitter")
 require("dlvhdr.autocmd")
 require("dlvhdr.winbar")

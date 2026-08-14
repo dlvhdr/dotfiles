@@ -1,8 +1,7 @@
 return {
   "codethread/qmk.nvim",
-  ft = "keymap",
+  ft = { "keymap" },
   enabled = true,
-  event = "VeryLazy",
   opts = {
     name = "LAYOUT_cyboard_imprint",
     variant = "zmk",

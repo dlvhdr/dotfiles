@@ -58,12 +58,13 @@ return {
       use_as_default_explorer = true,
     })
 
-    vim.api.nvim_create_autocmd("User", {
-      pattern = "MiniFilesActionRename",
-      callback = function(event)
-        require("dlvhdr.plugins.lsp.handlers").on_rename(event.data.from, event.data.to)
-      end,
-    })
+    -- not needed after https://nvim-mini.org/blog/2026-06-21-release-0180.html?
+    -- vim.api.nvim_create_autocmd("User", {
+    --   pattern = "MiniFilesActionRename",
+    --   callback = function(event)
+    --     require("dlvhdr.plugins.lsp.handlers").on_rename(event.data.from, event.data.to)
+    --   end,
+    -- })
 
     -- auto delete buffers for deteled files
     vim.api.nvim_create_autocmd("BufEnter", {

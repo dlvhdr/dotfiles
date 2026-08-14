@@ -3,9 +3,7 @@ local M = {
   version = false,
   dependencies = {
     "folke/tokyonight.nvim",
-    "JoosepAlviste/nvim-ts-context-commentstring",
   },
-  event = "BufReadPre",
 }
 
 function M.config()

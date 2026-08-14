@@ -1,6 +1,7 @@
 return {
   "NStefan002/visual-surround.nvim",
   event = "BufReadPost",
+  enabled = false,
   config = function()
     require("visual-surround").setup({
       surround_chars = { "[", "]", "(", ")", "'", '"', "`" },

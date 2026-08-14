@@ -1,5 +1,6 @@
 return {
   "axelvc/template-string.nvim",
+  enabled = false,
   dependencies = {
     "nvim-treesitter",
   },

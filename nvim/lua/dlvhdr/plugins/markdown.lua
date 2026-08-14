@@ -2,6 +2,7 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "mdx" },
+    enabled = false,
     after = { "nvim-treesitter" },
     requires = { "nvim-mini/mini.nvim", opt = true },
     config = function()
@@ -17,7 +18,9 @@ return {
         file_types = { "markdown", "mdx" },
         render_modes = true,
         sign = { enabled = false },
-        anti_conceal = {},
+        anti_conceal = {
+          ignore = { "quote" },
+        },
         heading = {
           border = true,
           above = "",

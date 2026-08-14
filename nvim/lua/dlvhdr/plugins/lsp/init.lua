@@ -2,22 +2,21 @@ return {
   "neovim/nvim-lspconfig",
   event = { "LspAttach", "InsertEnter", "BufWinEnter", "BufNewFile" },
   dependencies = {
-    { "saghen/blink.cmp", event = { "InsertEnter", "CmdlineEnter" } },
-    { "b0o/schemastore.nvim", event = "InsertEnter" },
-    "nvimtools/none-ls.nvim",
-    { "williamboman/mason.nvim", cmd = { "Mason", "MasonUpdate" }, enabled = false },
-    "nvimtools/none-ls-extras.nvim",
+    -- { "saghen/blink.cmp", event = { "InsertEnter", "CmdlineEnter" } },
+    -- { "b0o/schemastore.nvim", event = "InsertEnter" },
+    -- "nvimtools/none-ls.nvim",
+    -- "nvimtools/none-ls-extras.nvim",
     -- { "yioneko/nvim-vtsls", ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" } },
-    {
-      "youyoumu/pretty-ts-errors.nvim",
-      ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-      opts = {
-        executable = "/Users/dlvhdr/npm/pretty-ts-errors-markdown",
-        auto_open = false,
-        max_width = 120,
-        max_height = 40,
-      },
-    },
+    -- {
+    --   "youyoumu/pretty-ts-errors.nvim",
+    --   ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    --   opts = {
+    --     executable = "/Users/dlvhdr/npm/pretty-ts-errors-markdown",
+    --     auto_open = false,
+    --     max_width = 120,
+    --     max_height = 40,
+    --   },
+    -- },
   },
   config = function()
     require("dlvhdr.plugins.lsp.servers").setup()

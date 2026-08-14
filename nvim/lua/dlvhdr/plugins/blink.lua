@@ -1,61 +1,62 @@
 return {
   {
+    "L3MON4D3/LuaSnip",
+    cmd = { "LuaSnip" },
+    event = "InsertEnter",
+    build = "make install_jsregexp",
+    config = function()
+      local luasnip = require("luasnip")
+      local types = require("luasnip.util.types")
+
+      -- luasnip.cleanup()
+
+      luasnip.setup({
+        -- -- This tells LuaSnip to remember to keep around the last snippet.
+        -- -- You can jump back into it even if you move outside of the selection
+        keep_roots = true,
+        link_roots = false,
+        link_children = true,
+        --
+        -- -- This one is cool cause if you have dynamic snippets, it updates as you type!
+        update_events = "TextChanged,TextChangedI",
+        enable_autosnippets = true,
+
+        -- region_check_events = "CursorHold,InsertLeave",
+        delete_check_events = "TextChanged",
+
+        ext_opts = {
+          [types.choiceNode] = {
+            active = { hl_group = "Error", virt_text = { { "●", "Error" } } },
+          },
+          [types.insertNode] = {
+            active = { hl_group = "Error", virt_text = { { "●", "Error" } } },
+          },
+          [types.snippetNode] = {
+            active = { hl_group = "Error", virt_text = { { "●", "Error" } } },
+          },
+        },
+      })
+
+      luasnip.filetype_extend("typescriptreact", { "typescript" })
+
+      require("luasnip.loaders.from_vscode").load_standalone({
+        path = "~/.config/nvim/lua/dlvhdr/snippets/markdown.json",
+      })
+
+      require("luasnip.loaders.from_lua").load({ paths = { "/Users/dlvhdr/.config/nvim/lua/dlvhdr/snippets" } })
+      require("luasnip.loaders.from_vscode").lazy_load()
+    end,
+  },
+  {
     "saghen/blink.cmp",
     event = { "InsertEnter", "CmdlineEnter" },
+    build = "cargo build --release",
     version = "*",
     dependencies = {
       {
         "saghen/blink.compat",
         event = { "InsertEnter", "CmdlineEnter" },
         opts = {},
-      },
-      {
-        "L3MON4D3/LuaSnip",
-        cmd = { "LuaSnip" },
-        event = "InsertEnter",
-        build = "make install_jsregexp",
-        config = function()
-          local luasnip = require("luasnip")
-          local types = require("luasnip.util.types")
-
-          -- luasnip.cleanup()
-
-          luasnip.setup({
-            -- -- This tells LuaSnip to remember to keep around the last snippet.
-            -- -- You can jump back into it even if you move outside of the selection
-            keep_roots = true,
-            link_roots = false,
-            link_children = true,
-            --
-            -- -- This one is cool cause if you have dynamic snippets, it updates as you type!
-            update_events = "TextChanged,TextChangedI",
-            enable_autosnippets = true,
-
-            -- region_check_events = "CursorHold,InsertLeave",
-            delete_check_events = "TextChanged",
-
-            ext_opts = {
-              [types.choiceNode] = {
-                active = { hl_group = "Error", virt_text = { { "●", "Error" } } },
-              },
-              [types.insertNode] = {
-                active = { hl_group = "Error", virt_text = { { "●", "Error" } } },
-              },
-              [types.snippetNode] = {
-                active = { hl_group = "Error", virt_text = { { "●", "Error" } } },
-              },
-            },
-          })
-
-          luasnip.filetype_extend("typescriptreact", { "typescript" })
-
-          require("luasnip.loaders.from_vscode").load_standalone({
-            path = "~/.config/nvim/lua/dlvhdr/snippets/markdown.json",
-          })
-
-          require("luasnip.loaders.from_lua").load({ paths = { "/Users/dlvhdr/.config/nvim/lua/dlvhdr/snippets" } })
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end,
       },
       -- "onsails/lspkind-nvim",
       -- "zbirenbaum/copilot.lua",
@@ -181,7 +182,7 @@ return {
             max_items = 8,
             min_keyword_length = 2,
             -- module = "blink.cmp.sources.snippets",
-            score_offset = 100,
+            score_offset = 200,
           },
           lazydev = {
             name = "LazyDev",
@@ -207,7 +208,7 @@ return {
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
 
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-        ["<C-e>"] = { "hide", "fallback" },
+        ["<C-e>"] = false,
         ["<Tab>"] = {},
         ["<S-Tab>"] = {},
       }

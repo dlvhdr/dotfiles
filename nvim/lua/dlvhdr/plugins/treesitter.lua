@@ -1,145 +1,75 @@
-local M = {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  event = { "BufReadPre", "BufNewFile" },
-  branch = "main",
-  dependencies = {
-    -- "RRethy/nvim-treesitter-textsubjects",
-    -- { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
-    { "JoosepAlviste/nvim-ts-context-commentstring" },
-    "andymass/vim-matchup",
-  },
+-- vim.api.nvim_create_autocmd("FileType", {
+--   callback = function(args)
+--     local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+--     if lang ~= nil and vim.treesitter.query.get(lang, "highlights") then
+--       if lang == "kulala_ui" then
+--         vim.cmd("TSContext disable")
+--       end
+--     end
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+--   callback = function(args)
+--     local max_filesize = 100 * 1024 -- 100 KB
+--     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+--     if ok and stats and stats.size > max_filesize then
+--       vim.treesitter.stop(args.buf)
+--       return
+--     end
+--   end,
+-- })
+
+return {
+  -- {
+  --   "nvim-treesitter/nvim-treesitter-context",
+  --   event = { "BufReadPost", "BufNewFile" },
+  --   opts = { mode = "cursor", max_lines = 3 },
+  --   cmd = "TSContextToggle",
+  --   init = function()
+  --     vim.keymap.set("n", "[c", function()
+  --       require("treesitter-context").go_to_context()
+  --     end, { silent = true, desc = "Go to TS context" })
+  --     vim.keymap.set("n", "<leader>lc", function()
+  --       require("treesitter-context").toggle()
+  --     end, { silent = true, desc = "Treesitter Context" })
+  --
+  --     local wk = require("which-key")
+  --     wk.add({
+  --       { "<leader>lc", icon = "󰨚 " },
+  --     })
+  --   end,
+  --   config = function()
+  --     local tsc = require("treesitter-context")
+  --     Snacks.toggle
+  --       .new({
+  --         id = "treesitter_context",
+  --         name = "Treesitter Context",
+  --         get = tsc.enabled,
+  --         set = function(state)
+  --           if state then
+  --             tsc.enable()
+  --           else
+  --             tsc.disable()
+  --           end
+  --         end,
+  --       })
+  --       :map([[\t]])
+  --   end,
+  -- },
+  -- {
+  --   "JoosepAlviste/nvim-ts-context-commentstring",
+  --   ft = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+  --   event = "BufReadPre",
+  --   config = function()
+  --     vim.g.skip_ts_context_commentstring_module = true
+  --   end,
+  -- },
+  -- {
+  --   "andymass/vim-matchup",
+  --   event = "BufReadPost",
+  --   config = function()
+  --     vim.g.matchup_matchparen_offscreen = { method = "popup" }
+  --   end,
+  -- },
 }
-
-M.config = function()
-  local parsers = require("nvim-treesitter.parsers")
-
-  require("nvim-treesitter").setup({
-    modules = {},
-    -- highlight = {
-    --   enable = true,
-    --   disable = function(_, bufnr)
-    --     local max_filesize = 100 * 1024 -- 100 KB
-    --     local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
-    --     if ok and stats and stats.size > max_filesize then
-    --       return true
-    --     end
-    --   end,
-    --   additional_vim_regex_highlighting = false,
-    -- },
-    query_linter = {
-      enable = false,
-      use_virtual_text = true,
-      lint_events = { "BufWrite", "CursorHold" },
-      is_supported = function(lang)
-        return lang == "query" and parsers.has_parser("query")
-      end,
-    },
-    playground = {
-      enable = false,
-      disable = {},
-      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-      persist_queries = false, -- Whether the query persists across vim sessions
-    },
-    -- indent = {
-    --   enable = true,
-    --   disable = {},
-    -- },
-    textsubjects = {
-      enable = true,
-      prev_selection = ",",
-      keymaps = {
-        ["."] = "textsubjects-smart",
-        ["o;"] = "textsubjects-container-outer",
-        ["i;"] = "textsubjects-container-inner",
-      },
-    },
-    textobjects = {
-      select = {
-        enable = false,
-        lookahead = true,
-        keymaps = {
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-          ["ac"] = "@class.outer",
-          ["ic"] = "@class.inner",
-        },
-      },
-      move = {
-        enable = true,
-        set_jumps = true,
-        goto_next_start = { ["]f"] = "@function.outer" },
-        goto_next_end = { ["]F"] = "@function.outer" },
-        goto_previous_start = { ["[f"] = "@function.outer" },
-        goto_previous_end = { ["[F"] = "@function.outer" },
-      },
-    },
-    matchup = {
-      enable = true,
-      disable_virtual_text = true,
-    },
-  })
-
-  local ensureInstalled = {
-    "c",
-    "lua",
-    "vim",
-    "vimdoc",
-    "query",
-    "typescript",
-    "javascript",
-    "html",
-    "http",
-    "graphql",
-    "css",
-    "json",
-    "yaml",
-    "bash",
-    "dockerfile",
-    "go",
-    "java",
-    "jsonc",
-    "lua",
-    "regex",
-    "ruby",
-    "scss",
-    "tsx",
-    "yaml",
-    "ninja",
-    "python",
-    "rst",
-    "toml",
-  }
-  local alreadyInstalled = require("nvim-treesitter.config").get_installed()
-  local parsersToInstall = vim
-    .iter(ensureInstalled)
-    :filter(function(parser)
-      return not vim.tbl_contains(alreadyInstalled, parser)
-    end)
-    :totable()
-  require("nvim-treesitter").install(parsersToInstall)
-
-  vim.api.nvim_create_autocmd("FileType", {
-    callback = function(args)
-      local max_filesize = 100 * 1024 -- 100 KB
-      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(args.buf))
-      if ok and stats and stats.size > max_filesize then
-        return
-      end
-
-      -- Enable treesitter highlighting and disable regex syntax
-      pcall(vim.treesitter.start)
-      -- Enable treesitter-based indentation
-      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    end,
-  })
-  -- ...
-
-  -- local alread = parsers.get_parser_configs()
-  -- parser_config.markdown.filetype_to_parsername = "octo"
-
-  vim.g.skip_ts_context_commentstring_module = true
-  vim.g.matchup_matchparen_offscreen = { method = "popup" }
-end
-
-return M

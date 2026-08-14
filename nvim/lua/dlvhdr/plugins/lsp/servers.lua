@@ -3,17 +3,14 @@ local M = {}
 M.setup = function()
   local handlers = require("dlvhdr.plugins.lsp.handlers")
 
-  vim.lsp.config("*", {
-    capabilities = handlers.capabilities(),
-  })
-
   vim.lsp.enable("kulala_ls") -- brew install kulala-ls
-  vim.lsp.enable("vtsls")
+  -- vim.lsp.enable("vtsls")
+  vim.lsp.enable("tsc")
   vim.lsp.enable("astro")
   vim.lsp.enable("pyright")
   vim.lsp.enable("dockerls") -- npm install -g dockerfile-language-server-nodejs
   vim.lsp.enable("lua_ls") -- brew install lua-language-server
-  vim.lsp.enable("jsonls") -- brew install vscode-langservers-extracted
+  -- vim.lsp.enable("jsonls") -- brew install vscode-langservers-extracted
   -- vim.lsp.enable("yamlls") -- npm i -g add yaml-language-server
   vim.lsp.enable("golangci_lint_ls")
   vim.lsp.enable("prismals") -- npm install -g @prisma/language-server
@@ -23,8 +20,7 @@ M.setup = function()
   -- vim.lsp.enable("shfmt") -- go install mvdan.cc/sh/v3/cmd/shfmt@latest
   vim.lsp.enable("helm_ls") -- brew install helm-ls
   vim.lsp.config("harper_ls", { filetypes = { "markdown" } })
-  -- vim.lsp.enable("harper_ls")
-  vim.lsp.enable("tailwindcss") -- brew install tailwind-language-server
+  vim.lsp.enable("tailwindcss") -- brew install tailwindcss-language-server
 
   -- For some reason putting this in ~/.config/nvim/lsp/oxlint.lua doesn't override
   --  the config from lspconfig - which doesn't work for monorepos with a globally installed oxlint.
@@ -81,9 +77,82 @@ M.setup = function()
       on_dir(root_dir)
     end,
   })
+
+  -- ---@type table<number, boolean>
+  -- local oxlint_enabled = {}
+  -- ---@type table<number, boolean>
+  -- local oxlint_pending = {}
+  --
+  -- local group = vim.api.nvim_create_augroup("oxlint_diagnostics", { clear = true })
+  --
+  -- vim.api.nvim_create_autocmd("LspRequest", {
+  --   group = group,
+  --   callback = function(ev)
+  --     local request = ev.data.request
+  --     if request.method ~= "textDocument/diagnostic" then
+  --       return
+  --     end
+  --     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+  --     if not client or client.name ~= "oxlint" then
+  --       return
+  --     end
+  --     if request.type == "pending" then
+  --       oxlint_pending[ev.buf] = true
+  --       oxlint_enabled[ev.buf] = nil
+  --       return
+  --     end
+  --     if request.type == "complete" then
+  --       oxlint_pending[ev.buf] = nil
+  --     end
+  --   end,
+  -- })
+  --
+  -- vim.api.nvim_create_autocmd("LspAttach", {
+  --   group = group,
+  --   callback = function(args)
+  --     local client = vim.lsp.get_client_by_id(args.data.client_id)
+  --     if client and client.name == "oxlint" and not client._patched then
+  --       oxlint_enabled[args.buf] = true
+  --       client._patched = true
+  --       local orig = client.supports_method
+  --       function client:supports_method(method, bufnr)
+  --         if method == vim.lsp.protocol.Methods.textDocument_diagnostic then
+  --           bufnr = bufnr or 0
+  --           bufnr = bufnr == 0 and vim.api.nvim_get_current_buf() or bufnr
+  --           return oxlint_enabled[bufnr] or false
+  --         end
+  --         return orig(self, method, bufnr)
+  --       end
+  --     end
+  --   end,
+  -- })
+  --
+  -- vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+  --   group = group,
+  --   callback = function(ev)
+  --     local client = vim.lsp.get_clients({ name = "oxlint", bufnr = ev.buf })[1]
+  --     if not client then
+  --       return
+  --     end
+  --     if oxlint_pending[ev.buf] then
+  --       return
+  --     end
+  --     oxlint_enabled[ev.buf] = true
+  --     if client:supports_method("textDocument/diagnostic") then
+  --       if vim.api.nvim_buf_is_loaded(ev.buf) then
+  --         pcall(vim.lsp.diagnostic._refresh, ev.buf, client.id, true)
+  --       end
+  --     end
+  --   end,
+  -- })
+
   vim.lsp.enable("oxlint") -- npm i -g oxlint
   vim.lsp.enable("graphql") -- npm install -g graphql-language-service-cli
   -- vim.lsp.enable("denols")
+
+  vim.lsp.config("*", {
+    capabilities = handlers.capabilities(),
+  })
 
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
@@ -113,10 +182,10 @@ M.setup = function()
       end
 
       if client ~= nil and client.name == "oxlint" then
-        vim.keymap.set("n", "<leader>lo", "LspOxlintFixAll", { desc = "oxlint fix all" })
+        vim.keymap.set("n", "<leader>lo", "<cmd>LspOxlintFixAll<cr>", { desc = "oxlint fix all" })
       end
 
-      if client ~= nil and client.name == "vtsls" then
+      if client ~= nil and client.name == "tsc" then
         vim.keymap.set(
           "n",
           "<leader>lu",
