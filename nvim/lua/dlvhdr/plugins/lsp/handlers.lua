@@ -26,6 +26,20 @@ M.lsp_keymaps = function(bufnr)
     M.diagnostic_goto(false, vim.diagnostic.severity.ERROR),
     { silent = true, buffer = bufnr, desc = "Previous Error" }
   )
+
+  -- local function rename()
+  --   local current_name = vim.fn.expand("<cword>")
+  --   Snacks.input.input({
+  --     prompt = "rename",
+  --     default = current_name,
+  --   }, function(value)
+  --     if value and value ~= "" and value ~= current_name then
+  --       vim.lsp.buf.rename(value)
+  --     end
+  --   end)
+  -- end
+  --
+  -- vim.keymap.set("n", "gR", rename, { buffer = true, silent = true, desc = "Rename (inc-rename.nvim)" })
 end
 
 function M.diagnostic_goto(next, severity)

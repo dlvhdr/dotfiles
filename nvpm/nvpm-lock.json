@@ -30,43 +30,12 @@
       "version": "v0.23.0"
     },
     {
-      "sourceId": "npm:typescript",
-      "version": "7.0.2"
-    },
-    {
       "sourceId": "npm:@tailwindcss/language-server",
       "version": "0.16.0"
     },
     {
       "sourceId": "npm:tree-sitter-cli",
       "version": "0.26.12"
-    },
-    {
-      "sourceId": "github:tree-sitter-grammars/tree-sitter-markdown",
-      "version": "v0.5.3",
-      "commit": "f969cd3ae3f9fbd4e43205431d0ae286014c05b5",
-      "extras": {
-        "integrations": [
-          "neovim"
-        ],
-        "treesitter_external_queries": [
-          {
-            "language": "markdown",
-            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown",
-            "ref": "adc2014ec864d3edb5281bae89b9784073a80441"
-          },
-          {
-            "language": "markdown",
-            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown_inline",
-            "ref": "f8254e287e30910966011ceff06a5912449395bc"
-          },
-          {
-            "language": "markdown_inline",
-            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown_inline",
-            "ref": "f8254e287e30910966011ceff06a5912449395bc"
-          }
-        ]
-      }
     },
     {
       "sourceId": "github:tree-sitter/tree-sitter-bash",
@@ -677,6 +646,71 @@
           }
         ]
       }
+    },
+    {
+      "sourceId": "github:the-mikedavis/tree-sitter-git-rebase",
+      "version": "v1.0.0",
+      "commit": "3db1f61fb928433381253bc5159c40f7d10c57b1",
+      "extras": {
+        "integrations": [
+          "neovim"
+        ],
+        "treesitter_external_queries": [
+          {
+            "language": "git_rebase",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-git_rebase",
+            "ref": "7104c5084a0f070bfa7706e77716305c07d5951c"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "github:charmbracelet/tree-sitter-vhs",
+      "version": "0c6fae9d2cfc5b217bfd1fe84a7678f5917116db",
+      "commit": "0c6fae9d2cfc5b217bfd1fe84a7678f5917116db",
+      "extras": {
+        "integrations": [
+          "neovim"
+        ],
+        "treesitter_external_queries": [
+          {
+            "language": "vhs",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-vhs",
+            "ref": "2c2a1e5a814f4d2056cf94a29efc6600875f4117"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "github:mistweaverco/tree-sitter-kulala-http",
+      "version": "v0.3.1",
+      "commit": "630e2b8523c775ba866564c2b4ad88d649a56c00",
+      "extras": {
+        "integrations": [
+          "neovim"
+        ]
+      }
+    },
+    {
+      "sourceId": "github:MichaHoffmann/tree-sitter-promql",
+      "version": "77625d78eebc3ffc44d114a07b2f348dff3061b0",
+      "commit": "77625d78eebc3ffc44d114a07b2f348dff3061b0",
+      "extras": {
+        "integrations": [
+          "neovim"
+        ],
+        "treesitter_external_queries": [
+          {
+            "language": "promql",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-promql",
+            "ref": "aa13627abc8f7b230d56bd2c962978659c272a00"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "npm:typescript",
+      "version": "7.0.2"
     }
   ],
   "$schema": "https://nvpm.dev/nvpm-lock.schema.json"

@@ -3,7 +3,30 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    gh = {},
+    styles = {
+      input = {
+        col = 0,
+        relative = "cursor",
+        row = -4,
+        keys = {
+          n_esc = { "<esc>", { "cmp_close", "cancel" }, mode = "n", expr = true },
+          i_esc = { "<esc>", { "cmp_close", "stopinsert" }, mode = "i", expr = true },
+          i_cr = { "<cr>", { "cmp_accept", "confirm" }, mode = { "i", "n" }, expr = true },
+          i_tab = { "<tab>", { "cmp_select_next", "cmp" }, mode = "i", expr = true },
+          i_ctrl_w = { "<c-w>", "<c-s-w>", mode = "i", expr = true },
+          i_up = { "<up>", { "hist_up" }, mode = { "i", "n" } },
+          i_down = { "<down>", { "hist_down" }, mode = { "i", "n" } },
+          q = "cancel",
+        },
+        bo = {
+          filetype = "snacks_input",
+          buftype = "prompt",
+        },
+        b = {
+          completion = false, -- disable blink completions in input
+        },
+      },
+    },
     notifier = {
       enabled = true,
       timeout = 2000,
@@ -87,25 +110,7 @@ return {
         fields = { "score:desc", "#text", "idx" },
       },
       ui_select = true, -- replace `vim.ui.select` with the snacks picker
-      previewers = {
-        -- git = {
-        --   native = true,
-        --   args = {
-        --     "-c",
-        --     "pager.diff=delta",
-        --     "-c",
-        --     "delta.side-by-side=false",
-        --     "-c",
-        --     "delta.line-numbers=false",
-        --     "-c",
-        --     "delta.navigate=false",
-        --     "-c",
-        --     "delta.file-style=omit",
-        --     "-c",
-        --     "delta.hunk-header-style=omit",
-        --   },
-        -- },
-      },
+      previewers = {},
       ---@class snacks.picker.formatters.Config
       formatters = {
         text = {
@@ -175,7 +180,7 @@ return {
             ["<C-w>"] = { "<c-s-w>", mode = { "i" }, expr = true, desc = "delete word" },
             ["<CR>"] = { "confirm", mode = { "n", "i" } },
             ["<Down>"] = { "list_down", mode = { "i", "n" } },
-            ["<Esc>"] = "close",
+            -- ["<Esc>"] = "close",
             ["<S-CR>"] = { { "pick_win", "jump" }, mode = { "n", "i" } },
             ["<S-Tab>"] = { "select_and_prev", mode = { "i", "n" } },
             ["<Tab>"] = { "select_and_next", mode = { "i", "n" } },
@@ -369,6 +374,9 @@ return {
         },
       },
     },
+    input = {
+      enabled = true,
+    },
     bigfile = { enabled = true },
     quickfile = { enabled = true },
     rename = { enabled = true },
@@ -378,79 +386,6 @@ return {
     zen = { enabled = true },
   },
   keys = {
-    -- {
-    --   "<leader>fg",
-    --   function()
-    --     Snacks.picker.grep({
-    --       actions = {
-    --         -- toggles arg --fixed-strings
-    --         toggle_regex = function(picker, item)
-    --           local opts = picker.opts --[[@as snacks.picker.grep.Config]]
-    --           opts.regex = not opts.regex
-    --           picker:find()
-    --         end,
-    --         glob_filter = function(picker, item)
-    --           local opts = picker.opts --[[@as snacks.picker.grep.Config]]
-    --           local prev_glob = opts.glob
-    --           local glob = vim.fn.input("Enter glob filter: ", prev_glob or "")
-    --           if prev_glob == glob then
-    --             return
-    --           end
-    --           opts.custom_glob = #glob > 0
-    --           opts.glob = glob
-    --           picker:find()
-    --         end,
-    --         no_tests = function(picker, item)
-    --           local glob = "{!**/tests/**,!**/*.spec.cy.tsx}"
-    --           local prev_glob = picker.opts.glob
-    --           if prev_glob == glob then
-    --             picker.opts.glob = ""
-    --           else
-    --             picker.opts.glob = glob
-    --           end
-    --           picker:find()
-    --         end,
-    --       },
-    --       win = {
-    --         input = {
-    --           keys = {
-    --             ["r"] = { "toggle_regex", mode = { "n" } },
-    --             ["g"] = { "glob_filter", mode = { "n" } },
-    --             ["t"] = { "no_tests", mode = { "n" } },
-    --           },
-    --         },
-    --       },
-    --       regex = false,
-    --       hidden = true,
-    --       args = {
-    --         "-g",
-    --         "!{node_modules,.git,.direnv,dist,third-party}/",
-    --         "-g",
-    --         "!tsconfig.tsbuildinfo",
-    --         "-g",
-    --         "!yarn.lock",
-    --         "--trim",
-    --         "--ignore-case",
-    --       },
-    --       exclude = { "%.lock$", "%-lock.json$", "tsconfig.tsbuildinfo" },
-    --     })
-    --   end,
-    --   desc = "Grep",
-    -- },
-    -- {
-    --   "<leader>*",
-    --   function()
-    --     Snacks.picker.grep({
-    --       finder = "grep",
-    --       format = "file",
-    --       search = function(picker)
-    --         return picker:word()
-    --       end,
-    --       live = false,
-    --       supports_live = true,
-    --     })
-    --   end,
-    -- },
     {
       "<leader>fc",
       function()

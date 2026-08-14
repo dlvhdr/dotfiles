@@ -3,7 +3,6 @@ return {
   opts = {
     highlight = true,
   },
-  enabled = false,
   keys = {
     {
       "H",

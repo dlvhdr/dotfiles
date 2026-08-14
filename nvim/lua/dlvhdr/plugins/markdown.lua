@@ -3,7 +3,6 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "mdx" },
     enabled = false,
-    after = { "nvim-treesitter" },
     requires = { "nvim-mini/mini.nvim", opt = true },
     config = function()
       vim.api.nvim_set_hl(0, "RenderMarkdownBullet", { fg = "#ffffff", default = true })

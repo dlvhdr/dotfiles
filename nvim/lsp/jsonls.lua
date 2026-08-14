@@ -1,4 +1,3 @@
--- Install with: `brew install vscode-langservers-extracted`
 return {
   settings = {
     json = {

@@ -41,9 +41,10 @@ font-codepoint-map = U+e5fa-U+e6b1=JetBrainsMono Nerd Font
 font-codepoint-map = U+ea60-U+ebeb=JetBrainsMono Nerd Font
 
 adjust-cell-width = -3%
+adjust-cursor-thickness = +150%
 
 background = #010101
-background-opacity = 0.90
+background-opacity = 0.95
 
 #  _                        
 # | |_ _ __ ___  _   ___  __

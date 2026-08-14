@@ -12,7 +12,6 @@ M.config = function()
     presets = {
       command_palette = true,
       lsp_doc_border = true,
-      inc_rename = true, -- enables an input dialog for inc-rename.nvim
     },
     format = {
       default = { "{title} ", "{message}" },
@@ -22,6 +21,7 @@ M.config = function()
     },
     cmdline = {
       format = {
+        inc_rename = { icon = "", opts = { skip = true }, pattern = "^:%s*IncRename%s+" },
         cmdline = { pattern = "^:", icon = "", lang = "vim" },
       },
     },
@@ -54,6 +54,7 @@ M.config = function()
       },
     },
     routes = {
+      { filter = { event = "cmdline", find = "^:IncRename" }, opts = { skip = true } },
       {
         filter = {
           event = "msg_show",

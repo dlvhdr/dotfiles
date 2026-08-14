@@ -1,4 +1,3 @@
--- Install with: `brew install yaml-language-server`
 return {
   capabilities = {
     textDocument = {

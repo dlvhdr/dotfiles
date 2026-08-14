@@ -1,20 +1,16 @@
 return {
   "smjonas/inc-rename.nvim",
-  dependencies = { "stevearc/dressing.nvim" },
+  dependencies = { "folke/snacks.nvim" },
   cmd = "IncRename",
+  enabled = false,
   config = function()
     require("inc_rename").setup({
-      -- input_buffer_type = "dressing",
+      cmd_name = "IncRename",
+      hl_group = "Substitute",
+      input_buffer_type = "snacks",
+      preview_empty_name = true,
+      save_in_cmdline_history = false,
+      show_message = true,
     })
   end,
-  keys = {
-    {
-      "gR",
-      function()
-        return ":IncRename " .. vim.fn.expand("<cword>")
-      end,
-      expr = true,
-      desc = "Rename",
-    },
-  },
 }
