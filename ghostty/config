@@ -59,8 +59,8 @@ background-opacity = 0.95
 keybind=clear
 keybind = cmd+c=copy_to_clipboard
 keybind = cmd+v=paste_from_clipboard
-keybind = cmd++=increase_font_size:1.5
-keybind = cmd+-=decrease_font_size:1.5
+keybind = cmd+==increase_font_size:1.5
+keybind = cmd+minus=decrease_font_size:1.5
 keybind = cmd+0=reset_font_size
 
 # close tab

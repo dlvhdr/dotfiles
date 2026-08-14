@@ -268,18 +268,11 @@
     },
     {
       "sourceId": "github:tree-sitter/tree-sitter-regex",
-      "version": "v1.0.0",
-      "commit": "17a3293714312c691ef14217f60593a3d093381c",
+      "version": "v0.25.0",
+      "commit": "b2ac15e27fce703d2f37a79ccd94a5c0cbe9720b",
       "extras": {
         "integrations": [
           "neovim"
-        ],
-        "treesitter_external_queries": [
-          {
-            "language": "regex",
-            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-regex",
-            "ref": "1cabff662b53cc1f41d5470e0583f2ac8fb60cca"
-          }
         ]
       }
     },
