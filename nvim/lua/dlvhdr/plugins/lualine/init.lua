@@ -2,6 +2,7 @@ local M = {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "folke/noice.nvim",
+    "chrisgrieser/nvim-recorder",
     "xiyaowong/transparent.nvim",
   },
   event = "VeryLazy",
@@ -62,6 +63,7 @@ M.config = function()
         -- components.breadcrumbs,
       },
       lualine_x = {
+        { require("recorder").displaySlots },
         { require("recorder").recordingStatus },
         components.treesitter,
         components.lsp,
