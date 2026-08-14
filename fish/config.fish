@@ -15,6 +15,7 @@ fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/opt/rustup/bin
 fish_add_path /Applications/Ghostty.app/Contents/MacOS
 fish_add_path "$HOME/code/port/scripties"
+fish_add_path "$HOME/.bin"
 
 bind -M insert \cv edit_command_buffer
 
@@ -23,6 +24,10 @@ set -gx DOCKER_CONFIG "$HOME/.docker"
 set -gx HOMEBREW_NO_AUTO_UPDATE true
 set -gx devbox_no_prompt true
 set -gx RESTERM_CONFIG_DIR "$XDG_CONFIG_HOME/resterm"
+set -gx NVPM_HOME "$XDG_CONFIG_HOME/nvpm"
+set -gx NVPM_CACHE "$XDG_CACHE_HOME/nvpm"
+
+nvpm env fish | source
 
 set -gx DIRENV_LOG_FORMAT ""
 
@@ -30,8 +35,6 @@ set -gx DIRENV_LOG_FORMAT ""
 
 set -gx GUM_FILTER_INDICATOR "→"
 set -gx GUM_FILTER_PROMPT " "
-
-alias cd="z"
 
 set -gx FZF_DEFAULT_OPTS "--layout=reverse --border rounded --no-info --pointer='' --marker=' ' --ansi --height=20% --color='16,bg+:-1,gutter:-1,prompt:5,pointer:5,marker:6,border:4,label:4,header:italic'"
 set -gx FZF_COMPLETION_OPTS "--nth=4.. --preview='' --border-label=' history ' --prompt='  '"
@@ -146,7 +149,6 @@ abbr --add eslint-restart "~/.local/share/nvim/mason/bin/eslint_d restart"
 abbr --add dr "devbox run"
 abbr --add ds "devbox services"
 abbr --add lsi "timg -pk --grid=4x1 --upscale=i --center --title --frames=1 -bgray -Bdarkgray *.{png,jpg,jpeg,svg}"
-abbr --add pk "procs-kill"
 
 abbr --add db "harlequin --config-path ~/.config/harlequin/config.toml"
 
@@ -155,10 +157,15 @@ abbr fd 'fd --hidden'
 
 status is-interactive; and begin
 
+    # Iris Autocomplete
+    # iris init fish | source
+    # set fish_autosuggestion_enabled 0 # handled by https://github.com/versenilvis/iris
+    # alias i="iris"
+
     # Abbreviations
 
     # Interactive shell initialisation
-    fzf --fish | source
+    # fzf --fish | source
 
     # fish_add_path -p ~/code/go/bin
 
