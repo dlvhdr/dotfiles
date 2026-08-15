@@ -156,22 +156,18 @@ abbr --add refresh "yarn && yarn pkg:build && devbox services restart"
 abbr fd 'fd --hidden'
 
 status is-interactive; and begin
-
-    # Iris Autocomplete
-    # iris init fish | source
-    # set fish_autosuggestion_enabled 0 # handled by https://github.com/versenilvis/iris
-    # alias i="iris"
-
-    # Abbreviations
-
-    # Interactive shell initialisation
-    # fzf --fish | source
-
-    # fish_add_path -p ~/code/go/bin
-
     fish_add_path "/Users/dlvhdr/.local/share/../bin"
     fish_add_path -p "HOME/.bin"
     source "$XDG_CONFIG_HOME"/fish/themes/fish_tokyonight_storm.fish
+
+    # Iris Autocomplete
+    # set fish_autosuggestion_enabled 0 # handled by https://github.com/versenilvis/iris
+    # iris init fish | source
+    # alias i="iris"
+
+    # disable atuin binds and use IRIS instead
+    # set -gx ATUIN_NOBIND "true"
+    # atuin init fish --disable-up-arrow --disable-ctrl-r | source
     atuin init fish --disable-up-arrow | source
 
     function fish_user_key_bindings
