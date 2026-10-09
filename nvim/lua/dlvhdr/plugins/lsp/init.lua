@@ -1,6 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
     event = { "LspAttach", "InsertEnter", "BufWinEnter", "BufNewFile" },
     dependencies = {
       "nvimtools/none-ls.nvim",
@@ -19,10 +20,16 @@ return {
       )
     end,
   },
-  { "b0o/schemastore.nvim", event = "InsertEnter", ft = { "json", "yaml", "yml" } },
+  {
+    "b0o/schemastore.nvim",
+    event = "InsertEnter",
+    ft = { "json", "yaml", "yml" },
+    enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
+  },
   {
     "youyoumu/pretty-ts-errors.nvim",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
     opts = {
       executable = "/Users/dlvhdr/npm/pretty-ts-errors-markdown",
       auto_open = false,

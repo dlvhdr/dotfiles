@@ -6,6 +6,7 @@ local formatters_by_ft = {
   javascript = { "prettierd" },
   javascriptreact = { "prettierd" },
   html = { "prettierd" },
+  http = { "kulala-fmt" },
   css = { "prettierd" },
   postcsss = { "prettierd" },
   markdown = { "prettierd" },

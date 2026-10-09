@@ -11,7 +11,7 @@ M.setup = function()
   vim.lsp.enable("dockerls") -- npm install -g dockerfile-language-server-nodejs
   vim.lsp.enable("lua_ls") -- brew install lua-language-server
   -- vim.lsp.enable("jsonls") -- brew install vscode-langservers-extracted
-  -- vim.lsp.enable("yamlls") -- npm i -g add yaml-language-server
+  vim.lsp.enable("yamlls") -- npm i -g add yaml-language-server
   vim.lsp.enable("golangci_lint_ls")
   vim.lsp.enable("prismals") -- npm install -g @prisma/language-server
   vim.lsp.enable("html") -- brew install vscode-langservers-extracted
@@ -189,14 +189,20 @@ M.setup = function()
         vim.keymap.set(
           "n",
           "<leader>lu",
-          require("dlvhdr.plugins.lsp.handlers").action["source.removeUnused.ts"],
-          { desc = "Remove unused" }
+          require("dlvhdr.plugins.lsp.handlers").action["source.removeUnusedImports"],
+          { desc = "Remove [u]nused" }
         )
         vim.keymap.set(
           "n",
           "<leader>lm",
-          require("dlvhdr.plugins.lsp.handlers").action["source.addMissingImports.ts"],
-          { desc = "Add missing imports" }
+          require("dlvhdr.plugins.lsp.handlers").action["source.addMissingImports"],
+          { desc = "[O]rganize imports" }
+        )
+        vim.keymap.set(
+          "n",
+          "<leader>lo",
+          require("dlvhdr.plugins.lsp.handlers").action["source.organizeImports"],
+          { desc = "[O]rganize imports" }
         )
       end
     end,

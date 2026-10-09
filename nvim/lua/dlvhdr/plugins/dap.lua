@@ -100,9 +100,8 @@ return {
               host = "localhost",
               port = "${port}",
               executable = {
-                command = "node",
+                command = "/Users/dlvhdr/.config/nvpm/bin/js-debug-adapter",
                 args = {
-                  vim.fn.stdpath("data") .. "/lazy/vscode-js-debug/out/dist/src/dapDebugServer.js",
                   "${port}",
                   "localhost",
                 },

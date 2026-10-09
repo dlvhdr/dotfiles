@@ -1,29 +1,25 @@
 tap "abhimanyu003/sttr"
-tap "ankitpokhrel/jira-cli"
+tap "ankitpokhrel/jira-cli", trusted: true
 tap "caarlos0/tap"
 tap "charmbracelet/tap"
 tap "common-fate/granted"
-tap "deviceinsight/packages"
 tap "dhth/tap"
-tap "dlvhdr/formulae"
+tap "dlvhdr/formulae", trusted: { formulae: ["diffnav"] }
 tap "f1bonacc1/tap"
-tap "friendsofgo/tap"
-tap "go-task/tap"
+tap "go-task/tap", trusted: { formulae: ["go-task"] }
 tap "homebrew/bundle"
-tap "jonas-grgt/ktea"
-tap "joshmedeski/sesh"
+tap "joshmedeski/sesh", trusted: true
 tap "kenzo-wada/thanks-stars", "https://github.com/Kenzo-Wada/homebrew-thanks-stars"
 tap "marle3003/tap"
 tap "morantron/tmux-fingers"
 tap "muesli/tap"
-tap "nikitabobko/aerospace", "https://github.com/nikitabobko/homebrew-tap.git"
-tap "nikitabobko/tap"
-tap "pamburus/tap"
-tap "pear-devs/pear"
+tap "nikitabobko/aerospace", "https://github.com/nikitabobko/homebrew-tap.git", trusted: true
+tap "nikitabobko/tap", trusted: true
+tap "pamburus/tap", trusted: true
 tap "robinovitch61/tap"
 tap "silesky/tap"
 tap "skatkov/tap"
-tap "stanmarek/tap", "https://github.com/StanMarek/homebrew-tap"
+tap "stanmarek/tap", "https://github.com/StanMarek/homebrew-tap", trusted: true
 tap "thezoraiz/ascii-image-converter", "https://github.com/TheZoraiz/homebrew-ascii-image-converter"
 # Run your GitHub Actions locally
 brew "act"
@@ -69,6 +65,8 @@ brew "delve"
 brew "deno"
 # Load/unload environment variables based on $PWD
 brew "direnv"
+# View disk space usage and delete unwanted data, fast
+brew "dua-cli"
 # More intuitive version of du in rust
 brew "dust"
 # Run arbitrary commands when files change
@@ -79,6 +77,8 @@ brew "eslint_d"
 brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
 # Banner-like program prints strings as ASCII art
 brew "figlet"
 # User-friendly command-line shell for UNIX-like operating systems
@@ -97,8 +97,14 @@ brew "gitmux"
 brew "glow"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Task is a task runner/build tool that aims to be simpler and easier to use
+brew "go-task", link: false
+# Stricter gofmt
+brew "gofumpt"
 # Pure Go implementation of jq
 brew "gojq"
+# Fast linters runner for Go
+brew "golangci-lint"
 # Deliver Go binaries as fast and easily as possible
 brew "goreleaser"
 # Graph visualization software from AT&T and Bell Labs
@@ -127,6 +133,8 @@ brew "jnv"
 brew "jq"
 # TUI playground to experiment and play with jq
 brew "jqp"
+# Modern load testing tool, using Go and JavaScript
+brew "k6"
 # CLI for managing Apache Kafka
 brew "kafkactl"
 # Generic command-line non-JVM Apache Kafka producer and consumer
@@ -149,8 +157,12 @@ brew "lla"
 brew "lnav"
 # Rainbows and unicorns in your console!
 brew "lolcat"
+# Language Server for the Lua language
+brew "lua-language-server"
 # Run a Kubernetes cluster locally
 brew "minikube"
+# Deep clean and optimize your Mac
+brew "mole"
 # MongoDB Shell to connect, configure, query, and work with your MongoDB database
 brew "mongosh"
 # Interactive cheatsheet tool for the command-line
@@ -169,12 +181,18 @@ brew "poppler"
 brew "posting"
 # Terminal slideshow tool
 brew "presenterm"
+# Prettier daemon
+brew "prettierd"
 # Modern replacement for ps written in Rust
 brew "procs"
+# Static type checker for Python
+brew "pyright"
 # Terminal client for .http/.rest files with HTTP, GraphQL, and gRPC support
 brew "resterm"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Rust toolchain installer
+brew "rustup"
 # Intuitive find & replace CLI
 brew "sd"
 # 7-Zip is a file archiver with a high compression ratio
@@ -183,6 +201,8 @@ brew "sevenzip"
 brew "sl"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Opinionated Lua code formatter
+brew "stylua"
 # User interface to the TELNET protocol
 brew "telnet"
 # Send macOS User Notifications from the command-line
@@ -209,6 +229,8 @@ brew "wget"
 brew "witr"
 # CSV CLI magician written in Rust
 brew "xan"
+# Language Server for Yaml Files
+brew "yaml-language-server"
 # JavaScript package manager
 brew "yarn"
 # Blazing fast terminal file manager written in Rust, based on async I/O
@@ -219,16 +241,38 @@ brew "yozefu"
 brew "yq"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
-# Git diff pager based on delta but with a file tree, à la GitHub
-brew "dlvhdr/formulae/diffnav", trusted: true
+# A cross-platform, cli app to perform various string operations.
+brew "abhimanyu003/sttr/sttr", trusted: true
+# A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
+brew "charmbracelet/tap/crush", trusted: true
+# The easiest way to access your cloud.
+brew "common-fate/granted/granted", trusted: true
+# Run a command multiple times and glance at the outputs
+brew "dhth/tap/mult", trusted: true
+brew "f1bonacc1/tap/process-compose", trusted: true
+# Smart terminal session manager
+brew "joshmedeski/sesh/sesh"
+# Star the GitHub repositories backing your project's dependencies from the command line.
+brew "kenzo-wada/thanks-stars/thanks-stars", trusted: true
+# Your API Mocking Tool for Agile Development using Go and Javascript - https://mokapi.io
+brew "marle3003/tap/mokapi", trusted: true
+# mouseless terminal interaction
+brew "morantron/tmux-fingers/tmux-fingers", trusted: true
+# Your personal markdown scribe with template-engine and Git(Hub) & RSS powers
+brew "muesli/tap/markscribe", trusted: true
 # An interactive Kubernetes log viewer for your terminal.
 brew "robinovitch61/tap/kl", trusted: true
+# node-run (nrun) - An fzf-like npm script runner with monorepo support
+brew "silesky/tap/node-run", trusted: true
+brew "skatkov/tap/devtui", trusted: true
+# Convert images into ascii art
+brew "thezoraiz/ascii-image-converter/ascii-image-converter", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
-# Chromium based browser
-cask "arc"
+# AeroSpace is an i3-like tiling window manager for macOS
+cask "nikitabobko/tap/aerospace", trusted: true
 # Managed client-based VPN service to securely access AWS resources
 cask "aws-vpn-client"
 # Display management tool
@@ -237,8 +281,6 @@ cask "betterdisplay"
 cask "datagrip"
 # Voice and text chat software
 cask "discord"
-# Window peeking utility app
-cask "dockdoor"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Web browser
@@ -260,6 +302,8 @@ cask "ghostty"
 cask "git-credential-manager"
 # GitHub notifications on your menu bar
 cask "gitify"
+# A fast, cross-platform build tool inspired by Make, designed for modern workflows.
+cask "go-task/tap/go-task", trusted: true
 # Web browser
 cask "google-chrome"
 # Chromium-based web browser
@@ -272,8 +316,6 @@ cask "iina"
 cask "iterm2"
 # Open-source keystroke visualiser
 cask "keycastr"
-# Use Vim in input fields and non input fields
-cask "kindavim"
 # GPU-based terminal emulator
 cask "kitty"
 # Customise mouse behavior
@@ -294,11 +336,14 @@ cask "redis-insight"
 cask "slack"
 # System monitor for the menu bar
 cask "stats"
-cask "svu"
+# Semantic Version Utility
+cask "caarlos0/tap/svu", trusted: true
 # To-do & task list manager
 cask "ticktick"
 # Open-source code editor
 cask "visual-studio-code"
+# Menu bar toolkit with keep-awake, system monitor and volume mixer
+cask "vorssaint"
 # Native desktop client for WhatsApp
 cask "whatsapp"
 # Video communication and virtual meeting platform
@@ -358,10 +403,19 @@ go "taskfile-language-server"
 go "github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs"
 uv "insiders"
 uv "posting"
+npm "@astrojs/language-server"
+npm "@mistweaverco/kulala-ls"
 npm "@port-experimental/port-cli"
+npm "@prisma/language-server"
+npm "@vtsls/language-server"
 npm "0x"
 npm "cli-node"
+npm "dockerfile-language-server-nodejs"
 npm "git-split-diffs"
+npm "graphql-language-service-cli"
+npm "graphql"
 npm "jscodeshift"
 npm "memory-usage"
+npm "oxlint"
 npm "pnpm"
+npm "tree-sitter-cli"

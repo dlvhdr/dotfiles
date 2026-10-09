@@ -1,5 +1,6 @@
 local M = {
   "folke/noice.nvim",
+  enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
   event = "VeryLazy",
   dependencies = {
     "MunifTanjim/nui.nvim",

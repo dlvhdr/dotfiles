@@ -1,6 +1,7 @@
 return {
   "Pocco81/auto-save.nvim",
   lazy = true,
+  enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
   config = function()
     require("auto-save").setup({
       enabled = true,

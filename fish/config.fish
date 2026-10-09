@@ -4,13 +4,20 @@
 # | |_| | |__\ V / |  _  | |_| |  _ < 
 # |____/|_____\_/  |_| |_|____/|_| \_\
 #                                     
+
+status is-interactive; or exit
+
 set -U fish_greeting # disable fish greeting
 
 set -gx GOPRIVATE "github.com/dlvhdr/*"
 set -gx GOPATH "$HOME/code/go"
 
 fish_add_path "$GOPATH" "$HOME/.krew/bin" "$XDG_DATA_HOME/google-cloud-sdk/bin" "$XDG_DATA_HOME/cargo/bin" "/usr/local/opt/ruby/bin" "$GOPATH/bin" "$HOME/.local/bin" "$DOTFILES/scripts" "$XDG_DATA_HOME/npm/bin" "$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin" "$HOME/.local/share/npm/bin"
-eval (/opt/homebrew/bin/brew shellenv)
+
+# evalcache for fish for caching source/eval commands for faster startups
+# https://github.com/kyohsuke/fish-evalcache
+
+_evalcache /opt/homebrew/bin/brew shellenv
 fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/opt/rustup/bin
 fish_add_path /Applications/Ghostty.app/Contents/MacOS
@@ -27,7 +34,7 @@ set -gx RESTERM_CONFIG_DIR "$XDG_CONFIG_HOME/resterm"
 set -gx NVPM_HOME "$XDG_CONFIG_HOME/nvpm"
 set -gx NVPM_CACHE "$XDG_CACHE_HOME/nvpm"
 
-nvpm env fish | source
+_evalcache nvpm env fish | source
 
 set -gx DIRENV_LOG_FORMAT ""
 
@@ -77,6 +84,9 @@ abbr --add f "ranger"
 abbr --add gcode "$CODE"
 abbr --add gd "cd $HOME/Downloads"
 alias r "cd_repo"
+alias ls="eza --icons --group-directories-first"
+
+alias ct "create-task"
 alias p "cd_pkg"
 abbr --add "k" "kubectl"
 
@@ -125,15 +135,6 @@ abbr --add nvim-chad "NVIM_APPNAME=NvChad nvim"
 abbr --add nvim-astro "NVIM_APPNAME=AstroNvim nvim"
 abbr --add nvim-lunar "NVIM_APPNAME=LunarVim nvim"
 
-abbr --add bi "brew install"
-abbr --add bic "brew install --cask"
-abbr --add bin "brew info"
-abbr --add binc "brew info --cask"
-abbr --add bl "brew leaves"
-abbr --add blr "brew leaves --installed-on-request"
-abbr --add blp "brew leaves --installed-as-dependency"
-abbr --add bs "brew search"
-
 abbr --add s "scripts"
 abbr --add kdp "kubectl describe pod"
 abbr --add d "docker"
@@ -155,47 +156,45 @@ abbr --add db "harlequin --config-path ~/.config/harlequin/config.toml"
 abbr --add refresh "yarn && yarn pkg:build && devbox services restart"
 abbr fd 'fd --hidden'
 
-status is-interactive; and begin
-    fish_add_path "/Users/dlvhdr/.local/share/../bin"
-    fish_add_path -p "HOME/.bin"
-    source "$XDG_CONFIG_HOME"/fish/themes/fish_tokyonight_storm.fish
+fish_add_path "/Users/dlvhdr/.local/share/../bin"
+fish_add_path -p "HOME/.bin"
+source "$XDG_CONFIG_HOME"/fish/themes/fish_tokyonight_storm.fish
 
-    # Iris Autocomplete
-    # set fish_autosuggestion_enabled 0 # handled by https://github.com/versenilvis/iris
-    # iris init fish | source
-    # alias i="iris"
-
-    # disable atuin binds and use IRIS instead
-    # set -gx ATUIN_NOBIND "true"
-    # atuin init fish --disable-up-arrow --disable-ctrl-r | source
-    atuin init fish --disable-up-arrow | source
-
-    function fish_user_key_bindings
-        fish_default_key_bindings -M insert
-        fish_vi_key_bindings --no-erase insert
-        bind --preset -M command ctrl-p up-or-search
-        bind --preset -M command ctrl-n down-or-search
-        bind --preset -M insert ctrl-n down-or-search
-        bind -s --preset -M visual -m default y 'fish_clipboard_copy; commandline -f end-selection repaint-mode'
-        bind --preset --erase \ep
-        bind --preset -M visual --erase \ep
-        bind --preset -M insert --erase \ep
-    end
-
-    set fish_cursor_default block
-    set fish_cursor_insert line
-    set fish_cursor_replace_one underscore
-    set fish_cursor_visual block
-    set -g fish_vi_force_cursor 1
-
-    bind yy fish_clipboard_copy
-    bind Y fish_clipboard_copy
-    bind p fish_clipboard_paste
-    bind \cv edit_command_buffer
-
-    set __done_notification_command 'terminal-notifier -title \\\$title -message \\\$message'
-
-    zoxide init fish | source
-    starship init fish | source
-    direnv hook fish | source
+# Credit: https://github.com/artefactory/artefiles/blob/da8736abd8014b795c10cbb465f24b3dda4ae8b7/dot_config/fish/config.fish.tmpl#L207
+# atuin's init spawns `atuin uuid` for the session id; uuidgen produces the
+# same 32 hex chars for a fraction of the cost, so seed the two variables
+# the init checks before sourcing it.
+if not set -q ATUIN_SESSION; or test "$ATUIN_SHLVL" != "$SHLVL"
+    set -gx ATUIN_SESSION (uuid -v 4 | string replace -a - '' | tr -d '\n')
+    set -gx ATUIN_SHLVL $SHLVL
 end
+_evalcache atuin init fish --disable-up-arrow
+
+function fish_user_key_bindings
+    fish_default_key_bindings -M insert
+    fish_vi_key_bindings --no-erase insert
+    bind --preset -M command ctrl-p up-or-search
+    bind --preset -M command ctrl-n down-or-search
+    bind --preset -M insert ctrl-n down-or-search
+    bind -s --preset -M visual -m default y 'fish_clipboard_copy; commandline -f end-selection repaint-mode'
+    bind --preset --erase \ep
+    bind --preset -M visual --erase \ep
+    bind --preset -M insert --erase \ep
+end
+
+set fish_cursor_default block
+set fish_cursor_insert line
+set fish_cursor_replace_one underscore
+set fish_cursor_visual block
+set -g fish_vi_force_cursor 1
+
+bind yy fish_clipboard_copy
+bind Y fish_clipboard_copy
+bind p fish_clipboard_paste
+bind \cv edit_command_buffer
+
+set __done_notification_command 'terminal-notifier -title \\\$title -message \\\$message'
+
+_evalcache zoxide init fish
+_evalcache starship init fish
+_evalcache direnv hook fish

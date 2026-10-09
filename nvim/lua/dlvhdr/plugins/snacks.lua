@@ -1,5 +1,6 @@
 return {
   "folke/snacks.nvim",
+  enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
   priority = 1000,
   lazy = false,
   opts = {
@@ -32,6 +33,7 @@ return {
       timeout = 2000,
     },
     dashboard = {
+      enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
       sections = {
         { section = "header", row = nil, padding = { 4, 15 } },
         {
@@ -476,7 +478,10 @@ return {
     {
       "<leader>ff",
       function()
-        Snacks.picker.lsp_symbols({ filter = { default = { "Function", "Method", "Field" } } })
+        Snacks.picker.lsp_symbols({
+          layout = "right",
+          filter = { default = { "Function", "Method", "Constructor" } },
+        })
       end,
       desc = "LSP Functions",
     },

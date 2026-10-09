@@ -68,6 +68,7 @@ keybindings:
       name: lazygit
       command: >
         command cd {{.RepoPath}} && lazygit
+
   prs:
     - key: C
       builtin: checkout
@@ -81,9 +82,7 @@ keybindings:
         '
     - key: T
       command: >-
-        tmux new-window -n "enhance" '
-          gh enhance -R {{.RepoName}} {{.PrNumber}}
-        '
+        kitty @ launch --type=tab --cwd=current --title="enhance" gh enhance -R {{.RepoName}} {{.PrNumber}}
     # - key: v
     #   name: approve
     #   command: >

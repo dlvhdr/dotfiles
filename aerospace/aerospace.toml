@@ -114,10 +114,10 @@ alt-shift-equal = 'resize smart +50'
 alt-c = 'exec-and-forget open -b net.imput.helium'
 # alt-c = 'exec-and-forget open -b app.zen-browser.zen'
 alt-d = 'exec-and-forget open -b org.mozilla.firefox'
-alt-e = 'exec-and-forget open -b net.kovidgoyal.kitty --args --title="yazi" -o hide_window_decorations=no -o active_border_color=#ff0000 -o background=#000000 -o background_opacity=1 --directory $(tmux display-message -p "#{pane_current_path}") yazi'
+alt-e = 'exec-and-forget kitty @ --to unix:/tmp/kitty action goto_session $HOME/dotfiles/kitty/sessions/downloads.kitty-session'
 alt-f = 'exec-and-forget open -b com.figma.Desktop'
-# alt-i = 'exec-and-forget open -b net.kovidgoyal.kitty'
-alt-i = 'exec-and-forget open -b com.mitchellh.ghostty'
+# alt-i = 'exec-and-forget if ! pgrep -f kitty; then kitty @ --to unix:/tmp/kitty launch --type=os-window; else kitty --listen-on unix:/tmp/kitty --directory "/Users/dlvhdr/"; fi'
+alt-i = 'exec-and-forget open -b net.kovidgoyal.kitty'
 alt-m = 'exec-and-forget open -b com.apple.mail'
 alt-n = 'exec-and-forget open -b notion.id'
 alt-o = 'exec-and-forget open -b com.1password.1password'
@@ -193,6 +193,12 @@ if.app-id = 'com.mitchellh.ghostty'
 run = ['layout tiling', 'move-node-to-workspace I']
 
 [[on-window-detected]]
+if.window-title-regex-substring = 'Picture in Picture'
+# if.app-id = 'app.zen-browser.zen'
+check-further-callbacks = false
+run = ['layout floating']
+
+[[on-window-detected]]
 if.app-id = 'net.imput.helium'
 # if.app-id = 'app.zen-browser.zen'
 run = ['layout tiling', 'move-node-to-workspace C']
@@ -248,7 +254,7 @@ run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
-run = ['layout floating']
+run = ['layout tiling']
 
 [[on-window-detected]]
 if.app-name-regex-substring = '^.*$'

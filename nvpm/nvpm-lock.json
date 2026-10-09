@@ -11,7 +11,7 @@
         "extra_packages": [
           {
             "id": "npm:@astrojs/ts-plugin",
-            "version": "1.10.10"
+            "version": "1.10.11"
           },
           {
             "id": "npm:typescript",
@@ -273,6 +273,13 @@
       "extras": {
         "integrations": [
           "neovim"
+        ],
+        "treesitter_external_queries": [
+          {
+            "language": "regex",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-regex",
+            "ref": "1cabff662b53cc1f41d5470e0583f2ac8fb60cca"
+          }
         ]
       }
     },
@@ -543,7 +550,16 @@
     {
       "sourceId": "github:bkegley/tree-sitter-graphql",
       "version": "5e66e961eee421786bdda8495ed1db045e06b5fe",
-      "commit": "5e66e961eee421786bdda8495ed1db045e06b5fe"
+      "commit": "5e66e961eee421786bdda8495ed1db045e06b5fe",
+      "extras": {
+        "treesitter_external_queries": [
+          {
+            "language": "graphql",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-graphql",
+            "ref": "522ffe2d6e4edaff85880b38302abc7c1f082d2f"
+          }
+        ]
+      }
     },
     {
       "sourceId": "github:tree-sitter/tree-sitter-html",
@@ -704,6 +720,33 @@
     {
       "sourceId": "npm:typescript",
       "version": "7.0.2"
+    },
+    {
+      "sourceId": "github:microsoft/vscode-js-debug",
+      "version": "v1.117.0",
+      "commit": "496a6f1a4fc8198bcd563f97b84a07aa39917404",
+      "extras": {
+        "integrations": [
+          "neovim"
+        ]
+      }
+    },
+    {
+      "sourceId": "github:tree-sitter-grammars/tree-sitter-yaml",
+      "version": "v0.7.2",
+      "commit": "7708026449bed86239b1cd5bce6e3c34dbca6415",
+      "extras": {
+        "integrations": [
+          "neovim"
+        ],
+        "treesitter_external_queries": [
+          {
+            "language": "yaml",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-yaml",
+            "ref": "5bba7d65a4bc1b586d5edb3b3c92fe6030bac843"
+          }
+        ]
+      }
     }
   ],
   "$schema": "https://nvpm.dev/nvpm-lock.schema.json"

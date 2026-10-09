@@ -1,5 +1,6 @@
 return {
   "gregorias/toggle.nvim",
+  enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
   dependencies = { "folke/which-key.nvim" },
   version = "1.0",
   event = "VeryLazy",

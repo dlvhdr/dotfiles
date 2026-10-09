@@ -1,5 +1,6 @@
 local M = {
   "nvim-lualine/lualine.nvim",
+  enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
   dependencies = {
     "folke/noice.nvim",
     "chrisgrieser/nvim-recorder",
@@ -67,6 +68,7 @@ M.config = function()
         { require("recorder").recordingStatus },
         components.treesitter,
         components.lsp,
+        "kulala",
         -- components.filetype,
       },
       lualine_y = {},

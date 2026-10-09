@@ -50,6 +50,7 @@ return {
   {
     "saghen/blink.cmp",
     event = { "InsertEnter", "CmdlineEnter" },
+    enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
     build = "cargo build --release",
     version = "*",
     dependencies = {

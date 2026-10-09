@@ -1,17 +1,17 @@
 [[plugin.deps]]
-use = "dedukun/relative-motions"
-rev = "a603d9e"
-hash = "e02a788e5b8ae0fb47fd0193dda589cc"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "56971d0"
-hash = "3996fc74044bc44144b323686f887e1"
+rev = "4dc7f1b"
+hash = "f281261ff04ad7ec867c3f802a50835f"
 
 [[plugin.deps]]
 use = "Gallardo994/clippy"
 rev = "8ce5541"
 hash = "977c6f4ffceada33ced20d941f1defab"
+
+[[plugin.deps]]
+use = "Jormala/relative-motions"
+rev = "d4f2003"
+hash = "e0017cae4c0772dd41b7e7c259a6e683"
 
 [[flavor.deps]]
 use = "BennyOe/tokyo-night"

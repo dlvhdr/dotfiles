@@ -1,5 +1,6 @@
 local M = {
   "lukas-reineke/indent-blankline.nvim",
+  enabled = vim.env.KITTY_SCROLLBACK_NVIM ~= "true",
   event = "VeryLazy",
   main = "ibl",
 }

@@ -19,6 +19,11 @@ name = "mono 💼"
 path = "~/code/port/mono"
 
 [[session]]
+name = "Port OpenAPI"
+path = "~/code/port"
+startup_command = "nvim openapi-port.http +'KulalaOpenOpenAPIExplorer local'"
+
+[[session]]
 name = "gh-dash 🚀"
 path = "~/code/personal/gh-dash"
 
