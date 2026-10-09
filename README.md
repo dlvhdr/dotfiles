@@ -1,6 +1,7 @@
-🏠 dlvhdr's dotfiles
-
-📟 Kitty | ✍️ Neovim | 🪟 Aerospace
+<center>
+  <h1>🏠 dlvhdr's dotfiles</h1>
+  <p>📟 Kitty | ✍️ Neovim | 🪟 Aerospace</p>
+</center>
 
 ![screenshot of setup](https://github.com/dlvhdr/dotfiles/assets/6196971/6f2e479b-e8e8-414c-a763-2a1e5db754f8)
 
