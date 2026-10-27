@@ -27,7 +27,7 @@
     },
     {
       "sourceId": "golang:golang.org/x/tools/gopls",
-      "version": "v0.23.0"
+      "version": "v0.24.0"
     },
     {
       "sourceId": "npm:@tailwindcss/language-server",
@@ -35,7 +35,12 @@
     },
     {
       "sourceId": "npm:tree-sitter-cli",
-      "version": "0.26.12"
+      "version": "0.27.1",
+      "extras": {
+        "integrations": [
+          "neovim"
+        ]
+      }
     },
     {
       "sourceId": "github:tree-sitter/tree-sitter-bash",
@@ -73,8 +78,20 @@
     },
     {
       "sourceId": "github:stsewd/tree-sitter-comment",
-      "version": "v0.3.0",
-      "commit": "689be73775bd2dd57b938b8e12bf50fec35a6ca3"
+      "version": "master",
+      "commit": "66272d2b6c73fb61157541b69dd0a7ce7b42a5ad",
+      "extras": {
+        "integrations": [
+          "neovim"
+        ],
+        "treesitter_external_queries": [
+          {
+            "language": "comment",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-comment",
+            "ref": "d92210c0f53cd17061466d430615d154dabcff51"
+          }
+        ]
+      }
     },
     {
       "sourceId": "github:virchau13/tree-sitter-astro",
@@ -139,8 +156,8 @@
     },
     {
       "sourceId": "github:tree-sitter-grammars/tree-sitter-diff",
-      "version": "v0.1.0",
-      "commit": "2520c3f934b3179bb540d23e0ef45f75304b5fed",
+      "version": "v0.2.0",
+      "commit": "ada384ac7bfc1307f32de474620120add29998fb",
       "extras": {
         "integrations": [
           "neovim"
@@ -156,8 +173,8 @@
     },
     {
       "sourceId": "github:tree-sitter/tree-sitter-javascript",
-      "version": "v0.25.0",
-      "commit": "44c892e0be055ac465d5eeddae6d3e194424e7de",
+      "version": "master",
+      "commit": "58404d8cf191d69f2674a8fd507bd5776f46cb11",
       "extras": {
         "integrations": [
           "neovim"
@@ -200,8 +217,8 @@
     },
     {
       "sourceId": "github:tree-sitter/tree-sitter-json",
-      "version": "v0.24.8",
-      "commit": "ee35a6ebefcef0c5c416c0d1ccec7370cfca5a24",
+      "version": "master",
+      "commit": "254c42a6476413b776221e03982ac8ae159eeb72",
       "extras": {
         "integrations": [
           "neovim"
@@ -217,8 +234,8 @@
     },
     {
       "sourceId": "github:Joakker/tree-sitter-json5",
-      "version": "v0.1.0",
-      "commit": "8cb4114a4d7e5bab75d74466422e032de31d83df",
+      "version": "master",
+      "commit": "248b8564567087d7866be76569b182f6dd7e14e9",
       "extras": {
         "integrations": [
           "neovim"
@@ -251,8 +268,8 @@
     },
     {
       "sourceId": "github:tree-sitter-grammars/tree-sitter-luadoc",
-      "version": "v1.1.0",
-      "commit": "818acda56809f994274de64a42f97f509b3c0ad2",
+      "version": "master",
+      "commit": "4d04632a3a398b78af52e83be074883e722f40be",
       "extras": {
         "integrations": [
           "neovim"
@@ -302,8 +319,8 @@
     },
     {
       "sourceId": "github:tree-sitter/tree-sitter-typescript",
-      "version": "v0.23.2",
-      "commit": "f975a621f4e7f532fe322e13c4f79495e0a7b2e7",
+      "version": "master",
+      "commit": "75b3874edb2dc714fb1fd77a32013d0f8699989f",
       "extras": {
         "integrations": [
           "neovim"
@@ -339,8 +356,8 @@
     },
     {
       "sourceId": "github:tree-sitter-grammars/tree-sitter-xml",
-      "version": "v0.7.0",
-      "commit": "4b64dd3a03ec002258d6268d712fd93716d6ab57",
+      "version": "master",
+      "commit": "5000ae8f22d11fbe93939b05c1e37cf21117162d",
       "extras": {
         "integrations": [
           "neovim"
@@ -384,7 +401,7 @@
     },
     {
       "sourceId": "npm:yaml-language-server",
-      "version": "1.24.0",
+      "version": "2.0.0",
       "extras": {
         "integrations": [
           "neovim"
@@ -430,8 +447,8 @@
     },
     {
       "sourceId": "github:ram02z/tree-sitter-fish",
-      "version": "3.7.0",
-      "commit": "fa2143f5d66a9eb6c007ba9173525ea7aaafe788",
+      "version": "master",
+      "commit": "b7f1d682941e0c62dfcd6bf9ef481638351bab16",
       "extras": {
         "integrations": [
           "neovim"
@@ -447,8 +464,8 @@
     },
     {
       "sourceId": "github:tree-sitter-grammars/tree-sitter-vim",
-      "version": "v0.8.1",
-      "commit": "3092fcd99eb87bbd0fc434aa03650ba58bd5b43b",
+      "version": "master",
+      "commit": "039c8d0aa1deae00ddeb0374dd70bcc0ec56938d",
       "extras": {
         "integrations": [
           "neovim"
@@ -464,8 +481,8 @@
     },
     {
       "sourceId": "github:neovim/tree-sitter-vimdoc",
-      "version": "v4.1.0",
-      "commit": "f061895a0eff1d5b90e4fb60d21d87be3267031a",
+      "version": "v4.3.0",
+      "commit": "13add92d357b69646c080a8028b82ffb106faf7a",
       "extras": {
         "integrations": [
           "neovim"
@@ -481,8 +498,8 @@
     },
     {
       "sourceId": "github:tree-sitter/tree-sitter-go",
-      "version": "v0.25.0",
-      "commit": "1547678a9da59885853f5f5cc8a99cc203fa2e2c",
+      "version": "master",
+      "commit": "2346a3ab1bb3857b48b29d779a1ef9799a248cd7",
       "extras": {
         "integrations": [
           "neovim"
@@ -498,8 +515,8 @@
     },
     {
       "sourceId": "github:gbprod/tree-sitter-gitcommit",
-      "version": "v0.5.0",
-      "commit": "33fe8548abcc6e374feaac5724b5a2364bf23090",
+      "version": "main",
+      "commit": "55a265cf763ec15d6e2d96bb206e3f5e30d82bae",
       "extras": {
         "integrations": [
           "neovim"
@@ -515,8 +532,8 @@
     },
     {
       "sourceId": "github:camdencheek/tree-sitter-go-mod",
-      "version": "v1.1.0",
-      "commit": "3b01edce2b9ea6766ca19328d1850e456fde3103",
+      "version": "main",
+      "commit": "2e886870578eeba1927a2dc4bd2e2b3f598c5f9a",
       "extras": {
         "integrations": [
           "neovim"
@@ -532,8 +549,8 @@
     },
     {
       "sourceId": "github:tree-sitter-grammars/tree-sitter-go-sum",
-      "version": "v1.0.0",
-      "commit": "afd6da80a9509c2edbc0f3ea540564d100babd67",
+      "version": "master",
+      "commit": "27816eb6b7315746ae9fcf711e4e1396dc1cf237",
       "extras": {
         "integrations": [
           "neovim"
@@ -552,6 +569,9 @@
       "version": "5e66e961eee421786bdda8495ed1db045e06b5fe",
       "commit": "5e66e961eee421786bdda8495ed1db045e06b5fe",
       "extras": {
+        "integrations": [
+          "neovim"
+        ],
         "treesitter_external_queries": [
           {
             "language": "graphql",
@@ -563,8 +583,8 @@
     },
     {
       "sourceId": "github:tree-sitter/tree-sitter-html",
-      "version": "v0.23.2",
-      "commit": "5a5ca8551a179998360b4a4ca2c0f366a35acc03",
+      "version": "master",
+      "commit": "73a3947324f6efddf9e17c0ea58d454843590cc0",
       "extras": {
         "integrations": [
           "neovim"
@@ -619,8 +639,8 @@
     },
     {
       "sourceId": "github:ngalaiko/tree-sitter-go-template",
-      "version": "aa71f63de226c5592dfbfc1f29949522d7c95fac",
-      "commit": "aa71f63de226c5592dfbfc1f29949522d7c95fac",
+      "version": "master",
+      "commit": "06b2fd2ac32a7be71cdcf925eeeb868a68e2acde",
       "extras": {
         "integrations": [
           "neovim"
@@ -658,8 +678,8 @@
     },
     {
       "sourceId": "github:the-mikedavis/tree-sitter-git-rebase",
-      "version": "v1.0.0",
-      "commit": "3db1f61fb928433381253bc5159c40f7d10c57b1",
+      "version": "main",
+      "commit": "32686d6b72980b36f876ae2d07719c9c3ed154e2",
       "extras": {
         "integrations": [
           "neovim"
@@ -723,8 +743,8 @@
     },
     {
       "sourceId": "github:microsoft/vscode-js-debug",
-      "version": "v1.117.0",
-      "commit": "496a6f1a4fc8198bcd563f97b84a07aa39917404",
+      "version": "v1.140.0",
+      "commit": "bccbbafdcb6bb96ab0706f411a1e66681d5bc4de",
       "extras": {
         "integrations": [
           "neovim"
@@ -733,8 +753,8 @@
     },
     {
       "sourceId": "github:tree-sitter-grammars/tree-sitter-yaml",
-      "version": "v0.7.2",
-      "commit": "7708026449bed86239b1cd5bce6e3c34dbca6415",
+      "version": "a1c4812a73ec5e089de8e441fdea3a921e8d5079",
+      "commit": "a1c4812a73ec5e089de8e441fdea3a921e8d5079",
       "extras": {
         "integrations": [
           "neovim"
@@ -744,6 +764,47 @@
             "language": "yaml",
             "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-yaml",
             "ref": "5bba7d65a4bc1b586d5edb3b3c92fe6030bac843"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "github:joelspadin/tree-sitter-devicetree",
+      "version": "v0.15.0",
+      "commit": "e685f1f6ac1702b046415efb476444167d63e41a",
+      "extras": {
+        "integrations": [
+          "neovim"
+        ],
+        "treesitter_external_queries": [
+          {
+            "language": "devicetree",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-devicetree",
+            "ref": "cbc6f633cb83fd75c1d8ebaba593303bd206be09"
+          }
+        ]
+      }
+    },
+    {
+      "sourceId": "github:tree-sitter-grammars/tree-sitter-markdown",
+      "version": "v0.5.4",
+      "commit": "41ff24a6c775492c543b09228aeb98d1cd2b3a0f",
+      "extras": {
+        "treesitter_external_queries": [
+          {
+            "language": "markdown",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown",
+            "ref": "adc2014ec864d3edb5281bae89b9784073a80441"
+          },
+          {
+            "language": "markdown",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown_inline",
+            "ref": "f8254e287e30910966011ceff06a5912449395bc"
+          },
+          {
+            "language": "markdown_inline",
+            "repo_url": "https://github.com/neovim-treesitter/nvim-treesitter-queries-markdown_inline",
+            "ref": "f8254e287e30910966011ceff06a5912449395bc"
           }
         ]
       }
